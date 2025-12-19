@@ -1052,7 +1052,13 @@ J.P. Morgan is using blockchain to modernize how money, assets, and capital mark
 
 ---
 
-## 21. Conclusion: Why This Matters
+## 21. JPMorgan Chase Blockchain Ecosystem
+
+![JPMorgan Chase Blockchain Ecosystem](../assets/jpmorgan_blockchain_ecosystem.png)
+
+---
+
+## 22. Conclusion: Why This Matters
 
 J.P. Morgan's blockchain strategy is no longer a "future possibility" or "experimental division." As of December 2025, it is an **active, revenue-generating business line** processing billions in daily transaction volume, issuing real money and assets on public blockchains, and structuring billions in tokenized capital markets transactions.
 
