@@ -115,11 +115,19 @@ The convergence of Diffusion LLMs, Power Attention, latent thinking, Nested Lear
 
 ## References
 
-1. Ermon, S. (2025). *Diffusion Language Models: A New Paradigm*. Stanford University Lecture.
-2. Vaswani, A., et al. (2017). *Attention is All You Need*. arXiv:1706.03762.
-3. Jones, L., & Sevilla, J. (2025). *Continuous Thought Machines*. arXiv:2505.05522.
-4. Manifest AI Team. (2025). *Power Attention: Subquadratic Scaling for Infinite Contexts*. arXiv:2507.04239.
-5. Google DeepMind. (2025). *Introducing Nested Learning: A New ML Paradigm for Continual Learning*. research.google/blog.
-6. OpenAI Research. (2025). *Private Chains of Thought in Next-Generation Models*. Internal Preview.
-7. Inception Labs. (2025). *Mercury: The First Commercial Diffusion LLM*. inceptionlabs.ai.
-8. Epoch AI. (2025). *Haimvia Report: AI Trends to 2030*. epochai.org.
+1. Stefano Ermon. (2025). Diffusion Language Models: A New Paradigm for Text Generation and Reasoning [Conference keynote and Stanford lecture series]. Stanford University.
+
+2. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention Is All You Need. arXiv:1706.03762.
+
+3. Jones, L., & Sevilla, J. (2025). Continuous Thought Machines. arXiv:2505.05522.
+​
+4. Manifest AI Team. (2025). Power Attention: Scaling Context Requires Rethinking Attention. arXiv:2507.04239.
+
+5. Google DeepMind. (2025). Nested Learning: A New Paradigm for Continual and Lifelong Learning. Research blog post and associated technical report.
+
+6. OpenAI Research. (2025). Private Chains of Thought in Next-Generation Models [Internal technical preview, summarized in public model specification updates].
+
+7. Inception Labs. (2025). Introducing Mercury: The First Commercial-Scale Diffusion LLM. inceptionlabs.ai.
+
+8. Epoch AI. (2025). AI in 2030: Trends and Trajectories for Advanced AI Systems (Epoch AI 2030 Report). epochai.org.
+​
