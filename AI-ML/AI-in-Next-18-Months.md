@@ -113,13 +113,27 @@ Enables intuitive, human-like cognition; sequential nature hampers GPU paralleli
 
 The convergence of Diffusion LLMs, Power Attention, latent thinking, Nested Learning, and CTMs heralds a post-LLM renaissance, blending efficiency, scalability, and dynamism. By 2026, hybrid systems could achieve AGI precursors, disrupting jobs while amplifying human creativity. Stakeholders must prioritize ethical deployment, compute equity, and interdisciplinary collaboration. This era demands not caution, but bold experimentation—the wild next 18 months will redefine intelligence itself.
 
+## Specifc Technical Issues or Findings
+
+1. Diffusion LLMs: The "10x speedup" claim
+
+In prototypes like Dream 7B, it's compared to equivalents like Llama-7B, achieving similar quality at 5x-10x lower latency on the same hardware. For bigger models like GPT-4, the baseline would be its inference speed (e.g., ~10-50 tokens/sec on high-end GPUs), so a 10x jump could mean real-time interactivity for complex tasks. That said, this isn't apples-to-apples yet—diffusion still lags in raw scale for frontier models, and training costs might offset inference gains. My take: It's a legitimate edge for efficiency, especially in editing-heavy apps, but we'd need 2026 benchmarks to confirm if it truly obsoletes autoregression across the board. Not revolutionary overnight, but a solid evolution.
+
+2. Nested Learning: Oversimplifying catastrophic forgetting
+
+It's positioned as building on TitansMem, with early experiments in tools like Perplexity showing user-specific evolution without catastrophic wipes. However, you're spot on that it's not a complete paradigm shift; LoRA/RAG handle a lot of enterprise use cases already (e.g., custom chatbots). My take: The framing is a bit dramatic for hype, but Nested adds value in real-time, low-risk scenarios like lifelong agents. It's evolutionary, not revolutionary—more like upgrading from patches to a built-in system. If it scales without the warned alignment risks, it could feel revolutionary in practice by 2026.
+
+3. CTMs: Cherry-picked examples and benchmark performance
+
+No direct MMLU/HumanEval data is cited, which supports your cherry-picking concern—it's proof-of-concept, not production-ready.Intriguing for AGI-like dynamics, but overhyped without broad evals. If CTMs hit parity on MMLU (say, 90%+ like o1) while crushing generalization suites, they'd validate the buzz. Otherwise, they're a niche complement to transformers, not a replacement. Worth watching in 2026 prototypes, but skepticism is warranted until we see those numbers.
+
 ## References
 
 1. Stefano Ermon. (2025). Diffusion Language Models: A New Paradigm for Text Generation and Reasoning [Conference keynote and Stanford lecture series]. Stanford University.
 
 2. Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N., Kaiser, Ł., & Polosukhin, I. (2017). Attention Is All You Need. arXiv:1706.03762.
 
-3. Jones, L., & Sevilla, J. (2025). Continuous Thought Machines. arXiv:2505.05522.
+3. Darlow, L., Regan, C., Risi, S., Seely, J., & Jones, L. (2025). Continuous Thought Machines. arXiv:2505.05522.
 ​
 4. Manifest AI Team. (2025). Power Attention: Scaling Context Requires Rethinking Attention. arXiv:2507.04239.
 
