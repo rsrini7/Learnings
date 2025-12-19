@@ -2,6 +2,8 @@
 
 A technical yet beginner‑friendly analysis of **scalability**, interoperability, and application design across Layers 0–3.
 
+![Blockchain Layers](../assets/Blockchain-Layers.gif)
+
 ***
 
 ## 1. Executive summary
