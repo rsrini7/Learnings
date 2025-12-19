@@ -56,6 +56,7 @@
 - [Google WillowChip & QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
 - [Quantum Threat to Bitcoin](QuantumComputing/Quantum-Threat-to-Bitcoin.md)
 - [Quantum Computer Terms](QuantumComputing/QuantumComputer-Terms.md)
+- [VIO-40K 10,000 Qubits](QuantumComputing/VIO-40K-Arch-10K-Qubits.md)
 
 
 
