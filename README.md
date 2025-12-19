@@ -1,13 +1,13 @@
 ## AI-ML
-- [AI in Next 18 Months](AI-ML/AIa_in-Next-18-Months.md)
+- [AI in Next 18 Months](AI-ML/AI-in-Next-18-Months.md)
 - [AI PM Roles](AI-ML/AI-PMRoles.md)
 - [Fine Tuning LLM - GTX 1060 - WSL2-Ubuntu-2022](AI-ML/Fine-Tuning-LLM-GTX1060-WSL2-Ubuntu-2022.md)
 - [ML Math](AI-ML/ML-Math.md)
-- [Microsoft Agent Lightning](AI-ML/Microsofta_Agent-Lightning.md)
+- [Microsoft Agent Lightning](AI-ML/Microsoft-Agent-Lightning.md)
 - [Multimodal RAG](AI-ML/Multimodal-RAG.md)
 
 ## AWS
-- [AWS Deepracer Ubuntu Local Install Steps](AWS/aws-deepracer-ubuntu-locala_installs.md)
+- [AWS Deepracer Ubuntu Local Install Steps](AWS/aws-deepracer-ubuntu-local-installs.md)
 
 ## Blockchain
 - [Blockchain Layers](Blockchain/BlockchainLayers.md)
@@ -19,18 +19,18 @@
 - [Searching or Downloading Research Papers](Helpful/searching-or-downloading-research-papers.md)
 
 ## JVM
-- [Java Plugins Architecture](JVM/Java-Plugina_Arch.md)
+- [Java Plugins Architecture](JVM/Java-Plugin-Arch.md)
 - [Java Remote Debug](JVM/Java_remote_debug.md)
 
 ## Middleware
 - [Kafka 4.0](Middleware/kafka-4.0.md)
 
 ## News
-- [Largest WhatsApp Data Leak in History](News/Largest-WhatsApp-Data-Leaka_in-History.md)
-- [Cloudflare down Nov-2025](News/cloudflare-downa_nov-2025.md)
+- [Largest WhatsApp Data Leak in History](News/Largest-WhatsApp-Data-Leak-in-History.md)
+- [Cloudflare down Nov-2025](News/cloudflare-down-nov-2025.md)
 
 ## Papers
-- [DeepSeek Advancements](Papers/DeepSeeka_Advancements.md)
+- [DeepSeek Advancements](Papers/DeepSeek-Advancements.md)
 - [Facebook Sparce-Memory Finetuning](Papers/Facebook-sparce-memory-finetuning.md)
 - [Google Nested Learning vs FB Sparce Memory](Papers/Google-Nested-Learning-VS-FB-Sparce-Memory.md)
 - [Google Nested Learning](Papers/Google-Nested-Learning.md)
@@ -42,12 +42,12 @@
 ## Prompts
 - [Define Your AI Learning Goal (Easy Mode) LLM-Prompt](Prompts/Define-Your-AI-Learning-Goal(Easy-Mode)-LLM-Prompt.md)
 - [Define Your AI Learning Goal (Hard Mode)-LLM-Prompt](Prompts/Define-Your-AI-Learning-Goal(Hard-Mode)-LLM-Prompt.md)
-- [code-understanding-llma_improved-prompt](Prompts/code-understanding-llma_improved-prompt.md)
+- [Code Understanding LLM Improved Prompt](Prompts/code-understanding-llm-improved-prompt.md)
 - [Code Understanding LLM Prompt](Prompts/code-understanding-llm-prompt.md)
 - [Docs Generation LLM Prompt](Prompts/docs-gen-llm-prompt.md)
 
 ## QuantumComputing
-- [Google WillowChip & QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoesa_Algorithm.md)
+- [Google WillowChip & QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
 - [Quantum Threat to Bitcoin](QuantumComputing/Quantum-Threat-to-Bitcoin.md)
 - [Quantum Computer Terms](QuantumComputing/QuantumComputer-Terms.md)
 
