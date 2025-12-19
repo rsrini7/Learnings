@@ -120,7 +120,7 @@ This guide outlines the steps to set up AWS DeepRacer on Ubuntu with NVIDIA GPU 
     ```bash
     sudo apt install jq
     ```
-6.  Rea_initialize the environment after `jq` installation:
+6.  Re-initialize the environment after `jq` installation:
     ```bash
     bin/init.sh
     ```
@@ -203,5 +203,5 @@ To stop a model and restart it with a slightly different reward function without
 3.  **Update and Increment Training**:
     ```bash
     dr-update
-    dra_increment-training
+    dr-increment-training
     ```
