@@ -5,7 +5,7 @@ This guide outlines the steps for setting up an environment to fine-tune Large L
 ## 1. Python Version Considerations
 
 *   **Ubuntu 20.04:** Default Python 3.8. Requires `pyenv` for higher Python versions.
-*   **Ubuntu 20.04:** Default Python 3.12. PyTorch does not currently provide prebuilt wheels for Python 3.12 (cp312) via the official website or PyPI.
+*   **Ubuntu 24.04:** Default Python 3.12. PyTorch does not currently provide prebuilt wheels for Python 3.12 (cp312) via the official website or PyPI.
 *   **Ubuntu 22.04:** Default Python 3.10. This version is recommended for compatibility.
 
 ## 2. WSL2 and Ubuntu 22.04 Setup
