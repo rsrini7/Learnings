@@ -1,5 +1,3 @@
-***
-
 # The Layered Architecture of Blockchain Technology
 
 A technical yet beginner‑friendly analysis of **scalability**, interoperability, and application design across Layers 0–3.
@@ -34,7 +32,7 @@ Blockchain is best understood as a stack of layers rather than a single monolith
 
 ## 3. Layer 1 – Consensus and settlement
 
-**Function:** The base “source of truth” where transactions are ordered, validated, and finalized
+**Function:** The base “source of truth” where transactions are ordered, validated, and finalized.
 
 - Maintains the canonical ledger state and enforces core protocol rules.
 - Prioritizes decentralization and security, which often limits raw throughput.
@@ -51,7 +49,7 @@ Blockchain is best understood as a stack of layers rather than a single monolith
 **Examples**
 
 - Bitcoin: Security‑maximized, relatively low‑throughput PoW chain, widely treated as “digital gold.”  
-- Ethereum: General‑purpose smart‑contract settlement layer that many DeFi and L2 systems anchor to.
+- Ethereum: General‑purpose smart‑contract settlement layer that many DeFi and L2 systems anchor to.  
 - Solana: High‑throughput L1 using Proof of History plus PoS, trading off higher hardware requirements for performance.
 
 ***
@@ -109,9 +107,9 @@ Blockchain is best understood as a stack of layers rather than a single monolith
 For beginners, a simplified three‑layer view is often used.
 
 - **Layer 1 – Foundation:**  
-  - Base blockchain and core protocol, responsible for security and consensus (e.g., Bitcoin, Ethereum).
+  - Base blockchain and core protocol, responsible for security and consensus (e.g., Bitcoin, Ethereum).  
 - **Layer 2 – Scaling:**  
-  - Built on top of L1 to make transactions faster and cheaper via rollups and channels (e.g., Lightning Network, optimistic rollups).
+  - Built on top of L1 to make transactions faster and cheaper via rollups and channels (e.g., Lightning Network, optimistic rollups).  
 - **Layer 3 – Applications:**  
   - User‑facing dApps and tools that interact with underlying layers to provide real-world use cases.
 
@@ -121,11 +119,11 @@ This three‑layer picture fits inside the more detailed 0–3 model by treating
 
 ## 7. Real‑world scenarios
 
-| Industry        | Problem                                               | Layered solution                                                                                                     |
-|----------------|-------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------|
-| Global finance | Cross‑border transfers are slow and costly.           | L2 payment networks (e.g., Lightning) handle instant micro‑payments, with periodic settlement on an L1 like Bitcoin. |
-| Supply chain   | Multi‑party tracking is fragmented and opaque.       | L0 links logistics‑focused and finance‑focused chains so delivery events can automatically trigger on‑chain payment. |
-| Gaming         | On‑chain actions are too expensive or slow.          | L3 game chains process frequent in‑game actions cheaply, using L1 (e.g., Ethereum) only for high‑value asset trades. |
+| Industry        | Problem                                             | Layered solution                                                                                                      |
+|----------------|-----------------------------------------------------|-----------------------------------------------------------------------------------------------------------------------|
+| Global finance | Cross‑border transfers are slow and costly.         | L2 payment networks (e.g., Lightning) handle instant micro‑payments, with periodic settlement on an L1 like Bitcoin. |
+| Supply chain   | Multi‑party tracking is fragmented and opaque.      | L0 links logistics‑focused and finance‑focused chains so delivery events can automatically trigger on‑chain payment.  |
+| Gaming         | On‑chain actions are too expensive or slow.         | L3 game chains process frequent in‑game actions cheaply, using L1 (e.g., Ethereum) only for high‑value asset trades.  |
 
 ***
 
@@ -135,7 +133,9 @@ The ecosystem is moving toward a **modular** architecture where each layer does 
 
 ***
 
-**Relevant Video Resource**
-For a visual breakdown of these concepts, refer to the following Youtube guide:
-[What Are Blockchain Layers 0-3](https://www.youtube.com/watch?v=u1PEKoRVedw) and 
-[Layers 1-2-3](https://www.youtube.com/watch?v=UVfEOQQ_Bic)
+## Relevant video resources
+
+For a visual breakdown of these concepts, refer to the following YouTube guides:
+
+- [What Are Blockchain Layers 0–3](https://www.youtube.com/watch?v=u1PEKoRVedw)  
+- [Layers 1–2–3](https://www.youtube.com/watch?v=UVfEOQQ_Bic)
