@@ -14,6 +14,7 @@
 - [Ethereum Hardhat Docker Setup](Blockchain/Ethereum-hardhat-docker.md)
 - [Hardhat Development](Blockchain/Hardhat-Development.md)
 - [Blockchain Coin vs Token](Blockchain/blockchain-coin-vs-token.md)
+- [JPMorgan-Blockchain-Strategy](Blockchain/JPMorgan-Blockchain-Strategy.md)
 
 - [Blockchain 26 Catagories Claude](Blockchain/blockchain-26-catagories-claude.md)
 - [Blockchain 26 Catagories Gemini](Blockchain/blockchain-26-catagories-gemini.md)
