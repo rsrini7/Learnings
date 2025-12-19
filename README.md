@@ -15,6 +15,12 @@
 - [Hardhat Development](Blockchain/Hardhat-Development.md)
 - [Blockchain Coin vs Token](Blockchain/blockchain-coin-vs-token.md)
 
+- [Blockchain 26 Catagories Claude](Blockchain/blockchain-26-catagories-claude.md)
+- [Blockchain 26 Catagories Gemini](Blockchain/blockchain-26-catagories-gemini.md)
+- [Blockchain 26 Catagories Perplexity](Blockchain/blockchain-26-catagories-perplexity.md)
+- [Blockchain 26 Catagories Grok](Blockchain/blockchain-26-catagories-grok.md)
+- [Blockchain 26 Catagories Openai](Blockchain/blockchain-26-catagories-openai.md)
+
 ## Helpful
 - [Searching or Downloading Research Papers](Helpful/searching-or-downloading-research-papers.md)
 
