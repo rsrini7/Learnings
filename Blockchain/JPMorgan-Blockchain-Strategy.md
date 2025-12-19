@@ -447,6 +447,8 @@ Conceptually, J.P. Morgan's ecosystem is organized as a **layered, interoperable
 
 ## 12. Comprehensive Timeline (2018–2025+)
 
+![JPMmorgan Blockchain Milestone](../assets/jpmorgan_blockchain_milestone.png)
+
 ### Phase 1: Foundation (2018–2020)
 
 | Year | Quarter | Milestone | Status |
