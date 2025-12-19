@@ -397,47 +397,47 @@ Conceptually, J.P. Morgan's ecosystem is organized as a **layered, interoperable
 ```text
 ┌───────────────────────────────────────────────────────┐
 │ Consumer Bridges & Embedded Finance                   │
-│  └─ Coinbase Partnership (retail crypto access)      │
+│  └─ Coinbase Partnership (retail crypto access)       │
 │  └─ Walmart Partnership (embedded payments + crypto)  │
 └───────────────────────────────────────────────────────┘
 
 ┌───────────────────────────────────────────────────────┐
 │ Institutional Crypto Services                         │
-│  └─ BTC / ETH Trading & Collateral                   │
-│  └─ Crypto-Backed Lending                            │
+│  └─ BTC / ETH Trading & Collateral                    │
+│  └─ Crypto-Backed Lending                             │
 └───────────────────────────────────────────────────────┘
 
 ┌───────────────────────────────────────────────────────┐
-│ Cross-Chain Orchestration & Institutional DeFi       │
-│  └─ Chainlink Integration                            │
-│  └─ Tokenized Collateral Network (TCN)               │
-│  └─ Project Guardian (DeFi + FX)                     │
+│ Cross-Chain Orchestration & Institutional DeFi        │
+│  └─ Chainlink Integration                             │
+│  └─ Tokenized Collateral Network (TCN)                │
+│  └─ Project Guardian (DeFi + FX)                      │
 └───────────────────────────────────────────────────────┘
 
 ┌───────────────────────────────────────────────────────┐
-│ Tokenized Capital Markets                            │
-│  └─ Tokenized Commercial Paper (Solana, USDC)       │
-│  └─ Tokenized Bonds (multi-chain)                    │
-│  └─ Kinexys Fund Flow (alternative assets, 2026)     │
+│ Tokenized Capital Markets                             │
+│  └─ Tokenized Commercial Paper (Solana, USDC)         │
+│  └─ Tokenized Bonds (multi-chain)                     │
+│  └─ Kinexys Fund Flow (alternative assets, 2026)      │
 └───────────────────────────────────────────────────────┘
 
 ┌───────────────────────────────────────────────────────┐
-│ Tokenized Investment Assets                          │
-│  └─ MONY (Tokenized MMF – Ethereum)                 │
-│  └─ Tokenized Private Equity Funds                   │
-│  └─ Future: Private Credit, Real Estate, Hedge Funds │
+│ Tokenized Investment Assets                           │
+│  └─ MONY (Tokenized MMF – Ethereum)                   │
+│  └─ Tokenized Private Equity Funds                    │
+│  └─ Future: Private Credit, Real Estate, Hedge Funds  │
 └───────────────────────────────────────────────────────┘
 
 ┌───────────────────────────────────────────────────────┐
-│ On-Chain Bank Money                                  │
-│  └─ JPMD (Deposit Token – Base, Mastercard MTN)     │
+│ On-Chain Bank Money                                   │
+│  └─ JPMD (Deposit Token – Base, Mastercard MTN)       │
 └───────────────────────────────────────────────────────┘
 
 ┌───────────────────────────────────────────────────────┐
-│ Internal Bank Settlement (Kinexys Digital Payments)  │
-│  └─ JPM Coin / Kinexys Core Infrastructure          │
-│  └─ $2B+ daily transaction volume                    │
-│  └─ Settlement backbone for all layers above        │
+│ Internal Bank Settlement (Kinexys Digital Payments)   │
+│  └─ JPM Coin / Kinexys Core Infrastructure            │
+│  └─ $2B+ daily transaction volume                     │
+│  └─ Settlement backbone for all layers above          │
 └───────────────────────────────────────────────────────┘
 ```
 
