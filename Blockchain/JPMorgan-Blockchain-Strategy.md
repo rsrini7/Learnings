@@ -51,7 +51,7 @@ Each pillar has different products, regulatory treatment, and business value, bu
 - Rebranded from **Onyx** to **Kinexys by J.P. Morgan** in September 2025.
 - Used by J.P. Morgan and permissioned institutional clients.
 
-**Key milestone: Kinexys Rebranding (September 2025)**
+**Key milestone: Kinexys Rebranding (November, 2024)**
 
 Kinexys represents a strategic shift from a niche "blockchain unit" to a mainstream **payments and digital assets platform**. Kinexys is now the public-facing brand for all JPMC blockchain infrastructure, payments, and tokenization services.
 
@@ -64,7 +64,7 @@ Kinexys represents a strategic shift from a niche "blockchain unit" to a mainstr
 
 **Business outcomes (2024–2025):**
 
-- **$2 billion+ average daily transaction volume** on Kinexys (as of Q3 2025).
+- **$2 billion+ average daily transaction volume** on Kinexys (2024 YTD data basis).
 - **10x year-over-year growth** in transaction throughput.
 - **Expansion into new use cases:** carbon markets, supply chain finance, international payments.
 - Forms the **base layer** on which JPMD, MONY, tokenized collateral, and all public-chain integrations are built.
@@ -627,8 +627,10 @@ JPMorgan remains the market leader in institutional blockchain and tokenization,
 
 **Core strength:** Tokenizing entire $5 trillion iShares ETF complex; largest crypto ETF operator
 
+- BlackRock CEO Larry Fink announced in October 2025 that the company is **exploring tokenization** of long-term investment products, including iShares funds. This is a strategic **exploration initiative**, not a confirmed product launch. The $5 trillion figure refers to total iShares AUM (as of August 2025), which represents the *potential* addressable market if tokenization is pursued. No timeline, specific tokenization targets, or rollout plan has been confirmed as of December 2025.
+
 **Strategic initiative (October 2025 announcement):**
-- Tokenizing $5T iShares ETF catalog for direct access via digital wallets
+- Exploring Tokenizing $5T iShares ETF catalog for direct access via digital wallets
 - Not a pilot; full product rollout planned
 - Targeting younger investors already comfortable with tokenized assets
 
