@@ -836,14 +836,6 @@ Total: ~3,850 tokens, leaving ~196,150 for analysis and data.
 **Key Insight:** For this workflow, CLI and Code Execution save ~10% context without sacrificing success rate. Advantage grows with data volume.
 
 
-### 8.6 Visual Architecture Diagram
-
-![MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram](../assets/MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram.png) 
-
-### 8.7 Token Consumption Graph
-
-![MCP-CodeExc-Cli-Skills-Token-Consumption-Graph](../assets/MCP-CodeExc-Cli-Skills-Token-Consumption-Graph.png)
-
 ---
 
 ## 9. Security Considerations
@@ -937,7 +929,15 @@ The "Code Execution with MCP" blog post signals evolution toward:
 - Google: Agent Builder ecosystem
 - Open-source: Hugging Face Agent Hub
 
-### 10.3 The Likely Winner: Hybrid Architecture
+### 10.3 Visual Architecture Diagram
+
+![MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram](../assets/MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram.png) 
+
+### 10.4 Token Consumption Graph
+
+![MCP-CodeExc-Cli-Skills-Token-Consumption-Graph](../assets/MCP-CodeExc-Cli-Skills-Token-Consumption-Graph.png)
+
+### 10.5 The Likely Winner: Hybrid Architecture
 
 The future likely involves:
 
