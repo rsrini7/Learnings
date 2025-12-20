@@ -9,6 +9,7 @@ This white paper formalizes the **Unified Agent Context Framework (UACF)**, a st
 
 ![Unified Agent Context Framework](../assets/UnifiedAgentContextFramework.png)
 
+[PDF for Unified Agent Context](../assets/Unified_Agent_Context.pdf)
 ---
 
 ## 1. The Crisis: Context Fragmentation
