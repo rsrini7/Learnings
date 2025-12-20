@@ -192,14 +192,6 @@ Code Execution:
 User → Agent → [Filesystem of tool definitions] → [Model writes code] → [Sandbox execution] → [Result returned]
 ```
 
-### 4.1.1 Visual Architecture Diagram
-
-![MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram](../assets/MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram.png) 
-
-### 4.1.2 Token Consumption Graph
-
-![MCP-CodeExc-Cli-Skills-Token-Consumption-Graph](../assets/MCP-CodeExc-Cli-Skills-Token-Consumption-Graph.png)
-
 ### 4.2 Implementation Pattern
 
 Create a structured filesystem where each tool becomes a TypeScript/Python module:
@@ -842,6 +834,15 @@ Total: ~3,850 tokens, leaving ~196,150 for analysis and data.
 | Privacy exposure | Full data in context | Command args | Filtered in sandbox |
 
 **Key Insight:** For this workflow, CLI and Code Execution save ~10% context without sacrificing success rate. Advantage grows with data volume.
+
+
+### 8.6 Visual Architecture Diagram
+
+![MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram](../assets/MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram.png) 
+
+### 8.7 Token Consumption Graph
+
+![MCP-CodeExc-Cli-Skills-Token-Consumption-Graph](../assets/MCP-CodeExc-Cli-Skills-Token-Consumption-Graph.png)
 
 ---
 
