@@ -1,4 +1,7 @@
 # The Science of Scaling AI Agent Systems
+
+![The-Science-of-Scaling-AI-Agent-Systems](../assets/The-Science-of-Scaling-AI-Agent-Systems.png)
+
 ## A Practical Guide to When More Agents Help (And When They Don't)
 
 **Publication Date:** December 9, 2025  
