@@ -5,6 +5,7 @@
 - [ML Math](AI-ML/ML-Math.md)
 - [Microsoft Agent Lightning](AI-ML/Microsoft-Agent-Lightning.md)
 - [Multimodal RAG](AI-ML/Multimodal-RAG.md)
+- [Spec-Driven Development Frameworks](AI-ML/Spec-Driven-Development-Frameworks.md)
 
 ## AWS
 - [AWS Deepracer Ubuntu Local Install Steps](AWS/aws-deepracer-ubuntu-local-installs.md)
