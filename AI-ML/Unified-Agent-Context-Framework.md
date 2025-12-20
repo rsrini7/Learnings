@@ -6,6 +6,9 @@ The rapid proliferation of AI coding assistants—from GitHub Copilot to special
 
 This white paper formalizes the **Unified Agent Context Framework (UACF)**, a standardized methodology to consolidate AI instructions. It leverages the industry-emerging `AGENTS.md` standard as the "Single Source of Truth" while ensuring backward compatibility through symlinks and generation scripts. Furthermore, it outlines the transition to the **Model Context Protocol (MCP)**, where static context files evolve into dynamic context servers.
 
+
+![Unified Agent Context Framework](../assets/UnifiedAgentContextFramework.png)
+
 ---
 
 ## 1. The Crisis: Context Fragmentation
