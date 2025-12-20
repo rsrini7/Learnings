@@ -192,6 +192,14 @@ Code Execution:
 User → Agent → [Filesystem of tool definitions] → [Model writes code] → [Sandbox execution] → [Result returned]
 ```
 
+### 4.1.1 Visual Architecture Diagram
+
+![MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram](../assets/MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram.png) 
+
+### 4.1.2 Token Consumption Graph
+
+![MCP-CodeExc-Cli-Skills-Token-Consumption-Graph](../assets/MCP-CodeExc-Cli-Skills-Token-Consumption-Graph.png)
+
 ### 4.2 Implementation Pattern
 
 Create a structured filesystem where each tool becomes a TypeScript/Python module:
@@ -1026,6 +1034,20 @@ SAVINGS: ~22.7K tokens → ~27.3K tokens
 ## 12. Conclusion
 
 The Model Context Protocol solved a real problem—standardizing tool connections for AI agents. However, as adoption scaled, fundamental architectural limitations became apparent. Excessive token consumption, rigid tool binding, and lack of progressive disclosure create a "context crisis" where agents become less capable as more tools are added.
+
+MCP revolutionized tool standardization but wasn't optimized for context efficiency. As adoption scales beyond simple use cases, token consumption becomes the limiting factor for agent capability.
+
+The solution isn't "MCP is bad"—it's "MCP is one tool among many." Production systems should:
+
+1. Start with CLI for rapid iteration
+
+2. Use MCP for external tools when standardization matters
+
+3. Employ code execution when context is constrained and complexity requires it
+
+4. Apply skills in Claude-native environments for ecosystem integration
+
+This spectrum of approaches, properly understood and applied, enables building AI agents that are simultaneously more capable (more tools available), more efficient (lower token costs), and more secure (fine-grained control over data flow).
 
 ### 12.1 Key Takeaways
 
