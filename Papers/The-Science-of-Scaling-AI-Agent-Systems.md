@@ -1,8 +1,6 @@
 # The Science of Scaling AI Agent Systems
 
-<a href="../assets/The-Science-of-Scaling-AI-Agent-Systems.png" target="_blank">
-  <img src="../assets/The-Science-of-Scaling-AI-Agent-Systems.png" alt="The-Science-of-Scaling-AI-Agent-Systems" style="width:100%; cursor: zoom-in;">
-</a>
+[![The-Science-of-Scaling-AI-Agent-Systems](../assets/The-Science-of-Scaling-AI-Agent-Systems.png)](../assets/The-Science-of-Scaling-AI-Agent-Systems.png)
 
 ## A Practical Guide to When More Agents Help (And When They Don't)
 
