@@ -47,6 +47,8 @@
 - [Google Nested Learning](Papers/Google-Nested-Learning.md)
 - [Titans Google Paper](Papers/Titans-GooglePaper.md)
 - [The Science of Scaling AI Agent Systems](Papers/The-Science-of-Scaling-AI-Agent-Systems.md)
+- [Content Visual Carousel](<Prompts/content-visual carousel.md>)
+- [Youtube Visual Carousel](<Prompts/youtube-visual carousel.md>)
 
 ## ProgrammingLanguagesComparisons
 - [rust-vs-c](ProgrammingLanguagesComparisons/rust-vs-c.md)
