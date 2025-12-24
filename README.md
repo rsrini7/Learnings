@@ -25,6 +25,9 @@
 - [Blockchain 26 Catagories Grok](Blockchain/blockchain-26-catagories-grok.md)
 - [Blockchain 26 Catagories Openai](Blockchain/blockchain-26-catagories-openai.md)
 - [Blockchain Hedera Hashgraph](Blockchain/blockchain-Hedera-Hashgraph.md)
+- [Blockchain Payment Learning Guide](Blockchain/blockchain_payment_learning_guide.md)
+- [XLP XLM ISO20022](Blockchain/xrp-xlm-ISO20022.md)
+- [ISO20022-XRP-XLM-HBAR-XDC](Blockchain/ISO20022-XRP-XLM-HBAR-XDC.md)
 
 ## Helpful
 - [Searching or Downloading Research Papers](Helpful/searching-or-downloading-research-papers.md)
