@@ -252,3 +252,69 @@ The Hedera article's insight—that post-consensus vs. pre-consensus block produ
 [21](https://www.geeksforgeeks.org/operating-systems/consensus-algorithms-in-distributed-system/)
 [22](https://www.investopedia.com/terms/t/tangle-cryptocurrency.asp)
 [23](https://arxiv.org/pdf/2107.11144.pdf)
+
+
+---
+
+## 1. General DLT framing
+
+- Also important to classify DLTs **by multiple dimensions**:  
+  - Data structure (chain, DAG, lattice, DHT, sharded)[1][2]
+  - Consensus algorithm (PoW/PoS, BFT, aBFT, dBFT, gossip, etc.)[3]
+  - Access model (permissionless, permissioned, consortium, hybrid)[4]
+  - Fault model (Byzantine vs crash fault tolerant).[2]
+
+## 2. Blockchain section
+
+- Blockchains can use **many consensus types**, not just PoW (PoS, pBFT, IBFT, HotStuff, etc.).[5][6]
+- Need to distinguish **probabilistic finality** (Bitcoin, Ethereum) vs **deterministic finality** (BFT-style chains).[7][8]
+
+## 3. Hashgraph section
+
+- Hashgraph is usually **permissioned / council-governed today**, which affects decentralization compared to open chains.[9][10]
+- Good to call out that it is **aBFT with deterministic finality**, not just “faster consensus.”[10][3]
+
+## 4. DAG section
+
+- DAG-based ledgers also have **drawbacks**: complex tip selection, security analysis, often some central “coordinator” early on.[11][12]
+- There are **multiple DAG flavors**, including block-lattice (Nano), which behaves differently from IOTA’s Tangle.[13][14]
+
+## 5. Holochain section
+
+- Holochain is **agent‑centric DHT**, not a global ledger: no single shared chain, just many local chains + DHT validation.[15][1]
+- Trade-offs: huge scalability, but **no global total ordering** and a less mature security/consistency model than classical ledgers.[16][17]
+
+## 6. “Blockchain vs X” comparison parts
+
+- For each “Blockchain vs X”, it helps to compare on **standard metrics**:  
+  - Throughput, latency, security guarantees, decentralization, energy, maturity/ecosystem.[18][19]
+- Also useful to mention **real-world examples** of each type (Bitcoin/Ethereum, Hedera, IOTA/Obyte, Nano, Holochain) when contrasting.[9][15]
+
+[1](https://en.wikipedia.org/wiki/Distributed_ledger)
+[2](http://ir.kabarak.ac.ke/bitstream/handle/123456789/1660/Dorothy%20Bundi%20Published%20Journal%201.pdf?sequence=1&isAllowed=y)
+[3](https://arxiv.org/html/2309.13498v1)
+[4](https://openknowledge.worldbank.org/bitstreams/5166f335-35db-57d7-9c7e-110f7d018f79/download)
+[5](https://www.geeksforgeeks.org/software-engineering/blockchain-and-distributed-ledger-technology-dlt/)
+[6](https://www.astesj.com/v06/i05/p31/)
+[7](https://www.sciencedirect.com/science/article/pii/S2405959524000213)
+[8](https://blog.web3labs.com/comparing-byzantine-fault-tolerance-consensus-algorithms/)
+[9](https://101blockchains.com/blockchain-vs-hashgraph-vs-dag-vs-holochain/)
+[10](https://www.debutinfotech.com/blog/hashgraph-vs-blockchain)
+[11](https://blockchain.oodles.io/blog/dag-vs-blockchain-is-directed-acyclic-graph-technology-better-than-blockchain/)
+[12](https://pmc.ncbi.nlm.nih.gov/articles/PMC11859804/)
+[13](https://blockonomi.com/nano-block-lattice-architecture/)
+[14](https://docs.nano.org/integration-guides/the-basics/)
+[15](https://www.analyticssteps.com/blogs/5-types-distributed-ledger-technologies-dlt)
+[16](https://zenledger.io/blog/blockchain-alternatives-how-dags-hashgraphs-holochains-could-change-crypto-forever/)
+[17](https://zenodo.org/records/12095806/files/Breaking_Chains_Empowering_IoT_A_Comparative_Study_of_Holochain_and_Blockchain.pdf?download=1)
+[18](https://tatum.io/blog/dag-vs-blockchains-vs-hashgraphs-a-deep-technical-comparison)
+[19](https://www.gncrypto.news/news/blockchain-alternatives-or-types-of-distributed-ledgers/)
+[20](https://www.youtube.com/watch?v=JjMWrXqsrUs)
+[21](https://appinventiv.com/blog/blockchain-vs-dlt-guide/)
+[22](https://www.itu.int/en/ITU-T/focusgroups/dlt/Documents/d31.pdf)
+[23](https://docs.nano.org/what-is-nano/overview/)
+[24](https://www.1kosmos.com/blockchain/distributed-ledger-a-comprehensive-insight-for-organizations/)
+[25](https://coinmarketcap.com/academy/glossary/block-lattice-nano)
+[26](https://tokens-economy.gitbook.io/consensus/chain-based-dag/block-lattice-directed-acyclic-graphs-dags)
+[27](https://www.sciencedirect.com/topics/computer-science/distributed-ledger)
+[28](https://technorely.com/insights/block-lattice-how-it-differs-from-the-classic-blockchain-and-what-potential-it-has)
