@@ -28,6 +28,7 @@
 - [Blockchain Payment Learning Guide](Blockchain/blockchain_payment_learning_guide.md)
 - [XLP XLM ISO20022](Blockchain/xrp-xlm-ISO20022.md)
 - [ISO20022-XRP-XLM-HBAR-XDC](Blockchain/ISO20022-XRP-XLM-HBAR-XDC.md)
+- [DLT](Blockchain/DLT.md)
 
 ## Helpful
 - [Searching or Downloading Research Papers](Helpful/searching-or-downloading-research-papers.md)
