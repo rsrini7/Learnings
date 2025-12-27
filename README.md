@@ -64,6 +64,7 @@
 - [Code Understanding LLM Improved Prompt](Prompts/code-understanding-llm-improved-prompt.md)
 - [Code Understanding LLM Prompt](Prompts/code-understanding-llm-prompt.md)
 - [Docs Generation LLM Prompt](Prompts/docs-gen-llm-prompt.md)
+- [Prompting Guide](Prompts/prompting-guide.md)
 
 ## QuantumComputing
 - [Google WillowChip & QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
