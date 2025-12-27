@@ -10,7 +10,7 @@
 - [Spec-Driven Development Frameworks](AI-ML/Spec-Driven-Development-Frameworks.md)
 - [Unified Agent Context Framework](AI-ML/Unified-Agent-Context-Framework.md)
 - [Agent-Specs vs Rules vs Skills](AI-ML/Agent-Specs-vs-Rules-vs-Skills.md)
-- [SDD UACF SKILLS Comprehensive Comparative Analysis](AI-ML/sdd-uacf-skills-comparison.md)
+- [Agent SDD UACF SKILLS Comprehensive Comparative Analysis](AI-ML/Agent-sdd-uacf-skills-comparison.md)
 
 ## AWS
 - [AWS Deepracer Ubuntu Local Install Steps](AWS/aws-deepracer-ubuntu-local-installs.md)
