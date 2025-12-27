@@ -10,6 +10,11 @@ This white paper formalizes the **Unified Agent Context Framework (UACF)**, a st
 ![Unified Agent Context Framework](../assets/UnifiedAgentContextFramework.png)
 
 [PDF for Unified Agent Context](../assets/Unified_Agent_Context.pdf)
+
+* Comparision with Specs / Skills: 
+- [Agent-Specs-vs-Rules-vs-Skills](Agent-Specs-vs-Rules-vs-Skills.md)
+- [Agent-sdd-uacf-skills-comparison](Agent-sdd-uacf-skills-comparison.md)
+
 ---
 
 ## 1. The Crisis: Context Fragmentation

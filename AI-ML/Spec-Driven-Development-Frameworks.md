@@ -13,6 +13,11 @@ Spec-Driven Development (SDD) represents a paradigm shift from ad-hoc "vibe codi
 
 Each framework addresses the core problem: AI agents generate better code when given clear specifications, architectural context, and systematic planning before implementation begins.
 
+
+* Comparision with Rules / Skills: 
+- [Agent-Specs-vs-Rules-vs-Skills](Agent-Specs-vs-Rules-vs-Skills.md)
+- [Agent-sdd-uacf-skills-comparison](Agent-sdd-uacf-skills-comparison.md)
+
 ---
 
 ## Part 1: The Problem with Traditional AI Coding
