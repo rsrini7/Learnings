@@ -1,3 +1,6 @@
+Explore more on : [https://agentskills.so/](https://agentskills.so/)
+
+
 ### Use Case 1. Lead Scoring Calculator Prompt
 
 Create a Skill called "Lead Scoring Calculator" that does the following:
