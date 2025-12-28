@@ -4,12 +4,17 @@ Claude agents operate in a specific feedback loop: gather context → take actio
 ## **Sub-agents**
 Sub-agents transform a single AI assistant into a powerful, customizable team of specialized experts. They have two key benefits:
 
+Spin up multiple agents for task delegation
+
 1. **Context Management**: Each subagent uses its own isolated context window and only sends relevant information back to the orchestrator, rather than their full context
 2. **Parallelization**: You can spin up multiple subagents to work on different tasks simultaneously
 
-In Claude Code, you define sub-agents as markdown files in `.claude/agents/` directories with custom system prompts and tool restrictions.
+In Claude Code, you define sub-agents as markdown files in `.claude/agents/` directories with custom system prompts and tool restrictions. Great for breaking complex multiworkflow task into individual tasks with specialized agents.
 
 ## **Projects**
+
+Workspaces with a set of SYSTEM INSTRUCTIONS + CONTEXT + MEMORIES + TOOLS
+
 Projects allow you to ground Claude's outputs in your internal knowledge—be it style guides, codebases, interview transcripts, or past work. They're available on claude.ai and provide:
 
 - A 200K context window, the equivalent of a 500-page book
@@ -49,7 +54,21 @@ The Model Context Protocol provides standardized integrations to external servic
 ## **Skills**
 A Skill is a markdown file that teaches Claude how to do something specific: reviewing PRs using your team's standards, generating commit messages in your preferred format, or querying your company's database schema.
 
+Claude Skills are automated, reusable workflows that can be applied globally, at a project level, or individually. They function as specialized tasks that only load context when relevant, preventing "context rot" and improving LLM performance. This differs from Claude Projects, which are collaborative workspaces with shared instructions and context, and Sub-agents in Claude Code, which break down complex tasks into individual steps for specialized agents within a single conversation.
+
+Great for a specialized task based on constraints, guidelines, and steps built by you.
+
+Addressing Context Rot: Providing excessive context to Large Language Models (LLMs) can actually degrade performance and increase hallucinations. Claude Skills mitigate this by selectively pulling in necessary reference files, avoiding information overload.
+
+Users can create custom skills using markdown files to define tasks, instructions, and workflow steps. These skills can also reference additional documents like brand guidelines and glossaries, and execute custom Python scripts for deterministic results, providing precise control over outputs.
+
 Skills use progressive disclosure: Claude loads information in stages as needed, rather than consuming context upfront. At startup, Claude loads metadata and includes it in the system prompt, meaning you can install many Skills without context penalty.
+
+* Reference: [MCP Scalability](MCP_Scalability_Whitepaper.md)
+
+* Comparision with Specs / Rules : 
+- [Agent-Specs-vs-Rules-vs-Skills](Agent-Specs-vs-Rules-vs-Skills.md)
+- [Agent-sdd-uacf-skills-comparison](Agent-sdd-uacf-skills-comparison.md)
 
 ---
 

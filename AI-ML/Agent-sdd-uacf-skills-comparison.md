@@ -163,6 +163,10 @@ Result: Expert-level Excel handling
 - Traditional tools (Read, Write, Bash): Execute immediately, return results
 - Claude Skills: Inject detailed instructions, modify execution context, guide problem-solving
 
+References:
+
+[MCP Scalability](MCP_Scalability_Whitepaper.md)
+
 ---
 
 ## Section 2: Comparative Analysis - 12 Dimensions
