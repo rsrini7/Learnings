@@ -8,6 +8,7 @@
 - [MCP Scalability](AI-ML/MCP_Scalability_Whitepaper.md)
 - [Unlock the Dark Data](AI-ML/Unlock-the-Dark-Data.md)
 - [Claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills](AI-ML/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md)
+- [Claude Skills Prompts](AI-ML/4-Claude-Skills-Prompts.md)
 - [Spec-Driven Development Frameworks](AI-ML/Spec-Driven-Development-Frameworks.md)
 - [Unified Agent Context Framework](AI-ML/Unified-Agent-Context-Framework.md)
 - [Agent-Specs vs Rules vs Skills](AI-ML/Agent-Specs-vs-Rules-vs-Skills.md)
