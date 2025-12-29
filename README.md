@@ -13,6 +13,7 @@
 - [Unified Agent Context Framework](AI-ML/Unified-Agent-Context-Framework.md)
 - [Agent-Specs vs Rules vs Skills](AI-ML/Agent-Specs-vs-Rules-vs-Skills.md)
 - [Agent SDD UACF SKILLS Comprehensive Comparative Analysis](AI-ML/Agent-sdd-uacf-skills-comparison.md)
+- [WorldModels vs LLMs](AI-ML/WorldModels-vs-LLMs.md)
 
 ## AWS
 - [AWS Deepracer Ubuntu Local Install Steps](AWS/aws-deepracer-ubuntu-local-installs.md)
@@ -70,6 +71,7 @@
 - [Code Understanding LLM Prompt](Prompts/code-understanding-llm-prompt.md)
 - [Docs Generation LLM Prompt](Prompts/docs-gen-llm-prompt.md)
 - [Prompting Guide](Prompts/prompting-guide.md)
+- [Prompt-ref-book](Prompts/prompt-ref-book.md)
 
 ## QuantumComputing
 - [Google WillowChip & QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
