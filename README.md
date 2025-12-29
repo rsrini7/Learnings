@@ -46,6 +46,7 @@
 
 ## Middleware
 - [Kafka 4.0](Middleware/kafka-4.0.md)
+- [Workflow Orchestration](Middleware/workflow-orchestration.md)
 
 ## News
 - [Largest WhatsApp Data Leak in History](News/Largest-WhatsApp-Data-Leak-in-History.md)
