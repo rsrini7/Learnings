@@ -73,6 +73,8 @@
 - [Docs Generation LLM Prompt](Prompts/docs-gen-llm-prompt.md)
 - [Prompting Guide](Prompts/prompting-guide.md)
 - [Prompt-ref-book](Prompts/prompt-ref-book.md)
+- [Codebase Explore](Prompts/codebase-explore-prompt.md)
+- [Prompt Websites](Prompts/prompt-websites.md)
 
 ## QuantumComputing
 - [Google WillowChip & QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
