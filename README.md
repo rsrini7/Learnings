@@ -76,6 +76,7 @@
 - [Prompt-ref-book](Prompts/prompt-ref-book.md)
 - [Codebase Explore](Prompts/codebase-explore-prompt.md)
 - [Prompt Websites](Prompts/prompt-websites.md)
+- [Perplexity Research Whitepaper Prompt](Prompts/perplexity-research-whitepaper-prompt.md)
 
 ## QuantumComputing
 - [Google WillowChip & QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
