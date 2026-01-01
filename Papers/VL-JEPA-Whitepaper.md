@@ -786,13 +786,13 @@ As the field moves beyond the LLM era, architectures like VL-JEPA will likely be
 
 ## Appendix: AI Terminology Reference
 
-[A1] **Autoregressive Generation** (自回帰生成)
+[A1] **Autoregressive Generation**
 A sequence generation process where each new token is predicted conditioned on all previously generated tokens. Like reading left-to-right, each word depends on all prior words. Inherently sequential and computationally slow for long outputs. Contrast: non-autoregressive approaches predict entire sequences in parallel.
 
-[A2] **Semantic Embeddings** (セマンティック埋め込み)
+[A2] **Semantic Embeddings**
 Continuous vector representations that encode meaning of text, images, or other data. Unlike discrete tokens (one-hot vectors), embeddings are dense vectors where proximity reflects semantic similarity. Semantically similar concepts map to nearby points in embedding space.
 
-[A3] **Latent Space** (潜在空間)
+[A3] **Latent Space**
 Abstract, lower-dimensional representation of data learned by neural networks. Latent space typically encodes meaningful features and structure of data. Contrasts with "data space" (original pixel/token space). Latent variables often capture essential information while discarding noise.
 
 [A4] **Vision-Language Models (VLMs)**
@@ -804,7 +804,7 @@ Standard loss function for classification and token prediction. For token predic
 [A6] **Orthogonal**
 In geometry: perpendicular (right angles). In linear algebra: vectors are orthogonal if dot product is zero. Two orthogonal vectors share no similarity. Used metaphorically in this paper: different token sequences often share minimal overlap, making them nearly orthogonal in token space.
 
-[A7] **Selective Decoding** (選別的なデコーディング)
+[A7] **Selective Decoding**
 Strategy where expensive decoding operations (token-to-text conversion) only occur when necessary (e.g., when semantic content changes significantly), rather than at every timestep. Reduces computational cost for streaming applications while maintaining output quality.
 
 [A8] **Language Decoder**
@@ -828,13 +828,13 @@ Video-based Joint Embedding Predictive Architecture, version 2. Self-supervised 
 [A14] **Self-Supervised Learning**
 Training approach where models learn from unlabeled data by constructing supervision signal from data itself (e.g., predicting missing parts of images). No human annotation required. Enables learning from large unlabeled datasets.
 
-[A15] **Causal Masking** (因果的マスキング)
+[A15] **Causal Masking**
 Attention mechanism modification preventing tokens from attending to future tokens (positions that come later). Used in language models to maintain causality (output token only depends on prior input). VL-JEPA disables causal masking to allow vision and text to freely interact.
 
-[A16] **Sample Efficiency** (サンプル効率)
+[A16] **Sample Efficiency**
 Measure of how quickly models learn from training data. Sample-efficient models achieve good performance with fewer training examples. VL-JEPA demonstrates ~2× better sample efficiency than token-based VLMs (reaches target performance using 50% of samples).
 
-[A17] **Temperature** (温度)
+[A17] **Temperature**
 Hyperparameter in softmax function controlling sharpness of probability distributions. High temperature: soft probabilities (nearly uniform). Low temperature: sharp probabilities (concentrated on maximum). In contrastive learning, controls how "hard" negative examples are.
 
 [A18] **Representation Collapse**
