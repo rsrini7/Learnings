@@ -828,13 +828,13 @@ Video-based Joint Embedding Predictive Architecture, version 2. Self-supervised 
 [A14] **Self-Supervised Learning**
 Training approach where models learn from unlabeled data by constructing supervision signal from data itself (e.g., predicting missing parts of images). No human annotation required. Enables learning from large unlabeled datasets.
 
-[A15] **Causal Masking** (因果的マスキング)
+[A15] **Causal Masking**
 Attention mechanism modification preventing tokens from attending to future tokens (positions that come later). Used in language models to maintain causality (output token only depends on prior input). VL-JEPA disables causal masking to allow vision and text to freely interact.
 
-[A16] **Sample Efficiency** (サンプル効率)
+[A16] **Sample Efficiency**
 Measure of how quickly models learn from training data. Sample-efficient models achieve good performance with fewer training examples. VL-JEPA demonstrates ~2× better sample efficiency than token-based VLMs (reaches target performance using 50% of samples).
 
-[A17] **Temperature** (温度)
+[A17] **Temperature**
 Hyperparameter in softmax function controlling sharpness of probability distributions. High temperature: soft probabilities (nearly uniform). Low temperature: sharp probabilities (concentrated on maximum). In contrastive learning, controls how "hard" negative examples are.
 
 [A18] **Representation Collapse**
