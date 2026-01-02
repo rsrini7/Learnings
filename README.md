@@ -56,15 +56,19 @@
 ## Papers
 - [DeepSeek Advancements](Papers/DeepSeek-Advancements.md)
 - [Facebook Sparce-Memory Finetuning](Papers/Facebook-sparce-memory-finetuning.md)
-- [Google Nested Learning vs FB Sparce Memory](Papers/Google-Nested-Learning-VS-FB-Sparce-Memory.md)
 - [Google Nested Learning](Papers/Google-Nested-Learning.md)
 - [Titans Google Paper](Papers/Titans-GooglePaper.md)
 - [The Science of Scaling AI Agent Systems](Papers/The-Science-of-Scaling-AI-Agent-Systems.md)
 - [Content Visual Carousel](<Prompts/content-visual carousel.md>)
 - [Youtube Visual Carousel](<Prompts/youtube-visual carousel.md>)
 - [VL-JEPA-Whitepaper](Papers/VL-JEPA-Whitepaper.md) [VL-JEPA-One-Page](Papers/VL-JEPA-One-Page.md) [VL-JEPA-Summaries](Papers/VL-JEPA-Summaries.md)
-- [VL-JEPA vs transformers vs diffusion models](Papers/VL-JEPA-vs-transformers-vs-diffusion-models.md)
-- [VL-JEPA vs Mamba-3](Papers/VL-JEPA-vs-Mamba-3.md)
+
+
+## Papers Comparisons
+- [Google Nested Learning vs FB Sparce Memory](Papers/comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md)
+- [VL-JEPA vs transformers vs diffusion models](Papers/comparisons/VL-JEPA-vs-transformers-vs-diffusion-models.md)
+- [VL-JEPA vs Mamba-3](Papers/comparisons/VL-JEPA-vs-Mamba-3.md)
+- [VLA-LLM-VLM-VL-JEPA](Papers/comparisons/VLA-LLM-VLM-VL-JEPA.md)
 
 ## ProgrammingLanguagesComparisons
 - [rust-vs-c](ProgrammingLanguagesComparisons/rust-vs-c.md)
