@@ -180,3 +180,8 @@ Putting this together:
 - As these models scale to tens of billions of parameters with large alignment datasets, the likely destination is AI agents that can define goals in high-level semantic space and plan efficiently in abstract latent world models instead of pixel space. 
 
 This shifts the bottleneck from collecting task-specific labelled data to designing architectures that separate predictable signal from unpredictable noise, a central theme of the JEPA family and a key differentiator from traditional LLM-centric approaches. 
+
+
+## References
+
+- [JEPA-Models-VL-JEPA-I-JEPA-V-JEPA-Nvidia-Cosmos](../assets/JEPA-Models-VL-JEPA-I-JEPA-V-JEPA-Nvidia-Cosmos.pdf)
