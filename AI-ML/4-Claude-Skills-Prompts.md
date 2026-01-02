@@ -1,5 +1,6 @@
 Explore more on : [https://agentskills.so/](https://agentskills.so/)
-
+Others: https://github.com/chongdashu/cc-skills-nanobananapro
+My Private: https://github.com/rsrini7/Private
 
 ### Use Case 1. Lead Scoring Calculator Prompt
 
