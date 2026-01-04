@@ -61,9 +61,23 @@ To enforce this, mHC uses an algorithm (Sinkhorn-Knopp) that acts like an automa
 | **Performance** | Baseline | High (when it works) | **Highest** |
 | **Cost** | Low | High (due to crashes/retries) | Low (~6% overhead) |
 
+
 ***
 
-## **5. Key Findings & Benefits**
+## **5 More Side‑by‑side comparison (simple terms)**
+
+| Dimension | Standard residual | Hyper‑Connections (HC) | mHC |
+|---|---|---|---|
+| Core idea | One residual stream + identity add | **n residual streams** + learned mixing | HC + **constrained mixing** |
+| “Identity” stability | Strong (explicit) | Broken at scale via products of unconstrained matrices | Restored “in aggregate” via doubly stochastic closure[1][2] |
+| Expressivity | Moderate | High (learnable routing / rearrangement)[3] | High but “disciplined” (mixing without amplification)[1][2] |
+| Typical failure mode | Representation collapse / norm issues depend on norm scheme | Signal explosion/vanishing, loss spikes at large scale[1][2] | Residual mixing bounded; main risks shift to approximation/implementation[1][2] |
+| System cost | Lowest | Higher memory I/O and activation footprint ∝ n[1][2] | Similar n‑cost, but mitigated via fused kernels, recompute, schedule[1][2] |
+| Practical takeaway | Baseline reliability | Good for gains, but risky at scale | Best of both: gains + scalable stability (per DeepSeek results)[1][2] |
+
+***
+
+## **6. Key Findings & Benefits**
 
 DeepSeek’s research on 27-billion parameter models revealed three decisive advantages:
 
@@ -80,8 +94,12 @@ Despite the added complexity of the "Traffic Control System," DeepSeek optimized
 
 ***
 
-## **6. Conclusion: Why This Matters**
+## **7. Conclusion: Why This Matters**
 
 mHC represents a shift from "brute force" scaling to **intelligent architecture**.
 
 For years, companies simply built larger single-lane highways (bigger models). DeepSeek has proven we can build complex, multi-lane networks that are safe to operate. This paves the way for the next generation of "Foundation Models" in 2026 that are not just bigger, but structurally capable of deeper, more parallel reasoning without the risk of failure.
+
+[1](https://arxiv.org/pdf/2512.24880.pdf)
+[2](https://arxiv.org/html/2512.24880v1)
+[3](https://arxiv.org/html/2409.19606v1)
