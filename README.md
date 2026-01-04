@@ -17,12 +17,12 @@
 - [Agent SDD UACF SKILLS Comprehensive Comparative Analysis](AI-ML/Agent-sdd-uacf-skills-comparison.md)
 - [WorldModels vs LLMs](AI-ML/WorldModels-vs-LLMs.md)
 
- AI Weekly Updates:
- - [Dec-7-2025](AI-ML/Weekly-Updates/Dec-7-2025.md)
- - [Dec-14-2025](AI-ML/Weekly-Updates/Dec-14-2025.md)
- - [Dec-21-2025](AI-ML/Weekly-Updates/Dec-21-2025.md)
- - [Dec-28-2025](AI-ML/Weekly-Updates/Dec-28-2025.md)
- - [Jan-4-2026](AI-ML/Weekly-Updates/Jan-4-2026.md)
+Weekly Tech Updates:
+ - [Dec-7-2025](Weekly-Tech-Updates/Dec-7-2025.md)
+ - [Dec-14-2025](Weekly-Tech-Updates/Dec-14-2025.md)
+ - [Dec-21-2025](Weekly-Tech-Updates/Dec-21-2025.md)
+ - [Dec-28-2025](Weekly-Tech-Updates/Dec-28-2025.md)
+ - [Jan-4-2026](Weekly-Tech-Updates/Jan-4-2026.md)
  
 
 ## AWS
