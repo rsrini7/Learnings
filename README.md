@@ -22,6 +22,7 @@
  - [Dec-14-2025](AI-ML/Weekly-Updates/Dec-14-2025.md)
  - [Dec-21-2025](AI-ML/Weekly-Updates/Dec-21-2025.md)
  - [Dec-28-2025](AI-ML/Weekly-Updates/Dec-28-2025.md)
+ - [Jan-4-2026](AI-ML/Weekly-Updates/Jan-4-2026.md)
  
 
 ## AWS
