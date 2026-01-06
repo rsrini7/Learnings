@@ -61,6 +61,7 @@ Weekly Tech Updates:
 ## News
 - [Largest WhatsApp Data Leak in History](News/Largest-WhatsApp-Data-Leak-in-History.md)
 - [Cloudflare down Nov-2025](News/cloudflare-down-nov-2025.md)
+- [10.0 CVE React2Shell Whitepaper](News/10.0_CVE_React2Shell_Whitepaper.md)
 
 ## Papers
 - [DeepSeek Advancements](Papers/DeepSeek-Advancements.md)
