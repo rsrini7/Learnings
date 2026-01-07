@@ -202,6 +202,8 @@ When designing an AI solution:
 
 This AI periodic table becomes a compact mental model to reason about almost any LLM/RAG/agent architecture and to see how it might evolve.[2][1]
 
+![AI Periodic Table](assets/AI-Periodic-Table.png)
+
 [1](https://www.youtube.com/watch?v=ESBMgZHzfG0)
 [2](https://www.startuphub.ai/ai-news/ai-video/2026/the-ai-periodic-table-mapping-llms-to-core-elements/)
 [3](https://www.youtube.com/@IBMTechnology/videos)
