@@ -17,6 +17,7 @@
 - [Agent SDD UACF SKILLS Comprehensive Comparative Analysis](AI-ML/Agent-sdd-uacf-skills-comparison.md)
 - [WorldModels vs LLMs](AI-ML/WorldModels-vs-LLMs.md)
 - [NVIDIA Open Models CES 2026](AI-ML/NVIDIA-Open-Models-CES-2026.md)
+- [Claude Ralph Loop](AI-ML/Claude-Ralph-Loop.md)
 
 Weekly Tech Updates:
  - [Dec-7-2025](Weekly-Tech-Updates/Dec-7-2025.md)
