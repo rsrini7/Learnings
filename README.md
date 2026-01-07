@@ -19,6 +19,7 @@
 - [NVIDIA Open Models CES 2026](AI-ML/NVIDIA-Open-Models-CES-2026.md)
 - [Claude Ralph Loop](AI-ML/Claude-Ralph-Loop.md)
 - [AI Periodic Table](AI-ML/AI-Periodic-Table.md)
+- [Context Graphs](AI-ML/Context-Graphs.md)
 
 Weekly Tech Updates:
  - [Dec-7-2025](Weekly-Tech-Updates/Dec-7-2025.md)
