@@ -298,6 +298,9 @@ This event proved that even the most "redundant" systems have hidden single poin
 **5. Other findings**
 - **Internal Workflow Details:** The "Draft vs. Active" mode within the AWS automation pipeline, where the update remained stuck in a draft state but was treated as active by the Enactor, leading to the inconsistent metadata sync.
 - **Hidden Dependency 'Secrets':** Virginia (US-EAST-1) is the "oldest server" for AWS and acts as a global anchor; if it goes down, "multi-region" setups often fail because they still need to 'check in' with Virginia for global metadata.
+- **The "Support" Blackout:** The outage was so severe that customers could not even open support tickets because the **Support Center** itself had a dependency on the failing DynamoDB/DNS resolution.
+- **Cyclic Dependency Trap:** A major reason recovery took 15 hours was a "chicken and egg" problem: **EC2** needed **DynamoDB** to launch, but **DynamoDB** (which is serverless) needed **EC2** resources to scale up and handle the recovery load.
+- **Recovery by Throttling:** To stop the system from crashing again during recovery, AWS engineers had to manually **throttle** (limit) Lambda invocations and SQS messages, allowing services to "wake up" gradually rather than being overwhelmed by a flood of retries.
 
 ### Architecture Recommendations
 
@@ -402,6 +405,14 @@ AWS published a detailed, transparent post-mortem shortly after the incident, pr
 4. Train teams on manual failover processes
 5. Review and update SLAs with customers based on realistic availability
 
+ **DR Strategies & Lessons**
+
+1. **Avoid "Deep" Health Checks:** * **The Problem:** Many companies had health checks that checked downstream connectivity (e.g., "Is DynamoDB up?"). Because DynamoDB was down, the Load Balancer thought the *healthy* EC2 instances were bad and killed them, making the situation worse.
+2. **The Strategy:** Use "Shallow" health checks that only verify if the local server is running, not its dependencies.
+3. **The Multi-Region "SPOF" (Single Point of Failure):** * Failover to other regions (like Ohio or Oregon) failed because **IAM (Identity)** and **STS (Security Tokens)** are global services anchored in Virginia. If you can't authenticate, you can't "turn on" your DR site in another region.
+4. **Multi-Cloud Supply Chain Risk:** * Even if you move your app to Azure or GCP, your **SaaS providers** (like payment gateways or logging tools) likely still run on AWS US-EAST-1. Your app will stay broken if its "supply chain" is still tied to the failing region.
+5. **Data-First DR Plan:** Prioritize **off-site backups** with a different cloud provider. While you may not be able to failover *instantly*, having your data in a non-AWS location ensures you can rebuild manually if an outage lasts days or weeks.
+
 #### For AWS
 
 **Short-term Fixes:**
@@ -417,6 +428,8 @@ AWS published a detailed, transparent post-mortem shortly after the incident, pr
 4. Improve regional isolation to prevent cascading failures
 5. Reduce global service dependencies on US-EAST-1
 6. Provide better tools for customers to test multi-region architectures
+
+
 
 #### Cost vs. Risk Trade-offs
 
@@ -521,6 +534,7 @@ The cloud remains an incredibly powerful platform for innovation and scale, but 
 - Saurabh Bhargav - AWS Outage Analysis
 - Fireship - AWS Went Down
 - Chris Greer - Network Analysis of the Outage
+- Gowtham SB (Data Engineering) - AWS Went Down
 
 **Community Discussions:**
 - Medium Technical Blog Posts
