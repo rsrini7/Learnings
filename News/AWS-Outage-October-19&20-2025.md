@@ -114,10 +114,6 @@ During the October outage, a critical error occurred between these steps:
 
 ---
 
-[AWS Engineering Story: The Outage Nobody Told You](https://www.youtube.com/watch?v=cuZm6ZPHPfk)
-
----
-
 ## The Cascading Failure: How One Service Took Down the Cloud
 
 Foundational services like **DynamoDB** are the "electricity" of AWS. When the database couldn't be found via DNS, other services that depend on it began to fail in a domino effect.
