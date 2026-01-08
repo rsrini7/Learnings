@@ -31,8 +31,12 @@ Weekly Tech Updates:
  - [Jan-4-2026](Weekly-Tech-Updates/Jan-4-2026.md)
  
 
-## AWS
-- [AWS Deepracer Ubuntu Local Install Steps](AWS/aws-deepracer-ubuntu-local-installs.md)
+## Cloud 
+
+- [AWS vs Hetzner](Cloud/AWS-vs-Hetzner.md)
+
+### AWS
+- [AWS Deepracer Ubuntu Local Install Steps](Cloud/AWS/aws-deepracer-ubuntu-local-installs.md)
 
 ## Blockchain
 - [Blockchain Layers](Blockchain/BlockchainLayers.md)
