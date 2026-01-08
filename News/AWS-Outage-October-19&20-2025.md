@@ -86,6 +86,36 @@ DNS acts like a phone book for the Internet—when an application wants to conne
 
 This was a **latent bug**—hidden under normal conditions and only triggered under unusual load patterns that caused timing misalignment between the Enactors.
 
+The **DNS Automation** workflow used by AWS, specifically explaining how a routine update turned into a massive outage. Here are the steps of the automation process:
+
+### **The DNS Automation Workflow**
+
+1. **Planning Phase (DNS Planner):**
+* The process begins in the **DNS Planner**, a system that designs the configuration changes.
+* The update is first created in **Draft Mode**. This is where metadata and domain name information (e.g., for DynamoDB or EC2) are prepared.
+
+2. **Transition to Active Mode:**
+* Once the plan is ready, it is moved from "Draft" to **Active Mode**. This signifies that the changes are ready to be pushed to the live environment.
+
+3. **The Syncing Phase (DNS Enactor):**
+* A separate component called the **DNS Enactor** is responsible for executing the plan.
+* The Enactor "reads" the active plan from the Planner and pushes those updates to **Route 53** (the actual DNS service).
+
+4. **Record Propagation:**
+* Route 53 updates its "phonebook" records so that when a user requests a service (like `dynamodb.us-east-1.amazonaws.com`), it returns the correct IP address.
+
+### **Where the Automation Broke (The "Sync Gap")**
+
+During the October outage, a critical error occurred between these steps:
+
+* **The Sync Gap:** There was a delay or "gap" between the Planner and the Enactor.
+* **Empty Records:** The DNS Enactor synchronized a plan that it *thought* was active, but the underlying data was still empty or in a draft state.
+* **Result:** The automation successfully pushed "nothing" to Route 53, causing the system to return "table not found" or empty responses to millions of service requests.
+
+---
+
+[AWS Engineering Story: The Outage Nobody Told You](https://www.youtube.com/watch?v=cuZm6ZPHPfk)
+
 ---
 
 ## The Cascading Failure: How One Service Took Down the Cloud
@@ -270,7 +300,7 @@ This event proved that even the most "redundant" systems have hidden single poin
 - Organizations must plan for the reality of cloud failures
 
 **5. Other findings**
-- **Internal Workflow Details:** The "Draft vs. Active" mode within the AWS automation pipeline, where the update remained stuck in a draft state but was treated as active by the actor, leading to the inconsistent metadata sync.
+- **Internal Workflow Details:** The "Draft vs. Active" mode within the AWS automation pipeline, where the update remained stuck in a draft state but was treated as active by the Enactor, leading to the inconsistent metadata sync.
 - **Hidden Dependency 'Secrets':** Virginia (US-EAST-1) is the "oldest server" for AWS and acts as a global anchor; if it goes down, "multi-region" setups often fail because they still need to 'check in' with Virginia for global metadata.
 
 ### Architecture Recommendations
@@ -431,7 +461,7 @@ This incident will likely drive:
 
 ### **Simplified Summary**
 
-* **The Root Cause:** A routine automated update to DynamoDB’s DNS configuration failed due to a "sync gap" between two internal systems: the **DNS Planner** (which designs the update) and the **DNS Actor** (which executes it).
+* **The Root Cause:** A routine automated update to DynamoDB’s DNS configuration failed due to a "sync gap" between two internal systems: the **DNS Planner** (which designs the update) and the **DNS Enactor** (which executes it).
 * **The Critical Failure:** This gap caused the **Route 53** service to receive and serve "empty" records. Instead of pointing to a database, the "phonebook" for the internet returned nothing.
 * **The Domino Effect:** Because DynamoDB is a core dependency for almost every other service, its "disappearance" caused a cascading failure across **EC2 (servers)**, **Lambda (functions)**, and **Network Load Balancers**.
 * **The Multi-Region Myth:** Many users thought they were safe by using multiple regions, but because global management services (like IAM and certain DNS routing) are secretly hardcoded to the **US-EAST-1 (Virginia)** region, the failure there broke services globally.
