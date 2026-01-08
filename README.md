@@ -84,7 +84,7 @@ Weekly Tech Updates:
 - [Content Visual Carousel](<Prompts/content-visual carousel.md>)
 - [Youtube Visual Carousel](<Prompts/youtube-visual carousel.md>)
 - [VL-JEPA-Whitepaper](Papers/VL-JEPA-Whitepaper.md) [VL-JEPA-One-Page](Papers/VL-JEPA-One-Page.md) [VL-JEPA-Summaries](Papers/VL-JEPA-Summaries.md)
-- [mHC Deepseek](Papers/mHC-Deepseek.md)
+- [mHC Deepseek](Papers/mHC-Deepseek.md) [mHC Deepseek Architecture](Papers/mHC-Deepseek-Architecture.md)
 - [RLM Whitepaper](Papers/RLM_Whitepaper.md)
 
 ## Papers Comparisons
