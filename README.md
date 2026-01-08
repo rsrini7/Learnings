@@ -18,6 +18,7 @@
 - [WorldModels vs LLMs](AI-ML/WorldModels-vs-LLMs.md)
 - [NVIDIA Open Models CES 2026](AI-ML/NVIDIA-Open-Models-CES-2026.md)
 - [Claude Ralph Loop](AI-ML/Claude-Ralph-Loop.md)
+- [Claude Ralph Loop vs Agent Ralph Mode](AI-ML/ClaudeRalphLoop-vs-AgentRalphMode.md)
 - [AI Periodic Table](AI-ML/AI-Periodic-Table.md)
 - [Context Graphs](AI-ML/Context-Graphs.md)
 - [Context Graphs Extended](AI-ML/Context-Graphs-Extended.md)
