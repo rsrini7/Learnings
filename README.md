@@ -21,6 +21,7 @@
 - [AI Periodic Table](AI-ML/AI-Periodic-Table.md)
 - [Context Graphs](AI-ML/Context-Graphs.md)
 - [Context Graphs Extended](AI-ML/Context-Graphs-Extended.md)
+- [LLM Benchmarks](AI-ML/LLM-Benchmarks.md)
 
 Weekly Tech Updates:
  - [Dec-7-2025](Weekly-Tech-Updates/Dec-7-2025.md)
