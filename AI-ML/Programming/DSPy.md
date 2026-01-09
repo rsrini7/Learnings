@@ -975,6 +975,9 @@ result = compiled_program(input_data)
 
 ## REPOSITORY & RESOURCES
 
+https://www.youtube.com/watch?v=-cKUW6n8hBU
+https://github.dev/kmad/aie
+
 **GitHub Repository** (mentioned in talk):
 - Contains all code examples from the talk
 - Use cases: sentiment classifier, PDF processing, multimodal work, web agent, boundary detection, text summarization, optimizer examples
@@ -1010,17 +1013,3 @@ result = compiled_program(input_data)
 
 The shift from "tweaking prompts" to "programming with LLMs" isn't just about better results—it's about bringing software engineering rigor to AI application development. DSPy enables this paradigm shift through elegant abstractions that don't get in your way.
 
----
-
-## Reference
-
-https://www.youtube.com/watch?v=-cKUW6n8hBU
-https://github.dev/kmad/aie
-
-| Person          | Resource            | Link/Reference                                                |
-| --------------- | ------------------- | ------------------------------------------------------------- |
-| Omar Al Khabib  | DSPy Creator        | A16Z Podcast (2 days before talk)                             |
-| Gajanan Pashant | Adapter Research    | Twitter handle referenced for JSON vs BAML comparison studies |
-| Maxim           | Attachments Library | Twitter: @maxim (file handling library creator)               |
-| Chris Pototts   | DSPy Related Work   | Recent talks on related concepts                              |
-| Kevin Madura    | Speaker             | Twitter: @kmad (available for questions)                      |
