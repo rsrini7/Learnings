@@ -19,13 +19,14 @@
 - [NVIDIA Open Models CES 2026](AI-ML/NVIDIA-Open-Models-CES-2026.md)
 - [Claude Ralph Loop](AI-ML/Claude-Ralph-Loop.md)
 - [Claude Ralph Loop vs Agent Ralph Mode](AI-ML/ClaudeRalphLoop-vs-AgentRalphMode.md)
+- [How Ralph Works with Amp](AI-ML/How-Ralph-Works-with-Amp.md)
 - [AI Periodic Table](AI-ML/AI-Periodic-Table.md)
 - [Context Graphs](AI-ML/Context-Graphs.md)
 - [Context Graphs Extended](AI-ML/Context-Graphs-Extended.md)
 - [LLM Benchmarks](AI-ML/LLM-Benchmarks.md)
 - [Continual Learning](AI-ML/ContinualLearning.md)
 
-Weekly Tech Updates:
+## Weekly Tech Updates:
  - [Dec-7-2025](Weekly-Tech-Updates/Dec-7-2025.md)
  - [Dec-14-2025](Weekly-Tech-Updates/Dec-14-2025.md)
  - [Dec-21-2025](Weekly-Tech-Updates/Dec-21-2025.md)
