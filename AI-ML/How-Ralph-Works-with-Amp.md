@@ -92,7 +92,7 @@ https://snarktank.github.io/ralph/
 ## My Reference :
 [Claude Ralph Loop](Claude-Ralph-Loop.md)
 
-[Claude Ralph Loop vs Agent Ralph Mode](ClaudeRalphLoop-vs-AgentRalphMode.md)
+[Claude Ralph Loop and Agent Ralph Mode](ClaudeRalphLoop-and-AgentRalphMode.md)
 
 ---
 
