@@ -653,6 +653,8 @@ Ref: [RLM Quick Reference](RLM_Quick_Reference.md)
 6. Goldman, O., et al. (2025). "Really Long Context? You Need a Really Good Reason" [Referenced in MIT Paper]
 7. Bertsch, A., et al. (2025). "OOLONG: Evaluating Long-Context Language Models" [Benchmark]
 
+Implementation Ref: https://www.k-a.in/RLM-py.html
+
 ---
 
 **White Paper Version**: 1.0  
@@ -660,3 +662,4 @@ Ref: [RLM Quick Reference](RLM_Quick_Reference.md)
 **Last Updated**: January 4, 2026
 
 This white paper is designed for technical leaders, ML engineers, and decision-makers evaluating context-scaling solutions. It prioritizes clarity and practical understanding over mathematical rigor.
+
