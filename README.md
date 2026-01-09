@@ -82,6 +82,7 @@
 - [MongoBleed](News/MongoBleed-Dec2025.md)
 - [AWS Outage October 19 & 20 2025](News/AWS-Outage-October-19&20-2025.md)
 - [Tailwind Financial Crisis](News/Tailwind-Financial-Crisis.md)
+- [Decline of StackOverflow](News/Decline-of-Stack-Overflow.md)
 
 ## Papers
 - [DeepSeek Advancements](Papers/DeepSeek-Advancements.md)
