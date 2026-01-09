@@ -249,18 +249,8 @@ class TimeEntryModule(dspy.Module):
    - Refine output based on feedback
    - Iterative improvement
 
-9. **dspy.Reason**
-   - Reasoning module
-   - Adds reasoning steps
-   - "Let's think step by step"
-   - Relevant when model benefits from explicit reasoning
-
-10. **dspy.Parallel**
+9. **dspy.Parallel**
    - To process multiple items
-
-11. **dspy.Select**
-    - Select the best output
-    - Parallel execution patterns
 
 #### Philosophy:
 - Just being able to logically separate components has been powerful
