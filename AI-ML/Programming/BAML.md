@@ -88,6 +88,7 @@ function ExtractResume(resume_text: string) -> Resume {
 Then use it in your application:
 
 ```python
+# Python
 from baml_client import b
 
 resume = b.ExtractResume(raw_text)
@@ -143,6 +144,7 @@ Every BAML prompt is a **function** with:
 - **Prompt template** (the actual instructions)
 
 ```baml
+// BAML
 function ClassifyTicket(message: string) -> Ticket {
   client GPT4o
   prompt #"
@@ -159,6 +161,8 @@ function ClassifyTicket(message: string) -> Ticket {
 Define data structures using familiar syntax:
 
 ```baml
+// BAML
+
 class Ticket {
   category Category
   urgency Urgency
@@ -244,6 +248,7 @@ flowchart TB
 
 #### Primitive Types
 ```baml
+// BAML
 string   // Text
 int      // Integer
 float    // Floating point
@@ -252,6 +257,7 @@ bool     // Boolean
 
 #### Complex Types
 ```baml
+// BAML
 string[]           // Array of strings
 int?               // Optional integer
 map<string, int>   // Map/dictionary
@@ -259,6 +265,7 @@ map<string, int>   // Map/dictionary
 
 #### Custom Types
 ```baml
+// BAML
 class Person {
   name string
   age int
@@ -270,6 +277,7 @@ class Person {
 
 #### Enums
 ```baml
+// BAML
 enum Status {
   Active
   Inactive
@@ -279,6 +287,7 @@ enum Status {
 
 #### Unions
 ```baml
+// BAML
 // Either type A or type B
 class Result {
   data Success | Error
@@ -287,6 +296,7 @@ class Result {
 
 ### Multimodal Types
 ```baml
+// BAML
 Image    // Image inputs
 Audio    // Audio files
 Video    // Video files (provider-dependent)
@@ -295,6 +305,7 @@ Video    // Video files (provider-dependent)
 ### Functions
 
 ```baml
+// BAML
 function ExtractData(
   document: string,
   context: string?
@@ -315,6 +326,7 @@ function ExtractData(
 ### Annotations
 
 ```baml
+// BAML
 class Product {
   name string @description("Product name in English")
   
@@ -327,6 +339,7 @@ class Product {
 ### Client Configuration
 
 ```baml
+// BAML
 client<llm> GPT5 {
   provider openai
   options {
@@ -348,6 +361,7 @@ client<llm> Claude {
 ### Retry Policies
 
 ```baml
+// BAML
 retry_policy StandardRetry {
   max_retries 3
   strategy {
@@ -369,6 +383,7 @@ client<llm> GPT5WithRetry {
 ### Fallback Strategies
 
 ```baml
+// BAML
 client<llm> RobustClient {
   provider fallback
   options {
@@ -411,6 +426,7 @@ SAP is a **Rust-based algorithm** (~10ms execution) that:
 This malformed output **parses successfully** with SAP:
 
 ```javascript
+// BAML
 // LLM returns (missing quotes):
 [
   { streaming_service: Netflix, show_list: [Friends], sort_by_rating: true },
@@ -490,6 +506,7 @@ const final = await stream.getFinalResponse();
 ### 3. Native Testing Framework
 
 ```baml
+// BAML
 test ResumeExtraction {
   functions [ExtractResume]
   args {
@@ -522,6 +539,7 @@ The VSCode extension provides:
 ### 5. Multi-Provider Support
 
 ```baml
+// BAML
 // Works with any provider
 client<llm> Local {
   provider openai-compatible
@@ -545,6 +563,7 @@ Supported providers:
 ### 6. Validation & Constraints
 
 ```baml
+// BAML
 class Order {
   total_price float @assert({{ this > 0 }})
   
@@ -561,6 +580,7 @@ class Order {
 ### 7. Dynamic Types
 
 ```python
+# Python
 # Build schemas at runtime
 from baml_client import TypeBuilder
 
@@ -580,6 +600,7 @@ result = b.ExtractData(text, type_builder=builder)
 ### Example 1: Resume Parsing
 
 ```baml
+// BAML
 class Experience {
   role string @description("Job title")
   company string
@@ -610,6 +631,7 @@ function ExtractResume(resume_text: string) -> Resume {
 
 Usage:
 ```python
+# Python
 from baml_client import b
 
 resume_text = """
@@ -632,6 +654,7 @@ for exp in result.experience:
 ### Example 2: Receipt OCR
 
 ```baml
+// BAML
 class ReceiptItem {
   description string
   quantity float
@@ -660,6 +683,7 @@ function ExtractReceipt(image: Image) -> Receipt {
 
 Usage:
 ```python
+# Python
 from baml_client import b
 from baml_client.types import ImageUrl
 
@@ -674,6 +698,7 @@ for item in receipt.items:
 ### Example 3: Customer Support Classifier
 
 ```baml
+// BAML
 enum TicketCategory {
   Technical @alias("tech")
   Billing
@@ -715,6 +740,7 @@ function ClassifyTicket(message: string, history: string?) -> Ticket {
 ### Example 4: RAG with Citations
 
 ```baml
+// BAML
 class Citation {
   source string
   page_number int?
@@ -948,6 +974,7 @@ fmt.Println(resume.Name)
 ### Test Structure
 
 ```baml
+// BAML
 test ExtractSriniRagothamanResume {
   functions [ExtractResume]
   args {
@@ -997,6 +1024,7 @@ baml test --verbose
 ### Validation Strategies
 
 ```baml
+// BAML
 class ValidatedOrder {
   id string @assert({{ this.length == 10 }}, "Invalid ID length")
   
@@ -1024,6 +1052,7 @@ class ValidatedOrder {
 ### Environment Configuration
 
 ```baml
+// BAML
 // baml_src/clients.baml
 client<llm> Production {
   provider openai
@@ -1057,6 +1086,7 @@ retry_policy ProductionRetry {
 ### Usage in Application
 
 ```python
+# Python
 import os
 from baml_client import b
 
@@ -1070,6 +1100,7 @@ else:
 ### Monitoring & Observability
 
 ```python
+# Python
 from baml_client import b
 from baml_client.tracing import Collector
 
@@ -1087,6 +1118,7 @@ print(f"Raw response: {collector.raw_response}")
 ### Error Handling
 
 ```python
+# Python
 from baml_client import b
 from baml_client.errors import BamlError, BamlValidationError
 
@@ -1182,6 +1214,8 @@ baml-cli init
 1. **Create a BAML file** (`baml_src/main.baml`):
 
 ```baml
+// BAML
+
 class Person {
   name string
   age int
@@ -1232,6 +1266,7 @@ console.log(`${person.name} is ${person.age}`);
 4. **Add a test:**
 
 ```baml
+// BAML
 test ExtractSrini {
   functions [ExtractPerson]
   args {
@@ -1249,9 +1284,7 @@ baml-cli test
 
 The `serve` command starts a BAML-over-HTTP API server that exposes your BAML functions via HTTP endpoints. This feature allows you to interact with your BAML functions through a RESTful API interface.
 
----
-
-## Usage
+#### Usage
 
 ```bash
 baml-cli serve [OPTIONS]
@@ -1265,9 +1298,7 @@ baml-cli dev [OPTIONS]
 
 [See more about `dev` command](https://docs.boundaryml.com/ref/baml-cli/dev)
 
----
-
-## Options
+#### Options
 
 | Option | Description | Default |
 |--------|-------------|---------|
@@ -1275,20 +1306,18 @@ baml-cli dev [OPTIONS]
 | `--port <PORT>` | Port to expose BAML on | `2024` |
 | `--no-version-check` | Generate `baml_client` without checking for version mismatch | `false` |
 
----
 
-## Description
+#### Description
 
 The `serve` command performs the following actions:
 
 1. Exposes BAML functions as HTTP endpoints on the specified port
 2. Provides authentication middleware for secure access
 
----
 
-## Endpoints
+#### Endpoints
 
-### Function Endpoints
+##### Function Endpoints
 
 **`POST /call/:function_name`** - Call a BAML function
 
@@ -1310,16 +1339,15 @@ curl \
   -d '{"arg1": "value1", "arg2": "value2"}'
 ```
 
-### Debugging Endpoints
+##### Debugging Endpoints
 
 - **`GET /docs`** - Interactive API documentation (Swagger UI)
 - **`GET /openapi.json`** - OpenAPI specification for the BAML functions
 - **`GET /_debug/ping`** - Health check endpoint
 - **`GET /_debug/status`** - Server status and authentication check
 
----
 
-## Stability
+#### Stability
 
 `baml-cli serve` is currently in **Tier 2 stability**. This means that the CLI and the HTTP APIs are stable, but there are a number of features which are not yet available:
 
@@ -1328,41 +1356,37 @@ curl \
 - The [Modular API](https://docs.boundaryml.com/guide/baml-advanced/modular-api)
 - Custom trace annotations for [Boundary Studio](https://docs.boundaryml.com/guide/boundary-cloud/observability/tracking-usage)
 
----
 
-## Authentication
+#### Authentication
 
 **Supported header:** `x-baml-api-key`
 
 Set the `BAML_PASSWORD` environment variable to enable authentication.
 
----
 
-## Examples
+#### Examples
 
-### 1. Start the server with default settings
+##### 1. Start the server with default settings
 
 ```bash
 baml-cli serve --preview
 ```
 
-### 2. Start with custom source directory and port
+##### 2. Start with custom source directory and port
 
 ```bash
 baml-cli serve --from /path/to/my/baml_src --port 3000 --preview
 ```
 
----
+#### Testing the HTTP server
 
-## Testing the HTTP server
-
-### Check if the server is running
+##### Check if the server is running
 
 ```bash
 curl http://localhost:2024/_debug/ping
 ```
 
-### Call a function
+##### Call a function
 
 **Without API key:**
 
@@ -1383,12 +1407,13 @@ curl -X POST \
   -d '{"arg1": "value1", "arg2": "value2"}'
 ```
 
-### Access the API documentation
+##### Access the API documentation
 
 Open `http://localhost:2024/docs` in your web browser.
 
+---
 
-### Next Steps
+## Next Steps
 
 - Install VSCode extension for live preview
 - Read the full docs at [docs.boundaryml.com](https://docs.boundaryml.com)
@@ -1449,11 +1474,3 @@ As one developer summarized: *"What TypeScript did for JavaScript, BAML does for
 - [Schema-Aligned Parsing Explained](https://boundaryml.com/blog/sota-function-calling)
 - [BAML vs OpenAI Structured Outputs](https://boundaryml.com/blog/baml-vs-openai)
 - [Building Production AI Systems](https://thedataquarry.com/blog/baml-is-building-blocks-for-ai-engineers)
-
----
-
-**Document Version**: 1.0  
-**Last Updated**: January 2026  
-**Verified Against**: BAML CLI v0.60+
-
-*This document combines information from official BAML documentation, developer testimonials, performance benchmarks, and real-world usage reports to provide a comprehensive technical reference.*
