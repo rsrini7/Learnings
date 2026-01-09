@@ -39,46 +39,6 @@ flowchart TD
 - **Feedback Loops**: Types, tests, lint block bad commits.
 - **Guardrails**: Small tasks, Docker sandbox for AFK runs, iteration limits.
 
-## Implementation Guide
-
-Install from Vercel Labs repo: `npm install ralph-loop-agent ai zod`.
-
-Basic JS example:
-```javascript
-import { RalphLoopAgent, iterationCountIs } from 'ralph-loop-agent';
-
-const agent = new RalphLoopAgent({
-  model: 'anthropic/claude-opus-4.5',
-  instructions: 'Coding assistant.',
-  stopWhen: iterationCountIs(10),
-  verifyCompletion: async ({ result }) => ({
-    complete: result.text.includes('DONE'),
-    reason: 'Task done'
-  }),
-});
-
-const result = await agent.loop({ prompt: 'Build feature X' });
-```
-Customize verifyCompletion for real checks like test passes.
-
-For CLI: Use scripts like ralph.sh with Docker sandbox.
-
-## Benefits and Tips
-
-- **Leverage**: Ships features AFK, like overnight.
-- **Safety**: Small steps, human review commits, prioritize risky tasks first.
-- **Cost**: HITL cheap; AFK 30-50 iterations ~$5-10 on Claude Max.
-- Tips: Start HITL, define quality explicitly, use JSON PRDs, clean repo first.
-
-| Mode | Supervision | Use Case |
-|------|-------------|----------|
-| HITL | Watch & intervene | Learning, complex tasks |
-| AFK | Unsupervised loop | Bulk/low-risk work |
-
-## Limitations
-
-Bottleneck is PRD quality; vague specs lead to shortcuts. Needs good feedback loops. Not for infinite loops—cap iterations. Open-source models lag behind Claude.
-
 ---
 
 # How Ralph Works with Amp
@@ -480,7 +440,121 @@ Learnings compound. By story 10, Ralph knew our patterns.
 
 For a great video walkthrough of how to use Ralph, checkout the video from [@mattpocockuk](https://x.com/@mattpocockuk) — "My Ralph Wiggum breakdown went viral https://x.com/mattpocockuk/status/2008200878633931247?s=20. It's a keep-it-simple-stupid approach to AI coding that lets you ship while you sleep."
 
-## Other References:   
+***
+
+## Cost Estimation for Ralph Loop
+
+In the Ralph AI loop, cost is calculated based on **tokens consumed** by the Large Language Model (LLM)—specifically the input you send (context) and the output the agent generates (code/logs).
+
+Here is a breakdown of how the cost structure works in a practical scenario:
+
+### 1. The "Per Iteration" Cost
+
+Each "iteration" represents one complete cycle (picking a story, coding, testing, and logging).
+
+* **Input Tokens:** This includes the system prompt, your entire PRD, relevant code files, the progress log, and any `agents.md` files. This is usually the largest portion of the cost because the context is sent every time the loop starts a new task.
+* **Output Tokens:** This is the code the agent actually writes and the progress summaries it generates.
+* **Estimated Cost:** YouTube video, Ryan Carson mentions that a single complex iteration cost about **$3.00** using Claude Opus 4.5.
+
+### 2. Total Feature Cost
+
+A full feature rarely happens in one go. It usually requires multiple iterations.
+
+* **The Loop Multiplier:** If a feature is broken down into 10 small user stories, you are looking at 10 separate calls to the LLM.
+* **Example Calculation:**
+* 10 iterations  $3.00 per iteration = **$30.00 total.**
+
+
+* **Context Growth:** As the project grows and the `progress.txt` file gets longer, the input cost for later iterations may slightly increase because the agent is reading more "memory" each time.
+
+### 3. Cost Control Factors
+
+The cost isn't fixed; it depends on how you manage the agent:
+
+* **Model Choice:** Using a high-end model like **Claude Opus 4.5** is expensive but highly accurate. Using a faster, cheaper model like **Claude Sonnet** or **GPT-4o-mini** can drop the cost per iteration to cents, but the code quality may decrease.
+* **Context Management:** If you attach your *entire* codebase to every request, you will burn through tokens. Ralph works best when you only provide the files relevant to that specific user story.
+* **The "Infinite Loop" Guardrail:** The bash script typically has a **max iteration limit** (the default in the video was 10). This prevents the agent from getting stuck in a bug-fix loop and draining your bank account while you sleep.
+
+### 4. Comparison to Human Labor
+
+The video frames the $30 cost as "less than a latte" per major iteration compared to the hourly rate of a developer.
+
+* **Human Dev:** $50–$150/hour.
+* **Ralph Loop:** ~$30 for a feature that might take a human 4–8 hours to code and test manually.
+
+***
+
+## Implementation Guide using NodeJS
+
+Install from Vercel Labs repo: `npm install ralph-loop-agent ai zod`.
+
+Basic JS example:
+```javascript
+import { RalphLoopAgent, iterationCountIs } from 'ralph-loop-agent';
+
+const agent = new RalphLoopAgent({
+  model: 'anthropic/claude-opus-4.5',
+  instructions: 'Coding assistant.',
+  stopWhen: iterationCountIs(10),
+  verifyCompletion: async ({ result }) => ({
+    complete: result.text.includes('DONE'),
+    reason: 'Task done'
+  }),
+});
+
+const result = await agent.loop({ prompt: 'Build feature X' });
+```
+Customize verifyCompletion for real checks like test passes.
+
+For CLI: Use scripts like ralph.sh with Docker sandbox.
+
+## Benefits and Tips
+
+- **Leverage**: Ships features AFK, like overnight.
+- **Safety**: Small steps, human review commits, prioritize risky tasks first.
+- **Cost**: HITL cheap; AFK 30-50 iterations ~$5-10 on Claude Max.
+- Tips: Start HITL, define quality explicitly, use JSON PRDs, clean repo first.
+
+| Mode | Supervision | Use Case |
+|------|-------------|----------|
+| HITL | Watch & intervene | Learning, complex tasks |
+| AFK | Unsupervised loop | Bulk/low-risk work |
+
+## Limitations
+
+Bottleneck is PRD quality; vague specs lead to shortcuts. Needs good feedback loops. Not for infinite loops—cap iterations. Open-source models lag behind Claude.
+
+---
+
+## ⚠️ Usage Disclaimer: The Ralph AI Loop
+
+While the "Ralph" AI agent loop represents a significant leap in autonomous development, users should be aware of the following limitations and risks before implementing it in a production environment.
+
+### 1. Project Scale & Complexity
+
+* **Greenfield vs. Legacy:** This methodology is highly effective for **greenfield projects** (starting from scratch) or isolated hobby projects.
+* **Architectural Blind Spots:** In large-scale, complex codebases, AI agents may lack "global architectural awareness." A change that satisfies local acceptance criteria may inadvertently violate system-wide design patterns, security protocols, or performance benchmarks.
+
+### 2. Environment & Testing Hurdles
+
+* **Orchestration Overhead:** Professional environments often require complex setups, including database seeding, mocking external APIs, and managing microservices.
+* **Test Reliability:** If your environment requires manual "hoops" (like VPNs or specific auth states), the autonomous loop will likely fail. You must ensure your local environment is fully scriptable for the agent to be truly effective.
+
+### 3. Quality Assurance & Maintenance
+
+* **Technical Debt:** AI-generated code can occasionally be "verbose" or use outdated libraries. Without strict **Human-in-the-Loop (HITL)** review, technical debt can accumulate faster than in traditional development.
+* **The "Final 10%" Rule:** Most AI agents can get a feature 90% of the way there. The final 10% (edge cases, UI polish, and bug fixes) usually requires deep human intervention.
+
+### 4. Security & Governance
+
+* **Auto-Commits:** Allowing an agent to commit directly to a `main` branch is risky. It is highly recommended to configure the Ralph loop to commit to a **feature branch** and require a manual **Pull Request (PR) review** before merging.
+* **Secret Management:** Ensure your environment variables and API keys are properly masked; autonomous agents may inadvertently log or "hallucinate" sensitive data into progress files.
+
+> **Bottom Line:** Treat the Ralph loop as a **highly capable junior developer**, not a replacement for a senior architect. It is a powerful tool for acceleration, but it does not absolve the human developer of the responsibility for the final code quality.
+
+---
+
+## References:   
 
 https://ampcode.com/
 https://snarktank.github.io/ralph/
@@ -488,13 +562,13 @@ https://github.com/snarktank/amp-skills
 https://github.com/snarktank/ralph
 https://ghuntley.com/ralph/
 
-[1](https://www.youtube.com/watch?v=_IK18goX4X8)
-[2](https://github.com/vercel-labs/ralph-loop-agent)
-[3](https://www.youtube.com/watch?v=RpvQH0r0ecM)
-[4](https://www.aihero.dev/tips-for-ai-coding-with-ralph-wiggum)
-[5](https://dev.to/alexandergekov/2026-the-year-of-the-ralph-loop-agent-1gkj)
-[6](https://github.com/alfredolopez80/multi-agent-ralph-loop)
-[7](https://x.com/JeremyNguyenPhD/status/2008877889056370802)
-[8](https://venturebeat.com/technology/how-ralph-wiggum-went-from-the-simpsons-to-the-biggest-name-in-ai-right-now)
-[9](https://gist.github.com/peteristhegreat/31e7114805e24b9e38084772e2e7cf46)
-[10](https://samcouch.com/articles/ralph-wiggum-coding/)
+https://www.youtube.com/watch?v=_IK18goX4X8
+https://www.youtube.com/watch?v=RpvQH0r0ecM
+https://github.com/vercel-labs/ralph-loop-agent
+https://www.aihero.dev/tips-for-ai-coding-with-ralph-wiggum
+https://dev.to/alexandergekov/2026-the-year-of-the-ralph-loop-agent-1gkj
+https://github.com/alfredolopez80/multi-agent-ralph-loop
+https://x.com/JeremyNguyenPhD/status/2008877889056370802
+https://venturebeat.com/technology/how-ralph-wiggum-went-from-the-simpsons-to-the-biggest-name-in-ai-right-now
+https://gist.github.com/peteristhegreat/31e7114805e24b9e38084772e2e7cf46
+https://samcouch.com/articles/ralph-wiggum-coding/
