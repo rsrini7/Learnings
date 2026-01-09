@@ -96,7 +96,50 @@ https://snarktank.github.io/ralph/
 
 ---
 
-A bash loop that:
+## **Ralph** AI coding loop Steps:
+
+Steps to implement the **"Ralph" AI coding loop** to build software features automatically:
+
+### 1. Create a Product Requirement Document (PRD)
+
+Start by writing a description of the feature you want to build in a markdown file. You can use a "PRD generator" skill with an AI agent (like AMP or Claude) to help structure this. You can even dictate your ideas using voice-to-text tools like Whisper Flow to get your thoughts down quickly.
+
+### 2. Convert the PRD to JSON Format
+
+Use a "Ralph PRD converter" tool to turn your markdown document into a **JSON file**. This format is easier for the computer to process as a structured list of tasks.
+
+### 3. Break Tasks into Small "User Stories"
+
+The JSON file must consist of small, atomic "user stories." Each story should be small enough to be completed within the AI's "context window" (memory limit) in a single iteration.
+
+### 4. Set Clear Acceptance Criteria
+
+For every user story, you must provide specific **acceptance criteria**. These are clear tests that allow the AI agent to verify for itself whether a task is truly finished without needing to ask you for feedback.
+
+### 5. Run the Ralph Bash Script
+
+Open your computer's terminal and run the Ralph bash script (found in the open-source repository). This script acts as the manager for the entire automated loop.
+
+### 6. Automated Implementation Loop
+
+Once started, the system follows this cycle automatically while you sleep or work on other things:
+
+* **Pick a Story:** The agent selects the next incomplete task from your JSON list.
+* **Code and Test:** The agent writes the code and checks it against your acceptance criteria.
+* **Commit Code:** Once finished, the agent automatically commits the changes to your project.
+* **Update Progress:** The agent marks the task as complete in the JSON file and updates a `progress.txt` file (short-term memory).
+
+### 7. Build Long-Term "Agent Memory"
+
+The agent updates `agents.md` files within your code folders. This serves as long-term memory, where the AI stores notes about your codebase or mistakes it learned from so it doesn't repeat them in the future.
+
+### 8. Final Manual Verification
+
+After the agent has finished all the stories in your list, perform a final manual test of the feature to catch any minor edge-case bugs that the AI might have missed.
+
+---
+
+## Bash loop:
 
 1. Pipes a prompt into your AI agent
 2. Agent picks the next story from prd.json
