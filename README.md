@@ -28,6 +28,7 @@
 
 ### Programming
 - [DSPy](AI-ML/Programming/DSPy.md)
+- [BEML](AI-ML/Programming/BEML.md)
 
 ## Weekly Tech Updates:
  - [Dec-7-2025](Weekly-Tech-Updates/Dec-7-2025.md)
