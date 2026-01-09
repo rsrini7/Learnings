@@ -26,6 +26,9 @@
 - [LLM Benchmarks](AI-ML/LLM-Benchmarks.md)
 - [Continual Learning](AI-ML/ContinualLearning.md)
 
+### Programming
+- [DSPy](AI-ML/Programming/DSPy.md)
+
 ## Weekly Tech Updates:
  - [Dec-7-2025](Weekly-Tech-Updates/Dec-7-2025.md)
  - [Dec-14-2025](Weekly-Tech-Updates/Dec-14-2025.md)
@@ -97,8 +100,10 @@
 - [VL-JEPA vs Mamba-3](Papers/comparisons/VL-JEPA-vs-Mamba-3.md)
 - [VLA-LLM-VLM-VL-JEPA](Papers/comparisons/VLA-LLM-VLM-VL-JEPA.md)
 
-## ProgrammingLanguagesComparisons
-- [rust-vs-c](ProgrammingLanguagesComparisons/rust-vs-c.md)
+## ProgrammingLanguages
+
+### Comparisons
+- [rust-vs-c](ProgrammingLanguages/comparisons/rust-vs-c.md)
 
 ## Prompts
 - [Define Your AI Learning Goal (Easy Mode) LLM-Prompt](Prompts/Define-Your-AI-Learning-Goal(Easy-Mode)-LLM-Prompt.md)
