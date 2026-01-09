@@ -1,3 +1,86 @@
+# Ralph Wiggum AI Agent 
+
+Ralph Wiggum is a simple AI agent loop for autonomous coding. It builds full product features by breaking tasks into small, testable stories from a PRD. The agent runs in iterations, picks tasks, implements, commits, and updates progress until complete.
+
+## Core Concept
+
+Ralph uses a bash loop to feed the same prompt to an AI like Claude repeatedly. Each loop starts fresh to avoid context rot, relying on files for memory: PRD JSON for tasks, progress.txt for recent work, and agents.md for long-term notes.
+
+Named after the Simpsons character, it shifts from one-shot prompts to continuous autonomy. Traditional agents stop after tools; Ralph verifies and retries until success.
+
+## Workflow Steps
+
+1. Generate PRD with user stories and acceptance criteria.
+2. Convert PRD to JSON with "passes" fields.
+3. Run loop: Agent reads PRD/progress, picks task, codes, runs tests/lint, commits if passes.
+4. Updates PRD (mark passes:true), appends to progress.txt.
+5. Repeats until all tasks pass or emits <promise>COMPLETE</promise>.
+
+```mermaid
+flowchart TD
+    A["Start Loop"] --> B["Read PRD.json + progress.txt"]
+    B --> C["Pick Next Task"]
+    C --> D["Implement + Feedback Loops<br/>(tests, lint, types)"]
+    D --> E{"Passes?"}
+    E -->|No| F["Fix & Retry"]
+    F --> D
+    E -->|Yes| G["Commit Code"]
+    G --> H["Update PRD + progress.txt"]
+    H --> I{"All Tasks Done?"}
+    I -->|No| A
+    I -->|Yes| J["Complete"]
+```
+
+## Key Components
+
+- **PRD.json**: Structured tasks with category, description, verification steps, passes:false.
+- **progress.txt**: Short-term memory of recent changes, decisions, blockers.
+- **agents.md**: Long-term repo memory, skills, quality rules.
+- **Feedback Loops**: Types, tests, lint block bad commits.
+- **Guardrails**: Small tasks, Docker sandbox for AFK runs, iteration limits.
+
+## Implementation Guide
+
+Install from Vercel Labs repo: `npm install ralph-loop-agent ai zod`.
+
+Basic JS example:
+```javascript
+import { RalphLoopAgent, iterationCountIs } from 'ralph-loop-agent';
+
+const agent = new RalphLoopAgent({
+  model: 'anthropic/claude-opus-4.5',
+  instructions: 'Coding assistant.',
+  stopWhen: iterationCountIs(10),
+  verifyCompletion: async ({ result }) => ({
+    complete: result.text.includes('DONE'),
+    reason: 'Task done'
+  }),
+});
+
+const result = await agent.loop({ prompt: 'Build feature X' });
+```
+Customize verifyCompletion for real checks like test passes.
+
+For CLI: Use scripts like ralph.sh with Docker sandbox.
+
+## Benefits and Tips
+
+- **Leverage**: Ships features AFK, like overnight.
+- **Safety**: Small steps, human review commits, prioritize risky tasks first.
+- **Cost**: HITL cheap; AFK 30-50 iterations ~$5-10 on Claude Max.
+- Tips: Start HITL, define quality explicitly, use JSON PRDs, clean repo first.
+
+| Mode | Supervision | Use Case |
+|------|-------------|----------|
+| HITL | Watch & intervene | Learning, complex tasks |
+| AFK | Unsupervised loop | Bulk/low-risk work |
+
+## Limitations
+
+Bottleneck is PRD quality; vague specs lead to shortcuts. Needs good feedback loops. Not for infinite loops—cap iterations. Open-source models lag behind Claude.
+
+---
+
 # How Ralph Works with Amp
 
 (Here's a [complete GitHub repo](https://github.com/snarktank/ralph) for you to download and try.)
@@ -5,6 +88,13 @@
 ## Visualize the loop:
 https://snarktank.github.io/ralph/
 ![How Ralph Works with Amp](assets/How-Ralph-works-with-Amp.png)
+
+## My Reference :
+[Claude Ralph Loop](Claude-Ralph-Loop.md)
+
+[Claude Ralph Loop vs Agent Ralph Mode](ClaudeRalphLoop-vs-AgentRalphMode.md)
+
+---
 
 A bash loop that:
 
@@ -354,4 +444,14 @@ https://snarktank.github.io/ralph/
 https://github.com/snarktank/amp-skills
 https://github.com/snarktank/ralph
 https://ghuntley.com/ralph/
-https://www.youtube.com/watch?v=RpvQH0r0ecM
+
+[1](https://www.youtube.com/watch?v=_IK18goX4X8)
+[2](https://github.com/vercel-labs/ralph-loop-agent)
+[3](https://www.youtube.com/watch?v=RpvQH0r0ecM)
+[4](https://www.aihero.dev/tips-for-ai-coding-with-ralph-wiggum)
+[5](https://dev.to/alexandergekov/2026-the-year-of-the-ralph-loop-agent-1gkj)
+[6](https://github.com/alfredolopez80/multi-agent-ralph-loop)
+[7](https://x.com/JeremyNguyenPhD/status/2008877889056370802)
+[8](https://venturebeat.com/technology/how-ralph-wiggum-went-from-the-simpsons-to-the-biggest-name-in-ai-right-now)
+[9](https://gist.github.com/peteristhegreat/31e7114805e24b9e38084772e2e7cf46)
+[10](https://samcouch.com/articles/ralph-wiggum-coding/)

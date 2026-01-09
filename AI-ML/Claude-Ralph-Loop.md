@@ -1,4 +1,6 @@
-# The **Ralph** (Ralph Wiggum) pattern: a simple bash `while` loop that keeps re‑invoking Claude Code with the same prompt so it can work autonomously for many iterations, using the filesystem as persistent memory instead of chat history.[1][2]
+# The **Ralph** (Ralph Wiggum) pattern: 
+
+A simple bash `while` loop that keeps re‑invoking Claude Code with the same prompt so it can work autonomously for many iterations, using the filesystem as persistent memory instead of chat history.[1][2]
 
 ## Core idea
 
