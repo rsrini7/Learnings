@@ -1245,6 +1245,149 @@ test ExtractSrini {
 baml-cli test
 ```
 
+6. **HTTP serve**
+
+The `serve` command starts a BAML-over-HTTP API server that exposes your BAML functions via HTTP endpoints. This feature allows you to interact with your BAML functions through a RESTful API interface.
+
+---
+
+## Usage
+
+```bash
+baml-cli serve [OPTIONS]
+```
+
+**For active development with hot-reload:**
+
+```bash
+baml-cli dev [OPTIONS]
+```
+
+[See more about `dev` command](https://docs.boundaryml.com/ref/baml-cli/dev)
+
+---
+
+## Options
+
+| Option | Description | Default |
+|--------|-------------|---------|
+| `--from <PATH>` | Path to the `baml_src` directory | `./baml_src` |
+| `--port <PORT>` | Port to expose BAML on | `2024` |
+| `--no-version-check` | Generate `baml_client` without checking for version mismatch | `false` |
+
+---
+
+## Description
+
+The `serve` command performs the following actions:
+
+1. Exposes BAML functions as HTTP endpoints on the specified port
+2. Provides authentication middleware for secure access
+
+---
+
+## Endpoints
+
+### Function Endpoints
+
+**`POST /call/:function_name`** - Call a BAML function
+
+```bash
+curl \
+  -X POST \
+  "http://localhost:2024/call/MyFunctionName" \
+  -H "Content-Type: application/json" \
+  -d '{"arg1": "value1", "arg2": "value2"}'
+```
+
+**`POST /stream/:function_name`** - Stream results from a BAML function
+
+```bash
+curl \
+  -X POST \
+  "http://localhost:2024/stream/MyFunctionName" \
+  -H "Content-Type: application/json" \
+  -d '{"arg1": "value1", "arg2": "value2"}'
+```
+
+### Debugging Endpoints
+
+- **`GET /docs`** - Interactive API documentation (Swagger UI)
+- **`GET /openapi.json`** - OpenAPI specification for the BAML functions
+- **`GET /_debug/ping`** - Health check endpoint
+- **`GET /_debug/status`** - Server status and authentication check
+
+---
+
+## Stability
+
+`baml-cli serve` is currently in **Tier 2 stability**. This means that the CLI and the HTTP APIs are stable, but there are a number of features which are not yet available:
+
+- The [TypeBuilder API](https://docs.boundaryml.com/ref/baml_client/type-builder)
+- The [Collector API](https://docs.boundaryml.com/guide/baml-advanced/collector-track-tokens)
+- The [Modular API](https://docs.boundaryml.com/guide/baml-advanced/modular-api)
+- Custom trace annotations for [Boundary Studio](https://docs.boundaryml.com/guide/boundary-cloud/observability/tracking-usage)
+
+---
+
+## Authentication
+
+**Supported header:** `x-baml-api-key`
+
+Set the `BAML_PASSWORD` environment variable to enable authentication.
+
+---
+
+## Examples
+
+### 1. Start the server with default settings
+
+```bash
+baml-cli serve --preview
+```
+
+### 2. Start with custom source directory and port
+
+```bash
+baml-cli serve --from /path/to/my/baml_src --port 3000 --preview
+```
+
+---
+
+## Testing the HTTP server
+
+### Check if the server is running
+
+```bash
+curl http://localhost:2024/_debug/ping
+```
+
+### Call a function
+
+**Without API key:**
+
+```bash
+curl -X POST \
+  http://localhost:2024/call/MyFunctionName \
+  -H "Content-Type: application/json" \
+  -d '{"arg1": "value1", "arg2": "value2"}'
+```
+
+**With API key:**
+
+```bash
+curl -X POST \
+  http://localhost:2024/call/MyFunctionName \
+  -H "Content-Type: application/json" \
+  -H "x-baml-api-key: ${BAML_PASSWORD}" \
+  -d '{"arg1": "value1", "arg2": "value2"}'
+```
+
+### Access the API documentation
+
+Open `http://localhost:2024/docs` in your web browser.
+
+
 ### Next Steps
 
 - Install VSCode extension for live preview
