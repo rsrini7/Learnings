@@ -193,12 +193,14 @@ class TimeEntryModule(dspy.Module):
    - "Let's think step by step"
    - Relevant when model benefits from explicit reasoning
 
-3. **dspy.ReAct** (Tool Calling)
-   - Exposes Python functions to the model as tools
+3. **dspy.ReAct** (Tool Calling) **dspy.CodeAct** (Code)
+   - Exposes Python functions to the model as tools (like search/APIs)
    - How DSPy handles tool/function calling
    - Wraps signatures and injects tools for agent-like behavior
+   - Execute code for external data/actions
 
 4. **dspy.ProgramWithThought**
+   - Deterministic, high-precision, or complex calculations performed by generated code
    - Forces model to reason in code
    - Returns code execution result
    - Comes with Python interpreter built-in
@@ -209,9 +211,26 @@ class TimeEntryModule(dspy.Module):
    - For retrieval-based approaches
    - Part of RAG pipelines
 
-6. **dspy.MultiChainComparison**
+6. **dspy.MultiChainComparison** (or) **dspy.BestOfN**
    - Compare multiple outputs
    - Parallel execution patterns
+
+7. **dspy.Refine**
+   - Refine output based on feedback
+   - Iterative improvement
+
+8. **dspy.Reason**
+   - Reasoning module
+   - Adds reasoning steps
+   - "Let's think step by step"
+   - Relevant when model benefits from explicit reasoning
+
+9. **dspy.Parallel**
+   - To process multiple items
+
+10. **dspy.Select**
+    - Select the best output
+    - Parallel execution patterns
 
 #### Philosophy:
 - Just being able to logically separate components has been powerful
@@ -972,3 +991,8 @@ result = compiled_program(input_data)
 The shift from "tweaking prompts" to "programming with LLMs" isn't just about better results—it's about bringing software engineering rigor to AI application development. DSPy enables this paradigm shift through elegant abstractions that don't get in your way.
 
 ---
+
+## Reference
+
+https://www.youtube.com/watch?v=-cKUW6n8hBU
+https://github.dev/kmad/aie
