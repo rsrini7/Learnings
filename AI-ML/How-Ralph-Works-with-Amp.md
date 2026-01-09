@@ -558,17 +558,21 @@ While the "Ralph" AI agent loop represents a significant leap in autonomous deve
 
 https://ampcode.com/
 https://snarktank.github.io/ralph/
+https://ghuntley.com/ralph/
+
 https://github.com/snarktank/amp-skills
 https://github.com/snarktank/ralph
-https://ghuntley.com/ralph/
+https://github.com/vercel-labs/ralph-loop-agent
+https://github.com/alfredolopez80/multi-agent-ralph-loop
+https://gist.github.com/peteristhegreat/31e7114805e24b9e38084772e2e7cf46
 
 https://www.youtube.com/watch?v=_IK18goX4X8
 https://www.youtube.com/watch?v=RpvQH0r0ecM
-https://github.com/vercel-labs/ralph-loop-agent
+
+https://x.com/JeremyNguyenPhD/status/2008877889056370802
+https://x.com/ryancarson/article/2008548371712135632
+
 https://www.aihero.dev/tips-for-ai-coding-with-ralph-wiggum
 https://dev.to/alexandergekov/2026-the-year-of-the-ralph-loop-agent-1gkj
-https://github.com/alfredolopez80/multi-agent-ralph-loop
-https://x.com/JeremyNguyenPhD/status/2008877889056370802
 https://venturebeat.com/technology/how-ralph-wiggum-went-from-the-simpsons-to-the-biggest-name-in-ai-right-now
-https://gist.github.com/peteristhegreat/31e7114805e24b9e38084772e2e7cf46
 https://samcouch.com/articles/ralph-wiggum-coding/
