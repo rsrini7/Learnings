@@ -26,6 +26,7 @@
 - [LLM Benchmarks](AI-ML/LLM-Benchmarks.md)
 - [Continual Learning](AI-ML/ContinualLearning.md)
 - [Auto Regression](AI-ML/Auto-Regression.md)
+- [Persistent Memory Layers AI Agents](AI-ML/Persistent-Memory-Layers-AI-Agents.md)
 
 ### Programming
 - [DSPy](AI-ML/Programming/DSPy.md)
