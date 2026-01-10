@@ -92,8 +92,6 @@
 - [Google Nested Learning](Papers/Google-Nested-Learning.md)
 - [Titans Google Paper](Papers/Titans-GooglePaper.md)
 - [The Science of Scaling AI Agent Systems](Papers/The-Science-of-Scaling-AI-Agent-Systems.md)
-- [Content Visual Carousel](<Prompts/content-visual carousel.md>)
-- [Youtube Visual Carousel](<Prompts/youtube-visual carousel.md>)
 - [VL-JEPA-Whitepaper](Papers/VL-JEPA-Whitepaper.md) [VL-JEPA-One-Page](Papers/VL-JEPA-One-Page.md) [VL-JEPA-Summaries](Papers/VL-JEPA-Summaries.md)
 - [mHC Deepseek](Papers/mHC-Deepseek.md) [mHC Deepseek Architecture](Papers/mHC-Deepseek-Architecture.md)
 - [RLM Whitepaper](Papers/RLM_Whitepaper.md)
@@ -120,6 +118,8 @@
 - [Codebase Explore](Prompts/codebase-explore-prompt.md)
 - [Prompt Websites](Prompts/prompt-websites.md)
 - [Perplexity Research Whitepaper Prompt](Prompts/perplexity-research-whitepaper-prompt.md)
+- [Content Visual Carousel](<Prompts/content-visual carousel.md>)
+- [Youtube Visual Carousel](<Prompts/youtube-visual carousel.md>)
 
 ## QuantumComputing
 - [Google WillowChip & QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
