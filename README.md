@@ -25,6 +25,7 @@
 - [Context Graphs Extended](AI-ML/Context-Graphs-Extended.md)
 - [LLM Benchmarks](AI-ML/LLM-Benchmarks.md)
 - [Continual Learning](AI-ML/ContinualLearning.md)
+- [Auto Regression](AI-ML/Auto-Regression.md)
 
 ### Programming
 - [DSPy](AI-ML/Programming/DSPy.md)
