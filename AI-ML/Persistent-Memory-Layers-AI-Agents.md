@@ -284,6 +284,118 @@ graph TD
 - Docker-based self-hosting
 - Works with OpenAI, Anthropic, Ollama, Qwen
 
+#### Cipher Usage
+
+##### 1. Install and configure Claude Code CLI
+
+1. Install Claude Code CLI with the install command from anthropic.com/claude-code (the command is shown around the “Tools Needed” section).
+2. Confirm `code` (Claude Code CLI) runs in your terminal by running the `code` command in a project folder.
+
+***
+
+##### 2. Set up Kimi K2 (Moonshot) for Claude Code
+
+1. Go to `https://platform.moonshot.ai/console` and sign up.
+2. Recharge at least about 10 USD from the “Recharge” section so you can call Kimi K2.
+3. In the console, go to the “API Keys” section and create a new API key; copy it once (it is only shown once).
+4. In your terminal, set the environment variables so Claude Code uses Moonshot/Kimi K2 instead of the default Anthropic models:
+   - First run the “override base URL” command shown in the video (one export/ENV command for the base URL).  
+   - Then run  
+     ```bash
+     export ANTHROPIC_OAUTH_TOKEN="YOUR_MOONSHOT_API_KEY"
+     ```  
+     replacing the value with the API key you generated on Moonshot.
+5. Open a project and run `code`; ensure the status line shows “overrides via env” with the Moonshot base URL and key, confirming Kimi K2 is now the active model for Claude Code.
+
+This is your **first CLI setup**: Claude Code + Kimi K2. You can leave these env vars in your shell profile if you want this as your default.
+
+***
+
+##### 3. Install Cipher once on your machine
+
+1. Open the Cipher docs page at `https://docs.byterover.dev/cipher/overview` and go to the “Installation” section.
+2. Copy the `pip` (or equivalent) install command, for example:  
+   ```bash
+   pip install cipher
+   ```  
+   and run it once in your terminal.
+
+Cipher is now installed system‑wide and can be reused from any CLI or IDE. You don’t need to reinstall it per tool.
+
+***
+
+##### 4. Configure Cipher’s API keys (one‑time)
+
+1. Open the Cipher GitHub repo and go to `examples/strict-memory-layer`.
+2. In that example, copy the environment variable exports for the LLM providers (e.g. `OPENAI_API_KEY`, `ANTHROPIC_API_KEY`, or Kimi K2 key).
+3. Replace the placeholder values with your real keys (OpenAI, Anthropic, or Kimi K2) and run those `export ...` commands in your terminal.
+
+This binds Cipher to the underlying models, and it is **independent** from which CLI (Claude Code, Gemini CLI, etc.) you are using.
+
+***
+
+##### 5. Download the `cipher.iml` file (shared config)
+
+1. From the docs page, find and open the `cipher.iml` (or similarly named) MCP config file.
+2. Use the “Download raw file” button and save it somewhere stable on your disk, e.g.  
+   - `~/mcp/cipher.iml`
+
+You will reuse **this same file path** across all CLIs/IDEs you connect to Cipher.
+
+***
+
+##### 6. Run Cipher as an MCP server (shared server)
+
+1. In your terminal, run the Cipher MCP server command shown in the docs, for example:  
+   ```bash
+   cipher modem mcp agent --config /absolute/path/to/cipher.iml
+   ```  
+   replacing the path with the absolute path to where you saved `cipher.iml`.
+2. Keep this terminal running; it becomes the shared MCP server that all tools can talk to.
+
+This is **the piece you “save once”** and reuse from any CLI that supports MCP.
+
+***
+
+##### 7. Create a shared `mcp.json` client config
+
+1. In your project (or in a common config folder), create a file named `mcp.json`.
+2. Paste the MCP client config from the Cipher docs/example, including the `cipher` client entry.
+3. Edit the `vector_store` section:
+   - Go to `https://cloud.zilliz.com/` and create a free Milvus cluster (or any supported store).
+   - Copy the public endpoint, token/API key, username, and password.
+   - In `mcp.json`, set:
+     - `store_type` to `"milvus"` (or as shown).
+     - `store_url`, `store_api_key`, `username`, `password` to the Zilliz/Milvus values.
+4. In the `agents` section of `mcp.json`, set the `config_path` (or equivalent field) to the **absolute path** of `cipher.iml`.
+5. Save `mcp.json`.
+
+This `mcp.json` can be reused by **multiple CLIs** to talk to the same Cipher memory layer.
+
+***
+
+##### 8. Wire Cipher into Claude Code (first CLI using the shared memory)
+
+1. In the same project where you use Claude Code, ensure the created `mcp.json` is in the right location Claude Code expects (as in the video).
+2. Run `code`, type `/mcp`, and press Enter.
+3. Confirm that `cipher` shows as **connected** in Claude Code.
+
+Now Claude Code + Kimi K2 are using the **shared Cipher memory**.
+
+***
+
+##### 9. Reuse the same Cipher setup from another CLI (e.g., Gemini CLI)
+
+To “save” one CLI and reuse Cipher from another:
+
+1. Open the second CLI/IDE (e.g., Gemini CLI) on the **same project folder** or any folder where you can point it to the same `mcp.json`.
+2. Configure that tool to read the same `mcp.json` (the video shows Gemini reading the same MCP config).
+3. Ensure the Cipher MCP server is still running in the background (step 6).
+4. In the second CLI, use its MCP invocation command (e.g., type `/mcp` or similar), and verify `cipher` shows as connected.
+5. Ask questions like “What is my database preference?” or “What is my language preference?” and confirm it reads the same memories (Postgres SQL, TypeScript, etc.) created from Claude Code.
+
+You have now **saved one CLI’s memory (Claude Code)** and **reused it from another CLI (Gemini CLI)** via the shared Cipher + vector store setup.
+
 ---
 
 ### 4. MemMachine (Multi-Layered Architecture)
