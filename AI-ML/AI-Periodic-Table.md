@@ -1,12 +1,9 @@
-***
-# AI Periodic Table – A Simple Whitepaper
+# AI Periodic Table
 
 ## 1. Core Idea
 
 The **AI periodic table** is a conceptual map that arranges AI building blocks (prompts, embeddings, RAG, agents, etc.) into rows and columns, similar to chemistry’s periodic table.[2][1]
 Rows capture maturity or stage in the lifecycle (from basic building blocks to emerging ideas), while columns group elements by their role in an AI system (reactive, retrieval, orchestration, validation, models).[1][2]
-
-***
 
 ## 2. Axes: Rows and Columns
 
@@ -203,6 +200,92 @@ When designing an AI solution:
 This AI periodic table becomes a compact mental model to reason about almost any LLM/RAG/agent architecture and to see how it might evolve.[2][1]
 
 ![AI Periodic Table](assets/AI-Periodic-Table.png)
+
+
+
+# 𝗧𝗵𝗲 𝗔𝗜 𝗣𝗲𝗿𝗶𝗼𝗱𝗶𝗰 𝗧𝗮𝗯𝗹𝗲: 𝗔 𝗙𝗿𝗮𝗺𝗲𝘄𝗼𝗿𝗸 𝗧𝗵𝗮𝘁 𝗠𝗮𝗸𝗲𝘀 𝗦𝗲𝗻𝘀𝗲 𝗼𝗳 𝗔𝗜
+## RAG. Embeddings. Agents. Guardrails. Fine-tuning.
+
+---
+### **𝗪𝗵𝗮𝘁 𝗶𝘀 𝘁𝗵𝗲 𝗔𝗜 𝗣𝗲𝗿𝗶𝗼𝗱𝗶𝗰 𝗧𝗮𝗯𝗹𝗲?**
+A conceptual model inspired by chemistry's periodic table.
+
+  → 𝗥𝗼𝘄𝘀: Levels of complexity
+
+  → 𝗖𝗼𝗹𝘂𝗺𝗻𝘀: Functional roles (families)
+
+Think: Elements that combine to form AI "compounds."
+
+---
+
+### **𝗧𝗵𝗲 𝟱 𝗚𝗿𝗼𝘂𝗽𝘀 (𝗙𝘂𝗻𝗰𝘁𝗶𝗼𝗻𝗮𝗹 𝗥𝗼𝗹𝗲𝘀)**
+🟠 𝗚𝟭: 𝗥𝗲𝗮𝗰𝘁𝗶𝘃𝗲 — Prompt → Function Calling → Agents → Multi-Agent
+
+🟢 𝗚𝟮: 𝗥𝗲𝘁𝗿𝗶𝗲𝘃𝗮𝗹 — Embeddings → Vector DB → Fine-Tuning → Synthetic Data
+
+🔵 𝗚𝟯: 𝗢𝗿𝗰𝗵𝗲𝘀𝘁𝗿𝗮𝘁𝗶𝗼𝗻 — RAG → Framework
+
+🟣 𝗚𝟰: 𝗩𝗮𝗹𝗶𝗱𝗮𝘁𝗶𝗼𝗻 — Guardrails → Red Teaming → Interpretability
+
+🔴 𝗚𝟱: 𝗠𝗼𝗱𝗲𝗹𝘀 — LLM → Multimodal → Small Models → Thinking Models
+
+---
+### **𝗧𝗵𝗲 𝟰 𝗥𝗼𝘄𝘀 (𝗖𝗼𝗺𝗽𝗹𝗲𝘅𝗶𝘁𝘆 𝗟𝗲𝘃𝗲𝗹𝘀)**
+𝗣𝗿𝗶𝗺𝗶𝘁𝗶𝘃𝗲𝘀 — Atomic units (Prompt, Embeddings, LLM)
+
+𝗖𝗼𝗺𝗽𝗼𝘀𝗶𝘁𝗶𝗼𝗻𝘀 — Combined units (Function Calling, RAG)
+
+𝗗𝗲𝗽𝗹𝗼𝘆𝗺𝗲𝗻𝘁 — Production focus (Agents, Frameworks)
+
+𝗘𝗺𝗲𝗿𝗴𝗶𝗻𝗴 — Frontier concepts (Multi-Agent, Thinking Models)
+
+---
+### **𝗔𝗜 "𝗥𝗲𝗮𝗰𝘁𝗶𝗼𝗻𝘀" — 𝗛𝗼𝘄 𝗘𝗹𝗲𝗺𝗲𝗻𝘁𝘀 𝗖𝗼𝗺𝗯𝗶𝗻𝗲**
+
+⚗️ 𝗥𝗲𝗮𝗰𝘁𝗶𝗼𝗻 𝟭: 𝗣𝗿𝗼𝗱𝘂𝗰𝘁𝗶𝗼𝗻 𝗥𝗔𝗚
+
+  1️⃣ Documents → Embeddings → Vector DB
+
+  2️⃣ RAG retrieves relevant data 
+
+  3️⃣ Prompt + context → LLM → Guardrails
+
+𝗥𝗲𝘀𝘂𝗹𝘁: Safe, accurate answers from your data.
+
+⚗️ 𝗥𝗲𝗮𝗰𝘁𝗶𝗼𝗻 𝟮: 𝗧𝗵𝗲 𝗔𝗴𝗲𝗻𝘁𝗶𝗰 𝗟𝗼𝗼𝗽
+
+  1️⃣ User goal → Agent breaks it into steps 
+
+  2️⃣ Function Calling (Think-Act-Observe loop) 
+
+  3️⃣ Framework orchestrates the system
+
+𝗥𝗲𝘀𝘂𝗹𝘁: AI that takes action, not just answers.
+
+---
+
+### **𝗪𝗵𝘆 𝗧𝗵𝗶𝘀 𝗠𝗮𝘁𝘁𝗲𝗿𝘀**
+✅ Executives: Understand what your AI teams build 
+
+✅ Developers: See where tech fits in the stack 
+
+✅ Everyone: Demystifies AI without oversimplifying
+
+The best frameworks reveal relationships.
+
+𝗔𝗴𝗲𝗻𝘁𝘀 + 𝗙𝘂𝗻𝗰𝘁𝗶𝗼𝗻 𝗖𝗮𝗹𝗹𝗶𝗻𝗴 = Same column. Same problem, different scales. 
+
+𝗚𝘂𝗮𝗿𝗱𝗿𝗮𝗶𝗹𝘀 + 𝗥𝗲𝗱 𝗧𝗲𝗮𝗺𝗶𝗻𝗴 = Safety is a family, not one thing.
+
+---
+
+### **𝗧𝗵𝗲 𝗕𝗶𝗴 𝗜𝗻𝘀𝗶𝗴𝗵𝘁**
+AI isn't one technology—it's elements that combine predictably.
+Chemistry gave us a language for matter. This gives us a language for AI.
+
+![AI-PeriodicTable-FW](assets/AI-PeriodicTable-FW.jpg)
+Ref: [𝗔𝗜 𝗣𝗲𝗿𝗶𝗼𝗱𝗶𝗰 𝗧𝗮𝗯𝗹𝗲: 𝗔 𝗙𝗿𝗮𝗺𝗲𝘄𝗼𝗿𝗸 𝗧𝗵𝗮𝘁 𝗠𝗮𝗸𝗲𝘀 𝗦𝗲𝗻𝘀𝗲 𝗼𝗳 𝗔𝗜](https://www.linkedin.com/posts/shankar-kalyanraman-416a50b_aiperiodictable-ai-rag-activity-7415050184369295360-6SYH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAJHgyIBiM_O_DtMoyZmXFNWC5_UqBqneBI)
+
 
 [1](https://www.youtube.com/watch?v=ESBMgZHzfG0)
 [2](https://www.startuphub.ai/ai-news/ai-video/2026/the-ai-periodic-table-mapping-llms-to-core-elements/)
