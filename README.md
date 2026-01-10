@@ -39,6 +39,7 @@
  - [Dec-21-2025](Weekly-Tech-Updates/Dec-21-2025.md)
  - [Dec-28-2025](Weekly-Tech-Updates/Dec-28-2025.md)
  - [Jan-4-2026](Weekly-Tech-Updates/Jan-4-2026.md)
+ - [Jan-11-2025](Weekly-Tech-Updates/Jan-11-2025.md)
  
 
 ## Cloud 
