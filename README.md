@@ -27,6 +27,7 @@
 - [Continual Learning](AI-ML/ContinualLearning.md)
 - [Auto Regression](AI-ML/Auto-Regression.md)
 - [Persistent Memory Layers AI Agents](AI-ML/Persistent-Memory-Layers-AI-Agents.md)
+- [LLM Inference Engines](AI-ML/InferenceEngines.md)
 
 ### Programming
 - [DSPy](AI-ML/Programming/DSPy.md)
