@@ -4,6 +4,18 @@
 
 ---
 
+## Abstract
+
+Modern large language models rely heavily on residual connections for stable training, but these single-path designs limit information flow and representational capacity. Hyper-Connections were proposed to address this by introducing multiple parallel streams and learnable routing, yet they suffer from severe training instability due to unconstrained signal amplification, leading to gradient explosions and training collapse at scale.
+
+This work introduces **Manifold-Constrained Hyper-Connections (mHC)**, a principled architecture that enables multi-stream information flow while providing strict mathematical guarantees on stability. mHC constrains residual mixing matrices to the **Birkhoff polytope** by enforcing doubly stochastic structure using the **Sinkhorn–Knopp algorithm**, ensuring bounded signal propagation across arbitrary depth. Additional design choices, including sigmoid-based mixing and identity-preserving initialization, further stabilize optimization.
+
+Empirical results on large-scale (27B parameter) transformer models demonstrate that mHC achieves consistent training stability and improves performance on reasoning-intensive benchmarks such as MMLU, BBH, and DROP, while incurring only a modest training overhead (~6.7%). These results show that expressivity and stability need not be traded off, and that constrained architectural design can unlock richer parallel representations without sacrificing scalability.
+
+mHC establishes a new architectural paradigm for foundation models, enabling stable multi-stream scaling and offering a foundation for future advances in efficient, high-capacity neural network design.
+
+---
+
 ## Executive Summary
 
 Imagine trying to build a highway system for a city. You could build one massive road (stable but slow), or you could build a complex network of roads with no traffic rules (fast but chaotic). DeepSeek's **Manifold-Constrained Hyper-Connections (mHC)** solves this exact problem for AI models—it creates a multi-lane superhighway with smart traffic control that prevents crashes.
@@ -906,6 +918,7 @@ An architecture that has been proven reliable through extensive real-world use.
 
 **Dark Launch**
 Testing new features in production without exposing them to users, to verify stability.
+
 ---
 
 *For more details, see the original DeepSeek research papers:*
