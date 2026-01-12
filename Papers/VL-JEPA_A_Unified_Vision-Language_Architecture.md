@@ -42,14 +42,44 @@ The Joint Embedding Predictive Architecture (JEPA) is not just a model; it is a 
 
 ### **2.1 The Core Mechanism: Prediction in Latent Space**
 
-In a traditional generative setup, if we have an input $x$ (video of a hand pushing a cup), the model predicts $y$ (video of the cup falling).  
-$$ \\text{Generative Loss} \= |  
-| \\text{Decoder}(\\text{Encoder}(x)) \- y ||^2 $$  
-The model must reconstruct $y$ exactly.  
-In JEPA, the model predicts the representation of $y$.  
-$$ \\text{JEPA Loss} \= |  
-| \\text{Predictor}(\\text{Encoder}(x), z) \- \\text{Encoder}(y) ||^2 $$  
-Here, the Encoder maps the raw video $y$ into a semantic vector $s\_y$. The Predictor tries to guess this vector $s\_y$ using the context $s\_x$ and a latent variable $z$.
+# **Comparative Analysis: Generative vs. JEPA Architectures**
+
+This document outlines the fundamental differences in training objectives between traditional generative models and the Joint Embedding Predictive Architecture (JEPA).
+
+## **1\. Traditional Generative Setup**
+
+In a generative framework, the model is tasked with reconstructing the exact high-dimensional signal of the target. For an input $x$ (e.g., a video of a hand pushing a cup), the model must predict $y$ (the video of the cup falling).
+
+### **Generative Loss Function**
+
+The model must reconstruct $y$ exactly, often leading to wasted computational effort on task-irrelevant details (like background pixels or noise):
+
+$$\\text{Generative Loss} \= || \\text{Decoder}(\\text{Encoder}(x)) \- y ||^2$$
+
+## **2\. Joint Embedding Predictive Architecture (JEPA)**
+
+In contrast, JEPA operates entirely within an abstract latent space. Instead of predicting pixels, the model predicts the **representation** of the target.
+
+### **JEPA Loss Function**
+
+The Predictor attempts to guess the semantic vector $s\_y$ using the context $s\_x$ and a latent variable $z$:
+
+$$\\text{JEPA Loss} \= || \\text{Predictor}(\\text{Encoder}(x), z) \- \\text{Encoder}(y) ||^2$$
+
+### **Variable Definitions**
+
+* **Encoder:** Maps raw inputs ($x$, $y$) into semantic vectors ($s\_x$, $s\_y$).  
+* **Predictor:** Operates in the latent space to bridge the gap between representations.  
+* $z$ **(Latent Variable):** Represents the uncertainty or the specific "how" of the transition between $s\_x$ and $s\_y$.
+
+## **Key Difference**
+
+| Feature | Generative Models | JEPA |
+| :---- | :---- | :---- |
+| **Prediction Target** | Raw Data (Pixels/Tokens) | Semantic Embeddings |
+| **Space** | Signal Space | Latent (Hidden) Space |
+| **Objective** | Reconstruction | Predictive Feature Alignment |
+
 
 #### **Why is this "Mind-Blowing"?**
 
