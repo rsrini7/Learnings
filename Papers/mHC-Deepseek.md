@@ -616,156 +616,296 @@ The algorithm converges geometrically fast:
 - Can be GPU-parallelized efficiently
 
 ---
-## Glossary
+## Complete Glossary
 
-### **Token**
+### Core Concepts
 
-A small piece of text (word or part of a word) that the model processes instead of raw text.
+**Token**
+A small piece of text (word or part of a word) that the model processes. Examples: "Hello" → 1 token, "understand" → might be 2 tokens ("under" + "stand").
 
-### **Token Embedding**
+**Token Embedding**
+A numeric vector that represents a token so the model can work with text mathematically. Converts words into lists of numbers like [0.23, -0.45, 0.89...].
 
-A numeric vector that represents a token so the model can work with text mathematically.
+**Embedding Vector**
+A list of numbers (typically 512-4096 values) that captures the meaning and relationships of a word or token in multi-dimensional space.
 
-### **Embedding Vector**
+**Vector Norm (Magnitude)**
+The "size" or "length" of a vector, calculated as the square root of the sum of squared values. Represents signal strength.
 
-A list of numbers that captures the meaning and relationships of a word or token.
+### Architecture Components
 
-### **Transformer**
+**Transformer**
+A neural network architecture used in modern language models (GPT, Llama) that processes tokens using attention and feed-forward layers.
 
-A neural network architecture used in modern language models that processes tokens using attention and feed-forward layers.
+**Transformer Layer**
+One repeated block inside a transformer model that refines token representations step by step. Large models have 60-100+ layers.
 
-### **Transformer Layer**
+**Transformer Block**
+Same as transformer layer - the complete unit containing attention, feed-forward network, and normalization components.
 
-One repeated block inside a transformer model that refines token representations step by step.
+**Attention (Self-Attention)**
+A mechanism that lets the model decide which other tokens in the sequence are important when processing the current token. Like reading "bank" and checking if previous words mentioned "river" or "money."
 
-### **Attention (Self-Attention)**
+**Feed Forward Network (FFN)**
+A neural network block that processes each token independently to transform its representation. Operates pointwise on embedding values.
 
-A mechanism that lets the model decide which other tokens are important when processing a token.
+**Layer Normalization**
+A technique that keeps values well-scaled across features so training stays stable and efficient. Prevents any single feature from dominating.
 
-### **Feed Forward Network (FFN)**
+**RMS Normalization (Root Mean Square)**
+A specific normalization method that scales values based on their root-mean-square magnitude. Used in mHC to ensure mixing depends only on relative features.
 
-A neural network block that processes each token independently to transform its representation.
+### Connection Types
 
-### **Layer Normalization**
+**Residual Connection**
+A shortcut that adds a layer's input directly to its output (x + f(x)), helping deep models train reliably by creating information highways.
 
-A technique that keeps values well-scaled so training stays stable and efficient.
+**Skip Connection**
+Another name for residual connection - a path that "skips" over a layer to carry information directly.
 
-### **Residual Connection**
+**Identity Mapping**
+A behavior where a layer simply passes its input forward unchanged (output = input). Critical for training deep networks.
 
-A shortcut that adds a layer’s input directly to its output, helping deep models train reliably.
+**Identity Function**
+The mathematical function f(x) = x that returns its input unchanged.
 
-### **Identity Mapping**
+**Hyper-Connections (HC)**
+An architecture that splits data into multiple parallel streams and mixes them using learnable matrices. More expressive than single residual connections but unstable.
 
-A behavior where a layer simply passes its input forward unchanged.
+**Manifold-Constrained Hyper-Connections (mHC)**
+A stabilized version of hyper-connections that mathematically limits how signals can mix and grow using doubly stochastic constraints.
 
-### **Gradient**
+### Stream Architecture
 
-The signal used during training to tell the model how to change its parameters to reduce errors.
+**Streams (Communication Channels)**
+Parallel pathways through which information flows inside a model layer. mHC typically uses 4 streams per token instead of 1.
 
-### **Gradient Explosion**
+**Multi-Stream Architecture**
+A design where data flows through multiple parallel paths simultaneously, enabling richer information processing.
 
-When gradients grow extremely large during training, causing numerical errors and training failure.
+**H_pre (Read Matrix / Pre-Processing Matrix)**
+A learnable matrix that merges multiple streams into one before processing. Size: (n_streams → 1). Uses sigmoid activation in mHC.
 
-### **NaN (Not a Number)**
+**H_post (Write Matrix / Post-Processing Matrix)**
+A learnable matrix that splits processed information back into multiple streams. Size: (1 → n_streams). Uses sigmoid activation in mHC.
 
-A numerical error value that appears when training becomes unstable or calculations overflow.
+**H_res (Residual Mixing Matrix)**
+A matrix that mixes streams along the residual (skip) path. In mHC, this is constrained to be doubly stochastic using Sinkhorn-Knopp algorithm.
 
-### **Hyper-Connections**
+### Training Concepts
 
-An architecture that splits data into multiple parallel streams and mixes them using learnable matrices.
+**Parameter**
+A learnable value (weight or bias) inside the model that gets updated during training. A 27B model has 27 billion parameters.
 
-### **Streams**
+**Gradient**
+The signal used during training to tell the model how to change its parameters to reduce errors. Calculated via backpropagation.
 
-Parallel pathways through which information flows inside a model layer.
+**Gradient Flow**
+How gradients travel backward through the network during training. Good flow means training is stable.
 
-### **H_pre (Read Matrix)**
+**Gradient Explosion**
+When gradients grow extremely large during training (e.g., 10^100), causing numerical errors and training failure. The main problem with original hyper-connections.
 
-A learnable matrix that merges multiple streams into one before processing.
+**Gradient Vanishing**
+The opposite problem where gradients become too small (near zero), preventing learning in deep networks.
 
-### **H_post (Write Matrix)**
+**Backpropagation**
+The algorithm that calculates gradients by working backward through the network from output to input.
 
-A learnable matrix that splits processed information back into multiple streams.
+**Forward Pass**
+The process of sending input data through the model to produce an output. Goes from input → layers → output.
 
-### **H_res (Residual Mixing Matrix)**
+**Backward Pass**
+The process of calculating gradients by working backward through the model. Used during training.
 
-A matrix that mixes streams along the residual (skip) path instead of using a simple identity shortcut.
+### Stability Issues
 
-### **Signal Amplification**
+**Signal Amplification**
+How much the magnitude of values grows as they pass through layers. Safe: 1.0-1.6x. Dangerous: 3000x (explosion).
 
-How much the magnitude of values grows as they pass through layers.
+**Signal Gain**
+Same as signal amplification - the multiplicative factor by which signal strength increases.
 
-### **Manifold-Constrained Hyper-Connections (mHC)**
+**Signal Explosion**
+When signal magnitude grows exponentially through layers, leading to numerical overflow and training collapse.
 
-A stabilized version of hyper-connections that mathematically limits how signals can mix and grow.
+**Training Collapse**
+When a model's training suddenly fails, producing NaN values and making further training impossible.
 
-### **Doubly Stochastic Matrix**
+**Loss Spike**
+A sudden jump in the training loss value, indicating instability. Common in hyper-connections, rare in mHC.
 
-A matrix where all values are non-negative and every row and column sums to 1, ensuring stable mixing.
+**NaN (Not a Number)**
+A numerical error value that appears when calculations overflow (e.g., dividing by zero, infinite values). Indicates training failure.
 
-### **Birkhoff Polytope**
+**Training Stability**
+How reliably a model can train without crashing or producing invalid values. Measured by absence of loss spikes and NaN errors.
 
-The mathematical space of all doubly stochastic matrices.
+### Mathematical Constraints
 
-### **Sinkhorn-Knopp Algorithm**
+**Doubly Stochastic Matrix**
+A matrix where: (1) all values are non-negative, (2) every row sums to 1, (3) every column sums to 1. Ensures stable, bounded mixing.
 
-An iterative method that converts a matrix into a doubly stochastic one by normalizing rows and columns.
+**Birkhoff Polytope**
+The mathematical space (set) of all doubly stochastic matrices. A geometric shape in high-dimensional space.
 
-### **Sigmoid Function**
+**Conservation Constraint**
+The principle that the total amount of signal must be preserved - no creating or destroying information during mixing.
 
-A function that squashes values into the range 0 to 1, preventing extreme values.
+**Row Sum Constraint**
+The requirement that all values in each row of a matrix must add up to exactly 1.0.
 
-### **Initialization**
+**Column Sum Constraint**
+The requirement that all values in each column of a matrix must add up to exactly 1.0.
 
-How model parameters are set before training starts.
+**Weighted Average**
+A combination where inputs are multiplied by weights that sum to 1. Output cannot exceed largest input when using non-negative weights.
 
-### **RMS Normalization**
+**Affine Transformation**
+A linear transformation plus a bias: y = Wx + b. Used in neural networks.
 
-A normalization method that scales values based on their root-mean-square magnitude.
+### Algorithms
 
-### **Forward Pass**
+**Sinkhorn-Knopp Algorithm**
+An iterative method that converts any positive matrix into a doubly stochastic one by alternating between normalizing rows and columns. Typically converges in 5-10 iterations.
 
-The process of sending input data through the model to produce an output.
+**Iterative Normalization**
+The process of repeatedly adjusting values until they meet desired constraints (used in Sinkhorn-Knopp).
 
-### **Inference**
+**Convergence**
+When an iterative algorithm reaches a stable solution and stops changing significantly.
 
-Using a trained model to generate outputs without updating its parameters.
+**Sigmoid Function**
+A mathematical function σ(x) = 1/(1+e^(-x)) that squashes any input value into the range (0, 1). Shaped like an S-curve.
 
-### **Training Stability**
+**Tanh Function**
+Another squashing function that outputs values in range (-1, 1). Used in original hyper-connections but not in mHC.
 
-How reliably a model can train without crashing or producing invalid values.
+**ReLU (Rectified Linear Unit)**
+An activation function that outputs max(0, x) - passes positive values unchanged, zeros out negatives.
 
-### **Parameter**
+### Optimization Techniques
 
-A learnable value (weight) inside the model that gets updated during training.
+**Activation Recomputation (Gradient Checkpointing)**
+A memory-saving trick where intermediate results are deleted after the forward pass and recomputed during backpropagation. Trades compute for memory.
 
-### **Activation Recomputation**
+**Fused Kernel**
+A GPU optimization that combines multiple operations into one for speed and efficiency. Reduces memory transfers between operations.
 
-A memory-saving trick where intermediate results are recomputed instead of stored.
+**Memory Footprint**
+The amount of RAM/GPU memory a model requires to train or run.
 
-### **Fused Kernel**
+**Initialization**
+How model parameters are set before training starts. Critical for stability - mHC uses 2×sigmoid(0) = 1.0 to start as identity.
 
-A GPU optimization that combines multiple operations into one for speed and efficiency.
+**Initialization Strategy**
+The specific method chosen to set initial parameter values (e.g., Xavier, He, or mHC's identity-preserving approach).
 
-### **Scaling**
+### Performance Metrics
 
-Increasing model size, depth, width, or information pathways to improve performance.
+**Inference**
+Using a trained model to generate outputs without updating its parameters. The "production" use of a model.
 
-### **Expressivity**
+**Training Time**
+How long it takes to train a model from scratch, typically measured in GPU-hours or days.
 
-How complex and rich the representations a model can learn.
+**Computational Overhead**
+Extra computation required by an optimization. mHC adds ~6.7% overhead compared to standard residual networks.
 
-### **Parallel Processing**
+**Throughput**
+How many tokens or samples a model can process per second.
 
-Handling multiple information paths at the same time instead of sequentially.
+**Latency**
+The time delay between input and output during inference.
 
-### **Reasoning Tasks**
+### Model Properties
 
-Benchmarks that test multi-step thinking, logic, and understanding rather than memorization.
+**Expressivity**
+How complex and rich the representations a model can learn. More expressive models can capture more nuanced patterns.
 
-### **27B Parameter Model**
+**Capacity**
+The total amount of information a model can store and process. Related to parameter count and architecture.
 
-A very large neural network with 27 billion learnable parameters.
+**Representation**
+The internal numerical encoding a model creates for input data. Higher-quality representations lead to better performance.
 
+**Parallel Processing**
+Handling multiple information paths at the same time instead of sequentially. Enables richer reasoning.
+
+**Multi-Path Reasoning**
+The ability to process different aspects of information through separate pathways simultaneously.
+
+### Scaling Concepts
+
+**Scaling**
+Increasing model size, depth (layers), width (hidden dimensions), or information pathways to improve performance.
+
+**Depth**
+The number of layers in a neural network. Deeper networks can learn more complex functions.
+
+**Width**
+The size of hidden dimensions (embedding size, FFN size). Wider networks can represent more information per layer.
+
+**Model Size**
+Total number of parameters, typically measured in millions (M) or billions (B). Example: 27B = 27 billion parameters.
+
+**27B Parameter Model**
+A very large neural network with 27 billion learnable parameters. Used in DeepSeek's mHC experiments.
+
+### Evaluation Benchmarks
+
+**MMLU (Massive Multitask Language Understanding)**
+A benchmark testing general knowledge across 57 subjects like math, history, science, and law.
+
+**BBH (Big-Bench Hard)**
+A challenging benchmark focusing on complex reasoning tasks that require multi-step thinking.
+
+**DROP (Discrete Reasoning Over Paragraphs)**
+A reading comprehension benchmark requiring numerical reasoning and multi-hop inference.
+
+**Reasoning Tasks**
+Benchmarks that test multi-step thinking, logic, and understanding rather than simple memorization or pattern matching.
+
+**Benchmark**
+A standardized test used to compare model performance objectively.
+
+### Technical Terms
+
+**Static Weights**
+Parameters that don't depend on the input data. Fixed for all examples.
+
+**Dynamic Weights**
+Parameters that change based on input features. Computed during the forward pass.
+
+**Learnable Matrix**
+A matrix whose values are parameters that get updated during training.
+
+**Mixing Matrix**
+A matrix that combines multiple streams by computing weighted combinations.
+
+**Matrix Multiplication**
+The mathematical operation of multiplying matrices. Forms the basis of neural network computations.
+
+**Pointwise Operation**
+An operation applied independently to each element or position. No mixing between positions.
+
+**Contextual Processing**
+Processing that takes surrounding information into account (e.g., attention looking at previous tokens).
+
+**Feature**
+An individual dimension in an embedding vector. A 512-dimensional embedding has 512 features.
+
+**Hidden Dimension**
+The size of internal representations in a layer. Typically 2048-8192 in large models.
+
+**Production Ready**
+Software that is stable, tested, and reliable enough for real-world deployment.
+
+**Battle-Tested**
+An architecture that has been proven reliable through extensive real-world use.
+
+**Dark Launch**
+Testing new features in production without exposing them to users, to verify stability.
 ---
 
 *For more details, see the original DeepSeek research papers:*
