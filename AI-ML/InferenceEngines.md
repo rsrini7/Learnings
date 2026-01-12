@@ -9,6 +9,27 @@ Large Language Model (LLM) inference is fundamentally different from training. W
 This whitepaper provides developers and architects with a comprehensive understanding of LLM inference engines, their core mechanisms, and practical guidance for selecting and deploying the right solution.
 
 **Key Takeaways:**
+
+- AI inference engine uses trained knowledge to make quick decisions on new data, like classifying images or answering questions.
+- It connects training to real-world use in apps like chatbots and recommendation systems.
+- Works by applying rules or learned patterns to inputs, similar to human reasoning.
+- Two methods: Rule-based (using logic rules via forward or backward chaining) and model-based (running data through trained ML models).
+- Runs on fast hardware like GPUs for real-time responses in tools like ChatGPT or DALL·E.
+- Turns static models into active tools for everyday smart features, bridging training and deployment.
+- Inference stage is more expensive than training due to high volume of uses, needing powerful hardware and optimization.
+- Spam filter example: Trained model scores new emails for spam probability, then applies rules to filter them.
+- Optimizations include special chips, middleware for efficient execution, and software like pruning or quantization to reduce costs.
+- Focuses on making AI faster, cheaper, and greener by improving the full hardware-software stack.
+- Naive LLM inference is slow at 40 tokens/second; optimizations boost it to over 3,500 tokens/second on same hardware, a 87x speedup.
+- Inference has two phases: prefill (fast parallel processing of full prompt) and decode (slow token-by-token generation, limited by memory bandwidth).
+- Slowdowns from recomputing past keys/values in attention (redundant work), static batching (idle GPU slots), and fixed KV buffer preallocation (memory waste).
+- KV caching stores past keys/values once and reuses them, adding only new ones per token to cut redundancy.
+- Continuous batching dynamically adds new requests as others finish, keeping GPUs busy without waiting.
+- PagedAttention allocates KV cache in small blocks on demand, reducing fragmentation and raising memory use to over 95%.
+- Quantization shrinks weights to 4-8 bits, cutting memory needs and speeding up memory-bound decode by up to 4x.
+- Speculative decoding uses a small model to guess multiple tokens, verifies them in parallel, often accepting several at once to slash latency by 2-3x.
+- For scale, use parallelism across GPUs, load-balanced replicas, and smart routing to reuse caches.
+- At large scale (e.g., 1M users), costs run high (~$36M/month for 25K GPUs); optimizations like 2x throughput halve bills, with more gains possible in memory-bound systems.
 - Inference engines are critical infrastructure for production LLM deployments
 - Memory management (not computation) is the primary bottleneck
 - Techniques like paged attention and continuous batching provide 2-4× throughput improvements
