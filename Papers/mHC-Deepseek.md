@@ -616,8 +616,157 @@ The algorithm converges geometrically fast:
 - Can be GPU-parallelized efficiently
 
 ---
+## Glossary
 
-**End of Document**
+### **Token**
+
+A small piece of text (word or part of a word) that the model processes instead of raw text.
+
+### **Token Embedding**
+
+A numeric vector that represents a token so the model can work with text mathematically.
+
+### **Embedding Vector**
+
+A list of numbers that captures the meaning and relationships of a word or token.
+
+### **Transformer**
+
+A neural network architecture used in modern language models that processes tokens using attention and feed-forward layers.
+
+### **Transformer Layer**
+
+One repeated block inside a transformer model that refines token representations step by step.
+
+### **Attention (Self-Attention)**
+
+A mechanism that lets the model decide which other tokens are important when processing a token.
+
+### **Feed Forward Network (FFN)**
+
+A neural network block that processes each token independently to transform its representation.
+
+### **Layer Normalization**
+
+A technique that keeps values well-scaled so training stays stable and efficient.
+
+### **Residual Connection**
+
+A shortcut that adds a layer’s input directly to its output, helping deep models train reliably.
+
+### **Identity Mapping**
+
+A behavior where a layer simply passes its input forward unchanged.
+
+### **Gradient**
+
+The signal used during training to tell the model how to change its parameters to reduce errors.
+
+### **Gradient Explosion**
+
+When gradients grow extremely large during training, causing numerical errors and training failure.
+
+### **NaN (Not a Number)**
+
+A numerical error value that appears when training becomes unstable or calculations overflow.
+
+### **Hyper-Connections**
+
+An architecture that splits data into multiple parallel streams and mixes them using learnable matrices.
+
+### **Streams**
+
+Parallel pathways through which information flows inside a model layer.
+
+### **H_pre (Read Matrix)**
+
+A learnable matrix that merges multiple streams into one before processing.
+
+### **H_post (Write Matrix)**
+
+A learnable matrix that splits processed information back into multiple streams.
+
+### **H_res (Residual Mixing Matrix)**
+
+A matrix that mixes streams along the residual (skip) path instead of using a simple identity shortcut.
+
+### **Signal Amplification**
+
+How much the magnitude of values grows as they pass through layers.
+
+### **Manifold-Constrained Hyper-Connections (mHC)**
+
+A stabilized version of hyper-connections that mathematically limits how signals can mix and grow.
+
+### **Doubly Stochastic Matrix**
+
+A matrix where all values are non-negative and every row and column sums to 1, ensuring stable mixing.
+
+### **Birkhoff Polytope**
+
+The mathematical space of all doubly stochastic matrices.
+
+### **Sinkhorn-Knopp Algorithm**
+
+An iterative method that converts a matrix into a doubly stochastic one by normalizing rows and columns.
+
+### **Sigmoid Function**
+
+A function that squashes values into the range 0 to 1, preventing extreme values.
+
+### **Initialization**
+
+How model parameters are set before training starts.
+
+### **RMS Normalization**
+
+A normalization method that scales values based on their root-mean-square magnitude.
+
+### **Forward Pass**
+
+The process of sending input data through the model to produce an output.
+
+### **Inference**
+
+Using a trained model to generate outputs without updating its parameters.
+
+### **Training Stability**
+
+How reliably a model can train without crashing or producing invalid values.
+
+### **Parameter**
+
+A learnable value (weight) inside the model that gets updated during training.
+
+### **Activation Recomputation**
+
+A memory-saving trick where intermediate results are recomputed instead of stored.
+
+### **Fused Kernel**
+
+A GPU optimization that combines multiple operations into one for speed and efficiency.
+
+### **Scaling**
+
+Increasing model size, depth, width, or information pathways to improve performance.
+
+### **Expressivity**
+
+How complex and rich the representations a model can learn.
+
+### **Parallel Processing**
+
+Handling multiple information paths at the same time instead of sequentially.
+
+### **Reasoning Tasks**
+
+Benchmarks that test multi-step thinking, logic, and understanding rather than memorization.
+
+### **27B Parameter Model**
+
+A very large neural network with 27 billion learnable parameters.
+
+---
 
 *For more details, see the original DeepSeek research papers:*
 - *arXiv:2512.24880 (mHC Architecture)*
