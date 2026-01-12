@@ -70,6 +70,7 @@
 - [Enterprice Blockchain Learning](Blockchain/EnterpriceBlockchainLearning.md)
 - [Jan-2025-Updates](Blockchain/Jan-2025-Updates.md)
 - [AI Blockchain and the Hidden Frictions of Real World Asset Tokenization](Blockchain/AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization.md)
+- [Crypto Supercycle and Ethereum](Blockchain/Crypto-Supercycle-and-Ethereum.md)
 
 ## Helpful
 - [Searching or Downloading Research Papers](Helpful/searching-or-downloading-research-papers.md)
