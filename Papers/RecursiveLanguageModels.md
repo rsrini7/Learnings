@@ -1716,13 +1716,6 @@ The future of AI isn't just about bigger transformers. It's about smarter proble
 
 ---
 
-Below is a **verified, comprehensive glossary of AI/ML terms actually used (explicitly or implicitly)** in the **Recursive Language Models (RLMs)** paper you shared, rewritten in the **same pedagogical style and depth** as your mHC glossary so the two documents feel consistent and comparable.
-
-I’ve **filtered out generic terms** already covered in your mHC glossary (e.g., basic “Transformer”, “Token”) *unless they are used differently in the RLM context*.
-This glossary is focused on **long-context reasoning, inference-time systems, agents, recursion, and complexity**—the conceptual core of the RLM paper.
-
----
-
 ## Complete Glossary
 
 ## Core Concepts
