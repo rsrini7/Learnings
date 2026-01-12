@@ -8,6 +8,8 @@ Building on that vision, this paper goes further by **verifying the claims using
 
 The keynote’s predictions are grounded in real-world progress, supported by active platforms such as **Tangem Pay**, **Securitize**, **Centrifuge**, **Odysee**, and **Audius**, whose recent developments validate the feasibility of self-custody, asset tokenization, and decentralized content distribution. Together, these systems reflect a broader shift toward **user ownership, transparency, and permissionless access** enabled by blockchain infrastructure.
 
+![Blockchain by 2035](assets/Blockchain-by-2035.png)
+
 ### Core Vision
 
 By **2035**, blockchain is expected to enable:

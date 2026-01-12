@@ -332,18 +332,63 @@ For the researcher and the engineer, the mandate is clear: The future of AI is n
 
 ---
 
-**Appendix: Visualizing the Matryoshka Loss**
+# **Appendix: Visualizing Matryoshka Representation Learning (MRL)**
 
-To visualize how EmbeddingGemma's MRL works, imagine a vector of length 4\.  
-Standard Loss trains the whole vector: \`\`.  
-MRL trains:
+Matryoshka Representation Learning (MRL) is the "secret sauce" that allows models like EmbeddingGemma to be incredibly flexible. It is named after the **Russian Nesting Doll**, where smaller dolls are contained inside larger ones.
 
-1. \[A\] to be a good embedding.  
-2. \`\` to be a good embedding.  
-3. \`\` to be a good embedding.  
-4. \`\` to be a good embedding.
+### **1\. The Core Concept**
 
-This "Russian Doll" training ensures that A (the first dimension) always carries the most weight, allowing B, C, and D to be discarded if necessary.
+In a standard embedding model, the vector only makes sense when it is complete. If you cut it in half, you lose most of the information.
+
+In **Matryoshka training**, the model is forced to ensure that the **beginning** of the vector is just as useful as the **whole** vector.
+
+### **2\. Standard vs. Matryoshka Training**
+
+Imagine a vector with 4 dimensions: $\[d\_1, d\_2, d\_3, d\_4\]$.
+
+Standard Loss (All or Nothing):  
+The model is trained only on the full sequence:
+
+* $\[d\_1, d\_2, d\_3, d\_4\]$ must represent the meaning.
+
+Matryoshka Loss (Nested):  
+The model is trained to be accurate at multiple "cut-off" points simultaneously. It treats the vector like a nested set:
+
+1. $\[d\_1\]$: The first dimension alone must be a "mini-embedding."  
+2. $\[d\_1, d\_2\]$: The first two dimensions together must be a better embedding.  
+3. $\[d\_1, d\_2, d\_3\]$: The first three must be even better.  
+4. $\[d\_1, d\_2, d\_3, d\_4\]$: The full vector is the most accurate.
+
+### **3\. Visual Representation**
+
+graph LR  
+    subgraph Full Vector \[1536 Dimensions\]  
+        subgraph Medium \[512 Dimensions\]  
+            subgraph Small \[128 Dimensions\]  
+                subgraph Tiny \[64 Dimensions\]  
+                    A\[Core Meaning\]  
+                end  
+                B\[Fine Details\]  
+            end  
+            C\[Nuance\]  
+        end  
+        D\[Deep Context\]  
+    end
+
+### **4\. Why this is "Mind-Blowing"**
+
+By training this way, the model pushes the **most important information to the front** of the vector.
+
+* **Elasticity:** If you are low on storage or memory, you can simply "slice" the vector at 64 or 128 dimensions.  
+* **Speed:** You can use the "Tiny" version (64 dims) to quickly search through millions of items, then use the "Full" version only for the top 10 results to get perfect accuracy.  
+* **No Re-training:** You don't need a new model for different sizes. One model fits all needs.
+
+### **5\. Mathematical Intuition**
+
+The total loss $\\mathcal{L}\_{MRL}$ is simply the sum of the individual losses at different dimensions ($k$):
+
+$$\\mathcal{L}\_{MRL} \= \\sum\_{k \\in \\{64, 128, 256, \\dots, 1536\\}} \\text{Loss}(\\text{Vector}\_{1:k})$$  
+This forces the model to prioritize "high-value" information in the earliest indices.
 
 #### **Works cited**
 

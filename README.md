@@ -99,7 +99,7 @@
 - [Google Nested Learning](Papers/Google-Nested-Learning.md)
 - [Titans Google Paper](Papers/Titans-GooglePaper.md)
 - [The Science of Scaling AI Agent Systems](Papers/The-Science-of-Scaling-AI-Agent-Systems.md)
-- [VL-JEPA Architecture](Papers/VL-JEPA-Architecture.md)[VL-JEPA A Unified Vision-Language Architecture](Papers/VL-JEPA_A_Unified_Vision-Language_Architecture.md)[VL-JEPA The Complete Guide](Papers/VL-JEPA-The-Complete-Guide.md)
+- [VL-JEPA Whitepaper](Papers/VL-JEPA-Whitepaper.md)[VL-JEPA A Unified Vision-Language Architecture](Papers/VL-JEPA_A_Unified_Vision-Language_Architecture.md)[VL-JEPA The Complete Guide](Papers/VL-JEPA-The-Complete-Guide.md)
 - [mHC Deepseek](Papers/mHC-Deepseek.md)
 - [Recursive Language Models](Papers/RecursiveLanguageModels.md)
 
