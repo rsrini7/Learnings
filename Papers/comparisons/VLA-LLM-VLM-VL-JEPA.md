@@ -726,7 +726,7 @@ The field is rapidly evolving. What works today may be improved tomorrow. But th
 7. FAST Tokenization Paper - Efficient Action Representation
 8. NaVILA - Legged Robot Navigation Research
 9. Voxel51 & Ilia - Comprehensive VLA Educational Content
-10. [Evolution LLM VLM VLA VL-JEPA](../../assets/Evolution-LLM-VLM-VLA-VL-JEPA.pdf)
+10. [Evolution LLM VLM VLA VL-JEPA](.././docs/Evolution-LLM-VLM-VLA-VL-JEPA.pdf)
 
 ---
 

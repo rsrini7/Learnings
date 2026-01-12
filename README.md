@@ -28,6 +28,7 @@
 - [Auto Regression](AI-ML/Auto-Regression.md)
 - [Persistent Memory Layers AI Agents](AI-ML/Persistent-Memory-Layers-AI-Agents.md)
 - [LLM Inference Engines](AI-ML/InferenceEngines.md)
+- [AI and the Barbell Economy](AI-ML/AI-and-the-Barbell-Economy.md)
 
 ### Programming
 - [DSPy](AI-ML/Programming/DSPy.md)
@@ -67,6 +68,8 @@
 - [ISO20022-XRP-XLM-HBAR-XDC](Blockchain/ISO20022-XRP-XLM-HBAR-XDC.md)
 - [DLT](Blockchain/DLT.md)
 - [Enterprice Blockchain Learning](Blockchain/EnterpriceBlockchainLearning.md)
+- [Jan-2025-Updates](Blockchain/Jan-2025-Updates.md)
+- [AI Blockchain and the Hidden Frictions of Real World Asset Tokenization](Blockchain/AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization.md)
 
 ## Helpful
 - [Searching or Downloading Research Papers](Helpful/searching-or-downloading-research-papers.md)
@@ -94,7 +97,7 @@
 - [Google Nested Learning](Papers/Google-Nested-Learning.md)
 - [Titans Google Paper](Papers/Titans-GooglePaper.md)
 - [The Science of Scaling AI Agent Systems](Papers/The-Science-of-Scaling-AI-Agent-Systems.md)
-- [VL-JEPA-Whitepaper](Papers/VL-JEPA-Whitepaper.md) [VL-JEPA-One-Page](Papers/VL-JEPA-One-Page.md) [VL-JEPA-Summaries](Papers/VL-JEPA-Summaries.md)
+- [VL-JEPA Architecture](Papers/VL-JEPA-Architecture.md)
 - [mHC Deepseek](Papers/mHC-Deepseek.md)
 - [Recursive Language Models](Papers/RecursiveLanguageModels.md)
 

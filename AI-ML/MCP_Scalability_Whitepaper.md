@@ -931,11 +931,11 @@ The "Code Execution with MCP" blog post signals evolution toward:
 
 ### 10.3 Visual Architecture Diagram
 
-![MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram](../assets/MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram.png) 
+![MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram](./assets/MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram.png) 
 
 ### 10.4 Token Consumption Graph
 
-![MCP-CodeExc-Cli-Skills-Token-Consumption-Graph](../assets/MCP-CodeExc-Cli-Skills-Token-Consumption-Graph.png)
+![MCP-CodeExc-Cli-Skills-Token-Consumption-Graph](./assets/MCP-CodeExc-Cli-Skills-Token-Consumption-Graph.png)
 
 ### 10.5 The Likely Winner: Hybrid Architecture
 

@@ -1,4 +1,4 @@
-![Microsoft Agent Lighting](../assets/Microsoft-AI-Agent-Lighting.png)
+![Microsoft Agent Lighting](./assets/Microsoft-AI-Agent-Lighting.png)
 
 **Microsoft Agent Lightning** differs from **Unsloth** and the **Hugging Face fine-tune library** in several key ways:
 

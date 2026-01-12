@@ -447,7 +447,7 @@ Conceptually, J.P. Morgan's ecosystem is organized as a **layered, interoperable
 
 ## 12. Comprehensive Timeline (2018–2025+)
 
-![JPMmorgan Blockchain Milestone](../assets/jpmorgan_blockchain_milestone.png)
+![JPMmorgan Blockchain Milestone](./assets/jpmorgan_blockchain_milestone.png)
 
 ### Phase 1: Foundation (2018–2020)
 
@@ -1056,7 +1056,7 @@ J.P. Morgan is using blockchain to modernize how money, assets, and capital mark
 
 ## 21. JPMorgan Chase Blockchain Ecosystem
 
-![JPMorgan Chase Blockchain Ecosystem](../assets/jpmorgan_blockchain_ecosystem.png)
+![JPMorgan Chase Blockchain Ecosystem](./assets/jpmorgan_blockchain_ecosystem.png)
 
 ---
 
