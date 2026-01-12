@@ -96,7 +96,7 @@
 - [The Science of Scaling AI Agent Systems](Papers/The-Science-of-Scaling-AI-Agent-Systems.md)
 - [VL-JEPA-Whitepaper](Papers/VL-JEPA-Whitepaper.md) [VL-JEPA-One-Page](Papers/VL-JEPA-One-Page.md) [VL-JEPA-Summaries](Papers/VL-JEPA-Summaries.md)
 - [mHC Deepseek](Papers/mHC-Deepseek.md)
-- [RLM Whitepaper](Papers/RLM_Whitepaper.md)
+- [Recursive Language Models](Papers/RecursiveLanguageModels.md)
 
 ## Papers Comparisons
 - [Google Nested Learning vs FB Sparce Memory](Papers/comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md)
