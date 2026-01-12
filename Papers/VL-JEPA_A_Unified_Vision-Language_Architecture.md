@@ -361,19 +361,21 @@ The model is trained to be accurate at multiple "cut-off" points simultaneously.
 
 ### **3\. Visual Representation**
 
+```mermaid
 graph LR  
-    subgraph Full Vector \[1536 Dimensions\]  
-        subgraph Medium \[512 Dimensions\]  
-            subgraph Small \[128 Dimensions\]  
-                subgraph Tiny \[64 Dimensions\]  
-                    A\[Core Meaning\]  
+    subgraph "Full Vector [1536 Dimensions]"
+        subgraph "Medium [512 Dimensions]"  
+            subgraph "Small [128 Dimensions]"  
+                subgraph "Tiny [64 Dimensions]"  
+                    A[Core Meaning]  
                 end  
-                B\[Fine Details\]  
+                B[Fine Details]  
             end  
-            C\[Nuance\]  
+            C[Nuance]  
         end  
-        D\[Deep Context\]  
+        D[Deep Context]  
     end
+```
 
 ### **4\. Why this is "Mind-Blowing"**
 
