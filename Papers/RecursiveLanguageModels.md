@@ -60,7 +60,7 @@ graph LR
     C -->|Complex Reasoning| F[✗ Catastrophic Failure]
     
     style D fill:#90EE90
-    style E fill:#FFD700
+    style E fill:#AB974F
     style F fill:#FF6B6B
 ```
 
@@ -108,7 +108,7 @@ graph TD
     E --> E1[Find all matching pairs]
     
     style C fill:#90EE90
-    style D fill:#FFD700
+    style D fill:#AB974F
     style E fill:#FF6B6B
 ```
 
@@ -327,7 +327,7 @@ graph LR
     F --> G[99.5% Efficiency Gain]
     
     style A fill:#E8E8E8
-    style E fill:#FFD700
+    style E fill:#AB974F
     style G fill:#90EE90
 ```
 
@@ -443,7 +443,7 @@ graph TD
     
     style A fill:#E8E8E8
     style B fill:#4A90E2,color:#fff
-    style I fill:#FFD700
+    style I fill:#AB974F
     style J fill:#27AE60,color:#fff
 ```
 
@@ -604,7 +604,7 @@ graph LR
     D --> G[Expensive + lossy]
     E --> H[Cheapest + best!]
     
-    style C fill:#FFD700
+    style C fill:#AB974F
     style D fill:#FF6B6B,color:#fff
     style E fill:#27AE60,color:#fff
     style H fill:#4A90E2,color:#fff
@@ -641,7 +641,7 @@ graph TD
     style C fill:#4A90E2,color:#fff
     style D fill:#9B59B6,color:#fff
     style G fill:#27AE60,color:#fff
-    style H fill:#FFD700
+    style H fill:#AB974F
 ```
 
 **Key Lesson**: Same prompt, different behavior. GPT-5 is more cost-efficient; Qwen3-Coder is more thorough but expensive.
@@ -672,7 +672,7 @@ graph TB
         B6 -.->|Guaranteed to check all| B7[✓ 100% Coverage]
     end
     
-    style A7 fill:#FFD700
+    style A7 fill:#AB974F
     style B7 fill:#27AE60,color:#fff
 ```
 
@@ -818,7 +818,7 @@ graph LR
     C --> D[Read 50 clauses]
     D --> E[⚠️ Risk: Missed context-dependent mentions]
     
-    style E fill:#FFD700
+    style E fill:#AB974F
 ```
 
 **Problems**:
@@ -1046,7 +1046,7 @@ graph TD
     style C1 fill:#27AE60,color:#fff
     style E1 fill:#4A90E2,color:#fff
     style F1 fill:#9B59B6,color:#fff
-    style G1 fill:#FFD700
+    style G1 fill:#AB974F
 ```
 
 ### ✓ Use RLMs When:
