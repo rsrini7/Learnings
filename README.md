@@ -29,6 +29,8 @@
 - [Persistent Memory Layers AI Agents](AI-ML/Persistent-Memory-Layers-AI-Agents.md)
 - [LLM Inference Engines](AI-ML/InferenceEngines.md)
 - [AI and the Barbell Economy](AI-ML/AI-and-the-Barbell-Economy.md)
+- [Confucius Code Agent](AI-ML/Confucius-Code-Agent.md)
+
 
 ### Protocols
 - [Universal Commerce Protocol](AI-ML/Protocols/UCP.md)
