@@ -4,6 +4,9 @@
 
 The Universal Commerce Protocol (UCP) is an open-source standard launched by Google in January 2026 that enables AI agents to handle end-to-end shopping tasks through a standardized interface. By providing a common language for AI agents, retailers, and payment systems, UCP solves the critical N×N integration problem where every agent previously required custom integration with every merchant. This whitepaper provides comprehensive technical guidance for implementing UCP in production systems.
 
+
+![UCP](assets/UCP.png)
+
 ## 1. Introduction
 
 ### 1.1 The Problem: N×N Integration Bottleneck
