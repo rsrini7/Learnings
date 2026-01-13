@@ -2,20 +2,13 @@
 
 **Detailed Docs**: 
 
-[VL-JEPA-The-Complete-Guide.md](VL-JEPA/VL-JEPA-The-Complete-Guide.md)
+[Joint Embedding Predictive Architectures (JEPA) for Vision, Video, and Vision–Language.pdf](VL-JEPA/JEPA-for-Vision,-Video,-and-Vision–Language.pdf)
 
-[VL-JEPA-Whitepaper.md](VL-JEPA/VL-JEPA-Whitepaper.md)
+[JEPA-Models-VL-JEPA-I-JEPA-V-JEPA-Nvidia-Cosmos.pdf](VL-JEPA/JEPA-Models-VL-JEPA-I-JEPA-V-JEPA-Nvidia-Cosmos.pdf)
 
-[VL-JEPA_A_Unified_Vision-Language_Architecture.md](VL-JEPA/VL-JEPA_A_Unified_Vision-Language_Architecture.md)
+[VL-JEPA.html](VL-JEPA/VL-JEPA.html)
 
-[VL-JEPA-Summaries.md](VL-JEPA/VL-JEPA-Summaries.md)
-
-[VL-JEPA.html](./docs/VL-JEPA.html)
-
-[Joint Embedding Predictive Architectures (JEPA) for Vision, Video, and Vision–Language.pdf](docs/JEPA-for-Vision,-Video,-and-Vision–Language.pdf)
-
-
-[JEPA-Models-VL-JEPA-I-JEPA-V-JEPA-Nvidia-Cosmos.pdf](docs/JEPA-Models-VL-JEPA-I-JEPA-V-JEPA-Nvidia-Cosmos.pdf)
+[VL-JEPA-Comprehensive-Technical-Guide.md](VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide.md)
 
 ## WHAT IS VL-JEPA?
 
