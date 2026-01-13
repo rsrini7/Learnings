@@ -30,6 +30,9 @@
 - [LLM Inference Engines](AI-ML/InferenceEngines.md)
 - [AI and the Barbell Economy](AI-ML/AI-and-the-Barbell-Economy.md)
 
+### Protocols
+- [Universal Commerce Protocol](AI-ML/Protocols/UCP.md)
+
 ### Programming
 - [DSPy](AI-ML/Programming/DSPy.md)
 - [BAML](AI-ML/Programming/BAML.md)

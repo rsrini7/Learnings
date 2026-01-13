@@ -267,7 +267,3 @@ It represents the emerging post-LLM era where AI systems are optimized for their
 | **Key Advantage** | 2× faster learning, 50% fewer params, 2.85× faster inference |
 | **Best For** | Real-time video understanding, efficient scaling, causal reasoning |
 | **Not Best For** | Multi-step reasoning, knowledge retrieval, tool planning |
-
-**For Technical Deep Dive**: See main VL-JEPA whitepaper
-**For Simplified Overview**: See simplified summaries document
-**For Your Research**: Start with benchmark results and ablation studies
