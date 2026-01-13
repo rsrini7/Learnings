@@ -31,7 +31,7 @@
 - [AI and the Barbell Economy](AI-ML/AI-and-the-Barbell-Economy.md)
 - [Confucius Code Agent](AI-ML/Confucius-Code-Agent.md)
 - [MiroThinker 1.5](AI-ML/MiraThinker-1.5.md)
-
+- [LLM-Council](AI-ML/LLM-Council.md)
 
 ### Protocols
 - [Universal Commerce Protocol](AI-ML/Protocols/UCP.md)
