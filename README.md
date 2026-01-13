@@ -108,9 +108,11 @@
 
 ## Papers Comparisons
 - [Google Nested Learning vs FB Sparce Memory](Papers/comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md)
-- [VL-JEPA vs transformers vs diffusion models](Papers/comparisons/VL-JEPA-vs-transformers-vs-diffusion-models.md)
-- [VL-JEPA vs Mamba-3](Papers/comparisons/VL-JEPA-vs-Mamba-3.md)
-- [VLA-LLM-VLM-VL-JEPA](Papers/comparisons/VLA-LLM-VLM-VL-JEPA.md)
+
+### VL-JEPA Comparisons
+- [VL-JEPA vs transformers vs diffusion models](Papers/VL-JEPA/comparisons/VL-JEPA-vs-transformers-vs-diffusion-models.md)
+- [VL-JEPA vs Mamba-3](Papers/VL-JEPA/comparisons/VL-JEPA-vs-Mamba-3.md)
+- [VLA-LLM-VLM-VL-JEPA](Papers/VL-JEPA/comparisons/VLA-LLM-VLM-VL-JEPA.md)
 
 ## ProgrammingLanguages
 
