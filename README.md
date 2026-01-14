@@ -15,7 +15,6 @@
 - [Unified Agent Context Framework](AI-ML/Unified-Agent-Context-Framework.md)
 - [Agent-Specs vs Rules vs Skills](AI-ML/Agent-Specs-vs-Rules-vs-Skills.md)
 - [Agent SDD UACF SKILLS Comprehensive Comparative Analysis](AI-ML/Agent-sdd-uacf-skills-comparison.md)
-- [WorldModels vs LLMs](AI-ML/WorldModels-vs-LLMs.md)
 - [NVIDIA Open Models CES 2026](AI-ML/NVIDIA-Open-Models-CES-2026.md)
 - [Claude Ralph Loop](AI-ML/Claude-Ralph-Loop.md)
 - [Claude Ralph Loop and Agent Ralph Mode](AI-ML/ClaudeRalphLoop-and-AgentRalphMode.md)

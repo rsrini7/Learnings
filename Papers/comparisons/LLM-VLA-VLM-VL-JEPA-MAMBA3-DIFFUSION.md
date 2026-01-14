@@ -1,10 +1,8 @@
 # Comprehensive AI Architecture Comparison Guide
 
-A clean, consolidated comparison of modern AI architectures: VL-JEPA, Mamba-3, Transformers, Diffusion Models, and VLA systems.
+Modern AI architectures: VL-JEPA, Mamba-3, Transformers, Diffusion Models, VLA systems, and Nvidia Cosmos World Models.
 
----
-
-## Core Philosophy: What Does Each Architecture Optimize?
+## Core Philosophy: What Does Each Architecture Optimize? {#core-philosophy}
 
 ```mermaid
 graph TD
@@ -15,25 +13,27 @@ graph TD
     B --> E[Pixels/Noise<br/>Diffusion Models]
     B --> F[Semantic Embeddings<br/>VL-JEPA]
     B --> G[Robot Actions<br/>VLA Models]
+    B --> H[Physics-Based Video<br/>Nvidia Cosmos]
     
-    C --> H["Attention O(n²)<br/>Transformers"]
-    C --> I["State Space O(n)<br/>Mamba-3"]
+    C --> I["Attention O(n²)<br/>Transformers"]
+    C --> J["State Space O(n)<br/>Mamba-3"]
     
     style F fill:#902E90
-    style I fill:#872EEB
+    style J fill:#872EEB
 ```
 
 ---
 
 ## 1. Quick Architecture Overview
 
-| Architecture | Main Purpose | Key Innovation | Speed Focus |
-|-------------|--------------|----------------|-------------|
-| **Transformers** | General text/image understanding | Self-attention mechanism | Slow (O(n²)) |
-| **VL-JEPA** | Efficient vision-language understanding | Predict concepts, not tokens | Very Fast (single pass) |
-| **Mamba-3** | Long sequence processing | Linear-time state tracking | Fast (O(n)) |
-| **Diffusion Models** | High-quality image/video generation | Iterative denoising | Very Slow (100s of steps) |
-| **VLA Models** | Robot control from vision+language | Action generation from VLMs | Moderate (real-time capable) |
+| Architecture | Main Purpose | Key Innovation | Speed Focus | Released |
+|-------------|--------------|----------------|-------------|----------|
+| **Transformers** | General text/image understanding | Self-attention mechanism | Slow (O(n²)) | 2017 |
+| **VL-JEPA** | Efficient vision-language understanding | Predict concepts, not tokens | Very Fast (single pass) | Dec 2025 |
+| **Mamba-3** | Long sequence processing | Linear-time state tracking | Fast (O(n)) | Nov 2025 |
+| **Diffusion Models** | High-quality image/video generation | Iterative denoising | Very Slow (100s of steps) | 2020s |
+| **VLA Models** | Robot control from vision+language | Action generation from VLMs | Moderate (real-time capable) | 2023+ |
+| **Nvidia Cosmos** | Physical AI world simulation | Physics-based video generation | Moderate (pixel generation) | Jan 2025 |
 
 ---
 
@@ -216,6 +216,7 @@ graph LR
 - 2× better learning efficiency (same data/compute)
 - 2.85× fewer decoding operations in streaming
 - Excels at world modeling (beats GPT-4o on inverse dynamics)
+- State-of-the-art on Perception Test and TempCompass benchmarks
 
 **VL-JEPA Weaknesses:**
 - Not for multi-step symbolic reasoning
@@ -280,7 +281,7 @@ graph TD
     G --> D
 ```
 
-**Example:** π0.5 (Physical Intelligence)
+**Examples:** π0.5 (Physical Intelligence), Helix (Figure AI), GR00T N1 (NVIDIA)
 
 **How It Works:**
 - **System 2 (Slow):** VLM reasons at 1 Hz, decomposes task into steps
@@ -311,7 +312,7 @@ graph TD
     D --> E[Robot Actions]
 ```
 
-**Examples:** CLIPort, SpatialVLA
+**Examples:** CLIPort, SpatialVLA, CoA-VLA
 
 **Intermediate Representations:**
 - **Keypoints:** "Hand should go to (x, y, z)"
@@ -395,7 +396,245 @@ Chunk 1: [a₁, a₂, ..., a₃₀]
 
 ---
 
-## 5. Consolidated Use-Case Matrix
+### Major VLA Models (2025)
+
+**OpenVLA (Stanford)**
+- 7B parameters, open-source
+- Trained on 970k robot episodes (Open X-Embodiment)
+- 22 different robot embodiments
+- Strong baseline for research
+
+**π₀ (Physical Intelligence)**
+- Flow-matching based
+- 50 Hz action generation
+- ~97% simulation success
+- 60-90% real-world success
+
+**Helix (Figure AI)**
+- First VLA for full humanoid upper body control
+- Dual-system architecture (7B + 80M parameters)
+- ~500 hours training data
+- Runs on embedded low-power GPUs
+
+**GR00T N1 (NVIDIA)**
+- Humanoid-focused VLA
+- Heterogeneous training data (robots, humans, synthetic)
+- Dual-system architecture
+- Released March 2025
+
+**SmolVLA (Hugging Face)**
+- 450M parameters
+- Compact, democratized access
+- Trained on LeRobot dataset
+- Consumer hardware compatible
+
+**Gemini Robotics (Google DeepMind)**
+- Built on Gemini 2.0
+- Highly dexterous (origami folding, card playing)
+- Cross-platform generalization
+- On-device version available (June 2025)
+
+---
+
+## 5. World Models: JEPA Family vs Nvidia Cosmos
+
+### What Are World Models?
+
+World models let AI **imagine** and predict how the real world changes over time, like simulating what happens if you drop a ball (it falls due to gravity). LLMs are not true world models—they're great at predicting the next word in text but don't natively represent physics, space, or causal dynamics of the physical world.
+
+### Simple World Model Analogy
+
+Think of a world model like a video game engine inside an AI system. It builds a compact internal version of reality from videos/images/sensors and then runs "what-if" simulations: "If I push this block left, where does it roll?" This enables robots or agents to plan safely in imagination before acting in the real world.
+
+---
+
+### Why LLMs Aren't World Models
+
+- LLMs predict text patterns from internet-scale corpora (e.g., "rain follows clouds" as words), not grounded trajectories like water actually falling and wetting streets
+- They lack an explicit state-transition mechanism; small changes in a scenario can break their "understanding" because it is largely correlational, not a structured causal simulator
+- World models typically use multimodal data (video, 3D scenes, sensors) to learn dynamics; LLMs are text-first **statisticians**, not **simulators** of physical state
+
+---
+
+### Core Differences: World Models vs LLMs
+
+| Aspect | World Models | LLMs |
+|--------|--------------|------|
+| **Predicts** | Next real-world state (object motion, scene evolution) | Next word/token in text sequence |
+| **Data** | Videos, images, 3D scenes, robot sensors | Massive text/code corpora |
+| **Strength** | Planning, robotics, "imagination" of futures | Language tasks, reasoning, coding |
+| **Weakness** | Needs large-scale real-world data; compute-heavy | No built-in physical causality; brittle with novel dynamics |
+
+---
+
+### JEPA: World Models via Latent Prediction
+
+JEPA (Joint Embedding Predictive Architecture) is Yann LeCun's design for learning world models by predicting abstract **representations** of future data instead of reconstructing pixels, yielding much more efficient and stable learning.
+
+#### Intuition
+
+Imagine watching a ball bounce in a video. A pixel-level generative model tries to predict every pixel of the next frame, including random lighting flicker and background noise, which are fundamentally unpredictable and task-irrelevant. JEPA instead compresses the scene into a latent summary (e.g., "ball at position X, moving right with velocity v"), and predicts the next latent ("ball lower, still moving"). This focuses on predictable structure (dynamics, identities, motion) and ignores high-frequency noise, making scaling far easier.
+
+#### Core Components
+
+- **Context encoder:** Encodes visible part of input into latent representation
+- **Target encoder:** Encodes masked/hidden or future part into target latent
+- **Predictor network:** Maps from context latent to target latent
+- **Stop-gradient:** Prevents trivial collapse, forces genuine semantic structure
+
+---
+
+### JEPA Family
+
+#### I-JEPA (Image JEPA)
+
+- Operates on static images: masks out patches and predicts their abstract features
+- Removes need for heavy data augmentations
+- Produces robust high-level visual representations
+
+#### V-JEPA and V-JEPA 2 (Video JEPA)
+
+**V-JEPA 2 Specifications:**
+- 1.2 billion parameters
+- Trained on ~22M videos (up from 2M in V-JEPA)
+- Uses 3D rotary positional embeddings
+- 252k training iterations
+- Progressive higher-resolution training (8.4× GPU efficiency gain)
+- 77.3% top-1 on Something-Something V2
+- Released: June 2025
+
+**Key Capabilities:**
+- Predicts spatiotemporal dynamics from masked video segments
+- Zero-shot robot planning in new environments
+- Trained on 62 hours of robot data (Droid dataset)
+- Accomplishes reaching, grasping, pick-and-place tasks
+
+#### V-JEPA 2-AC: Action-Conditioned World Model
+
+- Takes pretrained V-JEPA 2 encoder (frozen)
+- ~300M-parameter predictor for control
+- Input: encoded frames + robot state + candidate actions
+- Uses model predictive control (MPC) in latent space
+- ~80% zero-shot success on manipulation tasks
+- **~15× faster than Nvidia Cosmos** (16 seconds vs 4 minutes per action)
+
+#### VL-JEPA (Vision-Language JEPA)
+
+**Released:** December 2025
+
+**Architecture:**
+- Combines V-JEPA 2 visual encoder with text-based predictor
+- Predicts continuous text **embeddings** (not tokens)
+- 1.6B parameters total
+- Uses bidirectional contrastive losses (InfoNCE/E-loss)
+- Trained on 90M video-text pairs (scaled from 18M)
+
+**Performance:**
+- State-of-the-art in ~8B parameter regime
+- Beats comparable VLMs with 50% fewer trainable parameters
+- Outperforms GPT-4o on world modeling benchmarks
+- 2.85× fewer decoding operations in streaming video
+- Excels on Perception Test and TempCompass
+
+**Capabilities:**
+- Open-vocabulary classification
+- Text-to-video retrieval
+- Discriminative VQA
+- Video question answering
+- World modeling and inverse dynamics
+
+---
+
+### Nvidia Cosmos World Foundation Models
+
+**Released:** January 2025 (CES)
+**Major Update:** March 2025 (GTC)
+
+#### Overview
+
+NVIDIA Cosmos is a platform of generative world foundation models (WFMs) designed for physical AI development (autonomous vehicles, robots).
+
+**Training Data:**
+- 20 million hours of video
+- 9,000 trillion tokens
+- Real-world human interactions, robotics, driving data
+
+#### Model Categories
+
+1. **Cosmos Predict**
+   - Generate virtual world states from text, images, video
+   - Multi-frame generation (up to 30s)
+   - Predict intermediate actions/motion trajectories
+   - Purpose-built for post-training
+
+2. **Cosmos Transfer**
+   - Photorealistic data from spatial inputs
+   - 3.5× smaller in Transfer 2.5
+   - Faster and higher quality
+   - Generates controllable synthetic data
+
+3. **Cosmos Reason** (March 2025)
+   - 7B-parameter reasoning VLM
+   - Spatiotemporal awareness
+   - Chain-of-thought reasoning
+   - Understands video data and predicts interaction outcomes
+
+#### Model Sizes
+
+- **Nano:** Edge deployment, real-time, low-latency
+- **Super:** High-performance baseline
+- **Ultra:** Maximum quality and fidelity (4-14B parameters)
+
+#### Key Adopters
+
+1X, Agility Robotics, Figure AI, Skild AI, Foretellix, Uber, Waabi, XPENG
+
+---
+
+### VL-JEPA vs Nvidia Cosmos: Philosophical Difference
+
+**Cosmos (Pixel-Generative Approach):**
+- Must generate every pixel/token of the future
+- Forces model to represent even fundamentally unpredictable details
+- Wastes parameters and compute on irrelevant noise
+- ~4 minutes per robotic action planning
+
+**JEPA Family (Latent Prediction Approach):**
+- Only predicts abstract latent representations
+- Focuses on predictable components: object identities, trajectories, coarse structure
+- Ignores high-frequency noise
+- ~16 seconds per robotic action planning
+- **~15× speedup for practical robotics**
+
+---
+
+### Practical Impact Comparison
+
+| Metric | V-JEPA 2-AC | Nvidia Cosmos |
+|--------|-------------|---------------|
+| **Action Planning Time** | ~16 seconds | ~4 minutes |
+| **Speedup** | **15× faster** | Baseline |
+| **Approach** | Latent space planning | Pixel-level rollout |
+| **Zero-shot Success** | ~80% manipulation | Not reported |
+| **Parameters** | 1.2B encoder + 300M predictor | 4-14B (varies) |
+| **Best Use** | Real-time robotics, planning | Synthetic data generation, simulation |
+
+---
+
+### World Model Family Comparison
+
+| Model | Core Focus | Key Strength | Domain | Release |
+|-------|-----------|--------------|---------|---------|
+| **I-JEPA** | Image latent prediction | Efficient self-supervised vision | Images | 2023 |
+| **V-JEPA 2** | Video world modeling | Physical reasoning, zero-shot robotics | Video, robotics | June 2025 |
+| **VL-JEPA** | Vision-language understanding | Semantic prediction, 50% fewer parameters | Video + language | Dec 2025 |
+| **Cosmos** | Physics-based video generation | Massive synthetic data generation | Physical AI, AVs | Jan 2025 |
+| **DreamerV3** | RL world simulation | Sample-efficient planning | Games, control | 2023 |
+| **Genie 3** | Interactive environments | Diverse simulated 2D worlds | Games, embodied AI | 2024 |
+
+---
+
+## 6. Consolidated Use-Case Matrix
 
 | Task | Best Choice | Reason |
 |------|-------------|--------|
@@ -406,22 +645,27 @@ Chunk 1: [a₁, a₂, ..., a₃₀]
 | **Long Documents (100k+ tokens)** | Mamba-3 | Linear time, fixed memory |
 | **Simple Robot Tasks** | Single-System VLA | Easy deployment, good generalization |
 | **Complex Robot Tasks** | Dual-System VLA | Reasoning + real-time control |
+| **Humanoid Robots** | Helix, GR00T N1 | Full-body control, dexterous manipulation |
 | **Explainable Robotics** | Hierarchical VLA | Interpretable intermediate steps |
-| **World Modeling (planning)** | VL-JEPA | Concept-space planning (inverse dynamics) |
+| **World Modeling (planning)** | VL-JEPA, V-JEPA 2-AC | Concept-space planning, 15× faster |
+| **Synthetic Data Generation** | Nvidia Cosmos | Physics-based video at scale |
 | **Creative Content** | Diffusion + Transformer | Generation quality + text control |
+| **Autonomous Vehicles** | Cosmos + VLA hybrid | Simulation + control |
 
 ---
 
-## 6. Training & Deployment Quick Reference
+## 7. Training & Deployment Quick Reference
 
 ### Data Requirements
 
 | Model Type | Training Data | Fine-Tuning Data | Training Time |
 |-----------|--------------|------------------|---------------|
-| **VL-JEPA** | 10M+ image-text pairs | 100k pairs | Days on 8 GPUs |
-| **Mamba-3** | Same as transformers (billions of tokens) | Task-specific | Weeks on cluster |
+| **VL-JEPA** | 90M video-text pairs | 100k pairs | Days on 8 GPUs |
+| **V-JEPA 2** | 22M videos | Task-specific | Weeks on cluster |
+| **Mamba-3** | Billions of tokens | Task-specific | Weeks on cluster |
 | **VLA (pre-training)** | 700+ hours robot demos | 50-100 demos | 2 weeks on 24 nodes |
 | **VLA (fine-tuning)** | Pre-trained checkpoint | 50-100 demos | 30 min - 2 hrs (1 GPU) |
+| **Cosmos** | 20M hours video | Custom datasets | Weeks on DGX cluster |
 
 ---
 
@@ -432,6 +676,7 @@ Chunk 1: [a₁, a₂, ..., a₃₀]
 - 2× better learning curves
 - 2.85× fewer decoding operations
 - Outperforms GPT-4o on world modeling benchmarks
+- State-of-the-art on Perception Test and TempCompass
 
 **Mamba-3 (vs transformers):**
 - 5× faster on long sequences (100k tokens)
@@ -439,59 +684,227 @@ Chunk 1: [a₁, a₂, ..., a₃₀]
 - Matches or beats 2× larger transformers
 - 100% accuracy on tasks Mamba-2 failed
 
-**VLA (π0.5):**
+**VLA (π₀):**
 - ~97% simulation success rate
 - 60-90% real-world success (task-dependent)
 - 50 Hz real-time control
 - Generalizes across 50+ tasks
 
+**V-JEPA 2-AC (vs Cosmos):**
+- 15× faster action planning (16s vs 4 min)
+- ~80% zero-shot manipulation success
+- Runs in latent space (not pixels)
+
+**Nvidia Cosmos:**
+- 8× better compression (tokenizer)
+- 12× faster processing vs leading tokenizers
+- 20M hours video processed in 14 days (Blackwell platform)
+
 ---
 
-## 7. Future Directions
+## 8. Future Directions
 
 ### Emerging Trends
 
 1. **VL-JEPA for Robotics**
    - Apply embedding prediction to action generation
    - Could combine efficiency with control
+   - Potential for real-time embodied AI
 
 2. **Hybrid Architectures**
    - Mamba backbone + attention patches (retrieval)
    - VL-JEPA objective + Mamba processing
+   - Transformer + SSM combinations (Jamba, Bamba)
 
 3. **Multimodal Perception**
    - Vision + tactile + audio
    - Better feedback control
+   - Richer world representations
 
-4. **Memory & Learning**
+4. **Hierarchical World Models**
+   - Multiple time scales (from milliseconds to hours)
+   - Break down complex tasks into steps
+   - Better long-horizon planning
+
+5. **Memory & Learning**
    - Episodic memory (learn from failures)
    - Few-shot adaptation (<50 examples)
+   - Continual learning without forgetting
+
+6. **Agentic VLA Frameworks**
+   - LLM planners with VLA skills as verifiable tools
+   - Closed feedback loops for adaptive control
+   - Self-improving robotic systems
 
 ---
 
-## 8. Key Takeaways (Simple English)
+## 9. Key Takeaways
+
+### Simple English Summary
 
 1. **Transformers:** Great at reasoning and text, but slow and wasteful for perception tasks
 
 2. **VL-JEPA:** Fast and efficient vision-language understanding by predicting concepts instead of tokens
+   - 50% fewer parameters than comparable VLMs
+   - 2.85× fewer operations in streaming
+   - Beats GPT-4o on world modeling
 
 3. **Mamba-3:** Handles very long sequences efficiently (linear time instead of quadratic)
+   - 5× faster on 100k+ token sequences
+   - Perfect accuracy on tasks Mamba-2 failed
 
 4. **Diffusion:** Best image quality, but very slow (hundreds of steps per image)
+   - Used for creative and artistic content
+   - Not suitable for real-time applications
 
 5. **VLAs:** Robots that understand language and vision, then act
-   - Single-system: Simple but limited
-   - Dual-system: Best for complex tasks (current state-of-the-art)
-   - Hierarchical: Most interpretable
+   - **Single-system:** Simple but limited (OpenVLA, RT-2)
+   - **Dual-system:** Best for complex tasks - current state-of-the-art (π₀, Helix, GR00T)
+   - **Hierarchical:** Most interpretable (CLIPort, SpatialVLA)
 
-6. **VL-JEPA + Mamba-3:** Could combine efficiency (embeddings) with long-context handling
+6. **World Models (JEPA vs Cosmos):**
+   - **JEPA:** Predicts abstract representations (15× faster for robotics)
+   - **Cosmos:** Generates full pixels (better for simulation/synthetic data)
 
-7. **Practical Advice:** 
-   - Use transformers for reasoning
-   - Use VL-JEPA for real-time perception
+7. **Practical Advice:**
+   - Use transformers for reasoning and text generation
+   - Use VL-JEPA for real-time perception and world modeling
    - Use dual-system VLAs for robot control
    - Use Mamba-3 when context length is critical
+   - Use Cosmos for synthetic data generation and physical AI simulation
 
 ---
 
-**The Big Picture:** We're moving from "predict every pixel/token" to "predict only what matters (concepts)." This makes AI faster, cheaper, and better at real-world tasks.
+### The Big Picture
+
+We're moving from **"predict every pixel/token"** to **"predict only what matters (concepts)."**
+
+This shift makes AI:
+- **Faster:** 15× speedup in robotics planning
+- **Cheaper:** 50% fewer parameters needed
+- **Better:** Focus on semantics, not surface details
+- **More practical:** Real-time capable for embodied AI
+
+---
+
+## 10. Embodied AI Context
+
+**Embodied AI** refers to artificial intelligence integrated into physical bodies (robots, drones, autonomous vehicles). This allows AI to perceive, learn, and act directly in the real world through sensors and actuators.
+
+### Key Characteristics
+
+- **Physical Presence:** Exists in physical form, not just software
+- **Sensory Interaction:** Uses cameras, LIDAR, tactile sensors for real-time data
+- **Action & Learning:** Translates perceptions into physical actions
+- **Real-World Adaptation:** Navigates complex, dynamic environments
+
+### Applications
+
+- Autonomous vehicles (Uber, Waabi, XPENG with Cosmos)
+- Surgical robots (dexterous manipulation)
+- Warehouse automation (Amazon, 1X)
+- Humanoid robots (Figure AI Helix, NVIDIA GR00T)
+- Household assistance (folding laundry, cleaning)
+
+### Why World Models Matter for Embodied AI
+
+Traditional AI processes data and makes predictions. Embodied AI extends this to **physical interaction** — moving from "knowing" to "doing" in the physical world. World models like JEPA and Cosmos enable this by:
+
+1. **Planning before acting:** Simulate outcomes in "imagination"
+2. **Learning physics:** Understand gravity, friction, object dynamics
+3. **Generalizing:** Apply knowledge across environments
+4. **Real-time adaptation:** React to unexpected changes
+
+---
+
+## Complete Technology Timeline
+
+| Date | Technology | Organization | Significance |
+|------|-----------|--------------|--------------|
+| 2017 | Transformers | Google | Attention mechanism foundation |
+| 2020s | Diffusion Models | Various | High-quality generation |
+| 2023 | I-JEPA | Meta AI | Image world models |
+| 2023 | RT-2 | Google DeepMind | First vision-language-action model |
+| 2023 | DreamerV3 | Various | RL world models |
+| 2024 | Mamba-2 | Carnegie Mellon | State space models |
+| 2024 | OpenVLA | Stanford | Open-source VLA baseline |
+| Jan 2025 | Nvidia Cosmos | NVIDIA | Physical AI world models |
+| March 2025 | Cosmos Reason | NVIDIA | Spatiotemporal reasoning |
+| March 2025 | GR00T N1 | NVIDIA | Humanoid VLA |
+| June 2025 | V-JEPA 2 | Meta AI | Scalable video world models |
+| June 2025 | Helix | Figure AI | Full humanoid control |
+| Nov 2025 | Mamba-3 | Carnegie Mellon | Improved SSM expressivity |
+| Dec 2025 | VL-JEPA | Meta AI | Vision-language world models |
+
+---
+
+## References & Resources
+
+### Original Research
+
+- **JEPA Family:** [Meta AI JEPA Models](https://ai.meta.com/research/jepa/)
+- **V-JEPA 2:** Meta AI Technical Report, June 2025
+- **VL-JEPA:** Meta AI Technical Report, December 2025
+- **Mamba-3:** Carnegie Mellon, November 2025
+- **Nvidia Cosmos:** NVIDIA Developer Blog, January 2025
+
+### Key Papers
+
+- "Joint Embedding Predictive Architecture" (LeCun et al.)
+- "V-JEPA: Latent Video Prediction for Visual Representation Learning"
+- "VL-JEPA: Vision-Language Joint Embedding for Efficient Multimodal Understanding"
+- "Mamba: Linear-Time Sequence Modeling with Selective State Spaces"
+- "RT-2: Vision-Language-Action Models Transfer Web Knowledge to Robotic Control"
+- "OpenVLA: An Open-Source Vision-Language-Action Model"
+
+### Additional Documentation
+
+- [NVIDIA Cosmos Platform](https://developer.nvidia.com/cosmos)
+- [OpenVLA GitHub](https://github.com/openvla)
+- [Physical Intelligence Blog](https://physicalintelligence.company/)
+- [Figure AI Research](https://www.figure.ai/)
+
+---
+
+## Glossary
+
+**Action Chunking:** Predicting multiple future actions at once, then overlapping predictions for smooth motion
+
+**BPE (Byte-Pair Encoding):** Compression technique that merges frequently occurring token sequences
+
+**DCT (Discrete Cosine Transform):** Frequency-based compression used in JPEG, effective for smooth signals
+
+**Embodied AI:** AI integrated into physical bodies (robots, vehicles) that perceive and act in the real world
+
+**JEPA (Joint Embedding Predictive Architecture):** Learning framework that predicts abstract representations instead of raw data
+
+**Latent Space:** Compressed, abstract representation of data (e.g., "ball moving right" instead of pixels)
+
+**MPC (Model Predictive Control):** Planning technique that searches over action sequences to minimize cost
+
+**SSM (State Space Model):** Mathematical framework for sequence modeling with linear-time complexity
+
+**Stop-Gradient:** Training technique that freezes part of a network to prevent trivial solutions
+
+**VLA (Vision-Language-Action):** Models that understand images and text, then generate robot actions
+
+**VLM (Vision-Language Model):** Models that process both images and text for understanding/generation
+
+**World Model:** AI system that simulates how environments evolve over time (physics, dynamics, causality)
+
+**Zero-Shot:** Performing tasks without specific training examples (generalization from pre-training)
+
+---
+
+## License & Attribution
+
+This guide synthesizes information from:
+- Meta AI Research (JEPA family)
+- NVIDIA Developer Documentation (Cosmos)
+- Carnegie Mellon University (Mamba-3)
+- Stanford University (OpenVLA)
+- Physical Intelligence (π₀)
+- Figure AI (Helix)
+- Google DeepMind (RT-2, Gemini Robotics)
+
+All trademarks and product names are property of their respective owners.
