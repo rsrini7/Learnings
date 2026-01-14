@@ -38,6 +38,8 @@ This whitepaper provides developers and architects with a comprehensive understa
 
 ---
 
+Ref: [LLM-Inference.md](LLM-Inference.md)
+
 ## Table of Contents
 
 1. [Understanding LLM Inference: Fundamentals](#1-understanding-llm-inference-fundamentals)
