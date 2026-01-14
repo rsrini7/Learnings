@@ -34,20 +34,28 @@ Benchmarks provide scores (usually percentages) to compare models objectively. T
 ### General knowledge & reasoning
 
 - **MMLU (Massive Multitask Language Understanding) / MMLU Pro**: Massive multitask multiple‑choice exam over 57+ subjects (STEM, humanities, social sciences). Measures academic and professional knowledge; final score is averaged per category then across all categories.
-- **ARC (AI2 Reasoning Challenge)**: Science questions (grades ~3–9) with an “easy” and “challenge” split; widely used for standardized reasoning evaluation and example of how to run your own eval via lm‑evaluation‑harness.
-- **TruthfulQA, Winogrande, HellaSwag, GSM8K, GPQA, AIME, AGIEval, BigBench/BBH**: Focus on truthfulness, commonsense, plausible continuations, grade‑school math, graduate‑level science, exam‑style reasoning, and “hard” language tasks respectively.
-- **GSM8K:** High-school level math word problems that require step-by-step thinking.
-- **HumanEval:** Tests if an AI can write a small, working piece of Python code from a text description.
-- **GPQA:** Extremely hard science questions written by experts. Even humans with Google struggle to answer these, but top AIs are starting to excel here.
+- **ARC (AI2 Reasoning Challenge) / ARC-C**: Science questions (grades ~3–9) with an "easy" and "challenge" split (ARC-C); widely used for standardized reasoning evaluation and example of how to run your own eval via lm‑evaluation‑harness.
+- **HellaSwag**: Evaluates commonsense natural language inference by requiring models to select the most plausible continuation of a given scenario. Tests common sense reasoning about everyday situations.
+- **Winogrande**: Tests commonsense reasoning through pronoun resolution problems. Models must understand context and relationships to correctly identify what pronouns refer to.
+- **TruthfulQA**: Measures whether models produce truthful answers to questions that some humans might answer incorrectly due to misconceptions or false beliefs.
+- **GSM8K**: Grade-school level math word problems that require step-by-step thinking and arithmetic reasoning. Tests basic mathematical problem-solving abilities.
+- **GPQA / GPQA-Diamond**: Extremely hard graduate-level science questions written by domain experts. Even humans with Google struggle to answer these, but top AIs are starting to excel here. GPQA-Diamond is the most challenging subset.
+- **AIME / AIME 2025**: Based on the American Invitational Mathematics Examination, a notoriously difficult math competition. Tests multi-step symbolic reasoning with problems requiring exact correctness.
+- **AGIEval, BigBench/BBH**: Focus on exam‑style reasoning and "hard" language tasks respectively.
 - **MMLU-Pro**: Harder version with more reasoning required.
-- **LiveBench / WildBench**: Newer tests using fresh questions (from recent news/contests) to avoid cheating.
+- **LiveBench / WildBench**: Newer tests using fresh questions (from recent news/contests) to avoid contamination. LiveBench releases new questions monthly with objective ground-truth answers.
 
 ***
 
 ### Coding and tool‑use benchmarks
 
-- **SWE‑Bench / SWE‑Bench Verified**: Tests whether a model can read real GitHub issues and generate code patches that pass tests; contamination is a concern, so “verified” or post‑cutoff suites are preferred.
-- **HumanEval, LiveCodeBench, BigCodeBench**: Measure code generation and problem solving on curated coding tasks and programming challenges.
+- **SWE‑Bench**: Tests whether a model can read real GitHub issues and generate code patches that pass tests; contamination is a concern, so "verified" or post‑cutoff suites are preferred.
+- **HumanEval**: Tests if an AI can write a small, working piece of Python code from a text description. Measures basic code generation capability with pass@1 metric.
+- **LiveCodeBench**: Holistic and contamination-free evaluation that continuously collects new coding problems over time. Focuses on broader code-related capabilities including self-repair, code execution, test output prediction, and code generation. Problems are sourced from LeetCode and AtCoder competitions.
+- **OJBench**: Tests raw algorithmic skill using problems from online judges like LeetCode or Codeforces. Focuses on precision and performance under strict runtime constraints, edge cases, and optimization—closer to competitive programming.
+- **BigCodeBench**: Measures code generation and problem solving on curated coding tasks and programming challenges.
+- **Tau-2 Bench (τ-bench)**: Focuses on advanced reasoning tasks like planning, multi-step problem solving, and tool use in coding contexts.
+- **AceBench (ACEBench)**: Evaluates LLMs on comprehensive software engineering tasks including implementing features, refactoring code, and debugging across large codebases. Simulates realistic end-to-end engineering workflows including both front-end and back-end logic.
 - **Tool‑usage reliability / function‑calling benchmarks** (e.g., Gorilla function calling, tool‑use leaderboards): Measure how reliably a model calls tools/APIs in multi‑tool setups such as MCP‑heavy agents.
 
 ***
@@ -63,7 +71,7 @@ Benchmarks provide scores (usually percentages) to compare models objectively. T
 | Specialized      | Coding leaderboards, function‑calling boards | SWE‑Bench, HumanEval, tool‑use suites | Depth in one capability like coding or tools. |
 
 - Benchmarks can be run in **zero‑shot** or **few‑shot** modes; adding examples usually raises scores and needs to be matched when comparing models.
-- Tools like **EleutherAI’s lm‑evaluation‑harness** standardize how tasks like MMLU or ARC are run (prompt templates, number of shots, scoring) so results are more comparable across models.
+- Tools like **EleutherAI's lm‑evaluation‑harness** standardize how tasks like MMLU or ARC are run (prompt templates, number of shots, scoring) so results are more comparable across models.
 
 Leaderboards rank models using multiple benchmarks:
 
@@ -80,7 +88,7 @@ Research shows there are two main "flavors" of testing:
 | Feature | **Static Benchmarks** (The "Fixed Test") | **Live Leaderboards** (The "Crowd Test") |
 | --- | --- | --- |
 | **How it works** | A set list of questions and answers. | Humans chat with two AIs and vote for the better one. |
-| **Example** | MMLU, HumanEval | **LMSYS Chatbot Arena** |
+| **Example** | MMLU, HumanEval, GSM8K, ARC-C | **LMSYS Chatbot Arena** |
 | **Pros** | Fast, cheap, and repeatable. | Hard to "cheat"; reflects real-world use. |
 | **Cons** | AI might "memorize" the answers during training. | Subjective; depends on human opinion. |
 
@@ -88,13 +96,13 @@ Research shows there are two main "flavors" of testing:
 
 ## Current Challenges
 
-As AI gets smarter, our tests are facing two major problems:
+As AI gets smarter, our tests are facing major problems:
 
 1. **Contamination ("Teaching to the Test"):** Because AI models are trained on the whole internet, they often "see" the exam questions before they take them. This makes their scores look better than they actually are.
-* *Solution:* Researchers now use **"Canary Strings"** (hidden text codes) to tell AI trainers to keep test data out of the training set.
+* *Solution:* Researchers now use **"Canary Strings"** (hidden text codes) to tell AI trainers to keep test data out of the training set. Benchmarks like LiveBench and LiveCodeBench release new questions continuously to avoid contamination.
 
 2. **Saturation:** Top models are getting nearly 90-100% on old tests (like MMLU). This makes the tests too easy to tell which model is actually better.
-* *Solution:* New "Frontier" tests like **Humanity's Last Exam (HLE)** and **ARC-AGI** are being created to be much more difficult.
+* *Solution:* New "Frontier" tests like **Humanity's Last Exam (HLE)**, **ARC-AGI**, **GPQA-Diamond**, and **AIME 2025** are being created to be much more difficult.
 
 3. **Benchmark Gaming**: Companies train specifically on benchmark styles.
 
@@ -115,18 +123,20 @@ flowchart LR
 
 ## Recent Improvements (2024-2026)
 
-- **Contamination-free tests**: LiveBench, Arena-Hard, and others use new questions monthly.
+- **Contamination-free tests**: LiveBench, LiveCodeBench, Arena-Hard, and others use new questions monthly or continuously.
 - **Human preference leaderboards**: LMSYS Arena focuses on what users actually prefer.
 - **Multi-dimensional evaluation**: New leaderboards measure reasoning depth, tool use, and long-context handling.
+- **Specialized engineering benchmarks**: AceBench and Tau-2 Bench test realistic software development workflows.
+- **Competition-grade challenges**: OJBench, AIME 2025, and GPQA-Diamond push models to their limits with expert-level problems.
 
 ***
 
 ## Strengths, limits, and how to use them
 
 - Strengths:  
-  - Fast model filtering: quickly rule out weak models for a use case (e.g., need math → check GSM8K/AIME; need coding → check SWE‑Bench / HumanEval).
+  - Fast model filtering: quickly rule out weak models for a use case (e.g., need math → check GSM8K/AIME; need coding → check SWE‑Bench / HumanEval / LiveCodeBench).
   - Regression testing: track whether fine‑tuning or new releases actually improve targeted skills (e.g., comparing zero‑shot vs 25‑shot ARC after fine‑tuning).
-  - Communication: give a shared numeric language (“Model X: 90% on science test benchmark”) for teams and customers.
+  - Communication: give a shared numeric language ("Model X: 90% on science test benchmark") for teams and customers.
 
 - Limitations:  
   - They may miss **edge cases** or your specific domain quirks, so production behavior can differ from benchmark scores.
@@ -136,9 +146,9 @@ flowchart LR
 - Practical guidance:  
   - Use benchmarks to narrow candidates, then run **task‑specific, custom evals** for your application (your own datasets, success criteria, and environments).
   - For Cline‑style dev workflows:  
-    - Coding‑heavy → SWE‑Bench, HumanEval, LiveCodeBench, BigCodeBench.  
+    - Coding‑heavy → SWE‑Bench, HumanEval, LiveCodeBench, BigCodeBench, OJBench.  
     - Domain‑heavy coding → MMLU Pro, GPQA, AIME.  
-    - Tool‑heavy agents → tool‑usage reliability benchmarks and function‑calling leaderboards.
+    - Tool‑heavy agents → tool‑usage reliability benchmarks, AceBench, Tau-2 Bench, and function‑calling leaderboards.
 
 ***
 
@@ -161,26 +171,33 @@ flowchart TD
     
     E --> E1["MMLU (School & Professional)"]
     E --> E2["MMLU-Pro (Enhanced)"]
-    E --> E3["ARC (Science Questions)"]
+    E --> E3["ARC / ARC-C (Science Questions)"]
     E --> E4["AGIEval (Standardized Tests)"]
+    E --> E5["HellaSwag (Commonsense)"]
+    E --> E6["Winogrande (Pronoun Resolution)"]
     
-    F --> F1["GPQA (Graduate-Level Science)"]
+    F --> F1["GPQA / GPQA-Diamond (Graduate-Level Science)"]
     
     G --> G1["GSM8K (School Math)"]
-    G --> G2["MATH (Competition-Level)"]
+    G --> G2["AIME / AIME 2025 (Competition Math)"]
+    G --> G3["MATH (Competition-Level)"]
     
     H --> H1["HumanEval (Basic Python)"]
-    H --> H2["MBPP (Python Problems)"]
+    H --> H2["LiveCodeBench (Holistic Coding)"]
     H --> H3["SWE-bench (Real Bug Fixing)"]
+    H --> H4["OJBench (Algorithmic/Competitive)"]
+    H --> H5["BigCodeBench (Problem Solving)"]
+    H --> H6["AceBench (Full-Stack Engineering)"]
     
     I --> I1["TruthfulQA (Truthfulness)"]
     
-    J --> J1["WebArena (Web Interaction)"]
-    J --> J2["AgentBench (Multi-Task Agents)"]
-    J --> J3["Function Calling"]
+    J --> J1["Tau-2 Bench (Planning & Tools)"]
+    J --> J2["AceBench (Software Engineering)"]
+    J --> J3["Function Calling Benchmarks"]
     
     K --> K1["LMSYS Chatbot Arena (User Votes)"]
     K --> K2["MT-Bench (Multi-Turn)"]
+    K --> K3["LiveBench (Contamination-Free)"]
     
     D --> L["Open LLM Leaderboard"]
     D --> M["YALL Leaderboard"]
@@ -203,8 +220,10 @@ This guide is based on widely discussed concepts in the AI community, verified a
 **Recommendation:**
 
 * For **General Use**, look at the **LMSYS Chatbot Arena**.
-* For **Deep Reasoning**, look at **GPQA** and **MATH**.
-* For **Professional Coding**, look at **SWE-bench**.
+* For **Deep Reasoning**, look at **GPQA-Diamond** and **AIME 2025**.
+* For **Professional Coding**, look at **SWE-bench**, **LiveCodeBench**, and **AceBench**.
+* For **Algorithmic Skills**, look at **OJBench**.
+* For **Commonsense & Knowledge**, look at **MMLU**, **HellaSwag**, and **Winogrande**.
 
 
 ## Sources & Reference Videos
