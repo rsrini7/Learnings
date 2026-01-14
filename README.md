@@ -28,6 +28,7 @@
 - [Confucius Code Agent](AI-ML/Confucius-Code-Agent.md)
 - [MiroThinker 1.5](AI-ML/MiraThinker-1.5.md)
 - [LLM-Council](AI-ML/LLM-Council.md)
+- [Parameter-Efficient Fine Tuning](AI-ML/Parameter-Efficient-Fine-Tuning.md)
 
 ### Protocols
 - [Universal Commerce Protocol](AI-ML/Protocols/UCP.md)
