@@ -2,7 +2,7 @@
 
 Modern AI architectures: VL-JEPA, Mamba-3, Transformers, Diffusion Models, VLA systems, and Nvidia Cosmos World Models.
 
-## Core Philosophy: What Does Each Architecture Optimize? {#core-philosophy}
+## Core Philosophy: What Does Each Architecture Optimize?
 
 ```mermaid
 graph TD
