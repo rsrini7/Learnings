@@ -32,6 +32,7 @@
 - [Chinese AI Trifecta 2025-2026](AI-ML/Chinese-AI-Trifecta-2025-2026.md)
 - [Anthropic API Restrictions](AI-ML/Anthropic-API-Restrictions.md)
 - [Claude Cowork](AI-ML/Claude-Cowork.md)
+- [Claude Developer Ecosystem Jan-2026](AI-ML/Claude-Developer-Ecosystem-Jan-2026.md)
 
 ### Protocols
 - [Universal Commerce Protocol](AI-ML/Protocols/UCP.md)
