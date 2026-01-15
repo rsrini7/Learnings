@@ -100,6 +100,7 @@
 - [AWS Outage October 19 & 20 2025](News/AWS-Outage-October-19&20-2025.md)
 - [Tailwind Financial Crisis](News/Tailwind-Financial-Crisis.md)
 - [Decline of StackOverflow](News/Decline-of-Stack-Overflow.md)
+- [Node.js Async Hooks DoS Vulnerability](News/Node.js-Async-Hooks-DoS-Vulnerability.md)
 
 ## Papers
 - [DeepSeek Advancements](Papers/DeepSeek-Advancements.md)
