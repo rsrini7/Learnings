@@ -30,6 +30,7 @@
 - [LLM-Council](AI-ML/LLM-Council.md)
 - [Parameter-Efficient Fine Tuning](AI-ML/Parameter-Efficient-Fine-Tuning.md)
 - [Chinese AI Trifecta 2025-2026](AI-ML/Chinese-AI-Trifecta-2025-2026.md)
+- [Anthropic API Restrictions](AI-ML/Anthropic-API-Restrictions.md)
 
 ### Protocols
 - [Universal Commerce Protocol](AI-ML/Protocols/UCP.md)
