@@ -79,7 +79,7 @@
 - [AI Blockchain and the Hidden Frictions of Real World Asset Tokenization](Blockchain/AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization.md)
 - [Crypto Supercycle and Ethereum](Blockchain/Crypto-Supercycle-and-Ethereum.md)
 - [Blockchain by 2035](Blockchain/Blockchain-by-2035.md)
-- [CryptoACTs](Blockchain/CryptoACTs.md)
+- [CryptoACTs Jan 2026](Blockchain/CryptoACTs-Jan-2026.md)
 
 ## Helpful
 - [Searching or Downloading Research Papers](Helpful/searching-or-downloading-research-papers.md)
