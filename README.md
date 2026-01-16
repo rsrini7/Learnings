@@ -33,6 +33,7 @@
 - [Anthropic API Restrictions](AI-ML/Anthropic-API-Restrictions.md)
 - [Claude Cowork](AI-ML/Claude-Cowork.md)
 - [Claude Developer Ecosystem Jan-2026](AI-ML/Claude-Developer-Ecosystem-Jan-2026.md)
+- [Google Gemma Family Models Jan-2026](AI-ML/Google-Gemma-Family-Models-Jan-2026.md)
 
 ### Protocols
 - [Universal Commerce Protocol](AI-ML/Protocols/UCP.md)
