@@ -2,27 +2,28 @@
 
 **The Ultimate Reference for Developers, Architects, and Vibe Coders**
 
-This comprehensive guide covers Anthropic's entire Claude ecosystem—from models and APIs to agentic workflows, developer tools, and enterprise integrations. Updated January 2026.
+This comprehensive guide covers Anthropic's entire Claude ecosystem—from models and APIs to agentic workflows, developer tools, and enterprise integrations. Updated January 2026 with historical context and best practices from the field.
 
 ---
 
 ## Table of Contents
 
 1. [Core Models & Pricing](#core-models--pricing)
-2. [Claude Code - The Flagship Developer Tool](#claude-code---the-flagship-developer-tool)
-3. [Agent SDK - Build Custom Agents](#agent-sdk---build-custom-agents)
-4. [Projects & Workspaces](#projects--workspaces)
-5. [Skills - Modular Capabilities](#skills---modular-capabilities)
-6. [Sub-Agents - Parallel Task Execution](#sub-agents---parallel-task-execution)
-7. [Plugins - Shareable Extensions](#plugins---shareable-extensions)
-8. [Slash Commands - Custom Shortcuts](#slash-commands---custom-shortcuts)
-9. [Hooks - Lifecycle Automation](#hooks---lifecycle-automation)
-10. [Ralph Loop - Autonomous Iteration](#ralph-loop---autonomous-iteration)
-11. [Model Context Protocol (MCP)](#model-context-protocol-mcp)
-12. [Session Management & Worktrees](#session-management--worktrees)
-13. [Cowork - No-Code AI Assistant](#cowork---no-code-ai-assistant)
-14. [APIs & Integrations](#apis--integrations)
-15. [Best Practices](#best-practices)
+2. [History & Evolution of Agent Features](#history--evolution-of-agent-features)
+3. [Claude Code - The Flagship Developer Tool](#claude-code---the-flagship-developer-tool)
+4. [Agent SDK - Build Custom Agents](#agent-sdk---build-custom-agents)
+5. [Projects & Workspaces](#projects--workspaces)
+6. [Skills - Modular Capabilities](#skills---modular-capabilities)
+7. [Sub-Agents - Parallel Task Execution](#sub-agents---parallel-task-execution)
+8. [Plugins - Shareable Extensions](#plugins---shareable-extensions)
+9. [Slash Commands - Custom Shortcuts](#slash-commands---custom-shortcuts)
+10. [Hooks - Lifecycle Automation](#hooks---lifecycle-automation)
+11. [Ralph Loop - Autonomous Iteration](#ralph-loop---autonomous-iteration)
+12. [Model Context Protocol (MCP)](#model-context-protocol-mcp)
+13. [Session Management & Worktrees](#session-management--worktrees)
+14. [Cowork - No-Code AI Assistant](#cowork---no-code-ai-assistant)
+15. [APIs & Integrations](#apis--integrations)
+16. [Best Practices](#best-practices)
 
 ---
 
@@ -48,6 +49,68 @@ This comprehensive guide covers Anthropic's entire Claude ecosystem—from model
 - **Haiku**: Drafts, simple tasks, high-volume operations
 - **Sonnet**: Default for most development work, agent orchestration
 - **Opus**: Complex reasoning, production code, critical systems
+
+---
+
+## History & Evolution of Agent Features
+
+Understanding how agent capabilities evolved helps you use them effectively. Here's the progression from early AI limitations to today's sophisticated systems:
+
+### Timeline of Development
+
+**Early Days (Pre-2025): Fighting Hallucinations**
+- AI models frequently hallucinated, making up facts or generating incorrect code
+- Solution: **Rules files** (like CLAUDE.md) provided static context in every conversation
+- Goal: Include business requirements and common corrections to prevent repeated errors
+- Limitation: Rules were static—loaded every time, regardless of relevance
+
+**Mid-2025: Context Organization**
+- Rules expanded into sub-files for better organization
+- Teams wanted conditional rule inclusion, but early models had inconsistent tool-calling
+- Context bloat emerged as a problem: too much static information consumed tokens
+- Introduction of **slash commands** for repeatable workflows (git commits, PR creation)
+
+**Late 2025: Dynamic Systems**
+- **MCP servers** launched, allowing agents to:
+  - Run full servers and execute code
+  - Connect to existing systems (databases, APIs)
+  - Use OAuth for third-party tools (Slack, Linear, GitHub)
+- Trade-off: Many MCP tools caused context bloat
+- **Sub-agents and modes** introduced for scoped tasks with limited tool access
+
+**2026: Optimization Era**
+- **Skills** emerged as the solution to context bloat:
+  - Dynamic loading: Only included when needed
+  - Portable: Shareable across teams via git
+  - Advanced forms: Scripts, executables, and assets bundled as code
+- **Hooks** added for 100% deterministic actions (vs. non-deterministic agent responses)
+- Focus shifted to optimizing tool loading: activate tools only when used
+
+### Core Conceptual Framework
+
+Modern agent systems are built on two fundamental types of context:
+
+**Static Context (Always Included)**
+- **What**: CLAUDE.md, project rules, coding standards
+- **When**: Loaded at the start of every conversation
+- **Purpose**: Prevent consistent errors, establish conventions
+- **Best Practice**: Keep minimal and high-quality
+- **Example**: Code style guides, common corrections, project overview
+
+**Dynamic Context (On-Demand)**
+- **What**: Skills, MCP tools, sub-agents
+- **When**: Loaded only when relevant to the task
+- **Purpose**: Avoid token waste, extend capabilities as needed
+- **Best Practice**: Use for non-essential extensions
+- **Example**: Excel processing, GitHub integration, web scraping
+
+### Key Evolution Insights
+
+**From Static to Dynamic**: The industry moved from "include everything" to "include only what's needed right now" to optimize token usage and model performance.
+
+**Tool Calling Maturity**: Early models couldn't reliably decide when to use tools. Modern models (Claude 4 family) have consistent tool-calling, enabling advanced features like Skills and MCP.
+
+**Open Standards**: Skills and MCP are designed as open standards (like "USB-C for AI"), promoting ecosystem growth and portability across different AI tools.
 
 ---
 
@@ -147,7 +210,7 @@ claude --resume session-name
 
 ### Configuration Files
 
-**CLAUDE.md** - Project memory/instructions
+**CLAUDE.md** - Project memory/instructions (Static Context)
 ```markdown
 # Project Overview
 This is a Next.js e-commerce platform using TypeScript and Tailwind.
@@ -404,7 +467,22 @@ my-project/
 
 ### Overview
 
-**Skills** are reusable packages (folder with instructions + resources) that give Claude specialized capabilities. They're dynamically loaded when needed and portable across Claude Code, API, and claude.ai.
+**Skills** are reusable packages (folder with instructions + resources) that give Claude specialized capabilities. They represent **dynamic context**—loaded only when needed to avoid token bloat—and are portable across Claude Code, API, and claude.ai.
+
+### Conceptual Foundation
+
+Skills evolved as the solution to MCP's context bloat problem:
+
+**The Context Bloat Challenge:**
+- Early implementations loaded all available tools at conversation start
+- Example: 10 MCP servers with 5 tools each = 50 tools in initial context
+- Result: Wasted tokens, slower responses, higher costs
+
+**Skills Solution:**
+- **On-Demand Loading**: Skills activate only when relevant to the task
+- **Tool Optimization**: If a skill has 10 MCP tools, only used tools are loaded
+- **Bundled Resources**: Scripts, executables, assets included in skill package
+- **Open Standard**: Shareable via git, portable across AI tools
 
 ### Structure
 
@@ -448,6 +526,19 @@ User: "Analyze sales.xlsx"
 Claude: *reads file, analyzes, generates report*
 ```
 
+### Skill Types and Forms
+
+**Basic Skills (Command-Like):**
+- Simple workflows executed as repeatable prompts
+- Example: Git PR workflow, code formatting
+- Similar to slash commands but with dynamic loading
+
+**Advanced Skills (Bundled Capabilities):**
+- Combination of scripts, executables, and assets
+- Dependencies and configurations included
+- Example: Data pipeline with Python scripts, SQL schemas, sample data
+- Distributed as code packages
+
 ### Pre-Built Skills
 
 **Official Anthropic Skills:**
@@ -462,8 +553,21 @@ Claude: *reads file, analyzes, generates report*
 - **github-workflow** - Automate GitHub actions
 - **docker-compose** - Container orchestration
 - **terraform** - Infrastructure as code
-- **api-testing** - Postman-like testing
+- **api-testing** - Automated API validation
+- **oauth-integration** - Handle authentication flows (OAuth/OOTH support)
+- **parallel-research** - Delegate sub-tasks like web research
 - **sql-query** - Database operations
+- **pixel-art-editor** - Creative tools with bundled assets
+
+### Skills vs Other Features
+
+| Feature | Type | When Loaded | Use Case |
+|---------|------|-------------|----------|
+| **Rules (CLAUDE.md)** | Static | Every conversation | Consistent guidance, error prevention |
+| **Skills** | Dynamic | On-demand | Reusable workflows, code execution |
+| **MCP Servers** | Dynamic (code-based) | On-demand | Third-party integrations, OAuth |
+| **Sub-Agents** | Scoped dynamic | Task-specific | Parallel execution, limited tools |
+| **Slash Commands** | Static prompt | User-invoked | Quick shortcuts, team conventions |
 
 ### Using Skills
 
@@ -507,6 +611,7 @@ allowed-tools:
   - Bash(curl *)
   - Read
   - Write
+context: fork  # Isolated execution
 ---
 
 # API Testing Skill
@@ -532,10 +637,20 @@ response = requests.post(
 
 - **Scope**: One skill = one specialized task
 - **Token Efficiency**: Keep instructions concise (30-50 tokens awareness cost)
-- **Context**: Use `context: fork` for isolation
-- **Dependencies**: Document in frontmatter
-- **Examples**: Include 2-3 usage examples
+- **Context**: Use `context: fork` for isolation (prevents main agent pollution)
+- **Dependencies**: Document clearly in frontmatter
+- **Examples**: Include 2-3 usage examples for better AI understanding
 - **Versioning**: Maintain backward compatibility
+- **Shareable**: Design for team distribution via git
+- **Optimization**: Bundle related functionality to minimize skill loading overhead
+
+### Skills and Open Ecosystem
+
+Skills are designed as an **open standard** for the AI agent ecosystem:
+- **Portability**: Same skill works in Claude Code, API, other AI tools (future)
+- **Distribution**: Share via GitHub, npm, package managers
+- **Community Growth**: Expected to become dominant pattern in 2026+
+- **Future-Proof**: As AI tools standardize, skills become universal capabilities
 
 ---
 
@@ -543,7 +658,24 @@ response = requests.post(
 
 ### Overview
 
-**Sub-agents** are specialized AI assistants that handle specific tasks in parallel or with isolated context. They enable multi-agent architectures where a lead agent delegates to workers.
+**Sub-agents** are specialized AI assistants that handle specific tasks in parallel or with isolated context. They evolved from early "modes" to make agent behavior more reliable, discoverable, and consistent. Sub-agents enable multi-agent architectures where a lead agent delegates to worker specialists.
+
+### Historical Context
+
+**Evolution from Modes:**
+- Early AI agents struggled with complex tasks requiring multiple perspectives
+- "Modes" introduced system prompt modifications for focused behavior
+- Sub-agents extended this with: isolated context, limited tool access, persona definitions
+- Goal: Reliability through specialization and discoverability through clear interfaces
+
+### Core Features
+
+**Specialization Capabilities:**
+- **Scoped Context**: Forked or isolated execution (as in skills' `context: fork`)
+- **Tool Limitations**: Restrict to specific tools (e.g., only Bash for scripts)
+- **Modes Integration**: Modify system prompts and UI (e.g., "planning mode" with reminders like "Focus on outlining before coding")
+- **Parallel Execution**: Run multiple sub-agents simultaneously
+- **Persona-Based**: Each sub-agent has specialized expertise
 
 ### Built-In Sub-Agents
 
@@ -567,8 +699,37 @@ response = requests.post(
   "systemPrompt": "You are a research expert. Always cite sources and provide comprehensive analysis.",
   "allowedTools": ["WebSearch", "Read", "Write"],
   "model": "claude-sonnet-4-5-20250929",
+  "mode": "research",
   "maxTurns": 20
 }
+```
+
+**agents/security-auditor.md:**
+```markdown
+---
+name: security-auditor
+description: Security vulnerability scanner
+persona: Senior security engineer with OWASP expertise
+allowed-tools:
+  - Read
+  - Bash(npm audit)
+  - Bash(bandit *)
+context: fork
+mode: audit
+---
+
+# Security Auditor Sub-Agent
+
+## Instructions
+Perform comprehensive security audits:
+1. Scan dependencies for known vulnerabilities
+2. Check for common security anti-patterns
+3. Review authentication/authorization logic
+4. Identify injection risks (SQL, XSS, etc.)
+5. Report findings with severity levels
+
+## Mode Behavior
+In "audit" mode, focus exclusively on security without suggesting feature improvements.
 ```
 
 **Usage:**
@@ -580,6 +741,27 @@ response = requests.post(
 /task researcher "Study GraphQL vs REST" &
 /task researcher "Analyze microservices patterns" &
 wait
+
+# With specific mode
+/task security-auditor "Audit authentication system"
+```
+
+### Modes and UI Integration
+
+**What Modes Do:**
+- **System Prompt Modifications**: Change agent behavior for specific contexts
+- **UI Reminders**: Display persistent reminders (e.g., "Planning phase: Focus on architecture")
+- **Tool Filtering**: Further restrict available tools based on mode
+- **Discoverable Workflows**: Users can select modes from UI, making capabilities clear
+
+**Example Mode Configuration:**
+```json
+{
+  "mode": "planning",
+  "systemPromptAddition": "You are in planning mode. Focus on high-level architecture and design decisions. Do not write implementation code yet.",
+  "uiReminder": "📋 Planning Mode: Outline before implementing",
+  "allowedTools": ["Read", "WebSearch", "Write(*.md)"]
+}
 ```
 
 ### Multi-Agent Patterns
@@ -608,6 +790,9 @@ main_agent = query(
 
 # Testing agent
 /task testing "Generate e2e tests"
+
+# Documentation agent
+/task docs "Update API documentation"
 ```
 
 **3. Research Synthesis:**
@@ -617,22 +802,24 @@ main_agent = query(
 {
   "name": "synthesis",
   "systemPrompt": "Combine research from multiple sources into coherent report",
-  "allowedTools": ["Read", "Write"]
+  "allowedTools": ["Read", "Write"],
+  "context": "shared"
 }
 ---
 ```
 
 ### Sub-Agent Context Management
 
-**Isolated Context:**
+**Isolated Context (Forked):**
 ```markdown
 ---
-context: fork  # in skill frontmatter
+context: fork  # in skill/agent frontmatter
 ---
 ```
 - No main agent pollution
 - Safe for experimental logic
 - Parallel execution without conflicts
+- Each sub-agent has independent conversation history
 
 **Shared Context:**
 ```markdown
@@ -643,6 +830,37 @@ context: shared
 - Access to main conversation
 - Builds on prior work
 - Sequential dependencies
+- Useful for synthesis or follow-up tasks
+
+### Use Cases by Type
+
+**Parallel Tasks (Forked Context):**
+- Research multiple topics simultaneously
+- Code reviews across different modules
+- Testing different approaches
+- Data gathering from multiple sources
+
+**Sequential Tasks (Shared Context):**
+- Implement → Test → Document workflow
+- Research → Summarize → Present pipeline
+- Plan → Build → Deploy sequence
+- Design → Code → Review process
+
+### Best Practices for Sub-Agents
+
+**DO:**
+- ✅ Use for well-defined, scoped tasks
+- ✅ Limit tools to minimum needed
+- ✅ Default to out-of-box sub-agents (explore, plan) first
+- ✅ Fork context for parallel execution
+- ✅ Name sub-agents descriptively
+
+**DON'T:**
+- ❌ Create too many sub-agents (complexity overhead)
+- ❌ Share context when tasks are independent
+- ❌ Give sub-agents access to all tools
+- ❌ Use for tasks requiring human judgment
+- ❌ Nest sub-agents too deeply (3+ levels)
 
 ---
 
@@ -781,7 +999,15 @@ git push --tags
 
 ### Overview
 
-**Slash commands** are custom shortcuts for frequently-used prompts, stored as Markdown files that Claude Code executes.
+**Slash commands** are custom shortcuts for frequently-used prompts, stored as Markdown files that Claude Code executes. They represent team conventions and personal workflows as reusable, discoverable actions.
+
+### Conceptual Understanding
+
+Slash commands evolved as a way to:
+- **Package Prompts**: Turn repeated workflows into one-command actions
+- **Share with Teams**: Encode team standards in version control
+- **Discover Capabilities**: Auto-complete shows available commands
+- **Reduce Friction**: Execute complex prompts instantly
 
 ### Command Scopes
 
@@ -895,7 +1121,21 @@ Deploy the current branch to staging environment.
 
 ### Overview
 
-**Hooks** are event-driven automations that run at specific points in Claude Code's workflow. They enable custom logic for validation, formatting, notifications, and more.
+**Hooks** are event-driven automations that run at specific points in Claude Code's workflow. They provide **100% deterministic** code execution at lifecycle events—unlike non-deterministic agent responses—enabling validation, formatting, notifications, and workflow enforcement.
+
+### Conceptual Foundation
+
+**Why Hooks Exist:**
+- AI agents are non-deterministic: you can't guarantee specific actions
+- Some workflows need guaranteed execution (e.g., security checks, formatting)
+- Hooks bridge the gap: inject deterministic actions into agent lifecycle
+
+**Use Cases:**
+- **Pre-Conversation**: Inject static context, log session starts
+- **Post-Tool-Use**: Auto-format code, run linters
+- **Pre-Tool-Use**: Security scanning, permission checks
+- **On-Error**: Automated recovery, logging
+- **Post-Conversation**: Save outputs, database logging, cleanup
 
 ### Hook Types (9 Lifecycle Events)
 
@@ -1028,12 +1268,1133 @@ Deploy the current branch to staging environment.
 }
 ```
 
+**5. Static Context Injection:**
+```json
+{
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "cat .claude/context/project-state.md"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+**6. Post-Conversation Logging:**
+```json
+{
+  "hooks": {
+    "Success": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python scripts/log-conversation.py $SESSION_ID"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
 ### Hook Matchers
 
 **Tool Matchers:**
 - `Edit` - Any file edit
 - `Bash` - Any bash command
-- `Edit.*\\.js$` - JavaScript files
+- `Edit.*\\.js# Complete Claude Developer Ecosystem Guide (2026)
+
+**The Ultimate Reference for Developers, Architects, and Vibe Coders**
+
+This comprehensive guide covers Anthropic's entire Claude ecosystem—from models and APIs to agentic workflows, developer tools, and enterprise integrations. Updated January 2026 with historical context and best practices from the field.
+
+---
+
+## Table of Contents
+
+1. [Core Models & Pricing](#core-models--pricing)
+2. [History & Evolution of Agent Features](#history--evolution-of-agent-features)
+3. [Claude Code - The Flagship Developer Tool](#claude-code---the-flagship-developer-tool)
+4. [Agent SDK - Build Custom Agents](#agent-sdk---build-custom-agents)
+5. [Projects & Workspaces](#projects--workspaces)
+6. [Skills - Modular Capabilities](#skills---modular-capabilities)
+7. [Sub-Agents - Parallel Task Execution](#sub-agents---parallel-task-execution)
+8. [Plugins - Shareable Extensions](#plugins---shareable-extensions)
+9. [Slash Commands - Custom Shortcuts](#slash-commands---custom-shortcuts)
+10. [Hooks - Lifecycle Automation](#hooks---lifecycle-automation)
+11. [Ralph Loop - Autonomous Iteration](#ralph-loop---autonomous-iteration)
+12. [Model Context Protocol (MCP)](#model-context-protocol-mcp)
+13. [Session Management & Worktrees](#session-management--worktrees)
+14. [Cowork - No-Code AI Assistant](#cowork---no-code-ai-assistant)
+15. [APIs & Integrations](#apis--integrations)
+16. [Best Practices](#best-practices)
+
+---
+
+## Core Models & Pricing
+
+### Model Lineup (January 2026)
+
+| Model | API String | Strengths | Input/Output ($/M tokens) | Release |
+|-------|-----------|-----------|---------------------------|---------|
+| **Haiku 4.5** | `claude-haiku-4-5-20251001` | Fast, cost-effective; simple agents, quick code | $0.25 / $1.25 | Oct 2025 |
+| **Sonnet 4.5** | `claude-sonnet-4-5-20250929` | Balanced reasoning/coding; agent orchestration, multi-agent systems | $3 / $15 | Sep 2025 |
+| **Opus 4.5** | `claude-opus-4-5-20251124` | Highest intelligence; frontier coding, complex agents, token compression | $15 / $75 | Nov 2025 |
+
+**Key Features Across Models:**
+- Multimodal inputs (text, images, PDFs, code)
+- Tool use and function calling
+- 200K+ token context windows
+- Constitutional AI safety alignments
+- Streaming responses
+- Vision capabilities (Sonnet 4.5+)
+
+**Model Selection Strategy:**
+- **Haiku**: Drafts, simple tasks, high-volume operations
+- **Sonnet**: Default for most development work, agent orchestration
+- **Opus**: Complex reasoning, production code, critical systems
+
+---
+
+## History & Evolution of Agent Features
+
+Understanding how agent capabilities evolved helps you use them effectively. Here's the progression from early AI limitations to today's sophisticated systems:
+
+### Timeline of Development
+
+**Early Days (Pre-2025): Fighting Hallucinations**
+- AI models frequently hallucinated, making up facts or generating incorrect code
+- Solution: **Rules files** (like CLAUDE.md) provided static context in every conversation
+- Goal: Include business requirements and common corrections to prevent repeated errors
+- Limitation: Rules were static—loaded every time, regardless of relevance
+
+**Mid-2025: Context Organization**
+- Rules expanded into sub-files for better organization
+- Teams wanted conditional rule inclusion, but early models had inconsistent tool-calling
+- Context bloat emerged as a problem: too much static information consumed tokens
+- Introduction of **slash commands** for repeatable workflows (git commits, PR creation)
+
+**Late 2025: Dynamic Systems**
+- **MCP servers** launched, allowing agents to:
+  - Run full servers and execute code
+  - Connect to existing systems (databases, APIs)
+  - Use OAuth for third-party tools (Slack, Linear, GitHub)
+- Trade-off: Many MCP tools caused context bloat
+- **Sub-agents and modes** introduced for scoped tasks with limited tool access
+
+**2026: Optimization Era**
+- **Skills** emerged as the solution to context bloat:
+  - Dynamic loading: Only included when needed
+  - Portable: Shareable across teams via git
+  - Advanced forms: Scripts, executables, and assets bundled as code
+- **Hooks** added for 100% deterministic actions (vs. non-deterministic agent responses)
+- Focus shifted to optimizing tool loading: activate tools only when used
+
+### Core Conceptual Framework
+
+Modern agent systems are built on two fundamental types of context:
+
+**Static Context (Always Included)**
+- **What**: CLAUDE.md, project rules, coding standards
+- **When**: Loaded at the start of every conversation
+- **Purpose**: Prevent consistent errors, establish conventions
+- **Best Practice**: Keep minimal and high-quality
+- **Example**: Code style guides, common corrections, project overview
+
+**Dynamic Context (On-Demand)**
+- **What**: Skills, MCP tools, sub-agents
+- **When**: Loaded only when relevant to the task
+- **Purpose**: Avoid token waste, extend capabilities as needed
+- **Best Practice**: Use for non-essential extensions
+- **Example**: Excel processing, GitHub integration, web scraping
+
+### Key Evolution Insights
+
+**From Static to Dynamic**: The industry moved from "include everything" to "include only what's needed right now" to optimize token usage and model performance.
+
+**Tool Calling Maturity**: Early models couldn't reliably decide when to use tools. Modern models (Claude 4 family) have consistent tool-calling, enabling advanced features like Skills and MCP.
+
+**Open Standards**: Skills and MCP are designed as open standards (like "USB-C for AI"), promoting ecosystem growth and portability across different AI tools.
+
+---
+
+## Claude Code - The Flagship Developer Tool
+
+### Overview
+
+**Claude Code** is an agentic coding assistant that runs in your terminal, understanding your codebase and autonomously executing development tasks. Launched February 2025, it reached $1B+ ARR and is used internally at Anthropic for 80% of tech tasks.
+
+### Core Capabilities
+
+**Built-in Tools:**
+- **Read** - Read any file in working directory
+- **Write** - Create new files
+- **Edit** - Precise edits to existing files
+- **Bash** - Run terminal commands
+- **Glob** - Find files by pattern
+- **Grep** - Search file contents
+- **WebSearch** - Search the internet
+- **Task** (sub-agents) - Delegate to specialized agents
+
+### Installation
+
+```bash
+# macOS/Linux
+curl -fsSL https://claude.ai/install.sh | bash
+
+# Windows (PowerShell)
+irm https://claude.ai/install.ps1 | iex
+
+# Node.js/NPM (alternative)
+npm install -g @anthropic-ai/claude-code
+
+# Verify installation
+claude --version
+```
+
+### Authentication
+
+```bash
+# Interactive authentication (recommended)
+claude
+
+# API key authentication
+export ANTHROPIC_API_KEY="your-key-here"
+claude
+
+# Third-party providers
+export CLAUDE_CODE_USE_BEDROCK=1  # AWS Bedrock
+export CLAUDE_CODE_USE_VERTEX=1   # Google Vertex AI
+export CLAUDE_CODE_USE_FOUNDRY=1  # Microsoft Foundry
+```
+
+### Usage Modes
+
+**1. Interactive Mode**
+```bash
+# Start in current directory
+claude
+
+# Start with specific model
+claude --model opus
+
+# Plan mode (review before execution)
+claude --permission-mode plan
+
+# Auto-accept edits
+claude --permission-mode acceptEdits
+
+# Headless/background mode
+claude --permission-mode bypassPermissions --dangerously-skip-permissions
+```
+
+**2. One-Shot Mode**
+```bash
+# Execute single prompt
+claude -p "Create a hello.py file that prints 'Hello World'"
+
+# With file context
+claude -p "Add unit tests for utils.py"
+
+# Chain commands
+claude -p "Refactor auth.js" && git commit -am "Refactored auth"
+```
+
+**3. Background Mode**
+```bash
+# Start remote session
+claude --remote &
+
+# Resume session
+claude --resume session-name
+
+# Teleport between local/web
+/teleport  # from CLI to claude.ai/code
+```
+
+### Configuration Files
+
+**CLAUDE.md** - Project memory/instructions (Static Context)
+```markdown
+# Project Overview
+This is a Next.js e-commerce platform using TypeScript and Tailwind.
+
+## Code Style
+- Use functional components with hooks
+- Prefer named exports
+- Follow Airbnb style guide
+- All tests in __tests__ directories
+
+## Common Commands
+- `npm run dev` - Start dev server
+- `npm test` - Run tests
+- `npm run build` - Production build
+
+## Known Issues
+- Auth middleware sometimes fails on cold starts
+- Database migrations require manual review
+```
+
+**settings.json** - Tool permissions & preferences
+```json
+{
+  "allowedTools": ["Read", "Edit", "Write", "Bash", "WebSearch"],
+  "enableThinking": true,
+  "respectGitignore": true,
+  "autoSave": true,
+  "maxTokens": 8000
+}
+```
+
+**.claude.json** - MCP servers & advanced config
+```json
+{
+  "mcpServers": {
+    "github": {
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-github"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      }
+    }
+  }
+}
+```
+
+### Permission Modes
+
+| Mode | Description | Use Case |
+|------|-------------|----------|
+| `normal` | Approve each action | Learning, careful review |
+| `acceptEdits` | Auto-approve file edits | Trusted refactoring |
+| `plan` | Review plan before execution | Complex features |
+| `bypassPermissions` | No approvals (⚠️ risky) | Trusted environments, CI/CD |
+
+### Key Features (v2.1.0 - January 2026)
+
+- **Session Teleportation** (`/teleport`) - Move sessions between CLI and web
+- **Hot-Reload Skills** - Skills update without restarting
+- **Forked Sub-Agent Context** - Isolated skill execution
+- **Wildcard Tool Permissions** - `Bash(npm *)` pattern matching
+- **Real-Time Thinking Display** - `Ctrl+O` transcript mode
+- **Multilingual Output** - Language-specific responses
+- **Vim Motions** - Full Vim keybindings in editor
+- **Session History** - Resume any past conversation
+
+---
+
+## Agent SDK - Build Custom Agents
+
+### Overview
+
+The **Claude Agent SDK** (formerly Claude Code SDK) lets you programmatically build AI agents with Claude Code's capabilities. Available in Python and TypeScript, it powers autonomous agents that read files, run commands, and execute complex workflows.
+
+### Installation
+
+**Python:**
+```bash
+pip install claude-agent-sdk
+
+# Verify Claude Code is installed
+claude --version
+```
+
+**TypeScript:**
+```bash
+npm install @anthropic-ai/claude-agent-sdk
+
+# Or with Yarn
+yarn add @anthropic-ai/claude-agent-sdk
+```
+
+### Basic Usage
+
+**Python:**
+```python
+import asyncio
+from claude_agent_sdk import query, ClaudeAgentOptions
+
+async def main():
+    # Simple query
+    async for message in query(prompt="What is 2 + 2?"):
+        print(message)
+    
+    # With options
+    options = ClaudeAgentOptions(
+        allowed_tools=["Read", "Edit", "Bash"],
+        permission_mode="acceptEdits",
+        system_prompt="You are a senior Python engineer.",
+        max_turns=10
+    )
+    
+    async for message in query(
+        prompt="Fix bugs in utils.py and add tests",
+        options=options
+    ):
+        if message.type == "result":
+            print(message.result)
+
+asyncio.run(main())
+```
+
+**TypeScript:**
+```typescript
+import { query } from "@anthropic-ai/claude-agent-sdk";
+
+async function main() {
+  for await (const message of query({
+    prompt: "Review TypeScript files for bugs",
+    options: {
+      allowedTools: ["Read", "Edit", "Glob"],
+      permissionMode: "acceptEdits",
+      systemPrompt: "You are a TypeScript expert.",
+      cwd: "./src"
+    }
+  })) {
+    if (message.type === "result") {
+      console.log(message.result);
+    }
+  }
+}
+
+main();
+```
+
+### Advanced Features
+
+**Custom Tools (In-Process MCP):**
+```python
+from claude_agent_sdk import ClaudeSDKClient
+
+client = ClaudeSDKClient()
+
+# Define custom tool
+@client.tool
+async def fetch_weather(location: str) -> dict:
+    # Your implementation
+    return {"temp": 72, "condition": "sunny"}
+
+# Use in conversation
+response = await client.send("What's the weather in SF?")
+```
+
+**Bidirectional Conversations:**
+```typescript
+import { ClaudeSDKClient } from "@anthropic-ai/claude-agent-sdk";
+
+const client = new ClaudeSDKClient();
+
+// Multi-turn conversation
+await client.send("Refactor the auth module");
+await client.send("Now add TypeScript types");
+await client.send("Run the tests");
+```
+
+**File System Integration:**
+```python
+from pathlib import Path
+
+options = ClaudeAgentOptions(
+    cwd=Path("/path/to/project"),
+    setting_sources=["project"]  # Load CLAUDE.md
+)
+```
+
+### Key Differences from Raw API
+
+| Feature | Raw API | Agent SDK |
+|---------|---------|-----------|
+| Agent loop | Manual implementation | Automatic |
+| Tool execution | You implement | Built-in |
+| Context management | Manual tracking | Automatic |
+| File operations | Custom code | Native tools |
+| Session persistence | External storage | CLAUDE.md integration |
+
+---
+
+## Projects & Workspaces
+
+### Claude Projects (Web/App)
+
+**Projects** are customized workspaces in claude.ai with persistent context, knowledge bases, and custom instructions.
+
+**Features:**
+- Upload up to 200MB of documents (Pro/Max)
+- Custom instructions per project
+- Conversation history preservation
+- Cross-session memory
+- Team sharing (Team/Enterprise)
+
+**Use Cases:**
+- Research & knowledge management
+- Code review with project context
+- Documentation analysis
+- Customer support with company docs
+- Content creation with style guides
+
+**Setup:**
+1. Click "Projects" in claude.ai sidebar
+2. Create new project with name/description
+3. Upload documents (PDFs, code, markdown)
+4. Set custom instructions
+5. Start conversations with full context
+
+**Free vs Paid:**
+- **Free**: 5 projects, 10MB per project
+- **Pro**: 50 projects, 200MB per project, RAG
+- **Team**: Shared projects, team knowledge bases
+
+### Claude Code Projects
+
+Projects in Claude Code are **directory-based** with per-project configuration.
+
+**Project Structure:**
+```
+my-project/
+├── .claude/
+│   ├── commands/       # Custom slash commands
+│   ├── skills/         # Project-specific skills
+│   ├── agents/         # Sub-agent definitions
+│   └── hooks/          # Lifecycle hooks
+├── .claude.json        # MCP servers, tool permissions
+├── CLAUDE.md           # Project context & instructions
+└── settings.json       # Tool allowances
+```
+
+**Project-Level vs Global:**
+- **Project**: `.claude/` configs in repo (team-shared via git)
+- **Global**: `~/.claude/` configs (personal preferences)
+
+---
+
+## Skills - Modular Capabilities
+
+### Overview
+
+**Skills** are reusable packages (folder with instructions + resources) that give Claude specialized capabilities. They represent **dynamic context**—loaded only when needed to avoid token bloat—and are portable across Claude Code, API, and claude.ai.
+
+### Conceptual Foundation
+
+Skills evolved as the solution to MCP's context bloat problem:
+
+**The Context Bloat Challenge:**
+- Early implementations loaded all available tools at conversation start
+- Example: 10 MCP servers with 5 tools each = 50 tools in initial context
+- Result: Wasted tokens, slower responses, higher costs
+
+**Skills Solution:**
+- **On-Demand Loading**: Skills activate only when relevant to the task
+- **Tool Optimization**: If a skill has 10 MCP tools, only used tools are loaded
+- **Bundled Resources**: Scripts, executables, assets included in skill package
+- **Open Standard**: Shareable via git, portable across AI tools
+
+### Structure
+
+```
+my-skill/
+├── skill.md            # Main instructions (required)
+├── script.py           # Helper scripts (optional)
+├── config.json         # Configuration (optional)
+└── resources/          # Additional files (optional)
+```
+
+**skill.md Frontmatter:**
+```markdown
+---
+description: Process Excel files and generate reports
+category: data-analysis
+dependencies: 
+  - pandas
+  - openpyxl
+allowed-tools:
+  - Read
+  - Write
+  - Bash(python *)
+context: fork  # Run in isolated context
+user-invocable: true
+---
+
+# Excel Analysis Skill
+
+When the user provides an Excel file, follow these steps:
+
+1. Read the file using pandas
+2. Analyze data structure
+3. Generate summary statistics
+4. Create visualizations
+5. Export report
+
+## Examples
+
+User: "Analyze sales.xlsx"
+Claude: *reads file, analyzes, generates report*
+```
+
+### Skill Types and Forms
+
+**Basic Skills (Command-Like):**
+- Simple workflows executed as repeatable prompts
+- Example: Git PR workflow, code formatting
+- Similar to slash commands but with dynamic loading
+
+**Advanced Skills (Bundled Capabilities):**
+- Combination of scripts, executables, and assets
+- Dependencies and configurations included
+- Example: Data pipeline with Python scripts, SQL schemas, sample data
+- Distributed as code packages
+
+### Pre-Built Skills
+
+**Official Anthropic Skills:**
+- **pptx** - PowerPoint creation/editing
+- **xlsx** - Excel spreadsheet manipulation
+- **docx** - Word document generation
+- **pdf** - PDF processing and extraction
+- **data-analysis** - Statistical analysis
+- **web-scraping** - Extract web data
+
+**Community Skills:**
+- **github-workflow** - Automate GitHub actions
+- **docker-compose** - Container orchestration
+- **terraform** - Infrastructure as code
+- **api-testing** - Automated API validation
+- **oauth-integration** - Handle authentication flows (OAuth/OOTH support)
+- **parallel-research** - Delegate sub-tasks like web research
+- **sql-query** - Database operations
+- **pixel-art-editor** - Creative tools with bundled assets
+
+### Skills vs Other Features
+
+| Feature | Type | When Loaded | Use Case |
+|---------|------|-------------|----------|
+| **Rules (CLAUDE.md)** | Static | Every conversation | Consistent guidance, error prevention |
+| **Skills** | Dynamic | On-demand | Reusable workflows, code execution |
+| **MCP Servers** | Dynamic (code-based) | On-demand | Third-party integrations, OAuth |
+| **Sub-Agents** | Scoped dynamic | Task-specific | Parallel execution, limited tools |
+| **Slash Commands** | Static prompt | User-invoked | Quick shortcuts, team conventions |
+
+### Using Skills
+
+**In Claude Code:**
+```bash
+# Auto-detected based on task
+claude -p "Create a sales report from data.xlsx"
+# Claude automatically uses xlsx skill
+
+# Explicitly invoke
+/skills/excel-analysis @data.xlsx
+```
+
+**Via API:**
+```python
+from claude_agent_sdk import query, ClaudeAgentOptions
+
+options = ClaudeAgentOptions(
+    skills=["xlsx", "data-analysis"]
+)
+
+async for msg in query(
+    prompt="Analyze Q4 sales data",
+    options=options
+):
+    print(msg)
+```
+
+### Creating Custom Skills
+
+**1. Create Skill Directory:**
+```bash
+mkdir -p ~/.claude/skills/my-custom-skill
+```
+
+**2. Write skill.md:**
+```markdown
+---
+description: Custom API testing framework
+allowed-tools:
+  - Bash(curl *)
+  - Read
+  - Write
+context: fork  # Isolated execution
+---
+
+# API Testing Skill
+
+Test REST APIs with automatic validation...
+```
+
+**3. Upload via Skills API:**
+```python
+import requests
+
+response = requests.post(
+    "https://api.anthropic.com/v1/skills",
+    headers={"x-api-key": "your-key"},
+    json={
+        "name": "my-custom-skill",
+        "files": {...}
+    }
+)
+```
+
+### Skill Best Practices
+
+- **Scope**: One skill = one specialized task
+- **Token Efficiency**: Keep instructions concise (30-50 tokens awareness cost)
+- **Context**: Use `context: fork` for isolation (prevents main agent pollution)
+- **Dependencies**: Document clearly in frontmatter
+- **Examples**: Include 2-3 usage examples for better AI understanding
+- **Versioning**: Maintain backward compatibility
+- **Shareable**: Design for team distribution via git
+- **Optimization**: Bundle related functionality to minimize skill loading overhead
+
+### Skills and Open Ecosystem
+
+Skills are designed as an **open standard** for the AI agent ecosystem:
+- **Portability**: Same skill works in Claude Code, API, other AI tools (future)
+- **Distribution**: Share via GitHub, npm, package managers
+- **Community Growth**: Expected to become dominant pattern in 2026+
+- **Future-Proof**: As AI tools standardize, skills become universal capabilities
+
+---
+
+## Sub-Agents - Parallel Task Execution
+
+### Overview
+
+**Sub-agents** are specialized AI assistants that handle specific tasks in parallel or with isolated context. They evolved from early "modes" to make agent behavior more reliable, discoverable, and consistent. Sub-agents enable multi-agent architectures where a lead agent delegates to worker specialists.
+
+### Historical Context
+
+**Evolution from Modes:**
+- Early AI agents struggled with complex tasks requiring multiple perspectives
+- "Modes" introduced system prompt modifications for focused behavior
+- Sub-agents extended this with: isolated context, limited tool access, persona definitions
+- Goal: Reliability through specialization and discoverability through clear interfaces
+
+### Core Features
+
+**Specialization Capabilities:**
+- **Scoped Context**: Forked or isolated execution (as in skills' `context: fork`)
+- **Tool Limitations**: Restrict to specific tools (e.g., only Bash for scripts)
+- **Modes Integration**: Modify system prompts and UI (e.g., "planning mode" with reminders like "Focus on outlining before coding")
+- **Parallel Execution**: Run multiple sub-agents simultaneously
+- **Persona-Based**: Each sub-agent has specialized expertise
+
+### Built-In Sub-Agents
+
+**Explore** - Research and information gathering
+```bash
+/task explore "Find best practices for React 19 Server Components"
+```
+
+**Plan** - Strategic planning and architecture
+```bash
+/task plan "Design a microservices architecture for e-commerce"
+```
+
+### Custom Sub-Agents
+
+**agents/researcher.json:**
+```json
+{
+  "name": "researcher",
+  "description": "Deep research specialist",
+  "systemPrompt": "You are a research expert. Always cite sources and provide comprehensive analysis.",
+  "allowedTools": ["WebSearch", "Read", "Write"],
+  "model": "claude-sonnet-4-5-20250929",
+  "mode": "research",
+  "maxTurns": 20
+}
+```
+
+**agents/security-auditor.md:**
+```markdown
+---
+name: security-auditor
+description: Security vulnerability scanner
+persona: Senior security engineer with OWASP expertise
+allowed-tools:
+  - Read
+  - Bash(npm audit)
+  - Bash(bandit *)
+context: fork
+mode: audit
+---
+
+# Security Auditor Sub-Agent
+
+## Instructions
+Perform comprehensive security audits:
+1. Scan dependencies for known vulnerabilities
+2. Check for common security anti-patterns
+3. Review authentication/authorization logic
+4. Identify injection risks (SQL, XSS, etc.)
+5. Report findings with severity levels
+
+## Mode Behavior
+In "audit" mode, focus exclusively on security without suggesting feature improvements.
+```
+
+**Usage:**
+```bash
+# Invoke custom agent
+/task researcher "Research quantum computing trends"
+
+# Parallel execution
+/task researcher "Study GraphQL vs REST" &
+/task researcher "Analyze microservices patterns" &
+wait
+
+# With specific mode
+/task security-auditor "Audit authentication system"
+```
+
+### Modes and UI Integration
+
+**What Modes Do:**
+- **System Prompt Modifications**: Change agent behavior for specific contexts
+- **UI Reminders**: Display persistent reminders (e.g., "Planning phase: Focus on architecture")
+- **Tool Filtering**: Further restrict available tools based on mode
+- **Discoverable Workflows**: Users can select modes from UI, making capabilities clear
+
+**Example Mode Configuration:**
+```json
+{
+  "mode": "planning",
+  "systemPromptAddition": "You are in planning mode. Focus on high-level architecture and design decisions. Do not write implementation code yet.",
+  "uiReminder": "📋 Planning Mode: Outline before implementing",
+  "allowedTools": ["Read", "WebSearch", "Write(*.md)"]
+}
+```
+
+### Multi-Agent Patterns
+
+**1. Manager-Worker:**
+```python
+# Manager agent
+main_agent = query(
+    prompt="Build a full-stack app",
+    options={"allowed_tools": ["Task", "Read", "Write"]}
+)
+
+# Manager delegates:
+# - Backend agent: API development
+# - Frontend agent: UI components
+# - DevOps agent: Docker/CI setup
+```
+
+**2. Specialist Team:**
+```bash
+# Security agent
+/task security "Audit authentication flow"
+
+# Performance agent
+/task performance "Optimize database queries"
+
+# Testing agent
+/task testing "Generate e2e tests"
+
+# Documentation agent
+/task docs "Update API documentation"
+```
+
+**3. Research Synthesis:**
+```markdown
+---
+# agents/synthesis.json
+{
+  "name": "synthesis",
+  "systemPrompt": "Combine research from multiple sources into coherent report",
+  "allowedTools": ["Read", "Write"],
+  "context": "shared"
+}
+---
+```
+
+### Sub-Agent Context Management
+
+**Isolated Context (Forked):**
+```markdown
+---
+context: fork  # in skill/agent frontmatter
+---
+```
+- No main agent pollution
+- Safe for experimental logic
+- Parallel execution without conflicts
+- Each sub-agent has independent conversation history
+
+**Shared Context:**
+```markdown
+---
+context: shared
+---
+```
+- Access to main conversation
+- Builds on prior work
+- Sequential dependencies
+- Useful for synthesis or follow-up tasks
+
+### Use Cases by Type
+
+**Parallel Tasks (Forked Context):**
+- Research multiple topics simultaneously
+- Code reviews across different modules
+- Testing different approaches
+- Data gathering from multiple sources
+
+**Sequential Tasks (Shared Context):**
+- Implement → Test → Document workflow
+- Research → Summarize → Present pipeline
+- Plan → Build → Deploy sequence
+- Design → Code → Review process
+
+### Best Practices for Sub-Agents
+
+**DO:**
+- ✅ Use for well-defined, scoped tasks
+- ✅ Limit tools to minimum needed
+- ✅ Default to out-of-box sub-agents (explore, plan) first
+- ✅ Fork context for parallel execution
+- ✅ Name sub-agents descriptively
+
+**DON'T:**
+- ❌ Create too many sub-agents (complexity overhead)
+- ❌ Share context when tasks are independent
+- ❌ Give sub-agents access to all tools
+- ❌ Use for tasks requiring human judgment
+- ❌ Nest sub-agents too deeply (3+ levels)
+
+---
+
+## Plugins - Shareable Extensions
+
+### Overview
+
+**Plugins** are collections of slash commands, agents, skills, MCP servers, and hooks bundled for easy sharing and installation.
+
+### Plugin Components
+
+A plugin can include any combination of:
+- **Slash Commands** - Custom shortcuts
+- **Sub-Agents** - Specialized agents
+- **MCP Servers** - Tool integrations
+- **Hooks** - Lifecycle automation
+- **Skills** - Reusable capabilities
+
+### Installing Plugins
+
+**1. Add Marketplace:**
+```bash
+# Official Anthropic marketplace
+/plugin marketplace add anthropics/claude-plugins-official
+
+# Community marketplace
+/plugin marketplace add username/marketplace-repo
+```
+
+**2. Browse Plugins:**
+```bash
+/plugin discover
+# Tab to explore available plugins
+```
+
+**3. Install Plugin:**
+```bash
+# From marketplace
+/plugin install ralph-wiggum@claude-plugins-official
+
+# From GitHub repo
+/plugin install username/repo-name
+
+# Specific version
+/plugin install ralph-wiggum@v1.2.0
+```
+
+**4. Manage Plugins:**
+```bash
+# List installed
+/plugin list
+
+# Update all
+/plugin update
+
+# Remove
+/plugin remove ralph-wiggum
+```
+
+### Creating Plugins
+
+**Directory Structure:**
+```
+my-plugin/
+├── plugin.json         # Metadata
+├── commands/           # Slash commands
+├── agents/             # Sub-agents
+├── skills/             # Skills
+├── hooks/              # Hooks
+└── mcp/                # MCP server configs
+```
+
+**plugin.json:**
+```json
+{
+  "name": "my-awesome-plugin",
+  "version": "1.0.0",
+  "description": "Does awesome things",
+  "author": "Your Name",
+  "license": "MIT",
+  "components": {
+    "commands": ["./commands/"],
+    "agents": ["./agents/"],
+    "skills": ["./skills/"],
+    "hooks": ["./hooks/"]
+  }
+}
+```
+
+### Publishing Plugins
+
+**1. Create GitHub Repo:**
+```bash
+git init my-plugin
+cd my-plugin
+# Add plugin files
+git add .
+git commit -m "Initial plugin"
+git push origin main
+```
+
+**2. Tag Release:**
+```bash
+git tag v1.0.0
+git push --tags
+```
+
+**3. Submit to Marketplace:**
+```bash
+# Fork anthropics/claude-plugins-official
+# Add your plugin to marketplaces/community.json
+# Submit PR
+```
+
+### Popular Plugins
+
+**Development:**
+- **ralph-wiggum** - Autonomous iteration loops
+- **tdd-guard** - Test-driven development enforcement
+- **code-review** - Automated PR reviews
+- **lsp-integration** - Language server protocol
+
+**DevOps:**
+- **docker-workflow** - Container management
+- **k8s-helper** - Kubernetes operations
+- **terraform-agent** - IaC automation
+
+**Data:**
+- **sql-wizard** - Database operations
+- **data-pipeline** - ETL workflows
+- **analytics-suite** - Data analysis
+
+---
+
+## Slash Commands - Custom Shortcuts
+
+### Overview
+
+**Slash commands** are custom shortcuts for frequently-used prompts, stored as Markdown files that Claude Code executes. They represent team conventions and personal workflows as reusable, discoverable actions.
+
+### Conceptual Understanding
+
+Slash commands evolved as a way to:
+- **Package Prompts**: Turn repeated workflows into one-command actions
+- **Share with Teams**: Encode team standards in version control
+- **Discover Capabilities**: Auto-complete shows available commands
+- **Reduce Friction**: Execute complex prompts instantly
+
+### Command Scopes
+
+**Project Commands** (`.claude/commands/`)
+- Shared with team via git
+- Project-specific workflows
+- Listed as `(project)` in `/help`
+
+**Personal Commands** (`~/.claude/commands/`)
+- Your global shortcuts
+- Available in all projects
+- Private preferences
+
+**Plugin Commands**
+- Installed from plugins
+- Discoverable via `/plugin discover`
+
+### Creating Commands
+
+**Basic Command:**
+```bash
+# .claude/commands/optimize.md
+---
+description: Analyze code for performance issues
+---
+
+Review the current file or specified files for:
+- Inefficient algorithms
+- Memory leaks
+- Unnecessary computations
+- Database query optimization opportunities
+
+Provide specific recommendations with code examples.
+```
+
+**Usage:**
+```bash
+/optimize auth.js
+```
+
+**With Arguments:**
+```bash
+# .claude/commands/test.md
+---
+description: Generate tests with coverage target
+---
+
+Generate comprehensive tests for $ARGUMENTS.
+Aim for >80% code coverage.
+Include unit, integration, and edge case tests.
+```
+
+**Usage:**
+```bash
+/test utils.py
+```
+
+### Advanced Command Features
+
+**Hooks in Commands:**
+```markdown
+---
+description: Deploy to staging with validation
+hooks:
+  PreToolUse:
+    - matcher: "Bash"
+      hooks:
+        - type: command
+          command: "./scripts/validate-deploy.sh"
+          once: true
+---
+
+Deploy the current branch to staging environment.
+```
+
+ - JavaScript files
 - `Bash(npm *)` - NPM commands (wildcard)
 
 **Advanced Patterns:**
@@ -1059,13 +2420,29 @@ Deploy the current branch to staging environment.
 # - Remove hook
 ```
 
+### Hooks Best Practices
+
+**DO:**
+- ✅ Use for deterministic requirements (formatting, security)
+- ✅ Keep hook commands fast (avoid blocking agent)
+- ✅ Include error handling (`|| true` for non-critical)
+- ✅ Document hook purposes in comments
+- ✅ Test hooks independently before deploying
+
+**DON'T:**
+- ❌ Use for logic that should be in agent prompts
+- ❌ Create circular dependencies (hook triggers hook)
+- ❌ Block on user input in hooks
+- ❌ Assume hooks always succeed (handle failures)
+- ❌ Overuse (keep to essential automations)
+
 ---
 
 ## Ralph Loop - Autonomous Iteration
 
 ### Overview
 
-**Ralph Wiggum** (named after the Simpsons character) is a development methodology based on continuous AI agent loops. It allows Claude to iteratively improve work until truly complete, preventing premature exits.
+**Ralph Wiggum** (named after the Simpsons character) is a development methodology based on continuous AI agent loops. It allows Claude to iteratively improve work until truly complete, preventing premature exits. Ralph uses a **Stop hook** to intercept Claude's exit attempts and re-feed the prompt, enabling continuous refinement.
 
 ### How It Works
 
@@ -1222,7 +2599,20 @@ Ralph loops can consume significant tokens:
 
 ### Overview
 
-**MCP** is an open protocol (think "USB-C for AI") that standardizes how AI applications connect to external tools and data sources. It enables Claude to access databases, APIs, filesystems, and enterprise tools through a uniform interface.
+**MCP** (Model Context Protocol) is an open protocol—often described as "USB-C for AI"—that standardizes how AI applications connect to external tools and data sources. It enables Claude to access databases, APIs, filesystems, and enterprise tools through a uniform interface.
+
+### Conceptual Foundation
+
+**The Standardization Problem MCP Solves:**
+- Before MCP: Every AI tool had custom integrations (N tools × M apps = N×M implementations)
+- With MCP: Standardized protocol (N tools + M apps with MCP = N+M implementations)
+- Similar to USB-C: One connector for all devices
+
+**MCP's Role in the Ecosystem:**
+- **Skills** use MCP servers as underlying tools
+- **MCP servers** provide the raw capabilities
+- **Dynamic loading** prevents context bloat
+- **OAuth/OOTH support** enables secure third-party integrations
 
 ### Architecture
 
@@ -1239,7 +2629,7 @@ Ralph loops can consume significant tokens:
          │
     ┌────┴────┬────────┬─────────┐
     │         │        │         │
-┌───┴──┐  ┌──┴───┐ ┌──┴───┐ ┌───┴────┐
+┌───┴──  ┌───┴───┐ ┌──┴───┐ ┌───┴────┐
 │GitHub│  │Slack │ │Drive │ │Postgres│
 └──────┘  └──────┘ └──────┘ └────────┘
   MCP       MCP      MCP       MCP
@@ -1388,6 +2778,18 @@ server.start();
 }
 ```
 
+### MCP and Context Optimization
+
+**The Context Bloat Problem:**
+- Early MCP implementations loaded all server tools at start
+- Example: 5 MCP servers × 10 tools each = 50 tools in context
+- Result: Wasted tokens, degraded performance
+
+**Optimization Strategy:**
+- **On-Demand Activation**: Tools load only when skill/command needs them
+- **Skill Integration**: Skills wrap MCP tools for dynamic loading
+- **Tool Filtering**: Only expose relevant tools per task
+
 ### MCP Best Practices
 
 - **Security**: Validate environment variables, limit file access scopes
@@ -1395,6 +2797,7 @@ server.start();
 - **Documentation**: Describe tools clearly for AI understanding
 - **Rate Limiting**: Respect API limits of integrated services
 - **Caching**: Cache expensive operations when possible
+- **OAuth/OOTH**: Use secure authentication for third-party services
 
 ---
 
@@ -1818,6 +3221,26 @@ client = OpenAI(
 
 ## Best Practices
 
+### Understanding Static vs Dynamic Context
+
+**The Core Principle:**
+Modern agent efficiency depends on balancing static (always-included) and dynamic (on-demand) context.
+
+**Static Context Strategy (CLAUDE.md, Rules):**
+- **Keep Minimal**: Include only essential, frequently-needed guidance
+- **High Quality**: Every line should prevent actual errors you've seen
+- **Evolve Iteratively**: When agent makes mistakes, add fixes to rules
+- **Example Evolution**:
+  - Agent forgets to tag issues in PRs → Add rule: "Always tag related issues"
+  - Agent uses wrong test framework → Add rule: "Use pytest, not unittest"
+- **Target**: Aim for <50% of context window used by static content
+
+**Dynamic Context Strategy (Skills, MCP):**
+- **Use for Extensions**: Non-essential capabilities that aren't always needed
+- **Load On-Demand**: Let agent discover and activate when relevant
+- **Bundle Smart**: Combine related tools in single skill to minimize overhead
+- **OAuth/OOTH**: Secure third-party integrations through MCP
+
 ### For Developers
 
 **1. Project Setup:**
@@ -1826,7 +3249,7 @@ client = OpenAI(
 git init my-project
 cd my-project
 
-# Create project memory
+# Create project memory (Static Context)
 cat > CLAUDE.md << EOF
 # My Project
 
@@ -1837,6 +3260,10 @@ This is a [tech stack] application that [purpose].
 
 ## Test Requirements
 - [coverage goals]
+
+## Known Fixes
+- Always run migrations before deploying
+- Use environment-specific config files
 EOF
 
 # Add useful commands
@@ -1885,7 +3312,7 @@ claude -p "Try alternative approach to caching"
 
 **4. Quality Assurance:**
 ```json
-// Enforce standards with hooks
+// Enforce standards with hooks (Deterministic Actions)
 {
   "hooks": {
     "PostToolUse": [
@@ -1923,7 +3350,7 @@ Lead Agent (Opus)
 
 **3. Team Standards:**
 ```markdown
-# CLAUDE.md (shared via git)
+# CLAUDE.md (shared via git - Static Context)
 
 ## Architecture Principles
 - Microservices with clear boundaries
@@ -1934,6 +3361,12 @@ Lead Agent (Opus)
 - Backend: Python 3.11, FastAPI, SQLAlchemy
 - Frontend: React 18, TypeScript, Tailwind
 - Infra: Docker, Kubernetes, Terraform
+
+## Rules Evolution
+When Claude makes errors:
+1. Document the error in this file
+2. Add specific correction rule
+3. Share update with team via PR
 
 ## Review Checklist
 Before merging Claude Code changes:
@@ -1982,6 +3415,29 @@ claude -p "Quick and dirty solution to [problem]"
 claude -p "Refactor previous code for production quality"
 ```
 
+### Context Management Best Practices
+
+**1. Static Context (Rules/CLAUDE.md):**
+- Start small: 10-20 lines maximum
+- Add only after seeing repeated errors
+- Examples:
+  - "Always use TypeScript strict mode"
+  - "Run database migrations in transactions"
+  - "Tag Jira issues in commit messages"
+- Monitor context usage: `claude --show-context-size`
+
+**2. Dynamic Context (Skills/MCP):**
+- Default to official skills when available
+- Create custom skills for team-specific workflows
+- Use `context: fork` for parallel/experimental tasks
+- Optimize tool loading: one skill with 10 tools > 10 separate skills
+
+**3. Modes and Sub-Agents:**
+- Default to out-of-box agents (explore, plan)
+- Customize only for complex, repeated workflows
+- Document mode purposes clearly
+- Use UI reminders to guide agent behavior
+
 ### Security Best Practices
 
 **1. API Key Management:**
@@ -2011,7 +3467,7 @@ claude --sandbox
 # Review all Bash commands
 claude --permission-mode normal  # Approve each command
 
-# Use hooks for security scanning
+# Use hooks for security scanning (Deterministic Actions)
 {
   "hooks": {
     "PreToolUse": [
@@ -2074,6 +3530,33 @@ system_prompt = {
 # Reuse across requests (90% cost reduction)
 ```
 
+### Iterative Rules Evolution (Key Practice)
+
+**The Cycle:**
+1. **Observe**: Agent makes a mistake (e.g., forgets test coverage)
+2. **Document**: Add to CLAUDE.md: "Always include >80% test coverage"
+3. **Validate**: Next task uses new rule, error prevented
+4. **Refine**: After 5-10 tasks, review rules for effectiveness
+5. **Prune**: Remove rules that aren't preventing errors
+
+**Example Evolution:**
+```markdown
+# CLAUDE.md - Version 1 (Week 1)
+## Code Style
+- Use Black formatting
+
+# CLAUDE.md - Version 2 (Week 2 - after PR issues)
+## Code Style
+- Use Black formatting
+- Always tag related Jira issues in commits
+
+# CLAUDE.md - Version 3 (Week 4 - after production bug)
+## Code Style
+- Use Black formatting
+- Always tag related Jira issues in commits
+- Run integration tests before marking PR ready
+```
+
 ---
 
 ## Quick Reference
@@ -2125,9 +3608,33 @@ project-root/
 │   └── hooks/              # Lifecycle hooks
 │       └── pre-commit.sh
 ├── .claude.json            # MCP servers, global config
-├── CLAUDE.md               # Project context & memory
+├── CLAUDE.md               # Project context & memory (Static Context)
 ├── settings.json           # Tool permissions, hooks
 └── .env                    # Environment variables (gitignored!)
+```
+
+### Context Type Decision Tree
+
+```
+Need to include something?
+│
+├── Used in EVERY conversation? 
+│   └── Yes → Static Context (CLAUDE.md)
+│       Examples: code style, project overview, common fixes
+│
+└── No → Dynamic Context
+    │
+    ├── Workflow/shortcut?
+    │   └── Slash Command (.claude/commands/)
+    │
+    ├── Tool/integration?
+    │   └── MCP Server (.claude.json)
+    │
+    ├── Complex capability?
+    │   └── Skill (.claude/skills/)
+    │
+    └── Specialized task?
+        └── Sub-Agent (.claude/agents/)
 ```
 
 ### Model Selection Cheatsheet
@@ -2217,7 +3724,7 @@ Total: ~$22.50
 **Week 1: Basics**
 1. Install Claude Code
 2. Run first interactive session
-3. Create CLAUDE.md for a project
+3. Create CLAUDE.md for a project (start with 5-10 lines)
 4. Try 3-5 slash commands
 
 **Week 2: Skills & Tools**
@@ -2228,7 +3735,7 @@ Total: ~$22.50
 
 **Week 3: Advanced**
 1. Build custom skill
-2. Try Ralph loop on real task
+2. Try Ralph loop on real task (start with 10 iterations)
 3. Set up worktrees workflow
 4. Configure sub-agents
 
@@ -2236,24 +3743,40 @@ Total: ~$22.50
 1. Integrate into team workflow
 2. Set up CI/CD hooks
 3. Document team standards in CLAUDE.md
-4. Train teammates
+4. Train teammates on static vs dynamic context
 
 ---
 
 ## Conclusion
 
-The Claude ecosystem in 2026 is a comprehensive platform for agentic AI development. From the foundational models (Haiku, Sonnet, Opus) to developer tools (Claude Code, Agent SDK), extensibility systems (Skills, Plugins, MCP), and automation patterns (Sub-Agents, Ralph Loop, Hooks), it provides everything needed to build sophisticated AI-powered workflows.
+The Claude ecosystem in 2026 represents the culmination of years of AI agent evolution, from early hallucination-fighting rules to sophisticated dynamic context management. Understanding this history—and the core distinction between static and dynamic context—is essential for effective use.
 
-**Key Takeaways:**
-- **Models**: Use the right model for the task (Haiku → Sonnet → Opus)
-- **Claude Code**: Your primary interface for agentic coding
-- **Skills**: Modular capabilities, portable across tools
-- **MCP**: Universal protocol for tool integration
-- **Ralph Loop**: Autonomous iteration for completion
-- **Sub-Agents**: Parallel task execution
-- **Hooks**: Lifecycle automation
-- **Projects**: Context management at scale
+**Key Evolutionary Insights:**
+- **Static → Dynamic**: The industry moved from "include everything" to "include only what's needed"
+- **Tool Calling Maturity**: Reliable tool use enabled Skills, MCP, and sub-agents
+- **Open Standards**: Skills and MCP promote ecosystem growth beyond Anthropic
 
-Whether you're a developer shipping production code, an architect designing systems, or a vibe coder rapidly prototyping, Claude's ecosystem has the tools you need. Start simple, experiment often, and leverage the community's growing library of skills, plugins, and integrations.
+**Essential Framework:**
+- **Static Context (CLAUDE.md)**: Minimal, high-quality, evolved iteratively
+- **Dynamic Context (Skills/MCP)**: On-demand loading, avoid token bloat
+- **Deterministic Actions (Hooks)**: Guaranteed execution for critical workflows
+- **Autonomous Iteration (Ralph)**: Prevent premature exits, achieve completion
 
-**Remember**: The ecosystem evolves rapidly. Check https://docs.anthropic.com for the latest updates, join the community for tips, and don't hesitate to experiment—that's where the magic happens.
+**Practical Approach:**
+1. Start with minimal static context (10-20 lines in CLAUDE.md)
+2. Add rules only after observing errors
+3. Use skills for non-essential capabilities
+4. Monitor context usage (<50% static target)
+5. Leverage hooks for formatting, security, testing
+6. Scale to Ralph loops for mechanical tasks
+
+**Model Strategy:**
+- Haiku → quick drafts, simple tasks
+- Sonnet → default for development, orchestration
+- Opus → complex reasoning, production code
+
+Whether you're a developer shipping production code, an architect designing systems, or a vibe coder rapidly prototyping, the key is understanding the conceptual framework: balance static (always-on) and dynamic (on-demand) context, use deterministic hooks for guarantees, and evolve your rules based on observed agent behavior.
+
+**Remember**: The ecosystem evolves rapidly. Check https://docs.anthropic.com for the latest, join the community for insights, and experiment often—but always with iteration limits and git safety nets.
+
+The future of development isn't just AI-assisted; it's AI-collaborative, with humans and agents each playing to their strengths within a well-designed context management framework.
