@@ -2,14 +2,18 @@
 
 **A Technical Whitepaper on Context Efficiency in AI Agent Systems**
 
+**Version:** 2.0  
+**Last Updated:** January 16, 2026
+
 ---
 
 ## Executive Summary
 
-The Model Context Protocol (MCP) has emerged as the de facto standard for connecting AI agents to external tools and systems since its November 2024 launch. However, as adoption scales, fundamental architectural limitations have become apparent. This whitepaper examines the core scalability problems with MCP—specifically excessive token consumption and rigid tool binding—and presents emerging solutions including code execution patterns, progressive disclosure mechanisms, and alternative architectural approaches that achieve 78-98% token reduction while maintaining or improving agent performance.
+The Model Context Protocol (MCP) has emerged as the de facto standard for connecting AI agents to external tools and systems since its November 2024 launch. However, as adoption scales, fundamental architectural limitations have become apparent. This whitepaper examines the core scalability problems with MCP—specifically excessive token consumption and rigid tool binding—and presents emerging solutions including Anthropic's native tool search feature, code execution patterns, progressive disclosure mechanisms, and alternative architectural approaches that achieve 78-98% token reduction while maintaining or improving agent performance.
 
 **Key Findings:**
 - Traditional MCP implementations consume 15,000+ tokens per tool invocation, with context bloat scaling linearly with tool count
+- Anthropic's tool search feature (January 2026) reduces token usage by up to 85% through dynamic tool loading
 - Code execution approaches reduce token usage by 78.5% while maintaining 100% success rates
 - Progressive disclosure and on-demand tool loading eliminate the "context overload" problem that degrades agent autonomy
 - A spectrum of solutions exists, each with distinct trade-offs between control, flexibility, and operational complexity
@@ -73,7 +77,7 @@ Research shows LLMs perform similarly to GPT-3.5 era systems when asked to choos
 Where for MCP:
 - n = number of connected MCPs
 - Each Tokens_i = all tool definitions, not just needed ones
-- No selective loading mechanism exists
+- No selective loading mechanism exists in traditional MCP
 
 ### 2.2 Problem 2: Intermediate Result Bloat
 
@@ -113,9 +117,9 @@ For a 2-hour meeting transcript (1.5-2 MB of text), this becomes prohibitive.
 
 ### 2.3 Problem 3: No Progressive Disclosure
 
-**The Architectural Gap:** MCP has no built-in mechanism for "discovering" tools on-demand.
+**The Architectural Gap:** Traditional MCP had no built-in mechanism for "discovering" tools on-demand.
 
-Current MCP flow:
+Traditional MCP flow:
 1. Connect to MCP server
 2. All tools load upfront
 3. Model sees everything
@@ -129,7 +133,7 @@ An e-commerce platform might expose 500+ tools across:
 - Customer management (130 tools)
 - Reporting (100 tools)
 
-A single request might need 5-10 tools, yet all 500 descriptions consume tokens. Unlike Unix filesystems where you list a directory only when needed, MCP has no equivalent—all tools are always "visible" to the model.
+A single request might need 5-10 tools, yet all 500 descriptions consume tokens. Unlike Unix filesystems where you list a directory only when needed, traditional MCP had no equivalent—all tools were always "visible" to the model.
 
 ### 2.4 Problem 4: Rigid Tool Binding
 
@@ -145,40 +149,132 @@ If an agent needs to combine multiple API calls into a custom workflow, it canno
 
 Benchmark: Agent integrating Google Drive → Salesforce with 5 MCPs connected
 
-| Aspect | Traditional MCP | Code Execution | Reduction |
-|--------|-----------------|-----------------|-----------|
-| **Input Tokens** | 15,417 per call | 3,310 per call | **78.5%** |
-| **Tool Definitions** | All 97K loaded | Only needed tools | ~85% |
-| **Intermediate Results** | Passed through context | Filtered in execution | ~90% |
-| **Output Tokens** | 87 | 192 | -120% (trade-off) |
-| **Total Tokens** | 775,197 | 175,081 | **77.4%** |
-| **Success Rate** | 100% | 100% | Same |
-| **Latency** | 9.66s | 10.37s | +7% (minimal) |
+| Aspect | Traditional MCP | Tool Search | Code Execution | Reduction (vs Traditional) |
+|--------|-----------------|-------------|----------------|---------------------------|
+| **Input Tokens** | 15,417 per call | ~2,300 per call | 3,310 per call | 85% / 78.5% |
+| **Tool Definitions** | All 97K loaded | Dynamic 3-5 tools (~10K) | Only needed tools | ~90% / ~85% |
+| **Intermediate Results** | Passed through context | Passed through context | Filtered in execution | - / ~90% |
+| **Output Tokens** | 87 | ~150 (est.) | 192 | - |
+| **Total Tokens** | 775,197 | ~116,000 (est.) | 175,081 | 85% / 77.4% |
+| **Success Rate** | 100% | 100% | 100% | Same |
+| **Latency** | 9.66s | 11-12s (with searches) | 10.37s | +7-24% |
 
 **Cost Implications:**
 - Input tokens: $0.30/1M (cheaper)
 - Output tokens: $1.50/1M (expensive)
-- 78% input reduction >> 2.2× output increase
-- **Net savings: ~70% cost reduction**
+- Tool Search: 85% input reduction with minimal output increase = ~80% cost reduction
+- Code Execution: 78% input reduction >> 2.2× output increase = ~70% cost reduction
 
 ### 3.2 Scaling Characteristics
 
 How token consumption grows with tool count:
 
-| Tool Count | Traditional MCP | Dynamic Toolset | Code Execution |
-|-----------|-----------------|-----------------|-----------------|
-| 10 tools | 10K tokens | 2K tokens | 1.5K tokens |
-| 50 tools | 50K tokens | 3K tokens | 2.2K tokens |
-| 100 tools | 100K tokens | 3.5K tokens | 2.8K tokens |
-| 500 tools | 500K tokens | 4.5K tokens | 4.2K tokens |
+| Tool Count | Traditional MCP | Tool Search | Dynamic Toolset | Code Execution |
+|-----------|-----------------|-------------|-----------------|-----------------|
+| 10 tools | 10K tokens | 3K tokens | 2K tokens | 1.5K tokens |
+| 50 tools | 50K tokens | 10K tokens | 3K tokens | 2.2K tokens |
+| 100 tools | 100K tokens | 12K tokens | 3.5K tokens | 2.8K tokens |
+| 500 tools | 500K tokens | 15K tokens | 4.5K tokens | 4.2K tokens |
 
-**Key Insight:** Code execution and dynamic approaches maintain constant token consumption as tools scale; MCP scales linearly with toolset size.
+**Key Insight:** Tool search, code execution, and dynamic approaches maintain near-constant token consumption as tools scale; traditional MCP scales linearly with toolset size.
 
 ---
 
-## 4. The Code Execution Solution
+## 4. Emerging Solutions: MCP Tool Search
 
-### 4.1 Fundamental Shift: Code as Interface
+### 4.1 Anthropic's Native Solution (January 2026)
+
+In response to widespread context bloat issues, Anthropic introduced the MCP tool search feature, which allows clients to dynamically load tools into context only when needed, rather than pre-loading all of them.
+
+**Key Mechanics:**
+- Claude initially loads only the `tool_search` tool
+- When a query is made, the system searches the tool catalog for relevant tools
+- Only the full definitions of 3-5 relevant tools are then loaded into the context
+- Can achieve up to 85% token reduction when tool definitions occupy >10% of context window
+
+### 4.2 Tool Search Variants
+
+#### Regular Expression-based Search
+Claude writes patterns (e.g., "weather*", "get_star_data"). Best for tools with consistent naming conventions.
+
+```json
+{
+  "tool": "tool_search",
+  "parameters": {
+    "pattern": "weather.*",
+    "type": "regex"
+  }
+}
+```
+
+#### BM25 (Keyword-based Search)
+Claude uses natural language queries (e.g., "tool for weather", "database operations"). Better when tool names and descriptions vary.
+
+```json
+{
+  "tool": "tool_search",
+  "parameters": {
+    "query": "tools for fetching weather data",
+    "type": "bm25"
+  }
+}
+```
+
+### 4.3 Implementation Steps
+
+**Client-Side Setup:**
+1. **Enable the beta**: Add the specific header to your API request
+2. **Add tool_search tool**: Include this tool (regex or BM25 based) and do NOT set `defer_loading` on it
+3. **Mark non-essential tools for deferred loading**: Add `defer_loading: true` to tools you don't want to load immediately
+4. **Keep essential tools loaded**: Maintain 3-5 frequently used tools with `defer_loading: false` for immediate access
+
+**Server-Side Best Practices:**
+- **Lead with function**: Start descriptions with the tool's primary function
+- **Be concise**: Keep descriptions to one or two sentences
+- **Add searchable keywords**: Include terms like "fetch," "get," "retrieve," and synonyms
+- **Use input schema for constraints**: Descriptions are for discovery, schema for validation
+- **Optimize for tokens**: Every word costs tokens
+- **Server instructions**: Use this field to guide Claude on tool workflow and order of operations
+
+### 4.4 When to Use Tool Search
+
+**Use Tool Search when:**
+- You have 10 or more MCP tools
+- Your tools occupy more than 10% of your agent's context
+- Tools have varying usage patterns (some frequent, many occasional)
+- You want a simple, client-side solution with no server changes
+
+**Skip Tool Search when:**
+- You only have 3-5 tools
+- All your tools are frequently used
+- Latency is absolutely critical (search adds 1-2 seconds)
+- Tools are already well-organized with other progressive disclosure
+
+### 4.5 Common Pitfalls
+
+- **Don't defer load the tool_search tool itself** - It must be available immediately
+- **Don't make descriptions too short** - Keywords matter for search quality
+- **Don't keep too many tools without deferred loading** - This negates the benefits
+- **Don't use vague descriptions** - Specific, action-oriented language works best
+
+### 4.6 Comparison to Other Approaches
+
+| Aspect | Tool Search | Code Execution | CLI-First |
+|--------|-------------|----------------|-----------|
+| Token Reduction | 85% | 78-98% | 70-85% |
+| Setup Complexity | Low (client-side only) | Medium (filesystem structuring) | Low |
+| Dynamic Capabilities | Limited to existing tools | High (programmatic composition) | Medium |
+| Latency Overhead | Search time (1-2s) | Sandbox execution | Minimal |
+| Server Changes Required | No | No | No |
+| Best For | Standard MCP workflows | Custom/complex integrations | Simple, stable interfaces |
+
+**Key Insight:** Tool search directly addresses Problems 1 and 3 (tool definition overload and progressive disclosure) while maintaining full MCP compatibility. It's the simplest solution for most MCP users experiencing context bloat.
+
+---
+
+## 5. The Code Execution Solution
+
+### 5.1 Fundamental Shift: Code as Interface
 
 Instead of presenting tools as direct-callable functions, code execution treats MCP servers as **code APIs** that agents can invoke programmatically.
 
@@ -192,7 +288,7 @@ Code Execution:
 User → Agent → [Filesystem of tool definitions] → [Model writes code] → [Sandbox execution] → [Result returned]
 ```
 
-### 4.2 Implementation Pattern
+### 5.2 Implementation Pattern
 
 Create a structured filesystem where each tool becomes a TypeScript/Python module:
 
@@ -243,7 +339,7 @@ export async function getDocument(
 }
 ```
 
-### 4.3 Agent Workflow with Code Execution
+### 5.3 Agent Workflow with Code Execution
 
 **Request:** "Download my meeting transcript from Google Drive and add it to Salesforce"
 
@@ -281,7 +377,7 @@ console.log("Meeting notes updated successfully");
 5. Model never sees the full transcript
 6. Context consumed: ~2,000 tokens instead of 150,000
 
-### 4.4 Benefits Breakdown
+### 5.4 Benefits Breakdown
 
 #### Benefit 1: Progressive Disclosure
 Models discover tools by exploring the filesystem. When the model identifies a need (e.g., "I should query Slack"), it reads only the relevant tool file.
@@ -390,11 +486,11 @@ const csvPath = await saveSheetAsCsv('xyz789');
 
 ---
 
-## 5. Alternative Approaches: Beyond Code Execution
+## 6. Alternative Approaches: Beyond Tool Search and Code Execution
 
-While code execution is powerful, it's not the only solution. A spectrum of approaches exists, each optimized for different scenarios.
+While tool search and code execution are powerful, they're not the only solutions. A spectrum of approaches exists, each optimized for different scenarios.
 
-### 5.1 CLI-First Approach
+### 6.1 CLI-First Approach
 
 **The Pattern:** Use command-line interfaces as the primary integration layer.
 
@@ -418,13 +514,13 @@ Use three-step workflow:
 **Success Rate:** 100% (if CLI is robust)
 
 **Trade-offs:**
-| Aspect | CLI | MCP | Code Execution |
-|--------|-----|-----|-----------------|
-| Context consumption | ~300 tokens | 97K tokens | ~2K tokens |
-| Flexibility | High | Medium | Highest |
-| Operational overhead | Low | Low | High |
-| For multi-agent systems | Good | Good | Complex |
-| Works for teams + agents | Yes | Partial | Yes |
+| Aspect | CLI | MCP | Tool Search | Code Execution |
+|--------|-----|-----|-------------|-----------------|
+| Context consumption | ~300 tokens | 97K tokens | ~10K tokens | ~2K tokens |
+| Flexibility | High | Medium | Medium | Highest |
+| Operational overhead | Low | Low | Low | High |
+| For multi-agent systems | Good | Good | Good | Complex |
+| Works for teams + agents | Yes | Partial | Partial | Yes |
 
 **When to Use:**
 - Building first iteration of new tools
@@ -432,7 +528,7 @@ Use three-step workflow:
 - Teams using same tools (leverage CLI for humans too)
 - External third-party tools
 
-### 5.2 Script-Based Approach with Progressive Disclosure
+### 6.2 Script-Based Approach with Progressive Disclosure
 
 **The Pattern:** Single-file, self-contained scripts with prompt engineering for selective loading.
 
@@ -504,7 +600,7 @@ console.log(`Market Sentiment: ${bullish} bullish, ${bearish} bearish`);
 - Privacy-sensitive workloads where data should never enter context
 - Scenarios with many tools but per-request subset usage
 
-### 5.3 Claude Skills (Anthropic's Solution)
+### 6.3 Claude Skills (Anthropic's Solution)
 
 **The Pattern:** Anthropic's native skills ecosystem for Claude agents.
 
@@ -551,13 +647,13 @@ Ask me to search markets, get market details, or manage positions.
 **Success Rate:** 100%
 
 **Trade-offs:**
-| Aspect | Skills | CLI | Code Execution |
-|--------|--------|-----|-----------------|
-| Ecosystem lock-in | Claude only | Any agent/system | Any agent/system |
-| Initial context | ~300 tokens | ~300 tokens | ~2K tokens |
-| Flexibility | High | High | Highest |
-| Operational overhead | Low (Anthropic-managed) | Low | High |
-| Persistence between sessions | Yes | Yes | Yes |
+| Aspect | Skills | CLI | Tool Search | Code Execution |
+|--------|--------|-----|-------------|-----------------|
+| Ecosystem lock-in | Claude only | Any agent/system | Any agent/system | Any agent/system |
+| Initial context | ~300 tokens | ~300 tokens | ~10K tokens | ~2K tokens |
+| Flexibility | High | High | Medium | Highest |
+| Operational overhead | Low (Anthropic-managed) | Low | Low | High |
+| Persistence between sessions | Yes | Yes | Yes | Yes |
 
 **Lock-in Consideration:**
 Skills are deeply integrated with Claude's ecosystem. Porting to GPT-4 or other models would require adaptation. However, the flexibility gains are substantial for Claude-native systems.
@@ -570,18 +666,19 @@ Skills are deeply integrated with Claude's ecosystem. Porting to GPT-4 or other 
 
 ---
 
-## 6. Advanced Pattern: MCP-Zero Active Tool Discovery
+## 7. Advanced Pattern: MCP-Zero Active Tool Discovery
 
-### 6.1 The Problem It Solves
+### 7.1 The Problem It Solves
 
 Current MCP and alternatives require either:
-1. **Pre-loading everything** (MCP) → context bloat
-2. **Manual tool discovery** (CLI/scripts) → requires prompt engineering
-3. **Ecosystem lock-in** (Skills) → Anthropic-only
+1. **Pre-loading everything** (traditional MCP) → context bloat
+2. **Search-based discovery** (tool search) → potential retry latency
+3. **Manual tool discovery** (CLI/scripts) → requires prompt engineering
+4. **Ecosystem lock-in** (Skills) → Anthropic-only
 
 **MCP-Zero** introduces **active tool discovery**: agents autonomously request specific tools based on task requirements.
 
-### 6.2 How It Works
+### 7.2 How It Works
 
 **Three Core Mechanisms:**
 
@@ -626,47 +723,55 @@ RESULT: Never loaded document-processing or salesforce upfront;
         only requested when needed
 ```
 
-### 6.3 Benchmark Results
+### 7.3 Benchmark Results
 
 Cross-domain workflow: Search files → Extract content → Process → Store
 
-| Metric | Traditional MCP | Dynamic Toolset | MCP-Zero |
-|--------|-----------------|-----------------|----------|
-| Initial context | 85K tokens | 4K tokens | 1.2K tokens |
-| Mid-task context growth | Linear +20K | +2K per domain | +1.5K per domain |
-| Final context | 125K+ tokens | 8K tokens | 4.8K tokens |
-| Tool discovery latency | Zero (pre-loaded) | ~50ms per discovery | ~100ms per discovery |
-| Success rate | 100% | 99.8% | 99.7% |
+| Metric | Traditional MCP | Tool Search | Dynamic Toolset | MCP-Zero |
+|--------|-----------------|-------------|-----------------|----------|
+| Initial context | 85K tokens | ~10K tokens | 4K tokens | 1.2K tokens |
+| Mid-task context growth | Linear +20K | +2K per search | +2K per domain | +1.5K per domain |
+| Final context | 125K+ tokens | ~16K tokens | 8K tokens | 4.8K tokens |
+| Tool discovery latency | Zero (pre-loaded) | ~1-2s per search | ~50ms per discovery | ~100ms per discovery |
+| Success rate | 100% | 100% | 99.8% | 99.7% |
 
 MCP-Zero trades minimal latency (~50-100ms per tool discovery) for dramatic token savings.
 
 ---
 
-## 7. Trade-offs and Decision Matrix
+## 8. Trade-offs and Decision Matrix
 
-### 7.1 Comprehensive Comparison
+### 8.1 Comprehensive Comparison
 
-| Dimension | MCP | CLI | Scripts | Skills | Code Execution | MCP-Zero |
-|-----------|-----|-----|---------|--------|-----------------|----------|
-| **Token Efficiency** | Low | Medium | High | High | Very High | Very High |
-| **Initial setup cost** | High | Low | Low | Medium | High | Very High |
-| **Operational complexity** | Low | Low | Medium | Low | High | Very High |
-| **Security features** | Basic | Manual | Manual | Advanced | Advanced | Advanced |
-| **Ecosystem lock-in** | None | None | None | Claude | None | None |
-| **Multi-agent ready** | Good | Fair | Fair | Fair | Good | Good |
-| **Flexibility** | Low | Medium | High | High | Very High | Very High |
-| **Debugging experience** | Good | Good | Good | Medium | Medium | Poor |
-| **Scaling (tool count)** | Linear | Linear | Constant | Constant | Constant | Constant |
-| **Industry adoption** | Highest | Low | Low | Growing | Growing | Emerging |
+| Dimension | Traditional MCP | Tool Search | CLI | Scripts | Skills | Code Execution | MCP-Zero |
+|-----------|-----------------|-------------|-----|---------|--------|-----------------|----------|
+| **Token Efficiency** | Low | High | Medium | High | High | Very High | Very High |
+| **Initial setup cost** | High | Low | Low | Low | Medium | High | Very High |
+| **Operational complexity** | Low | Low | Low | Medium | Low | High | Very High |
+| **Security features** | Basic | Basic | Manual | Manual | Advanced | Advanced | Advanced |
+| **Ecosystem lock-in** | None | None | None | None | Claude | None | None |
+| **Multi-agent ready** | Good | Good | Fair | Fair | Fair | Good | Good |
+| **Flexibility** | Low | Medium | Medium | High | High | Very High | Very High |
+| **Debugging experience** | Good | Good | Good | Good | Medium | Medium | Poor |
+| **Scaling (tool count)** | Linear | Constant | Linear | Constant | Constant | Constant | Constant |
+| **Industry adoption** | Highest | Growing | Low | Low | Growing | Growing | Emerging |
+| **Server changes required** | No | No | No | No | No | No | No |
 
-### 7.2 Decision Framework
+### 8.2 Decision Framework
 
-**Choose MCP when:**
+**Choose Traditional MCP when:**
 - Integrating external, third-party tools (Slack, Notion, Stripe)
+- Tool set is small (<10 tools) and stable
 - Need maximum predictability and control
-- Tool set is stable and well-documented
 - Working with single, well-focused agents
 - Simplicity and setup speed matter most
+
+**Choose Tool Search when:**
+- Using MCP with 10+ tools consuming >10% of context
+- Want simple client-side solution with no server changes
+- Can tolerate 1-2s search latency
+- Tools have varying usage patterns (some frequent, many occasional)
+- Already invested in MCP infrastructure
 
 **Choose CLI when:**
 - Building first iteration of new tool
@@ -687,7 +792,7 @@ MCP-Zero trades minimal latency (~50-100ms per tool discovery) for dramatic toke
 - Complex, multi-tool workflows
 - Enterprise deployment with support needs
 - Want Anthropic-managed infrastructure
-- Willing to pay for ecosystem integration
+- Willing to accept ecosystem integration
 
 **Choose Code Execution when:**
 - Large tool catalogs (100+ tools)
@@ -695,6 +800,7 @@ MCP-Zero trades minimal latency (~50-100ms per tool discovery) for dramatic toke
 - Data privacy paramount
 - Can afford sandboxing infrastructure
 - Agent autonomy and flexibility prioritized
+- Need programmatic tool composition
 
 **Choose MCP-Zero when:**
 - Production enterprise system with many domains
@@ -703,35 +809,36 @@ MCP-Zero trades minimal latency (~50-100ms per tool discovery) for dramatic toke
 - Can justify research-grade infrastructure
 - Minimizing context at any cost
 
-### 7.3 The 80/10/10 Rule (Industry Recommendation)
+### 8.3 The 80/10/10 Rule (Industry Recommendation)
 
 From production deployment experience:
 
 | Scenario | Approach | Rationale |
 |----------|----------|-----------|
-| **80% of use cases** | CLI-first | Simple, effective, works everywhere |
+| **80% of use cases** | CLI-first or Tool Search | Simple, effective, works everywhere |
 | **10% of use cases** | MCP servers | When CLI gets complex; wrap it in MCP |
 | **10% of use cases** | Code execution/Skills | Complex orchestration, data privacy, scaling |
 
 **The Flow:**
 1. **Start with CLI** - Fast iteration, clear interfaces
-2. **Scale to MCP** - Only when need multi-agent coordination
-3. **Optimize with Code Execution** - Only if MCP token costs become prohibitive
+2. **Add Tool Search if using MCP** - When tool count grows beyond 10
+3. **Scale to MCP** - Only when need multi-agent coordination
+4. **Optimize with Code Execution** - Only if MCP token costs become prohibitive
 
 This avoids premature architecture investment while scaling naturally.
 
 ---
 
-## 8. Real-World Case Study: Prediction Markets Agent
+## 9. Real-World Case Study: Prediction Markets Agent
 
-### 8.1 Scenario
+### 9.1 Scenario
 Build an agent that analyzes prediction markets (Kalshi) to:
 1. Search for relevant markets
 2. Analyze sentiment from order books
 3. Report aggregated predictions
 4. Optionally execute trades
 
-### 8.2 MCP Approach
+### 9.2 Traditional MCP Approach
 
 **Setup:**
 ```json
@@ -763,7 +870,39 @@ TOTAL BEFORE WORK BEGINS: 8,700 tokens
 
 After agent searches and loads market details (200 markets at 50 tokens each = 10K tokens), final context = 18,700 tokens before analysis.
 
-### 8.3 CLI Approach
+### 9.3 Tool Search Approach
+
+**Setup:**
+```json
+{
+  "mcpServers": {
+    "kalshi": {
+      "command": "python",
+      "args": ["kalshi-mcp-server.py"]
+    }
+  },
+  "beta": {
+    "toolSearch": true
+  }
+}
+```
+
+**Token consumption:**
+```
+System prompt:           2,000 tokens
+tool_search tool:          300 tokens
+Essential tools (3):     1,500 tokens
+User query:               200 tokens
+
+TOTAL BEFORE WORK:       4,000 tokens
+
+After search (loads 5 relevant tools): +2,500 tokens
+Total during work:       6,500 tokens
+```
+
+Agent starts with 6,500 tokens used; searches dynamically load only needed tools for sentiment analysis.
+
+### 9.4 CLI Approach
 
 **Setup:**
 ```bash
@@ -788,7 +927,7 @@ TOTAL BEFORE WORK:    2,400 tokens
 
 Agent starts with 2,400 tokens used; 197,600 tokens available for analysis.
 
-### 8.4 Code Execution Approach
+### 9.5 Code Execution Approach
 
 **Setup:**
 ```
@@ -821,26 +960,26 @@ TOTAL BEFORE WORK:    2,350 tokens
 Plus ~1,500 tokens when agent writes the code to execute (code execution).
 Total: ~3,850 tokens, leaving ~196,150 for analysis and data.
 
-### 8.5 Comparative Analysis
+### 9.6 Comparative Analysis
 
-| Metric | MCP | CLI | Code Execution |
-|--------|-----|-----|-----------------|
-| Initial context | 8,700 | 2,400 | 2,350 |
-| After market search (200 markets) | 18,700 | 2,400 | ~3,500 |
-| Agent analysis capacity | 181K tokens | 197.6K tokens | 196.5K tokens |
-| **Capacity advantage** | Baseline | +8.7% | +8.3% |
-| Workflow complexity | Orchestrate multiple tool calls | CLI commands | Single code block |
-| Data transformation | Must pass through context | Manual parsing | In-execution filtering |
-| Privacy exposure | Full data in context | Command args | Filtered in sandbox |
+| Metric | Traditional MCP | Tool Search | CLI | Code Execution |
+|--------|-----------------|-------------|-----|-----------------|
+| Initial context | 8,700 | 4,000 | 2,400 | 2,350 |
+| After market search (200 markets) | 18,700 | 6,500 | 2,400 | ~3,500 |
+| Agent analysis capacity | 181K tokens | 193.5K tokens | 197.6K tokens | 196.5K tokens |
+| **Capacity advantage** | Baseline | +6.4% | +8.7% | +8.3% |
+| Workflow complexity | Orchestrate multiple tool calls | Search + tool calls | CLI commands | Single code block |
+| Data transformation | Must pass through context | Must pass through context | Manual parsing | In-execution filtering |
+| Privacy exposure | Full data in context | Full data in context | Command args | Filtered in sandbox |
+| Setup overhead | Medium | Low | Low | High |
 
-**Key Insight:** For this workflow, CLI and Code Execution save ~10% context without sacrificing success rate. Advantage grows with data volume.
-
+**Key Insight:** For this workflow, Tool Search provides 54% token savings vs traditional MCP with minimal setup. CLI and Code Execution save ~10% more context without sacrificing success rate. Advantage grows with data volume and complexity.
 
 ---
 
-## 9. Security Considerations
+## 10. Security Considerations
 
-### 9.1 Code Execution Security
+### 10.1 Code Execution Security
 
 Running agent-generated code requires robust infrastructure:
 
@@ -867,19 +1006,20 @@ const result = await salesforce.updateRecord(...);
 // Agent cannot see the actual key
 ```
 
-### 9.2 MCP Security Tradeoffs
+### 10.2 MCP and Tool Search Security Tradeoffs
 
-**MCP advantages:**
+**MCP/Tool Search advantages:**
 - Tool definitions are explicit; no arbitrary code execution
 - Credentials managed by MCP server, not agent
 - Failed tool calls don't crash the system
+- Search patterns are transparent and auditable
 
-**MCP disadvantages:**
+**MCP/Tool Search disadvantages:**
 - All data flows through context; harder to tokenize sensitive data
-- No concept of OAuth or stateful authentication
-- Custom URL hacks needed for security
+- Traditional MCP has no concept of OAuth or stateful authentication
+- Custom URL hacks needed for advanced security
 
-### 9.3 Privacy-Preserving Pattern
+### 10.3 Privacy-Preserving Pattern
 
 **Data Tokenization in Code Execution:**
 ```typescript
@@ -904,40 +1044,38 @@ for (const row of rows) {
 
 ---
 
-## 10. Future Roadmap and Evolution
+## 11. Future Roadmap and Evolution
 
-### 10.1 Where MCP is Heading
+### 11.1 Where MCP is Heading
 
-**Anthropic's Implicit Direction:**
-The "Code Execution with MCP" blog post signals evolution toward:
-1. **Hybrid approach**: MCP for discovery + Code execution for operation
-2. **Tool filesystem standard**: Formalizing filesystem-based tool discovery
-3. **Capability versioning**: Multiple versions of tools available simultaneously
+**Recent Developments (January 2026):**
+The introduction of tool search represents MCP's evolution toward progressive disclosure patterns. This signals Anthropic's implicit direction:
+1. **Dynamic discovery over static loading**: Moving away from "all tools upfront"
+2. **Client-side optimization**: Empowering clients to manage context efficiently
+3. **Search-based tool selection**: Natural language and pattern-based tool discovery
+4. **Backward compatibility**: No server changes required for clients to benefit
 
-**Likely developments:**
-- MCP spec v2 incorporating progressive disclosure patterns
-- Native support for tool search operations
+**Likely Future Developments:**
+- MCP spec v2 incorporating progressive disclosure patterns as standard
+- Native support for tool search operations in the core protocol
 - OAuth/credential handling standardization
-- Code execution recommendations moving into official spec
+- Hybrid approaches combining tool search with code execution
+- Tool versioning and capability negotiation
 
-### 10.2 Emerging Standards
+### 11.2 Emerging Standards
 
-**MCP-Zero and active discovery** may become part of future MCP versions, bringing model autonomy back to tool selection.
+**Tool Search Evolution** may become part of future MCP versions, bringing:
+- Semantic search improvements beyond BM25
+- Tool dependency graphs for related tool loading
+- Context budget management as first-class feature
+- Multi-modal tool descriptions (code examples, diagrams)
 
 **Skills-like ecosystems** will proliferate across different model providers:
 - OpenAI: Custom GPTs evolution
 - Google: Agent Builder ecosystem
 - Open-source: Hugging Face Agent Hub
 
-### 10.3 Visual Architecture Diagram
-
-![MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram](./assets/MCP-CodeExec-Cli-Skills-Visual-Architecture-Diagram.png) 
-
-### 10.4 Token Consumption Graph
-
-![MCP-CodeExc-Cli-Skills-Token-Consumption-Graph](./assets/MCP-CodeExc-Cli-Skills-Token-Consumption-Graph.png)
-
-### 10.5 The Likely Winner: Hybrid Architecture
+### 11.3 The Likely Winner: Hybrid Architecture
 
 The future likely involves:
 
@@ -950,9 +1088,9 @@ The future likely involves:
      ▼           ▼
   ┌──────┐    ┌─────────┐
   │ MCP  │    │ Code    │
-  │      │    │ Exec    │
-  │Stable│    │Dynamic  │
-  │Tools │    │Tools    │
+  │with  │    │ Exec    │
+  │Tool  │    │Dynamic  │
+  │Search│    │Tools    │
   └──────┘    └─────────┘
      │           │
      ▼           ▼
@@ -962,15 +1100,15 @@ The future likely involves:
 └────────────────────────┘
 ```
 
-- **MCP** for stable, external, third-party tools
+- **MCP with Tool Search** for stable, external, third-party tools
 - **Code Execution** for dynamic, complex, privacy-sensitive workflows
 - **Unified sandbox** managing credentials and security
 
 ---
 
-## 11. Implementation Recommendations
+## 12. Implementation Recommendations
 
-### 11.1 For New Projects
+### 12.1 For New Projects
 
 **Phase 1: Foundation (Week 1-2)**
 - Implement CLI for each tool/API
@@ -983,21 +1121,31 @@ The future likely involves:
 - Measure token consumption
 
 **Phase 3: Optimization (Week 5+)**
+- If using MCP and have 10+ tools: Enable tool search
 - If tokens become bottleneck: Evaluate code execution or skills
 - If need multi-agent: Wrap CLI in MCP servers
 - Monitor and iterate
 
-### 11.2 For Existing MCP Implementations
+### 12.2 For Existing MCP Implementations
 
 **Assessment:**
 1. Measure actual token consumption
-2. Identify high-token tools
-3. Analyze query patterns (which tools used together)
+2. Count total tools in your MCP servers
+3. Identify high-token tools
+4. Analyze query patterns (which tools used together)
 
-**Gradual Migration:**
+**Quick Win: Enable Tool Search**
+If you have 10+ tools:
+1. Add tool search beta header to API requests
+2. Mark infrequently-used tools with `defer_loading: true`
+3. Keep 3-5 essential tools with `defer_loading: false`
+4. Optimize tool descriptions with action verbs and keywords
+5. Measure token reduction (expect 70-85%)
+
+**Gradual Migration for Complex Cases:**
 1. **Step 1**: Identify 3-5 highest-token tools
 2. **Step 2**: Implement as Scripts or CLI with code execution
-3. **Step 3**: Keep MCP for external/stable tools
+3. **Step 3**: Keep MCP with tool search for external/stable tools
 4. **Step 4**: Monitor improvements and expand
 
 **Example:**
@@ -1009,17 +1157,17 @@ BEFORE:
 ├── Custom API MCP       (15K tokens) ← HIGH
 └── Tool D MCP           (10K tokens)
 
-AFTER:
-├── Google Drive MCP     (12K tokens) - external tool, keep
-├── Salesforce MCP       (8K tokens)  - external tool, keep
-├── Slack MCP            (5K tokens)  - simple, keep
+AFTER (with Tool Search):
+├── Google Drive MCP     (~3K tokens) - deferred loading
+├── Salesforce MCP       (~2K tokens) - deferred loading
+├── Slack MCP            (5K tokens)  - essential, not deferred
 ├── Custom API Code Exec (~2K tokens) ← OPTIMIZED
-└── Tool D CLI (~300 tokens)          ← OPTIMIZED
+└── Tool D CLI           (~300 tokens) ← OPTIMIZED
 
-SAVINGS: ~22.7K tokens → ~27.3K tokens
+SAVINGS: ~50K tokens → ~12.3K tokens (75% reduction)
 ```
 
-### 11.3 Metrics to Track
+### 12.3 Metrics to Track
 
 | Metric | Measure | Goal |
 |--------|---------|------|
@@ -1029,91 +1177,109 @@ SAVINGS: ~22.7K tokens → ~27.3K tokens
 | **Success rate** | % of requests completing correctly | > 98% |
 | **End-to-end latency** | Time from request to response | < 15 seconds |
 | **Agent autonomy** | % of requests handled without human intervention | > 90% |
+| **Tool search hit rate** | % of searches finding relevant tools first try | > 85% |
 
 ---
 
-## 12. Conclusion
+## 13. Conclusion
 
-The Model Context Protocol solved a real problem—standardizing tool connections for AI agents. However, as adoption scaled, fundamental architectural limitations became apparent. Excessive token consumption, rigid tool binding, and lack of progressive disclosure create a "context crisis" where agents become less capable as more tools are added.
+The Model Context Protocol solved a real problem—standardizing tool connections for AI agents. However, as adoption scaled, fundamental architectural limitations became apparent. Excessive token consumption, rigid tool binding, and lack of progressive disclosure created a "context crisis" where agents became less capable as more tools were added.
 
-MCP revolutionized tool standardization but wasn't optimized for context efficiency. As adoption scales beyond simple use cases, token consumption becomes the limiting factor for agent capability.
+The introduction of tool search in January 2026 represents a significant evolution, directly addressing the context bloat issue while maintaining MCP's core standardization benefits. Combined with code execution, CLI approaches, and skills, we now have a comprehensive spectrum of solutions for different scenarios.
 
-The solution isn't "MCP is bad"—it's "MCP is one tool among many." Production systems should:
+### 13.1 Key Takeaways
 
-1. Start with CLI for rapid iteration
+1. **The Problem is Fundamental**: Traditional MCP's design prioritized standardization over efficiency. More tools = more context bloat, regardless of tools' relevance to the current task.
 
-2. Use MCP for external tools when standardization matters
+2. **Tool Search Changes the Game**: 85% token reduction with simple client-side changes proves progressive disclosure is essential for scaled MCP adoption.
 
-3. Employ code execution when context is constrained and complexity requires it
+3. **The Solution Space is Diverse**: No single approach is optimal for all scenarios. Tool Search, CLI, Scripts, Skills, Code Execution, and MCP-Zero each excel in different contexts.
 
-4. Apply skills in Claude-native environments for ecosystem integration
+4. **Hybrid is the Future**: Production systems will likely use MCP with tool search for external/stable tools and Code Execution or Skills for complex internal workflows.
 
-This spectrum of approaches, properly understood and applied, enables building AI agents that are simultaneously more capable (more tools available), more efficient (lower token costs), and more secure (fine-grained control over data flow).
+5. **Performance is Quantified**: 77-98% token reduction is achievable with various approaches while maintaining 100% success rates.
 
-### 12.1 Key Takeaways
+6. **The 80/10/10 Rule Still Scales**: Start simple (CLI or MCP with tool search), scale with standard MCP, optimize with code execution only when necessary.
 
-1. **The Problem is Fundamental**: MCP's design prioritizes standardization over efficiency. More tools = more context bloat, regardless of tools' relevance to the current task.
-
-2. **The Solution Space is Diverse**: No single approach is optimal for all scenarios. CLI, Scripts, Skills, Code Execution, and MCP-Zero each excel in different contexts.
-
-3. **Hybrid is the Future**: Production systems will likely use MCP for external/stable tools and Code Execution or Skills for complex internal workflows.
-
-4. **Performance is Quantified**: 77-98% token reduction is achievable with alternative approaches while maintaining 100% success rates.
-
-5. **The 80/10/10 Rule Scales**: Start simple (CLI), scale with MCP, optimize with code execution only when necessary.
-
-### 12.2 For Different Stakeholders
+### 13.2 For Different Stakeholders
 
 **For MCP creators (Anthropic):**
-- Incorporate progressive disclosure into spec
-- Define filesystem-based tool organization standards
-- Formalize authentication and capability versioning
+- Tool search is a major step forward; continue this evolution
+- Consider formalizing filesystem-based tool organization standards
+- Define authentication and capability versioning in future specs
+- Explore semantic search improvements beyond BM25
 
 **For AI engineers:**
+- If using MCP with 10+ tools, enable tool search immediately
 - Don't assume MCP is always the right choice
 - Measure actual token consumption in your workflows
 - Consider hybrid approaches for production systems
 - Invest in code execution infrastructure for complex scenarios
 
 **For tool vendors:**
-- Provide MCP servers for external users (standardization benefit)
+- Provide MCP servers with optimized descriptions for tool search
 - Provide CLI for internal users and agent developers (flexibility benefit)
 - Consider script/skill equivalents for token-sensitive scenarios
+- Monitor Anthropic's evolving best practices for tool descriptions
 
 **For enterprises:**
 - Audit MCP usage and actual token costs
+- Enable tool search for existing MCP implementations (quick win)
 - Pilot code execution for privacy-sensitive workloads
 - Plan hybrid architectures rather than all-in-one solutions
 - Monitor cost reductions from optimization strategies
 
-### 12.3 The Bigger Picture
+### 13.3 The Bigger Picture
 
-This evolution reflects a broader principle: **abstractions must be judged by their actual impact on system goals**, not by their architectural purity. MCP is valuable—but valuable specifically for its standardization benefit with external tools. For internal workflows, simplicity, efficiency, and security often matter more.
+This evolution reflects a broader principle: **abstractions must be judged by their actual impact on system goals**, not by their architectural purity. MCP is valuable—but valuable specifically for its standardization benefit. Tool search extends this value by making MCP practical at scale. For internal workflows where ultimate flexibility matters, code execution and skills offer complementary benefits.
 
-The best architecture is one that acknowledges these trade-offs and chooses the right tool for the right scenario.
+The best architecture is one that acknowledges these trade-offs and chooses the right tool for the right scenario. As MCP continues to evolve with features like tool search, the gap between simplicity and efficiency narrows, making it easier to build powerful, context-efficient AI agent systems.
 
 ---
 
 ## References and Further Reading
 
 **Official Sources:**
+- Anthropic: "MCP Tool Search Announcement" (January 14, 2026) - [Twitter/X](https://x.com/anthropic)
+- Anthropic: "MCP Tool Search Detailed Explanation" (January 2026) - [YouTube](https://www.youtube.com/watch?v=Lf_WKv4VBQE)
 - Anthropic: "Code Execution with MCP" (2025)
 - Anthropic: "Introducing Claude Skills" (2025)
-- Model Context Protocol Specification (mcp.com)
+- Model Context Protocol Specification - [mcp.com](https://mcp.com)
+- Anthropic MCP Documentation - [docs.anthropic.com/mcp](https://docs.anthropic.com/mcp)
 
 **Community Resources:**
 - Beyond MCP Codebase (GitHub)
 - Cloudflare "Code Mode" Blog (2025)
 - MCP-Zero: Active Tool Discovery (arXiv)
 - Dynomaous: Agentic Coding Course
+- Claude Code GitHub Issues: Tool Search Feature Requests
 
 **Benchmarks and Research:**
 - Speakeasy: "Reducing MCP Token Usage by 100x" (2025)
 - AI Multiple: "Code Execution with MCP Benchmarks" (2025)
 - Azure Architecture Center: "AI Agent Design Patterns" (2025)
+- Real-world token reduction case studies (GitHub MCP with 91 tools: 46K→7K tokens)
+
+**Best Practices:**
+- Tool Description Optimization Guide (Anthropic)
+- BM25 vs Regex Search Trade-offs
+- Server Instructions for Tool Discovery
 
 ---
 
-**Whitepaper Version:** 1.0  
-**Last Updated:** December 2025  
-**For:** Advanced technical stakeholders, AI engineers, and architecture decision-makers
+## Changelog
+
+**Version 2.0 (January 16, 2026)**
+- Added comprehensive section on MCP Tool Search (Section 4)
+- Updated benchmarks with tool search data (Section 3.1, 3.2)
+- Enhanced case study with tool search comparison (Section 9)
+- Updated decision matrix and trade-offs (Section 8)
+- Revised executive summary and conclusion
+- Added references to January 2026 announcements
+- Improved recommendations for existing MCP implementations
+
+**Version 1.0 (December 2025)**
+- Initial release
+- Comprehensive analysis of MCP scalability issues
+- Code execution, CLI, Scripts, and Skills approaches
+- Original benchmarks and case studies
