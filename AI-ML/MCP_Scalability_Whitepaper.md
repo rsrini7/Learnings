@@ -11,6 +11,8 @@
 
 The Model Context Protocol (MCP) has emerged as the de facto standard for connecting AI agents to external tools and systems since its November 2024 launch. However, as adoption scales, fundamental architectural limitations have become apparent. This whitepaper examines the core scalability problems with MCP—specifically excessive token consumption and rigid tool binding—and presents emerging solutions including Anthropic's native tool search feature, code execution patterns, progressive disclosure mechanisms, and alternative architectural approaches that achieve 78-98% token reduction while maintaining or improving agent performance.
 
+![Context Usage](assets/Context-Usage.jpg)
+
 **Key Findings:**
 - Traditional MCP implementations consume 15,000+ tokens per tool invocation, with context bloat scaling linearly with tool count
 - Anthropic's tool search feature (January 2026) reduces token usage by up to 85% through dynamic tool loading
