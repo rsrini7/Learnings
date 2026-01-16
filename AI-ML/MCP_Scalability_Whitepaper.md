@@ -70,9 +70,9 @@ Even though the agent may only use 2-3 tools per request, all 97,000 tokens cons
 Research shows LLMs perform similarly to GPT-3.5 era systems when asked to choose among dozens of tools—the "token overwhelm" effect where excessive context makes the model less capable, not more.
 
 #### Mathematical Model
-\[
+$$
 \text{Context Used} = \sum_{i=1}^{n} \text{Tokens}_i + \text{System Prompt} + \text{User Query}
-\]
+$$
 
 Where for MCP:
 - n = number of connected MCPs
