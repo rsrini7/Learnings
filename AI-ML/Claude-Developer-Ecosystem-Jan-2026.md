@@ -2,7 +2,7 @@
 
 **The Ultimate Reference for Developers, Architects, and Vibe Coders**
 
-This comprehensive guide covers Anthropic's entire Claude ecosystem—from models and APIs to agentic workflows, developer tools, and enterprise integrations. Updated January 2026 with historical context and best practices from the field.
+This comprehensive guide covers Anthropic's entire Claude ecosystem—from models and APIs to agentic workflows, developer tools, and enterprise integrations. Updated January 2026 with historical context, community best practices, and field-tested optimization strategies.
 
 ---
 
@@ -208,9 +208,24 @@ claude --resume session-name
 /teleport  # from CLI to claude.ai/code
 ```
 
-### Configuration Files
+### Configuration Files and Memory Hierarchy
 
-**CLAUDE.md** - Project memory/instructions (Static Context)
+#### The Memory Hierarchy for CLAUDE.md
+
+Claude Code loads CLAUDE.md files in a specific order, allowing layered instructions from enterprise to personal levels:
+
+| Level | Location | Purpose |
+|-------|----------|---------|
+| **Enterprise** | `/etc/claude-code/CLAUDE.md` | Org-wide policies |
+| **Global User** | `~/.claude/CLAUDE.md` | Your standards for ALL projects |
+| **Project** | `./CLAUDE.md` | Team-shared project instructions |
+| **Project Local** | `./CLAUDE.local.md` | Personal project overrides |
+
+This hierarchy ensures consistent application of rules across environments.
+
+#### CLAUDE.md - Project Memory/Instructions (Static Context)
+
+**Basic Example:**
 ```markdown
 # Project Overview
 This is a Next.js e-commerce platform using TypeScript and Tailwind.
@@ -231,7 +246,76 @@ This is a Next.js e-commerce platform using TypeScript and Tailwind.
 - Database migrations require manual review
 ```
 
-**settings.json** - Tool permissions & preferences
+#### Global CLAUDE.md as Security Gatekeeper
+
+Your global `~/.claude/CLAUDE.md` applies to every project and serves as a behavioral gatekeeper, especially since Claude can automatically read sensitive files like `.env` without explicit permission. Include absolute rules to prevent leaks:
+
+```markdown
+## NEVER EVER DO
+These rules are ABSOLUTE:
+
+### NEVER Publish Sensitive Data
+NEVER publish passwords, API keys, tokens to git/npm/docker
+Before ANY commit: verify no secrets included
+
+### NEVER Commit .env Files
+NEVER commit `.env` to git
+ALWAYS verify `.env` is in `.gitignore`
+```
+
+**Why this matters:** Security research shows Claude may access and potentially leak secrets from `.env`, AWS credentials, or similar files. These rules create a "behavioral gatekeeper" that Claude follows even if it has file access.
+
+#### Syncing Global CLAUDE.md Across Machines
+
+For multi-machine workflows, sync your `~/.claude/` directory using a dotfiles manager:
+
+```bash
+# Using GNU Stow
+cd ~/dotfiles
+stow claude
+# Symlinks ~/.claude to dotfiles/claude/.claude
+```
+
+Benefits: Version control, consistent configuration, and easy recovery.
+
+#### Global Rules for New Project Scaffolding
+
+Turn your global CLAUDE.md into a "project factory" for automatic standards in new projects:
+
+```markdown
+## New Project Setup
+When creating ANY new project:
+
+### Required Files
+`.env` — Environment variables (NEVER commit)
+`.env.example` — Template with placeholders
+`.gitignore` — Must include: .env, node_modules/, dist/
+`CLAUDE.md` — Project overview
+
+### Required Structure
+project/
+├── src/
+├── tests/
+├── docs/
+├── .claude/skills/
+└── scripts/
+
+### Node.js Requirements
+Add to entry point:
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection:', reason);
+  process.exit(1);
+});
+```
+
+This ensures every "create new project" prompt inherits your standards, reducing scope creep and maintaining quality.
+
+#### Team Workflows: Evolving CLAUDE.md
+
+Adopt Anthropic's internal pattern: Treat CLAUDE.md as living documentation. When Claude makes a mistake, fix it and add a rule to CLAUDE.md to prevent recurrence. This embodies "Compounding Engineering," where each fix makes future work easier.
+
+#### settings.json - Tool Permissions & Preferences
+
 ```json
 {
   "allowedTools": ["Read", "Edit", "Write", "Bash", "WebSearch"],
@@ -242,7 +326,8 @@ This is a Next.js e-commerce platform using TypeScript and Tailwind.
 }
 ```
 
-**.claude.json** - MCP servers & advanced config
+#### .claude.json - MCP Servers & Advanced Config
+
 ```json
 {
   "mcpServers": {
@@ -276,6 +361,19 @@ This is a Next.js e-commerce platform using TypeScript and Tailwind.
 - **Multilingual Output** - Language-specific responses
 - **Vim Motions** - Full Vim keybindings in editor
 - **Session History** - Resume any past conversation
+- **LSP Integration** (New in 2026) - Language Server Protocol support for IDE-level code intelligence: go-to-definition, find-references, diagnostics. Enables 900x faster navigation and semantic understanding.
+
+### Why Single-Purpose Chats Are Critical
+
+Research shows mixing topics causes a 39% performance drop and context rot. Follow the "One Task, One Chat" rule:
+
+| Scenario | Action |
+|----------|--------|
+| New feature | New chat |
+| Research vs implementation | Separate chats |
+| 20+ turns elapsed | Start fresh |
+
+Use `/clear` frequently to reset context.
 
 ---
 
@@ -525,6 +623,40 @@ When the user provides an Excel file, follow these steps:
 User: "Analyze sales.xlsx"
 Claude: *reads file, analyzes, generates report*
 ```
+
+### Merged Commands and Skills
+
+As of late 2025, commands and skills share the same schema for a simpler mental model:
+
+- Old: Commands in `~/.claude/commands/review.md`
+- New: Skills in `~/.claude/skills/review/SKILL.md`
+
+**Key Difference:**
+- Slash commands (e.g., `/review`) are explicitly invoked.
+- Skills can trigger automatically based on context.
+
+Format for SKILL.md:
+
+```markdown
+---
+name: review
+description: Review code for bugs and security issues
+---
+# Code Review Skill
+When reviewing code:
+1. Check for security vulnerabilities
+2. Look for performance issues
+3. Verify error handling
+```
+
+### Progressive Disclosure for Token Efficiency
+
+Skills load content on-demand:
+1. Startup: Only name/description.
+2. Triggered: Full SKILL.md.
+3. As needed: Additional resources.
+
+**Rule of thumb:** If instructions apply to <20% of conversations, use a skill instead of CLAUDE.md to avoid context bloat.
 
 ### Skill Types and Forms
 
@@ -1083,6 +1215,18 @@ hooks:
 Deploy the current branch to staging environment.
 ```
 
+- JavaScript files
+- `Bash(npm *)` - NPM commands (wildcard)
+
+**Advanced Patterns:**
+```json
+{
+  "matcher": "Edit.*src/.*\\.ts$",  // TypeScript in src/
+  "matcher": "Bash(docker-*)",       // Docker commands
+  "matcher": "Write.*\\.json$"       // JSON file creation
+}
+```
+
 **MCP-Based Commands:**
 ```bash
 # Commands from MCP servers are auto-discovered
@@ -1180,6 +1324,53 @@ Deploy the current branch to staging environment.
     ]
   }
 }
+```
+
+### Hooks for Deterministic Enforcement
+
+Unlike CLAUDE.md rules (suggestions that can be overridden), hooks are deterministic and always execute.
+
+Hook Events:
+
+| Event | When | Use Case |
+|-------|------|----------|
+| PreToolUse | Before tool executes | Block dangerous ops |
+| PostToolUse | After tool completes | Run linters |
+| Stop | Claude finishes turn | Quality gates |
+
+Example: Block secrets access in `~/.claude/settings.json`:
+
+```json
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read|Edit|Write",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ~/.claude/hooks/block-secrets.py"
+          }
+        ]
+      }
+    ]
+  }
+}
+```
+
+Hook script (`block-secrets.py`):
+
+```python
+#!/usr/bin/env python3
+import json, sys
+from pathlib import Path
+
+SENSITIVE = {'.env', '.env.local', 'secrets.json', 'id_rsa'}
+data = json.load(sys.stdin)
+tool = data.get('tool', {})
+if 'path' in tool and Path(tool['path']).name in SENSITIVE:
+    sys.exit(1)  # Block access
+sys.exit(0)
 ```
 
 ### Common Hook Patterns
@@ -1313,7 +1504,7 @@ Deploy the current branch to staging environment.
 
 **The Ultimate Reference for Developers, Architects, and Vibe Coders**
 
-This comprehensive guide covers Anthropic's entire Claude ecosystem—from models and APIs to agentic workflows, developer tools, and enterprise integrations. Updated January 2026 with historical context and best practices from the field.
+This comprehensive guide covers Anthropic's entire Claude ecosystem—from models and APIs to agentic workflows, developer tools, and enterprise integrations. Updated January 2026 with historical context, community best practices, and field-tested optimization strategies.
 
 ---
 
@@ -1519,9 +1710,24 @@ claude --resume session-name
 /teleport  # from CLI to claude.ai/code
 ```
 
-### Configuration Files
+### Configuration Files and Memory Hierarchy
 
-**CLAUDE.md** - Project memory/instructions (Static Context)
+#### The Memory Hierarchy for CLAUDE.md
+
+Claude Code loads CLAUDE.md files in a specific order, allowing layered instructions from enterprise to personal levels:
+
+| Level | Location | Purpose |
+|-------|----------|---------|
+| **Enterprise** | `/etc/claude-code/CLAUDE.md` | Org-wide policies |
+| **Global User** | `~/.claude/CLAUDE.md` | Your standards for ALL projects |
+| **Project** | `./CLAUDE.md` | Team-shared project instructions |
+| **Project Local** | `./CLAUDE.local.md` | Personal project overrides |
+
+This hierarchy ensures consistent application of rules across environments.
+
+#### CLAUDE.md - Project Memory/Instructions (Static Context)
+
+**Basic Example:**
 ```markdown
 # Project Overview
 This is a Next.js e-commerce platform using TypeScript and Tailwind.
@@ -1542,7 +1748,76 @@ This is a Next.js e-commerce platform using TypeScript and Tailwind.
 - Database migrations require manual review
 ```
 
-**settings.json** - Tool permissions & preferences
+#### Global CLAUDE.md as Security Gatekeeper
+
+Your global `~/.claude/CLAUDE.md` applies to every project and serves as a behavioral gatekeeper, especially since Claude can automatically read sensitive files like `.env` without explicit permission. Include absolute rules to prevent leaks:
+
+```markdown
+## NEVER EVER DO
+These rules are ABSOLUTE:
+
+### NEVER Publish Sensitive Data
+NEVER publish passwords, API keys, tokens to git/npm/docker
+Before ANY commit: verify no secrets included
+
+### NEVER Commit .env Files
+NEVER commit `.env` to git
+ALWAYS verify `.env` is in `.gitignore`
+```
+
+**Why this matters:** Security research shows Claude may access and potentially leak secrets from `.env`, AWS credentials, or similar files. These rules create a "behavioral gatekeeper" that Claude follows even if it has file access.
+
+#### Syncing Global CLAUDE.md Across Machines
+
+For multi-machine workflows, sync your `~/.claude/` directory using a dotfiles manager:
+
+```bash
+# Using GNU Stow
+cd ~/dotfiles
+stow claude
+# Symlinks ~/.claude to dotfiles/claude/.claude
+```
+
+Benefits: Version control, consistent configuration, and easy recovery.
+
+#### Global Rules for New Project Scaffolding
+
+Turn your global CLAUDE.md into a "project factory" for automatic standards in new projects:
+
+```markdown
+## New Project Setup
+When creating ANY new project:
+
+### Required Files
+`.env` — Environment variables (NEVER commit)
+`.env.example` — Template with placeholders
+`.gitignore` — Must include: .env, node_modules/, dist/
+`CLAUDE.md` — Project overview
+
+### Required Structure
+project/
+├── src/
+├── tests/
+├── docs/
+├── .claude/skills/
+└── scripts/
+
+### Node.js Requirements
+Add to entry point:
+process.on('unhandledRejection', (reason, promise) => {
+  console.error('Unhandled Rejection:', reason);
+  process.exit(1);
+});
+```
+
+This ensures every "create new project" prompt inherits your standards, reducing scope creep and maintaining quality.
+
+#### Team Workflows: Evolving CLAUDE.md
+
+Adopt Anthropic's internal pattern: Treat CLAUDE.md as living documentation. When Claude makes a mistake, fix it and add a rule to CLAUDE.md to prevent recurrence. This embodies "Compounding Engineering," where each fix makes future work easier.
+
+#### settings.json - Tool Permissions & Preferences
+
 ```json
 {
   "allowedTools": ["Read", "Edit", "Write", "Bash", "WebSearch"],
@@ -1553,7 +1828,8 @@ This is a Next.js e-commerce platform using TypeScript and Tailwind.
 }
 ```
 
-**.claude.json** - MCP servers & advanced config
+#### .claude.json - MCP Servers & Advanced Config
+
 ```json
 {
   "mcpServers": {
@@ -1587,6 +1863,19 @@ This is a Next.js e-commerce platform using TypeScript and Tailwind.
 - **Multilingual Output** - Language-specific responses
 - **Vim Motions** - Full Vim keybindings in editor
 - **Session History** - Resume any past conversation
+- **LSP Integration** (New in 2026) - Language Server Protocol support for IDE-level code intelligence: go-to-definition, find-references, diagnostics. Enables 900x faster navigation and semantic understanding.
+
+### Why Single-Purpose Chats Are Critical
+
+Research shows mixing topics causes a 39% performance drop and context rot. Follow the "One Task, One Chat" rule:
+
+| Scenario | Action |
+|----------|--------|
+| New feature | New chat |
+| Research vs implementation | Separate chats |
+| 20+ turns elapsed | Start fresh |
+
+Use `/clear` frequently to reset context.
 
 ---
 
@@ -1836,6 +2125,40 @@ When the user provides an Excel file, follow these steps:
 User: "Analyze sales.xlsx"
 Claude: *reads file, analyzes, generates report*
 ```
+
+### Merged Commands and Skills
+
+As of late 2025, commands and skills share the same schema for a simpler mental model:
+
+- Old: Commands in `~/.claude/commands/review.md`
+- New: Skills in `~/.claude/skills/review/SKILL.md`
+
+**Key Difference:**
+- Slash commands (e.g., `/review`) are explicitly invoked.
+- Skills can trigger automatically based on context.
+
+Format for SKILL.md:
+
+```markdown
+---
+name: review
+description: Review code for bugs and security issues
+---
+# Code Review Skill
+When reviewing code:
+1. Check for security vulnerabilities
+2. Look for performance issues
+3. Verify error handling
+```
+
+### Progressive Disclosure for Token Efficiency
+
+Skills load content on-demand:
+1. Startup: Only name/description.
+2. Triggered: Full SKILL.md.
+3. As needed: Additional resources.
+
+**Rule of thumb:** If instructions apply to <20% of conversations, use a skill instead of CLAUDE.md to avoid context bloat.
 
 ### Skill Types and Forms
 
@@ -2174,237 +2497,6 @@ context: shared
 - ❌ Nest sub-agents too deeply (3+ levels)
 
 ---
-
-## Plugins - Shareable Extensions
-
-### Overview
-
-**Plugins** are collections of slash commands, agents, skills, MCP servers, and hooks bundled for easy sharing and installation.
-
-### Plugin Components
-
-A plugin can include any combination of:
-- **Slash Commands** - Custom shortcuts
-- **Sub-Agents** - Specialized agents
-- **MCP Servers** - Tool integrations
-- **Hooks** - Lifecycle automation
-- **Skills** - Reusable capabilities
-
-### Installing Plugins
-
-**1. Add Marketplace:**
-```bash
-# Official Anthropic marketplace
-/plugin marketplace add anthropics/claude-plugins-official
-
-# Community marketplace
-/plugin marketplace add username/marketplace-repo
-```
-
-**2. Browse Plugins:**
-```bash
-/plugin discover
-# Tab to explore available plugins
-```
-
-**3. Install Plugin:**
-```bash
-# From marketplace
-/plugin install ralph-wiggum@claude-plugins-official
-
-# From GitHub repo
-/plugin install username/repo-name
-
-# Specific version
-/plugin install ralph-wiggum@v1.2.0
-```
-
-**4. Manage Plugins:**
-```bash
-# List installed
-/plugin list
-
-# Update all
-/plugin update
-
-# Remove
-/plugin remove ralph-wiggum
-```
-
-### Creating Plugins
-
-**Directory Structure:**
-```
-my-plugin/
-├── plugin.json         # Metadata
-├── commands/           # Slash commands
-├── agents/             # Sub-agents
-├── skills/             # Skills
-├── hooks/              # Hooks
-└── mcp/                # MCP server configs
-```
-
-**plugin.json:**
-```json
-{
-  "name": "my-awesome-plugin",
-  "version": "1.0.0",
-  "description": "Does awesome things",
-  "author": "Your Name",
-  "license": "MIT",
-  "components": {
-    "commands": ["./commands/"],
-    "agents": ["./agents/"],
-    "skills": ["./skills/"],
-    "hooks": ["./hooks/"]
-  }
-}
-```
-
-### Publishing Plugins
-
-**1. Create GitHub Repo:**
-```bash
-git init my-plugin
-cd my-plugin
-# Add plugin files
-git add .
-git commit -m "Initial plugin"
-git push origin main
-```
-
-**2. Tag Release:**
-```bash
-git tag v1.0.0
-git push --tags
-```
-
-**3. Submit to Marketplace:**
-```bash
-# Fork anthropics/claude-plugins-official
-# Add your plugin to marketplaces/community.json
-# Submit PR
-```
-
-### Popular Plugins
-
-**Development:**
-- **ralph-wiggum** - Autonomous iteration loops
-- **tdd-guard** - Test-driven development enforcement
-- **code-review** - Automated PR reviews
-- **lsp-integration** - Language server protocol
-
-**DevOps:**
-- **docker-workflow** - Container management
-- **k8s-helper** - Kubernetes operations
-- **terraform-agent** - IaC automation
-
-**Data:**
-- **sql-wizard** - Database operations
-- **data-pipeline** - ETL workflows
-- **analytics-suite** - Data analysis
-
----
-
-## Slash Commands - Custom Shortcuts
-
-### Overview
-
-**Slash commands** are custom shortcuts for frequently-used prompts, stored as Markdown files that Claude Code executes. They represent team conventions and personal workflows as reusable, discoverable actions.
-
-### Conceptual Understanding
-
-Slash commands evolved as a way to:
-- **Package Prompts**: Turn repeated workflows into one-command actions
-- **Share with Teams**: Encode team standards in version control
-- **Discover Capabilities**: Auto-complete shows available commands
-- **Reduce Friction**: Execute complex prompts instantly
-
-### Command Scopes
-
-**Project Commands** (`.claude/commands/`)
-- Shared with team via git
-- Project-specific workflows
-- Listed as `(project)` in `/help`
-
-**Personal Commands** (`~/.claude/commands/`)
-- Your global shortcuts
-- Available in all projects
-- Private preferences
-
-**Plugin Commands**
-- Installed from plugins
-- Discoverable via `/plugin discover`
-
-### Creating Commands
-
-**Basic Command:**
-```bash
-# .claude/commands/optimize.md
----
-description: Analyze code for performance issues
----
-
-Review the current file or specified files for:
-- Inefficient algorithms
-- Memory leaks
-- Unnecessary computations
-- Database query optimization opportunities
-
-Provide specific recommendations with code examples.
-```
-
-**Usage:**
-```bash
-/optimize auth.js
-```
-
-**With Arguments:**
-```bash
-# .claude/commands/test.md
----
-description: Generate tests with coverage target
----
-
-Generate comprehensive tests for $ARGUMENTS.
-Aim for >80% code coverage.
-Include unit, integration, and edge case tests.
-```
-
-**Usage:**
-```bash
-/test utils.py
-```
-
-### Advanced Command Features
-
-**Hooks in Commands:**
-```markdown
----
-description: Deploy to staging with validation
-hooks:
-  PreToolUse:
-    - matcher: "Bash"
-      hooks:
-        - type: command
-          command: "./scripts/validate-deploy.sh"
-          once: true
----
-
-Deploy the current branch to staging environment.
-```
-
- - JavaScript files
-- `Bash(npm *)` - NPM commands (wildcard)
-
-**Advanced Patterns:**
-```json
-{
-  "matcher": "Edit.*src/.*\\.ts$",  // TypeScript in src/
-  "matcher": "Bash(docker-*)",       // Docker commands
-  "matcher": "Write.*\\.json$"       // JSON file creation
-}
-```
 
 ### Interactive Hooks via `/hooks`
 
@@ -2622,7 +2714,7 @@ Ralph loops can consume significant tokens:
 │                 │
 │  ┌───────────┐  │
 │  │MCP Client│  │
-│  └─────┬─────┘  │
+│  └──────┬────┘  │
 └────────┼────────┘
          │
          │ MCP Protocol
@@ -2636,26 +2728,81 @@ Ralph loops can consume significant tokens:
  Server    Server   Server    Server
 ```
 
-### Official MCP Servers (100M+ monthly downloads)
+### When NOT to Use MCP Servers
 
-**Development:**
-- **github** - Repository operations, PR management, issues
-- **gitlab** - GitLab integration
-- **postgres** - Database queries and schema operations
-- **sqlite** - Local database access
-- **filesystem** - Read/write local files
+MCP servers extend capabilities but consume tokens and context. For simple or one-off tasks, alternatives are more efficient:
 
-**Productivity:**
-- **google-drive** - Drive file operations
-- **google-calendar** - Calendar management
-- **slack** - Channel messages, user lookup
-- **notion** - Workspace queries
+| Use Case | MCP Overhead | Alternative |
+|----------|--------------|-------------|
+| Trello tasks | High | CLI tool (e.g., `trello-cli`) |
+| Simple HTTP calls | Overkill | `curl` via Bash |
+| One-off queries | Wasteful | Direct command |
 
-**Utilities:**
-- **fetch** - HTTP requests to APIs
-- **puppeteer** - Browser automation
-- **sentry** - Error tracking integration
-- **memory** - Persistent key-value storage
+**Rule of thumb:** Use MCP for repeated interactions within a session; opt for CLIs otherwise to avoid context bloat.
+
+### Recommended MCP Servers for Developers
+
+Categorized list of essential servers (install via `claude mcp add <name> -- <command>`):
+
+#### Core Development
+
+| Server | Purpose | Install Command |
+|--------|---------|-----------------|
+| **Context7** | Live docs for any library | `npx -y @upstash/context7-mcp@latest` |
+| **GitHub** | PRs, issues, CI/CD | `npx -y @modelcontextprotocol/server-github` |
+| **Filesystem** | Advanced file operations | `npx -y @modelcontextprotocol/server-filesystem` |
+| **Sequential Thinking** | Structured problem-solving | `npx -y @modelcontextprotocol/server-sequential-thinking` |
+
+#### Databases
+
+| Server | Purpose | Install Command |
+|--------|---------|-----------------|
+| **MongoDB** | Atlas/Community, Performance Advisor | `npx -y mongodb-mcp-server` |
+| **PostgreSQL** | Query Postgres naturally | `npx -y @modelcontextprotocol/server-postgres` |
+| **DBHub** | Universal (MySQL, SQLite, etc.) | `npx -y @bytebase/dbhub` |
+
+#### Documents & RAG
+
+| Server | Purpose | Install Command |
+|--------|---------|-----------------|
+| **Docling** | PDF/DOCX parsing, 97.9% table accuracy | `uvx docling-mcp-server` |
+| **Qdrant** | Vector search, semantic memory | `npx -y @qdrant/mcp-server` |
+| **Chroma** | Embeddings, vector DB | `npx -y @chroma/mcp-server` |
+
+#### Browser & Testing
+
+| Server | Purpose | Install Command |
+|--------|---------|-----------------|
+| **Playwright** | E2E testing, scraping | `npx -y @anthropic-ai/playwright-mcp` |
+| **Browser MCP** | Use your logged-in Chrome | (via browsermcp.io) |
+| **Brave Search** | Privacy-first web search | `npx -y @anthropic-ai/brave-search-mcp` |
+
+#### Cloud & Hosting
+
+| Server | Purpose | Install Command |
+|--------|---------|-----------------|
+| **AWS** | Full AWS service access | `uvx awslabs.aws-api-mcp-server@latest` |
+| **Cloudflare** | Workers, KV, R2 | `npx -y @cloudflare/mcp-server` |
+| **Hostinger** | Domains, DNS, VMs, billing | `npm i -g hostinger-api-mcp` (then configure) |
+| **Kubectl** | Kubernetes natural language | `npx -y @modelcontextprotocol/server-kubernetes` |
+
+#### Workflow & Communication
+
+| Server | Purpose | Install Command |
+|--------|---------|-----------------|
+| **Slack** | Messages, channel summaries | `npx -y @anthropic-ai/slack-mcp` |
+| **Linear** | Issue tracking | `npx -y @linear/mcp-server` |
+| **Figma** | Design specs, components | `npx -y @anthropic-ai/figma-mcp` |
+
+Discovery resources: awesome-mcp-servers (76k+ stars), mcpservers.org, Claude Market.
+
+### Context7 — Live Documentation Example
+
+Context7 provides up-to-date library docs, solving training cutoff issues:
+
+Installation: `claude mcp add context7 -- npx -y @upstash/context7-mcp@latest`
+
+Example: "Using context7, show me the Next.js 15 cache API" → Fetches current docs for accurate responses.
 
 ### Installing MCP Servers
 
@@ -3693,6 +3840,12 @@ Total: ~$22.50
 - **X/Twitter**: @AnthropicAI
 - **YouTube**: Anthropic (tutorials)
 
+### Additional Resources
+- **Claude Code Mastery Guide**: https://thedecipherist.github.io/claude-code-mastery/
+- **Awesome MCP Servers**: 76k+ stars on GitHub
+- **MCP Servers Directory**: mcpservers.org
+- **Claude Market**: Plugin and skill marketplace
+
 ### Tools & Extensions
 - **VS Code Extension**: Claude Code integration
 - **Chrome Extension**: Claude in browser
@@ -3780,3 +3933,7 @@ Whether you're a developer shipping production code, an architect designing syst
 **Remember**: The ecosystem evolves rapidly. Check https://docs.anthropic.com for the latest, join the community for insights, and experiment often—but always with iteration limits and git safety nets.
 
 The future of development isn't just AI-assisted; it's AI-collaborative, with humans and agents each playing to their strengths within a well-designed context management framework.
+
+---
+
+**Acknowledgments**: This guide integrates insights from Anthropic's official documentation, the Claude Code Mastery Guide by The Decipherist, and field-tested practices from the Claude developer community.
