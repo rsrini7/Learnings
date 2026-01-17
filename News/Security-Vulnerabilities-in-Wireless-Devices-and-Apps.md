@@ -1,7 +1,7 @@
 # Security Vulnerabilities in Wireless Devices and Apps: A Guide for Developers and Architects
 
 
-![Bluetooth Hack](assets/BluetoothHack.jpg)
+![Vulnerabilities Wireless Devices](assets/Vulnerabilities-Wireless-Devices.jpg)
 
 ## Introduction
 
@@ -201,4 +201,4 @@ All three cases demonstrate that security issues often arise from implementation
 - Logitech support: Official certificate issue resolution
 - Telegram proxy leak: Security researcher @0x6rss demonstration
 - Multiple security news sources and technical analyses
-
+- Youtube Link: https://www.youtube.com/watch?v=Ux07J-wS2VA
