@@ -1,6 +1,8 @@
 # J.P. Morgan on Blockchain – Complete Strategy, Timeline, and Business Outcomes
 ## Comprehensive Ecosystem Analysis with All Initiatives (2018–2025+)
 
+![JPMC-Blockchain-Strategy](assets/JPMC-Blockchain-Strategy.png)
+
 ---
 
 ## 1. Executive Snapshot
