@@ -8,6 +8,10 @@
 
 ---
 
+![OpenResponses-Standard](assets/OpenResponses-Standard.png)
+
+---
+
 ## Executive Summary
 
 Open Responses is an open-source API specification for building autonomous AI agents that work seamlessly across any large language model (LLM) provider. Launched in January 2026 by Hugging Face and the open-source community, it addresses the critical limitations of traditional chat completion APIs by providing a unified, vendor-neutral interface optimized for agentic workflows.
