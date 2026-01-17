@@ -152,6 +152,7 @@
 - [Gemini Handdrawn Skitch Note Prompt](Prompts/gemini-handdrawn-skitch-note-prompt.md)
 - [Gemini Infographic Visual Prompt](Prompts/gemini-infographic-visual-prompt.md)
 - [Gemini Carousel Infographic Prompt](Prompts/gemini-carousel-infographic-prompt.md)
+- [Generate New Prompt from Template for Image Generation](Prompts/generate-new-prompt-from-template-for-image-gen.md)
 
 ## QuantumComputing
 - [Google WillowChip & QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
