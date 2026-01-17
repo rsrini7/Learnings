@@ -34,6 +34,7 @@
 - [Claude Cowork](AI-ML/Claude-Cowork.md)
 - [Claude Developer Ecosystem Jan-2026](AI-ML/Claude-Developer-Ecosystem-Jan-2026.md)
 - [Google Gemma Family Models Jan-2026](AI-ML/Google-Gemma-Family-Models-Jan-2026.md)
+- [Qwen3-VL-Embedding and Qwen3-VL-Reranker](AI-ML/Qwen3-VL-Embedding-and-Reranker.md)
 
 ### Protocols
 - [Universal Commerce Protocol](AI-ML/Protocols/UCP.md)
