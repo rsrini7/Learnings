@@ -8,7 +8,7 @@
 
 ---
 
-![graph db](assets/graph-db.jpg)
+![Graph-DB Billion Scale](assets/Graph-DB-Billion-Scale.png)
 
 ---
 
