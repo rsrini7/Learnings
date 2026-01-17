@@ -143,6 +143,7 @@
 - [Perplexity Research Whitepaper Prompt](Prompts/perplexity-research-whitepaper-prompt.md)
 - [Convert Long 2 Short Social Post Prompt](Prompts/convert-long-2-short-social-post-prompt.md)
 - [Convert Long 2 Short Social Post Prompt V2](Prompts/convert-long-2-short-social-post-prompt-v2.md)
+- [Convert Long 2 Short Social Post Prompt V3 Merged](Prompts/convert-long-2-short-social-post-prompt-v3-merged.md)
 
 ### Visual Prompts (Tested with Gemini)
 - [Content Visual Carousel Prompt](Prompts/content-visual-carousel-prompt.md)
