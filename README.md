@@ -143,6 +143,7 @@
 - [Perplexity Research Whitepaper Prompt](Prompts/perplexity-research-whitepaper-prompt.md)
 - [Content Visual Carousel](<Prompts/content-visual carousel.md>)
 - [Youtube Visual Carousel](<Prompts/youtube-visual carousel.md>)
+- [Gemini Handdrawn Skitch Note Prompt](Prompts/gemini-handrawn-skitch-note-prompt.md)
 
 ## QuantumComputing
 - [Google WillowChip & QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
