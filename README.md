@@ -103,6 +103,7 @@
 - [Tailwind Financial Crisis](News/Tailwind-Financial-Crisis.md)
 - [Decline of StackOverflow](News/Decline-of-Stack-Overflow.md)
 - [Node.js Async Hooks DoS Vulnerability](News/Node.js-Async-Hooks-DoS-Vulnerability.md)
+- [Security Vulnerabilities in Wireless Devices and Apps](News/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
 
 ## Papers
 - [DeepSeek Advancements](Papers/DeepSeek-Advancements.md)
