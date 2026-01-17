@@ -141,10 +141,13 @@
 - [Codebase Explore](Prompts/codebase-explore-prompt.md)
 - [Prompt Websites](Prompts/prompt-websites.md)
 - [Perplexity Research Whitepaper Prompt](Prompts/perplexity-research-whitepaper-prompt.md)
-- [Content Visual Carousel](<Prompts/content-visual carousel.md>)
-- [Youtube Visual Carousel](<Prompts/youtube-visual carousel.md>)
-- [Gemini Handdrawn Skitch Note Prompt](Prompts/gemini-handrawn-skitch-note-prompt.md)
+
+### Visual Prompts (Tested with Gemini)
+- [Content Visual Carousel Prompt](Prompts/content-visual-carousel-prompt.md)
+- [Youtube Visual Carousel Prompt](Prompts/youtube-visual-carousel-prompt.md)
+- [Gemini Handdrawn Skitch Note Prompt](Prompts/gemini-handdrawn-skitch-note-prompt.md)
 - [Gemini Infographic Visual Prompt](Prompts/gemini-infographic-visual-prompt.md)
+- [Gemini Carousel Infographic Prompt](Prompts/gemini-carousel-infographic-prompt.md)
 
 ## QuantumComputing
 - [Google WillowChip & QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
