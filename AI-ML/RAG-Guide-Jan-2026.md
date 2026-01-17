@@ -41,6 +41,52 @@ In 2026, Retrieval-Augmented Generation (RAG) will move from experimental innova
 
 ## 2. Core Concepts & Architecture
 
+### The Three RAG Paradigms
+
+RAG systems have evolved into three distinct architectural paradigms, each with increasing sophistication:
+
+#### A. Naive RAG (Basic Implementation)
+
+The foundational "Index → Retrieve → Generate" process:
+
+1. **Indexing**: Process domain data, embed into vectors, store in vector database
+2. **Retrieval**: Embed user query and find similar chunks via vector search
+3. **Generation**: Feed retrieved chunks + query to LLM for answer
+
+**Best For**: Simple Q&A, small document sets, proof-of-concepts
+
+**Limitations**: No query optimization, no result refinement, single-shot retrieval
+
+#### B. Advanced RAG (Optimized Pipeline)
+
+Improves upon Naive RAG with pre- and post-retrieval optimization:
+
+**Pre-Retrieval Optimization**:
+- Query rewriting and expansion
+- Query transformation for clarity
+- Fine-tuned embedding models
+
+**Post-Retrieval Refinement**:
+- Re-ranking retrieved chunks
+- Context compression and summarization
+- Fusion of results from multiple retrievals
+
+**Best For**: Production systems, accuracy-critical applications
+
+#### C. Modular RAG (Flexible Architecture)
+
+Introduces specialized, interchangeable modules:
+
+- **Search Module**: Adapts to scenarios (search engines, databases, knowledge graphs)
+- **RAG-Fusion**: Multi-query strategy to address search limitations
+- **Memory Module**: Uses LLM memory to guide retrieval
+- **Task Adapter**: Tailors prompts for specific downstream tasks
+- **Routing & Prediction**: Decides IF and WHERE to retrieve
+
+**Module Arrangements**: Serial, conditional, or parallel patterns
+
+**Best For**: Complex enterprise systems, multi-domain applications
+
 ### Basic RAG Workflow
 
 ```mermaid
@@ -73,6 +119,16 @@ graph TD
 | **Vector Stores** | Store and search embeddings | Chroma, Pinecone, Weaviate, Qdrant |
 | **Retrievers** | Fetch relevant chunks | Hybrid search, semantic search |
 | **LLMs** | Generate final responses | GPT-4, Claude, Gemini, Llama |
+
+### Augmentation Process Patterns
+
+Three key patterns for how retrieval is incorporated into generation:
+
+| Pattern | Description | Use Case |
+|---------|-------------|----------|
+| **Iterative Retrieval** | Knowledge base searched repeatedly based on initial query and intermediate steps | Multi-step reasoning |
+| **Recursive Retrieval** | One retrieval step informs the next in dependency chain | Deep contextual queries |
+| **Adaptive Retrieval** | LLM actively determines WHEN and WHAT to retrieve | Complex, unpredictable queries |
 
 ---
 
@@ -319,13 +375,35 @@ With Ragas, we put forward a suite of metrics which can be used to evaluate thes
 
 ### Core RAGAS Metrics
 
-| Metric | What It Measures | Formula/Logic |
-|--------|------------------|---------------|
-| **Faithfulness** | Answer supported by context | `Verified claims / Total claims` |
-| **Context Recall** | Retrieved all relevant info | `Relevant retrieved / Total relevant` |
-| **Context Precision** | No irrelevant context | `Relevant @ k / k` |
-| **Answer Relevancy** | Answer matches query | Cosine similarity of query-answer |
-| **Factual Correctness** | Accuracy vs ground truth | Claim-level comparison |
+| Metric | What It Measures | Formula/Logic | Target |
+|--------|------------------|---------------|--------|
+| **Context Relevance** | Do retrieved documents match query? | Relevant docs / Total retrieved | >0.8 |
+| **Faithfulness** | Answer supported by context | `Verified claims / Total claims` | >0.9 |
+| **Answer Relevancy** | Answer matches query | Cosine similarity of query-answer | >0.85 |
+| **Context Recall** | Retrieved all relevant info | `Relevant retrieved / Total relevant` | >0.9 |
+| **Context Precision** | No irrelevant context | `Relevant @ k / k` | >0.8 |
+
+### Additional Evaluation Dimensions
+
+**Retrieval Quality Metrics**:
+- **Precision**: Proportion of retrieved documents that are relevant
+- **Recall**: Proportion of relevant documents that were retrieved
+- **MRR (Mean Reciprocal Rank)**: Average of reciprocal ranks of first relevant result
+- **Hit Rate**: Percentage of queries with at least one relevant result in top-k
+
+**Generation Quality Metrics**:
+- **BLEU**: N-gram overlap with reference answers
+- **ROUGE**: Recall-oriented n-gram overlap
+- **Perplexity**: How well the model predicts the sample
+
+### Evaluation Frameworks Comparison
+
+| Framework | Focus Areas | Key Features | Best For |
+|-----------|-------------|--------------|----------|
+| **RAGAS** | Context Relevance, Faithfulness, Answer Relevance | LLM-based evaluation, no ground truth needed | General RAG evaluation |
+| **ARES** | Context Relevance, Faithfulness, Answer Relevance | Uses synthetic data generation | Low-resource scenarios |
+| **TruLens** | Truthfulness triad tracking | Experiment tracking, detailed analytics | Research & iteration |
+| **RGB/RECALL** | Noise robustness | Counterfactual analysis | Adversarial testing |
 
 ### Implementation Example
 
@@ -479,6 +557,89 @@ A Forbes (2025) report revealed that a leading online retailer saw a 25% increas
 
 ## 9. Best Practices Summary
 
+### Decision Framework: RAG vs Fine-Tuning vs Hybrid
+
+Understanding when to use each approach is critical for success:
+
+#### Choose RAG When:
+
+✅ **Dynamic Knowledge**: Information changes frequently (news, regulations, policies)  
+✅ **Real-Time Data**: Need up-to-the-minute information  
+✅ **Multiple Domains**: One model serving different knowledge bases  
+✅ **Source Attribution**: Require traceable, verifiable responses  
+✅ **Cost-Conscious**: Limited budget for model training  
+✅ **Quick Deployment**: Need to launch quickly
+
+**Example Use Cases**:
+- Customer support with evolving product catalogs
+- Legal research over changing regulations
+- Healthcare with latest clinical guidelines
+- Enterprise knowledge management
+
+#### Choose Fine-Tuning When:
+
+✅ **Behavior/Style Change**: Need specific tone, format, or personality  
+✅ **Domain Expertise**: Require deep understanding of specialized terminology  
+✅ **Low Latency**: Cannot afford retrieval overhead  
+✅ **Offline Operation**: No access to external data sources  
+✅ **Structured Output**: Need consistent JSON, code, or formatted responses  
+✅ **Specialized Reasoning**: Complex domain-specific logic patterns
+
+**Example Use Cases**:
+- Brand-specific chatbot personality
+- Medical diagnosis with specialized terminology
+- Code generation for specific frameworks
+- Financial modeling with industry jargon
+
+#### Choose Hybrid (RAFT) When:
+
+✅ **Best of Both Worlds**: Need specialized behavior AND current knowledge  
+✅ **High-Stakes Applications**: Healthcare, legal, financial services  
+✅ **Complex Queries**: Require both expertise and factual grounding  
+
+**How Hybrid Works**:
+1. Fine-tune base model on domain expertise (terminology, reasoning patterns)
+2. Deploy in RAG architecture for real-time knowledge access
+3. Model understands specialized queries + retrieves latest information
+
+**Example**: Medical chatbot fine-tuned on medical terminology, using RAG to access latest research papers and patient records.
+
+### Detailed Comparison Table
+
+| Aspect | RAG | Fine-Tuning | Hybrid (RAFT) |
+|--------|-----|-------------|---------------|
+| **Knowledge Currency** | Real-time, always current | Static, frozen at training | Real-time with domain expertise |
+| **Update Process** | Add documents to DB | Complete retraining | Update DB + periodic fine-tune |
+| **Update Cost** | Low (just data ingestion) | High (GPU hours, time) | Medium (data + occasional retrain) |
+| **Initial Setup** | Medium (infrastructure) | High (data curation, training) | High (both systems) |
+| **Inference Speed** | Slower (retrieval latency) | Faster (no retrieval) | Slower (retrieval latency) |
+| **Domain Accuracy** | Good with right chunks | Excellent (internalized) | Excellent (best of both) |
+| **Factual Accuracy** | Excellent (grounded) | Can hallucinate | Excellent (grounded) |
+| **Source Attribution** | Easy (cite sources) | Impossible (black box) | Easy (cite sources) |
+| **Multi-Domain** | Easy (switch DBs) | Hard (multiple models) | Medium (multiple DBs) |
+| **Scalability** | High (add documents) | Low (retrain per domain) | Medium |
+| **Transparency** | High (visible sources) | Low (opaque weights) | High (visible sources) |
+| **Catastrophic Forgetting** | N/A (no retraining) | Risk (loses old knowledge) | Low risk |
+| **Cost at Scale** | Medium (DB + retrieval) | High (multiple models) | High (both systems) |
+
+### Real-World Hybrid Example
+
+**Healthcare Query: "What's the effect of drug X on my hypertension and diabetes?"**
+
+**Fine-Tuned Component** (understands domain):
+- Recognizes "hypertension" and "diabetes" as chronic diseases
+- Understands "drug X" is a medication
+- Knows medical abbreviations and jargon
+- Can reason about drug interactions
+
+**RAG Component** (provides current info):
+- Retrieves latest clinical trials for drug X
+- Finds most recent contraindication warnings
+- Accesses current dosage guidelines
+- Pulls patient-specific history
+
+**Combined Result**: Skilled medical reasoning + latest factual information = Accurate, trustworthy response
+
 ### When to Use RAG vs Alternatives
 
 | Scenario | Best Approach | Reason |
@@ -509,43 +670,141 @@ A Forbes (2025) report revealed that a leading online retailer saw a 25% increas
 
 ## 10. Resources
 
-### Essential Papers
-- Original RAG Paper (2020): https://arxiv.org/abs/2005.11401
-- Late Chunking (2024): https://arxiv.org/abs/2409.04701
-- RAGAS (2023): https://arxiv.org/abs/2309.15217
-- Contextual Retrieval Evaluation (2025): https://arxiv.org/abs/2504.19754
+### RAG Ecosystem & Tools
 
-### Frameworks & Tools
-- **LangChain**: https://python.langchain.com/
-- **LlamaIndex**: https://docs.llamaindex.ai/
-- **RAGAS**: https://docs.ragas.io/
-- **Jina AI (Late Chunking)**: https://jina.ai/
+#### Orchestration Frameworks
+- **LangChain**: https://python.langchain.com/ - Most popular, extensive integrations
+- **LlamaIndex**: https://docs.llamaindex.ai/ - Data-centric, great for complex indexing
+- **Haystack**: https://haystack.deepset.ai/ - Production-ready pipelines from deepset
+- **FlowiseAI**: Visual low-code RAG builder
 
-### Vector Databases
-- **Chroma**: Local, open-source
-- **Pinecone**: Managed cloud
-- **Weaviate**: Hybrid search native
-- **Qdrant**: High performance
+#### Vector Databases
+| Database | Type | Best For | Pricing |
+|----------|------|----------|---------|
+| **Chroma** | Open-source, local | Development, small-scale | Free |
+| **Pinecone** | Managed cloud | Production, scale | Paid |
+| **Weaviate** | Hybrid search native | Complex queries | Open-source + cloud |
+| **Qdrant** | High performance | Speed-critical apps | Open-source + cloud |
+| **Milvus** | Distributed | Enterprise scale | Open-source |
+| **FAISS** | Facebook AI | Research, local | Free |
+| **PostgreSQL pgvector** | SQL extension | Existing Postgres users | Free |
 
-### Embedding Models
-- **OpenAI text-embedding-3-large**: General purpose
-- **BAAI/bge-large**: Open-source, high quality
-- **Jina AI v3**: Long context support
+#### Embedding Models
+
+**Closed-Source**:
+- **OpenAI text-embedding-3-large**: 3072 dimensions, general purpose
+- **OpenAI text-embedding-3-small**: 1536 dimensions, cost-effective
+- **Cohere Embed v3**: Multilingual, compression support
+
+**Open-Source**:
+- **BAAI/bge-large**: High quality, 1024 dimensions
+- **Jina AI embeddings-v3**: Long context (8192 tokens), late chunking support
+- **Sentence Transformers**: all-MiniLM-L6-v2 (lightweight), all-mpnet-base-v2 (balanced)
 - **Mistral Embed**: Multilingual
+
+#### LLM Providers
+- **OpenAI**: GPT-4, GPT-4 Turbo - Industry standard
+- **Anthropic**: Claude 3 (Opus, Sonnet, Haiku) - Strong reasoning
+- **Google**: Gemini Pro - Multimodal capabilities
+- **Open-Source**: Llama 3, Mistral, Mixtral - Self-hosted options
+- **Cohere**: Command R+ - Enterprise focus
+- **HuggingFace Transformers**: Access to thousands of models
+
+### Essential Papers & Research
+
+**Foundational**:
+- Original RAG Paper (2020): https://arxiv.org/abs/2005.11401
+- RAGAS Evaluation (2023): https://arxiv.org/abs/2309.15217
+
+**2024-2025 Innovations**:
+- Late Chunking (2024): https://arxiv.org/abs/2409.04701
+- Contextual Retrieval Evaluation (2025): https://arxiv.org/abs/2504.19754
+- AIR-RAG (2025): https://arxiv.org/abs/2512.XXXXX
+- FAIR-RAG (2025): https://arxiv.org/abs/2510.22344
+- LogicRAG (2025): https://arxiv.org/abs/2508.06105
+- RAG Survey (2025): https://arxiv.org/abs/2506.00054
+
+**Comparative Studies**:
+- RAG vs Fine-Tuning (2024): https://arxiv.org/abs/2401.08406
+- RAFT (Retrieval Augmented Fine-Tuning): UC Berkeley research
+
+### Evaluation Tools
+- **RAGAS**: https://docs.ragas.io/ - Automated RAG evaluation
+- **TruLens**: https://www.trulens.org/ - Experiment tracking and evaluation
+- **DeepEval**: RAG-specific metrics and testing
+- **Arize Phoenix**: Observability for LLM applications
+
+### Learning Resources
+
+**Documentation**:
+- LangChain RAG Guide: https://python.langchain.com/docs/use_cases/question_answering/
+- LlamaIndex RAG Tutorial: https://docs.llamaindex.ai/en/stable/use_cases/q_and_a/
+- Pinecone Learning Center: https://www.pinecone.io/learn/retrieval-augmented-generation/
+- Anthropic Contextual Retrieval: https://www.anthropic.com/news/contextual-retrieval
+
+**Video Tutorials** (Hands-on implementations from your sources):
+- Production RAG Architecture: https://www.youtube.com/watch?v=Mbe2Tw57QFE
+- RAG Fundamentals series: Multiple tutorials covering basics to advanced topics
+
+### Community & Support
+- LangChain Discord: Active community for troubleshooting
+- r/LocalLLaMA: Reddit community for open-source LLMs and RAG
+- Hugging Face Forums: Model and implementation discussions
+- Stack Overflow: [retrieval-augmented-generation] tag
 
 ---
 
 ## Conclusion
 
-RAG has evolved from a simple retrieval-then-generate pattern into a sophisticated knowledge runtime that powers enterprise AI. The key to success in 2026 is:
+RAG has evolved from a simple retrieval-then-generate pattern into a sophisticated knowledge runtime that powers enterprise AI in 2026. Success requires understanding the architectural paradigms and choosing the right approach:
 
-1. **Choose the right chunking strategy** for your document types
-2. **Implement hybrid retrieval** (never rely on vector search alone)
-3. **Always rerank** results with a cross-encoder
-4. **Evaluate systematically** with frameworks like RAGAS
-5. **Build security in** from day one with metadata filtering
-6. **Consider GraphRAG** for complex, relationship-heavy domains
+### The RAG Maturity Path
 
-The field continues to advance rapidly, with innovations in multimodal RAG, agentic systems, and context optimization. Stay current by following the latest research and adapting these patterns to your specific use case.
+1. **Start with Naive RAG** for proof-of-concepts and simple use cases
+2. **Advance to Advanced RAG** when accuracy matters and you're ready for production
+3. **Adopt Modular/Agentic RAG** for complex enterprise systems requiring flexibility
 
-Remember: hallucinations in RAG systems may be due to insufficient context, and selective generation can mitigate this issue. Always ensure your retrieval provides sufficient context for accurate generation.
+### Critical Success Factors
+
+**Technical Foundations**:
+1. **Choose the right chunking strategy** for your document types (late chunking for technical docs, contextual for high-stakes)
+2. **Implement hybrid retrieval** (vector + BM25 + optional graph) - never rely on vector search alone
+3. **Always rerank** results with a cross-encoder before generation
+4. **Evaluate systematically** with frameworks like RAGAS from day one
+5. **Build security in** with metadata filtering and RBAC
+
+**Strategic Decisions**:
+1. **RAG for dynamic knowledge**: When information changes frequently or needs real-time updates
+2. **Fine-tuning for behavior**: When you need specific tone, format, or deep domain reasoning
+3. **Hybrid (RAFT) for excellence**: When high-stakes applications demand both expertise and current knowledge
+4. **Consider GraphRAG** for relationship-heavy domains requiring multi-hop reasoning
+
+### Looking Ahead: 2026 and Beyond
+
+The field continues advancing rapidly with:
+
+- **Agentic systems** that reason, plan, and use tools iteratively
+- **Multimodal integration** beyond text to images, video, and audio
+- **Edge deployment** for privacy and real-time processing
+- **Self-improving systems** that refine queries and critique their own outputs
+- **Context engines** that retrieve not just documents but memories, tools, and operational data
+
+### Key Reminders
+
+**Quality Over Quantity**: Better chunking and reranking matter more than retrieval volume
+
+**Grounding is Essential**: RAG's core value is reducing hallucinations through evidence-based generation - maintain this advantage with proper evaluation
+
+**Iterate Based on Metrics**: Use RAGAS and domain-specific evaluations to continuously improve your system
+
+**Security Cannot Be Afterthought**: Implement permission filtering and audit logging from the start
+
+**Cost Optimization**: Semantic caching, efficient chunking, and query routing can dramatically reduce operating costs
+
+### Final Thought
+
+2026 isn't about "RAG vs Fine-Tuning" - it's about knowing when to use which approach and how to combine them intelligently. The real winners will be those who understand the nuances and build modular systems where components can be swapped based on evolving needs.
+
+Remember: hallucinations in RAG systems may be due to insufficient context, and selective generation can mitigate this issue. Always ensure your retrieval provides sufficient, relevant context for accurate generation.
+
+Build smart. Build grounded. Build the future with RAG.
