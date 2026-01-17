@@ -6,6 +6,11 @@
 - Performance: Sub-second writes + <50ms reads across multiple regions
 - Production-ready at scale
 
+---
+
+![graph db](assets/graph-db.jpg)
+
+---
 
 **Quick Navigation:**
 - [Executive Summary](#executive-summary-the-hard-truth)
