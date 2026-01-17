@@ -704,6 +704,22 @@ Base Model → Fine-Tune (PEFT) → Compress → Deploy (vLLM/TensorRT)
 **What is Quantization?**
 Converts model weights and activations from high precision (FP32, BF16, FP16) to lower precision (INT8, INT4, FP8) to reduce memory and increase speed.
 
+### Quantization Approaches
+
+**Post-Training Quantization (PTQ):**
+- Applied after full training
+- No retraining required — ideal for compressing pre-trained LLMs
+- Works well down to 4-bit with minimal loss (using methods like GPTQ/AWQ)
+- Lower precision (e.g., <4-bit) usually causes significant degradation
+
+**Quantization-Aware Training (QAT):**
+- Simulates low-precision during training (fake quantization)
+- Allows extreme compression (even 1-2 bit models) with recovered performance
+- Requires full or significant retraining — expensive for large LLMs
+- Used when maximum compression is needed and training budget allows
+
+**Practical Note for LLMs:** PTQ is dominant due to training costs; QAT is more common for smaller models or research into binary/ternary LLMs.
+
 ### Common Quantization Schemes
 
 | Scheme | Weights | Activations | VRAM Reduction | Quality | Hardware Support |
@@ -801,6 +817,20 @@ llm = LLM(
 
 **What is Sparsification?**
 Zeroing out weights in structured patterns to reduce computation while maintaining accuracy.
+
+### Pruning Types
+
+**Unstructured Pruning:**
+- Removes individual weights arbitrarily
+- High sparsity possible (60-90%)
+- Requires specialized sparse tensor hardware for speedups
+- Limited real-world acceleration on current GPUs
+
+**Structured Pruning:**
+- Removes entire structures (neurons, channels, heads, layers)
+- Naturally reduces computation without sparsity
+- Hardware-friendly but less aggressive compression
+- Common in LLMs: N:M patterns (e.g., 2:4)
 
 ### Key Sparsity Patterns
 
@@ -968,7 +998,7 @@ compressed.save_pretrained("./compressed-model", format="compressed-tensors")
 
 ## 7.6 Other Compression Approaches
 
-### 1. Knowledge Distillation
+### 1. Knowledge Distillation (Expanded with practical details)
 
 **Concept:** Train smaller "student" model to mimic larger "teacher" model.
 
@@ -976,6 +1006,18 @@ compressed.save_pretrained("./compressed-model", format="compressed-tensors")
 ```
 Large Model (Teacher) → Generate soft labels → Train Small Model (Student)
 ```
+
+**Detailed Mechanism:**
+- **Soft Targets:** Instead of hard one-hot labels, use teacher's softened probability distribution (logits)
+- **Temperature Scaling:** Apply temperature T > 1 to logits before softmax to increase entropy and reveal inter-class relationships
+  - Softened probability: `p_i = softmax(logits / T)`
+- **Distillation Loss:** KL Divergence between teacher and student softened distributions
+- **Combined Loss:** α × distillation_loss + (1-α) × standard_cross_entropy (on ground truth)
+- **Synthetic Data Distillation:** Teacher generates instruction-response pairs to train student (e.g., Alpaca used ChatGPT outputs to train LLaMA-7B)
+
+**Key Observations:**
+- Student models can sometimes outperform teacher on downstream tasks (Occam's razor — simpler models generalize better when teacher is overparameterized)
+- Often combined with quantization for 5-10x total size reduction
 
 **Characteristics:**
 - Creates entirely new smaller model
@@ -1366,6 +1408,7 @@ results = accuracy.compute(predictions=preds, references=labels)
 - **LLM Compressor Deep Dive:** Neural Magic (2024) - https://www.youtube.com/neuralmmagic
 - **QLoRA Explained:** Hugging Face (2023)
 - **DPO Tutorial:** Hugging Face (2024)
+- **Compressing Large Language Models (Quantization, Pruning, Distillation with code examples):** Shaw Talebi (2024) - https://www.youtube.com/watch?v=FLkUOkeMd5M
 
 ### Blogs & Technical Articles
 
