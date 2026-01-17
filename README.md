@@ -144,6 +144,7 @@
 - [Content Visual Carousel](<Prompts/content-visual carousel.md>)
 - [Youtube Visual Carousel](<Prompts/youtube-visual carousel.md>)
 - [Gemini Handdrawn Skitch Note Prompt](Prompts/gemini-handrawn-skitch-note-prompt.md)
+- [Gemini Infographic Visual Prompt](Prompts/gemini-infographic-visual-prompt.md)
 
 ## QuantumComputing
 - [Google WillowChip & QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
