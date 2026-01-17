@@ -6,7 +6,6 @@
 - [ML Math](AI-ML/ML-Math.md)
 - [Microsoft Agent Lightning](AI-ML/Microsoft-Agent-Lightning.md)
 - [Multimodal RAG](AI-ML/Multimodal-RAG.md)
-- [MCP Scalability](AI-ML/MCP_Scalability_Whitepaper.md)
 - [Unlock the Dark Data](AI-ML/Unlock-the-Dark-Data.md)
 - [Agent Skills](AI-ML/Agent-Skills.md)
 - [Claude Agents vs Sub-Agents vs Projects vs Workflow vs Rules vs MCP vs Skills](AI-ML/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md)
@@ -40,6 +39,7 @@
 
 ### Protocols
 - [Universal Commerce Protocol](AI-ML/Protocols/UCP.md)
+- [MCP Scalability Issue Solution](AI-ML/Protocols/MCP_Scalability_Issue_Solution.md)
 
 ### Programming
 - [DSPy](AI-ML/Programming/DSPy.md)
@@ -144,6 +144,7 @@
 - [Convert Long 2 Short Social Post Prompt](Prompts/convert-long-2-short-social-post-prompt.md)
 - [Convert Long 2 Short Social Post Prompt V2](Prompts/convert-long-2-short-social-post-prompt-v2.md)
 - [Convert Long 2 Short Social Post Prompt V3 Merged](Prompts/convert-long-2-short-social-post-prompt-v3-merged.md)
+- [Convert Long 2 Short Social Post Prompt V4 Examples](Prompts/convert-long-2-short-social-post-prompt-v4-examples.md)
 
 ### Visual Prompts (Tested with Gemini)
 - [Content Visual Carousel Prompt](Prompts/content-visual-carousel-prompt.md)

@@ -2,8 +2,8 @@
 
 **A Technical Whitepaper on Context Efficiency in AI Agent Systems**
 
-**Version:** 2.1  
-**Last Updated:** January 16, 2026
+
+![MCP-Scalability-Issue-Solution](assets/MCP-Scalability-Issue-Solution.png)
 
 ---
 
