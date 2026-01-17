@@ -377,6 +377,7 @@ graph TB
   - Price-performance: 3.7x better (reads), 4.7x better (writes)
 
 **Known Issues**
+
 ⚠️ Super-node problem: 20M+ vertices with 2-3M edges cause timeouts  
 ⚠️ OLAP queries on billions need larger timeouts  
 ⚠️ Not utilizing resources efficiently (5% CPU during failures)
@@ -388,6 +389,7 @@ graph TB
 - Managed service: fully AWS-managed
 
 **Strengths**
+
 ✅ Proven billions scale (Wiz)  
 ✅ 100k+ QPS capable  
 ✅ Multi-region via Global Database  
@@ -396,6 +398,7 @@ graph TB
 ✅ Mumbai/Bangalore regions available  
 
 **Critical Limitations**
+
 ❌ **AWS vendor lock-in** (DEALBREAKER for many)  
 ❌ Not truly distributed/sharded (vertical scaling bias)  
 ❌ Super-node performance issues  
@@ -511,6 +514,7 @@ graph LR
 - **Neo4j's Series F ($325M) is 40x NebulaGraph's total funding**
 
 **What Works**
+
 ✅ Good architecture (shared-nothing, distributed)  
 ✅ RocksDB backend  
 ✅ Used by Snapchat, Binance, Akulaku  
@@ -518,6 +522,7 @@ graph LR
 ✅ Proven in Meituan benchmarks (historical)  
 
 **What Doesn't Work - CRITICAL**
+
 ❌ **8-month release gap** (shows stagnation)  
 ❌ **"Very low activity"** company status  
 ❌ **Severely underfunded** ($8M total)  
@@ -644,6 +649,7 @@ graph TB
 - **But**: Fabric cannot traverse relationships across shards
 
 **Architecture Problems for Billion-Scale**
+
 ❌ **Vertical scaling only** (scale-up, not scale-out)  
 ❌ **Single write leader** (bottleneck)  
 ❌ **Fabric limitations**: Cannot traverse across shards  
@@ -651,6 +657,7 @@ graph TB
 ❌ **Super-nodes**: "Geologic time" at 250k+ edges  
 
 **What Neo4j Does Well**
+
 ✅ Best for moderate scale (millions to low billions on large single machines)  
 ✅ Excellent Cypher ecosystem  
 ✅ Best visualization tools  
@@ -658,6 +665,7 @@ graph TB
 ✅ Large community  
 
 **Why It FAILS given Requirements**
+
 ❌ Sub-second writes at billion-scale: **NOT achievable**  
 ❌ <50ms multi-region reads: **NOT achievable**  
 ❌ Horizontal scale-out: **Does not support**  
