@@ -631,7 +631,7 @@ graph TB
 ```
 
 **Market Position**
-- 12,000+ GitHub stars (most popular)
+- 15,000+ GitHub stars (most popular)
 - Largest ecosystem and community
 - Mature tooling (Neo4j Bloom, Graph Data Science)
 - $325M Series F (June 2021); $581M total funding (Tracxn, Oct 2025)
