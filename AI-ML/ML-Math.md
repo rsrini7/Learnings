@@ -4,7 +4,7 @@ This document outlines essential mathematical concepts and resources for Machine
 
 ## Core ML Math Concepts
 
-*   **Linear Algebra (Matrices):** Learn about matrix properties, multiplying matrices, LU decomposition, and determinants. This is needed for data analysis, processing, and techniques like PCA (Principal Component Analysis) [08:54].
+*   **Linear Algebra (Matrices):** Learn about matrix properties, multiplying matrices, LU decomposition, and determinants. This is needed for data analysis, processing, and techniques like PCA (Principal Component Analysis).
 *   **Probability and Statistics:** Learn about random variables, probability distributions, expectation value, variance, covariance, correlation, and Bayes' Rule. This is essential for understanding your data and model results.
 *   **Numerical Computation:** Learn about Gradient Descent, which is used to find a local minimum. The speaker suggests writing code for gradient descent.
 *   **Calculus Basics:** Learn the Chain Rule, which is at the heart of backpropagation.
