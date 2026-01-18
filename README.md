@@ -121,6 +121,7 @@
 - [VL-JEPA Executive Brief](Papers/VL-JEPA-Executive-Brief.md)
 - [mHC Deepseek](Papers/mHC-Deepseek.md)
 - [Recursive Language Models](Papers/RecursiveLanguageModels.md)
+- [Deepseek Engram](Papers/Deepseek-Engram.md)
 
 ## Papers Comparisons
 - [Google Nested Learning vs FB Sparce Memory](Papers/comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md)
