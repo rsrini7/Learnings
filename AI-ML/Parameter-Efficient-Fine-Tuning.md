@@ -1,11 +1,16 @@
 # Parameter-Efficient Fine-Tuning (PEFT) & Model Compression Guide
 
+![PEFT-Model-Compression-Guide](assets/PEFT-Model-Compression-Guide.png)
+
+---
+
 ## Executive Summary
 
-This guide covers two complementary approaches to making Large Language Models practical and deployable:
+This comprehensive guide covers the complete lifecycle of adapting and deploying Large Language Models efficiently:
 
 1. **Parameter-Efficient Fine-Tuning (PEFT)**: Techniques for adapting models to specific tasks using minimal trainable parameters
 2. **Model Compression**: Post-training optimization for reducing memory, latency, and deployment costs
+3. **Production Deployment**: Best practices for serving optimized models at scale
 
 **PEFT Benefits:**
 - Train on consumer GPUs (single GPU instead of clusters)
@@ -34,7 +39,15 @@ Base Model → Fine-Tune (PEFT) → Compress (Quantization/Sparsity) → Deploy 
 4. [Prompt-Based Methods](#4-prompt-based-methods)
 5. [Alignment and Preference Optimization](#5-alignment-and-preference-optimization)
 6. [Advanced PEFT Methods](#6-advanced-peft-methods)
-7. [Model Compression for Deployment](#section-7-model-compression-for-deployment)
+7. [Implementation Guide](#7-implementation-guide)
+8. [Method Comparison](#8-method-comparison)
+9. [Best Practices](#9-best-practices)
+10. [Model Compression for Deployment](#10-model-compression-for-deployment)
+11. [Advanced Topics](#11-advanced-topics)
+12. [Troubleshooting Guide](#12-troubleshooting-guide)
+13. [Future Directions](#13-future-directions)
+14. [Resources and References](#14-resources-and-references)
+15. [Quick Reference](#15-quick-reference)
 
 ---
 
@@ -664,9 +677,411 @@ Aggregates model updates from decentralized devices without sharing raw data.
 
 ---
 
-# Section 7: Model Compression for Deployment
+## 7. Implementation Guide
 
-## 7.1 Overview: Compression vs PEFT
+### 7.1 Library Ecosystem
+
+```mermaid
+graph LR
+    A["Hugging Face PEFT"] --> B["LoRA"]
+    A --> C["QLoRA"]
+    A --> D["Adapters"]
+    A --> E["Prefix Tuning"]
+    
+    F["TRL Library"] --> G["DPO"]
+    F --> H["GRPO"]
+    F --> I["PPO"]
+    
+    J["BitsAndBytes"] --> K["4-bit Quantization"]
+    J --> L["8-bit Quantization"]
+    
+    M["Unsloth"] --> N["Optimized LoRA"]
+    M --> O["Fast QLoRA"]
+```
+
+**Primary Libraries:**
+
+1. **Hugging Face PEFT**
+   - Core PEFT methods (LoRA, adapters, prefix tuning)
+   - Integrated with Transformers
+   - Production-ready
+
+2. **TRL (Transformer Reinforcement Learning)**
+   - Alignment methods (RLHF, DPO, GRPO)
+   - Supervised fine-tuning
+   - Reward modeling
+
+3. **BitsAndBytes**
+   - Quantization (4-bit, 8-bit)
+   - Required for QLoRA
+   - Memory-efficient optimizers
+
+4. **Unsloth**
+   - Optimized PEFT implementations
+   - 2x faster training
+   - Lower memory usage
+
+---
+
+### 7.2 Quick Start Example
+
+**Full Pipeline: SFT → DPO**
+
+```python
+# 1. Install dependencies
+# pip install transformers peft trl bitsandbytes accelerate
+
+from transformers import AutoTokenizer, AutoModelForCausalLM, BitsAndBytesConfig
+from peft import LoraConfig, prepare_model_for_kbit_training, get_peft_model
+from trl import SFTTrainer, DPOTrainer, SFTConfig, DPOConfig
+import torch
+
+# 2. Load base model with quantization
+bnb_config = BitsAndBytesConfig(
+    load_in_4bit=True,
+    bnb_4bit_quant_type="nf4",
+    bnb_4bit_use_double_quant=True,
+    bnb_4bit_compute_dtype=torch.bfloat16
+)
+
+model = AutoModelForCausalLM.from_pretrained(
+    "meta-llama/Llama-2-7b-hf",
+    quantization_config=bnb_config,
+    device_map="auto"
+)
+tokenizer = AutoTokenizer.from_pretrained("meta-llama/Llama-2-7b-hf")
+model = prepare_model_for_kbit_training(model)
+
+# 3. Configure LoRA
+lora_config = LoraConfig(
+    r=16,
+    lora_alpha=32,
+    target_modules="all-linear",
+    lora_dropout=0.05,
+    bias="none",
+    task_type="CAUSAL_LM"
+)
+
+model = get_peft_model(model, lora_config)
+
+# 4. Supervised Fine-Tuning (SFT)
+sft_config = SFTConfig(
+    output_dir="./sft_model",
+    num_train_epochs=3,
+    per_device_train_batch_size=4,
+    gradient_accumulation_steps=4,
+    learning_rate=2e-4,
+    max_seq_length=512,
+    logging_steps=10,
+    save_strategy="epoch"
+)
+
+trainer = SFTTrainer(
+    model=model,
+    train_dataset=sft_dataset,
+    tokenizer=tokenizer,
+    args=sft_config
+)
+trainer.train()
+
+# 5. Direct Preference Optimization (DPO)
+# Load SFT model as both policy and reference
+ref_model = AutoModelForCausalLM.from_pretrained(
+    "./sft_model",
+    quantization_config=bnb_config,
+    device_map="auto"
+)
+
+dpo_config = DPOConfig(
+    output_dir="./dpo_model",
+    num_train_epochs=1,
+    per_device_train_batch_size=2,
+    learning_rate=5e-6,  # 10-100x smaller than SFT
+    beta=0.1,
+    max_length=512,
+    max_prompt_length=256
+)
+
+dpo_trainer = DPOTrainer(
+    model=model,
+    ref_model=ref_model,
+    train_dataset=preference_dataset,
+    tokenizer=tokenizer,
+    args=dpo_config
+)
+dpo_trainer.train()
+
+# 6. Merge and save
+model = model.merge_and_unload()
+model.save_pretrained("./final_model")
+```
+
+---
+
+### 7.3 Hardware Requirements
+
+**Memory Estimates (QLoRA with 4-bit):**
+
+| Model Size | Base Memory | +LoRA | Total VRAM |
+|------------|-------------|-------|------------|
+| 7B params | 3.5GB | 0.5GB | ~8GB |
+| 13B params | 6.5GB | 0.8GB | ~12GB |
+| 30B params | 15GB | 1.5GB | ~24GB |
+| 70B params | 35GB | 2GB | ~48GB |
+
+**Recommended GPUs:**
+
+- **7B models:** RTX 3090/4090 (24GB), A6000
+- **13B models:** A100 40GB, H100
+- **70B models:** 2x A100 80GB, H100
+
+---
+
+## 8. Method Comparison
+
+### 8.1 Efficiency Comparison
+
+| Method | Trainable % | Memory | Training Speed | Inference Cost |
+|--------|-------------|---------|----------------|----------------|
+| Full FT | 100% | 100% | Baseline | Baseline |
+| LoRA | 0.1-1% | 30% | 1.2x | None |
+| QLoRA | 0.1-1% | 10% | 1.0x | None |
+| DoRA | 0.15-1.2% | 32% | 1.1x | None |
+| Adapters | 0.5-3% | 35% | 1.3x | +2% |
+| Prefix Tuning | 0.1% | 25% | 1.4x | +5% |
+| BitFit | 0.05% | 20% | 1.5x | None |
+
+---
+
+### 8.2 Task Performance
+
+**Recommendation by Task Type:**
+
+| Task | Best Method | Alternative | Notes |
+|------|-------------|-------------|-------|
+| Text Generation | LoRA, DoRA | QLoRA | DoRA better for reasoning |
+| Classification | LoRA, BitFit | Prefix Tuning | BitFit for speed |
+| Reasoning (Math/Code) | DoRA, GRPO | LoRA | GRPO for RL scenarios |
+| Alignment | DPO, GRPO | RLHF | DPO simpler, GRPO for reasoning |
+| Few-shot Tasks | Soft Prompts | P-Tuning | Scale with model size |
+| Multi-task | Adapters | LoRA | Modularity advantage |
+| Limited VRAM | QLoRA | VeRA | QLoRA more mature |
+
+---
+
+### 8.3 Alignment Method Comparison
+
+| Method | Compute Cost | Training Stability | Quality | Setup Complexity |
+|--------|--------------|-------------------|---------|------------------|
+| RLHF (PPO) | High | Low | Excellent | High |
+| DPO | Medium | High | Very Good | Low |
+| GRPO | Medium-High | Medium | Excellent | Medium |
+| RLAIF | Medium | Medium | Good | Medium |
+| ORPO | Medium | High | Very Good | Low |
+
+---
+
+## 9. Best Practices
+
+### 9.1 Method Selection Decision Tree
+
+```mermaid
+graph TD
+    A["Start: Choose PEFT Method"] --> B{"What is your constraint?"}
+    
+    B -->|"Memory"| C{"Model size?"}
+    C -->|"<13B"| D["LoRA"]
+    C -->|">13B"| E["QLoRA"]
+    
+    B -->|"Quality"| F{"Task type?"}
+    F -->|"Reasoning"| G["DoRA or GRPO"]
+    F -->|"General"| H["LoRA or Full FT"]
+    
+    B -->|"Multi-task"| I["Adapters"]
+    
+    B -->|"Alignment"| J{"Have human labels?"}
+    J -->|"Yes"| K{"Resources?"}
+    K -->|"High"| L["RLHF"]
+    K -->|"Low"| M["DPO"]
+    J -->|"No"| N["RLAIF + DPO"]
+    
+    B -->|"Inference Speed"| O["LoRA or DoRA"]
+```
+
+---
+
+### 9.2 Hyperparameter Guidelines
+
+**LoRA Configuration:**
+
+```python
+# Conservative (safer, slower convergence)
+r=8, alpha=16, dropout=0.1
+
+# Balanced (recommended default)
+r=16, alpha=32, dropout=0.05
+
+# Aggressive (faster convergence, risk of overfitting)
+r=32, alpha=64, dropout=0.0
+```
+
+**Learning Rates:**
+
+| Stage | Learning Rate | Explanation |
+|-------|--------------|-------------|
+| SFT | 2e-4 to 5e-4 | Standard fine-tuning |
+| DPO | 5e-6 to 1e-5 | 10-100x smaller than SFT |
+| GRPO | 1e-5 to 5e-5 | Between SFT and DPO |
+
+**Training Duration:**
+
+- **SFT:** 1-3 epochs (more risks overfitting)
+- **DPO:** 1 epoch usually sufficient
+- **GRPO:** 1-2 epochs
+
+---
+
+### 9.3 Common Pitfalls
+
+**Problem 1: Catastrophic Forgetting**
+- **Symptom:** Model loses general knowledge
+- **Solution:** Use lower learning rates, shorter training, or mix in general data
+
+**Problem 2: Rank Collapse**
+- **Symptom:** LoRA adapters learn low-rank representations that underfit
+- **Solution:** Increase rank (r), check if DoRA helps
+
+**Problem 3: Memory Overflow**
+- **Symptom:** OOM errors during training
+- **Solutions:**
+  - Reduce batch size
+  - Enable gradient checkpointing
+  - Use QLoRA instead of LoRA
+  - Reduce sequence length
+
+**Problem 4: Unstable Training**
+- **Symptom:** Loss spikes, nan values
+- **Solutions:**
+  - Lower learning rate
+  - Enable gradient clipping
+  - Use DPO instead of PPO
+  - Check for data quality issues
+
+---
+
+### 9.4 Production Deployment
+
+**Adapter Management:**
+
+```python
+# Load base model
+base_model = AutoModelForCausalLM.from_pretrained("base-model")
+
+# Load task-specific adapter
+model = PeftModel.from_pretrained(base_model, "adapter-path")
+
+# Switch adapters dynamically
+model.load_adapter("another-adapter", adapter_name="task2")
+model.set_adapter("task2")
+
+# Merge for deployment (removes adapter overhead)
+merged_model = model.merge_and_unload()
+merged_model.save_pretrained("production-model")
+```
+
+**Inference Optimization:**
+
+1. **Always merge adapters** before deployment (eliminates overhead)
+2. **Use compression** (quantization) for additional speedup (Section 10)
+3. **Test thoroughly** after merging (edge cases can differ)
+4. **Monitor performance** in production
+
+---
+
+### 9.5 Monitoring and Evaluation
+
+**Key Metrics to Track:**
+
+1. **Training Metrics:**
+   - Loss (should decrease steadily)
+   - Gradient norms (watch for explosion)
+   - Learning rate schedule
+   - GPU memory usage
+
+2. **Quality Metrics:**
+   - Perplexity (lower is better)
+   - Task-specific accuracy
+   - Human evaluation (for alignment)
+   - Safety scores
+
+3. **Efficiency Metrics:**
+   - Training time per epoch
+   - Memory peak usage
+   - Inference latency
+
+**Evaluation Code:**
+
+```python
+from evaluate import load
+from torch.utils.data import DataLoader
+
+# Evaluate perplexity
+def evaluate_perplexity(model, eval_dataset, tokenizer):
+    model.eval()
+    total_loss = 0
+    total_tokens = 0
+    
+    dataloader = DataLoader(eval_dataset, batch_size=4)
+    
+    for batch in dataloader:
+        with torch.no_grad():
+            outputs = model(**batch)
+            loss = outputs.loss
+            total_loss += loss.item() * batch['input_ids'].numel()
+            total_tokens += batch['input_ids'].numel()
+    
+    perplexity = torch.exp(torch.tensor(total_loss / total_tokens))
+    return perplexity.item()
+
+# Task-specific evaluation
+accuracy = load("accuracy")
+rouge = load("rouge")
+
+# Compute metrics
+results = accuracy.compute(predictions=preds, references=labels)
+rouge_scores = rouge.compute(predictions=generated, references=targets)
+```
+
+---
+
+### 9.6 Cost Analysis
+
+**Training Cost Estimates (AWS p4d.24xlarge - 8x A100 80GB):**
+
+| Model | Method | Duration | Cost | Per Task |
+|-------|--------|----------|------|----------|
+| 7B | Full FT | 12 hours | $390 | $390 |
+| 7B | LoRA | 4 hours | $130 | $130 |
+| 7B | QLoRA (1 GPU) | 6 hours | $50 | $50 |
+| 70B | Full FT | 48 hours | $1,560 | $1,560 |
+| 70B | QLoRA | 12 hours | $390 | $390 |
+
+**Storage Cost:**
+
+| Model | Method | Disk Space | Monthly Cost (S3) |
+|-------|--------|------------|-------------------|
+| 7B | Full FT | 28GB | $0.64 |
+| 7B | LoRA | 50MB | $0.001 |
+| 70B | Full FT | 280GB | $6.40 |
+| 70B | LoRA | 200MB | $0.005 |
+
+**Key Insight:** LoRA/QLoRA enables 5-10 task-specific models for the cost of one full fine-tune.
+
+---
+
+## 10. Model Compression for Deployment
+
+### 10.1 Overview: Compression vs PEFT
 
 **Key Distinction:**
 
@@ -696,12 +1111,12 @@ Base Model → Fine-Tune (PEFT) → Compress → Deploy (vLLM/TensorRT)
 
 ---
 
-## 7.2 Quantization: Reducing Numerical Precision
+### 10.2 Quantization: Reducing Numerical Precision
 
 **What is Quantization?**
 Converts model weights and activations from high precision (FP32, BF16, FP16) to lower precision (INT8, INT4, FP8) to reduce memory and increase speed.
 
-### Quantization Approaches
+#### Quantization Approaches
 
 **Post-Training Quantization (PTQ):**
 - Applied after full training
@@ -717,7 +1132,7 @@ Converts model weights and activations from high precision (FP32, BF16, FP16) to
 
 **Practical Note for LLMs:** PTQ is dominant due to training costs; QAT is more common for smaller models or research into binary/ternary LLMs.
 
-### Common Quantization Schemes
+#### Common Quantization Schemes
 
 | Scheme | Weights | Activations | VRAM Reduction | Quality | Hardware Support |
 |--------|---------|-------------|----------------|---------|------------------|
@@ -726,7 +1141,7 @@ Converts model weights and activations from high precision (FP32, BF16, FP16) to
 | **FP8** | FP8 | FP8 | ~50% | Excellent | H100, H200 |
 | **NVFP4** | FP4 | FP16 | ~75% | Good | H100+ (experimental) |
 
-### Quantization Algorithms
+#### Quantization Algorithms
 
 **1. RTN (Round to Nearest):**
 - Fastest, simplest
@@ -753,7 +1168,7 @@ Converts model weights and activations from high precision (FP32, BF16, FP16) to
 - Requires calibration
 - Use for: INT8 quantization with activation quantization
 
-### Implementation Example
+#### Implementation Example
 
 ```python
 from transformers import AutoModelForCausalLM
@@ -784,7 +1199,7 @@ llm = LLM(model="./llama2-7b-gptq-w4a16")
 outputs = llm.generate("What is machine learning?")
 ```
 
-### Dynamic vs Static Quantization
+#### Dynamic vs Static Quantization
 
 **Static Quantization:**
 - Scales computed once during calibration
@@ -810,12 +1225,12 @@ llm = LLM(
 
 ---
 
-## 7.3 Sparsification: Structured Pruning
+### 10.3 Sparsification: Structured Pruning
 
 **What is Sparsification?**
 Zeroing out weights in structured patterns to reduce computation while maintaining accuracy.
 
-### Pruning Types
+#### Pruning Types
 
 **Unstructured Pruning:**
 - Removes individual weights arbitrarily
@@ -829,7 +1244,7 @@ Zeroing out weights in structured patterns to reduce computation while maintaini
 - Hardware-friendly but less aggressive compression
 - Common in LLMs: N:M patterns (e.g., 2:4)
 
-### Key Sparsity Patterns
+#### Key Sparsity Patterns
 
 **1. N:M Sparsity (Semi-Structured):**
 - Most common: **2:4 sparsity** (2 zeros in every 4 consecutive weights)
@@ -843,7 +1258,7 @@ Zeroing out weights in structured patterns to reduce computation while maintaini
 - Limited hardware support
 - Better for research than production
 
-### Sparsification Algorithms
+#### Sparsification Algorithms
 
 **1. Magnitude Pruning:**
 - Remove smallest-magnitude weights
@@ -861,7 +1276,7 @@ Zeroing out weights in structured patterns to reduce computation while maintaini
 - No backpropagation needed
 - Better than weight-only methods
 
-### Implementation
+#### Implementation
 
 ```python
 from llmcompressor import sparsify
@@ -875,7 +1290,7 @@ sparse_model = sparsify(
 )
 ```
 
-### Combining Quantization + Sparsity
+#### Combining Quantization + Sparsity
 
 Maximum compression with both techniques:
 
@@ -908,7 +1323,7 @@ compressed = compress(
 
 ---
 
-## 7.4 KV-Cache Quantization
+### 10.4 KV-Cache Quantization
 
 **Problem:**
 During inference, storing past key-value pairs for attention consumes massive memory, especially for long contexts.
@@ -940,62 +1355,7 @@ llm = LLM(
 
 ---
 
-## 7.5 LLM Compressor: Practical Framework
-
-**What is LLM Compressor?**
-Open-source toolkit from Neural Magic for systematically applying quantization and sparsity to LLMs for deployment.
-
-**Key Features:**
-- Pre-validated compression recipes
-- One-command compression
-- vLLM integration for serving
-- Supports all major quantization schemes
-
-**Typical Workflow:**
-
-```mermaid
-graph LR
-    A[Base/Fine-tuned Model] --> B[Choose Recipe]
-    B --> C[Calibrate]
-    C --> D[Compress]
-    D --> E[Save Compressed Format]
-    E --> F[Deploy with vLLM]
-```
-
-**Quick Start:**
-
-```python
-from llmcompressor.recipes import get_recipe
-from llmcompressor import compress
-
-# 1. Load fine-tuned model
-model = AutoModelForCausalLM.from_pretrained("./my-finetuned-llama")
-
-# 2. Use pre-validated recipe
-recipe = get_recipe("w4a16_gptq")  # or "fp8_dynamic", "2:4_sparse_w8a8"
-
-# 3. Compress with recipe
-compressed = compress(
-    model=model,
-    recipe=recipe,
-    calibration_data=calib_data
-)
-
-# 4. Save and deploy
-compressed.save_pretrained("./compressed-model", format="compressed-tensors")
-```
-
-**Available Recipes:**
-- `fp8_dynamic_per_token` - FP8 for H100 (highest quality)
-- `w4a16_gptq` - 4-bit GPTQ (maximum compression)
-- `w8a8_smoothquant` - INT8 (balanced)
-- `2:4_sparse_w8a8` - Sparsity + INT8 (maximum speedup)
-
----
-
-## 7.6 Other Compression Approaches
-
-### 1. Knowledge Distillation (Expanded with practical details)
+### 10.5 Knowledge Distillation
 
 **Concept:** Train smaller "student" model to mimic larger "teacher" model.
 
@@ -1027,71 +1387,11 @@ Large Model (Teacher) → Generate soft labels → Train Small Model (Student)
 - Can afford training from scratch
 - Target deployment is extremely constrained (mobile, edge)
 
-**Comparison to Quantization:**
-- Distillation: New smaller architecture
-- Quantization: Same architecture, different precision
-
-### 2. GGUF Format (llama.cpp ecosystem)
-
-**Purpose:** CPU and Metal (Apple Silicon) optimized quantization format.
-
-**Key Schemes:**
-- Q4_0, Q4_K_M: 4-bit quantization variants
-- Q5_K_M: 5-bit (better quality)
-- Q8_0: 8-bit (highest quality)
-
-**Characteristics:**
-- Optimized for CPU inference (x86, ARM)
-- Used by Ollama, LM Studio, local deployment tools
-- Different from GPU-focused formats (vLLM)
-
-**When to Use:**
-- Deploying on laptops, edge devices without GPUs
-- Local/offline inference requirements
-- Consumer hardware (M1/M2 Macs, consumer CPUs)
-
-**Conversion:**
-```bash
-# Convert HuggingFace model to GGUF
-python convert.py model.safetensors --outfile model.gguf
-
-# Quantize to Q4_K_M
-./quantize model.gguf model-q4_k_m.gguf Q4_K_M
-```
-
-### 3. TensorRT-LLM (NVIDIA)
-
-**Purpose:** NVIDIA's optimized inference engine with built-in quantization.
-
-**Key Features:**
-- FP8, INT4, INT8 quantization
-- Fused kernels for maximum throughput
-- Multi-GPU inference optimization
-- Best performance on NVIDIA GPUs
-
-**When to Use:**
-- Production deployment on NVIDIA infrastructure
-- Need maximum throughput on A100/H100
-- Willing to invest in conversion/optimization
-
-### 4. MLX (Apple)
-
-**Purpose:** Apple Silicon optimized framework.
-
-**Key Features:**
-- Unified memory architecture optimization
-- Quantization for M-series chips
-- Native Metal acceleration
-
-**When to Use:**
-- Deploying on Apple Silicon (M1/M2/M3)
-- macOS-specific applications
-
 ---
 
-## 7.7 Compression Decision Matrix
+### 10.6 Compression Decision Matrix
 
-### By Hardware Target
+#### By Hardware Target
 
 | Hardware | Best Approach | Scheme | Framework |
 |----------|---------------|--------|-----------|
@@ -1102,7 +1402,7 @@ python convert.py model.safetensors --outfile model.gguf
 | CPU (x86/ARM) | Q4_0, Q5_K_M | GGUF | llama.cpp |
 | AMD Instinct | W8A8 | INT8 | vLLM |
 
-### By Use Case
+#### By Use Case
 
 | Use Case | Priority | Recommended Compression |
 |----------|----------|------------------------|
@@ -1113,7 +1413,7 @@ python convert.py model.safetensors --outfile model.gguf
 | **Maximum speedup** | Speed | W4A16 + 2:4 sparsity |
 | **Local/offline** | Privacy | Q4/Q5 GGUF on CPU/Metal |
 
-### By Model Size
+#### By Model Size
 
 | Model Size | VRAM Available | Compression Strategy |
 |------------|----------------|---------------------|
@@ -1125,7 +1425,7 @@ python convert.py model.safetensors --outfile model.gguf
 
 ---
 
-## 7.8 Integration with PEFT
+### 10.7 Integration with PEFT
 
 **Optimal Production Workflow:**
 
@@ -1139,7 +1439,7 @@ python convert.py model.safetensors --outfile model.gguf
 3. Merge LoRA adapters
    - model.merge_and_unload()
    ↓
-4. Compress merged model (This section)
+4. Compress merged model
    - Apply W4A16 GPTQ or FP8
    - KV-cache quantization
    ↓
@@ -1184,23 +1484,11 @@ from vllm import LLM
 llm = LLM(model="./finetuned-llama-compressed", kv_cache_dtype="fp8")
 ```
 
-**Why This Order?**
-1. **QLoRA training**: Memory-efficient fine-tuning
-2. **Merge adapters**: Get full fine-tuned weights
-3. **Compression**: Optimize merged model for inference
-4. **Deploy**: Serve with maximum efficiency
-
-**Alternative: Compress then Fine-Tune?**
-- Possible but less common
-- Use quantization-aware fine-tuning
-- More complex, limited tooling support
-- Standard approach (fine-tune → compress) is simpler and well-validated
-
 ---
 
-## 7.9 Compression Best Practices
+### 10.8 Compression Best Practices
 
-### Calibration Data Selection
+#### Calibration Data Selection
 
 **Guidelines:**
 - Use 128-512 samples representative of inference distribution
@@ -1208,15 +1496,7 @@ llm = LLM(model="./finetuned-llama-compressed", kv_cache_dtype="fp8")
 - Prioritize diversity over quantity
 - Include edge cases if critical
 
-```python
-# Good calibration set
-calib_data = dataset.select(range(256))  # 256 diverse samples
-
-# Poor calibration set
-calib_data = dataset.select(range(10000))  # Unnecessary, slower
-```
-
-### Quality Validation
+#### Quality Validation
 
 **Essential Checks Before Deployment:**
 
@@ -1225,22 +1505,7 @@ calib_data = dataset.select(range(10000))  # Unnecessary, slower
 3. **Edge cases:** Test rare but important scenarios
 4. **Long context:** Verify quality doesn't degrade at max context length
 
-```python
-# Validation script
-from evaluate import load
-
-# 1. Perplexity check
-original_ppl = evaluate_perplexity(original_model, eval_set)
-compressed_ppl = evaluate_perplexity(compressed_model, eval_set)
-degradation = (compressed_ppl - original_ppl) / original_ppl
-assert degradation < 0.05, f"Perplexity degraded {degradation*100:.1f}%"
-
-# 2. Task accuracy
-accuracy = load("accuracy")
-results = accuracy.compute(predictions=preds, references=labels)
-```
-
-### Common Pitfalls
+#### Common Pitfalls
 
 **Problem 1: Over-aggressive compression**
 - Symptom: >5% quality degradation
@@ -1258,41 +1523,272 @@ results = accuracy.compute(predictions=preds, references=labels)
 - Symptom: Compressed model won't load
 - Solution: Use vLLM or compatible runtime, ensure correct format
 
-### Monitoring in Production
+---
 
-**Key Metrics:**
-- Latency (P50, P95, P99)
-- Throughput (tokens/second)
-- GPU utilization
-- Memory usage
-- Quality metrics (task-specific)
+## 11. Advanced Topics
 
-**Red Flags:**
-- Latency spikes (>2x expected)
-- Quality degradation over time
-- Memory leaks
-- GPU underutilization (<70%)
+### 11.1 Combining PEFT Methods
+
+**Effective Combinations:**
+
+1. **QLoRA + DoRA**
+   - Best quality-efficiency trade-off
+   - Recommended for production
+
+2. **LoRA + Adapters**
+   - Layer-wise LoRA + task-specific adapters
+   - Maximum modularity
+
+3. **Prefix Tuning + LoRA**
+   - Generation tasks with parameter efficiency
+
+4. **VeRA + DoRA (DVoRA)**
+   - Extreme efficiency with quality
+
+**Implementation:**
+
+```python
+# Combine multiple PEFT methods
+config = LoraConfig(
+    r=16,
+    lora_alpha=32,
+    use_dora=True,  # Enable DoRA
+    target_modules="all-linear"
+)
+
+# Add prefix tuning
+prefix_config = PrefixTuningConfig(
+    num_virtual_tokens=20
+)
+
+# Apply both
+model = get_peft_model(model, config)
+model = get_peft_model(model, prefix_config)
+```
 
 ---
 
-## Summary: PEFT + Compression Together
+### 11.2 Scaling Laws for PEFT
 
-| Stage | Technique | Goal | Tools |
-|-------|-----------|------|-------|
-| **Training** | QLoRA, LoRA, DoRA | Adapt to task efficiently | HF PEFT, TRL |
-| **Post-Training** | Quantization, Sparsity | Optimize for deployment | LLM Compressor |
-| **Serving** | Optimized inference | Low latency, high throughput | vLLM, TensorRT-LLM |
+**Key Findings:**
 
-**Key Takeaways:**
-1. PEFT and compression are complementary, not competing
-2. Standard flow: Base → Fine-tune (PEFT) → Compress → Deploy
-3. Compression can reduce VRAM by 50-75% with <2% quality loss
-4. Always validate quality on your specific use case
-5. Match compression scheme to hardware (FP8 for H100, W4A16 for older GPUs)
+1. **Parameter Count vs Performance**
+   - LoRA: Performance plateaus at r=32-64
+   - DoRA: Achieves same quality at r=16
+   - More isn't always better
+
+2. **Model Size Effects**
+   - PEFT more effective on larger models (>7B)
+   - Soft prompts scale better than LoRA on >10B models
+   - QLoRA gap narrows with model size
+
+3. **Data Efficiency**
+   - PEFT requires 2-5x less data than full FT
+   - Adapters best for limited data (<1k examples)
+   - LoRA best for 10k+ examples
 
 ---
 
-## Resources and References
+### 11.3 Multi-Modal PEFT
+
+**Vision-Language Models:**
+
+```python
+# LoRA for vision-language models
+config = LoraConfig(
+    r=16,
+    lora_alpha=32,
+    target_modules=[
+        "q_proj", "v_proj",  # Text encoder
+        "vision_proj"        # Vision encoder
+    ]
+)
+
+# Freeze vision encoder, train text adapter
+for param in model.vision_model.parameters():
+    param.requires_grad = False
+```
+
+**Audio Models:**
+- Apply LoRA to Whisper for speech recognition
+- QLoRA enables large audio model fine-tuning
+
+---
+
+### 11.4 Continual Learning with PEFT
+
+**Challenge:** Catastrophic forgetting when learning new tasks sequentially.
+
+**Solutions:**
+
+1. **Task-Specific Adapters**
+   - Train separate adapter per task
+   - No interference between tasks
+   - Easily composable
+
+2. **Progressive LoRA**
+   - Gradually increase rank for new tasks
+   - Regularize against previous tasks
+
+3. **Elastic Weight Consolidation + LoRA**
+   - Identify important parameters
+   - Protect them during new task learning
+
+**Implementation:**
+
+```python
+# Task 1
+model = get_peft_model(base_model, lora_config_task1)
+trainer.train(task1_data)
+model.save_adapter("task1_adapter")
+
+# Task 2 (without forgetting task 1)
+model.load_adapter("task1_adapter", adapter_name="task1")
+model.add_adapter(lora_config_task2, adapter_name="task2")
+model.set_adapter("task2")
+trainer.train(task2_data)
+
+# Inference: use specific adapter
+model.set_adapter("task1")  # or "task2"
+```
+
+---
+
+## 12. Troubleshooting Guide
+
+### 12.1 Common Error Messages
+
+**Error:** `CUDA out of memory`
+
+**Solutions:**
+```python
+# 1. Reduce batch size
+per_device_train_batch_size=1
+gradient_accumulation_steps=16  # Effective batch size = 16
+
+# 2. Enable gradient checkpointing
+model.gradient_checkpointing_enable()
+
+# 3. Use QLoRA
+quantization_config = BitsAndBytesConfig(load_in_4bit=True)
+
+# 4. Reduce sequence length
+max_seq_length=512  # instead of 2048
+```
+
+---
+
+**Error:** `RuntimeError: Expected all tensors to be on the same device`
+
+**Solution:**
+```python
+# Ensure consistent device mapping
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    device_map="auto"  # Automatic device placement
+)
+```
+
+---
+
+**Error:** `Loss is NaN` or `Loss exploding`
+
+**Solutions:**
+```python
+# 1. Lower learning rate
+learning_rate=1e-5  # Instead of 2e-4
+
+# 2. Enable gradient clipping
+max_grad_norm=1.0
+
+# 3. Use mixed precision carefully
+fp16=False,  # Try disabling if using
+bf16=True    # Use bf16 instead
+
+# 4. Check data quality
+# Ensure no extremely long sequences or corrupted data
+```
+
+---
+
+**Error:** `Adapter not found` or `Multiple adapters conflict`
+
+**Solution:**
+```python
+# List available adapters
+print(model.peft_config.keys())
+
+# Set active adapter explicitly
+model.set_adapter("adapter_name")
+
+# Delete unused adapters
+model.delete_adapter("old_adapter")
+```
+
+---
+
+### 12.2 Performance Optimization
+
+**Slow Training:**
+
+```python
+# 1. Enable Flash Attention 2
+model = AutoModelForCausalLM.from_pretrained(
+    model_name,
+    attn_implementation="flash_attention_2"
+)
+
+# 2. Use optimized libraries
+# pip install flash-attn unsloth
+
+# 3. Increase batch size with gradient accumulation
+per_device_train_batch_size=8
+gradient_accumulation_steps=4
+
+# 4. Use DeepSpeed for multi-GPU
+# deepspeed --num_gpus=4 train.py
+```
+
+---
+
+**Poor Quality Output:**
+
+1. **Check learning rate:** Too high causes instability, too low prevents learning
+2. **Verify data format:** Ensure proper chat templates
+3. **Increase rank:** Try r=32 or r=64 for complex tasks
+4. **Try DoRA:** Often 2-5% better than LoRA
+5. **Add more training data:** PEFT needs 1k+ examples
+6. **Adjust target modules:** Include all linear layers for QLoRA
+
+---
+
+## 13. Future Directions
+
+### Emerging Trends (2025-2026)
+
+1. **Mixture of Adapters (MoA)**
+   - Dynamic routing between multiple LoRA adapters
+   - Task-specific expert selection
+
+2. **Ultra-Low Rank Methods**
+   - VeRA, DoRA pushing efficiency boundaries
+   - <0.001% trainable parameters
+
+3. **Alignment Without Preference Data**
+   - Self-alignment techniques
+   - Constitutional AI methods
+
+4. **Quantization-Aware PEFT**
+   - Training directly in quantized space
+   - Better accuracy than post-training quantization
+
+5. **Federated PEFT**
+   - Privacy-preserving collaborative fine-tuning
+   - Healthcare and finance applications
+
+---
+
+## 14. Resources and References
 
 ### Official Documentation
 
@@ -1332,63 +1828,13 @@ results = accuracy.compute(predictions=preds, references=labels)
 12. **ORPO:** Hong et al. (2024) - "ORPO: Monolithic Preference Optimization without Reference Model" - https://arxiv.org/abs/2403.07691
 13. **KTO:** Ethayarajh et al. (2024) - "KTO: Model Alignment as Prospect Theoretic Optimization" - https://arxiv.org/abs/2402.01306
 
-**Adapter Methods:**
+**Compression:**
 
-14. **Adapters (Houlsby):** Houlsby et al. (2019) - "Parameter-Efficient Transfer Learning for NLP" - https://arxiv.org/abs/1902.00751
-15. **AdapterFusion:** Pfeiffer et al. (2020) - "AdapterFusion: Non-Destructive Task Composition for Transfer Learning" - https://arxiv.org/abs/2005.00247
-16. **Compacter:** Mahabadi et al. (2021) - "Compacter: Efficient Low-Rank Hypercomplex Adapter Layers" - https://arxiv.org/abs/2106.04647
-
-**Selective Methods:**
-
-17. **BitFit:** Zaken et al. (2021) - "BitFit: Simple Parameter-efficient Fine-tuning for Transformer-based Masked Language-models" - https://arxiv.org/abs/2106.10199
-18. **IA³:** Liu et al. (2022) - "Few-Shot Parameter-Efficient Fine-Tuning is Better and Cheaper than In-Context Learning" - https://arxiv.org/abs/2205.05638
-
-**Quantization:**
-
-19. **GPTQ:** Frantar et al. (2023) - "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers" - https://arxiv.org/abs/2210.17323
-20. **AWQ:** Lin et al. (2023) - "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration" - https://arxiv.org/abs/2306.00978
-21. **SmoothQuant:** Xiao et al. (2023) - "SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models" - https://arxiv.org/abs/2211.10438
-22. **FP8:** Micikevicius et al. (2022) - "FP8 Formats for Deep Learning" - https://arxiv.org/abs/2209.05433
-
-**Sparsification:**
-
-23. **SparseGPT:** Frantar & Alistarh (2023) - "SparseGPT: Massive Language Models Can Be Accurately Pruned in One-Shot" - https://arxiv.org/abs/2301.00774
-24. **Wanda:** Sun et al. (2023) - "A Simple and Effective Pruning Approach for Large Language Models" - https://arxiv.org/abs/2306.11695
-
-**Knowledge Distillation:**
-
-25. **DistilBERT:** Sanh et al. (2019) - "DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter" - https://arxiv.org/abs/1910.01108
-26. **TinyLLaMA:** Zhang et al. (2024) - "TinyLlama: An Open-Source Small Language Model" - https://arxiv.org/abs/2401.02385
-
-**Instruction Tuning:**
-
-27. **FLAN:** Wei et al. (2022) - "Finetuned Language Models are Zero-Shot Learners" - https://arxiv.org/abs/2109.01652
-28. **Alpaca:** Taori et al. (2023) - "Alpaca: A Strong, Replicable Instruction-Following Model" - https://crfm.stanford.edu/2023/03/13/alpaca.html
-29. **Self-Instruct:** Wang et al. (2023) - "Self-Instruct: Aligning Language Models with Self-Generated Instructions" - https://arxiv.org/abs/2212.10560
-
-### Survey Papers & Comprehensive Reviews
-
-30. **PEFT Survey:** Lialin et al. (2023) - "Scaling Down to Scale Up: A Guide to Parameter-Efficient Fine-Tuning" - https://arxiv.org/abs/2303.15647
-31. **LLM Compression Survey:** Zhu et al. (2023) - "A Survey on Model Compression for Large Language Models" - https://arxiv.org/abs/2308.07633
-32. **Efficient LLMs:** Zhao et al. (2023) - "A Survey of Large Language Models" - https://arxiv.org/abs/2303.18223
-
-### Benchmarks & Datasets
-
-**Alignment Datasets:**
-- **Anthropic HH-RLHF:** https://huggingface.co/datasets/Anthropic/hh-rlhf
-- **UltraFeedback:** https://huggingface.co/datasets/openbmb/UltraFeedback
-- **UltraChat:** https://huggingface.co/datasets/HuggingFaceH4/ultrachat_200k
-
-**Instruction Datasets:**
-- **FLAN Collection:** https://huggingface.co/datasets/conceptofmind/FLAN_2022
-- **Alpaca:** https://huggingface.co/datasets/tatsu-lab/alpaca
-- **Dolly:** https://huggingface.co/datasets/databricks/databricks-dolly-15k
-
-**Evaluation Benchmarks:**
-- **MMLU:** https://github.com/hendrycks/test
-- **BBH (Big-Bench Hard):** https://github.com/suzgunmirac/BIG-Bench-Hard
-- **HumanEval:** https://github.com/openai/human-eval
-- **GSM8K:** https://github.com/openai/grade-school-math
+14. **GPTQ:** Frantar et al. (2023) - "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers" - https://arxiv.org/abs/2210.17323
+15. **AWQ:** Lin et al. (2023) - "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration" - https://arxiv.org/abs/2306.00978
+16. **SmoothQuant:** Xiao et al. (2023) - "SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models" - https://arxiv.org/abs/2211.10438
+17. **SparseGPT:** Frantar & Alistarh (2023) - "SparseGPT: Massive Language Models Can Be Accurately Pruned in One-Shot" - https://arxiv.org/abs/2301.00774
+18. **DistilBERT:** Sanh et al. (2019) - "DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter" - https://arxiv.org/abs/1910.01108
 
 ### Community Resources
 
@@ -1401,39 +1847,19 @@ results = accuracy.compute(predictions=preds, references=labels)
 - **PEFT:** https://github.com/huggingface/peft
 - **TRL:** https://github.com/huggingface/trl
 - **Unsloth:** https://github.com/unslothai/unsloth
-- **Axolotl:** https://github.com/OpenAccess-AI-Collective/axolotl (training framework)
+- **Axolotl:** https://github.com/OpenAccess-AI-Collective/axolotl
 
-**Model Collections:**
-- **PEFT Models:** https://huggingface.co/models?library=peft
-- **Quantized Models:** https://huggingface.co/models?library=bitsandbytes
-- **GGUF Models:** https://huggingface.co/models?library=gguf
-
-### Video Tutorials & Talks
-
-- **LLM Compressor Deep Dive:** Neural Magic (2024) - https://www.youtube.com/neuralmmagic
-- **QLoRA Explained:** Hugging Face (2023)
-- **DPO Tutorial:** Hugging Face (2024)
-- **Compressing Large Language Models (Quantization, Pruning, Distillation with code examples):** Shaw Talebi (2024) - https://www.youtube.com/watch?v=FLkUOkeMd5M
-
-### Blogs & Technical Articles
-
-- **Hugging Face Blog:** https://huggingface.co/blog
-  - "Making LLMs even more accessible with bitsandbytes, 4-bit quantization and QLoRA"
-  - "Preference Tuning LLMs with Direct Preference Optimization Methods"
-- **Neural Magic Blog:** https://neuralmagic.com/blog
-  - "Deploying Quantized LLMs at Scale"
-- **vLLM Blog:** https://blog.vllm.ai
-
-### Books
-
-- **"Natural Language Processing with Transformers"** - Tunstall, von Werra, & Wolf (2022)
-- **"Building LLMs for Production"** - Oswald & Christen (2024)
+**Datasets:**
+- **Anthropic HH-RLHF:** https://huggingface.co/datasets/Anthropic/hh-rlhf
+- **UltraFeedback:** https://huggingface.co/datasets/openbmb/UltraFeedback
+- **FLAN Collection:** https://huggingface.co/datasets/conceptofmind/FLAN_2022
+- **Alpaca:** https://huggingface.co/datasets/tatsu-lab/alpaca
 
 ---
 
-## Quick Reference Card
+## 15. Quick Reference
 
-### Method Selection Cheat Sheet
+### Method Selection Cheatsheet
 
 ```
 TRAINING PHASE:
@@ -1519,3 +1945,41 @@ python -m vllm.entrypoints.openai.api_server \
   --kv-cache-dtype fp8 \
   --max-model-len 8192
 ```
+
+---
+
+## Conclusion
+
+This comprehensive guide has covered the complete lifecycle of efficiently adapting and deploying Large Language Models:
+
+**Key Takeaways:**
+
+1. **PEFT Methods:**
+   - Start with QLoRA if memory-constrained, LoRA otherwise
+   - Use DoRA when quality is critical (reasoning tasks)
+   - Choose DPO for alignment unless doing complex reasoning (then GRPO)
+
+2. **Compression:**
+   - Post-training quantization (GPTQ/AWQ) is essential for deployment
+   - FP8 on H100, W4A16 on older GPUs
+   - Always quantize KV-cache for long contexts
+   - Combine with sparsity for maximum speedup
+
+3. **Production Best Practices:**
+   - Always merge adapters before production deployment
+   - Validate quality on your specific use case
+   - Monitor metrics throughout training
+   - Match compression scheme to hardware
+
+4. **The Complete Pipeline:**
+   ```
+   Base Model → Fine-Tune (PEFT) → Compress → Deploy (vLLM)
+   ```
+
+The PEFT and compression landscape continues evolving rapidly. Stay updated with the Hugging Face ecosystem for the latest methods and optimizations.
+
+**Next Steps:**
+- Experiment with different PEFT methods on your use case
+- Benchmark compression schemes on your target hardware
+- Join the Hugging Face community for support and updates
+- Monitor emerging trends like Mixture of Adapters and quantization-aware training
