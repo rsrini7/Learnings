@@ -25,39 +25,47 @@ Welcome to my personal learning repository! This space serves as a central hub f
 
 ## <a id="ai-ml"></a>🧠 AI & Machine Learning
 
+### 📈 Strategic AI & Market Insights
 - [AI in Next 18 Months](AI-ML/AI-in-Next-18-Months.md)
 - [AI PM Roles](AI-ML/AI-PMRoles.md)
-- [Fine Tuning LLM - GTX 1060 - WSL2-Ubuntu-2022](AI-ML/Fine-Tuning-LLM-GTX1060-WSL2-Ubuntu-2022.md)
-- [ML Math](AI-ML/ML-Math.md)
-- [Microsoft Agent Lightning](AI-ML/Microsoft-Agent-Lightning.md)
-- [Multimodal RAG](AI-ML/Multimodal-RAG.md)
-- [Unlock the Dark Data](AI-ML/Unlock-the-Dark-Data.md)
-- [Agent Skills](AI-ML/Agent-Skills.md)
-- [Claude Agents vs Sub-Agents vs Projects vs Workflow vs Rules vs MCP vs Skills](AI-ML/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md)
-- [Claude Skills Prompts](AI-ML/4-Claude-Skills-Prompts.md)
-- [Spec-Driven Development Frameworks](AI-ML/Spec-Driven-Development-Frameworks.md)
-- [AI-Assisted Development](AI-ML/AI-Assisted-Development.md)
-- [NVIDIA Open Models CES 2026](AI-ML/NVIDIA-Open-Models-CES-2026.md)
-- [Ralph Wiggum Loops & Ralph Mode](AI-ML/Ralph-Wiggum-Loops-&-Ralph-Mode.md)
-- [How Ralph Works with Amp](AI-ML/How-Ralph-Works-with-Amp.md)
+- [AI and the Barbell Economy](AI-ML/AI-and-the-Barbell-Economy.md)
 - [AI Periodic Table](AI-ML/AI-Periodic-Table.md)
 - [Context Graphs](AI-ML/Context-Graphs.md)
-- [LLM Benchmarks](AI-ML/LLM-Benchmarks.md)
-- [Continual Learning](AI-ML/ContinualLearning.md)
-- [Auto Regression](AI-ML/Auto-Regression.md)
+- [The Science of Scaling AI Agent Systems](AI-ML/The-Science-of-Scaling-AI-Agent-Systems.md)
+- [Chinese AI Trifecta 2025-2026](AI-ML/Chinese-AI-Trifecta-2025-2026.md)
+
+### 🤖 Agents & Autonomy
+- [Microsoft Agent Lightning](AI-ML/Microsoft-Agent-Lightning.md)
+- [Agent Skills](AI-ML/Agent-Skills.md)
+- [Claude Agents vs Sub-Agents vs Projects vs Workflow vs Rules vs MCP vs Skills](AI-ML/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md)
+- [AI-Assisted Development](AI-ML/AI-Assisted-Development.md)
+- [Spec-Driven Development Frameworks](AI-ML/Spec-Driven-Development-Frameworks.md)
 - [Persistent Memory Layers AI Agents](AI-ML/Persistent-Memory-Layers-AI-Agents.md)
-- [LLM Inference](AI-ML/LLM-Inference.md)
-- [LLM Inference Engines](AI-ML/LLM-Inference-Engines.md)
-- [AI and the Barbell Economy](AI-ML/AI-and-the-Barbell-Economy.md)
 - [Confucius Code Agent](AI-ML/Confucius-Code-Agent.md)
 - [MiroThinker 1.5](AI-ML/MiraThinker-1.5.md)
 - [LLM-Council](AI-ML/LLM-Council.md)
-- [Parameter-Efficient Fine Tuning](AI-ML/Parameter-Efficient-Fine-Tuning.md)
-- [Chinese AI Trifecta 2025-2026](AI-ML/Chinese-AI-Trifecta-2025-2026.md)
-- [Anthropic API Restrictions](AI-ML/Anthropic-API-Restrictions.md)
 - [Claude Cowork](AI-ML/Claude-Cowork.md)
-- [Claude Developer Ecosystem Jan-2026](AI-ML/Claude-Developer-Ecosystem-Jan-2026.md)
+
+### 🔬 Models, Training & Inference
+- [Fine Tuning LLM - GTX 1060 - WSL2-Ubuntu-2022](AI-ML/Fine-Tuning-LLM-GTX1060-WSL2-Ubuntu-2022.md)
+- [ML Math](AI-ML/ML-Math.md)
+- [Multimodal RAG](AI-ML/Multimodal-RAG.md)
+- [Unlock the Dark Data](AI-ML/Unlock-the-Dark-Data.md)
+- [LLM Benchmarks](AI-ML/LLM-Benchmarks.md)
+- [LLM Inference](AI-ML/LLM-Inference.md)
+- [LLM Inference Engines](AI-ML/LLM-Inference-Engines.md)
+- [Continual Learning](AI-ML/ContinualLearning.md)
+- [Auto Regression](AI-ML/Auto-Regression.md)
+- [Parameter-Efficient Fine Tuning](AI-ML/Parameter-Efficient-Fine-Tuning.md)
+- [Ralph Wiggum Loops & Ralph Mode](AI-ML/Ralph-Wiggum-Loops-&-Ralph-Mode.md)
+- [How Ralph Works with Amp](AI-ML/How-Ralph-Works-with-Amp.md)
+- [NVIDIA Open Models CES 2026](AI-ML/NVIDIA-Open-Models-CES-2026.md)
 - [Google Gemma Family Models Jan-2026](AI-ML/Google-Gemma-Family-Models-Jan-2026.md)
+
+### 🌐 Developer Ecosystem & Tools
+- [Claude Skills Prompts](AI-ML/4-Claude-Skills-Prompts.md)
+- [Anthropic API Restrictions](AI-ML/Anthropic-API-Restrictions.md)
+- [Claude Developer Ecosystem Jan-2026](AI-ML/Claude-Developer-Ecosystem-Jan-2026.md)
 - [Qwen3-VL-Embedding and Qwen3-VL-Reranker](AI-ML/Qwen3-VL-Embedding-and-Reranker.md)
 - [RAG Guide Jan 2026](AI-ML/RAG-Guide-Jan-2026.md)
 - [OpenResponses Open Inference Standard](AI-ML/OpenResponses-Open-Inference-Standard.md)
@@ -103,28 +111,35 @@ Welcome to my personal learning repository! This space serves as a central hub f
 
 ## <a id="blockchain-dlt"></a>⛓️ Blockchain & DLT
 
+### 🧱 Core Technology & Infrastructure
 - [Blockchain Layers](Blockchain/BlockchainLayers.md)
+- [DLT](Blockchain/DLT.md)
+- [Blockchain Coin vs Token](Blockchain/blockchain-coin-vs-token.md)
+- [Blockchain Hedera Hashgraph](Blockchain/blockchain-Hedera-Hashgraph.md)
+- [Blockchain by 2035](Blockchain/Blockchain-by-2035.md)
+
+### 🛡️ Security & Enterprise Development
 - [Ethereum Hardhat Docker Setup](Blockchain/Ethereum-hardhat-docker.md)
 - [Hardhat Development](Blockchain/Hardhat-Development.md)
-- [Blockchain Coin vs Token](Blockchain/blockchain-coin-vs-token.md)
 - [JPMorgan-Blockchain-Strategy](Blockchain/JPMorgan-Blockchain-Strategy.md)
+- [Enterprice Blockchain Learning](Blockchain/EnterpriceBlockchainLearning.md)
+- [Jan-2025-Updates](Blockchain/Jan-2025-Updates.md)
+- [CryptoACTs](Blockchain/CryptoACTs.md) && [CryptoACTs Jan 2026](Blockchain/CryptoACTs-Jan-2026.md)
+
+### 💸 Payments & Digital Assets
+- [Blockchain Payment Learning Guide](Blockchain/blockchain_payment_learning_guide.md)
+- [XLP XLM ISO20022](Blockchain/xrp-xlm-ISO20022.md)
+- [ISO20022-XRP-XLM-HBAR-XDC](Blockchain/ISO20022-XRP-XLM-HBAR-XDC.md)
+- [StableCoins Jan-2026](Blockchain/StableCoins-Jan-2026.md)
+- [AI Blockchain and the Hidden Frictions of Real World Asset Tokenization](Blockchain/AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization.md)
+- [Crypto Supercycle and Ethereum](Blockchain/Crypto-Supercycle-and-Ethereum.md)
+
+### 📊 Platform Comparisons (LLM Logs)
 - [Blockchain 26 Catagories Claude](Blockchain/blockchain-26-catagories-claude.md)
 - [Blockchain 26 Catagories Gemini](Blockchain/blockchain-26-catagories-gemini.md)
 - [Blockchain 26 Catagories Perplexity](Blockchain/blockchain-26-catagories-perplexity.md)
 - [Blockchain 26 Catagories Grok](Blockchain/blockchain-26-catagories-grok.md)
 - [Blockchain 26 Catagories Openai](Blockchain/blockchain-26-catagories-openai.md)
-- [Blockchain Hedera Hashgraph](Blockchain/blockchain-Hedera-Hashgraph.md)
-- [Blockchain Payment Learning Guide](Blockchain/blockchain_payment_learning_guide.md)
-- [XLP XLM ISO20022](Blockchain/xrp-xlm-ISO20022.md)
-- [ISO20022-XRP-XLM-HBAR-XDC](Blockchain/ISO20022-XRP-XLM-HBAR-XDC.md)
-- [DLT](Blockchain/DLT.md)
-- [Enterprice Blockchain Learning](Blockchain/EnterpriceBlockchainLearning.md)
-- [Jan-2025-Updates](Blockchain/Jan-2025-Updates.md)
-- [AI Blockchain and the Hidden Frictions of Real World Asset Tokenization](Blockchain/AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization.md)
-- [Crypto Supercycle and Ethereum](Blockchain/Crypto-Supercycle-and-Ethereum.md)
-- [Blockchain by 2035](Blockchain/Blockchain-by-2035.md)
-- [CryptoACTs](Blockchain/CryptoACTs.md) && [CryptoACTs Jan 2026](Blockchain/CryptoACTs-Jan-2026.md)
-- [StableCoins Jan-2026](Blockchain/StableCoins-Jan-2026.md)
 
 ---
 
@@ -150,15 +165,20 @@ Welcome to my personal learning repository! This space serves as a central hub f
 
 ## <a id="tech-news"></a>📰 Tech News
 
+### 🛡️ Security & Vulnerabilities
 - [Largest WhatsApp Data Leak in History](News/Largest-WhatsApp-Data-Leak-in-History.md)
-- [Cloudflare down Nov-2025](News/cloudflare-down-nov-2025.md)
 - [10.0 CVE React2Shell Whitepaper](News/10.0_CVE_React2Shell_Whitepaper.md)
 - [MongoBleed](News/MongoBleed-Dec2025.md)
-- [AWS Outage October 19 & 20 2025](News/AWS-Outage-October-19&20-2025.md)
-- [Tailwind Financial Crisis](News/Tailwind-Financial-Crisis.md)
-- [Decline of StackOverflow](News/Decline-of-Stack-Overflow.md)
 - [Node.js Async Hooks DoS Vulnerability](News/Node.js-Async-Hooks-DoS-Vulnerability.md)
 - [Security Vulnerabilities in Wireless Devices and Apps](News/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
+
+### 🚀 Infrastructure & Outages
+- [Cloudflare down Nov-2025](News/cloudflare-down-nov-2025.md)
+- [AWS Outage October 19 & 20 2025](News/AWS-Outage-October-19&20-2025.md)
+
+### 📈 Industry & Trends
+- [Tailwind Financial Crisis](News/Tailwind-Financial-Crisis.md)
+- [Decline of StackOverflow](News/Decline-of-Stack-Overflow.md)
 - [India-GSoc-2026-Trends-Challanges-Solutions](News/India-GSoc-2026-Trends-Challanges-Solutions.md)
 
 ---
@@ -191,22 +211,27 @@ Welcome to my personal learning repository! This space serves as a central hub f
 
 ## <a id="prompts-ai"></a>✍️ Prompts & AI Engineering
 
+### 🎓 Learning & Mastery
 - [Define Your AI Learning Goal (Easy Mode) LLM-Prompt](Prompts/Define-Your-AI-Learning-Goal(Easy-Mode)-LLM-Prompt.md)
 - [Define Your AI Learning Goal (Hard Mode)-LLM-Prompt](Prompts/Define-Your-AI-Learning-Goal(Hard-Mode)-LLM-Prompt.md)
+- [Prompting Guide](Prompts/prompting-guide.md)
+- [Prompt-ref-book](Prompts/prompt-ref-book.md)
+
+### 💻 Coding & Documentation
 - [Code Understanding LLM Improved Prompt](Prompts/code-understanding-llm-improved-prompt.md)
 - [Code Understanding LLM Prompt](Prompts/code-understanding-llm-prompt.md)
 - [Docs Generation LLM Prompt](Prompts/docs-gen-llm-prompt.md)
-- [Prompting Guide](Prompts/prompting-guide.md)
-- [Prompt-ref-book](Prompts/prompt-ref-book.md)
 - [Codebase Explore](Prompts/codebase-explore-prompt.md)
-- [Prompt Websites](Prompts/prompt-websites.md)
+
+### 📊 Social & Research
 - [Perplexity Research Whitepaper Prompt](Prompts/perplexity-research-whitepaper-prompt.md)
+- [Prompt Websites](Prompts/prompt-websites.md)
 - [Convert Long 2 Short Social Post Prompt](Prompts/convert-long-2-short-social-post-prompt.md)
 - [Convert Long 2 Short Social Post Prompt V2](Prompts/convert-long-2-short-social-post-prompt-v2.md)
 - [Convert Long 2 Short Social Post Prompt V3 Merged](Prompts/convert-long-2-short-social-post-prompt-v3-merged.md)
 - [Convert Long 2 Short Social Post Prompt V4 Examples](Prompts/convert-long-2-short-social-post-prompt-v4-examples.md)
 
-### 🎨 Visual Prompts
+### 🎨 Visual Creativity (Tested with Gemini)
 - [Content Visual Carousel Prompt](Prompts/content-visual-carousel-prompt.md)
 - [Youtube Visual Carousel Prompt](Prompts/youtube-visual-carousel-prompt.md)
 - [Gemini Handdrawn Skitch Note Prompt](Prompts/gemini-handdrawn-skitch-note-prompt.md)
