@@ -1,4 +1,30 @@
-## AI-ML
+# 🚀 Knowledge Hub & Learning Logs
+
+Welcome to my personal learning repository! This space serves as a central hub for my research, tech updates, and deep dives into various engineering domains.
+
+---
+
+## 📑 Table of Contents
+
+- [🧠 AI & Machine Learning](#ai-ml)
+- [📅 Weekly Tech Updates](#weekly-updates)
+- [☁️ Cloud & Infrastructure](#cloud-infra)
+- [💾 Databases](#databases)
+- [⛓️ Blockchain & DLT](#blockchain-dlt)
+- [🛠️ Useful Tools](#useful-tools)
+- [☕ JVM Ecosystem](#jvm-ecosystem)
+- [📞 Middleware](#middleware)
+- [📰 Tech News](#tech-news)
+- [📄 Research Papers](#research-papers)
+- [💻 Programming Languages](#languages)
+- [✍️ Prompts & AI Engineering](#prompts-ai)
+- [⚛️ Quantum Computing](#quantum-computing)
+- [🧱 Architecture & Concepts](#architecture-concepts)
+
+---
+
+## <a id="ai-ml"></a>🧠 AI & Machine Learning
+
 - [AI in Next 18 Months](AI-ML/AI-in-Next-18-Months.md)
 - [AI PM Roles](AI-ML/AI-PMRoles.md)
 - [Fine Tuning LLM - GTX 1060 - WSL2-Ubuntu-2022](AI-ML/Fine-Tuning-LLM-GTX1060-WSL2-Ubuntu-2022.md)
@@ -36,41 +62,52 @@
 - [RAG Guide Jan 2026](AI-ML/RAG-Guide-Jan-2026.md)
 - [OpenResponses Open Inference Standard](AI-ML/OpenResponses-Open-Inference-Standard.md)
 
-### Protocols
+### 🧩 Protocols
 - [Universal Commerce Protocol](AI-ML/Protocols/UCP.md)
 - [MCP Scalability Issue Solution](AI-ML/Protocols/MCP_Scalability_Issue_Solution.md)
 
-### Programming
+### 💻 Programming AI
 - [DSPy](AI-ML/Programming/DSPy.md)
 - [BAML](AI-ML/Programming/BAML.md)
 
-## Weekly Tech Updates:
- - [Dec-7-2025](Weekly-Tech-Updates/Dec-7-2025.md)
- - [Dec-14-2025](Weekly-Tech-Updates/Dec-14-2025.md)
- - [Dec-21-2025](Weekly-Tech-Updates/Dec-21-2025.md)
- - [Dec-28-2025](Weekly-Tech-Updates/Dec-28-2025.md)
- - [Jan-4-2026](Weekly-Tech-Updates/Jan-4-2026.md)
- - [Jan-11-2026](Weekly-Tech-Updates/Jan-11-2026.md)
- - [Jan-18-2026](Weekly-Tech-Updates/Jan-18-2026.md)
- 
+---
 
-## Cloud 
+## <a id="weekly-updates"></a>📅 Weekly Tech Updates
+
+> Stay updated with the latest trends and architectural shifts.
+
+- [Jan-18-2026](Weekly-Tech-Updates/Jan-18-2026.md) 🌟
+- [Jan-11-2026](Weekly-Tech-Updates/Jan-11-2026.md)
+- [Jan-4-2026](Weekly-Tech-Updates/Jan-4-2026.md)
+- [Dec-28-2025](Weekly-Tech-Updates/Dec-28-2025.md)
+- [Dec-21-2025](Weekly-Tech-Updates/Dec-21-2025.md)
+- [Dec-14-2025](Weekly-Tech-Updates/Dec-14-2025.md)
+- [Dec-7-2025](Weekly-Tech-Updates/Dec-7-2025.md)
+
+---
+
+## <a id="cloud-infra"></a>☁️ Cloud & Infrastructure
 
 - [AWS vs Hetzner](Cloud/AWS-vs-Hetzner.md)
 
-### AWS
+### 🟠 AWS
 - [AWS Deepracer Ubuntu Local Install Steps](Cloud/AWS/aws-deepracer-ubuntu-local-installs.md)
 
-## DB
+---
+
+## <a id="databases"></a>💾 Databases
+
 - [GraphDB Massive Scale Analysis](DB/GraphDB-massive-scale-analysis.md)
 
-## Blockchain
+---
+
+## <a id="blockchain-dlt"></a>⛓️ Blockchain & DLT
+
 - [Blockchain Layers](Blockchain/BlockchainLayers.md)
 - [Ethereum Hardhat Docker Setup](Blockchain/Ethereum-hardhat-docker.md)
 - [Hardhat Development](Blockchain/Hardhat-Development.md)
 - [Blockchain Coin vs Token](Blockchain/blockchain-coin-vs-token.md)
 - [JPMorgan-Blockchain-Strategy](Blockchain/JPMorgan-Blockchain-Strategy.md)
-
 - [Blockchain 26 Catagories Claude](Blockchain/blockchain-26-catagories-claude.md)
 - [Blockchain 26 Catagories Gemini](Blockchain/blockchain-26-catagories-gemini.md)
 - [Blockchain 26 Catagories Perplexity](Blockchain/blockchain-26-catagories-perplexity.md)
@@ -89,18 +126,30 @@
 - [CryptoACTs](Blockchain/CryptoACTs.md) && [CryptoACTs Jan 2026](Blockchain/CryptoACTs-Jan-2026.md)
 - [StableCoins Jan-2026](Blockchain/StableCoins-Jan-2026.md)
 
-## Helpful
+---
+
+## <a id="useful-tools"></a>🛠️ Useful Tools
+
 - [Searching or Downloading Research Papers](Helpful/searching-or-downloading-research-papers.md)
 
-## JVM
+---
+
+## <a id="jvm-ecosystem"></a>☕ JVM Ecosystem
+
 - [Java Plugins Architecture](JVM/Java-Plugin-Arch.md)
 - [Java Remote Debug](JVM/Java_remote_debug.md)
 
-## Middleware
+---
+
+## <a id="middleware"></a>📞 Middleware
+
 - [Kafka 4.0](Middleware/kafka-4.0.md)
 - [Workflow Orchestration](Middleware/workflow-orchestration.md)
 
-## News
+---
+
+## <a id="tech-news"></a>📰 Tech News
+
 - [Largest WhatsApp Data Leak in History](News/Largest-WhatsApp-Data-Leak-in-History.md)
 - [Cloudflare down Nov-2025](News/cloudflare-down-nov-2025.md)
 - [10.0 CVE React2Shell Whitepaper](News/10.0_CVE_React2Shell_Whitepaper.md)
@@ -112,8 +161,10 @@
 - [Security Vulnerabilities in Wireless Devices and Apps](News/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
 - [India-GSoc-2026-Trends-Challanges-Solutions](News/India-GSoc-2026-Trends-Challanges-Solutions.md)
 
+---
 
-## Papers
+## <a id="research-papers"></a>📄 Research Papers
+
 - [DeepSeek Advancements](Papers/DeepSeek-Advancements.md)
 - [Facebook Sparce-Memory Finetuning](Papers/Facebook-sparce-memory-finetuning.md)
 - [Google Nested Learning](Papers/Google-Nested-Learning.md)
@@ -124,17 +175,22 @@
 - [Recursive Language Models](Papers/RecursiveLanguageModels.md)
 - [Deepseek Engram](Papers/Deepseek-Engram.md)
 
-## Papers Comparisons
+### 📊 Paper Comparisons
 - [Google Nested Learning vs FB Sparce Memory](Papers/comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md)
 - [LLM-VLA-VLM-VL-JEPA-MAMBA3-DIFFUSION](Papers/comparisons/LLM-VLA-VLM-VL-JEPA-MAMBA3-DIFFUSION.md)
 
-## ProgrammingLanguages
+---
 
-### Comparisons
+## <a id="languages"></a>💻 Programming Languages
+
+### ⚖️ Comparisons
 - [rust-vs-c](ProgrammingLanguages/comparisons/rust-vs-c.md)
 - [Java25-vs-Go1.24-Go1.25](ProgrammingLanguages/comparisons/Java25-vs-Go1.24-Go1.25.md)
 
-## Prompts
+---
+
+## <a id="prompts-ai"></a>✍️ Prompts & AI Engineering
+
 - [Define Your AI Learning Goal (Easy Mode) LLM-Prompt](Prompts/Define-Your-AI-Learning-Goal(Easy-Mode)-LLM-Prompt.md)
 - [Define Your AI Learning Goal (Hard Mode)-LLM-Prompt](Prompts/Define-Your-AI-Learning-Goal(Hard-Mode)-LLM-Prompt.md)
 - [Code Understanding LLM Improved Prompt](Prompts/code-understanding-llm-improved-prompt.md)
@@ -150,7 +206,7 @@
 - [Convert Long 2 Short Social Post Prompt V3 Merged](Prompts/convert-long-2-short-social-post-prompt-v3-merged.md)
 - [Convert Long 2 Short Social Post Prompt V4 Examples](Prompts/convert-long-2-short-social-post-prompt-v4-examples.md)
 
-### Visual Prompts (Tested with Gemini)
+### 🎨 Visual Prompts
 - [Content Visual Carousel Prompt](Prompts/content-visual-carousel-prompt.md)
 - [Youtube Visual Carousel Prompt](Prompts/youtube-visual-carousel-prompt.md)
 - [Gemini Handdrawn Skitch Note Prompt](Prompts/gemini-handdrawn-skitch-note-prompt.md)
@@ -158,13 +214,20 @@
 - [Gemini Carousel Infographic Prompt](Prompts/gemini-carousel-infographic-prompt.md)
 - [Generate New Prompt from Template for Image Generation](Prompts/generate-new-prompt-from-template-for-image-gen.md)
 
-## QuantumComputing
+---
+
+## <a id="quantum-computing"></a>⚛️ Quantum Computing
+
 - [Google WillowChip & QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
 - [Quantum Threat to Bitcoin](QuantumComputing/Quantum-Threat-to-Bitcoin.md)
 - [Quantum Computer Terms](QuantumComputing/QuantumComputer-Terms.md)
 - [VIO-40K 10,000 Qubits](QuantumComputing/VIO-40K-Arch-10K-Qubits.md)
 
-## Concepts
+---
+
+## <a id="architecture-concepts"></a>🧱 Architecture & Concepts
+
 - [GangOf4](Concepts/GangOf4.md)
 - [Passkeys](Concepts/Passkeys.md)
+
 
