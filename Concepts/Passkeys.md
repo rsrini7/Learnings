@@ -1,5 +1,9 @@
 # Passkeys: Comprehensive Technical Whitepaper for Developers and Architects
 
+![Passkeys](assets/Passkeys.png)
+
+---
+
 ## Executive Summary
 
 Passkeys represent a fundamental shift in authentication, replacing passwords with cryptographic key pairs for phishing-resistant, passwordless authentication. Built on FIDO2/WebAuthn standards, passkeys eliminate the vulnerabilities that cause over 90% of security compromises while delivering a superior user experience. This whitepaper provides developers and architects with the technical knowledge needed to understand, evaluate, and implement passkey authentication in production systems.
