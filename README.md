@@ -130,7 +130,7 @@
 
 ### Comparisons
 - [rust-vs-c](ProgrammingLanguages/comparisons/rust-vs-c.md)
-- [Java25-vs-Go1.24](ProgrammingLanguages/comparisons/Java25-vs-Go1.24.md)
+- [Java25-vs-Go1.24-Go1.25](ProgrammingLanguages/comparisons/Java25-vs-Go1.24-Go1.25.md)
 
 ## Prompts
 - [Define Your AI Learning Goal (Easy Mode) LLM-Prompt](Prompts/Define-Your-AI-Learning-Goal(Easy-Mode)-LLM-Prompt.md)
