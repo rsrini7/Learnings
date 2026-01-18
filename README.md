@@ -110,6 +110,8 @@
 - [Decline of StackOverflow](News/Decline-of-Stack-Overflow.md)
 - [Node.js Async Hooks DoS Vulnerability](News/Node.js-Async-Hooks-DoS-Vulnerability.md)
 - [Security Vulnerabilities in Wireless Devices and Apps](News/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
+- [India-GSoc-2026-Trends-Challanges-Solutions](News/India-GSoc-2026-Trends-Challanges-Solutions.md)
+
 
 ## Papers
 - [DeepSeek Advancements](Papers/DeepSeek-Advancements.md)

@@ -28,16 +28,13 @@ Base Model → Fine-Tune (PEFT) → Compress (Quantization/Sparsity) → Deploy 
 
 ## Table of Contents
 
-1. [Introduction to PEFT](#introduction-to-peft)
-2. [Core PEFT Categories](#core-peft-categories)
-3. [Low-Rank Adaptation Methods](#low-rank-adaptation-methods)
-4. [Prompt-Based Methods](#prompt-based-methods)
-5. [Alignment and Preference Optimization](#alignment-and-preference-optimization)
-6. [Advanced PEFT Methods](#advanced-peft-methods)
-7. [Model Compression for Deployment](#model-compression-for-deployment)
-8. [Implementation Guide](#implementation-guide)
-9. [Method Comparison](#method-comparison)
-10. [Best Practices](#best-practices)
+1. [Introduction to PEFT](#1-introduction-to-peft)
+2. [Core PEFT Categories](#2-core-peft-categories)
+3. [Low-Rank Adaptation Methods](#3-low-rank-adaptation-methods)
+4. [Prompt-Based Methods](#4-prompt-based-methods)
+5. [Alignment and Preference Optimization](#5-alignment-and-preference-optimization)
+6. [Advanced PEFT Methods](#6-advanced-peft-methods)
+7. [Model Compression for Deployment](#section-7-model-compression-for-deployment)
 
 ---
 
@@ -1321,11 +1318,13 @@ results = accuracy.compute(predictions=preds, references=labels)
 4. **VeRA:** Kopiczko et al. (2024) - "VeRA: Vector-based Random Matrix Adaptation" - https://arxiv.org/abs/2310.11454
 
 **Prompt-Based Methods:**
+
 5. **Prefix Tuning:** Li & Liang (2021) - "Prefix-Tuning: Optimizing Continuous Prompts for Generation" - https://arxiv.org/abs/2101.00190
 6. **P-Tuning v2:** Liu et al. (2022) - "P-Tuning v2: Prompt Tuning Can Be Comparable to Fine-tuning Universally Across Scales and Tasks" - https://arxiv.org/abs/2110.07602
 7. **Prompt Tuning:** Lester et al. (2021) - "The Power of Scale for Parameter-Efficient Prompt Tuning" - https://arxiv.org/abs/2104.08691
 
 **Alignment Methods:**
+
 8. **RLHF:** Ouyang et al. (2022) - "Training language models to follow instructions with human feedback" - https://arxiv.org/abs/2203.02155
 9. **DPO:** Rafailov et al. (2023) - "Direct Preference Optimization: Your Language Model is Secretly a Reward Model" - https://arxiv.org/abs/2305.18290
 10. **GRPO:** DeepSeek (2025) - "DeepSeek-R1: Incentivizing Reasoning Capability in LLMs via Reinforcement Learning" - https://arxiv.org/abs/2501.12948
@@ -1334,29 +1333,35 @@ results = accuracy.compute(predictions=preds, references=labels)
 13. **KTO:** Ethayarajh et al. (2024) - "KTO: Model Alignment as Prospect Theoretic Optimization" - https://arxiv.org/abs/2402.01306
 
 **Adapter Methods:**
+
 14. **Adapters (Houlsby):** Houlsby et al. (2019) - "Parameter-Efficient Transfer Learning for NLP" - https://arxiv.org/abs/1902.00751
 15. **AdapterFusion:** Pfeiffer et al. (2020) - "AdapterFusion: Non-Destructive Task Composition for Transfer Learning" - https://arxiv.org/abs/2005.00247
 16. **Compacter:** Mahabadi et al. (2021) - "Compacter: Efficient Low-Rank Hypercomplex Adapter Layers" - https://arxiv.org/abs/2106.04647
 
 **Selective Methods:**
+
 17. **BitFit:** Zaken et al. (2021) - "BitFit: Simple Parameter-efficient Fine-tuning for Transformer-based Masked Language-models" - https://arxiv.org/abs/2106.10199
 18. **IA³:** Liu et al. (2022) - "Few-Shot Parameter-Efficient Fine-Tuning is Better and Cheaper than In-Context Learning" - https://arxiv.org/abs/2205.05638
 
 **Quantization:**
+
 19. **GPTQ:** Frantar et al. (2023) - "GPTQ: Accurate Post-Training Quantization for Generative Pre-trained Transformers" - https://arxiv.org/abs/2210.17323
 20. **AWQ:** Lin et al. (2023) - "AWQ: Activation-aware Weight Quantization for LLM Compression and Acceleration" - https://arxiv.org/abs/2306.00978
 21. **SmoothQuant:** Xiao et al. (2023) - "SmoothQuant: Accurate and Efficient Post-Training Quantization for Large Language Models" - https://arxiv.org/abs/2211.10438
 22. **FP8:** Micikevicius et al. (2022) - "FP8 Formats for Deep Learning" - https://arxiv.org/abs/2209.05433
 
 **Sparsification:**
+
 23. **SparseGPT:** Frantar & Alistarh (2023) - "SparseGPT: Massive Language Models Can Be Accurately Pruned in One-Shot" - https://arxiv.org/abs/2301.00774
 24. **Wanda:** Sun et al. (2023) - "A Simple and Effective Pruning Approach for Large Language Models" - https://arxiv.org/abs/2306.11695
 
 **Knowledge Distillation:**
+
 25. **DistilBERT:** Sanh et al. (2019) - "DistilBERT, a distilled version of BERT: smaller, faster, cheaper and lighter" - https://arxiv.org/abs/1910.01108
 26. **TinyLLaMA:** Zhang et al. (2024) - "TinyLlama: An Open-Source Small Language Model" - https://arxiv.org/abs/2401.02385
 
 **Instruction Tuning:**
+
 27. **FLAN:** Wei et al. (2022) - "Finetuned Language Models are Zero-Shot Learners" - https://arxiv.org/abs/2109.01652
 28. **Alpaca:** Taori et al. (2023) - "Alpaca: A Strong, Replicable Instruction-Following Model" - https://crfm.stanford.edu/2023/03/13/alpaca.html
 29. **Self-Instruct:** Wang et al. (2023) - "Self-Instruct: Aligning Language Models with Self-Generated Instructions" - https://arxiv.org/abs/2212.10560
