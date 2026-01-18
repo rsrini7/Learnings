@@ -4,18 +4,21 @@
 
 ---
 
+![Papers/assets/RLM.png](assets/RLM.png)
+
+---
+
 ## **Abstract**
 
 Large language models (LLMs) exhibit severe performance degradation—termed *context rot*—when tasked with complex reasoning over long contexts, particularly for linear and quadratic problems. This work introduces **Recursive Language Models (RLMs)**, an inference-time architecture that reframes long-context reasoning as a programmable, recursive process rather than a monolithic neural computation. Instead of ingesting entire documents into a single context window, RLMs externalize data into a persistent environment, enabling a root LLM to write and execute code that selectively explores, filters, and decomposes massive inputs. Semantic subtasks are delegated to smaller sub-LLMs operating on bounded contexts, with deterministic aggregation ensuring complete coverage.
 
 Across benchmarks including OOLONG, BrowseComp-Plus (up to 11M tokens), and CodeQA, RLMs achieve **2–15× accuracy improvements** over base LLMs, transform previously impossible quadratic tasks (0.04% accuracy) into tractable ones (up to 58%), and often reduce total inference cost relative to summarization- or RAG-based baselines. The results demonstrate that inference-time recursion and symbolic control can outperform brute-force context scaling, offering a practical path to unbounded context handling without retraining larger models. RLMs thus represent a paradigm shift toward programmable, hybrid neural-symbolic reasoning for large-scale AI tasks.
 
-
 ---
 
 ## 🎯 What You Need to Know in 60 Seconds
 
-**The Problem**: AI models get dumber as you give them more information. Feed GPT-5 a 30,000-word document asking it to find matching pairs? It scores **0.04%** (basically fails completely).
+**The Problem**: AI models get dumber as you give them more information. Feed GPT-5 a 30,000-word document asking it to find matching pairs? It scores **0.04%** (basically fails completely). This isn't about model size—it's about **attention overload** when too much data competes in a single context window.
 
 **The Solution**: Recursive Language Models (RLMs) don't feed huge documents into AI. Instead, they:
 1. Store documents as external variables (like files on disk)
@@ -23,11 +26,14 @@ Across benchmarks including OOLONG, BrowseComp-Plus (up to 11M tokens), and Code
 3. Break complex tasks into smaller sub-tasks
 4. Process pieces recursively and combine results
 
+**The Breakthrough** (Make AI Easy, timestamp 2:51-3:22): RLMs don't make LLMs "smarter"—they make them **focused**. LLMs excel at solving smaller, clearly structured problems with tighter contexts. The issue isn't intelligence; it's processing too much data at once.
+
 **The Results**: 
-- Process documents **100x longer** than normal limits
-- Achieve **2-15x better accuracy** on complex tasks
+- Process documents **100× longer** than normal limits
+- Achieve **2-15× better accuracy** on complex tasks
 - Cost the **same or less** than traditional approaches
 - Turn impossible tasks (0.04% accuracy) into possible ones (58% accuracy)
+- GPT-5-mini (smaller model) **outperforms GPT-5** (larger model) when using RLM architecture
 
 ---
 
@@ -49,7 +55,7 @@ Across benchmarks including OOLONG, BrowseComp-Plus (up to 11M tokens), and Code
 
 ### What is Context Rot?
 
-Context rot is when your AI model's performance **degrades** as you give it more information. It's not about the model being "too small" - it's about how information density affects reasoning ability.
+Context rot is when your AI model's performance **degrades** as you give it more information. It's not about the model being "too small"—it's an architectural issue where every token competes for attention, causing attention to become noisy and reasoning quality to drop.
 
 ```mermaid
 graph LR
@@ -69,13 +75,13 @@ graph LR
 #### Layer 1: **Attention is Quadratic O(n²)**
 
 In transformers, every token attends to every other token:
-- Double your context → **4x memory and compute** needed
+- Double your context → **4× memory and compute** needed
 - This is a mathematical ceiling, not an engineering problem
 
 ```
 Context: 10,000 tokens  → 100,000,000 attention operations
-Context: 20,000 tokens  → 400,000,000 attention operations (4x!)
-Context: 40,000 tokens  → 1,600,000,000 attention operations (16x!)
+Context: 20,000 tokens  → 400,000,000 attention operations (4×!)
+Context: 40,000 tokens  → 1,600,000,000 attention operations (16×!)
 ```
 
 #### Layer 2: **Reasoning Density Matters More Than Length**
@@ -90,7 +96,7 @@ The complexity of what you're asking matters more than how much text you have:
 
 #### Layer 3: **No Priority Mechanism**
 
-Transformers treat all tokens equally. They can't say "this paragraph is important, ignore the rest." Every token fights for attention, diluting focus on what matters.
+Transformers treat all tokens equally. They can't say "this paragraph is important, ignore the rest." Every token fights for attention, diluting focus on what matters. LLMs become "overloaded" rather than "stupid."
 
 ### The Quantified Catastrophe
 
@@ -116,7 +122,7 @@ graph TD
 
 ---
 
-## 🏗️ How RLMs Work
+## 🗝️ How RLMs Work
 
 ### The Core Innovation
 
@@ -139,6 +145,10 @@ graph TD
                         ↓
                      [Answer]
 ```
+
+### The Core Breakthrough
+
+RLMs recognize that LLMs aren't bad at reasoning—they're bad at reasoning over too much data at once. They excel at solving smaller, clearly structured problems with tighter contexts. The architecture doesn't make models smarter; it makes them **focused**.
 
 Think of it like this:
 - **Old way**: Memorize the entire library
@@ -202,6 +212,8 @@ flowchart TD
 - Decide when to call sub-LLMs and on what chunks
 - Aggregate final results
 
+**Key Insight**: The root LLM dynamically decides optimal chunk sizes and partitioning strategies
+
 **Example Decision Process**:
 ```python
 # The Root LLM thinks like this:
@@ -260,6 +272,8 @@ for user in ai_enthusiasts[:10]:  # Process in batches
 - Work on small, manageable contexts (avoid rot)
 - Cheaper models can be used (GPT-5-mini instead of GPT-5)
 - Each call is independent (parallelizable in theory)
+
+**Performance Insight**: GPT-5-mini as sub-LLM + GPT-5 as root **outperforms** GPT-5 alone, demonstrating architecture beats model size.
 
 **Example Scenario**:
 ```python
@@ -352,41 +366,26 @@ for doc in matches:
 # Avoided processing 995 irrelevant documents!
 ```
 
-**Performance Impact**: 50-200x speedup on large corpora
+**Performance Impact**: 50-200× speedup on large corpora
 
 ---
 
-### Strategy 2: Semantic Chunking + Recursion
+### Strategy 2: Map-Reduce Chunking (Partition + Analyze + Aggregate)
 
-**What Happens**:
+RLMs naturally adopt a map-reduce pattern for dense reasoning tasks:
+
 ```mermaid
 graph TD
-    A[6000 Questions] --> B[Root LLM: Split into 60 chunks of 100]
-    
-    B --> C[Chunk 1: Q1-Q100]
-    B --> D[Chunk 2: Q101-Q200]
-    B --> E[Chunk 60: Q5901-Q6000]
-    
-    C --> F[Sub-LLM: Classify 100 questions]
-    D --> G[Sub-LLM: Classify 100 questions]
-    E --> H[Sub-LLM: Classify 100 questions]
-    
-    F --> I[Results: 45 entity, 55 date]
-    G --> J[Results: 50 entity, 50 numeric]
-    H --> K[Results: 40 entity, 60 other]
-    
-    I --> L[Root LLM: Aggregate programmatically]
-    J --> L
-    K --> L
-    
-    L --> M[Final: 2700 entity, 2100 date, 1200 numeric]
-    
-    style B fill:#4A90E2,color:#fff
-    style F fill:#9B59B6,color:#fff
-    style G fill:#9B59B6,color:#fff
-    style H fill:#9B59B6,color:#fff
-    style M fill:#27AE60,color:#fff
+    A[Full Context] --> B[Partition into Chunks]
+    B --> C[Map: Sub-LLM Analyzes Each Chunk]
+    C --> D[Reduce: Root LLM Aggregates Results]
+    D --> E[Final Answer]
 ```
+
+**Why it emerges**: Regex filtering alone isn't enough for semantic tasks (e.g., classifying intent or matching meaning). RLMs learn to:
+- Split data into bounded chunks
+- Delegate semantic analysis to sub-LLMs
+- Combine partial results deterministically
 
 **Real Example**:
 ```python
@@ -397,13 +396,13 @@ chunk_size = 100
 chunks = [questions[i:i+chunk_size] 
           for i in range(0, len(questions), chunk_size)]
 
-# Process each chunk independently
+# Map: Process each chunk independently
 classifications = []
 for chunk in chunks:
     result = llm_query(f"Classify each question:\n{chunk}")
     classifications.extend(result)
 
-# Aggregate results
+# Reduce: Aggregate results programmatically
 from collections import Counter
 summary = Counter(classifications)
 # {'entity': 2700, 'date': 2100, 'numeric': 1200}
@@ -413,7 +412,33 @@ summary = Counter(classifications)
 
 ---
 
-### Strategy 3: Recursive Reasoning for Impossible Tasks
+### Strategy 3: Progress Tracking & Verification
+
+To avoid losing intermediate work:
+- Track processed chunks in variables
+- Verify sub-results before final aggregation
+- Cap recursion depth (e.g., max 500 calls) to prevent infinite loops
+
+**Example**:
+```python
+# Track progress to avoid reprocessing
+processed_count = 0
+total_chunks = len(chunks)
+
+for chunk in chunks:
+    result = llm_query(f"Analyze: {chunk}")
+    results.append(result)
+    processed_count += len(chunk)
+    print(f"Progress: {processed_count}/{total_items} items processed")
+
+# Verify before finalizing
+if len(results) != total_chunks:
+    print(f"WARNING: Expected {total_chunks} results, got {len(results)}")
+```
+
+---
+
+### Strategy 4: Recursive Reasoning for Impossible Tasks
 
 **The Problem**: Finding all matching pairs requires O(n²) comparisons
 
@@ -468,14 +493,14 @@ for category, users in user_categories.items():
             pair = (user1.id, user2.id)
             all_pairs.append(pair)
 
-# Result: 4.5M comparisons → 125K comparisons (36x faster!)
+# Result: 4.5M comparisons → 125K comparisons (36× faster!)
 ```
 
 **Performance Impact**: Enables tasks that were previously **impossible** (0.04% → 58% accuracy)
 
 ---
 
-### Strategy 4: Unbounded Output via Variables
+### Strategy 5: Unbounded Output via Variables
 
 **The Problem**: Models have output token limits (typically 4K-16K tokens)
 
@@ -530,7 +555,20 @@ FINAL_VAR(full_document)
 
 ---
 
-## 📊 Performance Benchmarks: The Numbers
+## 📊 Performance Benchmarks
+
+### Comprehensive Results from the Paper
+
+From the paper (GPT-5 as root, GPT-5-mini as sub-LLM):
+
+| Benchmark          | Input Scale       | Base LLM | RLM      | Improvement |
+|--------------------|-------------------|----------|----------|-------------|
+| OOLONG (linear)    | ~100K tokens      | 44%      | 56.5%    | +28%        |
+| OOLONG-Pairs (quadratic) | ~100K tokens | <0.1%    | 58%      | ~580×       |
+| BrowseComp-Plus    | 6M–11M tokens     | Degrades heavily | Near-perfect | Handles 100× longer |
+| S-NIAH (needle)    | Variable          | Good     | Excellent| Maintains at extreme scales |
+
+**Cost**: ~$0.99/query (often cheaper than summarization/RAG baselines due to targeted processing).
 
 ### The Comprehensive Comparison Table
 
@@ -539,7 +577,7 @@ FINAL_VAR(full_document)
 | **OOLONG-Pairs** (Quadratic) | 32K tokens | Base GPT-5 | 0.04% ✗ | $0.16 | Fast | Complete failure |
 | | | GPT-5 + RAG | 0.1% ✗ | $0.20 | Fast | Misses pairs |
 | | | Summary Agent | 0.31% ✗ | $0.13 | Medium | Loses details |
-| | | **RLM (GPT-5)** | **58% ✓** | $0.33 | Slow | **1,450x better!** |
+| | | **RLM (GPT-5)** | **58% ✓** | $0.33 | Slow | **1,450× better!** |
 | **OOLONG** (Linear) | 131K tokens | Base GPT-5 | 44% ⚠️ | $0.14 | Fast | Degrading |
 | | | **RLM (GPT-5)** | **57% ✓** | $0.43 | Medium | +28% improvement |
 | **BrowseComp-Plus** | 11M tokens | Base GPT-5 | 0% ✗ | N/A | N/A | Exceeds limit |
@@ -610,11 +648,12 @@ graph LR
     style H fill:#4A90E2,color:#fff
 ```
 
-**Why RLMs Are Cheaper**:
+**Why RLMs Are Cheaper**
 - Only process relevant chunks (not entire context repeatedly)
 - Sub-LLMs can use cheaper models (GPT-5-mini vs GPT-5)
 - No need to summarize millions of tokens upfront
 - Deterministic filtering reduces wasted compute
+- Despite recursive overhead, cost per query drastically decreased
 
 #### 4. **Model Behavior Differences**
 
@@ -633,7 +672,7 @@ graph TD
     D --> F[Aggressive Strategy]
     F --> F1[100-1000 sub-calls]
     F --> F2[Line-by-line semantic analysis]
-    F --> F3[Over-verifies 5x]
+    F --> F3[Over-verifies 5×]
     
     E1 --> G[Lower cost, good accuracy]
     F1 --> H[Higher cost, thorough coverage]
@@ -648,7 +687,7 @@ graph TD
 
 ---
 
-## 🥊 RLM vs The Alternatives
+## ⚔️ RLM vs Alternatives
 
 ### RLM vs RAG (Retrieval-Augmented Generation)
 
@@ -684,7 +723,7 @@ graph TB
 | **Answer factual questions** | ✓ 70-80% typical | ✓ 91% on BrowseComp | **RLM** |
 | **Setup complexity** | Moderate (vector DB, embeddings) | Low (just Python REPL) | **RLM** |
 | **Cost on simple QA** | Lower ($0.15) | Higher ($0.30) | **RAG** |
-| **Cost on complex reasoning** | 3-9x higher ($2-9) | Comparable ($0.99) | **RLM** |
+| **Cost on complex reasoning** | 3-9× higher ($2-9) | Comparable ($0.99) | **RLM** |
 | **Hallucination risk** | Grounded in retrieved docs | Code execution = ground truth | **Tie** |
 | **Latency** | Fast (< 1 sec) | Slower (5-30 sec) | **RAG** |
 | **Handles 11M tokens** | ✗ Struggles | ✓ 91% accuracy | **RLM** |
@@ -725,38 +764,9 @@ graph LR
 | **Detail retention** | Permanent loss | Can re-examine original | **RLM** |
 | **Cost** | High (compress all upfront: $2-9) | Medium (selective: $0.99) | **RLM** |
 | **Speed** | 10-60 seconds | 5-30 seconds | **RLM** |
-| **Quadratic tasks** | 0.31% accuracy | 58% accuracy | **RLM (186x better!)** |
+| **Quadratic tasks** | 0.31% accuracy | 58% accuracy | **RLM (186× better!)** |
 | **Simple Q&A** | Works fine | Slight overhead | **Summarization** |
 | **When to use** | Broad overview needed | Precise answers needed | Context-dependent |
-
-**Real Example**:
-
-**Task**: "Find all legal clauses where Company A and Company B both mentioned"
-
-**Summarization Approach**:
-```
-1. Summarize 500 contracts → 50K tokens
-2. Feed summary to LLM
-3. Problem: Summary might say "A and B mentioned in various clauses"
-4. But which specific clauses? Information lost!
-```
-
-**RLM Approach**:
-```python
-# Search for both companies
-clauses_with_A = grep(contracts, "Company A")
-clauses_with_B = grep(contracts, "Company B")
-
-# Find overlap
-overlap = set(clauses_with_A) & set(clauses_with_B)
-
-# Examine each overlapping clause in detail
-for clause_id in overlap:
-    original_text = contracts[clause_id]
-    analysis = llm_query(f"Analyze this clause: {original_text}")
-    
-# Result: Exact clauses with full context preserved!
-```
 
 ---
 
@@ -1012,7 +1022,7 @@ for category, products_in_cat in categories.items():
 ```
 
 **Performance**:
-- Reduced: 50M comparisons → 500K comparisons (100x reduction)
+- Reduced: 50M comparisons → 500K comparisons (100× reduction)
 - Cost: $120 (vs impossible with base model)
 - Accuracy: 94% (vs 0.04% with base model)
 
@@ -1038,7 +1048,7 @@ graph TD
     F --> F1[✓ Better accuracy<br/>✓ Complete coverage<br/>✓ Handles complexity]
     
     B -->|> 100K tokens| G[Use RLM]
-    G --> G1[✓ Only option that works<br/>✓ 100x context scaling<br/>✓ Comparable cost]
+    G --> G1[✓ Only option that works<br/>✓ 100× context scaling<br/>✓ Comparable cost]
     
     D -->|Need 100% Coverage| F
     D -->|Quadratic Problem| F
@@ -1135,6 +1145,36 @@ fine_tuned_model = train(training_examples)
 ---
 
 ## 🛠️ Implementation Guide
+
+### Common Tools in RLM Setups
+
+The video demonstrates a tool-based approach common in practical setups:
+
+| Tool              | Purpose                          | Example Usage |
+|-------------------|----------------------------------|--------------|
+| `grok(pattern)`   | Regex filter on context          | `relevant = grok("billing issue")` |
+| `partition(n)`    | Split context into n chunks      | `chunks = partition(50)` |
+| `analyze(chunk)`  | Sub-LLM semantic processing      | `results.append(analyze(chunk))` |
+| `combined_results()` | Aggregate all stored results  | `final = combined_results()` |
+
+### System Prompt Tips (from Paper-Inspired Implementations)
+
+Instruct the root LLM to:
+1. Filter/grok first
+2. Partition if needed
+3. Analyze chunks recursively
+4. Always update `combined_results`
+5. Stop when complete (with progress tracking)
+
+**Safeguards**:
+- Max recursion depth (e.g., 500)
+- Track progress in a variable (e.g., `processed_count += len(chunk)`)
+- Use cheaper sub-LLMs (e.g., GPT-5-mini) for analyze calls
+
+> **Prompt-Driven Magic** ✨  
+> RLMs achieve recursive behavior through prompt engineering alone—no model fine-tuning required (Make AI Easy, 30:43). The root LLM dynamically decides optimal chunk sizes and partitioning strategies (17:37-18:22).
+
+---
 
 ### Phase 1: Setup (Day 1)
 
@@ -1487,11 +1527,11 @@ def select_model(task_type: str, complexity: str):
 
 ---
 
-## ⚠️ Limitations and Future Development
+## ⚠️ Limitations & Future Directions
 
 ### Current Limitations
 
-#### 1. Sequential Processing (No Parallelization)
+#### 1. **Synchronous Execution**: High latency (paper notes async could help)
 
 **The Problem**:
 ```mermaid
@@ -1510,13 +1550,11 @@ graph LR
 
 **Future Goal**: Process 100 chunks in parallel = 2 seconds total
 
-**Impact**: 100x speedup potential
+**Impact**: 100× speedup potential
 
 ---
 
-#### 2. No Learned Decomposition Policies
-
-**The Problem**: Models guess when to recurse
+#### 2. **Recursion Risks**: Potential infinite loops (mitigate with depth caps)
 
 **Behaviors Observed**:
 - **Over-verification**: Checking answer 5 times instead of 1
@@ -1530,11 +1568,17 @@ graph LR
 # Penalty: Redundant calls + Missed data
 ```
 
-**Expected Impact**: 3-5x cost reduction with same or better accuracy
+**Expected Impact**: 3-5× cost reduction with same or better accuracy
 
 ---
 
-#### 3. Model-Specific Behavior
+#### 3. **Memory Bounds**: Limited by REPL environment (not infinite)
+
+Current implementations use in-memory variables, which have practical limits.
+
+---
+
+#### 4. **Prompt Sensitivity**: Requires careful system prompts
 
 **GPT-5 vs Qwen3-Coder**:
 
@@ -1542,7 +1586,7 @@ graph LR
 |--------|-------|-------------|
 | Sub-calls per query | ~10 | ~100-1000 |
 | Filtering strategy | Regex + heuristics | Line-by-line semantic |
-| Verification | Once | 5x redundant |
+| Verification | Once | 5× redundant |
 | Cost | Lower | Higher |
 | Thoroughness | Good | Excellent but wasteful |
 
@@ -1550,46 +1594,18 @@ graph LR
 
 ---
 
-#### 4. Weak Models Struggle
+#### 5. **Inefficient Paths**: Models sometimes make redundant calls
 
-**Minimum Requirements**:
-- ✓ GPT-5 level or above
-- ✓ Strong coding ability
-- ✓ Good strategic planning
-
-**Models That Don't Work Well**:
-- ✗ GPT-4 (insufficient coding)
-- ✗ Qwen3-8B (too small)
-- ✗ Claude 3 (not tested extensively)
+Without training, models occasionally:
+- Re-process the same chunk multiple times
+- Verify results excessively
+- Use unnecessarily expensive strategies
 
 ---
 
-### The Future Roadmap
+### Future Directions
 
-#### Immediate (6-12 months)
-
-**1. Async/Parallel Sub-Calls**
-```python
-# Current
-for chunk in chunks:
-    result = llm_query(chunk)  # Sequential
-
-# Future
-results = await asyncio.gather(
-    *[llm_query(chunk) for chunk in chunks]  # Parallel
-)
-```
-**Impact**: 10-100x speedup
-
-**2. Reinforcement Learning Training**
-- Learn when to recurse vs process directly
-- Learn optimal chunk sizes
-- Learn verification heuristics
-- Reduce cost variance
-
-**Impact**: 3-5x cost reduction, more consistent performance
-
-**3. Deeper Recursion (Depth > 1)**
+**Deeper/Multi-Level Recursion**:
 ```python
 # Current: Only Root → Sub-LLM
 Root_LLM → Sub_LLM
@@ -1599,21 +1615,16 @@ Root_LLM → Sub_LLM → Sub_Sub_LLM → ...
 ```
 **Impact**: Handle 1B+ token contexts
 
----
+**Asynchronous Sub-Calls**:
+- Dramatically reduce latency (10-100× speedup)
+- Enable true parallelization
 
-#### Medium-Term (1-2 years)
+**Fine-Tuning LLMs for Better Code/Planning**:
+- Learn optimal decomposition strategies
+- Reduce redundant operations
+- Improve cost efficiency
 
-**4. Neuro-Symbolic Optimization**
-- Mix neural reasoning + symbolic constraints
-- Use SAT solvers for decomposition
-- Learn domain-specific exploration patterns
-
-**5. Multi-Modal RLMs**
-- Process text + images + videos together
-- Code inspects structured data (tables, graphs)
-- Enable cross-modal reasoning
-
-**6. Agentic RLMs**
+**Integration with Agents** (e.g., LangGraph):
 - RLMs spawning tool-use agents
 - Agents exploring external APIs
 - Tight feedback loops
@@ -1626,7 +1637,7 @@ Root_LLM → Sub_LLM → Sub_Sub_LLM → ...
 
 1. **Context Rot Is Real and Brutal**
    - It's not about length, it's about reasoning complexity
-   - Quadratic tasks: 0.04% → 58% with RLMs (1,450x improvement)
+   - Quadratic tasks: 0.04% → 58% with RLMs (1,450× improvement)
 
 2. **Don't Feed Long Text to Neural Networks**
    - Treat it as an external environment
@@ -1638,10 +1649,10 @@ Root_LLM → Sub_LLM → Sub_Sub_LLM → ...
    - Sub-LLMs avoid context rot on small chunks
    - Deterministic aggregation ensures completeness
 
-4. **Cost-Effective Scaling**
-   - 11M tokens: $0.99 with RLM vs $8.98 with summarization
-   - Only pay for what you actually process
-   - Cheaper models for sub-tasks
+4. **Architecture Beats Model Size**
+   - GPT-5-mini with RLM architecture outperforms GPT-5 alone
+   - RLMs don't require smarter models—they just help models focus better
+   - Cost per query drastically decreased despite recursion
 
 5. **Inference-Time Scaling > Training-Time Scaling**
    - No need to train larger models
@@ -1694,6 +1705,9 @@ Root_LLM → Sub_LLM → Sub_Sub_LLM → ...
 - Video Analysis: "MIT's New RLM (Phase Shift in AI)" - Discover AI
 - Video Analysis: "New AI Reasoning System: Unlimited Context Window" - AI Revolution
 
+### Other Reference
+- Video Tutorial: [Recursive Language Models: How MIT Fixed Context Rot in LLMs](https://www.youtube.com/watch?v=XbqCBoSkUcc) by Make AI Easy
+  
 ---
 
 ## 🎬 Conclusion
