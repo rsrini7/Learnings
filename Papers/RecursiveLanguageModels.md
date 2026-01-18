@@ -39,15 +39,15 @@ Across benchmarks including OOLONG, BrowseComp-Plus (up to 11M tokens), and Code
 
 ## 📚 Table of Contents
 
-1. [The Context Rot Problem](#the-context-rot-problem)
-2. [How RLMs Work - The Architecture](#how-rlms-work)
-3. [The Magic: Emergent Behaviors](#emergent-behaviors)
-4. [Performance Benchmarks](#performance-benchmarks)
-5. [RLM vs Alternatives](#rlm-vs-alternatives)
-6. [Real-World Examples](#real-world-examples)
-7. [When to Use RLMs](#when-to-use-rlms)
-8. [Implementation Guide](#implementation-guide)
-9. [Limitations & Future](#limitations-and-future)
+1. [The Context Rot Problem](#🔴-the-context-rot-problem)
+2. [How RLMs Work - The Architecture](#🗝️-how-rlms-work)
+3. [The Magic: Emergent Behaviors](#🎭-emergent-behaviors-the-magic-of-rlms)
+4. [Performance Benchmarks](#📊-performance-benchmarks)
+5. [RLM vs Alternatives](#⚔️-rlm-vs-alternatives)
+6. [Real-World Examples](#🌟-real-world-examples)
+7. [When to Use RLMs](#🎯-when-to-use-rlms-decision-framework)
+8. [Implementation Guide](#🛠️-implementation-guide)
+9. [Limitations & Future](#⚠️-limitations-and-future-directions)
 
 ---
 
@@ -1527,7 +1527,7 @@ def select_model(task_type: str, complexity: str):
 
 ---
 
-## ⚠️ Limitations & Future Directions
+## ⚠️ Limitations and Future Directions
 
 ### Current Limitations
 
