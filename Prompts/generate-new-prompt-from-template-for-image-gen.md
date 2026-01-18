@@ -27,9 +27,3 @@ Attribution: Github icon **"Srinivasan Ragothaman (@rsrini7)"** discreetly in th
 
 Style: Professional infographic design with clear hierarchy, modern vector illustrations, light blue background, bright blue and orange accent colors, clean typography, and organized layout with proper spacing between sections. Parse the content block above and distribute each element to its corresponding section in the infographic layout as described.
 ```
-
-
-paste your content here
-
-
-can you fit the pasted content into the template ?

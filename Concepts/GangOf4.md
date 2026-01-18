@@ -2,75 +2,105 @@
 
 Functional programming alternatives to the 23 Gang of Four (GoF) design patterns, emphasizing building connections and growing upon existing knowledge rather than dismissing older concepts.
 
+
+---
+
+![Concepts/assets/GangOf4-FP-Alt.png](assets/GangOf4-FP-Alt.png)
+
+---
+
+![Concepts/assets/GangOf4-FP.png](assets/GangOf4-FP.png)
+
+---
+
 ## Creational Patterns
 These patterns deal with object creation mechanisms.
 
-### Abstract Factory: While not directly used in functional programming (FP), the concept is achieved through functions, polymorphic types, and type classes. Demonstrates this with Haskell's Beam and Persistent libraries, which abstract over database backends, allowing the selection of a specific backend (e.g., SQLite, PostgreSQL) at runtime.
+### Abstract Factory: 
+While not directly used in functional programming (FP), the concept is achieved through functions, polymorphic types, and type classes. Demonstrates this with Haskell's Beam and Persistent libraries, which abstract over database backends, allowing the selection of a specific backend (e.g., SQLite, PostgreSQL) at runtime.
 
-### Factory Method: This pattern, common in Scala, aims to hide concrete implementations behind an abstraction or interface. The "tagless final" approach in Scala is presented as a functional alternative, using abstract interfaces for operations (like payment processing) and then providing specific implementations based on configuration (e.g., PayPal or Stripe).
+### Factory Method: 
+This pattern, common in Scala, aims to hide concrete implementations behind an abstraction or interface. The "tagless final" approach in Scala is presented as a functional alternative, using abstract interfaces for operations (like payment processing) and then providing specific implementations based on configuration (e.g., PayPal or Stripe).
 
-### Singleton: In FP, singletons are often unnecessary due to immutability. Instances are typically created once and then passed as arguments to functions where they are needed. Haskell's withConnect function for database connections and Scala's singleton objects are discussed as parallels.
+### Singleton: 
+In FP, singletons are often unnecessary due to immutability. Instances are typically created once and then passed as arguments to functions where they are needed. Haskell's withConnect function for database connections and Scala's singleton objects are discussed as parallels.
 
-### Builder: This pattern is quite common in Scala and Haskell for constructing complex objects step-by-step. Examples include building HTTP requests using Scala's sttp library and deriving JSON codecs in Haskell. The concept of "smart constructors" in FP is introduced as a way to ensure only valid data is created.
+### Builder: 
+This pattern is quite common in Scala and Haskell for constructing complex objects step-by-step. Examples include building HTTP requests using Scala's sttp library and deriving JSON codecs in Haskell. The concept of "smart constructors" in FP is introduced as a way to ensure only valid data is created.
 
-### Prototype: This pattern involves creating new objects by copying a prototypical instance. This aligns well with functional programming's emphasis on copying data, as seen with default options in JSON libraries or using copy methods on case classes in Scala.
+### Prototype: 
+This pattern involves creating new objects by copying a prototypical instance. This aligns well with functional programming's emphasis on copying data, as seen with default options in JSON libraries or using copy methods on case classes in Scala.
 
 ## Structural Patterns
 These patterns deal with object composition and structure.
 
-### Adapter: The Adapter pattern is used to convert one interface to another. In FP, this can involve adapting data types (e.g., InvoiceV1 to InvoiceV2) or integrating different API frameworks in Haskell using monad transformers like lift.io to bridge IO operations with more abstract monads like resource T.
+### Adapter: 
+The Adapter pattern is used to convert one interface to another. In FP, this can involve adapting data types (e.g., InvoiceV1 to InvoiceV2) or integrating different API frameworks in Haskell using monad transformers like lift.io to bridge IO operations with more abstract monads like resource T.
 
-### Bridge: This pattern aims to decouple an abstraction from its implementation, often by using composition instead of inheritance. Notes that in Haskell, this is sometimes achieved through internal modules that expose lower-level, less stable APIs, keeping the high-level interface separate from concrete details.
+### Bridge: 
+This pattern aims to decouple an abstraction from its implementation, often by using composition instead of inheritance. Notes that in Haskell, this is sometimes achieved through internal modules that expose lower-level, less stable APIs, keeping the high-level interface separate from concrete details.
 
-### Composite: This pattern composes objects into tree structures to represent part-whole hierarchies. In FP, trees and recursion are fundamental concepts. Type classes are used to model the composite pattern, providing a uniform interface for both individual components and compositions, as shown with a Printable type class example for JSON structures.
+### Composite: 
+This pattern composes objects into tree structures to represent part-whole hierarchies. In FP, trees and recursion are fundamental concepts. Type classes are used to model the composite pattern, providing a uniform interface for both individual components and compositions, as shown with a Printable type class example for JSON structures.
 
-### Decorator: Decorators attach additional responsibilities to an object dynamically. In FP, this is often used to separate business logic from "bells and whistles" like metrics or caching, by wrapping existing functionalities with new ones.
+### Decorator: 
+Decorators attach additional responsibilities to an object dynamically. In FP, this is often used to separate business logic from "bells and whistles" like metrics or caching, by wrapping existing functionalities with new ones.
 
-### Facade: The presenter suggests that Facade is less of a distinct design pattern in FP and more about good design practices, where a simple interface provides a higher-level view of a complex subsystem.
+### Facade: 
+The presenter suggests that Facade is less of a distinct design pattern in FP and more about good design practices, where a simple interface provides a higher-level view of a complex subsystem.
 
-### Flyweight: With immutability in FP, the Flyweight pattern (sharing fine-grained objects efficiently) can often be achieved implicitly. Because data is immutable, instances of expensive values are created only once and can be shared efficiently.
+### Flyweight: 
+With immutability in FP, the Flyweight pattern (sharing fine-grained objects efficiently) can often be achieved implicitly. Because data is immutable, instances of expensive values are created only once and can be shared efficiently.
 
-### Proxy: Structurally similar to Decorator, the Proxy pattern focuses on restricting access, providing lazy initialization, or adding security, rather than enhancing functionality.
+### Proxy: 
+Structurally similar to Decorator, the Proxy pattern focuses on restricting access, providing lazy initialization, or adding security, rather than enhancing functionality.
 
 ## Behavioral Patterns
 These patterns deal with communication and interaction between objects.
 
-### Chain of Responsibility: This pattern allows passing a request along a chain of handlers. In FP, this is often implemented using Option types or types with Alternative instances to chain fallback mechanisms (e.g., trying different payment methods or parsing strategies) until a successful result is obtained.
+### Chain of Responsibility: 
+This pattern allows passing a request along a chain of handlers. In FP, this is often implemented using Option types or types with Alternative instances to chain fallback mechanisms (e.g., trying different payment methods or parsing strategies) until a successful result is obtained.
 
-### Command: The Command pattern encapsulates a request as an object, allowing parameterization of clients with different requests. In FP, commands are often represented by data types that describe computations, such as IO, Task, or Effect. Illustrates this by creating a function to repeat an arbitrary effectful computation n times and handling payment operations as a service pattern.
+### Command: 
+The Command pattern encapsulates a request as an object, allowing parameterization of clients with different requests. In FP, commands are often represented by data types that describe computations, such as IO, Task, or Effect. Illustrates this by creating a function to repeat an arbitrary effectful computation n times and handling payment operations as a service pattern.
 
-### Interpreter: This pattern defines a representation for a language's grammar along with an interpreter to use that representation. It is highly beloved in FP, often implemented through Embedded Domain Specific Languages (EDSLs). Demonstrates defining expressions and operations (like Add and Literal) with different evaluators (interpreters) for computation and pretty-printing.
+### Interpreter: 
+This pattern defines a representation for a language's grammar along with an interpreter to use that representation. It is highly beloved in FP, often implemented through Embedded Domain Specific Languages (EDSLs). Demonstrates defining expressions and operations (like Add and Literal) with different evaluators (interpreters) for computation and pretty-printing.
 
-### Iterator: This pattern provides a way to access elements of an aggregate object sequentially without exposing its underlying representation. In FP, this is largely handled by Foldable and Traversable type classes for applying functions over collections, and optics (like lenses) for navigating and modifying deeply nested data structures.
+### Iterator: 
+This pattern provides a way to access elements of an aggregate object sequentially without exposing its underlying representation. In FP, this is largely handled by Foldable and Traversable type classes for applying functions over collections, and optics (like lenses) for navigating and modifying deeply nested data structures.
 
-### Mediator: This pattern is used to reduce coupling between communicating objects. Briefly mentions that this pattern is often implemented implicitly in functional programming due to the explicit data flow and function composition, which naturally reduces direct dependencies.
+### Mediator: 
+This pattern is used to reduce coupling between communicating objects. Briefly mentions that this pattern is often implemented implicitly in functional programming due to the explicit data flow and function composition, which naturally reduces direct dependencies.
 
-### Memento: The Memento pattern is used to restore an object to its previous state (undo/redo functionality). In FP, this is achieved through immutable data structures and managing a history of states, often using abstractions like zippers for efficient navigation and modification of sequences while maintaining history.
+### Memento: 
+The Memento pattern is used to restore an object to its previous state (undo/redo functionality). In FP, this is achieved through immutable data structures and managing a history of states, often using abstractions like zippers for efficient navigation and modification of sequences while maintaining history.
 
-### Observer: This pattern defines a one-to-many dependency, notifying dependents when an object's state changes. In FP, this is commonly replaced by Event Streams or Functional Reactive Programming (FRP). Shows using FS2 (a functional stream library) with primitives like Topic and Signal to implement publish-subscribe patterns.
+### Observer: 
+This pattern defines a one-to-many dependency, notifying dependents when an object's state changes. In FP, this is commonly replaced by Event Streams or Functional Reactive Programming (FRP). Shows using FS2 (a functional stream library) with primitives like Topic and Signal to implement publish-subscribe patterns.
 
-### State: The State pattern allows an object to alter its behavior when its internal state changes. In FP, state is managed explicitly using constructs like State monads, often found in libraries like mtl or effectful. This involves passing state as an argument and returning new state, ensuring pure computations. Also touches on frontend frameworks like Elm that manage application state with models, views, and update functions.
+### State: 
+The State pattern allows an object to alter its behavior when its internal state changes. In FP, state is managed explicitly using constructs like State monads, often found in libraries like mtl or effectful. This involves passing state as an argument and returning new state, ensuring pure computations. Also touches on frontend frameworks like Elm that manage application state with models, views, and update functions.
 
-### Strategy: This pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. In functional programming, this is inherently achieved by passing functions as arguments, as functions are first-class citizens. Different "strategies" are simply different functions that can be passed to a higher-order function.
+### Strategy: 
+This pattern defines a family of algorithms, encapsulates each one, and makes them interchangeable. In functional programming, this is inherently achieved by passing functions as arguments, as functions are first-class citizens. Different "strategies" are simply different functions that can be passed to a higher-order function.
 
-### Template Method: This pattern defines the skeleton of an algorithm in a method, deferring some steps to subclasses. In functional programming, this is often accomplished using higher-order functions that take functions as arguments for the varying steps, or by using type classes to define generic interfaces that can be implemented differently.
+### Template Method: 
+This pattern defines the skeleton of an algorithm in a method, deferring some steps to subclasses. In functional programming, this is often accomplished using higher-order functions that take functions as arguments for the varying steps, or by using type classes to define generic interfaces that can be implemented differently.
 
-### Visitor: The Visitor pattern allows adding new operations to existing object structures without modifying them. In functional programming, this is often achieved through pattern matching, where different cases of a data type are handled explicitly to apply specific behaviors based on the data' type of data.
+### Visitor:
+
+The Visitor pattern allows adding new operations to existing object structures without modifying them. In functional programming, this is often achieved through pattern matching, where different cases of a data type are handled explicitly to apply specific behaviors based on the data' type of data.
+
 ---
 
 Below is a **clean, systematic mapping of every classic GoF pattern to its functional-programming (FP) alternative**, distilled from the material you shared and aligned with real FP practice (Haskell / Scala / FP-in-JVM thinking).
 
 The key idea: **FP does not “remove” patterns — it absorbs them into language features, types, and composition**.
 
----
-
 Think of this as a **knowledge-transfer map**, not a replacement.
 
----
-
 # Functional Programming Alternatives to the 23 GoF Patterns
-
-*(Updated, complete, and aligned with modern FP practice)*
 
 ---
 
