@@ -13,6 +13,7 @@
 ---
 
 **Quick Navigation:**
+
 - [Executive Summary](#executive-summary-the-hard-truth)
 - [Database Comparison Matrix](#database-comparison-matrix)
 - [TigerGraph (Top Choice)](#1-tigergraph--actual-leader)
@@ -84,6 +85,7 @@ graph TB
 ```
 
 **✅ TigerGraph IS the actual leader**
+
 - Latest release: January 28, 2025 (3 weeks ago)
 - Active monthly development throughout 2024
 - Proven trillion-scale: 1.6 trillion edges, 217.9B vertices
@@ -91,10 +93,12 @@ graph TB
 - But: Commercial licensing costs
 
 **⚠️ Amazon Neptune is the "safe enterprise choice"**
+
 - Fully managed, billions-scale proven
 - But: AWS lock-in, not truly distributed
 
 **❌ NebulaGraph is NOT the leader**
+
 - Last release: May 2024 (8+ months ago) - **CRITICAL RED FLAG**
 - Company showing "very low activity levels" (ZoomInfo)
 - Only $8M total funding (severely undercapitalized)
@@ -274,6 +278,7 @@ graph LR
 - Separation of compute and storage (Cloud 4.0)
 
 **Strengths**
+
 ✅ **Actively developed** (monthly releases)  
 ✅ **World-record scale proven** (1.6T edges)  
 ✅ **Enterprise-proven** (JPMorgan, Intuit)  
@@ -284,6 +289,7 @@ graph LR
 ✅ Cloud + on-premise options  
 
 **Limitations**
+
 ⚠️ Commercial licensing (cost increases with scale)  
 ⚠️ Proprietary GSQL (learning curve)  
 ⚠️ Vendor lock-in risk  
@@ -383,6 +389,7 @@ graph TB
 ⚠️ Not utilizing resources efficiently (5% CPU during failures)
 
 **Architecture**
+
 - Cloud-native, automatic scaling
 - Multiple query languages: Gremlin, openCypher, SPARQL
 - Multi-region: Neptune Global Database (5 secondary regions)
