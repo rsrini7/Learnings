@@ -24,7 +24,7 @@ Real-world impact:
 
 📈 **𝗧𝗵𝗲 𝗦𝗼𝗹𝘂𝘁𝗶𝗼𝗻: 𝗥𝗘𝟮 (𝗣𝗿𝗼𝗺𝗽𝘁 𝗥𝗲𝗽𝗲𝘁𝗶𝘁𝗶𝗼𝗻)**
 
-Introduced by Google Research (2025), **𝗥𝗘𝟮** simply repeats the user query twice in the prompt.
+Introduced by Google Research (Dec 2025), **𝗥𝗘𝟮** simply repeats the user query twice in the prompt.
 
 * **Massive accuracy uplift** → Up to **+76% relative** on factual/retrieval tasks across GPT-4o, Claude 3.7, Gemini 2.0, DeepSeek V3
 * **Near-zero overhead** → **<5% latency**, **~17% cost increase** (input tokens only)
@@ -96,7 +96,7 @@ Introduced by Google Research (2025), **𝗥𝗘𝟮** simply repeats the user q
 
 ## Executive Summary
 
-Prompt repetition (RE2) is a breakthrough technique that improves LLM accuracy on non-reasoning tasks by simply repeating the user's query twice. Research from Google in 2025 showed accuracy improvements of up to 76% with minimal cost increase and no latency impact. This guide provides comprehensive coverage of the technique, implementation patterns, performance benchmarks, and architectural considerations for production systems.
+Prompt repetition (RE2) is a breakthrough technique that improves LLM accuracy on non-reasoning tasks by simply repeating the user's query twice. Research from Google in Dec 2025 showed accuracy improvements of up to 76% with minimal cost increase and no latency impact. This guide provides comprehensive coverage of the technique, implementation patterns, performance benchmarks, and architectural considerations for production systems.
 
 ---
 
@@ -160,7 +160,7 @@ By the time the model processes the second iteration of the query, it has alread
 
 ### 1.3 The Research Foundation
 
-**Original Paper (2025):** "Prompt Repetition Improves Non-Reasoning LLMs" - Google Research
+**Original Paper (Dec2025):** "Prompt Repetition Improves Non-Reasoning LLMs" - Google Research
 
 **Key Findings:**
 - Tested on Gemini 2.0, GPT-4o, Claude 3.7, DeepSeek V3
@@ -1178,13 +1178,13 @@ For developers building production AI applications, RE2 should be a standard too
 ## References & Resources
 
 **Original Research:**
-- "Prompt Repetition Improves Non-Reasoning LLMs" (2025), Google Research - https://arxiv.org/abs/2512.14982
+- "Prompt Repetition Improves Non-Reasoning LLMs" (Dec 2025), Google Research - https://arxiv.org/abs/2512.14982
 - "Re-Reading Improves Reasoning in Large Language Models" (2023) - https://arxiv.org/abs/2309.06275
 
 **Video Explanations:**
-- "RE2: The 'Stupidest' AI Breakthrough That Actually Works" - Reinike AI (Jan 2025)
-- "Why Repeating Your Prompts Improves AI Performance" - SciPulse (Jan 2025)
-- "The Prompt Repetition Breakthrough" - SciPulse (Jan 2025)
+- "RE2: The 'Stupidest' AI Breakthrough That Actually Works" - Reinike AI (Jan 2026)
+- "Why Repeating Your Prompts Improves AI Performance" - SciPulse (Jan 2026)
+- "The Prompt Repetition Breakthrough" - SciPulse (Jan 2026)
 
 **Implementation Examples:**
 - OpenAI API Documentation - https://platform.openai.com/docs
@@ -1193,4 +1193,4 @@ For developers building production AI applications, RE2 should be a standard too
 
 ---
 
-*This whitepaper synthesizes research findings and practical implementation experience as of January 2025. Performance metrics should be validated for specific use cases. Always monitor production deployments and adjust based on real-world results.*
+*This whitepaper synthesizes research findings and practical implementation experience as of January 2026. Performance metrics should be validated for specific use cases. Always monitor production deployments and adjust based on real-world results.*
