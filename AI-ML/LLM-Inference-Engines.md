@@ -1064,26 +1064,6 @@ response = requests.post('http://localhost:11434/api/generate',
 
 ---
 
-## Appendix A: Glossary
-
-**Arithmetic Intensity:** Ratio of FLOPs to memory access (operations/byte). High = compute-bound, Low = memory-bound.
-
-**Continuous Batching:** Dynamic batching strategy that adds/removes requests at the token level rather than waiting for entire batch completion.
-
-**Decode Phase:** Autoregressive token generation, one token at a time. Memory-bound.
-
-**KV Cache:** Cached Key and Value vectors from attention mechanism to avoid recomputation.
-
-**PagedAttention:** Memory management technique applying OS virtual memory paging to KV cache.
-
-**Prefill Phase:** Initial prompt processing where all tokens are processed in parallel. Compute-bound.
-
-**Quantization:** Reducing numerical precision (FP16 → INT8 → INT4) to save memory and increase throughput.
-
-**Tensor Parallelism:** Sharding model layers across multiple GPUs for parallel execution.
-
----
-
 ## Appendix B: Quick Reference Commands
 
 ### vLLM

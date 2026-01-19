@@ -935,36 +935,6 @@ Traditional AI processes data and makes predictions. Embodied AI extends this to
 
 ---
 
-## Glossary
-
-**Action Chunking:** Predicting multiple future actions at once, then overlapping predictions for smooth motion
-
-**BPE (Byte-Pair Encoding):** Compression technique that merges frequently occurring token sequences
-
-**DCT (Discrete Cosine Transform):** Frequency-based compression used in JPEG, effective for smooth signals
-
-**Embodied AI:** AI integrated into physical bodies (robots, vehicles) that perceive and act in the real world
-
-**JEPA (Joint Embedding Predictive Architecture):** Learning framework that predicts abstract representations instead of raw data
-
-**Latent Space:** Compressed, abstract representation of data (e.g., "ball moving right" instead of pixels)
-
-**MPC (Model Predictive Control):** Planning technique that searches over action sequences to minimize cost
-
-**SSM (State Space Model):** Mathematical framework for sequence modeling with linear-time complexity
-
-**Stop-Gradient:** Training technique that freezes part of a network to prevent trivial solutions
-
-**VLA (Vision-Language-Action):** Models that understand images and text, then generate robot actions
-
-**VLM (Vision-Language Model):** Models that process both images and text for understanding/generation
-
-**World Model:** AI system that simulates how environments evolve over time (physics, dynamics, causality)
-
-**Zero-Shot:** Performing tasks without specific training examples (generalization from pre-training)
-
----
-
 ## License & Attribution
 
 This guide synthesizes information from:

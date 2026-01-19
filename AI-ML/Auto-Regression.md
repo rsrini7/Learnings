@@ -397,24 +397,6 @@ The field is moving toward:
 
 ---
 
-## Glossary
-
-**Auto-regression (AR):** Generating text one token at a time, where each token depends on all previous tokens.
-
-**Exposure Bias:** The mismatch between training (using correct tokens) and inference (using model's own predictions).
-
-**Knowledge Distillation:** Training a smaller model to mimic a larger model's behavior.
-
-**Non-Autoregressive (NAR):** Generating all tokens simultaneously in parallel.
-
-**Speculative Decoding:** Using a draft model to predict multiple tokens, then verifying with the target model.
-
-**Teacher Forcing:** Training technique where the model is shown the correct token at each step.
-
-**Token:** A unit of text (usually a word or part of a word) that the model processes.
-
----
-
 ## References
 
 1. AWS. "What are Autoregressive Models?" (2025)
