@@ -526,8 +526,6 @@ mindmap
       Clear motivation
       WIPO mission alignment
       Concrete examples
-
-%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#0F172A','primaryTextColor':'#fff','primaryBorderColor':'#38BDF8','lineColor':'#64748B','secondaryColor':'#1E293B','tertiaryColor':'#334155'}}}%%
 ```
 
 #### Strategic Framing Examples
