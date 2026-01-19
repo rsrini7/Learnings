@@ -195,6 +195,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [mHC Deepseek](Papers/mHC-Deepseek.md)
 - [Recursive Language Models](Papers/RecursiveLanguageModels.md)
 - [Deepseek Engram](Papers/Deepseek-Engram.md)
+- [Prompt Repetition (RE2)](Papers/Prompt-Repetition-RE2.md)
 
 ### 📊 Paper Comparisons
 - [Google Nested Learning vs FB Sparce Memory](Papers/comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md)
