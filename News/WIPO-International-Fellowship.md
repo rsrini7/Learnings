@@ -14,7 +14,10 @@
 
 ---
 
-## WIPO Fellowship Programs Overview {#wipo-overview}
+<div id="wipo-overview"></div>
+
+## WIPO Fellowship Programs Overview
+
 
 ### What are WIPO Fellowships?
 
@@ -83,7 +86,10 @@ flowchart LR
 
 ---
 
-## Corporate Sponsorship Reality Check {#corporate-sponsorship}
+<div id="corporate-sponsorship"></div>
+
+## Corporate Sponsorship Reality Check
+
 
 ### The Bottom Line: No Private Company Sponsorship
 
@@ -139,7 +145,10 @@ While theoretically possible, this scenario is **rare and undocumented**:
 
 ---
 
-## Indian Participation Examples {#indian-participation}
+<div id="indian-participation"></div>
+
+## Indian Participation Examples
+
 
 ### Why Indians Succeed in WIPO Fellowships
 
@@ -231,7 +240,10 @@ graph TD
 
 ---
 
-## International Fellowships Without Age Limits {#no-age-limit}
+<div id="no-age-limit"></div>
+
+## International Fellowships Without Age Limits
+
 
 ### Overview
 
@@ -364,7 +376,10 @@ Many prestigious international fellowships focus on professional experience and 
 
 ---
 
-## Tech-Focused Fellowship Opportunities {#tech-focused}
+<div id="tech-focused"></div>
+
+## Tech-Focused Fellowship Opportunities
+
 
 ### Why Tech Fellowships Matter
 
@@ -483,7 +498,10 @@ graph TB
 
 ---
 
-## Application Strategies {#application-strategies}
+<div id="application-strategies"></div>
+
+## Application Strategies
+
 
 ### For Indian Candidates Targeting WIPO
 
