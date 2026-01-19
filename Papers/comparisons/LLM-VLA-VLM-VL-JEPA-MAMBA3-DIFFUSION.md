@@ -67,8 +67,6 @@ Risk: Latency prohibits closed-loop control
 
 ---
 
-[Mamba-3 vs VL-JEPA technical overview](https://www.youtube.com/watch?v=gJbKWbAZxDY)
-
 ![Comprehensive AI Architecture Comparison Guide](assets/Comprehensive-AI-Architecture-Comparison-Guide.png)
 
 ---

@@ -427,6 +427,11 @@ The model becomes a programmer analyzing a dataset, not a student cramming for a
 
 ![RLMs-agent-centric-vs-context-centric.jpeg](assets/RLMs-agent-centric-vs-context-centric.jpeg)
 
+### Model-specific differences:
+
+- Closed models (e.g., GPT-5 as root, GPT-5-mini as sub) show stronger zero-shot performance and more reliable emergent strategies (e.g., efficient chunking, recursion).
+- Open-source models (e.g., Qwen3-Coder-480B-A35B) often struggle more (lower scores like 44.66% on BrowseComp+ vs. GPT-5's higher), require prompt tuning to avoid excessive sub-calls, and exhibit less robust behaviors.
+
 Without explicit instruction, RLMs naturally discover these strategies:
 
 ### Strategy 1: Smart Filtering (Peeking & Grepping)
@@ -658,6 +663,13 @@ FINAL_VAR(full_document)
 
 ## <a id="performance-benchmarks"></a>📊 Performance Benchmarks
 
+### Additional benchmark details and extremes:
+
+- Explicitly name variants: S-NIAH (Single Needle-in-a-Haystack from RULER) for simple retrieval (constant complexity, near-perfect even at 1M+ tokens); OOLONG-Pairs (modified OOLONG with quadratic pair aggregation, where base models score ~0% but RLM achieves ~58% F1 with GPT-5).
+- Note LongBench-v2 as the source for CodeQA (multi-choice code repository understanding).
+- Specify tested lengths: Up to 10M+ tokens overall, with BrowseComp-Plus (1K) reaching 6M–11M tokens and stable RLM performance (no degradation, unlike base models failing beyond ~131K–262K).
+- Expand costs: RLM average $0.99/query on BrowseComp-Plus (with high variance due to trajectory length); often up to 3× cheaper than summarization baselines, and comparable/lower than direct ingestion ($1.50–$2.75 for 6–11M tokens with GPT-5-mini).
+
 ### Comprehensive Results from the Paper
 
 From the paper (GPT-5 as root, GPT-5-mini as sub-LLM):
@@ -789,6 +801,10 @@ graph TD
 ---
 
 ## <a id="rlm-vs-alternatives"></a>⚔️ RLM vs Alternatives
+
+### Reinforce cost/scalability comparison:
+
+- RLMs frequently **cheaper at scale** (median run cheaper than base model ingestion, up to 3× vs. summarization) while providing deterministic full coverage.
 
 ### RLM vs RAG (Retrieval-Augmented Generation)
 
@@ -1246,6 +1262,11 @@ fine_tuned_model = train(training_examples)
 ---
 
 ## <a id="implementation-guide"></a>🛠️ Implementation Guide
+
+### Community implementations:
+
+The paper uses a native Python REPL with basic tools (string operations, re, llm_query for sub-calls). 
+Plug-and-play open-source libraries inspired by the paper, e.g., alexzhang13/rlm for general inference, or minimal examples like alexzhang13/rlm-minimal.
 
 ### Common Tools in RLM Setups
 
@@ -1808,6 +1829,12 @@ Root_LLM → Sub_LLM → Sub_Sub_LLM → ...
 
 ### Other Reference
 - Video Tutorial: [Recursive Language Models: How MIT Fixed Context Rot in LLMs](https://www.youtube.com/watch?v=XbqCBoSkUcc) by Make AI Easy
+- Matthew Berman's breakdown (YouTube ID: huszaaJPjU8)
+
+### Community code repos:
+- https://github.com/alexzhang13/rlm (main plug-and-play library from author).
+- https://github.com/fullstackwebdev/rlm_repl
+- https://github.com/ysz/recursive-llm.
   
 ---
 
@@ -1828,6 +1855,10 @@ For anyone working with long documents, complex reasoning, or massive informatio
 The future of AI isn't just about bigger transformers. It's about smarter problem decomposition, symbolic-neural hybrids, and treating reasoning as a **programmable process** rather than a black box.
 
 **RLMs are the bridge to that future.**
+
+### Broader implications
+
+RLMs represent a paradigm shift toward inference-time scaffolding over raw scaling, unlocking practical use on massive real-world datasets (e.g., entire codebases, legal archives, scientific corpora) with existing models—turning "impossible" long-horizon tasks viable and cost-effective.
 
 ---
 
