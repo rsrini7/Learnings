@@ -4,36 +4,117 @@
 
 ---
 
-![Papers/assets/RLM.png](assets/RLM.png)
-
----
-
 ## **Abstract**
 
-Large language models (LLMs) exhibit severe performance degradation—termed *context rot*—when tasked with complex reasoning over long contexts, particularly for linear and quadratic problems. This work introduces **Recursive Language Models (RLMs)**, an inference-time architecture that reframes long-context reasoning as a programmable, recursive process rather than a monolithic neural computation. Instead of ingesting entire documents into a single context window, RLMs externalize data into a persistent environment, enabling a root LLM to write and execute code that selectively explores, filters, and decomposes massive inputs. Semantic subtasks are delegated to smaller sub-LLMs operating on bounded contexts, with deterministic aggregation ensuring complete coverage.
+Large AI language models (LLMs) struggle badly when handling very long texts for complex thinking tasks — a problem called "context rot." Their accuracy drops sharply, especially on tasks that require processing or comparing everything (like finding all matching pairs).
 
-Across benchmarks including OOLONG, BrowseComp-Plus (up to 11M tokens), and CodeQA, RLMs achieve **2–15× accuracy improvements** over base LLMs, transform previously impossible quadratic tasks (0.04% accuracy) into tractable ones (up to 58%), and often reduce total inference cost relative to summarization- or RAG-based baselines. The results demonstrate that inference-time recursion and symbolic control can outperform brute-force context scaling, offering a practical path to unbounded context handling without retraining larger models. RLMs thus represent a paradigm shift toward programmable, hybrid neural-symbolic reasoning for large-scale AI tasks.
+This paper introduces **Recursive Language Models (RLMs)** — a new approach that works at inference time (when the model is actually being used). Instead of trying to cram an entire huge document into the model's limited "attention" window, RLMs treat the document like an external file.
+
+A main ("root") AI writes and runs simple code (like Python) to:
+- Smartly search and filter the data
+- Break the big problem into smaller pieces
+- Hand those pieces to cheaper, smaller AIs for detailed analysis
+- Combine all the results reliably
+
+On tough benchmarks with extremely long inputs (up to 11 million tokens), RLMs get **2–15× better accuracy** than regular LLMs. They turn tasks that were basically impossible (0.04% accuracy) into solvable ones (up to 58%), and they’re often **cheaper** than alternatives like summarization or retrieval methods.
+
+The key insight: adding programmable loops and code control during inference beats just making bigger context windows. RLMs offer a practical way to handle truly unlimited text lengths **today**, without training bigger models. This marks a shift toward hybrid AI systems that combine neural networks with programmable, symbolic reasoning for large-scale problems.
 
 ---
 
-## 🎯 What You Need to Know in 60 Seconds
+## 🎯 What You Need to Know in 120 Seconds
 
-**The Problem**: AI models get dumber as you give them more information. Feed GPT-5 a 30,000-word document asking it to find matching pairs? It scores **0.04%** (basically fails completely). This isn't about model size—it's about **attention overload** when too much data competes in a single context window.
+𝗥𝗲𝗰𝘂𝗿𝘀𝗶𝘃𝗲 𝗟𝗮𝗻𝗴𝘂𝗮𝗴𝗲 𝗠𝗼𝗱𝗲𝗹𝘀 (𝗥𝗟𝗠𝘀): 𝗙𝗶𝘅𝗶𝗻𝗴 𝗖𝗼𝗻𝘁𝗲𝘅𝘁 𝗥𝗼𝘁 𝗔𝘁 𝗜𝗻𝗳𝗲𝗿𝗲𝗻𝗰𝗲 𝗧𝗶𝗺𝗲
 
-**The Solution**: Recursive Language Models (RLMs) don't feed huge documents into AI. Instead, they:
-1. Store documents as external variables (like files on disk)
-2. Let AI write Python code to explore the document intelligently
-3. Break complex tasks into smaller sub-tasks
-4. Process pieces recursively and combine results
+Frontier LLMs technically support **272𝗞+** token windows – yet collapse to **0.04% accuracy** on quadratic reasoning tasks. Why does more data make models dumber?
 
-**The Breakthrough** (Make AI Easy, timestamp 2:51-3:22): RLMs don't make LLMs "smarter"—they make them **focused**. LLMs excel at solving smaller, clearly structured problems with tighter contexts. The issue isn't intelligence; it's processing too much data at once.
+![image](https://miro.medium.com/v2/resize:fit:2000/1*kIRbb0depo_fj6eRHCw1Gg.png)
 
-**The Results**: 
-- Process documents **100× longer** than normal limits
-- Achieve **2-15× better accuracy** on complex tasks
-- Cost the **same or less** than traditional approaches
-- Turn impossible tasks (0.04% accuracy) into possible ones (58% accuracy)
-- GPT-5-mini (smaller model) **outperforms GPT-5** (larger model) when using RLM architecture
+━━━━━━━━━━━━━━━━━━━━
+
+⚡ **𝗧𝗵𝗲 𝗣𝗿𝗼𝗯𝗹𝗲𝗺: 𝗖𝗼𝗻𝘁𝗲𝘅𝘁 𝗥𝗼𝘁**
+
+Transformers suffer attention overload: every token competes equally, creating noisy focus as length grows. Quadratic attention explodes compute – doubling context demands **4× memory**.
+
+Real catastrophe: Even GPT-5-level models reliably reason only over **~16𝗞 tokens** on complex tasks. Quadratic problems (pair matching, correlations) fail at **0.04% accuracy** over 32𝗞 tokens, trapping exhaustive reasoning in failure despite massive training spend.
+
+━━━━━━━━━━━━━━━━━━━━
+
+📈 **𝗧𝗵𝗲 𝗦𝗼𝗹𝘂𝘁𝗶𝗼𝗻: 𝗥𝗲𝗰𝘂𝗿𝘀𝗶𝘃𝗲 𝗟𝗮𝗻𝗴𝘂𝗮𝗴𝗲 𝗠𝗼𝗱𝗲𝗹𝘀 (𝗥𝗟𝗠𝘀)**
+
+MIT CSAIL architecture that externalizes long data and turns reasoning into programmable recursion – no retraining required.
+
+* **2–15× accuracy gains** → **58%** on previously impossible quadratic tasks
+* **100× effective context** → Reliable processing of **11𝗠 tokens**
+* **Cost inversion** → Often **cheaper** than summarization or RAG baselines
+
+━━━━━━━━━━━━━━━━━━━━
+
+🔧 **𝗖𝗼𝗿𝗲 𝗔𝗿𝗰𝗵𝗶𝘁𝗲𝗰𝘁𝘂𝗿𝗲: 𝗛𝘆𝗯𝗿𝗶𝗱 𝗡𝗲𝘂𝗿𝗮𝗹-𝗦𝘆𝗺𝗯𝗼𝗹𝗶𝗰 𝗥𝗲𝗰𝘂𝗿𝘀𝗶𝗼𝗻**
+
+1️⃣ **𝗥𝗼𝗼𝘁 𝗟𝗟𝗠** (`GPT-5` class): Orchestrator – peeks structure, writes Python to explore, delegates, aggregates
+2️⃣ **𝗣𝘆𝘁𝗵𝗼𝗻 𝗥𝗘𝗣𝗟**: Persistent external workspace – stores full context as variable, executes code, maintains state
+3️⃣ **𝗦𝘂𝗯-𝗟𝗟𝗠𝘀** (`GPT-5-mini`): Workers – semantic reasoning on bounded chunks, parallelizable
+
+
+![image](https://miro.medium.com/v2/resize:fit:2000/1*esBxhQkImIYsY-cMXB6sIg.png)
+
+━━━━━━━━━━━━━━━━━━━━
+
+🛒 **𝗖𝗼𝗿𝗲 𝗙𝗲𝗮𝘁𝘂𝗿𝗲𝘀: 𝗣𝗿𝗼𝗴𝗿𝗮𝗺𝗺𝗮𝗯𝗹𝗲 𝗘𝘅𝗽𝗹𝗼𝗿𝗮𝘁𝗶𝗼𝗻 𝗪𝗼𝗿𝗸𝗳𝗹𝗼𝘄**
+
+1. **Peek & Filter** (`regex/string ops`) → Deterministically reduce search space before semantics
+2. **Chunk & Delegate** (`llm_query(chunk)`) → Break data into rot-free bounded contexts
+3. **Map-Reduce Aggregation** (`Python variables`) → Combine sub-results programmatically
+4. **Recursive Decomposition** (`categorize → pairwise within groups`) → Transform quadratic into linear complexity
+
+![image](https://miro.medium.com/v2/resize:fit:1400/0*wNUcdOpr4oyj7IC4.png)
+
+
+━━━━━━━━━━━━━━━━━━━━
+
+🛡️ **𝗕𝗲𝗻𝗲𝗳𝗶𝘁𝘀: 𝗦𝘆𝘀𝘁𝗲𝗺𝗶𝗰 𝗔𝗱𝘃𝗮𝗻𝘁𝗮𝗴𝗲𝘀**
+
+* **Deterministic Completeness**: Guarantees coverage of all relevant data → Eliminates false negatives systemic in probabilistic retrieval
+* **Selective Compute Efficiency**: Processes only necessary portions → Inverts cost curve at extreme scales vs upfront compression
+* **Architecture Over Parameters**: Smaller sub-models outperform lone frontier models → Decouples capability from training races
+* **New Class Feasibility**: Unlocks production exhaustive reasoning → Legal review, literature synthesis, duplicate detection at million-token scale
+
+━━━━━━━━━━━━━━━━━━━━
+
+⚖️ **𝗦𝘁𝗿𝗮𝘁𝗲𝗴𝗶𝗰 𝗩𝗲𝗿𝗱𝗶𝗰𝘁: 𝗜𝗻𝗳𝗲𝗿𝗲𝗻𝗰𝗲-𝗧𝗶𝗺𝗲 𝘃𝘀 𝗧𝗿𝗮𝗶𝗻𝗶𝗻𝗴-𝗧𝗶𝗺𝗲 𝗦𝗰𝗮𝗹𝗶𝗻𝗴**
+
+**Recursive Inference (RLMs)**
+- Strength: Lossless, works today, cost-effective at extreme scale
+- Risk: Higher latency, prompt/recursion engineering overhead
+- Best for: Exhaustive complex reasoning over massive unstructured data
+
+**Brute-Force Context Scaling**
+- Strength: Low latency within supported windows
+- Risk: Hits quadratic physics wall, persistent rot despite billions in training
+- Best for: Moderate-length simple tasks
+
+**Probabilistic Retrieval (RAG)**
+- Strength: Fast, cheap for lookups
+- Risk: Lossy coverage, fails exhaustive/quadratic needs
+- Best for: Quick Q&A where completeness non-critical
+
+**Watch**: Production deployment share for >1𝗠 token reasoning tasks by late 2026. If RLM variants exceed 50% adoption, inference-time architectures dominate long-context future.
+
+━━━━━━━━━━━━━━━━━━━━
+
+**𝗧𝗟;𝗗𝗥**
+* **Context rot is fundamental** → No amount of parametric scaling fully escapes quadratic attention
+* **Recursion makes reasoning programmable** → Hybrid control unlocks tasks previously impossible
+* **Inference scaling beats hardware races** → RLMs deliver unbounded context today at lower systemic cost
+
+**Will inference-time programmable architectures consolidate long-context reasoning, or will hardware breakthroughs revive brute-force mega-windows?**
+
+👤 **Srinivasan Ragothaman (@rsrini7)**
+
+---
+
+![Papers/assets/RLM.png](assets/RLM.png)
 
 ---
 
