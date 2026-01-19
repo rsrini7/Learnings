@@ -64,6 +64,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Beyond-SoftMax-Attention](AI-ML/Beyond-SoftMax-Attention.md)
 
 ### 🌐 Developer Ecosystem & Tools
+- [Glossary](AI-ML/Glossary.md)
 - [Claude Skills Prompts](AI-ML/4-Claude-Skills-Prompts.md)
 - [Anthropic API Restrictions](AI-ML/Anthropic-API-Restrictions.md)
 - [Claude Developer Ecosystem Jan-2026](AI-ML/Claude-Developer-Ecosystem-Jan-2026.md)
