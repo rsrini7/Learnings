@@ -4,6 +4,101 @@
 
 ---
 
+## 🎯 What You Need to Know in 120 Seconds
+
+𝗗𝗲𝗲𝗽𝗦𝗲𝗲𝗸 𝗘𝗻𝗴𝗿𝗮𝗺: 𝗖𝗼𝗻𝗱𝗶𝘁𝗶𝗼𝗻𝗮𝗹 𝗠𝗲𝗺𝗼𝗿𝘆 𝗮𝘀 𝗮 𝗡𝗲𝘄 𝗦𝗽𝗮𝗿𝘀𝗶𝘁𝘆 𝗔𝘅𝗶𝘀
+
+Why are modern LLMs still wasting **35-40% of compute** reconstructing the same basic patterns on every forward pass?
+
+━━━━━━━━━━━━━━━━━━━━
+
+⚡ **𝗧𝗵𝗲 𝗣𝗿𝗼𝗯𝗹𝗲𝗺: 𝗖𝗼𝗺𝗽𝘂𝘁𝗮𝘁𝗶𝗼𝗻𝗮𝗹 𝗪𝗮𝘀𝘁𝗲 𝗶𝗻 𝗧𝗿𝗮𝗻𝘀𝗳𝗼𝗿𝗺𝗲𝗿𝘀**
+
+Transformers have no native lookup primitive. Common patterns — entity names, idioms, code snippets — that should be **O(1)** operations are instead simulated through **O(depth)** neural computation.
+
+Consequences:
+- **35-40% of total FLOPs** spent reconstructing static knowledge
+- Reduced effective depth for actual reasoning
+- Higher inference costs and latency in production fleets
+- Diminished long-context performance as attention budget is consumed by local patterns
+
+━━━━━━━━━━━━━━━━━━━━
+
+📈 **𝗧𝗵𝗲 𝗦𝗼𝗹𝘂𝘁𝗶𝗼𝗻: 𝗗𝗲𝗲𝗽𝗦𝗲𝗲𝗸 𝗘𝗻𝗴𝗿𝗮𝗺**
+
+DeepSeek-AI’s open-source (Apache-2.0) conditional memory module, released January 2026.
+
+**𝗘𝗻𝗴𝗿𝗮𝗺** adds a parallel memory pathway that stores high-frequency n-gram patterns in massive embedding tables.
+
+* **35-40% computational waste eliminated** → Equivalent to 30-40% more effective depth
+* **O(1) lookup for static patterns** → Minimal inference overhead (<3%)
+* **Fully complementary to MoE** → Optimal allocation ~75% MoE / 25% Engram under fixed parameter budget
+
+━━━━━━━━━━━━━━━━━━━━
+
+🔧 **𝗖𝗼𝗿𝗲 𝗔𝗿𝗰𝗵𝗶𝘁𝗲𝗰𝘁𝘂𝗿𝗲: 𝗛𝘆𝗯𝗿𝗶𝗱 𝗠𝗲𝗺𝗼𝗿𝘆-𝗖𝗼𝗺𝗽𝘂𝘁𝗲 𝗣𝗮𝘁𝗵𝘄𝗮𝘆𝘀**
+
+1️⃣ **N-gram Extraction**: Overlapping 2-3 token sequences from recent context
+2️⃣ **Tokenizer Compression**: NFKC + lowercase + vocab projection (~23% size reduction)
+3️⃣ **Multi-Head Hashing**: 8 deterministic hashes per n-gram → collision-resistant addresses
+4️⃣ **Embedding Lookup**: Retrieve from tables (billions of parameters, tiered VRAM/RAM)
+5️⃣ **Context-Aware Gating**: RMSNorm + softmax dot-product decides integration strength
+
+Placement: Early-to-mid layers (e.g., layers 2 & 15 in 32-layer models) for maximum pattern capture without disrupting late reasoning.
+
+━━━━━━━━━━━━━━━━━━━━
+
+🛒 **𝗖𝗼𝗿𝗲 𝗙𝗲𝗮𝘁𝘂𝗿𝗲𝘀: 𝗪𝗼𝗿𝗸𝗳𝗹𝗼𝘄 & 𝗖𝗮𝗽𝗮𝗯𝗶𝗹𝗶𝘁𝗶𝗲𝘀**
+
+Engram operates in parallel with standard transformer blocks.
+
+1. **Pattern Detection** (`2-3 grams`) → Hashes generated deterministically
+2. **Hierarchical Retrieval** (`hot VRAM → warm RAM → cold`) → Async prefetch enabled by deterministic hashes
+3. **Gated Fusion** (`softmax attention over memory keys`) → Only relevant vectors added via residual
+4. **Optional Post-Processing** (`depthwise conv + SiLU`) → Refines memory contribution
+
+Result: Static patterns handled outside expensive neural pathway; dynamic reasoning preserved.
+
+━━━━━━━━━━━━━━━━━━━━
+
+🛡️ **𝗕𝗲𝗻𝗲𝗳𝗶𝘁𝘀: 𝗦𝘆𝘀𝘁𝗲𝗺𝗶𝗰 𝗘𝗳𝗳𝗶𝗰𝗶𝗲𝗻𝗰𝘆 & 𝗣𝗲𝗿𝗳𝗼𝗿𝗺𝗮𝗻𝗰𝗲**
+
+* **Effective Depth Expansion**: Frees neural capacity from pattern reconstruction → +5% on hard reasoning benchmarks (BBH)
+* **Long-Context Preservation**: Local patterns offloaded → attention budget available for global dependencies → +12.8% needle-in-haystack (84% → 97%)
+* **Parameter Efficiency at Scale**: Fixed budget yields higher performance than pure MoE → continued gains observed up to 18.5B memory tables
+* **Hardware-Friendly Deployment**: Tables quantizable to 4-bit, offloadable to RAM → trillion-scale models viable on consumer clusters
+
+━━━━━━━━━━━━━━━━━━━━
+
+⚖️ **𝗦𝘁𝗿𝗮𝘁𝗲𝗴𝗶𝗰 𝗩𝗲𝗿𝗱𝗶𝗰𝘁: 𝗛𝘆𝗯𝗿𝗶𝗱 𝗠𝗲𝗺𝗼𝗿𝘆 𝘃𝘀. 𝗣𝘂𝗿𝗲 𝗖𝗼𝗺𝗽𝘂𝘁𝗲**
+
+The market is splitting between pure conditional-compute scaling and hybrid memory-compute architectures.
+
+**Pure MoE Approach (Mixtral, Grok, etc.)**
+- Strength: Simpler training, mature routing, strong dynamic reasoning
+- Risk: Persistent waste on static pattern reconstruction as models scale
+- Best for: Workloads dominated by novel synthesis over factual recall
+
+**Hybrid Memory-Compute (Engram + MoE)**
+- Strength: Superior parameter utilization, dramatic long-context and reasoning gains
+- Risk: Added engineering complexity (table sharding, prefetch, quantization pipeline)
+- Best for: Production systems prioritizing efficiency and long-context reliability
+
+**Current Reality**: Engram’s open-source release gives community models a structural advantage over closed proprietary stacks that lack equivalent memory primitives.
+
+**Watch**: Integration velocity into major open model families (Llama-3.x, Mistral derivatives) by mid-2026. If >50% of top-10 Hugging Face models adopt conditional memory tables, hybrid becomes the default architecture.
+
+━━━━━━━━━━━━━━━━━━━━
+
+**𝗧𝗟;𝗗𝗥**
+* **Structural Efficiency** → 35-40% waste elimination translates to 30+% effective capacity gain under fixed budgets
+* **Complementary Scaling** → Optimal at ~25% parameter allocation; works synergistically with existing MoE stacks
+* **Adoption Signal** → Open-source availability positions community models ahead of proprietary alternatives
+
+**Will hybrid memory-compute architectures become the dominant scaling paradigm, or will pure conditional computation continue to prevail through brute-force parameter growth?**
+
+👤 **Srinivasan Ragothaman (@rsrini7)**
+
 ![Deepseek-Engram](assets/Deepseek-Engram.png)
 
 ---
