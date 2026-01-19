@@ -61,6 +61,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [How Ralph Works with Amp](AI-ML/How-Ralph-Works-with-Amp.md)
 - [NVIDIA Open Models CES 2026](AI-ML/NVIDIA-Open-Models-CES-2026.md)
 - [Google Gemma Family Models Jan-2026](AI-ML/Google-Gemma-Family-Models-Jan-2026.md)
+- [Beyond-SoftMax-Attention](AI-ML/Beyond-SoftMax-Attention.md)
 
 ### 🌐 Developer Ecosystem & Tools
 - [Claude Skills Prompts](AI-ML/4-Claude-Skills-Prompts.md)
