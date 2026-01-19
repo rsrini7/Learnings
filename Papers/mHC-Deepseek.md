@@ -117,10 +117,6 @@ Backed by DeepSeek research (2026), proven on 27B transformer models.
 
 ---
 
-![mHC](assets/mHC.png)
-
----
-
 ## Executive Summary
 
 Imagine trying to build a highway system for a city. You could build one massive road (stable but slow), or you could build a complex network of roads with no traffic rules (fast but chaotic). DeepSeek's **Manifold-Constrained Hyper-Connections (mHC)** solves this exact problem for AI models—it creates a multi-lane superhighway with smart traffic control that prevents crashes.
