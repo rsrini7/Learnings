@@ -1090,8 +1090,3 @@ The next generation of AI systems will likely combine VL-JEPA's efficient percep
 11. Hugging Face VL-JEPA Collection - [Link](https://huggingface.co/papers?q=Joint+Embedding+Predictive+Architecture)
 
 ---
-
-**Document Version**: 1.0  
-**Last Updated**: January 2026  
-**Authors**: Compiled from Meta AI research and community analysis  
-**License**: Creative Commons Attribution 4.0 International

@@ -209,6 +209,8 @@ Before finalizing, verify:
 # CONTENT TEMPLATE
 
 ```
+## 🎯 What You Need to Know in 120 Seconds
+
 𝗬𝗼𝘂𝗿 𝗠𝗮𝗶𝗻 𝗧𝗶𝘁𝗹𝗲: 𝗧𝗵𝗲 𝗦𝘂𝗯𝘁𝗶𝘁𝗹𝗲
 One provocative technical question or problem statement
 
