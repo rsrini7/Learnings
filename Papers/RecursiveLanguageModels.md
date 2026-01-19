@@ -39,19 +39,22 @@ Across benchmarks including OOLONG, BrowseComp-Plus (up to 11M tokens), and Code
 
 ## 📚 Table of Contents
 
-1. [The Context Rot Problem](#🔴-the-context-rot-problem)
-2. [How RLMs Work - The Architecture](#🗝️-how-rlms-work)
-3. [The Magic: Emergent Behaviors](#🎭-emergent-behaviors-the-magic-of-rlms)
-4. [Performance Benchmarks](#📊-performance-benchmarks)
-5. [RLM vs Alternatives](#⚔️-rlm-vs-alternatives)
-6. [Real-World Examples](#🌟-real-world-examples)
-7. [When to Use RLMs](#🎯-when-to-use-rlms-decision-framework)
-8. [Implementation Guide](#🛠️-implementation-guide)
-9. [Limitations & Future](#⚠️-limitations-and-future-directions)
+1. [The Context Rot Problem](#the-context-rot-problem)
+2. [How RLMs Work - The Architecture](#how-rlms-work)
+3. [The Magic: Emergent Behaviors](#emergent-behaviors-the-magic-of-rlms)
+4. [Performance Benchmarks](#performance-benchmarks)
+5. [RLM vs Alternatives](#rlm-vs-alternatives)
+6. [Real-World Examples](#real-world-examples)
+7. [When to Use RLMs](#when-to-use-rlms-decision-framework)
+8. [Implementation Guide](#implementation-guide)
+9. [Limitations & Future](#limitations-and-future-directions)
+10. [Resources & References](#resources-and-references)
+11. [Conclusion](#conclusion)
+12. [Complete Glossary](#complete-glossary)
 
 ---
 
-## 🔴 The Context Rot Problem
+## <a id="the-context-rot-problem"></a>🔴 The Context Rot Problem
 
 ### What is Context Rot?
 
@@ -122,7 +125,7 @@ graph TD
 
 ---
 
-## 🗝️ How RLMs Work
+## <a id="how-rlms-work"></a>🗝️ How RLMs Work
 
 ![TraditionalLLM-vs-RecursiveLLM](assets/TraditionalLLM-vs-RecursiveLLM.jpeg)
 
@@ -332,7 +335,7 @@ sequenceDiagram
 
 ---
 
-## 🎭 Emergent Behaviors: The Magic of RLMs
+## <a id="emergent-behaviors-the-magic-of-rlms"></a>🎭 Emergent Behaviors: The Magic of RLMs
 
 The key shift is context-centric decomposition:
 
@@ -572,7 +575,7 @@ FINAL_VAR(full_document)
 
 ---
 
-## 📊 Performance Benchmarks
+## <a id="performance-benchmarks"></a>📊 Performance Benchmarks
 
 ### Comprehensive Results from the Paper
 
@@ -704,7 +707,7 @@ graph TD
 
 ---
 
-## ⚔️ RLM vs Alternatives
+## <a id="rlm-vs-alternatives"></a>⚔️ RLM vs Alternatives
 
 ### RLM vs RAG (Retrieval-Augmented Generation)
 
@@ -831,7 +834,7 @@ graph TD
 
 ---
 
-## 🌟 Real-World Examples
+## <a id="real-world-examples"></a>🌟 Real-World Examples
 
 ### Example 1: Legal Document Review
 
@@ -1045,7 +1048,7 @@ for category, products_in_cat in categories.items():
 
 ---
 
-## 🎯 When to Use RLMs: Decision Framework
+## <a id="when-to-use-rlms-decision-framework"></a>🎯 When to Use RLMs: Decision Framework
 
 ### The Decision Tree
 
@@ -1161,7 +1164,7 @@ fine_tuned_model = train(training_examples)
 
 ---
 
-## 🛠️ Implementation Guide
+## <a id="implementation-guide"></a>🛠️ Implementation Guide
 
 ### Common Tools in RLM Setups
 
@@ -1544,7 +1547,7 @@ def select_model(task_type: str, complexity: str):
 
 ---
 
-## ⚠️ Limitations and Future Directions
+## <a id="limitations-and-future-directions"></a>⚠️ Limitations and Future Directions
 
 ### Current Limitations
 
@@ -1697,7 +1700,7 @@ Root_LLM → Sub_LLM → Sub_Sub_LLM → ...
 
 ---
 
-## 📚 Resources and References
+## <a id="resources-and-references"></a>📚 Resources and References
 
 ### Official Resources
 - **Paper**: "Recursive Language Models" - arXiv:2512.24601
@@ -1727,7 +1730,7 @@ Root_LLM → Sub_LLM → Sub_Sub_LLM → ...
   
 ---
 
-## 🎬 Conclusion
+## <a id="conclusion"></a>🎬 Conclusion
 
 Recursive Language Models represent a **fundamental paradigm shift** in how we think about AI capabilities.
 
@@ -1747,7 +1750,7 @@ The future of AI isn't just about bigger transformers. It's about smarter proble
 
 ---
 
-## Complete Glossary
+## <a id="complete-glossary"></a>Complete Glossary
 
 ## Core Concepts
 
