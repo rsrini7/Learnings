@@ -56,7 +56,9 @@ RLMs exemplify **inference-time scaling**: allocating more compute (recursive ca
 **🔧 Core Architecture: Hybrid Neural-Symbolic Recursion**
 
 1️⃣ **Root LLM** (`GPT-5` class): Orchestrator — peeks structure, writes Python to explore, delegates, aggregates
+
 2️⃣ **Python REPL**: Persistent external workspace — stores full context as variable, executes code, maintains state
+
 3️⃣ **Sub-LLMs** (`GPT-5-mini`): Workers — semantic reasoning on bounded chunks, parallelizable
 
 ![image](https://miro.medium.com/v2/resize:fit:2000/1*esBxhQkImIYsY-cMXB6sIg.png)
