@@ -197,7 +197,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [The Science of Scaling AI Agent Systems](Papers/The-Science-of-Scaling-AI-Agent-Systems.md)
 - [VL-JEPA Executive Brief](Papers/VL-JEPA-Executive-Brief.md)
 - [mHC Deepseek](Papers/mHC-Deepseek.md)
-- [Recursive Language Models](Papers/RecursiveLanguageModels.md)
+- [Recursive Language Models (RLMs)](Papers/RecursiveLanguageModels-(RLMs).md)
 - [Deepseek Engram](Papers/Deepseek-Engram.md)
 - [Prompt Repetition (RE2)](Papers/Prompt-Repetition-RE2.md)
 
