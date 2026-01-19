@@ -2,6 +2,92 @@
 
 Modern AI architectures: VL-JEPA, Mamba-3, Transformers, Diffusion Models, VLA systems, and Nvidia Cosmos World Models.
 
+## 🎯 What You Need to Know in 120 Seconds
+
+𝗧𝗵𝗲 𝗦𝗲𝗺𝗮𝗻𝘁𝗶𝗰 𝗦𝗵𝗶𝗳𝘁: 𝗙𝗿𝗼𝗺 𝗧𝗼𝗸𝗲𝗻/𝗣𝗶𝘅𝗲𝗹 𝗣𝗿𝗲𝗱𝗶𝗰𝘁𝗶𝗼𝗻 𝘁𝗼 𝗖𝗼𝗻𝗰𝗲𝗽𝘁-𝗟𝗲𝘃𝗲𝗹 𝗪𝗼𝗿𝗹𝗱 𝗠𝗼𝗱𝗲𝗹𝘀
+
+Why are we still burning compute on every pixel and token when predictable semantics are what actually drive reasoning and control?
+
+━━━━━━━━━━━━━━━━━━━━
+
+⚡ **𝗧𝗵𝗲 𝗣𝗿𝗼𝗯𝗹𝗲𝗺: Surface-Level Prediction Overhead**
+
+Token-by-token and pixel-by-pixel architectures waste massive resources modeling irrelevant surface variation and unpredictable noise.
+
+Transformers face **O(n²) attention** slowdowns on long sequences, Diffusion requires **100–1000 denoising steps** per output, and pixel-generative world models need **4 minutes** per robotic action rollout—making real-time video understanding and embodied control impractical at scale while driving up training and inference costs.
+
+━━━━━━━━━━━━━━━━━━━━
+
+📈 **𝗧𝗵𝗲 𝗦𝗼𝗹𝘂𝘁𝗶𝗼𝗻: JEPA-Style Semantic Prediction**
+
+**𝗩𝗟-𝗝𝗘𝗣𝗔** (Meta AI, Dec 2025) and the broader JEPA family shift prediction to abstract latent embeddings, complemented by linear-time engines like **𝗠𝗮𝗺𝗯𝗮-𝟯**.
+
+* **Semantic focus** → 50% fewer parameters than comparable VLMs with superior performance
+* **Non-autoregressive inference** → Single forward pass, 2.85× fewer operations on streaming video
+* **Latent planning** → 15× faster robotic action selection (16 seconds vs 4 minutes)
+
+━━━━━━━━━━━━━━━━━━━━
+
+🔧 **𝗖𝗼𝗿𝗲 𝗔𝗿𝗰𝗵𝗶𝘁𝗲𝗰𝘁𝘂𝗿𝗲: Key Paradigm Differences**
+
+1️⃣ **Target Space**: Tokens/pixels (Transformers, Diffusion, Cosmos) vs continuous semantic embeddings (VL-JEPA)
+2️⃣ **Processing**: Quadratic attention vs linear state-space (Mamba-3) or parallel embedding prediction
+3️⃣ **Loss Objective**: Next-token/pixel vs contrastive InfoNCE in latent space
+4️⃣ **Planning Loop**: Pixel rollout (Cosmos) vs latent MPC (V-JEPA 2-AC)
+
+━━━━━━━━━━━━━━━━━━━━
+
+🛒 **𝗖𝗼𝗿𝗲 𝗙𝗲𝗮𝘁𝘂𝗿𝗲𝘀: Workflow & Capabilities**
+
+VL-JEPA enables efficient multimodal perception without generation overhead.
+
+1. **Streaming Video** (`frame embeddings`) → Selective decoding only on scene changes → 2.85× operation reduction
+2. **Open-Vocabulary Tasks** (`embedding similarity`) → Zero-shot classification & retrieval → No token decoding needed
+3. **World Modeling** (`inverse dynamics prediction`) → Outperforms GPT-4o on Perception Test/TempCompass → Grounded physical reasoning
+4. **Robotics Control** (`V-JEPA 2-AC + MPC`) → ~80% zero-shot manipulation success → Latent-space planning loop
+
+━━━━━━━━━━━━━━━━━━━━
+
+🛡️ **𝗕𝗲𝗻𝗲𝗳𝗶𝘁𝘀: Efficiency & Systemic Impact**
+
+* **Inference Latency**: Single-pass design enables true real-time perception on edge hardware—critical for closed-loop robotics where milliseconds determine success
+* **Parameter & Data Efficiency**: 50% smaller models with 2× better learning curves accelerate iteration in data-constrained domains like physical AI
+* **Robust Generalization**: Ignoring high-frequency noise forces focus on predictable semantics, yielding stronger zero-shot transfer to novel environments
+* **Planning Speed**: 15× faster action selection closes the sim-to-real gap, moving embodied systems from lab demos to reliable deployment
+
+━━━━━━━━━━━━━━━━━━━━
+
+⚖️ **𝗦𝘁𝗿𝗮𝘁𝗲𝗴𝗶𝗰 𝗩𝗲𝗿𝗱𝗶𝗰𝘁: Latent vs Pixel-Generative Trade-offs**
+
+**Latent Prediction (Meta JEPA Family + Mamba-3 backbone potential)**
+- Strength: Efficiency at inference and planning, rapid iteration, edge-compatible
+- Risk: Weaker photorealistic synthetic data generation
+- Best for: Real-time perception, robotics deployment, resource-constrained agents
+
+**Pixel-Generative (Nvidia Cosmos Platform)**
+- Strength: Massive high-fidelity synthetic data (20M hours video), strong simulation for pre-training
+- Risk: Compute-heavy rollouts, slower closed-loop planning, hardware lock-in bias
+- Best for: Data augmentation pipelines, AV training, simulation-heavy domains
+
+**Current Reality**: No full-stack leader—Meta leads efficient world modeling, Nvidia dominates synthetic data and hardware integration, robotics control fragmenting around dual-system VLAs (π₀, Helix, GR00T).
+
+**Watch**: Real-world long-horizon manipulation success rates on humanoid platforms by end-2026. If latent-based systems reach 90%+ while maintaining 10× speed advantage, efficiency wins deployment share.
+
+━━━━━━━━━━━━━━━━━━━━
+
+**𝗧𝗟;𝗗𝗥**
+* **Semantic prediction** → Delivers superior performance with half the parameters and 15× faster planning
+* **Efficiency compounds** → At real-time scales, latency and cost dominate over raw fidelity
+* **Market fragments** → Perception (JEPA), simulation (Cosmos), control (dual-system VLA)—integration execution will decide winners
+
+**Will planning speed and edge efficiency define embodied AI leadership, or will synthetic data scale and simulation fidelity prove decisive?**
+
+👤 **Srinivasan Ragothaman (@rsrini7)**
+
+![Comprehensive AI Architecture Comparison Guide](assets/Comprehensive-AI-Architecture-Comparison-Guide.png)
+
+---
+
 ## Core Philosophy: What Does Each Architecture Optimize?
 
 ```mermaid
