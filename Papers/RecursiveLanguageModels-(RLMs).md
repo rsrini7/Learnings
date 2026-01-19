@@ -121,6 +121,10 @@ RLMs exemplify **inference-time scaling**: allocating more compute (recursive ca
 
 ---
 
+![Papers/assets/RLMs-Flow.png](assets/RLMs-Flow.png)
+
+---
+
 ## 📚 Table of Contents
 
 1. [The Context Rot Problem](#the-context-rot-problem)
