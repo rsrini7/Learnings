@@ -217,9 +217,9 @@ graph TD
     
     D --> D1[Indigenous Fellowship]
     
-    style B fill:#90EE90
-    style C fill:#FFD700
-    style D fill:#FFB6C1
+    style B fill:#992700
+    style C fill:#907290
+    style D fill:#779691
 ```
 
 **Note on Indigenous Fellowship**: No Indian fellows listed since 2009. Past fellows from Uganda, Ecuador, Russia, Sweden, New Zealand, Samoa, Bolivia, Philippines, Ukraine, Australia, and Tanzania.
@@ -489,11 +489,11 @@ graph TB
     F --> F1[Humphrey Fellowship<br/>10 months<br/>US Universities]
     
     style C1 fill:#4169E1
-    style D1 fill:#32CD32
-    style D2 fill:#32CD32
-    style E1 fill:#FF6347
-    style E2 fill:#FF6347
-    style F1 fill:#FFD700
+    style D1 fill:#327732
+    style D2 fill:#328832
+    style E1 fill:#126347
+    style E2 fill:#456347
+    style F1 fill:#765700
 ```
 
 ---
@@ -526,6 +526,8 @@ mindmap
       Clear motivation
       WIPO mission alignment
       Concrete examples
+
+%%{init: {'theme':'base', 'themeVariables': { 'primaryColor':'#0F172A','primaryTextColor':'#fff','primaryBorderColor':'#38BDF8','lineColor':'#64748B','secondaryColor':'#1E293B','tertiaryColor':'#334155'}}}%%
 ```
 
 #### Strategic Framing Examples
@@ -691,7 +693,7 @@ graph LR
     E --> E1[No employer dependency]
     E --> E2[Financial readiness]
     
-    style A fill:#FFD700
+    style A fill:#226700
 ```
 
 ### Final Advice
