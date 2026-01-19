@@ -181,6 +181,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Decline of StackOverflow](News/Decline-of-Stack-Overflow.md)
 - [India-GSoc-2026-Trends-Challanges-Solutions](News/India-GSoc-2026-Trends-Challanges-Solutions.md)
 - [GSoc-2026-Extended](News/GSoc-2026-Extended.md)
+- [WIPO & International Fellowship](News/WIPO-International-Fellowship.md)
 
 ---
 
