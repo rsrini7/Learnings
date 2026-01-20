@@ -125,9 +125,8 @@ The market is splitting between pure conditional-compute scaling and hybrid memo
 6. [Performance Results](#performance-results)
 7. [Comparisons with Other Techniques](#comparisons-with-other-techniques)
 8. [Scaling Laws & Optimization](#scaling-laws--optimization)
-9. [The Role of mHC in Engram](#the-role-of-mhc-in-engram)
-10. [Future Directions](#future-directions)
-11. [Practical Recommendations](#practical-recommendations)
+9. [Future Directions](#future-directions)
+10. [Practical Recommendations](#practical-recommendations)
 
 ---
 
@@ -167,13 +166,13 @@ graph TD
     E --> F[Layer 5: Even More Computation]
     F --> G[Finally: Recognized the entity!]
     
-    style A fill:#f9f,stroke:#333
-    style G fill:#bbf,stroke:#333
+    style A fill:#f9f,stroke:#333,color:#000
+    style G fill:#bbf,stroke:#333,color:#000
     
     H[What Should Happen] --> I[Instant Lookup: O1 time]
     
-    style H fill:#9f9,stroke:#333
-    style I fill:#9f9,stroke:#333
+    style H fill:#9f9,stroke:#333,color:#000
+    style I fill:#9f9,stroke:#333,color:#000
 ```
 
 ### Deep Dive: Anatomy of a Wasted Computation
@@ -228,8 +227,8 @@ graph LR
     D[Engram-Enhanced] --> E[Static Patterns<br/>→ Memory Lookup]
     D --> F[Dynamic Reasoning<br/>→ Neural Layers]
     
-    style A fill:#faa,stroke:#333
-    style D fill:#afa,stroke:#333
+    style A fill:#faa,stroke:#333,color:#000
+    style D fill:#afa,stroke:#333,color:#000
 ```
 
 **Two Pathways:**
@@ -271,9 +270,9 @@ flowchart TD
     
     H[Current Hidden State<br/>from Transformer] --> F
     
-    style A fill:#e1f5ff,stroke:#333
-    style G fill:#d4edda,stroke:#333
-    style F fill:#fff3cd,stroke:#333
+    style A fill:#e1f5ff,stroke:#333,color:#000
+    style G fill:#d4edda,stroke:#333,color:#000
+    style F fill:#fff3cd,stroke:#333,color:#000
 ```
 
 ### Detailed Flow
@@ -328,9 +327,9 @@ graph TD
     D -->|Low Relevance| F[Skip or Minimal Impact]
     E --> G[Add to Hidden State<br/>residual connection]
     
-    style A fill:#ffc,stroke:#333
-    style B fill:#cff,stroke:#333
-    style G fill:#cfc,stroke:#333
+    style A fill:#ffc,stroke:#333,color:#000
+    style B fill:#cff,stroke:#333,color:#000
+    style G fill:#cfc,stroke:#333,color:#000
 ```
 
 **Gate Calculation:**
@@ -386,9 +385,9 @@ graph TB
     K --> L[Optional: Depthwise Conv<br/>kernel=4, SiLU]
     L --> M[Residual Addition]
     
-    style E fill:#f96,stroke:#333,stroke-width:2px
-    style J fill:#ff9,stroke:#333,stroke-width:2px
-    style M fill:#9f9,stroke:#333,stroke-width:2px
+    style E fill:#f96,stroke:#333,stroke-width:2px,color:#000
+    style J fill:#ff9,stroke:#333,stroke-width:2px,color:#000
+    style M fill:#9f9,stroke:#333,stroke-width:2px,color:#000
 ```
 
 ### Integration into Transformer
@@ -404,8 +403,8 @@ graph TD
     D --> E[Layers 16-32: Standard Transformer]
     E --> F[Output Layer]
     
-    style B fill:#faa,stroke:#333,stroke-width:3px
-    style D fill:#faa,stroke:#333,stroke-width:3px
+    style B fill:#faa,stroke:#333,stroke-width:3px,color:#000
+    style D fill:#faa,stroke:#333,stroke-width:3px,color:#000
 ```
 
 **Why Early-to-Mid Layers?**
@@ -460,9 +459,9 @@ graph TD
     I --> D
     I --> F
     
-    style B fill:#f66,stroke:#333
-    style D fill:#fa6,stroke:#333
-    style F fill:#6af,stroke:#333
+    style B fill:#f66,stroke:#333,color:#000
+    style D fill:#fa6,stroke:#333,color:#000
+    style F fill:#6af,stroke:#333,color:#000
 ```
 
 **Key Optimizations:**
@@ -576,8 +575,8 @@ graph TD
     F[Training Tokens] --> G[262B tokens used]
     G --> H[Not saturated yet!<br/>Could train more]
     
-    style E fill:#9f9,stroke:#333
-    style H fill:#ff9,stroke:#333
+    style E fill:#9f9,stroke:#333,color:#000
+    style H fill:#ff9,stroke:#333,color:#000
 ```
 
 ### Long-Context Extension Results
@@ -622,10 +621,10 @@ graph TB
         D3[All active in training]
     end
     
-    style A1 fill:#9f9,stroke:#333
-    style B1 fill:#99f,stroke:#333
-    style C1 fill:#f99,stroke:#333
-    style D1 fill:#ff9,stroke:#333
+    style A1 fill:#9f9,stroke:#333,color:#000
+    style B1 fill:#99f,stroke:#333,color:#000
+    style C1 fill:#f99,stroke:#333,color:#000
+    style D1 fill:#ff9,stroke:#333,color:#000
 ```
 
 ### Detailed Comparison Table
@@ -656,9 +655,9 @@ graph LR
     
     D --> E[Output]
     
-    style B fill:#9f9,stroke:#333
-    style C fill:#ff9,stroke:#333
-    style D fill:#f96,stroke:#333
+    style B fill:#9f9,stroke:#333,color:#000
+    style C fill:#ff9,stroke:#333,color:#000
+    style D fill:#f96,stroke:#333,color:#000
 ```
 
 - **Complementary, not competitive**
@@ -720,8 +719,8 @@ graph TD
     D --> G[Performance: Best<br/>Balanced allocation]
     E --> H[Performance: Poor<br/>No dynamic reasoning capacity]
     
-    style D fill:#9f9,stroke:#333,stroke-width:3px
-    style G fill:#9f9,stroke:#333,stroke-width:3px
+    style D fill:#9f9,stroke:#333,stroke-width:3px,color:#000
+    style G fill:#9f9,stroke:#333,stroke-width:3px,color:#000
 ```
 
 **Performance vs Allocation:**
@@ -811,8 +810,8 @@ graph TD
     F --> M[Waste: 35-40% on<br/>pattern reconstruction]
     L --> N[Efficiency: Patterns handled<br/>by O1 lookup]
     
-    style M fill:#faa,stroke:#333
-    style N fill:#afa,stroke:#333
+    style M fill:#faa,stroke:#333,color:#000
+    style N fill:#afa,stroke:#333,color:#000
 ```
 
 **Effective Parameter Utilization:**
@@ -863,7 +862,7 @@ graph TD
     E --> F[Text-to-Image Associations]
     E --> G[Audio-to-Text Patterns]
     
-    style D fill:#f9f,stroke:#333
+    style D fill:#f9f,stroke:#333,color:#000
 ```
 
 ### Medium-Term Vision (2027)
@@ -887,7 +886,7 @@ graph TB
     B --> F
     C --> F
     
-    style E fill:#ff9,stroke:#333
+    style E fill:#ff9,stroke:#333,color:#000
 ```
 
 **2. Federated Learning with Local Memory**
@@ -932,9 +931,9 @@ graph LR
     
     D --> E[Long-Term Storage<br/>Memory Tables]
     
-    style A fill:#fcc,stroke:#333
-    style B fill:#cfc,stroke:#333
-    style D fill:#ccf,stroke:#333
+    style A fill:#fcc,stroke:#333,color:#000
+    style B fill:#cfc,stroke:#333,color:#000
+    style D fill:#ccf,stroke:#333,color:#000
 ```
 
 **Potential mechanisms:**
@@ -967,8 +966,8 @@ graph TD
     C --> E[55-70 Expert Networks<br/>Conditional activation]
     D --> F[Massive Embedding Tables<br/>Billions of patterns]
     
-    style C fill:#ff9,stroke:#333
-    style D fill:#9f9,stroke:#333
+    style C fill:#ff9,stroke:#333,color:#000
+    style D fill:#9f9,stroke:#333,color:#000
 ```
 
 **Step-by-step guide:**
@@ -1004,9 +1003,9 @@ graph TD
     H[Prefetch Engine] --> B
     H --> D
     
-    style B fill:#f66,stroke:#333
-    style D fill:#fa6,stroke:#333
-    style E fill:#66f,stroke:#333
+    style B fill:#f66,stroke:#333,color:#000
+    style D fill:#fa6,stroke:#333,color:#000
+    style E fill:#66f,stroke:#333,color:#000
 ```
 
 **Deployment checklist:**
@@ -1121,9 +1120,9 @@ graph TD
     B -->|5+ grams| D[❌ No - Too long]
     B -->|Variable length| E[❌ No - Fixed sizes only]
     
-    style C fill:#9f9,stroke:#333
-    style D fill:#faa,stroke:#333
-    style E fill:#faa,stroke:#333
+    style C fill:#9f9,stroke:#333,color:#000
+    style D fill:#faa,stroke:#333,color:#000
+    style E fill:#faa,stroke:#333,color:#000
 ```
 
 **Impact:** Misses longer idiomatic expressions or complex patterns
@@ -1271,9 +1270,9 @@ graph TB
         D2 --> E2
     end
     
-    style B1 fill:#faa,stroke:#333
-    style C2 fill:#9f9,stroke:#333
-    style D2 fill:#9f9,stroke:#333
+    style B1 fill:#faa,stroke:#333,color:#000
+    style C2 fill:#9f9,stroke:#333,color:#000
+    style D2 fill:#9f9,stroke:#333,color:#000
 ```
 
 ### Key Takeaways
