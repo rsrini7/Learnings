@@ -46,6 +46,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Latent Thinkers - A Brain Inspired AI](AI-ML/Latent-Thinkers.md)
 - [LLM-Council](AI-ML/LLM-Council.md)
 - [Claude Cowork](AI-ML/Claude-Cowork.md)
+- [Ashley's 11 Agent System](AI-ML/Ashley's-11-agent-system.md)
 
 ### 🔬 Models, Training & Inference
 - [Fine Tuning LLM - GTX 1060 - WSL2-Ubuntu-2022](AI-ML/Fine-Tuning-LLM-GTX1060-WSL2-Ubuntu-2022.md)
