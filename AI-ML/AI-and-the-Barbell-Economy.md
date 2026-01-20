@@ -4,6 +4,10 @@
 
 ---
 
+![AI-and-Barbell-Economy.png](assets/AI-and-Barbell-Economy.png)
+
+---
+
 ## Executive Summary
 
 Artificial Intelligence (AI) is not affecting all parts of the economy equally.
