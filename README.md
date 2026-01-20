@@ -43,6 +43,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Persistent Memory Layers AI Agents](AI-ML/Persistent-Memory-Layers-AI-Agents.md)
 - [Confucius Code Agent](AI-ML/Confucius-Code-Agent.md)
 - [MiroThinker 1.5](AI-ML/MiraThinker-1.5.md)
+- [Latent Thinkers - A Brain Inspired AI](AI-ML/Latent-Thinkers.md)
 - [LLM-Council](AI-ML/LLM-Council.md)
 - [Claude Cowork](AI-ML/Claude-Cowork.md)
 
