@@ -218,6 +218,10 @@ graph TD
 
 ![TraditionalLLM-vs-RecursiveLLM](assets/TraditionalLLM-vs-RecursiveLLM.png)
 
+---
+
+![RLMs-root-context-stayed-small](assets/RLMs-root-context-stayed-small.png)
+
 ### The Core Innovation
 
 **Traditional Approach**: Stuff everything into the neural network
@@ -415,8 +419,6 @@ sequenceDiagram
     
     RootLLM->>User: Return final answer with pairs
 ```
-
-![RLMs-root-context-stayed-small](assets/RLMs-root-context-stayed-small.png)
 
 ---
 
