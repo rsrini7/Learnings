@@ -99,6 +99,10 @@ The market is splitting between pure conditional-compute scaling and hybrid memo
 
 👤 **Srinivasan Ragothaman (@rsrini7)**
 
+![Deepseek-Engram-ConditionalMemory](assets/Deepseek-Engram-ConditionalMemory.png)
+
+---
+
 ![Deepseek-Engram](assets/Deepseek-Engram.png)
 
 ---
