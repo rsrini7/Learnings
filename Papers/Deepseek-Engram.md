@@ -39,9 +39,13 @@ DeepSeek-AI’s open-source (Apache-2.0) conditional memory module, released Jan
 🔧 **𝗖𝗼𝗿𝗲 𝗔𝗿𝗰𝗵𝗶𝘁𝗲𝗰𝘁𝘂𝗿𝗲: 𝗛𝘆𝗯𝗿𝗶𝗱 𝗠𝗲𝗺𝗼𝗿𝘆-𝗖𝗼𝗺𝗽𝘂𝘁𝗲 𝗣𝗮𝘁𝗵𝘄𝗮𝘆𝘀**
 
 1️⃣ **N-gram Extraction**: Overlapping 2-3 token sequences from recent context
+
 2️⃣ **Tokenizer Compression**: NFKC + lowercase + vocab projection (~23% size reduction)
+
 3️⃣ **Multi-Head Hashing**: 8 deterministic hashes per n-gram → collision-resistant addresses
+
 4️⃣ **Embedding Lookup**: Retrieve from tables (billions of parameters, tiered VRAM/RAM)
+
 5️⃣ **Context-Aware Gating**: RMSNorm + softmax dot-product decides integration strength
 
 Placement: Early-to-mid layers (e.g., layers 2 & 15 in 32-layer models) for maximum pattern capture without disrupting late reasoning.
@@ -103,8 +107,11 @@ The market is splitting between pure conditional-compute scaling and hybrid memo
 
 ---
 
-![Deepseek-Engram](assets/Deepseek-Engram.png)
+![Deepseek-Engram-Arch](assets/Deepseek-Engram-Arch.png)
 
+---
+
+![Deepseek-Engram](assets/Deepseek-Engram.png)
 ---
 
 ## Table of Contents
