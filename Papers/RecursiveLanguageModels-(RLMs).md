@@ -216,7 +216,7 @@ graph TD
 
 ## <a id="how-rlms-work"></a>🗝️ How RLMs Work
 
-![TraditionalLLM-vs-RecursiveLLM](assets/TraditionalLLM-vs-RecursiveLLM.jpeg)
+![TraditionalLLM-vs-RecursiveLLM](assets/TraditionalLLM-vs-RecursiveLLM.png)
 
 ### The Core Innovation
 
@@ -416,9 +416,7 @@ sequenceDiagram
     RootLLM->>User: Return final answer with pairs
 ```
 
-##### The root model's context stayed small throughout. No rot.
-
-![RLMs-root-context-stayed-small.jpeg](assets/RLMs-root-context-stayed-small.jpeg)
+![RLMs-root-context-stayed-small](assets/RLMs-root-context-stayed-small.png)
 
 ---
 
@@ -431,7 +429,7 @@ The key shift is context-centric decomposition:
 
 The model becomes a programmer analyzing a dataset, not a student cramming for an exam.
 
-![RLMs-agent-centric-vs-context-centric.jpeg](assets/RLMs-agent-centric-vs-context-centric.jpeg)
+![RLMs-agent-centric-vs-context-centric](assets/RLMs-agent-centric-vs-context-centric.png)
 
 Without explicit instruction, RLMs naturally discover these strategies:
 
