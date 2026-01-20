@@ -114,6 +114,8 @@ The market is splitting between pure conditional-compute scaling and hybrid memo
 ![Deepseek-Engram](assets/Deepseek-Engram.png)
 ---
 
+# DeepSeek Engram: Complete Technical Guide
+
 ## Table of Contents
 1. [Executive Summary](#executive-summary)
 2. [The Core Problem](#the-core-problem)
@@ -123,13 +125,15 @@ The market is splitting between pure conditional-compute scaling and hybrid memo
 6. [Performance Results](#performance-results)
 7. [Comparisons with Other Techniques](#comparisons-with-other-techniques)
 8. [Scaling Laws & Optimization](#scaling-laws--optimization)
-9. [Future Directions](#future-directions)
+9. [The Role of mHC in Engram](#the-role-of-mhc-in-engram)
+10. [Future Directions](#future-directions)
+11. [Practical Recommendations](#practical-recommendations)
 
 ---
 
 ## Executive Summary
 
-**Engram** is a groundbreaking architectural innovation from DeepSeek that introduces **conditional memory** to large language models. Think of it as giving an AI model a high-speed reference book alongside its reasoning brain.
+**Engram** is a groundbreaking architectural innovation from DeepSeek (released January 12, 2026 with Peking University - arXiv:2601.07372) that introduces **conditional memory** to large language models. Think of it as giving an AI model a high-speed reference book alongside its reasoning brain.
 
 ### Key Innovation
 - **O(1) lookup time** for common patterns (facts, phrases, entities)
@@ -137,9 +141,12 @@ The market is splitting between pure conditional-compute scaling and hybrid memo
 - **Compatible with existing techniques** like Mixture-of-Experts (MoE)
 - **Hardware-friendly** - can offload memory tables to system RAM
 - **Open source** under Apache-2.0 license
+- **Works with mHC** - manifold-constrained hyperconnections for trillion-parameter stable training
 
 ### Why It Matters
 Current transformer models waste expensive GPU computation reconstructing simple facts like "Paris is the capital of France" through deep neural layers—every single time. Engram solves this by storing these patterns in a fast lookup table, freeing the neural network to focus on actual reasoning.
+
+As DeepSeek founder Liang Wenfeng observed: "MoE solved the problem of 'how to compute less,' while Engram directly solves the problem of 'don't compute blindly.'"
 
 ---
 
@@ -169,6 +176,17 @@ graph TD
     style I fill:#9f9,stroke:#333
 ```
 
+### Deep Dive: Anatomy of a Wasted Computation
+
+To understand the inefficiency, look at how a standard 32-layer model processes the entity "Diana, Princess of Wales":
+
+- **Layers 1-2:** Identify "Wales" is a country in the UK.
+- **Layer 3:** Contextualize Wales within Europe.
+- **Layer 4:** Identify "Princess" as a royal title.
+- **Layers 5-6:** Finally reconstruct the specific person and dates (1961-1997).
+
+**The Verdict:** The model burns ~20% of its depth just performing "ontology reconstruction"—re-learning basic definitions from scratch—before it can even begin to answer a question *about* her. Engram replaces these 6 layers with a single lookup.
+
 **The Problem:**
 - Transformers lack a **native knowledge lookup** primitive
 - Tasks that should take **O(1) time** (constant time lookup) are simulated through **O(layer_depth)** computation
@@ -180,6 +198,16 @@ graph TD
 - **Higher infrastructure costs** from unnecessary GPU usage
 - **Reduced model capacity** for actual reasoning tasks
 - **35-40% of computation** spent on pattern reconstruction
+
+### The Fundamental Disconnect
+
+Language modeling is not one monolithic task. It consists of two very different workloads:
+
+1. **Dynamic Reasoning**: Logical composition, multi-step inference, mathematical problem solving, and code generation. These tasks genuinely require deep, adaptive computation.
+
+2. **Static Pattern Recall**: Named entities, common phrases, idioms, grammatical templates, formulaic expressions, and short code patterns. These patterns are local, repetitive, and mostly context-invariant.
+
+Transformers treat both workloads the same way. Engram argues they should not.
 
 ---
 
@@ -208,6 +236,12 @@ graph LR
 1. **Memory Pathway** - O(1) lookup for static patterns (facts, common phrases)
 2. **Neural Pathway** - Deep computation for reasoning and context understanding
 
+Engram separates these responsibilities:
+- **Conditional memory (Engram)** handles static pattern recall through O(1) lookup
+- **Conditional computation (MoE)** handles dynamic reasoning through expert networks
+
+This creates a new axis of sparsity alongside conditional computation.
+
 ---
 
 ## How Engram Works
@@ -221,6 +255,8 @@ Think of Engram as a massive, intelligent dictionary that the AI can consult ins
 3. **Look up in memory table** → Retrieve pre-computed representation
 4. **Check if relevant** → Gate mechanism validates against current context
 5. **Integrate or skip** → Add to processing only if helpful
+
+Unlike Retrieval-Augmented Generation (RAG) which queries external databases, or KV Cache which stores conversation history, Engram is a queryable database of information committed to system memory—think of it as the difference between storing handwritten notes (KV Cache) versus having a record of the whole encyclopedia (Engram).
 
 ### The Five-Step Process
 
@@ -253,11 +289,16 @@ Normalize tokens to create semantic density:
 - **Lowercase conversion** - "Apple" and "apple" → same pattern
 - **Vocabulary projection** - Reduces vocabulary size by ~23%
 
+This compression allows DeepSeek to handle the impossibly large number of phrase combinations by creating canonical concepts. For example, "Apple," "APPLE," and "apple" all map to the same underlying token.
+
 #### Step 3: Multi-Head Hashing
+
 Use deterministic hash functions to generate memory addresses:
 - **K heads per n-gram** (typically 8 heads)
 - **Multiplicative-XOR hashing** for collision resistance
 - **Prime-sized tables** for better distribution
+
+The hashing methodology allows the model to apply a number to a series of words, making lookups computationally tractable.
 
 ```python
 # Simplified hashing example
@@ -276,7 +317,7 @@ Retrieve pre-computed vectors from massive embedding tables:
 
 #### Step 5: Context-Aware Gating
 
-This is the "conditional" in conditional memory:
+This is the "conditional" in conditional memory—the gate isn't just a switch; it's a semantic filter that handles polysemy (words with multiple meanings) and hash collisions.
 
 ```mermaid
 graph TD
@@ -304,6 +345,22 @@ gate_alpha = softmax(
 
 output = gate_alpha * memory_value + hidden_state
 ```
+
+### Visual Intuition: The "Apple" Scenario
+
+The gate handles scenarios where the same word has different meanings:
+
+**Scenario A:**
+- **Input:** "Apple" → Retrieves "Apple Inc." embedding.
+- **Context:** "The tech company stocks are up..."
+- **Gate Action:** **OPEN (High relevance)**. The hidden state matches the retrieval.
+
+**Scenario B:**
+- **Input:** "Apple" → Retrieves "Apple Inc." embedding.
+- **Context:** "Add chopped fruit to the salad..."
+- **Gate Action:** **CLOSED (Suppression)**. The hidden state (food context) clashes with the retrieval (tech company). The memory is ignored.
+
+If retrieved memory contradicts the current context, the gate suppresses it. If it fits, the gate lets it through.
 
 ---
 
@@ -356,6 +413,8 @@ graph TD
 - **Mid layers**: Better global context for gating decisions
 - **Not late layers**: Would interfere with final reasoning and generation
 
+The module isn't applied at every layer. Strategic placement balances performance gains against system latency.
+
 ### Example Configuration (27B Model)
 
 ```python
@@ -377,6 +436,15 @@ class TransformerBlockWithEngram:
 ```
 
 ### Hardware Optimization
+
+**The Hardware Breakthrough: Deterministic Pipelining**
+
+Engram solves a problem that MoE cannot:
+
+- **MoE Issue:** Routing is *dynamic*. The GPU must finish Layer 1 to know which experts are needed for Layer 2. You cannot prefetch data.
+- **Engram Advantage:** Lookup is *deterministic*. The hash addresses are known from the raw input text alone.
+
+**The Result:** We can hide memory latency completely. While the GPU is crunching **Layer 1**, the CPU is already pre-fetching the memory embeddings for **Layer 2**. This pipeline allows massive tables to live in slow system RAM with **<3% throughput penalty**.
 
 **Tiered Memory Architecture:**
 
@@ -403,6 +471,10 @@ graph TD
 3. **Quantization** - Use 4-bit or FP8 for memory tables with minimal accuracy loss
 4. **LRU Eviction** - Keep frequently accessed patterns in fast memory
 
+During inference, the system can asynchronously retrieve embeddings from host CPU memory via PCIe. This happens while GPU computes preceding transformer blocks. Strategic layer placement leverages computation of early layers as a buffer to mask communication latency.
+
+Researchers demonstrated this with a 100B-parameter embedding table entirely offloaded to host DRAM, achieving throughput penalties below 3%. This decoupling of storage from compute addresses a critical enterprise constraint as GPU high-bandwidth memory remains expensive and scarce.
+
 ---
 
 ## Performance Results
@@ -414,6 +486,7 @@ graph TD
 - **Engram Model**: Engram-27B (55 experts + 5.7B Engram memory, 26.7B total)
 - **Training**: 262B tokens, identical computational budget
 - **Comparison**: Iso-parameter and iso-FLOPs (strictly fair comparison)
+- **Activated Parameters**: Both maintain 3.8B activated parameters
 
 ```mermaid
 graph LR
@@ -442,11 +515,14 @@ graph LR
 |--------------------|------|---------|------------|-------------|------|
 | **Knowledge** | MMLU (general) | 57.4 | 60.4 | **+3.0** | Better factual recall |
 | **Knowledge** | CMMLU (Chinese) | 57.9 | 61.9 | **+4.0** | Efficient multilingual patterns |
+| **Knowledge** | MMLU-Pro | ~45% | ~47% | **+1.8** | Advanced knowledge tasks |
 | **Reasoning** | BBH (hard reasoning) | 50.9 | 55.9 | **+5.0** | More depth for reasoning |
 | **Reasoning** | ARC-Challenge | ~70% | ~74% | **+4.0** | Complex multi-step problems |
+| **Reasoning** | DROP | ~70% | ~73% | **+3.3** | Reading comprehension |
 | **Code** | HumanEval | 37.8 | 40.8 | **+3.0** | API/idiom pattern recognition |
 | **Code** | MBPP | Similar | Similar | **+2-3%** | Standard coding patterns |
 | **Math** | MATH benchmark | 28.3 | 30.7 | **+2.4** | Formula/theorem recall |
+| **Math** | GSM8K | ~65% | ~67% | **+2.2** | Grade school math |
 | **Long Context** | Needle-in-Haystack | 84.2 | 97.0 | **+12.8** | Dramatic! Best result |
 
 ### Key Observations
@@ -455,6 +531,18 @@ graph LR
 - Achievement of 97% accuracy on needle-in-haystack tests demonstrates Engram's ability to preserve attention for global dependencies
 - Memory handles local patterns → attention focuses on long-range relationships
 - **84% → 97%** is a game-changing improvement
+- By offloading local dependency modeling to static lookups, the Engram architecture preserves valuable attention capacity for managing global context
+
+**The "Effective Depth" Phenomenon**
+
+Why did reasoning improve more than knowledge? By offloading static definitions (like the "Diana" example above) to the memory module, the bottom layers of the Transformer are no longer "wasted" on dictionary lookups.
+
+- **Standard Model:** Layers 1-6 = Definitions, Layers 7-32 = Reasoning.
+- **Engram Model:** Layers 1-6 = **Reclaimed for Reasoning**.
+
+The model effectively becomes "deeper" without adding parameters, dedicating its full neural capacity to complex synthesis rather than rote memorization.
+
+Mechanistic analysis shows that early layers in Engram models behave like much deeper layers in MoE-only models. In practice, this means the model reaches prediction-ready representations sooner and has more depth available for real reasoning.
 
 **Strong Reasoning Gains**
 - +5% on Big-Bench Hard shows the model has more "effective depth"
@@ -466,6 +554,8 @@ graph LR
 - But reasoning improved MORE than knowledge (counterintuitive!)
 - Suggests Engram's main benefit is computational efficiency, not just memory storage
 
+Importantly, these gains appear even when controlling for training loss (iso-loss setting), showing that the advantage is architectural rather than accidental.
+
 ### Scaling Experiments
 
 **Engram-40B Configuration:**
@@ -473,6 +563,7 @@ graph LR
 - **18.5B Engram memory** (vs 5.7B in 27B)
 - Shows continued improvement as memory scales
 - Training curves suggest **memory not yet saturated** at 262B tokens
+- Maintains same 3.8B activated parameters
 
 ```mermaid
 graph TD
@@ -488,6 +579,16 @@ graph TD
     style E fill:#9f9,stroke:#333
     style H fill:#ff9,stroke:#333
 ```
+
+### Long-Context Extension Results
+
+Following the pre-training stage, models underwent context extension training using YaRN for 32,768-token context windows (5,000 steps, 30B tokens of high-quality, long-context data).
+
+**Evaluation Setup:**
+- **LongPPL**: Long books, research papers, code repositories, and long chain-of-thought (CoT) trajectories
+- **RULER**: 14 subsets across 8 categories including Single/Multi-keys/values/queries Needle-in-a-Haystack, Variable Tracking, Common/Frequent Words Extraction, and Question Answering
+
+**Key Finding:** Engram-27B matched or improved LongPPL scores and clearly improved RULER scores, especially on Multi-Query-Needle in a Haystack and variable tracking, even when trained with lower or equal compute compared to MoE-27B.
 
 ---
 
@@ -540,6 +641,7 @@ graph TB
 | **Overhead** | <3% inference | 100-500ms per query | Grows with context | Routing bottleneck |
 | **Works offline** | ✅ Yes | ❌ No | ✅ Yes | ✅ Yes |
 | **Context usage** | No tokens consumed | Consumes context window | Stores within context | No extra consumption |
+| **Deterministic** | ✅ Yes (enables prefetch) | ❌ No | ✅ Yes | ❌ No (dynamic routing) |
 
 ### Synergy with Existing Techniques
 
@@ -573,6 +675,11 @@ graph LR
 - No additional latency
 - Both optimize different parts of the computation
 
+**Engram + mHC (Critical Combination):**
+- mHC enables stable training at trillion-parameter scales
+- Engram benefits from mHC's stabilized residual connections
+- Together they form the foundation for DeepSeek V4
+
 ### When to Use Each Technique
 
 | Use Case | Best Technique | Why? |
@@ -584,6 +691,14 @@ graph LR
 | Multi-domain expertise | **MoE + Engram** | Best of both worlds |
 | Memory-constrained hardware | **Engram** | Offload to system RAM |
 | Fast inference required | **Engram** | O(1) lookup, minimal overhead |
+| Trillion-parameter models | **Engram + mHC** | Stability at massive scale |
+
+### Comparison with OverEncoding
+
+Engram outperforms OverEncoding, another N-gram embedding method that averages embeddings into the vocabulary layer, under the same memory budget. The key differences:
+- Engram uses separate memory tables with gating
+- OverEncoding modifies vocabulary embeddings directly
+- Engram's conditional gating provides better context adaptation
 
 ---
 
@@ -591,7 +706,7 @@ graph LR
 
 ### The U-Shaped Allocation Curve
 
-DeepSeek formulated the trade-off between neural computation (MoE) and static memory (Engram), identifying a U-shaped scaling law that guides optimal capacity allocation
+DeepSeek formulated the trade-off between neural computation (MoE) and static memory (Engram), identifying a U-shaped scaling law that guides optimal capacity allocation.
 
 ```mermaid
 graph TD
@@ -628,6 +743,16 @@ Performance
 
 **Key Finding:** Allocate **75-80% to MoE** (dynamic reasoning) and **20-25% to Engram** (static memory)
 
+The core design question is how to split the sparse parameter budget between routed experts and conditional memory. Given fixed parameter budget and FLOPs, define allocation ratios:
+- **ρ_e**: Proportion of sparse capacity allocated to MoE experts
+- **ρ_m**: Proportion of sparse capacity allocated to Engram memory
+
+Performance function P(ρ_e, ρ_m) exhibits U-shaped behavior. A pure MoE model has ρ = 1. Testing found pure MoE (100% computation) proved suboptimal:
+- Too much computation wastes depth reconstructing static patterns
+- Too much memory loses reasoning capacity
+
+On mid-scale 5.7B and 9.9B models, sweeping ρ gives a clear U-shaped curve of validation loss versus allocation ratio. Engram models match the pure MoE baseline even when ρ drops to about 0.25, which corresponds to roughly half as many routed experts. The optimum appears when around 20-25% of the sparse budget is given to Engram. This optimum is stable across both compute regimes, suggesting a robust split between conditional computation and conditional memory under fixed sparsity.
+
 ### Infinite Memory Scaling
 
 **Experiment:** Fix backbone, only grow Engram tables
@@ -646,6 +771,8 @@ graph LR
 ```
 
 **Observation:** Shows predictable power-law gains as memory scales, without increasing compute!
+
+The team studied an infinite memory regime on a fixed 3B MoE backbone trained for 100B tokens. They scaled the Engram table from roughly 2.58e5 to 1e7 slots. Validation loss follows an almost perfect power law in log space, meaning that more conditional memory keeps paying off without extra compute.
 
 ### Optimal Layer Placement
 
@@ -888,6 +1015,14 @@ graph TD
 3. **Monitoring**: Track hit rates, latency, memory pressure
 4. **Compression**: Apply 4-bit quantization to tables
 5. **Sharding strategy**: Distribute tables across GPUs using hash ranges
+
+**The Economics of Host RAM**
+Engram changes the hardware scaling laws. Because the prefetch pipeline works so well, you do not need expensive HBM (High Bandwidth Memory) for the memory tables.
+
+*   **Traditional Scaling:** Needs more GPUs for more VRAM.
+*   **Engram Scaling:** Needs more **System RAM (DDR)**.
+
+You can feasibly run a 100B+ parameter memory table on a standard server with 512GB of cheap DDR RAM, keeping your expensive GPU VRAM reserved strictly for the neural "brain."
 
 ### For Application Developers
 
