@@ -116,6 +116,18 @@ Modern agent systems are built on two fundamental types of context:
 
 ## Claude Code - The Flagship Developer Tool
 
+![AI-ML/assets/Claude-Code-Modernization.gif](assets/Claude-Code-Modernization.gif)
+
+Refer to : [Using Claude Code to Modernize Legacy Codebases](https://newsletter.rakeshgohel.com/p/using-claude-code-to-modernize-legacy-codebases)
+
+---
+
+![AI-ML/assets/Claude-Code-Cheatsheet.png](assets/Claude-Code-Cheatsheet.png)
+
+Refer to : [ClaudeCode Mastery Handbook](https://github.com/hamodywe/ClaudeCode-Mastery-Handbook)
+
+---
+
 ### Overview
 
 **Claude Code** is an agentic coding assistant that runs in your terminal, understanding your codebase and autonomously executing development tasks. Launched February 2025, it reached $1B+ ARR and is used internally at Anthropic for 80% of tech tasks.
@@ -563,6 +575,7 @@ my-project/
 
 ## Skills - Modular Capabilities
 
+
 ### Overview
 
 **Skills** are reusable packages (folder with instructions + resources) that give Claude specialized capabilities. They represent **dynamic context**—loaded only when needed to avoid token bloat—and are portable across Claude Code, API, and claude.ai.
@@ -783,6 +796,8 @@ Skills are designed as an **open standard** for the AI agent ecosystem:
 - **Distribution**: Share via GitHub, npm, package managers
 - **Community Growth**: Expected to become dominant pattern in 2026+
 - **Future-Proof**: As AI tools standardize, skills become universal capabilities
+
+Refer to :  [Awesome Claude Skills](https://github.com/ComposioHQ/awesome-claude-skills) for a curated list of skills.
 
 ---
 
@@ -2854,6 +2869,15 @@ Total: ~$22.50
 - **Chrome Extension**: Claude in browser
 - **Desktop Apps**: macOS, Windows, Linux
 - **Mobile**: iOS, Android apps
+
+
+### Others:
+
+- [Exploration of Anthropic Claude](https://responseawareness.substack.com/p/exploration-of-anthropics-claude)
+
+- [The Complete Claude Code Guide for Your New Year Resolution: Code Smarter in 2026](https://ai.gopubby.com/the-complete-claude-code-guide-for-your-new-year-resolution-code-smarter-in-2026-be1782be2083)
+
+- [Claude Code 2.1 Guide](https://www.datacamp.com/tutorial/claude-code-2-1-guide)
 
 ---
 
