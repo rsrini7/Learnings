@@ -157,6 +157,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 
 - [Java Plugins Architecture](JVM/Java-Plugin-Arch.md)
 - [Java Remote Debug](JVM/Java_remote_debug.md)
+- [Java-Standard_Classes-vs-Records-vs-Carrier_Classes](JVM/Java-Standard_Classes-vs-Records-vs-Carrier_Classes.md)
 
 ---
 
