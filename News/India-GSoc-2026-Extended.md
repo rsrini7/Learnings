@@ -367,14 +367,14 @@ graph TD
     N -->|Yes| O[Coding Period:<br/>June-August 2026]
     N -->|No| P[Learn from experience,<br/>try again or explore alternatives]
     
-    style A fill:#e1f5ff
-    style H fill:#d4edda
-    style N fill:#fff3cd
-    style O fill:#d4edda
-    style C fill:#f8d7da
-    style E fill:#fff3cd
-    style G fill:#fff3cd
-    style P fill:#fff3cd
+    style A fill:#e1f5ff,color:#000
+    style H fill:#d4edda,color:#000
+    style N fill:#fff3cd,color:#000
+    style O fill:#d4edda,color:#000
+    style C fill:#f8d7da,color:#000
+    style E fill:#fff3cd,color:#000
+    style G fill:#fff3cd,color:#000
+    style P fill:#fff3cd,color:#000
 ```
 
 **Ethical Participation Alignment:**
@@ -842,10 +842,10 @@ graph LR
     E --> I[Emphasize:<br/>- Deep technical detail<br/>- Research depth<br/>- Alternative approaches<br/>- Code examples]
     F --> J[Alternative:<br/>- Wait for better preparation<br/>- Focus on contributions now]
     
-    style C fill:#d4edda
-    style D fill:#fff3cd
-    style E fill:#f8d7da
-    style F fill:#f8d7da
+    style C fill:#d4edda,color:#000
+    style D fill:#fff3cd,color:#000
+    style E fill:#f8d7da,color:#000
+    style F fill:#f8d7da,color:#000
 ```
 
 **Real Success Formula (from Section 11 case studies):**
@@ -1236,14 +1236,14 @@ graph TD
     
     N --> Q[Monitor org closely<br/>after announcement]
     
-    style A fill:#e1f5ff
-    style L fill:#d4edda
-    style M fill:#d4edda
-    style C fill:#f8d7da
-    style E fill:#f8d7da
-    style G fill:#f8d7da
-    style P fill:#fff3cd
-    style Q fill:#fff3cd
+    style A fill:#e1f5ff,color:#000
+    style L fill:#d4edda,color:#000 
+    style M fill:#d4edda,color:#000
+    style C fill:#f8d7da,color:#000
+    style E fill:#f8d7da,color:#000
+    style G fill:#f8d7da,color:#000
+    style P fill:#fff3cd,color:#000
+    style Q fill:#fff3cd,color:#000
 ```
 
 #### **Decision Node Details**
