@@ -12,7 +12,7 @@ Google Summer of Code (GSoC) has successfully introduced over 21,000 contributor
 
 ---
 
-![India-GSoc-2026-Trends-Challenges-Solutions](assets/India-GSoc-2026-Trends-Challanges-Solutions.png)
+![India-GSoc-2026-Trends-Challenges-Solutions](assets/India-GSoc-2026-Trends-Challenges-Solutions.png)
 
 ---
 
@@ -103,7 +103,7 @@ This analysis focuses on publicly available data, verified incidents, and docume
 | Contributor-Org Communication | February 19 - March 15, 2026 |
 | Contributor Applications Open | March 16, 2026 |
 | Contributor Applications Close | March 31, 2026 (18:00 UTC) |
-| Contributor Rankings Due | April 29, 2026 |
+| Contributor Rankings Due (Org Admins) | April 21, 2026 (18:00 UTC) |
 | Contributors Announced | April 30, 2026 |
 | Community Bonding Period | May 1-24, 2026 |
 | Coding Period Begins | May 25, 2026 |
@@ -119,6 +119,8 @@ This analysis focuses on publicly available data, verified incidents, and docume
   - For India and similar economies: typically ~$1,500-$3,000
 - **Large Projects** (~350 hours, 10-22 weeks): Base $6,000, PPP range $3,000-$6,600
 
+*Note: Stipend amounts and PPP multipliers subject to confirmation when contributor portal opens. Figures based on 2025 structure.*
+
 **Payment Structure:**
 - 45% at midterm evaluation
 - 55% at project completion
@@ -130,19 +132,28 @@ This analysis focuses on publicly available data, verified incidents, and docume
 
 ### 3.3 Recent Performance Metrics
 
-**2025 Program Statistics:**
-- **Registrations:** Record-breaking interest with 98,698 registrations from 172 countries
-- **Proposals Submitted:** 23,559 from 15,240 applicants (highest in program history)
-- **Selected Contributors:** 1,272-1,280
-- **Acceptance Rate:** ~8.4%
-- **Participating Organizations:** 185
-- **Contributing Countries:** 68
-- **First-time Open Source Contributors:** 66.3%
-- **First-time GSoC Applicants:** 96.55%
+**2025 Program Statistics (Preliminary/Community-Reported):**
 
-**Mentorship Statistics:**
-- Over 2,100 mentors from 75 countries
-- Nearly two-thirds have mentored for 4+ years
+*Note: Official 2025 statistics not yet published as of January 22, 2026. The following numbers are based on community reports and early announcements.*
+
+- **Registrations:** Record-breaking interest reported with 98,698 registrations from 172 countries (unverified)
+- **Proposals Submitted:** Approximately 23,559 from 15,240 applicants
+- **Selected Contributors:** Approximately 1,272-1,280
+- **Acceptance Rate:** ~8.4%
+- **Participating Organizations:** 185 (verified)
+- **Contributing Countries:** 68 (estimated)
+- **First-time Open Source Contributors:** ~66% (estimated)
+- **First-time GSoC Applicants:** ~96% (estimated)
+
+**2024 Program Statistics (Official - Last Published):**
+- **Selected Contributors:** 1,213
+- **Participating Organizations:** 195
+- **Contributing Countries:** 68
+
+**Mentorship Statistics (Multi-Year Trends):**
+- Over 2,100 mentors from 75 countries participate annually
+- Nearly two-thirds of mentors have mentored for 4+ years
+- Total program impact: 22,000+ contributors, 20,000+ mentors since 2005
 
 ---
 
@@ -631,6 +642,165 @@ Despite challenges, many Indian contributors exemplify ethical, high-quality par
 - Link all your contributions (PRs, issues, community interactions)
 - Write authentically—reviewers can detect AI-generated content
 
+**Comprehensive Proposal Structure (From Successful Examples):**
+
+Youtube Explanation: https://www.youtube.com/watch?v=kZa8lGTwDhA
+
+GSoC Proposal for Large Size Project: https://drive.google.com/file/d/1f7oQLQs3JsEKT9FqIilS77eIWKqBN-KK/view
+
+GSoC Proposal for Medium Size Project:
+https://drive.google.com/file/d/191BYnVgIqAbCKRmD7AkQU2oDUY0GEFdC/view
+
+Successful proposals typically follow this proven structure:
+
+**1. Header & Personal Information:**
+- Full name, photo (helps mentors remember you)
+- University/educational background
+- Contact info (email, GitHub, LinkedIn, Slack handle)
+- Time zone (important for coordination)
+
+**2. About Me / Self-Introduction:**
+- Brief background (2-3 paragraphs)
+- Why you're interested in this specific organization and project
+- Relevant coursework, personal projects, or experience
+- What draws you to open source
+
+**3. Technical Skills & Experience:**
+- Programming languages (proficiency levels: beginner/intermediate/expert)
+- Frameworks, tools, technologies relevant to the project
+- Version control, testing, CI/CD experience
+- Previous open-source contributions (if any)
+
+**4. Prior Contributions to This Organization:**
+- **CRITICAL:** List ALL merged PRs, issues opened, discussions participated in
+- Include PR numbers, issue links, brief descriptions
+- Highlight impact: "Fixed critical bug affecting 1000+ users" vs just "Fixed bug"
+- Show progression from easy to complex contributions
+- Ideally 3-5+ merged contributions started months earlier
+
+**5. Availability & Commitment:**
+- Hours per week you can dedicate (be realistic: 30-40 for full-time)
+- Academic calendar: exam periods, holidays, other commitments
+- How you'll handle conflicts (buffer weeks, flexible scheduling)
+- Explicit statement: "I commit to X hours/week for Y weeks"
+
+**6. Project Vision & Motivation:**
+- Why THIS specific project excites you personally
+- What problem it solves that you care about
+- How it aligns with your learning goals
+- Your vision for the project's impact
+
+**7. Project Description & Technical Approach:**
+- **Detailed breakdown** of what you'll build
+- Architecture diagrams, flowcharts, wireframes
+- For UI projects: Include Figma/Sketch mockups or hand-drawn sketches
+- For backend: Database schema, API design, authentication flow
+- Technology stack with justifications
+- **Prototype/demo highly valued:** Even minimal working version shows understanding
+
+**8. Deliverables & Milestones:**
+- Clear, measurable outcomes for each phase
+- Example: "Week 1-2: User authentication module with OAuth2, 10 unit tests"
+- NOT vague: "Week 1-2: Work on authentication"
+- Group related tasks logically
+- Include testing, documentation, code review cycles
+
+**9. Timeline (Week-by-Week):**
+- **Be very specific and realistic**
+- Community Bonding (3 weeks): What you'll learn, documentation to read
+- Coding Phase broken into sprints
+- Midterm milestone clearly defined
+- Buffer weeks for unexpected challenges (illness, debugging, mentor feedback)
+- Final weeks: testing, documentation, cleanup
+- **Common mistake:** Over-promising. Better to under-promise and over-deliver
+
+**Example Timeline Format:**
+```
+Community Bonding (Week 1-3):
+- Study existing codebase architecture
+- Set up complete development environment
+- Weekly sync meetings with mentor
+- Create detailed technical specification document
+
+Coding Period - Phase 1 (Week 4-7):
+Week 4: Implement user registration with email verification
+Week 5: Add OAuth integration (Google, GitHub)
+Week 6: Build user profile management system
+Week 7: Write unit tests, integration tests, documentation
+
+Midterm Evaluation (Week 8):
+- Deliverable: Fully functional authentication system
+- 80% test coverage
+- API documentation complete
+```
+
+**10. Post-GSoC / Future Scope:**
+- **Very important:** Explicitly state your intention to continue contributing
+- Potential future enhancements beyond GSoC scope
+- How you'll help maintain the project
+- Mentoring future contributors
+- Long-term vision alignment with org's roadmap
+
+**11. Related Work / Additional Achievements:**
+- Relevant personal projects with GitHub links
+- Hackathon wins, competitive programming
+- Leadership roles (club president, teaching assistant)
+- Technical blog posts, conference talks
+- Other open-source contributions
+
+**12. References / Appendices (Optional):**
+- Links to demo videos
+- Detailed technical specifications
+- Research papers referenced
+- Alternative approaches considered
+
+**Critical Proposal Tips from Successful Contributors:**
+
+**Before Writing:**
+- **Ask the organization for their preferred template** - many orgs have specific formats
+- **Request examples of past successful proposals** from mentors
+- Study 3-5 accepted proposals from previous years
+- Note what made them stand out
+
+**During Writing:**
+- **Treat your proposal as a prototype of your project** - demonstrate understanding through visuals
+- Use diagrams liberally (architecture, flows, UI mockups)
+- Be honest about what you know vs what you'll learn
+- Include "Challenges & Mitigation" section showing you've thought through risks
+- Proofread extensively - grammar/spelling errors suggest carelessness
+
+**Mentor Interaction:**
+- **Share early draft with mentor (2+ weeks before deadline)**
+- Ask specific questions: "Does this timeline seem realistic?" not "What do you think?"
+- Incorporate feedback and explicitly mention changes: "Based on your suggestion, I've..."
+- Multiple iterations with mentor feedback = strong signal of collaboration
+
+**Common Mistakes to Avoid:**
+- Generic proposals that could apply to any organization
+- Vague timelines: "Week 1-4: Work on frontend"
+- No evidence of prior contributions to the org
+- Unrealistic scope: "I'll rewrite the entire system in 12 weeks"
+- Over-reliance on AI for writing (it shows)
+- Submitting at the last minute (system crashes, Murphy's Law)
+- Not reading the organization's idea list or requirements
+
+**Quality Over Quantity:**
+- Better to submit 1-2 excellent proposals than 3 mediocre ones
+- Each proposal should be deeply researched and customized
+- If proposing your own idea (allowed), discuss extensively with org first
+
+**Final Checklist:**
+- [ ] Meets organization's specific requirements
+- [ ] Follows their template (if provided)
+- [ ] All sections complete and detailed
+- [ ] Timeline is realistic with buffers
+- [ ] Includes visuals/diagrams/mockups
+- [ ] Shows ALL prior contributions
+- [ ] Mentor has reviewed and approved
+- [ ] Proofread by someone else
+- [ ] Submitted at least 24 hours before deadline
+- [ ] Contact info is correct
+
 **Post-Selection Commitment:**
 - Plan to continue engagement beyond summer
 - View program as beginning, not end goal
@@ -1014,11 +1184,12 @@ The challenges documented in this white paper are significant but not insurmount
 ### 13.6 Verification Methodology
 
 **Real-Time Search Conducted:**
-- January 22, 2026
+- January 22, 2026 (refreshed for final verification)
 - Search engines: Google, specialized tech sources
 - Cross-referencing multiple independent sources
 - Priority given to official statements and documented incidents
 - Community reports treated as supplementary evidence
+- **Note:** 2025 final statistics not yet officially published; numbers based on community reports and preliminary announcements
 
 **Data Quality Assessment:**
 - VERIFIED: Multiple independent sources, official statements
@@ -1032,27 +1203,72 @@ The challenges documented in this white paper are significant but not insurmount
 
 ### Appendix A: GSoC 2026 Timeline (Detailed)
 
-**Complete Calendar with Key Dates:**
+**Complete Calendar with Key Dates (All times 18:00 UTC unless noted):**
 
-- **January 19, 2026 (18:00 UTC):** Organization applications open
-- **February 3, 2026 (18:00 UTC):** Organization applications close
-- **February 4-18, 2026:** Organization review and selection period
+**Phase 1: Organization Application & Selection**
+- **January 19, 2026:** Organization applications open
+- **February 3, 2026:** Organization applications close
+- **February 4-18, 2026:** Organization review and selection period (Google internal)
 - **February 19, 2026:** Accepted organizations announced
-- **February 19 - March 15, 2026:** Community bonding period for potential contributors
+
+**Phase 2: Community Engagement Period**
+- **February 19 - March 15, 2026:** Potential contributors explore organizations, join communication channels, start contributing
+
+**Phase 3: Contributor Application Period**
 - **March 16, 2026:** Contributor applications open
-- **March 31, 2026 (18:00 UTC):** Contributor applications close
-- **April 1-28, 2026:** Application review period
-- **April 29, 2026:** Organization rankings due
-- **April 30, 2026:** Accepted contributors announced
-- **May 1-24, 2026:** Community bonding period
+- **March 16-31, 2026:** Contributors submit proposals (up to 3 per person)
+- **March 31, 2026:** Contributor application deadline (18:00 UTC)
+  - *Note: Do not wait until last minute - submit early and iterate*
+
+**Phase 4: Proposal Review & Selection**
+- **April 1-20, 2026:** Organizations review proposals, mentors provide rankings
+- **April 21, 2026:** **Organization rankings and slot requests due (18:00 UTC)**
+  - *This is earlier than many expect - orgs must complete all reviews by this date*
+- **April 22-29, 2026:** Google allocates slots, finalizes selections
+- **April 30, 2026:** **Accepted contributors announced (18:00 UTC)**
+
+**Phase 5: Community Bonding**
+- **May 1-24, 2026:** Community bonding period (3 weeks)
+  - Contributors set up development environments
+  - Meet with mentors, establish communication rhythms
+  - Read documentation, understand codebase
+  - Create detailed project plans with milestones
+  - **No coding yet** - this is preparation time
+
+**Phase 6: Coding Period (Standard 12-week timeline)**
 - **May 25, 2026:** Coding officially begins
-- **July 6-10, 2026:** Midterm evaluation period
-- **August 17-31, 2026:** Final evaluation period (standard timeline)
-- **August 24 - November 2, 2026:** Extended timeline projects continue
+- **May 25 - July 5, 2026:** First coding phase (6 weeks)
+- **July 6, 2026:** Midterm evaluation window opens
+- **July 6-10, 2026:** Midterm evaluations period
+  - Contributors submit progress reports
+  - Mentors evaluate contributor performance
+  - **Payments:** 45% of stipend released upon passing midterm
+- **July 11 - August 16, 2026:** Second coding phase (5 weeks)
+- **August 17-24, 2026:** Final week
+  - Contributors submit final work products
+  - Contributors submit final mentor evaluations
+  - Code cleanup, documentation finalization
+- **August 24-31, 2026:** Mentors submit final evaluations
+  - **Payments:** 55% of stipend released upon passing final evaluation
+
+**Phase 7: Extended Timeline Projects (22-week option)**
+- **August 24 - November 2, 2026:** Contributors with extended timelines continue coding
+- **November 2, 2026:** Final work product submission deadline (extended projects)
+- **November 9, 2026:** Final mentor evaluation deadline (extended projects)
+
+**Important Notes:**
+- All deadlines are hard deadlines at 18:00 UTC
+- Extended timeline must be agreed upon before coding begins
+- Organizations set their own internal deadlines (often earlier than official deadlines)
+- Contributors can edit proposals until March 31 deadline
+- Missing midterm evaluation = disqualification
+- Some organizations require weekly progress reports throughout coding period
 
 ### Appendix B: Stipend Comparison Across Programs
 
 **Comparative Analysis (2026 Rates):**
+
+*Note: GSoC 2026 stipend amounts and PPP multipliers subject to final confirmation when contributor portal opens. Table based on 2025 structure which typically remains stable year-over-year.*
 
 | Program | Duration | Base Stipend | PPP Adjustment | India Range (Approx) |
 |---------|----------|--------------|----------------|---------------------|
@@ -1063,7 +1279,7 @@ The challenges documented in this white paper are significant but not insurmount
 | LFX Mentorship | 12 weeks | Variable | Yes | Similar to GSoC |
 | MLH Fellowship | 12 weeks | Varies | Limited APAC | N/A currently |
 
-**Note:** Actual amounts depend on contributor's country and current PPP calculations.
+**Note:** Actual amounts depend on contributor's country and current PPP calculations. GSoC uses World Bank PPP data updated annually.
 
 ### Appendix C: Sample Contribution Guidelines
 
@@ -1221,3 +1437,6 @@ The challenges documented in this white paper are significant but not insurmount
 ---
 
 *This white paper is intended as an educational resource for stakeholders in the open-source ecosystem. Views expressed represent analysis of publicly available information and do not constitute official positions of Google, GSoC, or any mentioned organizations.*
+
+*Document compiled: January 22, 2026*
+*Author: Srinivasan Ragothaman*
