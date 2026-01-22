@@ -2,6 +2,8 @@
 
 Source Document to refer : [India-GSoc-2026-Trends-Challenges-Solutions.md](India-GSoc-2026-Trends-Challenges-Solutions.md)
 
+![India-GSoc-2026-Extended.png](assets/India-GSoc-2026-Extended.png)
+
 ## Appendix F: Operational Playbook for Contributors
 
 ### F.1 Month-by-Month Preparation Plan (October 2025 – August 2026)
