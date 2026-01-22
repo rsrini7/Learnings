@@ -184,7 +184,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Tailwind Financial Crisis](News/Tailwind-Financial-Crisis.md)
 - [Decline of StackOverflow](News/Decline-of-Stack-Overflow.md)
 - [India-GSoc-2026-Trends-Challenges-Solutions](News/India-GSoc-2026-Trends-Challenges-Solutions.md)
-- [GSoc-2026-Extended](News/GSoc-2026-Extended.md)
+- [India GSoC 2026 Extended](News/India-GSoC-2026-Extended.md)
 - [WIPO & International Fellowship](News/WIPO-International-Fellowship.md)
 - [Fellowship Opportunities Guide 2026](News/Fellowship-Oppertunities-Guide-2026.md)
 - [Anthropic's Fourth Economic Index Report Jan 2026](News/Anthropic's-Fourth-Economic-Index-Report-Jan-2026.md)

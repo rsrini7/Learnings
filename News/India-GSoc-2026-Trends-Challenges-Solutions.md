@@ -642,6 +642,8 @@ Despite challenges, many Indian contributors exemplify ethical, high-quality par
 - Link all your contributions (PRs, issues, community interactions)
 - Write authentically—reviewers can detect AI-generated content
 
+> **For comprehensive guidance:** See Appendix F for a month-by-month preparation plan, Appendix G for detailed proposal templates and checklists, and Appendix H for organization selection strategies. These operational guides translate the principles above into actionable steps. Navigate to : [India-GSoc-2026-Extended.md](India-GSoc-2026-Extended.md)
+
 **Comprehensive Proposal Structure (From Successful Examples):**
 
 Youtube Explanation: https://www.youtube.com/watch?v=kZa8lGTwDhA
@@ -937,6 +939,9 @@ Midterm Evaluation (Week 8):
    - Use automated tools for trivial PR detection
    - Communicate consequences clearly
    - Recognize and reward quality quickly
+
+> **Ready-to-use resources:** Communities can share Appendix C (Sample Contribution Guidelines) and Appendix F (Operational Playbook) with newcomers as standardized onboarding material that promotes ethical participation from day one.
+Navigate to : [India-GSoc-2026-Extended.md](India-GSoc-2026-Extended.md)
 
 ---
 
