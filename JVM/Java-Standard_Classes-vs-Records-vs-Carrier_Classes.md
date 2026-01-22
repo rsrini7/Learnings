@@ -238,3 +238,41 @@ public carrier class Person(String firstName, String lastName) {
 * **Fake Records:** Making a Standard Class immutable just to mimic a Record manually. It creates boilerplate without the compiler benefits.
 * **Record Abuse:** Storing arrays or mutable collections inside a Record. This breaks the guarantee of immutability.
 * **Premature Optimization:** Avoid writing your own `equals()`/`hashCode()` for data classes; let Records handle it.
+
+### References
+
+#### **Primary Source (Carrier Classes Proposal)**
+
+* **Video:** [Carrier Classes; Beyond Records - Inside Java Newscast #105](https://www.youtube.com/watch?v=cpGceyn7DBE)
+* *Published:* January 22, 2026
+* *Host:* Nicolai Parlog (Java Developer Advocate, Oracle)
+* *Key Content:* Explains the "strawman" syntax for Carrier Classes, component fields, and the distinction between internal representation vs. external API commitment.
+
+
+
+#### **Mailing List Discussions (Project Amber)**
+
+* **"Data Oriented Programming: Beyond Records"** by Brian Goetz
+* *Context:* This is the mailing list proposal discussed in the video. It outlines the philosophy of generalizing records into "Carrier Classes" to allow for mutability and evolution while maintaining data-oriented semantics.
+* *Source:* [OpenJDK Amber-Spec-Experts Mailing List](https://www.google.com/search?q=https://mail.openjdk.org/pipermail/amber-spec-experts/) (Search for "Beyond Records" in the 2025-2026 archives).
+
+
+
+#### **Standard Java Specifications (Existing Features)**
+
+* **JEP 395: Records** (Delivered in Java 16)
+* Defines the semantics of immutable data carriers.
+
+
+* **JEP 440: Record Patterns** (Delivered in Java 21)
+* Enables the deconstruction of records in `switch` and `instanceof`.
+
+
+* **JEP 441: Pattern Matching for switch** (Delivered in Java 21)
+* The foundation for type pattern matching used in Standard Classes.
+
+
+
+#### **Related Concepts**
+
+* **Project Valhalla (Value Classes):** Often confused with Carrier Classes. Valhalla focuses on memory layout and "flatness" (performance), whereas Carrier Classes (Amber) focus on the *programming model* (API definition and pattern matching).
