@@ -2,6 +2,13 @@
 
 **January 2026 Edition**
 
+---
+
+![Gemma-Models](assets/Gemma-Models.png)
+
+---
+
+
 ## Executive Summary
 
 The Gemma family represents Google DeepMind's comprehensive suite of open-source AI models built on Gemini technology. With over 200 million downloads and a thriving community creating 60,000+ variants, Gemma has become the foundation for accessible, responsible AI development. This whitepaper provides a complete technical overview of all Gemma models, their architectures, capabilities, and use cases.
