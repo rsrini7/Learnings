@@ -12,17 +12,17 @@ This white paper provides an evidence-based analysis of Java 25 (LTS, released S
 
 **Key Findings:**
 
-- Netflix achieved effectively zero GC pause times and reduced error rates by switching to Generational ZGC in Java 21+
-- Go 1.24's Swiss Tables implementation delivers up to 60% faster map operations with ~1.5% geometric mean CPU improvement
-- Go 1.25's Green Tea GC reduces GC overhead by 10-40% in production workloads (deployed at Google)
-- Go 1.25's container-aware GOMAXPROCS eliminates CPU throttling in Kubernetes, improving efficiency and tail latency
-- Container images: Java Spring Boot optimized images range from 200-400MB vs Go binaries at 8-15MB (20-30x difference)
-- Uber manages thousands of Go microservices in monorepos, with 1.4% of commits impacting 100+ services simultaneously
-- Ethereum's Geth client (Go implementation) handles the Fusaka hardfork scheduled for December 3, 2025
+* **Platform Maturity:** Java 25 solidifies the performance gains of Generational ZGC (introduced in Java 21), allowing Netflix to achieve effectively zero GC pause times and reduced error rates in production.
+* **Runtime Efficiency:** Go 1.24's Swiss Tables implementation delivers improved map performance, while Go 1.25's experimental Green Tea GC demonstrates a 10-40% reduction in GC overhead for specific workloads at Google.
+* **Container Optimization:** Go 1.25's container-aware `GOMAXPROCS` eliminates CPU throttling in Kubernetes. While optimized Java images (Spring Native) have shrunk to ~50-60MB, standard Spring Boot images remain ~200MB+, compared to Go's consistent 10-20MB footprint (a 10-20x difference in typical deployments).
+* **Scale Management:** Uber manages thousands of Go microservices in monorepos, with 1.4% of commits impacting 100+ services simultaneously.
+* **Blockchain Reliability:** Ethereum's Geth client (Go implementation) successfully handled the Fusaka hardfork activation in December 2025.
 
 **Decision Framework:**
-- **Choose Java 25** for: Ultra-low latency (<100µs P99.9), large heap workloads (>50GB), deep observability needs
-- **Choose Go 1.24/1.25** for: Microservices at scale, serverless/functions, cost-sensitive deployments, blockchain nodes, container-native applications
+
+* **Choose Java 25** for: Ultra-low latency (<100µs P99.9), heavy compute throughput, large heap workloads (>50GB), and deep observability needs.
+* **Choose Go 1.24/1.25** for: Memory-constrained microservices, high-density Kubernetes deployments, serverless/functions, and cost-sensitive scale-out architectures.
+
 
 ---
 
@@ -781,24 +781,35 @@ Uber credits Go's simplicity for enabling 200+ engineers to contribute across th
 - Java: Mature market, easy to hire, broad skillsets
 - Go: Scarcity premium, faster onboarding, modern cloud-native skills
 
-### 9.3 Operational Costs (AWS)
+### 9.3 Cost & Operational Analysis (AWS)
+
+**Correction on Throughput vs. Cost:**
+While benchmarks indicate Java 25 matches or exceeds Go in raw CPU throughput (requests/sec) after warmup, Java's cost premium in microservices often stems from **memory requirements** preventing efficient bin-packing, rather than raw CPU inefficiency. Java services typically require Memory Optimized (R-family) instances or larger General Purpose allocations to accommodate heap overhead, whereas Go services fit comfortably on cheaper Compute Optimized (C-family) instances.
 
 **Example: 100 Microservices, 1M req/day each**
 
-| Cost Category | Java 25 | Go 1.24/1.25 | Savings (Go) |
-|---------------|---------|--------------|--------------|
-| **EC2 instances** | 20× r6i.2xlarge | 5× r6i.2xlarge | **$10,800/mo** |
-| **Memory** | 640GB total | 160GB total | **75% reduction** |
-| **CPU** | 160 vCPUs | 40 vCPUs | **75% reduction** |
-| **Container registry** | 250GB | 12GB | **95% reduction** |
-| **Data transfer** | 3TB/mo | 3TB/mo | Same |
-| **Monitoring/logs** | $500/mo | $200/mo | **$300/mo** (lower volume) |
-| **Total monthly** | **$15,900** | **$4,600** | **$11,300/mo (71% savings)** |
+*Scenario: Workload is memory-bound due to high service count.*
 
-**Annual TCO:**
-- Java: ~$191K/year
-- Go: ~$55K/year
-- **Savings: $136K/year**
+| Cost Category | Java 25 Deployment | Go 1.24/1.25 Deployment | Savings (Go) |
+| --- | --- | --- | --- |
+| **Instance Type** | **Memory Optimized**<br>(r6i.2xlarge) | **Compute Optimized**<br>(c6i.2xlarge) | **Switch to C-family** |
+| **Node Count** | 20 Nodes | 12 Nodes | **40% reduction** |
+| **Memory footprint** | ~640GB total<br>(~6GB/service avg) | ~120GB total<br>(~1.2GB/service avg) | **~80% reduction** |
+| **vCPUs** | 160 vCPUs | 96 vCPUs | **40% reduction** |
+| **Container Registry** | 250GB storage | 12GB storage | **95% reduction** |
+| **Total Monthly** | **~$13,800** | **~$7,200** | **~$6,600/mo (48% savings)** |
+
+*Analysis:*
+
+* **Java 25:** Requires fewer nodes than previous Java versions due to ZGC efficiency, but still demands significant RAM per pod to avoid GC thrashing, forcing the use of expensive R-type instances.
+
+* **Go 1.25:** Lower memory footprint allows higher pod density. Since throughput is comparable, the reduction in nodes (20 → 12) comes from better bin-packing and the elimination of "warmup" over-provisioning, rather than a massive disparity in per-request CPU processing.
+
+**Annual TCO Estimate:**
+
+* **Java:** ~$165K/year
+* **Go:** ~$86K/year
+* **Savings:** ~$79K/year (driven primarily by memory efficiency and instance type optimization).
 
 ### 9.4 Team Productivity Metrics
 
