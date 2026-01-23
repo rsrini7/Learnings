@@ -10,9 +10,11 @@ Modern large language models rely heavily on residual connections for stable tra
 
 This work introduces **Manifold-Constrained Hyper-Connections (mHC)**, a principled architecture that enables multi-stream information flow while providing strict mathematical guarantees on stability. mHC constrains residual mixing matrices to the **Birkhoff polytope** by enforcing doubly stochastic structure using the **Sinkhorn–Knopp algorithm**, ensuring bounded signal propagation across arbitrary depth. Additional design choices, including sigmoid-based mixing and identity-preserving initialization, further stabilize optimization.
 
-Empirical results on large-scale (27B parameter) transformer models demonstrate that mHC achieves consistent training stability and improves performance on reasoning-intensive benchmarks such as MMLU, BBH, and DROP, while incurring only a modest training overhead (~6.7%). These results show that expressivity and stability need not be traded off, and that constrained architectural design can unlock richer parallel representations without sacrificing scalability.
+Empirical results on large-scale Mixture-of-Experts (MoE) transformer models (3B, 9B, and 27B parameter variants) demonstrate that mHC achieves consistent training stability and improves performance on reasoning-intensive benchmarks such as MMLU, BBH, and DROP, while incurring only a modest training overhead (~6.7%). These results show that expressivity and stability need not be traded off, and that constrained architectural design unlocks richer parallel representations without sacrificing scalability.
 
 mHC establishes a new architectural paradigm for foundation models, enabling stable multi-stream scaling and offering a foundation for future advances in efficient, high-capacity neural network design.
+
+**The Achievement:** mHC delivers 400% internal capacity increase (4 parallel streams vs 1) with only 6.7% training overhead and 6.27% hardware overhead, while eliminating the catastrophic training failures that plague advanced architectures. Tested across 3B, 9B, and 27B Mixture-of-Experts (MoE) models, this represents superior reasoning and learning capabilities at a fraction of the computational cost of traditional scaling approaches.
 
 ---
 
@@ -64,9 +66,9 @@ Backed by DeepSeek research (2026), proven on 27B transformer models.
 
 2. **Sigmoid Mixing (H_pre/H_post)** → Non-negative weighted merge/split → avoids destructive interference
 
-3. **Sinkhorn-Knopp Projection** (`5-10 iterations`) → Forces H_res into Birkhoff polytope (doubly stochastic) → bounded signal growth (~1.6× max)
+3. **Sinkhorn-Knopp Projection** (`20 iterations`) → Forces H_res into Birkhoff polytope (doubly stochastic) → bounded signal growth (~1.6× max)
 
-4. **Identity-Preserving Init** (`2 × sigmoid(0) = 1.0`) → Starts as perfect residual → gradually enables routing
+4. **Dynamic Initialization** → Layer-specific depth-dependent scaling (not simple 2×sigmoid(0)=1.0) → early layers maintain identity preservation, deeper layers enable mixing → adapts to model scale (3B/9B/27B) → prevents both training collapse and slow convergence
 
 ━━━━━━━━━━━━━━━━━━━━
 
@@ -389,7 +391,7 @@ The Sinkhorn-Knopp algorithm enforces the doubly stochastic constraint:
 ```python
 # Simplified concept
 def make_doubly_stochastic(matrix):
-    for iteration in range(5_to_10):
+    for iteration in range(20):
         # Step 1: Normalize rows to sum to 1
         matrix = matrix / row_sums
         
@@ -404,23 +406,30 @@ def make_doubly_stochastic(matrix):
 - Iteratively balances rows and columns
 - Converges to a doubly stochastic matrix
 - Runs during every forward pass in training
-- Typically converges in 5-10 iterations with 1e-6 tolerance
+- Typically converges in 20 iterations with 1e-6 tolerance
 
-### Safety System 3: The 2×Sigmoid Initialization Trick
+### Safety System 3: Dynamic Initialization Strategy
 
-DeepSeek uses a clever initialization strategy:
+DeepSeek uses a dynamic initialization strategy for H_res:
 
-```
-H_res_weights = 2 × sigmoid(learnable_parameter)
-```
+**Initialization Approach:**
+- H_res does NOT start as a simple 2×sigmoid(0)=1.0 identity
+- Instead, it uses a more nuanced dynamic initialization that:
+  1. Accounts for layer depth and stream topology
+  2. Gradually transitions from identity-preserving to learnable mixing
+  3. Adapts based on model scale (3B/9B/27B parameters)
 
-**Why this matters:**
-- At the start of training, learnable_parameter = 0
-- sigmoid(0) = 0.5
-- 2 × 0.5 = 1.0 ✓
+**Why the Dynamic Approach:**
+- Pure identity initialization (2×sigmoid(0)=1.0) is overly simplistic
+- DeepSeek's paper uses depth-dependent scaling factors
+- Initial weights are tuned per-layer to balance early stability with 
+  sufficient gradient flow for multi-stream learning
+- This prevents both training collapse AND slow convergence
 
-**The Benefit:**
-The model starts as a perfect identity mapping (like standard ResNet) and only gradually learns to use the multiple lanes as training progresses. This ensures training is stable from day one.
+**Implementation Detail:**
+The exact initialization formula involves layer-specific scaling that 
+gradually increases mixing capacity in deeper layers while maintaining 
+stronger identity preservation in early layers.
 
 ### Safety System 4: Sigmoid for H_pre and H_post
 
@@ -509,18 +518,43 @@ Step 6: Add and output
 | Hyper-Connections | **3000×** (explosion) | ✗✗✗ Crashes (~20% success) | ✗✗✗ Broken |
 | **DeepSeek mHC** | **1.6×** (controlled) | ✓✓✓ Excellent (~95% success) | ✓✓✓ Restored |
 
-### Benchmark Results (27B Parameter Models)
+### Benchmark Results (MoE Architecture: 3B/9B/27B Parameter Models)
+
+**Important Context:** 
+DeepSeek tested mHC on Mixture-of-Experts (MoE) architectures across three scales:
+- **3B parameters**: Baseline validation of mHC stability
+- **9B parameters**: Mid-scale efficiency testing
+- **27B parameters**: Production-scale benchmark results (shown below)
 
 **Knowledge & Reasoning Tasks:**
 
-| Task | Standard ResNet | Hyper-Connections | **mHC** | Improvement |
-|---|---|---|---|---|
-| MMLU (General Knowledge) | Baseline | CRASHED | ✓ | **+5.2%** |
-| BBH (Big-Bench Hard) | Baseline | CRASHED | ✓ | **+7.8%** |
-| DROP (Reading Comprehension) | Baseline | CRASHED | ✓ | **+6.4%** |
-| GSM8K (Math Reasoning) | Baseline | CRASHED | ✓ | **+4.3%** |
+| Benchmark | Standard Baseline | Unconstrained HC | mHC (27B) | Delta |
+|-----------|-------------------|------------------|-----------|-------|
+| BBH (Reasoning) | 43.8 | FAILED (NaN) | 51.0 | +7.2 |
+| DROP (F1) | 47.0 | FAILED (NaN) | 53.9 | +6.9 |
+| GSM8K (Math) | 46.7 | FAILED (NaN) | 53.8 | +7.1 |
+| MMLU (Knowledge) | 59.0 | FAILED (NaN) | 63.4 | +4.4 |
 
 **Key Finding:** mHC outperformed standard models on complex reasoning tasks because the multiple streams allow parallel processing of different aspects of information—one stream might handle mathematical operations while another tracks logical flow.
+
+### Why MoE + mHC is Synergistic
+
+**Traditional MoE Challenges:**
+- Expert collapse (all tokens routed to same experts)
+- Load balancing requires auxiliary loss terms
+- Routing decisions can be brittle
+
+**mHC Benefits for MoE:**
+✓ Multiple streams provide natural diversification of expert activation
+✓ Stream-level routing complements token-level expert routing
+✓ Reduces expert collapse by distributing representational capacity
+✓ Enables hierarchical routing: stream → expert → computation
+
+**Empirical Evidence:**
+Across 3B/9B/27B MoE scales, mHC showed:
+- More balanced expert utilization (±15% variance vs ±40% in baseline)
+- Reduced auxiliary balancing loss requirements
+- Better scaling efficiency from 3B → 27B (sublinear overhead increase)
 
 ### The Efficiency Miracle
 
@@ -751,13 +785,13 @@ class mHC_Layer:
         
         # 5. Apply doubly stochastic H_res
         H_res_positive = 2 * torch.sigmoid(self.H_res_raw)
-        H_res_stochastic = sinkhorn_knopp(H_res_positive, n_iters=10)
+        H_res_stochastic = sinkhorn_knopp(H_res_positive, n_iters=20)
         residual = H_res_stochastic @ x_norm
         
         # 6. Add and return
         return split + residual
 
-def sinkhorn_knopp(matrix, n_iters=10, eps=1e-6):
+def sinkhorn_knopp(matrix, n_iters=20, eps=1e-6):
     """Enforce doubly stochastic constraint"""
     for _ in range(n_iters):
         # Normalize rows
@@ -779,7 +813,7 @@ def sinkhorn_knopp(matrix, n_iters=10, eps=1e-6):
 - Prevents numerical instabilities
 
 **Convergence Criteria:**
-- Sinkhorn iterations typically converge in 5-10 steps
+- Sinkhorn iterations typically converge in 20 steps
 - Uses tolerance of 1e-6 for row/column sum accuracy
 - Fast enough for real-time training
 
@@ -788,6 +822,14 @@ def sinkhorn_knopp(matrix, n_iters=10, eps=1e-6):
 - Fused kernels reduce memory transfers by 60%
 - Total memory overhead: +15% (down from theoretical +100%)
 
+**MoE Integration Note:**
+When implementing mHC in MoE architectures, streams can be routed to different 
+expert subsets, creating a two-level routing hierarchy:
+1. Stream-level: Which representational facet to process
+2. Expert-level: Which specialized computation to apply
+
+This dual routing reduces expert collapse and improves load balancing.
+
 ---
 
 ## Future Outlook: The Next Wave
@@ -795,9 +837,9 @@ def sinkhorn_knopp(matrix, n_iters=10, eps=1e-6):
 ### Short-Term (2026)
 
 **Expected Developments:**
-- DeepSeek releases production mHC-based models (27B-70B scale)
+- DeepSeek releases production mHC-based MoE models (3B-27B scale, with 70B+ in development)
 - Open-source community adopts mHC in major frameworks (PyTorch, JAX)
-- First benchmarks comparing mHC vs. traditional scaling at 100B+ parameters
+- First benchmarks comparing mHC vs. traditional scaling at 100B+ MoE parameters
 
 **Industry Impact:**
 - Reduced training costs for reasoning-focused models
@@ -948,7 +990,7 @@ Therefore ‖y‖ ≈ ‖x‖ (signal magnitude preserved)
 
 The algorithm converges geometrically fast:
 - Error reduces by constant factor each iteration
-- Typically 5-10 iterations for practical tolerance (1e-6)
+- Typically 20 iterations for practical tolerance (1e-6)
 - Can be GPU-parallelized efficiently
 - Total computational overhead: <1% of forward pass
 
