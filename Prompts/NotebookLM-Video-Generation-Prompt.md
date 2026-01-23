@@ -5,4 +5,4 @@
 
 ## What should the AI hosts focus on?
 
-"The hosts should deliver a video that is engaging, informative, and visually appealing. The video should cover by reading the pdf and cover all the slides one by one.. with details, MUST cover all the slides, image, if you are not aware of the concept given in the slides or image do search and provide details."
+"The hosts should deliver a video that is engaging, informative, and visually appealing. The video should cover by reading the pdf and cover all the slides one by one.. with details, MUST cover all the slides, image, if you are not aware of the concept given in the slides or image do search and provide details. Show all given images one after one at end of the video"
