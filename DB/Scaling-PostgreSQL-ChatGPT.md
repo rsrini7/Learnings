@@ -1,4 +1,4 @@
-# 📘 **Scaling PostgreSQL at OpenAI — Verified & Updated Notes**
+# 📘 **Scaling PostgreSQL at OpenAI Notes**
 
 ![DB/assets/ScallingPostgresOpenAI.png](assets/ScallingPostgresOpenAI.png)
 
