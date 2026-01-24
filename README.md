@@ -111,6 +111,8 @@ Welcome to my personal learning repository! This space serves as a central hub f
 
 - [GraphDB Massive Scale Analysis](DB/GraphDB-massive-scale-analysis.md)
 
+- [Scaling PostgreSQL to power 800 million ChatGPT users](DB/Scaling-PostgreSQL-ChatGPT.md)
+
 ---
 
 ## <a id="blockchain-dlt"></a>⛓️ Blockchain & DLT
