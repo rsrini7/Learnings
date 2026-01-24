@@ -1,6 +1,10 @@
 # mHC Architecture: Technical Guide
 
-![Papers/assets/mHC-Simplified.png](assets/mHC-Simplified.png)
+![Deepseek-mHC-Simple-Explanation](assets/Deepseek-mHC-Simple-Explanation.png)
+
+---
+
+![mHC-Simplified](assets/mHC-Simplified.png)
 
 ---
 
