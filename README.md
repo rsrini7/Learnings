@@ -189,7 +189,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [WIPO & International Fellowship](News/WIPO-International-Fellowship.md)
 - [Fellowship Opportunities Guide 2026](News/Fellowship-Oppertunities-Guide-2026.md)
 - [Anthropic's Fourth Economic Index Report Jan 2026](News/Anthropic's-Fourth-Economic-Index-Report-Jan-2026.md)
-
+- [Singapore IMDA Agentic-AI Governance Framework](News/Singapore-IMDA-Agentic-AI-Governance-Framework.md)
 ---
 
 ## <a id="research-papers"></a>📄 Research Papers
