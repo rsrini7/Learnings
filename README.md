@@ -206,6 +206,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Recursive Language Models (RLMs)](Papers/RecursiveLanguageModels-(RLMs).md)
 - [Deepseek Engram](Papers/Deepseek-Engram.md)
 - [Prompt Repetition (RE2)](Papers/Prompt-Repetition-RE2.md)
+- [Agentic Reasoning LLMs](Papers/Agentic-Reasoning-LLMs.md)
 
 ### 📊 Paper Comparisons
 - [Google Nested Learning vs FB Sparce Memory](Papers/comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md)
