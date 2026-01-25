@@ -78,6 +78,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 ### 🧩 Protocols
 - [Universal Commerce Protocol](AI-ML/Protocols/UCP.md)
 - [MCP Scalability Issue Solution](AI-ML/Protocols/MCP_Scalability_Issue_Solution.md)
+- [MCP Scalability Issue Solution Extended](AI-ML/Protocols/MCP_Scalability_Issue_Solution_Extended.md)
 
 ### 💻 Programming AI
 - [DSPy](AI-ML/Programming/DSPy.md)
