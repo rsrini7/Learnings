@@ -12,6 +12,11 @@ This paper represents a paradigm shift in artificial intelligence, transforming 
 
 **Core Transformation**: From AI as "thinkers" to AI as "doers" — from line cooks following recipes to chefs who adapt, plan, and create.
 
+**Three progressive layers**
+- Foundational (single-agent planning/tool/search)
+- Self-Evolving (reflection, memory, adaptation)
+- Collective (multi-agent collaboration, roles, debate, swarms).
+
 ---
 
 ## The Three-Layer Hierarchical Framework
@@ -340,6 +345,12 @@ The shift from passive prediction to active autonomous agency represents one of 
 - **Dynamic RAG (RAG 2.0)** - Iterative information retrieval approach
 - **Program-Aided Reasoning** - Code generation for computation offloading
 
+---
+
+![Papers/assets/Awesome-Agentic-Reasoning-overview.png](assets/Awesome-Agentic-Reasoning-overview.png)
+
+---
+
 ## References
 
 ### **Main Paper: "Agentic Reasoning for Large Language Models"**
@@ -350,3 +361,8 @@ The shift from passive prediction to active autonomous agency represents one of 
 - **Publication Date**: January 18, 2026
 - **Authors**: Tianxin Wei and 28 other authors
 - **Analysis Scope**: ~800 papers reviewed
+
+---
+
+![Papers/assets/AgenticReasoning-Adv-Concepts-impl.png](assets/AgenticReasoning-Adv-Concepts-impl.png)
+Ref: https://www.youtube.com/watch?v=GZha5ccTiQM
