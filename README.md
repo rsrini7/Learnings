@@ -73,6 +73,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Qwen3-VL-Embedding and Qwen3-VL-Reranker](AI-ML/Qwen3-VL-Embedding-and-Reranker.md)
 - [RAG Guide Jan 2026](AI-ML/RAG-Guide-Jan-2026.md)
 - [OpenResponses Open Inference Standard](AI-ML/OpenResponses-Open-Inference-Standard.md)
+- [8 AI Skills for Future Success (2026)](AI-ML/8-AI-Skills-for-Future-Success-(2026).md)
 
 ### 🧩 Protocols
 - [Universal Commerce Protocol](AI-ML/Protocols/UCP.md)
@@ -88,7 +89,8 @@ Welcome to my personal learning repository! This space serves as a central hub f
 
 > Stay updated with the latest trends and architectural shifts.
 
-- [Jan-18-2026](Weekly-Tech-Updates/Jan-18-2026.md) 🌟
+- [Jan-25-2026](Weekly-Tech-Updates/Jan-25-2026.md) 🌟
+- [Jan-18-2026](Weekly-Tech-Updates/Jan-18-2026.md)
 - [Jan-11-2026](Weekly-Tech-Updates/Jan-11-2026.md)
 - [Jan-4-2026](Weekly-Tech-Updates/Jan-4-2026.md)
 - [Dec-28-2025](Weekly-Tech-Updates/Dec-28-2025.md)
@@ -240,9 +242,6 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Perplexity Research Whitepaper Prompt](Prompts/perplexity-research-whitepaper-prompt.md)
 - [Prompt Websites](Prompts/prompt-websites.md)
 - [Convert Long 2 Short Social Post Prompt](Prompts/convert-long-2-short-social-post-prompt.md)
-- [Convert Long 2 Short Social Post Prompt V2](Prompts/convert-long-2-short-social-post-prompt-v2.md)
-- [Convert Long 2 Short Social Post Prompt V3 Merged](Prompts/convert-long-2-short-social-post-prompt-v3-merged.md)
-- [Convert Long 2 Short Social Post Prompt V4 Examples](Prompts/convert-long-2-short-social-post-prompt-v4-examples.md)
 
 ### 🎨 Visual Creativity (Tested with Gemini)
 - [Content Visual Carousel Prompt](Prompts/content-visual-carousel-prompt.md)
