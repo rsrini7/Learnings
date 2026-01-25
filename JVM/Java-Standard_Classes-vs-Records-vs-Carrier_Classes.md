@@ -8,6 +8,12 @@
 
 Modern Java provides two primary mechanisms for modeling data: **Records** (immutable data carriers) and **Standard Identity Classes** (traditional OOP). A third mechanism, **Carrier Classes**, is currently under active development by Project Amber to bridge the gap between them.
 
+### One-line summary
+
+* **Records** represent *pure data*.
+* **Classic Classes** represent *encapsulated behavior*.
+* **Carrier Classes** represent *flexible data* (the bridge between the two).
+
 ## Quick Decision Tree
 
 ```mermaid
@@ -82,10 +88,13 @@ double area(Object shape) {
 
 ```
 
-### Best Practices
+### Best Practices / Typical Use Cases
 
-* **Use for:** DTOs, API responses, Map keys, Event objects.
-* **Avoid for:** JPA Entities (Hibernate requires proxies/no-arg constructors), objects requiring internal mutable state.
+* **Data Transfer:** DTOs, API request/response models.
+* **Functional:** Map keys, multiple return values, event streams.
+* **Constraint:** Use when data is immutable and transparent.
+> **Avoid when:** You need **mutability**, **lazy loading** (caching), or **hidden internal state** that isn't part of the API.
+> **Avoid for:** JPA Entities (Hibernate requires proxies/no-arg constructors), objects requiring internal mutable state.
 
 ---
 
@@ -164,6 +173,13 @@ if (obj instanceof ShoppingCart cart) {
 
 ```
 
+### Best Practices / Typical Use Cases
+
+* **Behavioral:** Service classes, Business logic containers.
+* **Frameworks:** JPA Entities, Spring Beans.
+* **Constraint:** Use when identity matters more than data content.
+> **Avoid when:** You are just modeling **pure data**. Using a classic class here creates "boilerplate noise" and loses pattern matching benefits.
+
 ---
 
 ## 3. The Future: Carrier Classes (Project Amber Proposal)
@@ -203,6 +219,13 @@ public carrier class Person(String firstName, String lastName) {
 2. **Encapsulation:** You can validate or normalize data inside the constructor but still expose it for pattern matching.
 3. **Performance:** Enables internal caching (memoization) which is impossible in strict Records.
 
+### Best Practices / Typical Use Cases
+
+* **Domain Modeling:** Rich domain models that need pattern matching but also mutability.
+* **Evolution:** APIs that need to change internal representation without breaking the external contract.
+* **Optimization:** Data objects requiring internal caching or derived fields.
+> **Avoid when:** A simple **Record** would suffice. Don't pay the syntax tax if you don't need the flexibility.
+
 ---
 
 ## Comparison Summary
@@ -226,8 +249,6 @@ public carrier class Person(String firstName, String lastName) {
 * JPA/Database Entities.
 * Private internal state that is *not* exposed in the API.
 
-
-
 ### Future Proofing
 
 * Do not force Records into roles they don't fit (e.g., "Active Records" with database logic).
@@ -239,6 +260,31 @@ public carrier class Person(String firstName, String lastName) {
 * **Record Abuse:** Storing arrays or mutable collections inside a Record. This breaks the guarantee of immutability.
 * **Premature Optimization:** Avoid writing your own `equals()`/`hashCode()` for data classes; let Records handle it.
 
+
+## Java Data & Class Types – Full Comparison
+
+| Aspect | **Records** | **Carrier Classes (proposed)** | **Classic Classes** |
+| --- | --- | --- | --- |
+| **Purpose** | Pure data holders | Flexible data holders | General-purpose objects |
+| **Language support** | Built-in (Java 16+) | Proposed (Project Amber) | Built-in since start |
+| **Data-oriented** | ✅ Yes | ✅ Yes | ❌ No |
+| **Declared data shape** | ✅ Record components | ✅ Component list | ❌ Not explicit |
+| **Deconstruction** | ✅ Full support | ✅ Full support | ❌ No (Type patterns only) |
+| **Boilerplate** | Minimal | Medium | High |
+| **Auto constructor** | ✅ Generated | ⚠️ Partial / Assisted | ❌ Manual |
+| **Auto accessors** | ✅ Generated | ⚠️ Partial / Assisted | ❌ Manual |
+| **Auto equals / hash** | ✅ Generated | ❌ Manual | ❌ Manual |
+| **Immutability** | ✅ Enforced | ⚠️ Optional | ⚠️ Optional |
+| **Mutable fields** | ❌ No | ✅ Yes | ✅ Yes |
+| **Inheritance** | ❌ None (Final) | ✅ Full support | ✅ Full support |
+| **Internal hidden state** | ❌ Impossible | ✅ Supported | ✅ Supported |
+| **Logical ≠ Physical** | ❌ No | ✅ Yes | ✅ Yes |
+| **Evolution safety** | High | High | Low |
+| **Encapsulation** | Low (Transparent) | Medium–High | High (Opaque) |
+| **Identity-based** | ❌ No (Value-based) | ⚠️ Possible | ✅ Yes |
+
+---
+
 ### References
 
 #### **Primary Source (Carrier Classes Proposal)**
@@ -248,15 +294,11 @@ public carrier class Person(String firstName, String lastName) {
 * *Host:* Nicolai Parlog (Java Developer Advocate, Oracle)
 * *Key Content:* Explains the "strawman" syntax for Carrier Classes, component fields, and the distinction between internal representation vs. external API commitment.
 
-
-
 #### **Mailing List Discussions (Project Amber)**
 
 * **"Data Oriented Programming: Beyond Records"** by Brian Goetz
 * *Context:* This is the mailing list proposal discussed in the video. It outlines the philosophy of generalizing records into "Carrier Classes" to allow for mutability and evolution while maintaining data-oriented semantics.
 * *Source:* [OpenJDK Amber-Spec-Experts Mailing List](https://www.google.com/search?q=https://mail.openjdk.org/pipermail/amber-spec-experts/) (Search for "Beyond Records" in the 2025-2026 archives).
-
-
 
 #### **Standard Java Specifications (Existing Features)**
 
@@ -270,8 +312,6 @@ public carrier class Person(String firstName, String lastName) {
 
 * **JEP 441: Pattern Matching for switch** (Delivered in Java 21)
 * The foundation for type pattern matching used in Standard Classes.
-
-
 
 #### **Related Concepts**
 
