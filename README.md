@@ -74,6 +74,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [RAG Guide Jan 2026](AI-ML/RAG-Guide-Jan-2026.md)
 - [OpenResponses Open Inference Standard](AI-ML/OpenResponses-Open-Inference-Standard.md)
 - [8 AI Skills for Future Success (2026)](AI-ML/8-AI-Skills-for-Future-Success-(2026).md)
+- [AI Operating Manual](AI-ML/AI-Operating-Manual.md)
 
 ### 🧩 Protocols
 - [Universal Commerce Protocol](AI-ML/Protocols/UCP.md)
