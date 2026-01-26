@@ -16,6 +16,13 @@ Named after the Simpsons character, it shifts from one-shot prompts to continuou
 4. Updates PRD (mark passes:true), appends to progress.txt.
 5. Repeats until all tasks pass or emits <promise>COMPLETE</promise>.
 
+![Ralph-WorkflowSteps.gif](assets/Ralph-WorkflowSteps.gif)
+
+---
+
+<details>
+<summary>View Static Rendered Diagram</summary>
+
 ```mermaid
 flowchart TD
     A["Start Loop"] --> B["Read PRD.json + progress.txt"]
@@ -30,6 +37,8 @@ flowchart TD
     I -->|No| A
     I -->|Yes| J["Complete"]
 ```
+</details>
+
 
 ## Key Components
 
