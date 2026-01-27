@@ -182,6 +182,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [MongoBleed](News/MongoBleed-Dec2025.md)
 - [Node.js Async Hooks DoS Vulnerability](News/Node.js-Async-Hooks-DoS-Vulnerability.md)
 - [Security Vulnerabilities in Wireless Devices and Apps](News/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
+- [Clawdbot(Moltbot) Security Analysis Jan-2026)](News/Clawdbot(Moltbot)-Security-Analysis-Jan-2026.md)
 
 ### 🚀 Infrastructure & Outages
 - [Cloudflare down Nov-2025](News/cloudflare-down-nov-2025.md)

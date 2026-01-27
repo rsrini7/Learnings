@@ -1,6 +1,10 @@
 # Moltbot/Clawdbot: Comprehensive Security Analysis & Threat Forecast
 *Analysis Date: January 27, 2026*
 
+![Clawdbot-or-Moltbot.png](assets/Clawdbot-or-Moltbot.png)
+
+---
+
 ![Clawdbot(Moltbot)-Security-Analysis-Jan-2026.png](assets/Clawdbot(Moltbot)-Security-Analysis-Jan-2026.png)
 
 ---
