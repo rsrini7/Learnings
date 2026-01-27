@@ -7,6 +7,9 @@ Moltbot (formerly Clawdbot) represents a critical case study in AI agent securit
 
 **Critical Finding:** Shodan-based scans in late January 2026 identified approximately 1,000 publicly reachable Moltbot/Clawdbot gateway fingerprints. Sample verification showed that a significant fraction permitted unauthenticated or weakly authenticated access, enabling credential exposure and command execution.
 
+## Note
+- Model names and pricing reflect Anthropic public API documentation as of January 2026 and may change.
+
 ---
 
 ## 1. Project Background & Context
@@ -69,6 +72,9 @@ The combination of "make it accessible from anywhere" user behavior with the loc
 - See Appendix A for detailed methodology, query parameters, and verification approach
 
 **Note**: Public exposure numbers represent point-in-time snapshots. The actual count of vulnerable instances may be higher due to instances on non-standard ports or behind additional proxies.
+
+**Classification Note**:
+While exploitation typically requires deployment misconfiguration, the issue qualifies as a security vulnerability because the default trust model (localhost auto-trust combined with empty proxy allowlists) creates a predictable and unsafe failure mode in common real-world deployments.
 
 **Compromised Data**:
 - Anthropic API keys
@@ -201,6 +207,7 @@ Unlike encrypted browser stores or OS Keychains, these files are readable by any
   - Impact: Allows remote DoS through malformed async operations
   
 - **CVE-2026-21636**: Permission model bypass vulnerability
+  - At the time of writing, this vulnerability is described in Node.js advisories as enabling permission boundary bypass under specific configurations; details may evolve as advisories are updated.
   - Advisory: https://nodejs.org/en/blog/vulnerability/january-2026-security-releases
   - CVSS: 7.3 (High)
   - Impact: Allows escape from filesystem sandboxing and permission restrictions
@@ -597,7 +604,7 @@ the user.
 - Stealthy long-term access
 - Difficult attribution
 
-**Real Case**: Chinese state-backed group abused Anthropic's AI tool for automated cyberattacks (November 2025)
+**Reported Case**: Public reporting in late 2025 described a suspected China-linked threat group abusing an AI tool for automated cyber operations; attribution was based on vendor and intelligence assessments rather than judicial findings.
 
 ---
 
@@ -1128,7 +1135,7 @@ Many developers reconsidering Claude preference, looking at OpenAI alternatives.
 1. **Moltbot represents both promise and peril** of self-hosted AI agents
 2. **Current security posture is inadequate** for most production use cases
 3. **Authentication bypass vulnerability is critical** and easily exploited
-4. **Prompt injection has no fundamental solution** with current LLM technology
+4. **Prompt injection lacks a universally effective solution** with current LLM technology
 5. **Token costs can spiral unexpectedly** without careful monitoring
 6. **2026-2027 will see surge in AI agent attacks** according to all major security firms
 7. **Proper hardening can mitigate many risks** but requires expertise
