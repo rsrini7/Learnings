@@ -1227,27 +1227,6 @@ The next 12-18 months will be critical in determining whether we can secure AI a
 - https://x.com/lucatac0/status/2015473205863948714
 - https://x.com/lucatac0/status/2015473205863948714
 
----
-
-**Document Version**: 1.1 (Corrected & Enhanced)  
-**Last Updated**: January 27, 2026  
-**Status**: Active Threat Analysis  
-**Classification**: Public
-
-**Revision Notes (v1.1)**:
-- Corrected launch timeline to reflect late 2025 origin with January 2026 viral surge
-- Updated Node.js requirement to complete version matrix (v22.22.0+ / v20.20.0+ / v24.13.0+) with CVE references
-- Expanded token cost analysis to include extreme runaway loop scenarios ($8,100/week) with worked calculations
-- Added context on VPS deployment patterns contributing to gateway exposure
-- Clarified rebrand incident with precise sourcing and legal terminology
-- Softened prompt injection language from "no solution" to "requires layered mitigation"
-- Added comprehensive evidence methodology in Appendix A (Shodan queries, verification process)
-- Added operational playbooks in Appendices B-E (incident response, SIEM, configs, disclosure)
-- Enhanced all claims with proper sourcing and reproducibility
-
-**For Operational Use**: This document now includes copy-paste ready remediation commands, SIEM queries, secure configuration templates, and forensics checklists suitable for immediate deployment by security operations teams.
-
-*This analysis should be reviewed and updated quarterly as the threat landscape evolves and new vulnerabilities are discovered.*
 
 ---
 
@@ -1891,3 +1870,23 @@ agents:
 - "AI Agent Security Architecture" (industry whitepapers)
 
 ---
+
+**Document Version**: 1.1 (Corrected & Enhanced)  
+**Last Updated**: January 27, 2026  
+**Status**: Active Threat Analysis  
+**Classification**: Public
+
+**Revision Notes (v1.1)**:
+- Corrected launch timeline to reflect late 2025 origin with January 2026 viral surge
+- Updated Node.js requirement to complete version matrix (v22.22.0+ / v20.20.0+ / v24.13.0+) with CVE references
+- Expanded token cost analysis to include extreme runaway loop scenarios ($8,100/week) with worked calculations
+- Added context on VPS deployment patterns contributing to gateway exposure
+- Clarified rebrand incident with precise sourcing and legal terminology
+- Softened prompt injection language from "no solution" to "requires layered mitigation"
+- Added comprehensive evidence methodology in Appendix A (Shodan queries, verification process)
+- Added operational playbooks in Appendices B-E (incident response, SIEM, configs, disclosure)
+- Enhanced all claims with proper sourcing and reproducibility
+
+**For Operational Use**: This document now includes copy-paste ready remediation commands, SIEM queries, secure configuration templates, and forensics checklists suitable for immediate deployment by security operations teams.
+
+*This analysis should be reviewed and updated quarterly as the threat landscape evolves and new vulnerabilities are discovered.*
