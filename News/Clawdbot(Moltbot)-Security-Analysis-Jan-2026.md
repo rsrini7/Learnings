@@ -1,6 +1,10 @@
 # Moltbot/Clawdbot: Comprehensive Security Analysis & Threat Forecast
 *Analysis Date: January 27, 2026*
 
+![Clawdbot(Moltbot)-Security-Analysis-Jan-2026.png](assets/Clawdbot(Moltbot)-Security-Analysis-Jan-2026.png)
+
+---
+
 ## Executive Summary
 
 Moltbot (formerly Clawdbot) represents a critical case study in AI agent security risks. This analysis examines confirmed vulnerabilities, real-world exploitation patterns, and projected threats for 2026-2027 based on extensive security research and industry forecasts.
