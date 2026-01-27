@@ -15,9 +15,10 @@ Moltbot (formerly Clawdbot) represents a critical case study in AI agent securit
 
 - **Type**: Self-hosted AI agent gateway
 - **Creator**: Peter Steinberger (@steipete), Austrian developer, PSPDFKit founder
-- **Launch**: January 26, 2026
-- **Growth**: 60,000+ GitHub stars in 72 hours (one of fastest-growing open-source projects)
+- **Origin**: Late 2025 (Viral Surge: January 24-26, 2026)
+- **Growth**: 60,000+ GitHub stars over 8-week period (29,900+ stars before Jan 27 rebrand)
 - **License**: MIT (open source)
+- **Viral Catalyst**: The "Claude Code is my computer" blog post drove initial viral adoption before the repository explosion
 
 ### 1.2 Core Capabilities
 
@@ -30,7 +31,7 @@ Moltbot (formerly Clawdbot) represents a critical case study in AI agent securit
 
 ### 1.3 The Rebrand
 
-On January 27, 2026, Anthropic issued a trademark request forcing the name change from "Clawdbot" to "Moltbot" due to similarity to "Claude." During the 10-second window between releasing the old name and claiming the new one, crypto scammers hijacked both the GitHub organization and X/Twitter handle, launching fraudulent $CLAWD tokens that briefly reached $16M market cap before collapsing.
+On January 27, 2026, Anthropic issued a trademark request forcing the name change from "Clawdbot" to "Moltbot" following a trademark request due to similarity to "Claude." During the 10-second window between releasing the old name and claiming the new one, crypto scammers hijacked both the GitHub organization and X/Twitter handle, launching fraudulent $CLAWD tokens that briefly reached $16M market cap before collapsing. This chaotic incident became known as "10 seconds of chaos" in the project's history.
 
 ---
 
@@ -50,6 +51,16 @@ On January 27, 2026, Anthropic issued a trademark request forcing the name chang
 
 **Discovery Method**: 
 Security researcher Jamieson O'Reilly used Shodan to search for "Clawdbot Control" HTML fingerprints. The query returned hundreds of exposed instances within seconds.
+
+**Why Instances Are Exposed**:
+Many users deploy Moltbot on VPS servers or cloud instances to enable 24/7 operation and remote access. Common misconfigurations include:
+1. Binding to `0.0.0.0` (all interfaces) instead of localhost to access the UI from mobile devices
+2. Deploying on VPS without proper firewall rules
+3. Port forwarding home routers without authentication
+4. Using reverse proxies without understanding the security implications
+5. Following deployment tutorials that prioritize convenience over security
+
+The combination of "make it accessible from anywhere" user behavior with the localhost auto-trust design creates the perfect storm for exposure.
 
 **Exposure Scale**:
 - **900+** exposed gateway instances found on port 18789
@@ -172,13 +183,25 @@ Unlike encrypted browser stores or OS Keychains, these files are readable by any
 
 **Severity**: 7.5/10 (High)
 
-**Required Version**: Node.js 22.12.0 or later
+**Required Version**: Node.js 22.22.0 (LTS) or later
+
+**CRITICAL WARNING**: Version 22.12.0 and earlier releases in the v22 branch remain vulnerable to the CVEs listed below. The fixes were introduced in v22.22.0, not v22.12.0 as some sources may indicate.
 
 **Patched Vulnerabilities**:
-- CVE-2025-59466: async_hooks DoS vulnerability
-- CVE-2026-21636: Permission model bypass vulnerability
+- CVE-2025-59466: async_hooks DoS vulnerability (fixed in v22.22.0)
+- CVE-2026-21636: Permission model bypass vulnerability (fixed in v22.22.0)
 
-**Risk**: Older Node.js versions expose the system to denial-of-service and permission bypass attacks.
+**Risk**: Using Node.js versions prior to 22.22.0 exposes the system to denial-of-service attacks and permission bypass exploits that could allow attackers to escape sandboxing controls and access restricted resources.
+
+**Verification Command**:
+```bash
+node --version
+# Must show v22.22.0 or higher
+```
+
+**Installation**: 
+- Download from nodejs.org or use nvm: `nvm install 22.22.0`
+- Verify after installation before running Moltbot
 
 ---
 
@@ -192,12 +215,19 @@ Unlike encrypted browser stores or OS Keychains, these files are readable by any
 **Typical Monthly Costs**:
 - Light users: $15-30/month
 - Power users: $40-60/month  
-- Heavy users: $200+/month (180 million tokens/week reported)
+- Heavy users: $200-500/month
+- **Autonomous loops (uncapped)**: $2,000+/week
+
+**Extreme Case - Runaway Costs**:
+Field reports from Mac Mini cluster deployments indicate autonomous agent loops consuming **180 million tokens per week**. At standard API rates:
+- Claude Opus: ~$2,700/week ($10,800/month)
+- Claude Sonnet: ~$540/week ($2,160/month)
+- This represents agent failures where tasks loop infinitely without proper termination
 
 **Cost Comparison**:
 - ChatGPT Plus: $20/month (flat rate)
 - Claude Pro: $20/month (flat rate)
-- Moltbot: Variable, potentially much higher
+- Moltbot: Variable, potentially 10-500x higher without rate limiting
 
 ### 3.2 Why Token Usage is High
 
@@ -222,6 +252,18 @@ Every request includes:
 3. **Monitoring**: Use `/status` and `/usage` commands to track consumption
 4. **Tool Restrictions**: Disable unnecessary tools to reduce prompt size
 5. **Rate Limiting**: Implement API usage caps at provider level
+6. **Loop Prevention**: Set maximum iterations for agent tasks
+7. **Budget Alerts**: Configure spending alerts through API provider dashboards
+8. **Emergency Kill Switch**: Implement cost-based automatic shutdown triggers
+
+**Critical Warning - Runaway Loops**:
+Autonomous agent loops can consume millions of tokens before detection. Always implement:
+- Maximum task duration limits
+- Token consumption monitoring with automatic cutoffs
+- Notification systems for unusual spending patterns
+- Daily/weekly spending caps at the API provider level
+
+Example: A simple task like "monitor this folder and organize files" can loop infinitely if the agent repeatedly reorganizes the same files, consuming 180M+ tokens/week ($2,700/week on Opus) before manual intervention.
 
 ---
 
@@ -682,10 +724,27 @@ clawdbot security audit --fix
 4. Implement network segmentation
 5. Consider VM or container isolation
 
+**⚠️ CRITICAL WARNING - VPS Deployment Risks**:
+
+While VPS deployment enables 24/7 operation and remote access, it significantly increases exposure risk. Many of the 900+ compromised instances were VPS deployments with:
+- Binding to `0.0.0.0` for remote UI access
+- Missing firewall rules (expecting cloud provider defaults)
+- Reverse proxy misconfigurations
+- No authentication enabled
+
+**If deploying to VPS**:
+1. ✅ Use Tailscale Serve/Funnel or Cloudflare Tunnel (NOT direct port exposure)
+2. ✅ Enable `gateway.auth.mode: "password"` with strong password
+3. ✅ Configure firewall to deny all traffic except Tailscale/Cloudflare
+4. ✅ Bind only to localhost (127.0.0.1), let tunnel handle external access
+5. ✅ Set up monitoring alerts for unauthorized access attempts
+6. ❌ NEVER bind to 0.0.0.0 without authentication
+7. ❌ NEVER rely on "security through obscurity" (random ports, etc.)
+
 **Cost-Effective Options**:
-- Cheap VPS: $4-10/month
-- Dedicated Mac Mini: ~$600 one-time
-- Isolated development machine
+- Cheap VPS: $4-10/month (requires advanced security configuration)
+- Dedicated Mac Mini: ~$600 one-time (with Tailscale, behind home firewall)
+- Isolated development machine (local only, most secure)
 
 ### 9.9 Organizational Policies
 
@@ -1107,9 +1166,16 @@ The next 12-18 months will be critical in determining whether we can secure AI a
 
 ---
 
-**Document Version**: 1.0  
+**Document Version**: 1.1 (Corrected)  
 **Last Updated**: January 27, 2026  
 **Status**: Active Threat Analysis  
 **Classification**: Public
+
+**Revision Notes (v1.1)**:
+- Corrected launch timeline to reflect late 2025 origin with January 2026 viral surge
+- Updated Node.js requirement from 22.12.0 to 22.22.0 (critical security fix)
+- Expanded token cost analysis to include extreme runaway loop scenarios ($2,700/week)
+- Added context on VPS deployment patterns contributing to gateway exposure
+- Clarified "10-second chaos" rebrand incident with precise legal terminology
 
 *This analysis should be reviewed and updated quarterly as the threat landscape evolves and new vulnerabilities are discovered.*
