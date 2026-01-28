@@ -1,5 +1,9 @@
 # AI and the Barbell Economy
 
+![AI-ML/assets/AI-Native-Economy.png](assets/AI-Native-Economy.png)
+
+---
+
 ## How Artificial Intelligence Is Reshaping Competition, Value, and Strategy
 
 ---

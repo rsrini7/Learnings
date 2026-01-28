@@ -86,6 +86,9 @@ The manual highlights a critical strategic trade-off: **Vertical Skill Deepening
 
 ---
 
+![AI-ML/assets/AI-Native-Economy.png](assets/AI-Native-Economy.png)
+---
+
 ## 🎯 Part 1: Core Skills
 
 ### Context Engineering

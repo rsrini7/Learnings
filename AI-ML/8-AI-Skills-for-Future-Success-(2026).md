@@ -4,6 +4,9 @@
 
 ---
 
+![AI-ML/assets/AI-Native-Economy.png](assets/AI-Native-Economy.png)
+---
+
 ### 🧠 **Phase 1: Foundational Mindset Skills**
 
 These skills are about mindset — not technical tools — and form the backbone of how you effectively work with AI.
