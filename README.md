@@ -262,6 +262,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Quantum Threat to Bitcoin](QuantumComputing/Quantum-Threat-to-Bitcoin.md)
 - [Quantum Computer Terms](QuantumComputing/QuantumComputer-Terms.md)
 - [VIO-40K 10,000 Qubits](QuantumComputing/VIO-40K-Arch-10K-Qubits.md)
+- [Quantum AI Decision Makers (2026)](QuantumComputing/Quantum-AI-Decision-Makers(2026).md)
 
 ---
 
