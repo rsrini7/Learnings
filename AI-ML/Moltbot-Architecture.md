@@ -153,3 +153,9 @@ Transforms critique into a strength.
 > Enforced turn limits, allowlisted tools, user approvals, and serial execution ensure no silent privilege escalation.  
 
 Robust and defensible safeguards.
+
+## References
+
+https://x.com/hesamation/status/2017038553058857413
+
+https://www.mmntm.net/articles/building-clawdbot
