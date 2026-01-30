@@ -1,16 +1,25 @@
-# Moltbot (formerly Clawdbot) Architecture
+# OpenClaw Moltbot (formerly Clawdbot) Architecture
 
 > *“Moltbot is a deterministic, local-first agent runtime that prioritizes explainability and user control over unchecked autonomy.”*
 
 **Further Read on Security Aspects**: 
-- [Moltbot Security Analysis Jan-2026 ](Moltbot-Security-Analysis-Jan-2026.md)
+- [OpenClaw(Moltbot-or-Clawdbot) Security Analysis Jan-2026 ](OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026.md)
 
 ---
 
 ![Clawdbot-or-Moltbot.png](assets/Clawdbot-or-Moltbot.png)
 
 ## Overview
-Moltbot, previously known as Clawdbot, is a self-hosted AI agent designed to operate as a personal assistant across various messaging platforms. It emphasizes simplicity, determinism, and user empowerment, allowing seamless integration into daily workflows. Unlike cloud-based chatbots that require users to initiate interactions, Moltbot can be proactive, persistent in memory, and capable of executing real-world actions through tools. This architecture enables it to function as an always-available companion, handling tasks from research to automation while running on affordable hardware like a $5/month VPS.
+OpenClaw previously known as Moltbot, Clawdbot, is a self-hosted AI agent designed to operate as a personal assistant across various messaging platforms. It emphasizes simplicity, determinism, and user empowerment, allowing seamless integration into daily workflows. Unlike cloud-based chatbots that require users to initiate interactions, Moltbot can be proactive, persistent in memory, and capable of executing real-world actions through tools. This architecture enables it to function as an always-available companion, handling tasks from research to automation while running on affordable hardware like a $5/month VPS.
+
+The OpenClaw project (an open-source AI agent) underwent multiple rebrands in early 2026 due to trademark issues and strategic decisions. Anthropic prompted the initial shift from Clawdbot (with its "Clawd" mascot) to Moltbot over similarity to "Claude." [laravel-news](https://laravel-news.com/clawdbot-rebrands-to-moltbot-after-trademark-request-from-anthropic)
+
+## Rebrand Timeline
+- **Clawdbot to Moltbot (Jan 26-27, 2026)**: Anthropic's legal team flagged trademark confusion; creator Peter Steinberger embraced "Moltbot" as a lobster-themed metaphor for growth (lobsters molt shells). [forbes](https://www.forbes.com/sites/ronschmelzer/2026/01/27/viral-ai-sidekick-clawdbot-changes-name-to-moltbot-and-sheds-its-old-skin/)
+- **Moltbot to OpenClaw (Jan 30, 2026)**: Just days later, the team rebranded again for a "permanent, serious identity" aimed at enterprise adoption, avoiding further disruptions like scammer hijacks of old handles. [forbes](https://www.forbes.com/sites/ronschmelzer/2026/01/30/moltbot-molts-again-and-becomes-openclaw-pushback-and-concerns-grow/)
+
+## Why "OpenClaw"?
+It retains the "Claw" nod to the lobster mascot and original Clawdbot heritage while prefixing "Open" to highlight its open-source nature, signaling transparency and community focus for long-term stability. This avoids playful but risky names like Moltbot, positioning it better amid growing security/privacy concerns. [sterlites](https://sterlites.com/blog/moltbot-local-first-ai-agents-guide-2026)
 
 Key Benefits:
 - **Proactive Assistance**: Schedules briefings, reminders, and alerts without user prompting.
@@ -158,3 +167,4 @@ Robust and defensible safeguards.
 https://x.com/hesamation/status/2017038553058857413
 
 https://www.mmntm.net/articles/building-clawdbot
+
