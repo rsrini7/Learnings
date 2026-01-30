@@ -4,7 +4,6 @@
 
 **Further Read on Security Aspects**: 
 - [Moltbot Security Analysis Jan-2026 ](Moltbot-Security-Analysis-Jan-2026.md)
-- [Security-Analysis-Jan-2026](../News/Clawdbot(Moltbot)-Security-Analysis-Jan-2026.md)
 
 ---
 
