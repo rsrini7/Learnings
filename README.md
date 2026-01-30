@@ -47,6 +47,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [LLM-Council](AI-ML/LLM-Council.md)
 - [Claude Cowork](AI-ML/Claude-Cowork.md)
 - [Ashley's 11 Agent System](AI-ML/Ashley's-11-agent-system.md)
+- [Moltbot-Architecture.md](AI-ML/Moltbot-Architecture.md)
 
 ### 🔬 Models, Training & Inference
 - [Fine Tuning LLM - GTX 1060 - WSL2-Ubuntu-2022](AI-ML/Fine-Tuning-LLM-GTX1060-WSL2-Ubuntu-2022.md)
@@ -182,7 +183,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [MongoBleed](News/MongoBleed-Dec2025.md)
 - [Node.js Async Hooks DoS Vulnerability](News/Node.js-Async-Hooks-DoS-Vulnerability.md)
 - [Security Vulnerabilities in Wireless Devices and Apps](News/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
-- [Clawdbot(Moltbot) Security Analysis Jan-2026)](News/Clawdbot(Moltbot)-Security-Analysis-Jan-2026.md)
+- [Clawdbot(Moltbot) Security Analysis Jan-2026)](AI-ML/Moltbot-Security-Analysis-Jan-2026.md)
 
 ### 🚀 Infrastructure & Outages
 - [Cloudflare down Nov-2025](News/cloudflare-down-nov-2025.md)
