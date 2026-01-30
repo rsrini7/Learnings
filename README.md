@@ -48,6 +48,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Claude Cowork](AI-ML/Claude-Cowork.md)
 - [Ashley's 11 Agent System](AI-ML/Ashley's-11-agent-system.md)
 - [Moltbot-Architecture.md](AI-ML/Moltbot-Architecture.md)
+- [Agent-Skills-vs-Agents.md.md](AI-ML/Agent-Skills-vs-Agents.md.md)
 
 ### 🔬 Models, Training & Inference
 - [Fine Tuning LLM - GTX 1060 - WSL2-Ubuntu-2022](AI-ML/Fine-Tuning-LLM-GTX1060-WSL2-Ubuntu-2022.md)
