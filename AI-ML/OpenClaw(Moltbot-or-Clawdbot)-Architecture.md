@@ -1,4 +1,4 @@
-# OpenClaw Moltbot (formerly Clawdbot) Architecture
+# OpenClaw (formerly Moltbot / Clawdbot) Architecture
 
 > *“Moltbot is a deterministic, local-first agent runtime that prioritizes explainability and user control over unchecked autonomy.”*
 
