@@ -214,6 +214,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Deepseek Engram](Papers/Deepseek-Engram.md)
 - [Prompt Repetition (RE2)](Papers/Prompt-Repetition-RE2.md)
 - [Agentic Reasoning LLMs](Papers/Agentic-Reasoning-LLMs.md)
+- [kimi_k2.5_technical_report.md](Papers/kimi_k2.5_technical_report.md)
 
 ### 📊 Paper Comparisons
 - [Google Nested Learning vs FB Sparce Memory](Papers/comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md)
