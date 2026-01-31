@@ -1,0 +1,224 @@
+# tests/agent-evals.yaml
+# Evaluation suite for Spring Boot 4 migration tasks
+# Target: 95%+ pass rate with SPRINGBOOT-AGENTS.md
+
+test_suite:
+  metadata:
+    framework: "Spring Boot"
+    version: "4.0.0"
+    date_created: "2026-01-31"
+    baseline_pass_rate_without_docs: "45%"
+    target_pass_rate_with_agents_md: "95%"
+
+tests:
+  - test_id: "01-java-baseline"
+    title: "Java 21 Baseline Requirement"
+    description: "Verify agent understands Java 21 is mandatory"
+    prompt: |
+      Create a pom.xml for a new Spring Boot 4 project. 
+      What Java version should be configured?
+      Show pom.xml properties section.
+    expected_assertions:
+      - "Contains <java.version>21</java.version>"
+      - "No Java 20 or earlier mentioned"
+      - "maven.compiler.source and target both 21"
+    pass_criteria: "All assertions true"
+    
+  - test_id: "02-javax-to-jakarta-migration"
+    title: "Package Migration: javax.* → jakarta.*"
+    description: "Migrate Spring Boot 3 code to use jakarta packages"
+    prompt: |
+      Migrate this Spring Boot 3 code to Spring Boot 4:
+      ```java
+      import javax.servlet.http.HttpServletRequest;
+      import javax.annotation.PostConstruct;
+      import javax.persistence.Entity;
+      import javax.persistence.Id;
+      
+      @Entity
+      public class User {
+          @Id
+          private Long id;
+          
+          @PostConstruct
+          public void init() { }
+      }
+      ```
+    expected_assertions:
+      - "No javax.* imports remain"
+      - "All imports use jakarta.*"
+      - "Compiles without errors"
+      - "Pattern: import jakarta.servlet.http.HttpServletRequest"
+    pass_criteria: "All assertions true"
+    
+  - test_id: "03-native-api-versioning"
+    title: "Native API Versioning Implementation"
+    description: "Implement Spring Boot 4 native API versioning"
+    prompt: |
+      Create a Spring Boot 4 REST controller with native API versioning.
+      Implement /api/products endpoint with two versions:
+      - v4.0: Returns { id, name, price }
+      - v4.1: Returns { id, name, price, stock, lastUpdated }
+      Use path-based versioning (/api/v4.0/products, /api/v4.1/products)
+    expected_assertions:
+      - "Uses @Version annotation"
+      - "Declares versions 4.0 and 4.1"
+      - "Uses jakarta.* imports"
+      - "Single controller with multiple @PostMapping methods"
+      - "Configuration for path-based versioning present"
+      - "No javax.* imports"
+    pass_criteria: "All assertions true"
+    
+  - test_id: "04-http-clients-configuration"
+    title: "HTTP Clients Configuration Namespace Update"
+    description: "Migrate from deprecated HTTP config to unified namespace"
+    prompt: |
+      Update this Spring Boot 3 application.yml to Spring Boot 4:
+      ```yaml
+      spring:
+        http:
+          client:
+            connect-timeout: 5s
+          reactiveclient:
+            read-timeout: 10s
+      ```
+    expected_assertions:
+      - "Uses spring.http.clients.* namespace"
+      - "No spring.http.client.* or reactiveclient.* properties"
+      - "Contains default or custom client configurations"
+      - "YAML validates without errors"
+    pass_criteria: "All assertions true"
+    
+  - test_id: "05-jspecify-null-annotations"
+    title: "JSpecify Null Annotations Migration"
+    description: "Migrate from Spring's Nullable to JSpecify"
+    prompt: |
+      Update this REST controller to use Spring Boot 4 null annotations:
+      ```java
+      import org.springframework.lang.Nullable;
+      
+      @RestController
+      @RequestMapping("/api/users")
+      public class UserController {
+          @GetMapping("/{id}")
+          public User getUser(@RequestParam @Nullable String email) {
+              // email is optional
+          }
+      }
+      ```
+    expected_assertions:
+      - "Uses org.jspecify.annotations.Nullable"
+      - "No org.springframework.lang.Nullable imports"
+      - "Uses jakarta.* for servlet/annotation imports"
+      - "Code compiles and is functionally equivalent"
+    pass_criteria: "All assertions true"
+    
+  - test_id: "06-opentelemetry-observability"
+    title: "OpenTelemetry Observability Configuration"
+    description: "Migrate observability from Jaeger to OpenTelemetry"
+    prompt: |
+      Update management configuration from Jaeger to OpenTelemetry:
+      ```yaml
+      management:
+        tracing:
+          jaeger:
+            grpc:
+              endpoint: http://localhost:14250
+      ```
+    expected_assertions:
+      - "Uses management.otlp.tracing.endpoint"
+      - "No jaeger configuration present"
+      - "Includes spring-boot-starter-opentelemetry dependency"
+      - "YAML is valid"
+    pass_criteria: "All assertions true"
+    
+  - test_id: "07-http-exchange-service-client"
+    title: "Spring Boot 4 HTTP Service Clients (@HttpExchange)"
+    description: "Implement new HTTP service client pattern"
+    prompt: |
+      Create a Spring Boot 4 HTTP service client using @HttpExchange
+      for a remote Orders API at http://api.example.com/orders
+      Requirements:
+      - Interface with @GetExchange and @PostExchange methods
+      - Configuration bean to create client
+      - Service class that uses the client
+    expected_assertions:
+      - "Defines @HttpExchange interface"
+      - "@GetExchange and @PostExchange annotations present"
+      - "HttpServiceProxyFactory used for client creation"
+      - "Service injects the client via constructor"
+      - "Uses jakarta.* imports"
+      - "No RestTemplate/WebClient boilerplate"
+    pass_criteria: "All assertions true"
+    
+  - test_id: "08-deprecated-api-identification"
+    title: "Identify and Flag Deprecated APIs"
+    description: "Recognize Spring Boot 3 deprecated patterns"
+    prompt: |
+      Review this Spring Boot 3 code and flag deprecated patterns 
+      for Spring Boot 4 migration:
+      [Show example with multiple deprecated APIs]
+    expected_assertions:
+      - "Identifies all javax.* imports"
+      - "Flags spring.lang.Nullable annotations"
+      - "Identifies deprecated HTTP config namespace"
+      - "Provides replacement for each deprecated pattern"
+    pass_criteria: "Identifies 90%+ of deprecated patterns"
+    
+  - test_id: "09-end-to-end-migration"
+    title: "End-to-End Service Migration"
+    description: "Migrate complete Spring Boot 3 service to Boot 4"
+    prompt: |
+      Migrate this complete Spring Boot 3 service to Spring Boot 4:
+      - Update pom.xml (version, Java, dependencies)
+      - Migrate all javax.* → jakarta.*
+      - Update application.yml configurations
+      - Replace deprecated APIs with Boot 4 equivalents
+      - Ensure all tests pass
+      [Provide full service code]
+    expected_assertions:
+      - "No javax.* imports"
+      - "pom.xml declares Spring Boot 4.0.0+ and Java 21"
+      - "application.yml uses new config namespaces"
+      - "All deprecated patterns replaced"
+      - "Code compiles without errors"
+      - "Tests pass (if provided)"
+    pass_criteria: "All assertions true"
+    
+  - test_id: "10-production-readiness-checklist"
+    title: "Production Readiness Verification"
+    description: "Verify Spring Boot 4 migration is production-ready"
+    prompt: |
+      A team is about to deploy a Spring Boot 4 migrated application.
+      Provide a pre-deployment checklist.
+    expected_assertions:
+      - "Includes Java 21+ verification step"
+      - "References test execution (unit + integration)"
+      - "Includes verification for zero javax imports"
+      - "Covers configuration validation"
+      - "Includes native image build (if applicable)"
+      - "Covers observability/monitoring verification"
+      - "Includes staged rollout strategy"
+    pass_criteria: "Checklist covers 80%+ of migration concerns"
+
+evaluation_criteria:
+  pass_rate_calculation: "Number of passing tests / Total tests"
+  target_success_metrics:
+    - baseline_without_docs: "45%"
+    - with_agents_md_embedded: "95%"
+    - minimum_acceptable: "80%"
+  
+  test_execution:
+    - Each test should be executable/verifiable
+    - Retry failed tests 2 times to account for model variance
+    - Document failure reason if test fails consistently
+    
+  scoring:
+  - All assertions true: "PASS"
+  - 90%+ assertions true: "PASS_WITH_WARNINGS"
+  - <90% assertions true: "FAIL"
+
+success_criteria:
+  overall_pass_rate: "≥95%"
+  minimum_passing_tests: "9 out of 10"
+  consistency: "Should not vary >5% across 3 runs"
