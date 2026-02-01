@@ -54,6 +54,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Fine Tuning LLM - GTX 1060 - WSL2-Ubuntu-2022](AI-ML/Fine-Tuning-LLM-GTX1060-WSL2-Ubuntu-2022.md)
 - [ML Math](AI-ML/ML-Math.md)
 - [Multimodal RAG](AI-ML/Multimodal-RAG.md)
+- [RAG Architectures](AI-ML/RAG-Architectures.md)
 - [Unlock the Dark Data](AI-ML/Unlock-the-Dark-Data.md)
 - [LLM Benchmarks](AI-ML/LLM-Benchmarks.md)
 - [LLM Inference](AI-ML/LLM-Inference.md)
