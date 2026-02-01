@@ -1082,3 +1082,12 @@ For implementation questions or to discuss your specific use case, reach out to 
 | **Agent Parsing** | String matching `if "FINISH" in text` | Must use JSON schema / function calling |
 
 These corrections ensure the architecture is mathematically sound, terminologically accurate, and implementable in production environments without silent failures. **The BM25 sparse indexing correction is particularly critical—implementing it incorrectly will result in a non-functional system.**
+
+
+## OriginalReference Architectures
+
+![Building Your Second Brain RAG](assets/Building-Your-Second-Brain-RAG.jpeg)
+
+---
+
+![Production Grade RAG Architecture](assets/Production-Grade-RAG-Arch.jpeg)
