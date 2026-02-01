@@ -449,7 +449,7 @@ graph LR
     end
     
     subgraph "Metrics Layer"
-        E[Retrieval Quality] -->|Precision@K| F[Prometheus]
+        E[Retrieval Quality] -->|"Precision@K"| F[Prometheus]
         G[Agent Iterations] -->|Count/Time| F
         H[User Satisfaction] -->|Thumbs Up/Down| F
     end
