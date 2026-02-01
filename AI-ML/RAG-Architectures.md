@@ -93,10 +93,10 @@ graph TB
         Q -->|Stream| R[Response]
     end
     
-    style A fill:#e1f5ff
-    style H fill:#fff3cd
-    style Q fill:#d4edda
-    style R fill:#d4edda
+    style A fill:#e1f5ff,color:#000
+    style H fill:#fff3cd,color:#000
+    style Q fill:#d4edda,color:#000
+    style R fill:#d4edda,color:#000
 ```
 
 #### Ingestion Pipeline: From Documents to Hybrid Index
@@ -311,8 +311,8 @@ graph TB
     end
     
     style H fill:#f39c12,color:#fff
-    style T fill:#d4edda
-    style W fill:#e1f5ff
+    style T fill:#d4edda,color:#000
+    style W fill:#e1f5ff,color:#000
 ```
 
 #### Data Ingestion and Quality Pipeline
@@ -466,8 +466,8 @@ graph LR
     
     M -->|Alerts| N[On-Call Engineer]
     
-    style M fill:#e1f5ff
-    style N fill:#f8d7da
+    style M fill:#e1f5ff,color:#000
+    style N fill:#f8d7da,color:#000
 ```
 
 ### 3.3 Performance Trade-offs
@@ -542,9 +542,9 @@ graph TB
         D3 --> E3[Answer]
     end
     
-    style D1 fill:#f8d7da
-    style E2 fill:#fff3cd
-    style E3 fill:#d4edda
+    style D1 fill:#f8d7da,color:#000
+    style E2 fill:#fff3cd,color:#000
+    style E3 fill:#d4edda,color:#000
 ```
 
 ### 4.3 Decision Framework
@@ -1084,7 +1084,7 @@ For implementation questions or to discuss your specific use case, reach out to 
 These corrections ensure the architecture is mathematically sound, terminologically accurate, and implementable in production environments without silent failures. **The BM25 sparse indexing correction is particularly critical—implementing it incorrectly will result in a non-functional system.**
 
 
-## OriginalReference Architectures
+## Original Reference Architectures
 
 Original Reference Architectures can be found at 
 
