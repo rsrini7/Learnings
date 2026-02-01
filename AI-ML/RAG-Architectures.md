@@ -1086,6 +1086,11 @@ These corrections ensure the architecture is mathematically sound, terminologica
 
 ## OriginalReference Architectures
 
+Original Reference Architectures can be found at 
+
+- [Building Your Second Brain RAG](https://www.decodingai.com/p/build-your-second-brain-ai-assistant)
+- [Building Your Second Brain RAG GitHub Repo](https://github.com/decodingai-magazine/second-brain-ai-assistant-course)
+
 ![Building Your Second Brain RAG](assets/Building-Your-Second-Brain-RAG.jpeg)
 
 ---
