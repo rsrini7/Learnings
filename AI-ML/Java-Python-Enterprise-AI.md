@@ -75,33 +75,31 @@ Across all domains, the pattern holds:
 
 **Real-World Example (Ops & Incidents):**
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│  Incident: API Gateway 503 Errors Spike                    │
-└─────────────────────────────────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────────┐
-│  Python: Anomaly Detection                                  │
-│  - Analyzes logs, metrics, traces                          │
-│  - Correlates with deployment events                       │
-│  - Identifies root cause: Database connection pool         │
-│  - Suggests: "Scale DB connections by 50%"                 │
-└─────────────────────────────────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────────┐
-│  Java: Response Orchestration                               │
-│  - Validates suggestion against safety rules               │
-│  - Checks: Is this action approved for prod?               │
-│  - Creates change ticket in ITSM                           │
-│  - Waits for SRE approval (HITL)                           │
-│  - Executes via Kubernetes API                             │
-│  - Logs full audit trail                                   │
-│  - Monitors for regression                                 │
-└─────────────────────────────────────────────────────────────┘
-                          ↓
-                   ✅ Incident Resolved
-                   📊 Full Audit Trail
-                   ⚖️ Compliance Maintained
+```mermaid
+graph TD
+    %% Define Node Styles
+    classDef incidentStyle fill:#f8d7da,stroke:#721c24,stroke-width:2px,color:#721c24;
+    classDef pythonStyle fill:#d1ecf1,stroke:#0c5460,stroke-width:2px,color:#0c5460;
+    classDef javaStyle fill:#d4edda,stroke:#155724,stroke-width:2px,color:#155724;
+    classDef resultStyle fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404;
+
+    %% Workflow Steps
+    Incident["🚨 Incident: API Gateway 503 Errors Spike"]:::incidentStyle
+    
+    subgraph Python_Intelligence ["Python: Intelligence Layer"]
+        Python["<b>Anomaly Detection</b><br/>• Analyzes logs, metrics, traces<br/>• Correlates deployment events<br/>• Identifies DB pool root cause<br/>• Suggests Scaling DB by 50%"]:::pythonStyle
+    end
+
+    subgraph Java_Control ["Java: Control Layer"]
+        Java["<b>Response Orchestration</b><br/>• Validates safety rules<br/>• Checks Production approval<br/>• Creates ITSM change ticket<br/>• Waits for SRE (HITL)<br/>• Executes via K8s API<br/>• Logs full audit trail<br/>• Monitors for regression"]:::javaStyle
+    end
+
+    Resolved["✅ Incident Resolved<br/>📊 Full Audit Trail<br/>⚖️ Compliance Maintained"]:::resultStyle
+
+    %% Connections
+    Incident --> Python
+    Python --> Java
+    Java --> Resolved
 ```
 
 **Why This Architecture Matters:**
@@ -173,20 +171,32 @@ Traditional AI integrations required custom code for each tool. MCP provides a *
 
 **MCP Architecture (Spring AI Native Integration):**
 
-```
-┌─────────────────────────────────────────────────────────┐
-│  Spring AI Application                                  │
-│  ├─ ChatClient (OpenAI, Anthropic, etc.)               │
-│  └─ MCP Client (0.17.2)                                │
-└─────────────────────────────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────┐
-│  MCP Servers (Standardized Tool Interface)             │
-│  ├─ Google Drive MCP (Node.js)                         │
-│  ├─ Slack MCP (Python)                                 │
-│  ├─ PostgreSQL MCP (Node.js)                           │
-│  └─ Custom Enterprise Tools (Any language)             │
-└─────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    %% Define Node Styles
+    classDef appStyle fill:#e7f3ff,stroke:#004085,stroke-width:2px,color:#004085;
+    classDef clientStyle fill:#ffffff,stroke:#004085,stroke-dasharray: 5 5,color:#004085;
+    classDef serverStyle fill:#f8f9fa,stroke:#343a40,stroke-width:2px,color:#343a40;
+    classDef toolStyle fill:#ffffff,stroke:#343a40,stroke-dasharray: 2 2,color:#343a40;
+
+    %% Spring AI Application Layer
+    subgraph Spring_AI_App ["Spring AI Application"]
+        ChatClient["<b>ChatClient</b><br/>(OpenAI, Anthropic, etc.)"]:::clientStyle
+        MCPClient["<b>MCP Client (0.17.2)</b>"]:::clientStyle
+    end
+    class Spring_AI_App appStyle
+
+    %% MCP Servers Layer
+    subgraph MCP_Servers ["MCP Servers (Standardized Tool Interface)"]
+        GDrive["<b>Google Drive MCP</b><br/>(Node.js)"]:::toolStyle
+        Slack["<b>Slack MCP</b><br/>(Python)"]:::toolStyle
+        Postgres["<b>PostgreSQL MCP</b><br/>(Node.js)"]:::toolStyle
+        Custom["<b>Custom Enterprise Tools</b><br/>(Any Language)"]:::toolStyle
+    end
+    class MCP_Servers serverStyle
+
+    %% Connection
+    MCPClient -->|Universal Interface| MCP_Servers
 ```
 
 **MCP 0.17.2 Features:**
@@ -447,10 +457,10 @@ Project Babylon's **HAT (Heterogeneous Accelerator Toolkit)** allows Java to exe
 **Architecture With Babylon:**
 
 ```
-┌─────────────┐                    ┌─────────┐
-│  Java API   │ ──HAT (direct)───→ │   GPU   │
-│ (Spring)    │                    │ (A100)  │
-└─────────────┘                    └─────────┘
+┌─────────────┐                  ┌─────────┐
+│  Java API   │ ──HAT (direct)→  │   GPU   │
+│ (Spring)    │                  │ (A100)  │
+└─────────────┘                  └─────────┘
    Overhead: <1ms, native performance
 ```
 
@@ -528,6 +538,39 @@ User Query → Hybrid Search:
        ↓
    LLM Context (entities + relationships + aggregations)
 ```
+
+```mermaid
+graph TD
+    %% Define Styles
+    classDef startStyle fill:#f8f9fa,stroke:#343a40,stroke-width:2px,color:#000;
+    classDef processStyle fill:#e7f3ff,stroke:#004085,stroke-width:2px,color:#000;
+    classDef vectorStyle fill:#d1ecf1,stroke:#0c5460,stroke-width:2px,color:#000;
+    classDef graphStyle fill:#d4edda,stroke:#155724,stroke-width:2px,color:#000;
+    classDef outputStyle fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#000;
+
+    %% Workflow Nodes
+    Query([User Query]):::startStyle --> Hybrid{Hybrid Search}:::processStyle
+
+    %% Vector Retrieval Path
+    Hybrid -->|Parallel Channel| Vector[Vector: Semantic similarity]:::vectorStyle
+    Vector --> Entities[Find relevant entities]:::vectorStyle
+
+    %% Graph Retrieval Path
+    Hybrid -->|Parallel Channel| Graph[Graph: Relationship traversal]:::graphStyle
+    Graph --> Connections[Navigate connections]:::graphStyle
+
+    %% Convergence to Context
+    Entities --> Context[LLM Context]:::outputStyle
+    Connections --> Context
+
+    %% Context Details
+    subgraph Context_Components [Augmented Knowledge]
+        Context --- C1[Entities]
+        Context --- C2[Relationships]
+        Context --- C3[Aggregations]
+    end
+    class Context_Components outputStyle
+```    
 
 **Architecture (Neo4j + Spring AI):**
 
@@ -746,24 +789,25 @@ public class IndustrialGatewayService {
 
 **The Pragmatic Edge AI Stack (2026):**
 
-```
-┌──────────────────────────────────────────────────┐
-│  Enterprise Integration Layer (Java)             │
-│  - Protocol translation (OPC UA, Modbus, MQTT)  │
-│  - Security, authentication, encryption          │
-│  - Audit logging, compliance, data governance    │
-└──────────────────────────────────────────────────┘
-                     ↓
-┌──────────────────────────────────────────────────┐
-│  AI Inference Layer (Python/C++)                 │
-│  - Computer vision (OpenCV, TensorRT)            │
-│  - Anomaly detection (scikit-learn, TF)          │
-│  - Predictive maintenance (PyTorch)              │
-└──────────────────────────────────────────────────┘
-                     ↓
-┌──────────────────────────────────────────────────┐
-│  Hardware (Jetson, Pi, Coral, Industrial PLC)    │
-└──────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    %% Define Node Styles
+    classDef javaLayer fill:#f0f7ff,stroke:#0056b3,stroke-width:2px,color:#0056b3;
+    classDef pythonLayer fill:#fff9e6,stroke:#856404,stroke-width:2px,color:#856404;
+    classDef hardwareLayer fill:#f8f9fa,stroke:#343a40,stroke-width:2px,color:#343a40;
+
+    %% Layer 1: Java
+    Java["<b>Enterprise Integration Layer (Java)</b><br/>• Protocol translation (OPC UA, Modbus, MQTT)<br/>• Security, authentication, encryption<br/>• Audit logging, compliance, data governance"]:::javaLayer
+
+    %% Layer 2: Python/C++
+    Python["<b>AI Inference Layer (Python/C++)</b><br/>• Computer vision (OpenCV, TensorRT)<br/>• Anomaly detection (scikit-learn, TF)<br/>• Predictive maintenance (PyTorch)"]:::pythonLayer
+
+    %% Layer 3: Hardware
+    Hardware["<b>Hardware</b><br/>(Jetson, Pi, Coral, Industrial PLC)"]:::hardwareLayer
+
+    %% Connections
+    Java -->|Orchestration & Governance| Python
+    Python -->|Native Driver/SDK Execution| Hardware
 ```
 
 **Architect's Advice:**
@@ -884,21 +928,19 @@ Explainable AI requires **two distinct capabilities**:
 
 **Architecture Pattern:**
 
-```
-┌─────────────────────────────────────────────────────────┐
-│  Java Governance Layer                                  │
-│  ✅ Logs every prediction with full context            │
-│  ✅ Stores model version, input data, output            │
-│  ✅ Maintains audit trail for regulators                │
-│  ✅ Enforces approval workflows for model updates       │
-└─────────────────────────────────────────────────────────┘
-                          ↓
-┌─────────────────────────────────────────────────────────┐
-│  Python Interpretability Layer                          │
-│  ✅ SHAP: "Loan denied because: debt-to-income ratio"  │
-│  ✅ LIME: Local approximations of model decisions       │
-│  ✅ Attention: Visualize which inputs model focused on  │
-└─────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    %% Define Node Styles
+    classDef governanceStyle fill:#f0f7ff,stroke:#0056b3,stroke-width:2px,color:#0056b3,text-align:left;
+    classDef interpretabilityStyle fill:#fff9e6,stroke:#856404,stroke-width:2px,color:#856404,text-align:left;
+
+    %% Nodes with full text in horizontal layout
+    JavaLayer["<b>Java Governance Layer</b> ✅ Logs every prediction with full context <br>✅ Stores model version, input data, output <br>✅ Maintains audit trail for regulators <br>✅ Enforces approval workflows"]:::governanceStyle
+    
+    PythonLayer["<b>Python Interpretability Layer</b><br/>✅ SHAP: 'Loan denied because: debt-to-income ratio' <br/>✅ LIME: Local approximations of model decisions <br/>✅ Attention: Visualize which inputs model focused on"]:::interpretabilityStyle
+
+    %% Connection
+    JavaLayer -->|Governance & Traceability Flow| PythonLayer
 ```
 
 **Real-World Example: Loan Approval System**
