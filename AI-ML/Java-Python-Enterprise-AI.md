@@ -430,6 +430,9 @@ with observed savings commonly ranging from ~40% to ~80% depending on domain, qu
 
 **This is where the "80% cost/energy savings" claim actually comes from—not from virtual threads.**
 
+> **Operational Reality Note:**
+> Semantic cache hit rates are **highly workload-dependent**. Rates in the 70–85% range are typically observed in domains with strong query repetition (e.g., customer support, policies, internal knowledge bases), **high-quality embeddings**, and carefully tuned similarity thresholds (commonly cosine similarity between ~0.92–0.97). More diverse or exploratory workloads may see materially lower hit rates and should be validated through production telemetry rather than assumed.
+
 ---
 
 ## 4. Project Babylon: The Real GPU Performance Story
@@ -1568,8 +1571,10 @@ production_readiness:
 
 **Results:**
 - ✅ Handles billions of inferences daily
-- ✅ 40% lower latency vs Python (gRPC overhead eliminated)
+- ✅ Production deployments using DJL demonstrated **measurable latency and throughput improvements** in JVM-native pipelines by eliminating cross-language IPC and serialization overhead. The magnitude of improvement varies by workload, batching strategy, and deployment topology. (gRPC overhead eliminated)
 - ✅ Native integration with JVM monitoring (Metrics, Traces)
+
+> *These observations are consistent with publicly available DJL benchmarks and talks describing JVM-native inference pipelines.*
 
 Netflix has reported measurable latency reductions for specific JVM-native inference workloads
 by eliminating cross-process communication overhead.
@@ -1841,7 +1846,7 @@ The following claims have been verified as **technically accurate**:
 
 ### **Review Verdict**
 
-**95% Technically Accurate** with appropriate nuances added for:
+**~95% High technical accuracy with documented caveats** with appropriate nuances added for:
 - Vector API incubator status
 - Valhalla preview timeline
 - MCP 0.17.2 as critical standard
