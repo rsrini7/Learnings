@@ -49,6 +49,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Ashley's 11 Agent System](AI-ML/Ashley's-11-agent-system.md)
 - [OpenClaw(Moltbot-or-Clawdbot) Architecture](AI-ML/OpenClaw(Moltbot-or-Clawdbot)-Architecture.md)
 - [Agent Skills vs Agents.md](AI-ML/Agent-Skills-vs-Agents.md.md)
+- [Java-Python-Enterprise-AI.md](AI-ML/Java-Python-Enterprise-AI.md)
 
 ### 🔬 Models, Training & Inference
 - [Fine Tuning LLM - GTX 1060 - WSL2-Ubuntu-2022](AI-ML/Fine-Tuning-LLM-GTX1060-WSL2-Ubuntu-2022.md)
