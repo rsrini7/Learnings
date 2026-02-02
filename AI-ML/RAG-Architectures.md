@@ -1657,3 +1657,7 @@ Original Reference Architectures can be found at
 ---
 
 ![Production Grade RAG Architecture](assets/Production-Grade-RAG-Arch.jpeg)
+
+---
+
+![System Architecture Enterprise RAG System](assets/Sys-Arch-Enterprise-RAG-System.gif)
