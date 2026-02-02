@@ -163,7 +163,11 @@ Your comparison to Hibernate is apt. Spring AI provides:
 
 **Status: MCP 0.17.2 (February 2026 Production Standard)**
 
-The Model Context Protocol has become the **critical standard** for enterprise AI tool integration. Think of MCP as the "JDBC for AI Tools"—it standardizes how LLMs interact with external systems, databases, APIs, and local tools.
+MCP (Model Context Protocol) is an emerging, vendor-led open protocol for agent–tool interoperability,
+introduced by Anthropic in late 2024.
+MCP shows early traction through tooling (e.g., inspectors and reference servers), but it is not yet
+a universal enterprise standard and adoption varies across vendors and ecosystems.
+Spring AI provides early integration examples and experimental support for MCP-style tool interaction.
 
 **Why MCP Matters:**
 
@@ -409,6 +413,9 @@ public class SemanticCacheService {
 }
 ```
 
+The following Java code is illustrative pseudocode; concrete APIs vary by vector store,
+embedding provider, and framework implementation.
+
 **Real-World Results:**
 
 | Metric | Without Semantic Cache | With Semantic Cache | Improvement |
@@ -417,6 +424,9 @@ public class SemanticCacheService {
 | **API Cost** | $10,000/month | $2,000/month | **80% savings** |
 | **Latency** | 1500ms (LLM call) | 50ms (cache hit) | **30x faster** |
 | **CO2 Impact** | High (GPU inference) | Low (vector lookup) | **~80% reduction** |
+
+Semantic caching has demonstrated significant cost reduction in workloads with high semantic query repetition,
+with observed savings commonly ranging from ~40% to ~80% depending on domain, query diversity, and cache strategy.
 
 **This is where the "80% cost/energy savings" claim actually comes from—not from virtual threads.**
 
@@ -428,7 +438,10 @@ public class SemanticCacheService {
 
 **IMPORTANT: This is the genuine Java AI breakthrough, not marketing hype.**
 
-Project Babylon's **HAT (Heterogeneous Accelerator Toolkit)** allows Java to execute GPU code with near-native performance, eliminating the need to call Python/C++ for compute-intensive AI operations.
+Project Babylon is an active OpenJDK research initiative exploring code reflection and heterogeneous accelerator support.
+Early engineering demonstrations show promising GPU performance for specific kernels under controlled conditions.
+Babylon remains a research-to-prototype effort; production viability depends on JVM integration maturity,
+tooling stability, and hardware driver support.
 
 **Measured Performance (2026 Benchmarks):**
 
@@ -712,6 +725,10 @@ The LinkedIn post's claims about "Edge AI Explosion in Java" are **overhyped**. 
 | **Intel NUC** | ~85% | ~15% | OpenVINO (Python/C++), some Java enterprise |
 | **Android** | ~30% | ~60% | **Java's stronghold** (TF Lite + Java/Kotlin) |
 
+Python and C++ dominate hardware-close edge inference stacks (e.g., Jetson, Coral, robotics).
+Java/Kotlin remain strong in Android-based ML and enterprise IoT gateway scenarios.
+Hybrid architectures (Java orchestration + Python/C++ inference) are common in production deployments.
+
 **Why Java Struggles on Edge:**
 
 1. **Hardware SDK Ecosystem**: Coral, Jetson, Hailo SDKs are Python/C++-first
@@ -837,6 +854,10 @@ Claims about "Quantum Java in Production" are **fundamentally misleading** for 2
 | **Enterprise Use** | "Production pilots" | Limited to IBM Research, Google Quantum AI |
 | **Standard Enterprise** | "Coming soon" | **Not relevant for 99.9% of companies** |
 
+Quantum computing frameworks remain Python-first (e.g., Qiskit, Cirq).
+Java is typically used via REST or interoperability layers rather than native quantum development,
+and quantum workloads remain largely experimental for most enterprises in 2026.
+
 **What Actually Exists:**
 
 1. **IBM Qiskit**: Primary interface is Python (Qiskit SDK v2.3)
@@ -918,6 +939,9 @@ If a vendor claims "Quantum Java in production," they mean:
 - **EU AI Act** (2025): High-risk AI systems must provide explanations
 - **GDPR**: "Right to explanation" for automated decisions
 - **US Financial**: Model Risk Management requires interpretability
+
+The EU AI Act introduces phased obligations with staggered enforcement timelines extending into 2026 and beyond,
+depending on risk classification and system type.
 
 **The Technical Reality:**
 
@@ -1067,19 +1091,31 @@ Don't claim "Java provides explainable AI." Instead, accurately state:
 
 ### **Java 25 LTS + Spring Boot 4.0: The Foundation**
 
-**CORRECTED VERSION GUIDANCE:**
+## **Version Guidance**
 
-| Version | Release Date | Status (Feb 2026) | Recommendation |
-|---------|-------------|------------------|----------------|
-| **Java 21 LTS** | Sept 2023 | Mature, widely adopted | ✅ **Production standard** for risk-averse teams |
-| **Java 25 LTS** | Sept 2025 | Stable, growing adoption | ✅ **Recommended** for new projects |
-| **Spring Boot 3.5** | Never existed | N/A | ❌ Skip (marketing error) |
-| **Spring Boot 4.0** | Nov 2025 | **Current production standard** | ✅ **Use this version** |
-| **Spring AI 2.0** | Feb 2026 (target) | Beta/RC | ✅ Production-ready by March 2026 |
+| Version               | Release Window          | Status (Feb 2026)             | Recommendation                                                               |
+| --------------------- | ----------------------- | ----------------------------- | ---------------------------------------------------------------------------- |
+| **Java 21 LTS**       | Sept 2023               | Mature, broadly deployed      | ✅ **Baseline production choice** for conservative or regulated environments  |
+| **Java 25 LTS**       | Sept 2025               | Stable, accelerating adoption | ✅ **Preferred LTS** for new enterprise AI initiatives                        |
+| **Spring Boot 3.5.x** | May–Nov 2025            | Stable, fully supported       | ✅ **Valid production option**, especially for teams not yet ready for 4.x    |
+| **Spring Boot 4.0.x** | Nov 2025                | Current major release         | ✅ **Recommended for new builds** targeting Java 25 and forward compatibility |
+| **Spring AI 2.0**     | Early 2026 (planned GA) | RC / late milestone           | ⚠️ **Adopt selectively** after validation; GA expected imminently            |
 
-**Critical Correction:**
+**Simple Guidance**
 
-The original post mentioned "Spring Boot 3.5+" which **does not exist**. Spring Boot jumped from 3.4 directly to **4.0** in November 2025, making 4.0 the current production standard for Java 25 environments.
+- Spring Boot **3.5.x** was a fully released and supported line throughout 2025 and remains a **safe production choice** in early 2026, particularly for teams prioritizing incremental upgrades or maintaining alignment with existing Spring 3.x estates.
+
+- Spring Boot **4.0.0**, released in **November 2025**, represents the next major evolution of the Spring platform. It introduces **intentional breaking changes** aligned with newer Java and Jakarta EE baselines and is best suited for:
+
+    * New services
+    * Strategic platform refreshes
+    * Teams standardizing on **Java 25 LTS**
+
+- Both 3.5.x and 4.0.x are valid in production; the choice is primarily driven by **upgrade tolerance, ecosystem readiness, and long-term roadmap alignment**, not stability concerns.
+
+- Spring AI **2.0** should be treated as **near-GA but not yet a default dependency** for mission-critical systems until final release validation is complete.
+
+---
 
 **The 2026 Recommended Stack:**
 
@@ -1215,10 +1251,12 @@ public class VectorOperations {
 
 **Status**: Preview feature in JDK 26 (March 17, 2026 GA), NOT finalized
 
-**Critical Correction**: The document should state:
 - ⚠️ JEP 401 (Value Classes) is **preview** in JDK 26
 - ⚠️ Production-ready (finalized) expected **2027** (likely JDK 27 or 28)
 - ✅ Early adopters can test in JDK 26 with `--enable-preview` flag
+
+Project Valhalla (JEP 401) is available in preview and early-access builds.
+Finalization is expected in a future JDK after sufficient stabilization, subject to OpenJDK JEP progression.
 
 **What Valhalla Provides**:
 
@@ -1530,6 +1568,10 @@ production_readiness:
 - ✅ 40% lower latency vs Python (gRPC overhead eliminated)
 - ✅ Native integration with JVM monitoring (Metrics, Traces)
 
+Netflix has reported measurable latency reductions for specific JVM-native inference workloads
+by eliminating cross-process communication overhead.
+Exact performance improvements vary by workload and deployment architecture.
+
 **Key Lesson:**
 Java can handle production ML at Netflix scale—but for specific use cases (CV inference, not training).
 
@@ -1664,7 +1706,7 @@ Semantic caching is where the actual cost savings happen, not threading architec
 | **"Explainable AI"** | Hybrid | ✅ "Java governs; Python calculates" ❌ "Java replaces SHAP/LIME" |
 | **"Edge AI Explosion"** | Overhyped | ✅ "5% market share, niche use cases" ❌ "Java dominates edge" |
 | **"Vector API"** | 11th Incubator (JDK 26) | ✅ "Usable with `--add-modules` flag" ⚠️ "Still incubating, not finalized" |
-| **"Valhalla Production"** | Preview (JDK 26, March 2026) | ✅ "Preview in JDK 26, GA 2027" ❌ "Production-ready now" |
+| **"Valhalla Production"** | Preview in JDK 26 (March 2026) | ✅ "Preview in JDK 26, GA 2027" ❌ "Production-ready now" |
 
 **❌ HYPE (Not Ready for Enterprise 2026):**
 
