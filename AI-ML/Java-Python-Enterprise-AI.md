@@ -78,23 +78,23 @@ Across all domains, the pattern holds:
 ```mermaid
 graph TD
     %% Define Node Styles
-    classDef incidentStyle fill:#f8d7da,stroke:#721c24,stroke-width:2px,color:#721c24;
-    classDef pythonStyle fill:#d1ecf1,stroke:#0c5460,stroke-width:2px,color:#0c5460;
-    classDef javaStyle fill:#d4edda,stroke:#155724,stroke-width:2px,color:#155724;
-    classDef resultStyle fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404;
+    classDef incidentStyle fill:#f8d7da,stroke:#721c24,stroke-width:2px,color:#721c24,text-align:center;
+    classDef pythonStyle fill:#d1ecf1,stroke:#0c5460,stroke-width:2px,color:#0c5460,text-align:left;
+    classDef javaStyle fill:#d4edda,stroke:#155724,stroke-width:2px,color:#155724,text-align:left;
+    classDef resultStyle fill:#fff3cd,stroke:#856404,stroke-width:2px,color:#856404,text-align:center;
 
     %% Workflow Steps
     Incident["🚨 Incident: API Gateway 503 Errors Spike"]:::incidentStyle
     
     subgraph Python_Intelligence ["Python: Intelligence Layer"]
-        Python["<b>Anomaly Detection</b><br/>• Analyzes logs, metrics, traces<br/>• Correlates deployment events<br/>• Identifies DB pool root cause<br/>• Suggests Scaling DB by 50%"]:::pythonStyle
+        Python["<b>Anomaly Detection</b><br/><div style='white-space:nowrap'>• Analyzes logs, metrics, and traces</div><div style='white-space:nowrap'>• Correlates with deployment events</div><div style='white-space:nowrap'>• Identifies Database pool root cause</div><div style='white-space:nowrap'>• Suggests: 'Scale DB connections by 50%'</div>"]:::pythonStyle
     end
 
     subgraph Java_Control ["Java: Control Layer"]
-        Java["<b>Response Orchestration</b><br/>• Validates safety rules<br/>• Checks Production approval<br/>• Creates ITSM change ticket<br/>• Waits for SRE (HITL)<br/>• Executes via K8s API<br/>• Logs full audit trail<br/>• Monitors for regression"]:::javaStyle
+        Java["<b>Response Orchestration</b><br/><div style='white-space:nowrap'>• Validates suggestion against safety rules</div><div style='white-space:nowrap'>• Checks if action is approved for Production</div><div style='white-space:nowrap'>• Creates change ticket in enterprise ITSM</div><div style='white-space:nowrap'>• Waits for mandatory SRE approval (HITL)</div><div style='white-space:nowrap'>• Executes action via Kubernetes API</div><div style='white-space:nowrap'>• Logs full audit trail for compliance</div><div style='white-space:nowrap'>• Monitors for post-execution regression</div>"]:::javaStyle
     end
 
-    Resolved["✅ Incident Resolved<br/>📊 Full Audit Trail<br/>⚖️ Compliance Maintained"]:::resultStyle
+    Resolved["<b>✅ Incident Resolved</b><br/><div style='white-space:nowrap'>📊 Full Audit Trail | ⚖️ Compliance Maintained</div>"]:::resultStyle
 
     %% Connections
     Incident --> Python
@@ -791,19 +791,19 @@ public class IndustrialGatewayService {
 
 ```mermaid
 graph TD
-    %% Define Node Styles
-    classDef javaLayer fill:#f0f7ff,stroke:#0056b3,stroke-width:2px,color:#0056b3;
-    classDef pythonLayer fill:#fff9e6,stroke:#856404,stroke-width:2px,color:#856404;
-    classDef hardwareLayer fill:#f8f9fa,stroke:#343a40,stroke-width:2px,color:#343a40;
+    %% Define Node Styles with text-alignment
+    classDef javaLayer fill:#f0f7ff,stroke:#0056b3,stroke-width:2px,color:#0056b3,text-align:left;
+    classDef pythonLayer fill:#fff9e6,stroke:#856404,stroke-width:2px,color:#856404,text-align:left;
+    classDef hardwareLayer fill:#f8f9fa,stroke:#343a40,stroke-width:2px,color:#343a40,text-align:center;
 
-    %% Layer 1: Java
-    Java["<b>Enterprise Integration Layer (Java)</b><br/>• Protocol translation (OPC UA, Modbus, MQTT)<br/>• Security, authentication, encryption<br/>• Audit logging, compliance, data governance"]:::javaLayer
+    %% Layer 1: Java (Orchestration)
+    Java["<b>Enterprise Integration Layer (Java)</b><br/><div style='white-space:nowrap'>• Protocol translation (OPC UA, Modbus, MQTT)</div><div style='white-space:nowrap'>• Security, authentication, and encryption</div><div style='white-space:nowrap'>• Audit logging, compliance, and data governance</div>"]:::javaLayer
 
-    %% Layer 2: Python/C++
-    Python["<b>AI Inference Layer (Python/C++)</b><br/>• Computer vision (OpenCV, TensorRT)<br/>• Anomaly detection (scikit-learn, TF)<br/>• Predictive maintenance (PyTorch)"]:::pythonLayer
+    %% Layer 2: Python/C++ (Inference)
+    Python["<b>AI Inference Layer (Python/C++)</b><br/><div style='white-space:nowrap'>• Computer vision (OpenCV, TensorRT)</div><div style='white-space:nowrap'>• Anomaly detection (scikit-learn, TF)</div><div style='white-space:nowrap'>• Predictive maintenance (PyTorch)</div>"]:::pythonLayer
 
     %% Layer 3: Hardware
-    Hardware["<b>Hardware</b><br/>(Jetson, Pi, Coral, Industrial PLC)"]:::hardwareLayer
+    Hardware["<b>Hardware</b><br/><div style='white-space:nowrap'>(Jetson, Pi, Coral, Industrial PLC)</div>"]:::hardwareLayer
 
     %% Connections
     Java -->|Orchestration & Governance| Python
@@ -930,14 +930,14 @@ Explainable AI requires **two distinct capabilities**:
 
 ```mermaid
 graph TD
-    %% Define Node Styles
-    classDef governanceStyle fill:#f0f7ff,stroke:#0056b3,stroke-width:2px,color:#0056b3,text-align:left;
-    classDef interpretabilityStyle fill:#fff9e6,stroke:#856404,stroke-width:2px,color:#856404,text-align:left;
+    %% Define Node Styles with explicit min-width and no-wrap logic
+    classDef wideGov fill:#f0f7ff,stroke:#0056b3,stroke-width:2px,color:#0056b3,text-align:left;
+    classDef wideInterp fill:#fff9e6,stroke:#856404,stroke-width:2px,color:#856404,text-align:left;
 
-    %% Nodes with full text in horizontal layout
-    JavaLayer["<b>Java Governance Layer</b> ✅ Logs every prediction with full context <br>✅ Stores model version, input data, output <br>✅ Maintains audit trail for regulators <br>✅ Enforces approval workflows"]:::governanceStyle
+    %% Use <div> with white-space:nowrap to prevent wrapping regardless of container size
+    JavaLayer["<b>Java Governance Layer</b><br/><div style='white-space:nowrap'>✅ Logs every prediction with full context</div><div style='white-space:nowrap'>✅ Stores model version, input data, and output</div><div style='white-space:nowrap'>✅ Maintains audit trail for regulators</div><div style='white-space:nowrap'>✅ Enforces approval workflows for model updates</div>"]:::wideGov
     
-    PythonLayer["<b>Python Interpretability Layer</b><br/>✅ SHAP: 'Loan denied because: debt-to-income ratio' <br/>✅ LIME: Local approximations of model decisions <br/>✅ Attention: Visualize which inputs model focused on"]:::interpretabilityStyle
+    PythonLayer["<b>Python Interpretability Layer</b><br/><div style='white-space:nowrap'>✅ SHAP: 'Loan denied because: debt-to-income ratio'</div><div style='white-space:nowrap'>✅ LIME: Local approximations of model decisions</div><div style='white-space:nowrap'>✅ Attention: Visualize which inputs model focused on</div>"]:::wideInterp
 
     %% Connection
     JavaLayer -->|Governance & Traceability Flow| PythonLayer
