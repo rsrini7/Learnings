@@ -131,7 +131,7 @@ Spring AI supports all major AI model providers including Anthropic, OpenAI, Mic
 
 **Spring AI Key Features (2026):**
 - **Spring Boot 4.0 Compatibility**: Spring AI 2.0 fully optimized for the latest production standard
-- **Model Context Protocol (MCP) 0.17.2**: Native auto-configuration for MCP servers with OAuth2-secured connections, multi-protocol version negotiation, and seamless tool integration. MCP has become the **critical standard** for how Java control planes communicate with local tools and external services.
+- **Model Context Protocol (MCP) 0.17.2**: Native auto-configuration for MCP servers with OAuth2-secured connections, multi-protocol version negotiation, and seamless tool integration. MCP has become the **emerging / early standard** for how Java control planes communicate with local tools and external services.
 - Support for all major Vector Database providers including Apache Cassandra, Azure Vector Search, Chroma, Milvus, MongoDB Atlas, Neo4j, Oracle, PostgreSQL/PGVector, Pinecone, Qdrant, Redis, and Weaviate
 - Tools/Function Calling permits models to request execution of client-side tools and functions, accessing necessary real-time information
 - Agent Skills provide modular, reusable capabilities without vendor lock-in, with LLM portability across OpenAI, Anthropic, Google Gemini, and other supported models
@@ -446,17 +446,22 @@ Early engineering demonstrations show promising GPU performance for specific ker
 Babylon remains a research-to-prototype effort; production viability depends on JVM integration maturity,
 tooling stability, and hardware driver support.
 
-**Measured Performance (2026 Benchmarks):**
+### **Observed Performance Characteristics (Project Babylon / HAT – Early Demos)**
 
-| Operation | Java + HAT | Pure C++ (cuBLAS) | Performance Gap |
-|-----------|-----------|------------------|-----------------|
-| **Matrix Multiply (4096x4096)** | 14.1 TFLOP/s | 14.8 TFLOP/s | **95% of native** |
-| **Vector Similarity (1M vectors)** | 850 µs | 810 µs | **95% of native** |
-| **Embedding Generation** | 1.2ms/token | 1.1ms/token | **91% of native** |
+Early OpenJDK demonstrations and engineering prototypes show that Java GPU execution via Project Babylon’s HAT can achieve **near-native performance** for selected data-parallel workloads under controlled conditions.
+
+| Workload Type                      | Observed Behavior                                                            | Architectural Implication                                                  |
+| ---------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+| **Dense Linear Algebra**           | Performance approaches native GPU libraries in isolated demos                | Suitable for high-throughput numeric kernels where JVM integration matters |
+| **Vector Similarity & Embeddings** | Latency overhead is low compared to native execution                         | Promising for JVM-native inference pipelines                               |
+| **Custom GPU Kernels**             | Java code can be compiled into GPU kernels with limited abstraction overhead | Reduces need for Python/C++ sidecar services                               |
+
+> **Important Context:**
+> These results are derived from **engineering showcases and proof-of-concept demonstrations**, not from standardized or independently audited benchmarks. Actual performance varies significantly based on hardware, driver versions, kernel structure, batching strategy, and memory layout. Project Babylon and HAT should be treated as **promising but pre-production technology** as of early 2026.
 
 **What This Means:**
 
-- ✅ Java can now perform AI **inference** workloads on GPUs directly
+- ✅ Java can perform AI **inference** workloads on GPUs directly
 - ✅ No need for Python/C++ sidecar services for GPU-accelerated operations
 - ✅ Eliminates inter-process communication overhead (JNI, gRPC)
 
@@ -1125,6 +1130,8 @@ Don't claim "Java provides explainable AI." Instead, accurately state:
 
 **The 2026 Recommended Stack:**
 
+Spring AI 2.0 is approaching GA and is suitable for controlled production pilots.
+
 ```yaml
 # Production AI Stack (February 2026)
 java:
@@ -1137,7 +1144,7 @@ java:
   
 spring:
   boot: "4.0.2"  # Latest stable (Feb 2026)
-  ai: "2.0.0-RC2"  # Production-ready by March
+  ai: "2.0.0-RC2"  # Production-may ready by March
   features:
     - Deep MCP integration
     - Agent Skills framework
@@ -1679,8 +1686,8 @@ public class ProductQAService {
 ```
 
 **Results:**
-- ✅ 78% cache hit rate
-- ✅ $3,300/month OpenAI cost (78% reduction)
+- ✅ ~40-80% cache hit rate
+- ✅ ~$3,300/month OpenAI cost (~40-80% reduction)
 - ✅ <50ms latency for cache hits (vs 1500ms LLM call)
 
 **Key Lesson:**
@@ -1818,41 +1825,6 @@ observability:
 - Edge AI dominance narratives
 
 **The 2026 truth**: Java has become the **industrial backbone** of enterprise AI—not by replacing Python, but by industrializing it.
-
----
-
-## Architect's Review & Validation
-
-**This document has been validated against the February 2026 production landscape by senior enterprise architects.**
-
-### **Accuracy Audit (February 2026)**
-
-The following claims have been verified as **technically accurate**:
-
-✅ **Spring Boot 4.0.2** (released January 22, 2026) is the current production standard  
-✅ **Spring AI 2.0.0-M2** (released January 23, 2026) is on track for GA in March 2026  
-✅ **Java 25 LTS** provides premier support through 2030  
-✅ **JDK 26** is in Rampdown Phase Two with GA scheduled for March 17, 2026  
-✅ **MCP 0.17.2** is the current standard for AI tool integration  
-✅ **Project Babylon (HAT)** demonstrated 14 TFLOP/s on NVIDIA A10 in January 2026 showcases  
-
-### **Technical Nuances Clarified**
-
-⚠️ **Vector API (JEP 529)**: Still in 11th incubator phase in JDK 26—requires `--add-modules jdk.incubator.vector` flag  
-⚠️ **Project Valhalla (JEP 401)**: Preview in JDK 26 (March 2026), finalized GA expected in 2027  
-⚠️ **Energy Savings**: The "80% savings" comes from semantic caching (avoiding GPU work), not virtual threads  
-⚠️ **Edge AI**: Java has <5% market share; Python/C++ dominate with 95%  
-⚠️ **Quantum Computing**: 99% Python-based (Qiskit/Cirq); not enterprise-ready in 2026  
-
-### **Review Verdict**
-
-**~95% High technical accuracy with documented caveats** with appropriate nuances added for:
-- Vector API incubator status
-- Valhalla preview timeline
-- MCP 0.17.2 as critical standard
-- Honest assessment of hype vs. reality
-
-The document successfully transforms from "LinkedIn hype" into a **legitimate enterprise whitepaper** suitable for architecture review boards and production planning.
 
 ---
 
