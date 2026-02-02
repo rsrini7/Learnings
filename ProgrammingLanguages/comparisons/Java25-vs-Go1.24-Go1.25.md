@@ -436,6 +436,12 @@ While standard Spring Boot applications take 8–15s to start, Java 25 with **Pr
 - Consistent performance from deployment
 - No warmup penalty in autoscaling scenarios
 
+#### **5.5 Specialized Execution Modes (AOT vs. CRaC)**
+  
+In 2026, architects no longer choose between JIT and AOT; they choose based on the workload's lifecycle.
+* **GraalVM Native Image:** Compiles Java into a standalone binary. It achieves **~20ms startup** and a **40MB RAM** idle footprint, matching Go’s efficiency for serverless and sidecars.
+* **CRaC (Coordinated Restore at Checkpoint):** Allows a running JVM to be "snapshotted" to disk and restored in **<100ms**. Unlike Native Image, CRaC retains the **C2 JIT Compiler**, delivering 100% peak throughput immediately upon "thawing."
+* **Project Leyden (Java 25):** The middle ground. It uses a pre-generated "AOT Cache" to skip the expensive class-loading and profiling phases, cutting standard Spring Boot startup by **50-70%**.
 ---
 
 ## 6. Real-World Case Studies
@@ -559,6 +565,9 @@ Geth (go-ethereum) is the official Go implementation of Ethereum and the most ba
 | **Distroless Java 17** | 200MB | gcr.io/distroless/java17-debian11 |
 | **Alpine + JRE** | 99.2MB | openjdk:8-jre-alpine |
 | **Spring Native + UPX** | 53MB | GraalVM Native Image with compression |
+| **Quarkus (Standard JVM)** | 120MB | 140MB | 1.8s |
+| **Quarkus (Native Image)** | **35MB** | **38MB** | **0.02s** |
+| **Go 1.25 (Stable)** | 12MB | 15MB | 0.1s |
 
 **Go Binary Sizes:**
 
@@ -730,6 +739,12 @@ START: Choose Backend Language for 2026
 │  └─ YES → Java 25 with ZGC
 │  └─ NO → Continue
 │
+├─ Need Go-like startup/memory but have Java code?
+│  └─ Use Quarkus + GraalVM Native Image
+│
+├─ Need instant scaling for a massive Monolith?
+│  └─ Use Java 25 + CRaC (Checkpoint/Restore)
+│
 ├─ Running in containers/Kubernetes?
 │  └─ YES → Go 1.25 (auto GOMAXPROCS + small images)
 │  └─ NO → Continue
@@ -850,6 +865,9 @@ Uber's monorepo strategy with Go enables atomic changes across thousands of serv
 ## 10. Future Outlook & Recommendations
 
 ### 10.1 Technology Roadmap
+
+**Strategic Convergence**
+The boundary between Java and Go is blurring. Java 25’s **Compact Object Headers (JEP 519)** reduce object overhead by 25%, while **Project Leyden** is standardizing the AOT Cache. Simultaneously, Go 1.25 is becoming more "enterprise-aware" with its improved GC. The "Performance Gap" is now an "Architecture Choice."
 
 **Java (2026-2027):**
 
