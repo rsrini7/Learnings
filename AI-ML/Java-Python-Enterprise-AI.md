@@ -717,13 +717,16 @@ The LinkedIn post's claims about "Edge AI Explosion in Java" are **overhyped**. 
 
 **Edge AI Market Share (2025-2026 Estimates):**
 
-| Platform | Python/C++ | Java | Reality |
-|----------|-----------|------|---------|
-| **Raspberry Pi** | ~95% | ~5% | TensorFlow Lite (Python), OpenCV (C++) |
-| **NVIDIA Jetson** | ~90% | ~10% | TensorRT (C++/Python), DeepStream SDK (Python-first) |
-| **Google Coral** | ~98% | ~2% | TF Lite (Python), Coral API (Python-native) |
-| **Intel NUC** | ~85% | ~15% | OpenVINO (Python/C++), some Java enterprise |
-| **Android** | ~30% | ~60% | **Java's stronghold** (TF Lite + Java/Kotlin) |
+> **Note:** The classifications below reflect **ecosystem maturity and official tooling emphasis**—including SDK support, documentation language, sample availability, and observed community usage patterns—rather than precise market-share measurements, which vary significantly by region, industry, and deployment model.
+
+
+| Platform                 | Python / C++ Presence       | Java Presence                         | Practical Reality                                                                                                                                                                              |
+| ------------------------ | --------------------------- | ------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **Raspberry Pi**         | **Dominant**                | **Limited**                           | AI workflows are primarily built using TensorFlow Lite (Python) and OpenCV (C++). Java is occasionally used for orchestration or existing JVM-based IoT stacks, but not for primary inference. |
+| **NVIDIA Jetson**        | **Dominant**                | **Secondary**                         | NVIDIA’s official tooling (TensorRT, DeepStream) is designed Python/C++ first. Java usage exists mainly via JNI wrappers or enterprise gateway layers, not as the primary ML runtime.          |
+| **Google Coral**         | **Overwhelmingly dominant** | **Minimal**                           | Coral tooling and examples are Python-centric. Java bindings exist experimentally but are not first-class or widely adopted for production inference.                                          |
+| **Intel NUC / x86 Edge** | **Strong**                  | **Meaningful in enterprise contexts** | OpenVINO supports Python and C++ natively; Java is used in enterprise deployments where JVM-based services, security, and lifecycle management outweigh raw inference concerns.                |
+| **Android Devices**      | **Mixed (Python rare)**     | **Primary**                           | Android ML workloads are predominantly implemented using Java/Kotlin with TensorFlow Lite. This is Java’s strongest and most mature edge AI domain.                                            |
 
 Python and C++ dominate hardware-close edge inference stacks (e.g., Jetson, Coral, robotics).
 Java/Kotlin remain strong in Android-based ML and enterprise IoT gateway scenarios.
