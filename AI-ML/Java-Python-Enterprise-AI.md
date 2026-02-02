@@ -1170,44 +1170,34 @@ observability:
 
 **Architecture Layers:**
 
-```
-┌────────────────────────────────────────────────────────┐
-│  API Layer (Spring Boot 4.0)                          │
-│  - REST/GraphQL endpoints                             │
-│  - Rate limiting, authentication                       │
-│  - Request validation, sanitization                    │
-└────────────────────────────────────────────────────────┘
-                          ↓
-┌────────────────────────────────────────────────────────┐
-│  Orchestration Layer (Spring AI 2.0 / LangChain4j)   │
-│  - Multi-agent coordination                            │
-│  - Semantic caching (60-80% cost savings)              │
-│  - Tool/function calling                               │
-│  - Human-in-loop workflows                             │
-└────────────────────────────────────────────────────────┘
-                          ↓
-┌────────────────────────────────────────────────────────┐
-│  Knowledge Layer (GraphRAG)                           │
-│  - Vector search (semantic similarity)                 │
-│  - Graph traversal (relationship reasoning)            │
-│  - Hybrid retrieval (combine both)                     │
-└────────────────────────────────────────────────────────┘
-                          ↓
-┌────────────────────────────────────────────────────────┐
-│  AI Services Layer                                     │
-│  ├─ LLM APIs (OpenAI, Anthropic, etc.)                │
-│  ├─ Embedding Models (text-embedding-3-small)         │
-│  ├─ Python ML Services (SHAP, custom models)          │
-│  └─ GPU Compute (Babylon/HAT for inference)           │
-└────────────────────────────────────────────────────────┘
-                          ↓
-┌────────────────────────────────────────────────────────┐
-│  Governance Layer (Enterprise Controls)               │
-│  - Audit logging (every decision)                      │
-│  - Model versioning & rollback                         │
-│  - Cost tracking & quotas                              │
-│  - Compliance reporting (GDPR, EU AI Act)              │
-└────────────────────────────────────────────────────────┘
+```mermaid
+graph TD
+    %% Define Node Styles based on previous sections
+    classDef javaStyle fill:#f0f7ff,stroke:#0056b3,stroke-width:2px,color:#0056b3,text-align:left;
+    classDef orchStyle fill:#e7f3ff,stroke:#004085,stroke-width:2px,color:#004085,text-align:left;
+    classDef knowStyle fill:#d4edda,stroke:#155724,stroke-width:2px,color:#155724,text-align:left;
+    classDef serviceStyle fill:#fff9e6,stroke:#856404,stroke-width:2px,color:#856404,text-align:left;
+
+    %% Layer 1: API Layer (Blue - Java Foundation)
+    API["<b>API Layer (Spring Boot 4.0)</b><br/><div style='white-space:nowrap'>• REST/GraphQL endpoints</div><div style='white-space:nowrap'>• Rate limiting and authentication</div><div style='white-space:nowrap'>• Request validation and sanitization</div>"]:::javaStyle
+
+    %% Layer 2: Orchestration Layer (Darker Blue - Java Logic)
+    Orch["<div style='white-space:nowrap'><b>Orchestration Layer (Spring AI 2.0 / LangChain4j)</b></div><div style='white-space:nowrap'>• Multi-agent coordination</div><div style='white-space:nowrap'>• Semantic caching (60-80% cost savings)</div><div style='white-space:nowrap'>• Tool and function calling</div><div style='white-space:nowrap'>• Human-in-the-loop (HITL) workflows</div>"]:::orchStyle
+
+    %% Layer 3: Knowledge Layer (Green - Graph/Vector Data)
+    Know["<b>Knowledge Layer (GraphRAG)</b><br/><div style='white-space:nowrap'>• Vector search (semantic similarity)</div><div style='white-space:nowrap'>• Graph traversal (relationship reasoning)</div><div style='white-space:nowrap'>• Hybrid retrieval (combined approach)</div>"]:::knowStyle
+
+    %% Layer 4: AI Services Layer (Yellow - Python/Inference/GPU)
+    Service["<b>AI Services Layer</b><br/><div style='white-space:nowrap'>• LLM APIs (OpenAI, Anthropic, etc.)</div><div style='white-space:nowrap'>• Embedding Models (text-embedding-3-small)</div><div style='white-space:nowrap'>• Python ML Services (SHAP, custom models)</div><div style='white-space:nowrap'>• GPU Compute (Babylon/HAT for inference)</div>"]:::serviceStyle
+
+    %% Layer 5: Governance Layer (Blue - Enterprise Safety)
+    Gov["<b>Governance Layer (Enterprise Controls)</b><br/><div style='white-space:nowrap'>• Audit logging (every decision recorded)</div><div style='white-space:nowrap'>• Model versioning and rollback capabilities</div><div style='white-space:nowrap'>• Cost tracking and departmental quotas</div><div style='white-space:nowrap'>• Compliance reporting (GDPR, EU AI Act)</div>"]:::javaStyle
+
+    %% Connections
+    API --> Orch
+    Orch --> Know
+    Know --> Service
+    Service --> Gov
 ```
 
 ### **JVM Platform Evolution: Technical Clarifications**
