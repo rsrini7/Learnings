@@ -20,8 +20,10 @@ This white paper provides an evidence-based analysis of Java 25 (LTS, released S
 
 **Decision Framework:**
 
-* **Choose Java 25** for: Ultra-low latency (<100µs P99.9), heavy compute throughput, large heap workloads (>50GB), and deep observability needs.
+* **Choose Java 25** for: Ultra-low latency (<100µs P99.9) in carefully tuned, CPU-isolated environments, heavy compute throughput, large heap workloads (>50GB), and deep observability needs.
 * **Choose Go 1.24/1.25** for: Memory-constrained microservices, high-density Kubernetes deployments, serverless/functions, and cost-sensitive scale-out architectures.
+
+**Note:** Performance, latency, and cost figures reflect representative production scenarios. Actual results vary based on workload shape, tuning, isolation, and deployment topology.
 
 
 ---
@@ -132,7 +134,8 @@ Go 1.25 introduces production-ready container awareness and experimental perform
 - Page-level memory scanning instead of object-by-object
 - 10-40% GC CPU cost reduction in GC-heavy workloads
 - Improved spatial/temporal locality and cache utilization
-- Production-ready and deployed at Google
+- Production-tested internally at Google; experimental for general users
+- 10–40% GC CPU cost reduction in GC-heavy workloads
 - Enable with GOEXPERIMENT=greenteagc at build time
 - Planned as default in Go 1.26
 
@@ -280,7 +283,7 @@ Netflix enabled virtual threads (Project Loom) across its backend with Java 21+,
 **Technical Architecture:**
 - M:N threading: multiplexes virtual threads onto platform (OS) threads
 - Stack: 16KB initial → 1MB max (dynamic growth)
-- Memory: 100K virtual threads ≈ 2-4GB RAM
+- Memory: 100K virtual threads ≈ 2-4GB RAM (workload and stack-growth dependent)
 
 **Performance Characteristics:**
 
@@ -679,6 +682,9 @@ CMD ["/server"]
 | **Readiness probe** | 15-30s | 1-3s | 1-3s | **10x faster** (Go) |
 | **GOMAXPROCS tuning** | N/A | Manual/automaxprocs | Automatic | **Zero config** (Go 1.25) |
 
+*Note: These savings assume memory-bound services and representative bin-packing efficiency; real-world results vary by workload.*
+
+
 **Go 1.25 Container-Aware Benefits:**
 
 Go 1.25 automatically detects cgroup CPU limits and adjusts GOMAXPROCS accordingly, eliminating common Kubernetes deployment issues:
@@ -911,6 +917,8 @@ While benchmarks indicate Java 25 matches or exceeds Go in raw CPU throughput (r
 | **vCPUs** | 160 vCPUs | 96 vCPUs | **40% reduction** |
 | **Container Registry** | 250GB storage | 12GB storage | **95% reduction** |
 | **Total Monthly** | **~$13,800** | **~$7,200** | **~$6,600/mo (48% savings)** |
+
+*Note: Cost figures are illustrative and vary based on service mix, memory tuning, traffic shape, and utilization efficiency.*
 
 *Analysis:*
 
