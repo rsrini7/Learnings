@@ -26,6 +26,8 @@ This white paper provides an evidence-based analysis of Java 25 (LTS, released S
 **Note:** Performance, latency, and cost figures reflect representative production scenarios. Actual results vary based on workload shape, tuning, isolation, and deployment topology.
 
 
+![Architectural-Spectrum](assets/J25-Go123-Architectural-Spectrum.png)
+
 ---
 
 ## Table of Contents
@@ -427,6 +429,8 @@ While standard Spring Boot applications take 8–15s to start, Java 25 with **Pr
 
 ### 5.3 Sustained Throughput Performance
 
+![Runtime-Lifecycle.gif](assets/J25-Go123-Runtime-Lifecycle.gif)
+
 **HTTP JSON Serialization Benchmark (AWS c7g.metal, 96 cores):**
 
 | Metric | Java 25 (Warmed) | Java 25 (Cold) | Go 1.24/1.25 |
@@ -790,7 +794,9 @@ Uber's ML platform (Michelangelo) serves 10 million predictions/second using a m
 
 ### 8.5 Complete Decision Framework
 
-**Quick Decision Guide:**
+![Architect's-DecisitionTree-2026.gif](assets/J25-Go123-Architect's-DecisitionTree-2026.gif)
+
+**Detailed Decision Guide:**
 
 ```
 START: Choose Backend Language for 2026
