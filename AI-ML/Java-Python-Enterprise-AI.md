@@ -1,4 +1,4 @@
-# Java and Python in AI/ML Production Systems: The 2026 Reality
+# Java and Python: The Real 2026 AI Production Playbook
 
 **A Comprehensive Guide to Java and Python's Enterprise AI Architecture**
 
@@ -16,7 +16,7 @@ This "industrialization" of AI is powered by the maturation of the Java ecosyste
 
 ### **The Four Pillars of the AI Production Factory**
 
-* **Systemic Orchestration**: Mature frameworks like **Spring AI** and **LangChain4j** act as the AI's "nervous system". They provide production-grade platforms with declarative APIs, multi-agent coordination, and standardized tool-calling via the **Model Context Protocol (MCP 0.17.2)**.
+* **Systemic Orchestration**: Mature frameworks like **Spring AI** and **LangChain4j** act as the AI's "nervous system". They provide production-grade platforms with declarative APIs, multi-agent coordination, and emerging / early standard tool-calling via the **Model Context Protocol (MCP 0.17.2)**.
 * **High-Throughput Native Inference**: The **Deep Java Library (DJL)** enables in-process inference for computer vision and reinforcement learning. By eliminating cross-language microservice overhead, enterprises—most notably **Netflix**—achieve near-native speeds and significantly reduced P99 latency.
 * **Embedded LLM Portability**: **Jlama** offers a 100% Java pathway for Large and Small Language Models (LLMs/SLMs). It is optimized for CPU-first environments and edge devices through **Project Panama** and **GraalVM** native compilation, ensuring AI portability where GPUs are unavailable.
 * **Governance & Infrastructure**: Platform innovations such as **Virtual Threads (Project Loom)** enable massive concurrency for AI orchestration. Simultaneously, **Project Babylon (HAT)** allows Java to reach 95% of native GPU performance (TFLOP/s on an NVIDIA A10), ensuring systems are auditable, cost-effective, and safe.
@@ -178,7 +178,7 @@ Your comparison to Hibernate is apt. Spring AI provides:
 
 **Status: MCP 0.17.2 (February 2026 Production Standard)**
 
-MCP (Model Context Protocol) is an emerging, vendor-led open protocol for agent–tool interoperability,
+MCP (Model Context Protocol) is an emerging, vendor-led by Anthropic open protocol for agent–tool interoperability,
 introduced by Anthropic in late 2024.
 MCP shows early traction through tooling (e.g., inspectors and reference servers), but it is not yet
 a universal enterprise standard and adoption varies across vendors and ecosystems.
@@ -445,13 +445,15 @@ embedding provider, and framework implementation.
 | **Latency** | 1500ms (LLM call) | 50ms (cache hit) | **30x faster** |
 | **CO2 Impact** | High (GPU inference) | Low (vector lookup) | **~80% reduction** |
 
-Semantic caching has demonstrated significant cost reduction in workloads with high semantic query repetition,
-with observed savings commonly ranging from ~40% to ~80% depending on domain, query diversity, and cache strategy.
+> Figures shown (e.g., ~$15k/month baseline, 70–85% semantic overlap) are based on representative e-commerce and customer-support workloads. Actual savings depend on query repetition, domain entropy, and embedding quality.
+
+Semantic caching has demonstrated significant cost reduction in workloads with high semantic query repetition, with observed savings commonly ranging from ~40% to ~80% depending on domain, query diversity, and cache strategy (based on representative workloads; adjust for your query diversity).
 
 **This is where the "80% cost/energy savings" claim actually comes from—not from virtual threads.**
 
 > **Operational Reality Note:**
 > Semantic cache hit rates are **highly workload-dependent**. Rates in the 70–85% range are typically observed in domains with strong query repetition (e.g., customer support, policies, internal knowledge bases), **high-quality embeddings**, and carefully tuned similarity thresholds (commonly cosine similarity between ~0.92–0.97). More diverse or exploratory workloads may see materially lower hit rates and should be validated through production telemetry rather than assumed.
+> In practice, workloads such as e-commerce support, policy lookup, and internal knowledge bases commonly show ~60–80% semantic overlap; exploratory or analytical domains may be significantly lower.
 
 ---
 
@@ -1852,7 +1854,7 @@ Always conduct proof-of-concept testing with your specific hardware, models, and
 - Project Valhalla: https://openjdk.org/projects/valhalla/
 
 ### **Specifications**
-- MCP (Model Context Protocol) 0.17.2: https://modelcontextprotocol.io/ - Critical standard for AI tool integration
+- MCP (Model Context Protocol) 0.17.2: https://modelcontextprotocol.io/ - emerging / early standard for AI tool integration
 - EU AI Act: https://artificialintelligenceact.eu/
 
 ### **Community**
