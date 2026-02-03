@@ -135,7 +135,7 @@ Go 1.25 introduces production-ready container awareness and experimental perform
 - 10-40% GC CPU cost reduction in GC-heavy workloads
 - Improved spatial/temporal locality and cache utilization
 - Production-tested internally at Google; experimental for general users
-- 10–40% GC CPU cost reduction in GC-heavy workloads
+- 10–40% GC CPU cost reduction in GC-heavy workloads (experimental, production-tested internally)
 - Enable with GOEXPERIMENT=greenteagc at build time
 - Planned as default in Go 1.26
 
@@ -210,7 +210,7 @@ Netflix reports that with Generational ZGC, pause times are effectively gone and
 - Page-level scanning (8KB spans) instead of individual objects
 - 10-40% GC CPU overhead reduction in GC-heavy workloads
 - Improved cache locality and reduced memory stalls
-- Production-ready (deployed at Google)
+- Production-tested internally at Google; experimental for general users
 - Workload-dependent: benefits high-locality data structures
 
 **Performance Profile:**
