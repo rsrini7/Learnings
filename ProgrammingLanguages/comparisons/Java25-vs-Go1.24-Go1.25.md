@@ -1100,51 +1100,41 @@ For 2026 and beyond, expect continued convergence as Java adopts cloud-native pa
 
 ---
 
-## Appendix A: Quick Reference Tables
+### **Appendix A: Quick Reference Tables**
 
-### Latency Requirements
+#### **Latency Requirements**
 
 | P99.9 Requirement | Recommended Stack | Configuration |
-|-------------------|------------------|---------------|
-| <10µs | Java 25 + LMAX Disruptor | ZGC, custom GC tuning |
-| <100µs | Java 25 ZGC | -XX:+ZGenerational |
-| <1ms | Either (preference Go 1.25) | Default configs |
-| <10ms | Go 1.24/1.25 | GOGC=100 default |
+| --- | --- | --- |
+| **<10µs** | Java 25 + LMAX Disruptor | ZGC, custom GC tuning, affinity pinning |
+| **<500µs** | **Java 25 (Generational ZGC)** | Finalized JEP 474/490; gold standard for TB heaps. |
+| **<2ms** | Go 1.25 (Green Tea GC) | Experimental Green Tea scans pages for locality. |
+| **10–50ms** | Java 25 (G1GC) | Best for density when sub-ms latency is not required. |
 
-### Cost Optimization
+#### **Cost & Efficiency Optimization**
 
-| Priority | Java 25 | Go 1.24/1.25 |
-|----------|---------|--------------|
-| **Minimize cloud spend** | ❌ Higher CPU/memory | ✅ 70% lower costs |
-| **Minimize dev time** | ⚠️ 3-6 months | ✅ 1-3 months |
-| **Minimize hiring cost** | ✅ Larger talent pool | ⚠️ 20-30% premium |
-| **Minimize runtime cost** | ❌ Higher overhead | ✅ 4-5x lower GC tax |
+| Priority | **Java 25 (Optimized)** | **Go 1.25 (Standard)** |
+| --- | --- | --- |
+| **Minimize Cloud Spend** | ⚠️ ~20% premium (vs. 70% in 2024) | ✅ **Lowest infrastructure TCO**. |
+| **Minimize Dev Time** | ⚠️ 3–6 months (Spring/Quarkus) | ✅ **1–3 months** (Simple language core). |
+| **Scaling Agility** | ✅ **CRaC / Native Image** | ✅ **Native execution** (0.1s cold start). |
+| **Runtime GC Tax** | ❌ 10–20% CPU (ZGC) | ✅ **1.5–4% CPU** (Green Tea GC). |
 
-### Deployment Characteristics
+#### **Deployment Characteristics (Standard vs. Optimized)**
 
-| Metric | Java 25 | Go 1.24/1.25 |
-|--------|---------|--------------|
-| Container image | 250-400MB | 10-20MB |
-| Cold start | 8-15s | 0.1-0.5s |
-| Memory (idle) | 256MB-1GB | 10-50MB |
-| Build time | 2-5 min | 10-30s |
-| GOMAXPROCS config | N/A | Auto (1.25) |
+| Metric | Java 25 (Standard) | **Java 25 (Leyden/Native)** | **Go 1.25** |
+| --- | --- | --- | --- |
+| **Container Image** | 200MB+ | **35MB – 55MB** | **10MB – 20MB** |
+| **Cold Start** | 8–15s | **20ms – 1.5s** | 0.1s – 0.5s |
+| **Idle RAM (RSS)** | 256MB+ | **38MB – 140MB** | 10MB – 50MB |
+| **Memory Headers** | 128-bit | **64-bit (JEP 519)** | N/A |
 
-### Go 1.25 New Features Summary
+#### **Go 1.25 New Features Summary**
 
 | Feature | Status | Benefit |
-|---------|--------|---------|
-| **Container-aware GOMAXPROCS** | Stable | Zero-config CPU limit detection |
-| **Green Tea GC** | Experimental | 10-40% GC overhead reduction |
-| **JSON v2** | Experimental | Faster JSON encoding/decoding |
-| **testing/synctest** | Stable | Virtual time for testing |
-| **DWARF 5** | Stable | Smaller binaries, faster linking |
-| **Range over func** | Stable | Better iterator patterns |
-
----
-
-**Document Version**: 2.0 (Updated with Go 1.25 release information - January 2026)
-
-**License**: This white paper is released for educational and research purposes. Production case study data is sourced from publicly available technical blogs and conference presentations.
-
----
+| --- | --- | --- |
+| **Container-aware GOMAXPROCS** | **Stable** | Automatically respects cgroup CPU limits in K8s. |
+| **Green Tea GC** | Experimental | 10–40% reduction in GC-heavy overhead. |
+| **JSON v2** | Experimental | 3–10x faster deserialization; zero-allocation. |
+| **Flight Recorder API** | **Stable** | Lightweight continuous tracing for failure snapshots. |
+| **Swiss Tables Maps** | **Stable** | More stable performance for large, "cold" data sets. |
