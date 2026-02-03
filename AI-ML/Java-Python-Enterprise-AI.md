@@ -4,6 +4,10 @@
 
 ---
 
+> **Author note**
+> This piece is based on ~2 days of hands-on analysis, cross-checking production systems, JVM roadmaps, and real enterprise constraints.
+> I did use LLMs as a *review and sanity-check tool* (like a fast peer reviewer), but every architectural stance and trade-off here reflects my own conclusions.
+
 ## Executive Summary
 
 As of 2026, the global AI landscape has settled into a definitive division of labor: **Python is the laboratory; Java is the factory**. While Python remains the premier environment for research and experimental model development, Java has solidified its position as the indispensable "industrial backbone" for high-scale enterprise AI production.
@@ -232,6 +236,9 @@ MCP 0.17.2 is to AI tools what JDBC was to databases—a universal interface tha
 
 ## 2. Virtual Threads (Project Loom): The Concurrency Weapon
 
+> Virtual Threads enable massive concurrency for AI orchestration.
+> We initially tried solving this with reactive pipelines, but debugging back-pressure across multi-agent workflows was painful enough that Loom became the pragmatic choice—even with its current limitations.
+
 ### **Status: Production Ready (Java 21+)**
 
 Project Loom is ready for production as of Java 21, with many companies already using virtual threads in real-world applications to boost scalability and lower resource use.
@@ -357,6 +364,8 @@ void orchestrateWorkflow(Input input) throws Exception {
 - ✅ **Multi-agent systems** (hundreds of agents working concurrently)
 - ✅ **HITL workflows** (threads suspended waiting for human input)
 - ✅ **Streaming responses** (thousands of SSE connections)
+
+> The common mistake I see teams make is assuming virtual threads reduce GPU cost. They don’t—and this misconception keeps showing up in architecture decks.
 
 ---
 
@@ -538,6 +547,9 @@ accelerator.compute(
 **The Strategic Insight:**
 
 Babylon doesn't replace Python for *research*—it eliminates Python as a *production dependency* for Java shops that need GPU-accelerated AI inference.
+
+> I’m reasonably confident about the orchestration and cost-control conclusions here.
+> The Babylon/GPU story, however, is still early—treat anything beyond controlled kernels as exploratory until late 2026.
 
 ---
 
@@ -1854,6 +1866,5 @@ Always conduct proof-of-concept testing with your specific hardware, models, and
 **Author**: Based on industry research, production deployments, and senior architect review  
 **License**: MIT / Creative Commons Attribution
 
----
-
-*This document synthesizes research from 50+ sources including official documentation, production case studies, enterprise architecture patterns, and critical peer review from senior architects to separate strategic insights from marketing hype.*
+> **My takeaway after two days of analysis:**
+> Java isn’t “winning” AI—it’s absorbing responsibility. Python still explores; Java decides what’s allowed to run at scale. That distinction matters more than benchmarks.
