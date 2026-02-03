@@ -47,7 +47,7 @@ As we build production AI systems in 2026, it's critical to distinguish between 
 | **Project Babylon GPU Performance** | **Low** | ✅ **Real.** HAT achieves 14 TFLOP/s on NVIDIA A10, reaching 95% of cuBLAS performance for matrix operations. This is the genuine breakthrough, not theoretical energy claims. |
 | **Edge AI in Java** | **High** | ⚠️ **Niche (<5% market share).** Python/C++ dominate edge deployments (95%). Java viable only for enterprise IoT gateways and Android. Hardware SDKs (Coral, Jetson) are Python/C++-first. |
 | **Explainable AI** | **Medium** | ⚠️ **Hybrid.** Java acts as the *audit logger* and governance layer, while the actual math (SHAP, LIME) typically runs in Python microservices. Java ensures traceability; Python provides interpretability. |
-| **Quantum Java** | **Extreme** | ❌ **Research-only (99% Python).** Qiskit and Cirq remain Python-dominant. Java "quantum pilots" in 2026 exist only in high-end research labs, not standard enterprise environments. |
+| **Quantum Java** | **Extreme** | ❌ **Research-only (Python-dominant (Qiskit/Cirq)).** Qiskit and Cirq remain Python-dominant. Java "quantum pilots" in 2026 exist only in high-end research labs, not standard enterprise environments. |
 
 **The 2026 Mantra:**  
 *"Java isn't replacing Python in the lab; it is industrializing it for the enterprise."*
@@ -746,11 +746,7 @@ For **complex enterprise queries** requiring relationship reasoning, GraphRAG is
 
 ## 6. Edge AI: The Honest Assessment
 
-### **Status: Python/C++ Dominant (Java <5% Market Share)**
-
-**CRITICAL REALITY CHECK:**
-
-The LinkedIn post's claims about "Edge AI Explosion in Java" are **overhyped**. Here's the honest market reality:
+### **Status: Python and C++ dominate hardware-close edge inference. Java is viable for enterprise IoT gateways and Android.**
 
 **Edge AI Market Share (2025-2026 Estimates):**
 
@@ -1771,7 +1767,7 @@ foundation:
 
 orchestration:
   primary: "Spring AI 2.0"
-  alternative: "LangChain4j 0.35+"
+  alternative: "LangChain4j 0.35+ / 1.x series once available"
   mcp: "0.17.2 (native Spring AI integration)"
   tools: "200+ community MCP servers (polyglot)"
 
