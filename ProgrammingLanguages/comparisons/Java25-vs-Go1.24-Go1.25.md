@@ -1065,7 +1065,7 @@ Both Java 25 and Go 1.25 represent mature, production-ready platforms for high-s
 - Developer productivity (2-3x faster to production)
 - Serverless and functions (instant cold start, predictable performance)
 - Blockchain and crypto workloads (native stdlib support)
-- Green Tea GC delivers 10-40% GC overhead reduction (experimental, production-ready)
+- Green Tea GC delivers 10-40% GC overhead reduction (experimental, production-tested internally)
 
 **The verdict is not binary**: Modern architectures increasingly adopt hybrid approaches. Netflix leverages Java's ecosystem and ZGC for its core streaming infrastructure. Uber scales thousands of Go microservices for operational simplicity and cost efficiency. Stripe uses Go for public APIs and Java for fraud detection. The optimal choice depends on your specific latency requirements, cost constraints, and team capabilities.
 
