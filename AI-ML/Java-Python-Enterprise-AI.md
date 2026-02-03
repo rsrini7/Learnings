@@ -14,7 +14,7 @@ As of 2026, the global AI landscape has settled into a definitive division of la
 
 This "industrialization" of AI is powered by the maturation of the Java ecosystem—specifically **Spring AI**, **LangChain4j**, **Deep Java Library (DJL)**, and **Jlama**—which now provides the mission-critical orchestration, governance, and reliability layers required by global organizations.
 
-### **The Four Pillars of the AI Production Factory**
+### **The Four Pillars of the production AI factory**
 
 * **Systemic Orchestration**: Mature frameworks like **Spring AI** and **LangChain4j** act as the AI's "nervous system". They provide production-grade platforms with declarative APIs, multi-agent coordination, and emerging / early standard tool-calling via the **Model Context Protocol (MCP 0.17.2)**.
 * **High-Throughput Native Inference**: The **Deep Java Library (DJL)** enables in-process inference for computer vision and reinforcement learning. By eliminating cross-language microservice overhead, enterprises—most notably **Netflix**—achieve near-native speeds and significantly reduced P99 latency.
@@ -451,7 +451,7 @@ embedding provider, and framework implementation.
 
 > Figures shown (e.g., ~$15k/month baseline, 70–85% semantic overlap) are based on representative e-commerce and customer-support workloads. Actual savings depend on query repetition, domain entropy, and embedding quality.
 
-Semantic caching has demonstrated significant cost reduction in workloads with high semantic query repetition, with observed savings commonly ranging from ~40% to ~80% depending on domain, query diversity, and cache strategy (based on representative workloads; adjust for your query diversity).
+Semantic caching has demonstrated significant cost reduction in workloads with high semantic query repetition, with observed savings commonly ranging from ~40% to ~80% depending on domain, query diversity, and cache strategy (based on representative workloads; adjust for your domain).
 
 **This is where the "80% cost/energy savings" claim actually comes from—not from virtual threads.**
 
