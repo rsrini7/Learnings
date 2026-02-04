@@ -89,6 +89,9 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [DSPy](AI-ML/Programming/DSPy.md)
 - [BAML](AI-ML/Programming/BAML.md)
 
+### Algorithms
+- [X's Recommendation Algorithm Technical Analysis](AI-ML/Algorithms/X's-Recommendation-Algorithm-Technical-Analysis.md)
+
 ---
 
 ## <a id="weekly-updates"></a>📅 Weekly Tech Updates
