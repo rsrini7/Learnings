@@ -192,6 +192,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Node.js Async Hooks DoS Vulnerability](News/Node.js-Async-Hooks-DoS-Vulnerability.md)
 - [Security Vulnerabilities in Wireless Devices and Apps](News/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
 - [OpenClaw(Moltbot-or-Clawdbot) Security Analysis Jan-2026)](AI-ML/OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026.md)
+- [Notepad++-Targetted-Attach](News/Notepad++-Targetted-Attach.md)
 
 ### 🚀 Infrastructure & Outages
 - [Cloudflare down Nov-2025](News/cloudflare-down-nov-2025.md)
