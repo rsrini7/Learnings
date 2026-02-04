@@ -156,6 +156,23 @@ The streamlined architecture offers several advantages:
 - Manage pipeline execution flow
 - Serve final ranked results to clients
 
+```mermaid
+graph TD
+    User((User Request)) --> Mixer[Home Mixer]
+    
+    subgraph Sourcing
+        Mixer --> Thunder[Thunder: Follows]
+        Mixer --> Phoenix[Phoenix: Discovery]
+    end
+    Thunder & Phoenix --> Ranker[Grok Transformer]
+    Ranker --> Filter[Safety/Spam Filters]
+    Filter --> Feed([Final Feed])
+    style Mixer fill:#339af0,color:#fff
+    style Feed fill:#51cf66,color:#000
+```
+
+> **Technical Note:** The Home Mixer acts as the stateless orchestration layer, ensuring concurrent execution of the sub-pipelines to minimize total request latency.
+
 **Technical Benefits of Rust:**
 - Compile-time safety guarantees
 - No garbage collection pauses
@@ -168,6 +185,15 @@ The streamlined architecture offers several advantages:
 **Purpose:** High-performance in-network content retrieval system.
 
 **Definition:** "Posts published by the accounts that users follow" [3]
+
+```mermaid
+graph LR
+    A[New Post] --> B[Kafka Stream]
+    B --> C[(Rust In-Memory Store)]
+    C --> D[User Request]
+    D --> E[Sub-millisecond Delivery]
+    style C fill:#51cf66,stroke:#333,color:#000
+```
 
 **Key Features:**
 
