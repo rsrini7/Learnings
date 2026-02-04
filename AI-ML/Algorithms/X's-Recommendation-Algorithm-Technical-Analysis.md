@@ -6,6 +6,10 @@
 
 ---
 
+![X's-Recommendation-Algorithm](assets/X's-Recommendation-Algorithm.png)
+
+---
+
 **Abstract**
 
 This document provides a comprehensive technical analysis of X's (formerly Twitter) "For You" feed recommendation algorithm, based on the open-source release published on January 19-20, 2026. The analysis covers the system architecture, implementation details, design principles, and technical innovations that power content recommendations for over 500 million daily users. The system represents a fundamental architectural shift from microservice-based heuristic systems to a streamlined AI-driven approach using Rust for infrastructure and Python for machine learning, with a Grok-based transformer at its core.
@@ -194,7 +198,7 @@ graph LR
     B --> C[(Rust In-Memory Store)]
     C --> D[User Request]
     D --> E[Sub-millisecond Delivery]
-    
+
     style C fill:#51cf66,stroke:#333,color:#000
 ```
 
