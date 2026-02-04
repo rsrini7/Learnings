@@ -164,9 +164,11 @@ graph TD
         Mixer --> Thunder[Thunder: Follows]
         Mixer --> Phoenix[Phoenix: Discovery]
     end
+
     Thunder & Phoenix --> Ranker[Grok Transformer]
     Ranker --> Filter[Safety/Spam Filters]
     Filter --> Feed([Final Feed])
+
     style Mixer fill:#339af0,color:#fff
     style Feed fill:#51cf66,color:#000
 ```
@@ -192,6 +194,7 @@ graph LR
     B --> C[(Rust In-Memory Store)]
     C --> D[User Request]
     D --> E[Sub-millisecond Delivery]
+    
     style C fill:#51cf66,stroke:#333,color:#000
 ```
 
