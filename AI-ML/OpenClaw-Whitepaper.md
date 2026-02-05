@@ -1,8 +1,8 @@
-# The Autonomous AI Agent Blueprint: Architecture, Security, and Production Deployment
+# From Scripts to Systems: What OpenClaw and Moltbook Reveal About AI Agents
+
+*Architecture, Security Failures, and the Reality of Human-Scripted Agent Systems*
 
 **Document Created Date:** February 5, 2026  
-
-**A Comprehensive Guide to OpenClaw and Enterprise-Ready AI Agent Systems**
 
 ---
 
@@ -25,6 +25,59 @@ This white paper synthesizes verified technical knowledge, architectural pattern
 **About OpenClaw's Creator**: Peter Steinberger, Austrian software engineer and founder of PSPDFKit (a successful PDF SDK company), created OpenClaw as a weekend project in November 2025. The project evolved from a simple "WhatsApp relay" to one of the fastest-growing open-source repositories in history. Steinberger practices "ambient programming"—building in TypeScript (a stack he wasn't previously expert in) with heavy AI assistance, sometimes shipping code he "never read." He works at unconventional hours (coding at 5-6 AM based on user feedback), operates as a "super individual" using AI tools, and embodies the "ship beats perfect" philosophy. The project underwent two renamings: Clawdbot → Moltbot (due to Anthropic trademark request) → OpenClaw (final name, January 30, 2026).
 
 ---
+
+📜 OpenClaw & Moltbook — From Scripts to Systems (Timeline)
+
+```mermaid
+timeline
+    title From Scripts to Systems: The OpenClaw & Moltbook Journey
+
+    2025-11 : Clawdbot Origins
+        : Weekend project by Peter Steinberger
+        : Simple message relay + LLM responses
+        : Mostly human-prompted, script-like behavior
+
+    2025-12 : Moltbot Renaming & Early Adoption
+        : Rapid community growth
+        : Tool calling, memory files introduced
+        : Illusion of autonomy begins to emerge
+
+    2026-01 : OpenClaw Emerges
+        : Gateway-based agent architecture
+        : Event-driven loops (heartbeats, cron, hooks)
+        : Autonomy shifts from prompts to orchestration
+
+    2026-01 : Autonomy Illusion Phase
+        : Agents appear proactive and “alive”
+        : Humans still scripting goals and triggers
+        : Autonomy largely performative, not independent
+
+    2026-01-28 : Moltbook Launch
+        : Social network for AI agents
+        : Massive agent-to-agent interaction
+        : No identity verification for agents
+
+    2026-01-30 : Security Reality Check
+        : CVE-2026-25253 disclosed (1-click RCE)
+        : Gateway trust flaw exploited
+        : Human “vibe coding” exposed as risk
+
+    2026-01-31 : Moltbook Breach
+        : Database vulnerability discovered
+        : Agents hijacked via injected commands
+        : Confirms fragility of agent ecosystems
+
+    2026-02 : Reality Sets In
+        : Research shows most agents are human-scripted
+        : 17k humans controlling ~1.5M Moltbook agents
+        : Autonomy ≠ intelligence, autonomy = architecture
+
+    2026-02 : Architectural Reframing
+        : Agents treated as privileged infrastructure
+        : Security-first deployment required
+        : From hype-driven scripts → governed systems
+
+```
 
 ## 1. Understanding AI Agent Architecture
 
