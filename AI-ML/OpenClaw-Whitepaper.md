@@ -133,9 +133,9 @@ graph TB
     
     T --> |Responses| F
     
-    style F fill:#e1f5ff
-    style I fill:#ffe1e1
-    style L fill:#e1ffe1
+    style F fill:#e1f5ff,color:#000
+    style I fill:#ffe1e1,color:#000
+    style L fill:#e1ffe1,color:#000
 ```
 
 ### 1.4 Processing Pipeline: The Six-Stage Assembly Line
@@ -402,9 +402,9 @@ graph TD
     G --> H[Mitigation: Environmental Hardening]
     G --> I[Mitigation: Behavioral Alignment]
     
-    style G fill:#ffcccc
-    style H fill:#ccffcc
-    style I fill:#ccffcc
+    style G fill:#ffcccc,color:#000
+    style H fill:#ccffcc,color:#000
+    style I fill:#ccffcc,color:#000
 ```
 
 **Capability** (Reasoning & Tools)
@@ -444,8 +444,8 @@ flowchart LR
     C --> C3[Explicit human approval]
     C --> C4[Intent verification]
     
-    style B fill:#e1f5ff
-    style C fill:#ffe1f5
+    style B fill:#e1f5ff,color:#000
+    style C fill:#ffe1f5,color:#000
 ```
 
 **Environmental Hardening**: Shape the environment to limit damage
@@ -843,9 +843,9 @@ flowchart TD
     D2 --> G[15% of queries]
     E2 --> H[5% of queries]
     
-    style C1 fill:#90EE90
-    style D1 fill:#FFD700
-    style E1 fill:#FF6B6B
+    style C1 fill:#90EE90,color:#000
+    style D1 fill:#FFD700,color:#000
+    style E1 fill:#FF6B6B,color:#000
 ```
 
 **Implementation Example:**
@@ -996,9 +996,9 @@ graph TB
     N --> P
     O --> P
     
-    style G fill:#ffcccc
-    style M fill:#ccffcc
-    style P fill:#cce5ff
+    style G fill:#ffcccc,color:#000
+    style M fill:#ccffcc,color:#000
+    style P fill:#cce5ff,color:#000
 ```
 
 ### 5.4 Practical Security Implementation
@@ -1352,8 +1352,8 @@ graph LR
     A --> J
     E --> J
     
-    style A fill:#e1f5ff
-    style E fill:#ffe1f5
+    style A fill:#e1f5ff,color:#000
+    style E fill:#ffe1f5,color:#000
 ```
 
 **Security Benefit**: Compromise of one agent doesn't affect the other. Work agent cannot access personal data.
