@@ -6,6 +6,10 @@
 
 ---
 
+![OpenClaw Feb 2026](assets/OpenClaw-Feb-2026.png)
+
+---
+
 ## Executive Summary
 
 The emergence of autonomous AI agents represents a fundamental shift from conversational AI to operational AI systems. **OpenClaw** (formerly Clawdbot/Moltbot), an open-source TypeScript-based AI agent framework launched in late November 2025, exemplifies this transition. As of February 5, 2026, the project has surpassed **164,000 GitHub stars** (one of the fastest-growing repositories in GitHub history), with 2+ million website visitors in its first week and widespread adoption from Silicon Valley to Beijing. It has catalyzed both innovation and serious security discussions.
