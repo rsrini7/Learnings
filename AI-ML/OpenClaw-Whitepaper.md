@@ -1187,11 +1187,11 @@ sequenceDiagram
 
 ## 5.7 Skill Governance & Supply Chain Security
 
-As discussed in **Section 5.1**, multiple real-world incidents demonstrate that agent compromise rarely begins at the model layer. Instead, it originates in the **supply chain**—specifically through third-party extensions executed with agent authority.
+As evidenced by the incidents detailed in **Section 5.1**, agent compromise often originates in the **supply chain**—specifically through third-party extensions executed with agent authority.
 
-In OpenClaw, **skills are executable code**, not passive plugins. Once installed, a skill runs inside the agent runtime and inherits its permissions, including filesystem access, environment variables, network connectivity, and tool invocation rights. This collapses the trust boundary between **user intent** and **external code**.
+In OpenClaw, **skills are executable artifacts (code or configuration)**, not passive plugins. Once installed, a skill runs inside the agent runtime and inherits its permissions, including filesystem access, environment variables, network connectivity, and tool invocation rights. This collapses the trust boundary between **user intent** and **external code**. (Note: Some skills are YAML/JS configs, while others are full scripts—treat all as potential risks.)
 
-While recent OpenClaw releases (post-CVE-2026-25253, e.g., v2026.2.3) encourage sandboxing and stricter configuration, these protections are **opt-in**, not intrinsic. As a result, skill installation remains a primary risk vector by default.
+While recent OpenClaw releases (post-CVE-2026-25253, e.g., v2026.2.3) encourage sandboxing and stricter configuration (e.g., via `sandbox` options in Section 3.3), these protections are **opt-in** and deployment-dependent, not intrinsic to the skill model. As a result, skill installation remains a primary risk vector by default.
 
 ### Skills as a Supply-Chain Risk
 
@@ -1201,7 +1201,7 @@ This incident reinforces a critical architectural reality:
 
 > A skill marketplace is a supply chain, not a feature catalog.
 
-Any system that permits unverified skill installation effectively enables **remote code execution by design**.
+Any system that permits unverified skill installation effectively enables **remote code execution by design**. (For multi-agent scenarios like Moltbook in Section 7.5, malicious skills can enable agent-to-agent exfiltration, amplifying risks across networks.)
 
 ### Threat Model: Skill Installation Path
 
@@ -1232,17 +1232,19 @@ flowchart LR
         EXT
     end
 
-    SH --> C1[System Compromise]
+    FS --> C1[System Compromise]
     ENV --> C2[Credential Exfiltration]
+    SH --> C1
     NET --> C3[Data Leakage]
     MSG --> C4[Impersonation / Reputation Damage]
+    EXT --> C3
 
     style M fill:#f5f5f5,stroke:#555,color:#000
     style R fill:#eeeeee,stroke:#666,color:#000
     style ATTACK_SURFACE fill:#fafafa,stroke:#999,color:#000
 ```
 
-Once a malicious skill executes, the agent becomes a **confused deputy**, performing attacker-controlled actions under trusted credentials. Propagation occurs silently and at machine speed.
+Once a malicious skill executes, the agent becomes a **confused deputy**, performing attacker-controlled actions under trusted credentials. In multi-agent environments, this delegation can cascade, allowing a single compromised skill to affect multiple agents sharing trust boundaries.
 
 ### Skill Risk Classification
 
@@ -1259,6 +1261,8 @@ To manage this risk, skills must be explicitly classified and governed.
 | **Self-Modifying Skills**     | Alter agent logic or memory             | ❌ Never         |
 
 Self-modifying skills are particularly dangerous: they can introduce **unbounded loops**, corrupt persistent memory, or silently weaken future safeguards.
+
+> Execution skills may be permissible only in isolated, single-purpose agents with no external integrations; self-modifying skills should never be permitted in production systems.
 
 ### Indicators of Malicious Skills
 
@@ -1301,14 +1305,16 @@ Any production deployment must enforce the following controls:
 4. **Automated Scanning**
    Static and dependency scanning on install (e.g., Snyk-style or PromptArmor-style checks as referenced in Section 5.5).
 
-5. **Auditability**
-   Every skill action logged with clear attribution.
+5. **Adversarial Testing**
+   Staging environments should intentionally deploy simulated malicious skills to validate containment. Use red-team prompts to simulate injection via skills.
 
-6. **Adversarial Testing**
-   Staging environments should intentionally deploy simulated malicious skills to validate containment.
+6. **Auditability**
+   Every skill action logged with clear attribution. Review skills quarterly or on every update.
 
 7. **Kill Switch**
    Immediate skill disablement without agent restart.
+
+**Verification Tip**: Use `openclaw skills audit --check-vulnerabilities` (from Section 5.5) pre-install.
 
 ### Implementation Example (Allowlisting)
 
@@ -1328,15 +1334,15 @@ Any production deployment must enforce the following controls:
   }
 }
 ```
+// Disables high-risk ops; enforces least-privilege baseline.
 
-This configuration reflects the **least-privilege baseline** recommended throughout this paper.
+Encourage modular skill design: Build custom skills over third-party ones for high-authority tasks.
 
 ### Architectural Takeaway
 
 Skill ecosystems tend to optimize for **velocity and adoption**. Secure agent systems must optimize for **containment, auditability, and reversibility**.
 
 Unchecked extensibility does not create autonomy—it amplifies failure modes.
-
 
 ---
 
