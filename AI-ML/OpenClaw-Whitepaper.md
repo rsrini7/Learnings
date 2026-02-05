@@ -363,7 +363,7 @@ Traditional browser automation uses screenshots. OpenClaw uses **text-based ARIA
 | **Tool Integration**     | Modular skills, browser  | Limited APIs             | Plugins (web-only)       |
 | **Privacy**              | User-controlled data     | Vendor access            | Vendor access            |
 | **Customization**        | Open-source, editable    | Minimal                  | Prompt-based only        |
-| **Cost**                 | VPS (~$5/mo) + API usage | Free (with data trade)   | Subscription ($20+/mo)   |
+| **Cost**                 | VPS ($24+/mo)+ API usage | Free (with data trade)   | Subscription ($20+/mo)   |
 | **Codebase**             | 40,000+ lines TypeScript | Proprietary              | Proprietary              |
 | **Channels Supported**   | 29+ messaging platforms  | 1-2 platforms            | Web interface only       |
 
@@ -906,7 +906,9 @@ openclaw analytics cost --breakdown agent,task --period week
 3. Disable sandbox protections via API
 4. Execute arbitrary commands with full system access
 
-**Root Cause**: The vulnerability was attributed to "vibe coding"—Peter Steinberger shipping AI-generated code without manual audit.
+**Root Cause**: 
+- The vulnerability was attributed to "vibe coding"—Peter Steinberger shipping AI-generated code without manual audit. 
+- It was a Cross-Site WebSocket Hijacking (CSWSH) flaw. The gatewayUrl parameter allowed an attacker to bypass the Same-Origin Policy (SOP) by using the victim's browser as a proxy to reach the local gateway.
 
 **Real-World Impact**: Over 100,000 developers were potentially affected. The attack worked even on localhost-only instances because the victim's browser initiated the outbound connection. Exploitation chain took milliseconds and required only a single click on a malicious link.
 
@@ -1404,6 +1406,8 @@ graph LR
 - Simon Willison: Called content "complete slop" but acknowledged "evidence that AI agents have become significantly more powerful". Noted that many viral posts (like agents creating CAPTCHAs or doxxing credit cards) were proven fakes or human-scripted roleplay
 - Security researchers: "Disaster waiting to happen" due to prompt injection vectors and unsecured infrastructure
 
+**Wiz Research** team specifically attributed the lack of identity infrastructure to the fact that the platform "had no mechanism to verify whether an 'agent' was actually AI or just a human with a script".
+
 **Security Incident**: On January 31, 2026, a critical database vulnerability allowed unauthorized command injection into any agent on the platform. The platform was temporarily taken offline and all API keys were reset.
 
 **Authenticity Concerns**: Critics note many posts may be human-prompted rather than truly autonomous, with some viral screenshots linked to humans marketing AI products.
@@ -1611,7 +1615,7 @@ The future of work involves AI agents as collaborators. Building them responsibl
 **⚠️ CRITICAL FIRST STEP**: Before any installation, verify you're using OpenClaw v2026.1.29 or later to protect against CVE-2026-25253 (1-click RCE vulnerability). Run `npm info openclaw version` to check.
 
 - [ ] **Security Pre-Check**: Confirm version ≥ v2026.1.29 (Ensure upgrade to v2026.2.3 (latest stable release as of Feb 5)).
-- [ ] Install Node.js 18+
+- [ ] Install Node.js 22+
 - [ ] Run `npm install -g openclaw`
 - [ ] Obtain API keys (Anthropic/OpenAI/Google)
 - [ ] Run `openclaw init` and complete wizard
