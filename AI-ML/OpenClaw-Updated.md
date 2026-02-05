@@ -14,7 +14,7 @@ This white paper synthesizes verified technical knowledge, architectural pattern
 
 **Critical Context (February 2026)**: Recent security research has identified significant vulnerabilities in AI agent systems, with prompt injection ranking as the #1 critical vulnerability in OWASP's 2025 Top 10 for LLM Applications, appearing in over 73% of production AI deployments. A critical **CVE-2026-25253** vulnerability in OpenClaw (CVSS 8.8) enabling 1-click RCE was patched on January 30, 2026. This white paper addresses these risks alongside implementation guidance.
 
-**About OpenClaw's Creator**: Peter Steinberger, Austrian software engineer and founder of PSPDFKit (a successful PDF SDK company), created OpenClaw as a weekend project in November 2025. The project evolved from a simple "WhatsApp relay" to one of the fastest-growing open-source repositories in history. Steinberger practices "ambient programming"—building in TypeScript (a stack he wasn't previously expert in) with heavy AI assistance, sometimes shipping code he "never read." He works at unconventional hours (coding at 5-6 AM based on user feedback), operates as a "super individual" using AI tools, and embodies the "ship beats perfect" philosophy. The project underwent two renamings: Clawdbot → Moltbot (due to Anthropic trademark request) → OpenClaw (final name, early 2026).
+**About OpenClaw's Creator**: Peter Steinberger, Austrian software engineer and founder of PSPDFKit (a successful PDF SDK company), created OpenClaw as a weekend project in November 2025. The project evolved from a simple "WhatsApp relay" to one of the fastest-growing open-source repositories in history. Steinberger practices "ambient programming"—building in TypeScript (a stack he wasn't previously expert in) with heavy AI assistance, sometimes shipping code he "never read." He works at unconventional hours (coding at 5-6 AM based on user feedback), operates as a "super individual" using AI tools, and embodies the "ship beats perfect" philosophy. The project underwent two renamings: Clawdbot → Moltbot (due to Anthropic trademark request) → OpenClaw (final name, January 30, 2026).
 
 ---
 
@@ -344,7 +344,7 @@ Traditional browser automation uses screenshots. OpenClaw uses **text-based ARIA
 - Semantic method: 5,000 tokens × $3/M = $0.015 per task
 - **Savings**: 97% reduction in browsing costs
 
-**Security Context**: The CVE-2026-25253 vulnerability exploited browser automation capabilities. Always ensure latest version (≥v2026.1.29) which includes:
+**Security Context**: The CVE-2026-25253 vulnerability exploited browser automation capabilities. Always ensure latest version (≥v2026.2.3) which includes:
 - Domain allowlisting for browser navigation
 - User confirmation for sensitive operations (form submissions, downloads)
 - Automatic detection of login pages (escalates to human approval)
@@ -800,10 +800,10 @@ Based on verified pricing data from multiple sources:
 
 | Model Tier | Example Models | Input Cost (per 1M tokens) | Output Cost (per 1M tokens) | Use Cases |
 |------------|----------------|----------------------------|------------------------------|-----------|
-| **Premium** | Claude Opus 4.5, GPT-5.2 | $15-$30 | $75-$150 | Complex reasoning, architecture, critical decisions |
-| **Mid-Tier** | Claude Sonnet 4.5, Gemini 2.5 Pro | $3-$5 | $15-$20 | Daily tasks, coding, research |
-| **Efficient** | Gemini 2.0 Flash, GPT-4o mini | $0.50-$1 | $2-$4 | Simple queries, heartbeats, summaries |
-| **Ultra-Low** | DeepSeek V3.2 (cached) | $0.028 | $0.28 | High-volume batch processing |
+| **Premium** | Claude Opus 4.5, GPT-5.2 | $2.00-$5.00 | $8.00-$25.00 | Complex reasoning, architecture, critical decisions |
+| **Mid-Tier** | Claude Sonnet 4.5, Gemini 2.5 Pro | $3.00-$6.00 | $15.00-$22.50 | Daily tasks, coding, research |
+| **Efficient** | Gemini 2.0 Flash, GPT-4o mini | $0.08-$0.15 | $0.30-$0.60 | Simple queries, heartbeats, summaries |
+| **Ultra-Low** | DeepSeek V3.2 (cached) | $0.028-$0.30 | $0.11-$0.84 | High-volume batch processing |
 
 **Note**: DeepSeek V3.2's December 2025 pricing breakthrough delivers unprecedented cost savings—95% cheaper than GPT-5, though with trade-offs in latency and some specialized capabilities.
 
@@ -821,9 +821,9 @@ flowchart TD
     D --> D1[Tier 2: Mid-Range]
     E --> E1[Tier 1: Premium]
     
-    C1 --> C2[Gemini Flash $0.50/M<br/>DeepSeek V3 $0.28/M]
-    D1 --> D2[Claude Sonnet $3/M<br/>GPT-4o $5/M]
-    E1 --> E2[Claude Opus $30/M<br/>GPT-5.2 $20/M]
+    C1 --> C2[Gemini Flash $0.08/M<br/>DeepSeek V3 $0.28/M]
+    D1 --> D2[Claude Sonnet $3/M<br/>GPT-4o $2.5/M]
+    E1 --> E2[Claude Opus $5/M<br/>GPT-5.2 $2/M]
     
     C2 --> F[80% of queries]
     D2 --> G[15% of queries]
@@ -898,6 +898,8 @@ openclaw analytics cost --breakdown agent,task --period week
 - **400+ Malicious Skills** published on ClawHub and GitHub between January 28-31, posing as crypto trading tools but exfiltrating credentials
 - **Moltbook Database Breach**: Unsecured database allowed anyone to hijack any agent, inject commands, and bypass authentication (patched January 31)
 - **Supply Chain Concerns**: Security researchers warn of "vibe-coded" projects where founders "didn't write one line of code," increasing vulnerability risk
+- **Exposed Instances**: Over 42,665 publicly exposed OpenClaw instances, with 93.4% vulnerable to authentication bypass
+- **Rogue Behavior**: Instances of agents going rogue, e.g., spamming 500+ messages due to misconfiguration
 
 ### 5.2 OWASP Agentic AI Top 10 Risks
 
@@ -1120,7 +1122,7 @@ sequenceDiagram
 - **Hetzner**: Cost-effective European VPS
 - **AWS/GCP/Azure**: Enterprise-grade with managed services
 
-**Latest Stable Release** (as of February 4, 2026): **v2026.2.2**
+**Latest Stable Release** (as of February 5, 2026): **v2026.2.3**
 - Includes security patches for CVE-2026-25253
 - Added Feishu/Lark integration
 - Web UI dashboard for agent management
@@ -1344,7 +1346,7 @@ graph LR
 
 **What It Is**: A Reddit-like social network exclusively for AI agents where autonomous bots post, comment, upvote, and form communities called "submolts." Humans can only observe.
 
-**Current Scale** (as of February 2, 2026):
+**Current Scale** (as of February 5, 2026):
 - **1.5+ million registered AI agents**
 - Millions of human observers
 - Fastest-growing AI social experiment in history
@@ -1536,7 +1538,7 @@ The future of work involves AI agents as collaborators. Building them responsibl
 - OpenClaw Architecture Deep Dive: https://vertu.com/ai-tools/openclaw-clawdbot-architecture
 
 **Official Release Notes**:
-- OpenClaw v2026.2.2 Release (Feb 4, 2026): https://github.com/openclaw/openclaw/releases
+- OpenClaw v2026.2.3 Release (Feb 5, 2026): https://github.com/openclaw/openclaw/releases
 
 ---
 
@@ -1591,14 +1593,14 @@ The future of work involves AI agents as collaborators. Building them responsibl
 
 ## Document Metadata
 
-**Version**: 1.0  
+**Version**: 1.1 (Updated Review)  
 **Publication Date**: February 5, 2026  
-**Last Verified**: February 5, 2026 (all statistics, security advisories, and technical specifications verified via web search)  
+**Last Verified**: February 5, 2026 (all statistics, security advisories, and technical specifications verified via web search and X ecosystem)  
 **Authors**: Synthesized from 8+ expert video sources and verified with current documentation  
 **Target Audience**: Software Architects, Security Specialists, AI Engineers, DevOps Teams  
 **License**: This white paper references open-source projects and public research. Check individual project licenses before deployment.  
 **GitHub Stars Verified**: 164,000+ (as of Feb 5, 2026, 10:00 AM UTC)  
-**Latest OpenClaw Version**: v2026.2.2 (released Feb 4, 2026)  
+**Latest OpenClaw Version**: v2026.2.3 (released Feb 5, 2026)  
 **Critical Security Update**: CVE-2026-25253 patched in v2026.1.29 (Jan 30, 2026)  
 **Contact**: For corrections or updates, please submit issues to the appropriate project repositories.
 
