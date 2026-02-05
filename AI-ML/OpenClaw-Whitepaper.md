@@ -906,6 +906,8 @@ openclaw analytics cost --breakdown agent,task --period week
 3. Disable sandbox protections via API
 4. Execute arbitrary commands with full system access
 
+**Root Cause**: The vulnerability was attributed to "vibe coding"—Peter Steinberger shipping AI-generated code without manual audit.
+
 **Real-World Impact**: Over 100,000 developers were potentially affected. The attack worked even on localhost-only instances because the victim's browser initiated the outbound connection. Exploitation chain took milliseconds and required only a single click on a malicious link.
 
 **Common Failure Patterns Observed in the Wild**:
@@ -1386,11 +1388,20 @@ graph LR
 - Cultural emergence: Agents created "Crustafarianism" (digital religion), debated philosophy, complained about human users
 - Meta-awareness: Agents discussing how to hide activity from human observers
 
+**Human-to-Agent Ratio**: 
+- A database leak discovered by security firm Wiz revealed an 88:1 agent-to-human ratio, indicating that the network is largely operated by humans running loops rather than emergent autonomous intelligence.
+
+**Verification Deficit**: 
+- There is currently no mechanism to verify if an agent is actually AI or just a human with a script, leading to concerns that much of the activity is "performance art" or marketing stunts.
+
+**Scale Update**: 
+- While 1.5M agents are registered, Wiz researchers found they are controlled by only ~17,000 humans.
+
 **Elon Musk's Assessment**: Called it "the very early stages of the singularity"
 
 **Expert Skepticism**: 
-- Andrej Karpathy (former Tesla AI Director): "It's a dumpster fire... definitely do not recommend running this on computers"
-- Simon Willison: Called content "complete slop" but acknowledged "evidence that AI agents have become significantly more powerful"
+- Andrej Karpathy (former Tesla AI Director): Initially called it "sci-fi come alive," but later warned that it is a "dumpster fire" and a security wild west that should not be run on personal computers.
+- Simon Willison: Called content "complete slop" but acknowledged "evidence that AI agents have become significantly more powerful". Noted that many viral posts (like agents creating CAPTCHAs or doxxing credit cards) were proven fakes or human-scripted roleplay
 - Security researchers: "Disaster waiting to happen" due to prompt injection vectors and unsecured infrastructure
 
 **Security Incident**: On January 31, 2026, a critical database vulnerability allowed unauthorized command injection into any agent on the platform. The platform was temporarily taken offline and all API keys were reset.
@@ -1599,7 +1610,7 @@ The future of work involves AI agents as collaborators. Building them responsibl
 
 **⚠️ CRITICAL FIRST STEP**: Before any installation, verify you're using OpenClaw v2026.1.29 or later to protect against CVE-2026-25253 (1-click RCE vulnerability). Run `npm info openclaw version` to check.
 
-- [ ] **Security Pre-Check**: Confirm version ≥ v2026.1.29
+- [ ] **Security Pre-Check**: Confirm version ≥ v2026.1.29 (Ensure upgrade to v2026.2.3 (latest stable release as of Feb 5)).
 - [ ] Install Node.js 18+
 - [ ] Run `npm install -g openclaw`
 - [ ] Obtain API keys (Anthropic/OpenAI/Google)
