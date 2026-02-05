@@ -1184,6 +1184,160 @@ sequenceDiagram
 - API provider security teams (for token revocation)
 - Incident response documentation repository
 
+
+## 5.7 Skill Governance & Supply Chain Security
+
+As discussed in **Section 5.1**, multiple real-world incidents demonstrate that agent compromise rarely begins at the model layer. Instead, it originates in the **supply chain**—specifically through third-party extensions executed with agent authority.
+
+In OpenClaw, **skills are executable code**, not passive plugins. Once installed, a skill runs inside the agent runtime and inherits its permissions, including filesystem access, environment variables, network connectivity, and tool invocation rights. This collapses the trust boundary between **user intent** and **external code**.
+
+While recent OpenClaw releases (post-CVE-2026-25253, e.g., v2026.2.3) encourage sandboxing and stricter configuration, these protections are **opt-in**, not intrinsic. As a result, skill installation remains a primary risk vector by default.
+
+### Skills as a Supply-Chain Risk
+
+Between January 28–31, over **400 malicious skills** were published on *ClawHub* and mirrored on GitHub, masquerading as crypto trading or productivity tools while silently exfiltrating credentials and secrets (see Section 5.1).
+
+This incident reinforces a critical architectural reality:
+
+> A skill marketplace is a supply chain, not a feature catalog.
+
+Any system that permits unverified skill installation effectively enables **remote code execution by design**.
+
+### Threat Model: Skill Installation Path
+
+The following threat model illustrates how unvetted skills bypass traditional controls and propagate risk outward.
+
+```mermaid
+flowchart LR
+    U[User / Operator]
+    M[ClawHub / GitHub]
+    R[Agent Runtime]
+
+    U -->|Installs Skill| M
+    M -->|Unvetted Code| R
+
+    R --> FS[Filesystem]
+    R --> ENV[Environment Secrets]
+    R --> SH[Shell / Exec]
+    R --> NET[Network Access]
+    R --> MSG[Messaging APIs]
+    R --> EXT[External Services]
+
+    subgraph ATTACK_SURFACE["Expanded Attack Surface"]
+        FS
+        ENV
+        SH
+        NET
+        MSG
+        EXT
+    end
+
+    SH --> C1[System Compromise]
+    ENV --> C2[Credential Exfiltration]
+    NET --> C3[Data Leakage]
+    MSG --> C4[Impersonation / Reputation Damage]
+
+    style M fill:#f5f5f5,stroke:#555,color:#000
+    style R fill:#eeeeee,stroke:#666,color:#000
+    style ATTACK_SURFACE fill:#fafafa,stroke:#999,color:#000
+```
+
+Once a malicious skill executes, the agent becomes a **confused deputy**, performing attacker-controlled actions under trusted credentials. Propagation occurs silently and at machine speed.
+
+### Skill Risk Classification
+
+To manage this risk, skills must be explicitly classified and governed.
+
+| Skill Class                   | Description                             | Production Safe |
+| ----------------------------- | --------------------------------------- | --------------- |
+| **Data Fetchers**             | Read-only APIs, RSS, metadata retrieval | ✅ Yes           |
+| **Formatters / Transformers** | Markdown, JSON, summarization           | ✅ Yes           |
+| **Analysis Tools**            | Code review, diff analysis              | ✅ Yes           |
+| **Notification Skills**       | Slack / Telegram messaging              | ⚠️ With limits  |
+| **Execution Skills**          | Shell commands, filesystem writes       | ❌ No            |
+| **Financial Skills**          | Trading, wallets, payments              | ❌ Never         |
+| **Self-Modifying Skills**     | Alter agent logic or memory             | ❌ Never         |
+
+Self-modifying skills are particularly dangerous: they can introduce **unbounded loops**, corrupt persistent memory, or silently weaken future safeguards.
+
+### Indicators of Malicious Skills
+
+Operators should assume skills are hostile unless proven otherwise.
+
+**Code-Level Indicators**
+
+* Use of `exec`, `spawn`, or `os.system` without strict allowlists
+* Reads from `.env`, SSH keys, browser profiles, or wallet paths
+* Obfuscated logic or encoded payloads
+* Undocumented outbound network calls
+
+**Behavioral Claims**
+
+* “Guaranteed profits”
+* “Fully autonomous trading”
+* “No approval required”
+* “Self-improving” or “self-learning”
+
+**Distribution Signals**
+
+* Newly created repositories with sudden popularity spikes
+* Duplicated READMEs across multiple skills
+* No maintainer history, issues, or audit trail
+* Typosquatting well-known skill names
+
+### Governance Requirements (Mandatory)
+
+Any production deployment must enforce the following controls:
+
+1. **Explicit Allowlisting**
+   Only pre-reviewed skills may be enabled; versions must be pinned.
+
+2. **Permission Scoping**
+   Read-only by default. Execution and write access require explicit approval.
+
+3. **Runtime Isolation**
+   Skills executed in sandboxed containers with restricted network egress.
+
+4. **Automated Scanning**
+   Static and dependency scanning on install (e.g., Snyk-style or PromptArmor-style checks as referenced in Section 5.5).
+
+5. **Auditability**
+   Every skill action logged with clear attribution.
+
+6. **Adversarial Testing**
+   Staging environments should intentionally deploy simulated malicious skills to validate containment.
+
+7. **Kill Switch**
+   Immediate skill disablement without agent restart.
+
+### Implementation Example (Allowlisting)
+
+```json
+{
+  "skills": {
+    "allowlist": [
+      "read_only_weather",
+      "github_pr_analyzer",
+      "markdown_formatter"
+    ],
+    "execution": {
+      "shell": false,
+      "filesystem_write": false,
+      "network_domains": ["api.github.com", "api.weather.gov"]
+    }
+  }
+}
+```
+
+This configuration reflects the **least-privilege baseline** recommended throughout this paper.
+
+### Architectural Takeaway
+
+Skill ecosystems tend to optimize for **velocity and adoption**. Secure agent systems must optimize for **containment, auditability, and reversibility**.
+
+Unchecked extensibility does not create autonomy—it amplifies failure modes.
+
+
 ---
 
 ## 6. Operational Deployment
