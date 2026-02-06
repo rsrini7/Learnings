@@ -1,5 +1,7 @@
 # MiroThinker 1.5: Whitepaper
 
+![Papers/assets/MiroThinker-1.5.png](assets/MiroThinker-1.5.png)
+
 ## What is MiroThinker 1.5?
 
 MiroThinker 1.5 is an open-source AI research agent from MiroMind AI. Unlike regular chatbots that answer immediately, it works like a smart researcher that:
