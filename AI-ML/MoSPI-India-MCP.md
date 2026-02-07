@@ -4,8 +4,6 @@ Quick heads up: the National Statistical Office (MoSPI) launched a beta Model Co
 
 Why this matters: MCP is an open standard for connecting models to tools/data (developed by Anthropic) and it makes it easy for assistants like Claude, ChatGPT, Cursor, etc., to fetch attributed government numbers without manual CSV downloads. MoSPI’s DI Lab has the beta page and docs (server URL https://mcp.mospi.gov.in), and the pilot currently covers PLFS, CPI, IIP, ASI, NAS, WPI and Energy/Environmental stats.
 
-Let's break it down end-to-end: background, datasets, usage, tech/repo details, tips, limitations, and more.
-
 ## Background and Purpose
 The Ministry of Statistics and Programme Implementation (MoSPI), via the National Statistical Office (NSO), launched the beta MCP Server on February 6, 2026. It's part of the Data Innovation (DI) Lab ([linked here](https://datainnovation.mospi.gov.in/mospi-mcp)) and builds on the eSankhyiki Portal (India's central hub for 3,900+ official datasets). The MCP – an open standard from Anthropic – lets AI models fetch live, attributed data securely.
 
@@ -51,13 +49,13 @@ To make this tangible, here's what a "grounded" AI response looks like using the
 > According to the **National Accounts Statistics (NAS)** and **Index of Industrial Production (IIP)** datasets fetched via the eSankhyiki MCP server:
 > | Indicator | Period | Growth Rate (%) | Key Driver |
 > | --- | --- | --- | --- |
-> | **Real GDP** | FY 2025-26 (FAE) | **7.4%** | Buoyant Services Sector (9.9% growth) |
+> | **Real GDP** | FY 2025-26 (FAE) | **7.4%** | Buoyant Services Sector (~9-10% growth) |
 > | **Real GVA** | FY 2025-26 (FAE) | **7.3%** | Manufacturing & Construction (7.0%) |
 > | **IIP (General)** | Dec 2025 | **7.8%** | 2-year high; Manufacturing at 8.1% |
 >
 >
 > **Insight:** Industrial production (IIP) is currently outpacing the broader GDP growth, led by a strong rebound in manufacturing. The gap between Nominal GDP (8.0%) and Real GDP (7.4%) suggests that inflation remains broadly contained within the NSO's targeted corridors.
-> *Source: NSO India / api.mospi.gov.in (Timestamp: Feb 7, 2026)* (Primary source for GDP numbers: [PIB release on First Advance Estimates](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2212087).)
+> *Source: NSO India / api.mospi.gov.in (Timestamp: Feb 7, 2026)* (Primary source for GDP numbers: PIB press note on First Advance Estimates (Feb 2026).)
 
 ## How to Access and Use It
 No registration – plug-and-play with no auth. Data is real-time from api.mospi.gov.in, with every response attributed to NSO. For detailed connection guides, check the DI Lab page ([linked here](https://datainnovation.mospi.gov.in/mospi-mcp)). Here's a generic flow:
@@ -86,7 +84,7 @@ No registration – plug-and-play with no auth. Data is real-time from api.mospi
 - **Other Tools/Devs:** Use MCP standard for custom setups.
 
 ## The GitHub Repo: https://github.com/nso-india/esankhyiki-mcp
-Fully open-source (MIT licensed – confirmed in the LICENSE file, overriding early GPL mentions in description) – view, fork, or contribute. It's the "eSankhyiki MCP Pilot Project" by MoSPI's DIID, built on FastMCP 3.0. Stars: 16, Forks: 2, Contributors: 3, Commits: 2 (active dev).
+Fully open-source (MIT licensed – confirmed in the LICENSE file, overriding early GPL mentions in description) – view, fork, or contribute. It's the "eSankhyiki MCP Pilot Project" by MoSPI's DIID, built on FastMCP 3.0. Stars: 31, Forks: 4, Contributors: 3, Commits: 3 (active dev as on 7th Feb 2026).
 
 - **Key Features:** 4-tool sequential workflow (know_about_mospi_api → get_indicators → get_metadata → get_data) for validation-first queries – critical for devs, as jumping to get_data often fails due to strict params. Swagger YAML for params, OpenTelemetry for tracing (Jaeger-compatible), auto-routing (e.g., CPI groups).
 
