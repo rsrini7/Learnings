@@ -1,5 +1,10 @@
 # MoSPI launches beta MCP Server — AI-ready access to official Indian stats
 
+**TL;DR**
+
+- MoSPI’s Feb 6, 2026 beta MCP Server + open-source GitHub repo = AI tools can directly query 7 official NSO datasets. Easy setup, huge potential for data-driven India. 🚀
+- Govt of India has launched a beta MCP server that lets AI tools query verified NSO data (jobs, inflation, GDP, industry) directly — fewer hallucinations, more trust, open-source backend.
+
 Quick heads up: the National Statistical Office (MoSPI) launched a beta Model Context Protocol (MCP) server on 6 Feb 2026, which exposes a small set of official eSankhyiki datasets (7 data products in this pilot) so AI tools can query verified government statistics directly. (Official PIB/NSO release [linked here](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2224472).)
 
 Why this matters: MCP is an open standard for connecting models to tools/data (developed by Anthropic) and it makes it easy for assistants like Claude, ChatGPT, Cursor, etc., to fetch attributed government numbers without manual CSV downloads. MoSPI’s DI Lab has the beta page and docs (server URL https://mcp.mospi.gov.in), and the pilot currently covers PLFS, CPI, IIP, ASI, NAS, WPI and Energy/Environmental stats.
@@ -10,6 +15,19 @@ The Ministry of Statistics and Programme Implementation (MoSPI), via the Nationa
 Why this matters: Traditionally, accessing stats meant navigating portals and wrangling data. Now, it's "prompt to insights" for researchers, policymakers, businesses, journalists, and devs. It supports "AI/ML for Official Statistics" (AI.ML 4 OS), democratizing data for better policy, reduced misinformation, and faster analysis on jobs, inflation, GDP, etc. The goal? Strengthen data-driven decisions at all government levels and empower citizens, aligning with global efforts to bridge the AI divide.
 
 Server URL: https://mcp.mospi.gov.in (via DI Lab: https://datainnovation.mospi.gov.in/mospi-mcp).
+
+### High-Level Architecture
+
+```mermaid
+graph LR
+    User([User Prompt]) --> Host[AI Host: ChatGPT/Claude]
+    subgraph "The MCP Connection"
+        Host <--> Client[MCP Client]
+        Client <--> Server[MoSPI MCP Server]
+    end
+    Server <--> API[eSankhyiki API: api.mospi.gov.in]
+    API <--> DB[(Official NSO Database)]
+```
 
 ## The Seven Datasets
 Beta starts with seven core datasets from eSankhyiki, focusing on economic, employment, prices, and energy/environmental indicators. More (like ASUSE for unincorporated enterprises or health stats) are planned as the full catalogue integrates. Here's the full list with descriptions:
@@ -86,6 +104,33 @@ No registration – plug-and-play with no auth. Data is real-time from api.mospi
 ## The GitHub Repo: https://github.com/nso-india/esankhyiki-mcp
 Fully open-source (MIT licensed – confirmed in the LICENSE file, overriding early GPL mentions in description) – view, fork, or contribute. It's the "eSankhyiki MCP Pilot Project" by MoSPI's DIID, built on FastMCP 3.0. Stars: 31, Forks: 4, Contributors: 3, Commits: 3 (active dev as on 7th Feb 2026).
 
+### The 4-Tool Sequential Workflow
+
+```mermaid
+sequenceDiagram
+    participant AI as AI Model
+    participant MCP as MoSPI MCP Server
+    participant NSO as eSankhyiki API
+
+    Note over AI, NSO: Step 1: Discover Datasets
+    AI->>MCP: know_about_mospi_api()
+    MCP-->>AI: Returns 7 Datasets (PLFS, CPI, etc.)
+
+    Note over AI, NSO: Step 2: Check Indicators
+    AI->>MCP: get_indicators(dataset)
+    MCP-->>AI: Returns Column Names
+
+    Note over AI, NSO: Step 3: Validate Metadata
+    AI->>MCP: get_metadata(dataset, indicators)
+    MCP-->>AI: Returns Valid Filter Params (States/Years)
+
+    Note over AI, NSO: Step 4: Fetch Real Data
+    AI->>MCP: get_data(dataset, filters)
+    MCP->>NSO: Fetching...
+    NSO-->>MCP: Raw JSON Data
+    MCP-->>AI: Formatted Table / Insight
+```
+
 - **Key Features:** 4-tool sequential workflow (know_about_mospi_api → get_indicators → get_metadata → get_data) for validation-first queries – critical for devs, as jumping to get_data often fails due to strict params. Swagger YAML for params, OpenTelemetry for tracing (Jaeger-compatible), auto-routing (e.g., CPI groups).
 
 - **Structure:** mospi_server.py (core), Dockerfile/compose for deployment, swagger/ for datasets, tests/, .env.example for config.
@@ -109,6 +154,17 @@ Quick Implementation Tips:
 - **Transparency:** Open-source code for verification; fosters startups/academia collab via DI Lab.
 - **Impact:** Enables data-driven policy on unemployment, inflation, green energy – key for Viksit Bharat and democratizing AI globally.
 
+### Data-to-Insight Flow
+```mermaid
+flowchart TD
+    A[User asks about Inflation] --> B{AI recognizes tool use}
+    B -->|Call MCP| C[Fetch CPI Data]
+    C --> D[Fetch WPI Data]
+    D --> E[Internal Comparison Logic]
+    E --> F[Grounded Response with Citations]
+    F --> G[End: User gets Verified Insight]
+```
+
 🇮🇳 Why This Matters (The "Viksit Bharat" Connection)  
 This launch is a direct outcome of Working Group 6 (Democratising AI Resources). By turning sovereign data into an "AI-ready" resource, India is effectively creating a "Unified Data Interface" (UDI), similar to what UPI did for payments. It’s not just for data nerds; it’s for building the foundation of sovereign AI.
 
@@ -121,14 +177,17 @@ Since MCP gives LLMs direct dataset access, a short security note for devs: chec
 - Connectivity: Requires stable link to api.mospi.gov.in; no full internet in queries.
 - AI Subs: Needed for ChatGPT/Claude.
 
+## Common Troubleshooting (Beta Phase)
+- "Tool not found": If you're on Windows using the Claude Desktop JSON, you may need to use cmd /c npx ... or ensure npx is in your System PATH.
+- "Validation Error": This happens if you skip the sequence. Fix: Always ask the AI to "list available indicators for [dataset]" before asking for specific numbers.
+- "Empty Response": The server is strictly read-only and pulls from MoSPI APIs. If a query is too broad (e.g., "all data for all states"), it might time out. Fix: Be specific with your filters (e.g., "Karnataka and Bihar for 2024").
+
 ## Future Plans
 Expansion to more datasets, full eSankhyiki integration, and community feedback for enhancements. Built with Bharat Digital partnership.
 
 Tried it yet? Share setups or queries! Thoughts on how this evolves for Indian data? Encourage readers to file bugs or dataset problems on the GitHub issues page — gives the community a clear action.
 
 Sources: PIB Release, MoSPI DI Lab, GitHub Repo, Economic Times (for context).
-
-TL;DR: MoSPI's Feb 6, 2026 beta MCP Server + open-source GitHub repo = AI direct to 7 key stats datasets. Easy setup, huge potential for data-driven India. 🚀
 
 ## 📚 Appendix: MoSPI MCP Prompt Library
 
