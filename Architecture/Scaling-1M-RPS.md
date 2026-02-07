@@ -986,7 +986,7 @@ graph TD
     I -->|Yes| J[Switch to Fastify/Hono/Drogon]
     I -->|No| K[Good enough]
     
-    E --> L{Are queries O(n)?}
+    E --> L{"Are queries O(n)?"}
     L -->|Yes| M[Add indexes, rewrite query]
     L -->|No| N[Good enough]
     
