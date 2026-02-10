@@ -12,6 +12,8 @@ As AI transitions from standalone chatbots to autonomous systems, a new architec
 
 3. **Infrastructure & Identity Plane (e.g., Cisco agntcy; ACP concepts incorporated)**: The Foundation layer. Provides cryptographically verifiable identities, security, and observability. Note: “agntcy” refers to Cisco’s identity and infrastructure framework under the Linux Foundation; ACP concepts from IBM have been merged into A2A for secure agent interactions.
 
+The diagram below illustrates how MCP (vertical) and A2A (horizontal) compose into a single agentic system.
+
 ![How A2A Works with MCP](assets/How-A2A-Works-with-MCP.png)
 
 ## Who Interacts with Each Plane?
@@ -26,7 +28,7 @@ This mapping clarifies adoption paths for different roles, enhancing clarity in 
 
 **Primary Role**: Standardizing the "Vertical" connection between agents and their environment.
 
-MCP, initially open-sourced by Anthropic on November 25, 2024, solves the $N \times M$ integration problem—where previously, every model needed a custom connector for every tool. It turns tools into "plug-and-play" resources for any compliant agent, acting as a universal standard for AI-tool interactions widely adopted by companies like OpenAI, Google, Microsoft, and AWS.
+MCP, initially open-sourced by Anthropic on November 25, 2024, solves the $N \times M$ integration problem—where previously, every model needed a custom connector for every tool. It turns tools into "plug-and-play" resources for any compliant agent, acting as a universal standard for AI-tool interactions adopted or supported across ecosystems involving OpenAI, Google, Microsoft, and AWS.
 
 ### Technical Primitives
 
@@ -118,7 +120,7 @@ This distinction addresses organizational concerns around governance and flexibi
 
 Traditional REST APIs assume synchronous, stateless calls between tightly coupled services. Agent collaboration requires asynchronous execution, negotiation, partial failure handling, and evolving capabilities—none of which map cleanly to REST endpoints.
 
-In practice, an agent reasons locally, invokes tools via MCP, delegates work via A2A, and relies on the identity plane for trust, security, and observability—without any single protocol owning the entire lifecycle.
+**An agent reasons locally, invokes tools via MCP, delegates work via A2A, and relies on the identity plane for trust, security, and observability—without any single protocol owning the entire lifecycle.**
 
 ## 4. Enterprise-Grade Considerations
 
@@ -158,4 +160,4 @@ To maintain a clean architecture, A2A intentionally avoids:
 - **agntcy Framework**: github.com/agntcy
 - **IoA Framework**: github.com/OpenBMB/IoA
 
-Authored by: Srinivasan Ragothaman (@rsrini_7)
+Authored by: Srinivasan Ragothaman (@rsrini7)
