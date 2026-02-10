@@ -1,5 +1,8 @@
 # The Modern Agentic Stack: An Architectural Reference for the Internet of Agents (IoA)
 
+
+![IoA Architecture](assets/IoA-Architecture.png)
+
 The Internet of Agents (IoA) is a decentralized ecosystem where autonomous agents discover, collaborate, and exchange results using open protocols—analogous to how services communicate on today’s internet.
 
 As AI transitions from standalone chatbots to autonomous systems, a new architectural stack has emerged. This stack distinguishes between an agent's internal capability (how it uses a tool) and its external collaboration (how it works with others).
@@ -159,5 +162,46 @@ To maintain a clean architecture, A2A intentionally avoids:
 - **MCP Documentation**: modelcontextprotocol.io
 - **agntcy Framework**: github.com/agntcy
 - **IoA Framework**: github.com/OpenBMB/IoA
+
+## Absolutely — here’s a **clean, neutral References section** that fits the content and tone of your article. You can drop this in as-is.
+
+---
+
+## References
+
+### Internet of Agents (IoA)
+
+* OpenBMB – Internet of Agents (IoA): [https://github.com/OpenBMB/IoA](https://github.com/OpenBMB/IoA)
+
+### Model Context Protocol (MCP)
+
+* Model Context Protocol – Official Documentation: [https://modelcontextprotocol.io](https://modelcontextprotocol.io)
+* Anthropic – Introducing the Model Context Protocol (Nov 2024): [https://www.anthropic.com/news/model-context-protocol](https://www.anthropic.com/news/model-context-protocol)
+* MCP Specification (GitHub): [https://github.com/modelcontextprotocol/specification](https://github.com/modelcontextprotocol/specification)
+
+### Agent-to-Agent (A2A) Protocol
+
+* A2A Protocol – Official Documentation: [https://a2aproject.github.io/A2A/latest/](https://a2aproject.github.io/A2A/latest/)
+* Google – Introducing Agent-to-Agent (A2A) Protocol (April 2025): [https://developers.googleblog.com/en/introducing-agent-to-agent-a2a/](https://developers.googleblog.com/en/introducing-agent-to-agent-a2a/)
+* A2A Project (Linux Foundation): [https://github.com/a2aproject/A2A](https://github.com/a2aproject/A2A)
+
+### Identity, Trust, and Infrastructure
+
+* Cisco agntcy Framework: [https://github.com/agntcy](https://github.com/agntcy)
+* Linux Foundation – agntcy Project Overview: [https://www.linuxfoundation.org/projects/agntcy](https://www.linuxfoundation.org/projects/agntcy)
+* IBM – Agent Communication Protocol (ACP) Overview: [https://research.ibm.com/blog/agent-communication-protocol](https://research.ibm.com/blog/agent-communication-protocol)
+
+### Related Standards & Concepts
+
+* JSON-RPC 2.0 Specification: [https://www.jsonrpc.org/specification](https://www.jsonrpc.org/specification)
+* RFC 8615 – `/.well-known/` URI Standard: [https://datatracker.ietf.org/doc/html/rfc8615](https://datatracker.ietf.org/doc/html/rfc8615)
+* Messaging Layer Security (MLS) Protocol: [https://datatracker.ietf.org/doc/html/rfc9420](https://datatracker.ietf.org/doc/html/rfc9420)
+
+### Tooling & Frameworks Mentioned
+
+* LangGraph: [https://github.com/langchain-ai/langgraph](https://github.com/langchain-ai/langgraph)
+* CrewAI: [https://github.com/joaomdmoura/crewai](https://github.com/joaomdmoura/crewai)
+* AutoGen (Microsoft): [https://github.com/microsoft/autogen](https://github.com/microsoft/autogen)
+
 
 Authored by: Srinivasan Ragothaman (@rsrini7)
