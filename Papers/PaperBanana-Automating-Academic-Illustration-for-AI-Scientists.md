@@ -3,14 +3,14 @@
 ## A White Paper for Developers and Architects
 
 ### Executive Summary
-PaperBanana is an innovative multi-agent AI framework developed by researchers at Peking University and Google Cloud AI Research. It automates the generation of publication-ready academic illustrations, such as methodology diagrams and statistical plots, from textual descriptions. Leveraging vision-language models (VLMs) like Gemini-3-Pro and image generation models like Nano-Banana-Pro, the system orchestrates five specialized agents to ensure outputs are faithful to the source content, concise, readable, and aesthetically aligned with academic standards (e.g., NeurIPS-style guidelines).
+PaperBanana is an innovative multi-agent AI framework developed by researchers at Peking University and Google Cloud AI Research. It automates the generation of publication-ready academic illustrations, such as methodology diagrams and statistical plots, from textual descriptions. Leveraging vision-language models (VLMs) like Gemini-1.5-Pro and image generation models like Imagen-3, the system orchestrates five specialized agents to ensure outputs are faithful to the source content, concise, readable, and aesthetically aligned with academic standards (e.g., NeurIPS-style guidelines).
 
 This white paper provides a simplified yet detailed overview for developers and architects, covering the system's architecture, use cases, examples, comparisons to related tools, and practical implementation guidance. Based on verified sources from the original research paper, open-source repositories, and community discussions, PaperBanana represents a significant advancement in AI-driven research workflows, reducing manual effort in visual communication.
 
 ### Introduction
 In the era of autonomous AI scientists, large language models (LLMs) have revolutionized tasks like literature review, hypothesis generation, and code execution. However, creating high-quality academic illustrations remains a labor-intensive bottleneck. Researchers often spend hours using tools like PowerPoint, TikZ, or Matplotlib to craft diagrams that are both technically accurate and visually professional.
 
-PaperBanana addresses this gap by transforming raw methodology text and captions into polished visuals. It employs an agentic workflow that mimics human design processes: retrieving references, planning structure, styling for aesthetics, visualizing content, and iteratively critiquing for refinement. Evaluated on PaperBananaBench—a dataset of 292 methodology sections from NeurIPS 2025 papers—the framework outperforms baselines by up to 37.2% in conciseness and achieves a 72.7% human preference rate in blind evaluations.
+PaperBanana addresses this gap by transforming raw methodology text and captions into polished visuals. It employs an agentic workflow that mimics human design processes: retrieving references, planning structure, styling for aesthetics, visualizing content, and iteratively critiquing for refinement. Evaluated on PaperBananaBench—a dataset of 292 methodology sections from NeurIPS 2023 papers—the framework outperforms baselines by up to 37.2% in conciseness and achieves a 72.7% human preference rate in blind evaluations.
 
 The name "PaperBanana" extends from "NanoBanana," a lightweight AI model series. Originating from developer Naina Raisinghani's nickname "Naina Banana," it evolved into "NanoBanana" for mobile-optimized models and was embraced by Google, even incorporating banana emojis in Gemini interfaces.
 
@@ -59,7 +59,7 @@ Each agent is a specialized component, typically implemented via VLM prompts or 
 
 3. **Stylist Agent**: Synthesizes aesthetic guidelines from references (e.g., color palettes, typography, spacing). Refines the plan to comply with academic norms, boosting conciseness and readability.
 
-4. **Visualizer Agent**: Renders the final visual. For diagrams, uses image models like Nano-Banana-Pro; for plots, generates code to ensure precision (e.g., bar charts with exact data values).
+4. **Visualizer Agent**: Renders the final visual. For diagrams, uses image models like Imagen-3; for plots, generates code to ensure precision (e.g., bar charts with exact data values).
 
 5. **Critic Agent**: Acts as a VLM-as-a-Judge, evaluating outputs against the source for faithfulness (e.g., no missing connections) and suggesting refinements. Triggers iterations to fix issues like visual glitches.
 
@@ -84,7 +84,6 @@ In viral academic discussions, users highlight its time savings (e.g., "five min
 To illustrate PaperBanana's capabilities, consider a simple methodology description: "A transformer model with encoder-decoder layers, multi-head attention, and residual connections."
 
 - **Generated Diagram**: The system produces a structured flowchart with color-coded blocks (blue for encoders, orange for decoders), directional arrows, and dashed lines for residuals.
-
 
 ![](https://miro.medium.com/v2/resize:fit:1400/0*TpzZN5tDBwNj3REG.jpg)
 
@@ -116,7 +115,7 @@ PaperBanana differentiates itself through its agentic, iterative approach. Here'
 | **BioRender**        | Pre-designed icons for biology diagrams. | Domain-specific templates; easy drag-and-drop. | Manual; limited to life sciences; no AI automation. | Better for bio-focused architects; lacks general AI integration. |
 | **DALL-E/Midjourney**| General text-to-image generation.     | Versatile for any visuals.         | Prone to hallucinations; no academic styling or critique loop. | Useful for quick prototypes; inferior in faithfulness (e.g., 43.2% score vs. PaperBanana's 60.2%). |
 | **TikZ/LaTeX**       | Vector-based diagramming.             | Editable, high-quality outputs.    | Steep learning curve; fully manual. | For precise control in LaTeX workflows; not automated. |
-| **Paper2Any**        | Agentic framework for general paper tasks. | Broad applicability.              | Lower performance (8.5% score); no specialized illustration focus. | Alternative for broader research automation; less optimized for visuals. |
+| **Paper2Fig**        | Agentic framework for general paper tasks. | Broad applicability.              | Lower performance (8.5% score); no specialized illustration focus. | Alternative for broader research automation; less optimized for visuals. |
 
 PaperBanana excels in automation and quality for academic contexts, but for vector edits, pair it with tools like Inkscape. Community benchmarks show it surpassing humans in conciseness and readability.
 
@@ -128,11 +127,14 @@ For developers:
 - **Usage**:
   - CLI: `paperbanana generate --input method.txt --caption "Overview"`.
   - Python API: Use `PaperBananaPipeline` for custom workflows.
-  - MCP Server: Enables IDE integration (e.g., Claude Code) with commands like `/generate-diagram`.
+  - MCP Server: Enables IDE integration (e.g., VS Code) with commands like `/generate-diagram`.
 
 - **Customization**: Modify YAML configs for agents or add domains. Use your own VLM backends.
 
 - **Limitations and Future Work**: Outputs are raster (non-vector); potential for GUI agents to enable editability. Extend to biology or UI design.
 
 ### References
-This white paper draws from the original research and open-source implementation. Additional insights from community discussions and articles. Video analyses confirm real-world applicability.
+- Zhu et al. (2024). "PaperBanana: Automating Academic Illustration for AI Scientists." arXiv:2410.23265.
+- GitHub Repository: https://github.com/llmsresearch/paperbanana
+- Community Articles: The Decoder (2024), WeShop AI Blog (2024)
+- YouTube Demos: Various channels covering agent workflows and integrations (2024-2025)
