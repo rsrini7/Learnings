@@ -3008,33 +3008,33 @@ The RAG ecosystem is evolving from retrieval-augmentation toward **context engin
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    RAG ARCHITECTURE SELECTOR                 │
+│                    RAG ARCHITECTURE SELECTOR                │
 ├─────────────────────────────────────────────────────────────┤
-│                                                               │
-│  Accuracy Required > 0.85?                                    │
-│    NO  → Use Hybrid RAG (baseline production)                │
-│    YES → Continue ↓                                           │
-│                                                               │
-│  Multi-hop reasoning needed?                                 │
-│    YES → Use GraphRAG (finance, legal, research)             │
-│    NO  → Continue ↓                                           │
-│                                                               │
-│  Knowledge corpus dynamic/unreliable?                        │
-│    YES → Use CRAG with web fallback                          │
-│    NO  → Continue ↓                                           │
-│                                                               │
-│  Multi-step workflows with tool use?                         │
-│    YES → Use Agentic RAG                                      │
-│    NO  → Use Hybrid RAG + CRAG validation                    │
-│                                                               │
-│  Document type: Chart/diagram heavy?                         │
-│    YES → Add Multimodal RAG layer                            │
-│    NO  → Text-only processing sufficient                     │
-│                                                               │
+│                                                             │
+│  Accuracy Required > 0.85?                                  │
+│    NO  → Use Hybrid RAG (baseline production)               │
+│    YES → Continue ↓                                         │
+│                                                             │
+│  Multi-hop reasoning needed?                                │
+│    YES → Use GraphRAG (finance, legal, research)            │
+│    NO  → Continue ↓                                         │
+│                                                             │
+│  Knowledge corpus dynamic/unreliable?                       │
+│    YES → Use CRAG with web fallback                         │
+│    NO  → Continue ↓                                         │
+│                                                             │
+│  Multi-step workflows with tool use?                        │
+│    YES → Use Agentic RAG                                    │
+│    NO  → Use Hybrid RAG + CRAG validation                   │
+│                                                             │
+│  Document type: Chart/diagram heavy?                        │
+│    YES → Add Multimodal RAG layer                           │
+│    NO  → Text-only processing sufficient                    │
+│                                                             │
 │  Regulated industry (HIPAA, SOC 2, FedRAMP)?                │
-│    YES → Implement full security architecture                │
+│    YES → Implement full security architecture               │
 │    NO  → Basic input validation + audit logging             │
-│                                                               │
+│                                                             │
 └─────────────────────────────────────────────────────────────┘
 ```
 
