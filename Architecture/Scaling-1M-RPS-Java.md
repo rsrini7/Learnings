@@ -427,6 +427,11 @@ In RDS testing on db.m6g.large with gp3 storage, async I/O showed only 1% improv
 - **RDS limitation:** `io_method = 'io_uring'` not available (only `sync` or `worker`)
 - **IOPS matter more:** Upgrading from gp2 (120 IOPS) to gp3 (12,000 IOPS) had bigger impact than async I/O
 
+### 6. TCP Keep-Alive Synchronization ⚠️
+**Problem:** High-frequency connection churn. If 1M clients reconnect every second, the CPU will spend 40% of its cycles on TCP Handshakes (SYN/ACK).
+
+**Solution:** Set `keepAlive` timeouts on the NLB to be strictly **less than** the application server’s timeout (e.g., NLB at 55s, Vert.x/Drogon at 60s). This ensures the NLB manages the closing cycle cleanly without leaving "Orphaned Sockets" on your app servers.
+
 ---
 
 ## Framework Performance
@@ -1042,6 +1047,9 @@ infrastructure:
     
     - name: "AZ-Aware Routing"
       action: "Configure NLB with cross-zone load balancing disabled for low-latency routing; enable it only if traffic is uneven across AZs. Use Route 53 weighted routing for multi-region."
+    
+    - name: "Egress Cost Protection"
+      action: "Verify traffic stays within AZ/Region; verify PrivateLink is active for Redis/DB."
 
 system:
   linux:
@@ -1054,6 +1062,9 @@ system:
     - name: "Increase File Descriptors"
       command: "ulimit -n 1048576"
 
+    - name: "TCP Keep-Alive Tuning"
+      command: "sysctl -w net.ipv4.tcp_keepalive_time=60"
+
 application:
   - name: "Enable Circuit Breakers"
     config: "app/circuit-breakers.json"
@@ -1063,6 +1074,9 @@ application:
   
   - name: "Deploy Monitoring Agents"
     agents: ["Datadog", "Prometheus", "CloudWatch"]
+  
+  - name: "Timeout Sync"
+    action: "Ensure Server keep-alive timeout > NLB idle timeout."
 
 database:
   - name: "Enable PostgreSQL 18 Async I/O"
@@ -1084,11 +1098,15 @@ testing:
       - "Fill disk (should alert)"
 ```
 
+
+
 ---
 
 ## Cost-Benefit Analysis
 
 ### Total Cost of Ownership
+
+> ⚠️ **Architect’s Note on Data Egress:** At 60 TB per 30 minutes (test data scale), standard AWS Internet Egress rates could exceed **$50,000/month** alone. For production, ensure you are using **AWS PrivateLink** for internal service communication and have negotiated a **Private Pricing Term (PPT)** for public egress, or utilize a CloudFront-to-Origin "Free Egress" architecture.
 
 ```python
 # tco_calculator.py
@@ -1292,7 +1310,6 @@ Alerts: PagerDuty integration for SLO breaches
 5. **Understanding the Java ceiling:** Vert.x on 192 cores can plausibly reach 800k–1M RPS; proven C++ still leads by ~20-30% for CPU-heavy payloads
 6. **Measuring ROI before optimizing**
 
----
 
 **Sources & Verification:**
 - AWS C8gn Instance Types Documentation (DDR5-6400 confirmed)
