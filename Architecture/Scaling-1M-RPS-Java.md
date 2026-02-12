@@ -2,6 +2,8 @@
 
 **Created Date:** February 12, 2026  
 
+![Architecture/assets/Scaling-to-1M-RPS-Java.png](assets/Scaling-to-1M-RPS-Java.png)
+
 ---
 
 ## Table of Contents
