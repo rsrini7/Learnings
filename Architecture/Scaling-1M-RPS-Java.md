@@ -33,7 +33,7 @@ graph TB
     
     C --> C1["Network: 240+ Gbps required"]
     C --> C2["CPU: 192 cores optimized"]
-    C --> C3["Memory: DDR5-6400 ⚠ NOT DDR5-7200"]
+    C --> C3["Memory: DDR5-5600"]
     C --> C4["IRQ Affinity: Critical!"]
     
     D --> D1["Payload: 8KB not 30KB ⚠"]
@@ -57,17 +57,17 @@ graph TB
 
 ### AWS Instance Specifications
 
-C8gn instances include DDR5-6400 memory and are ideal for compute-intensive workloads
+C8gn instances include DDR5-5600 memory and are ideal for compute-intensive workloads
 
 | Instance | vCPUs | RAM | Memory | Network | EBS | $/hour | $/month |
 |----------|-------|-----|--------|---------|-----|--------|---------|
 | **c8i.32xlarge** | 128 | 256 GB | DDR5-5600 | 50 Gbps | 40 Gbps | $6.00 | $4,380 |
-| **c8gn.48xlarge** | 192 | 384 GB | **DDR5-6400** | **600 Gbps** | 60 Gbps | **$11.38** | **$8,304** |
-| c8gn.2xlarge | 8 | 16 GB | DDR5-6400 | 25 Gbps | 10 Gbps | $0.38 | $277 |
+| **c8gn.48xlarge** | 192 | 384 GB | **DDR5-5600** | **600 Gbps** | 60 Gbps | **$11.38** | **$8,304** |
+| c8gn.2xlarge | 8 | 16 GB | DDR5-5600 | 25 Gbps | 10 Gbps | $0.38 | $277 |
 | db.m5.16xlarge | 64 | 256 GB | DDR4 | 25 Gbps | 14 Gbps | $6.00 | $4,380 |
 
 **⚠️ Critical Correction:**  
-DDR5-7200 memory is used in Graviton5 (upcoming 2026), not Graviton4. Current c8gn instances use DDR5-6400.
+DDR5-7200 memory is used in Graviton5 (upcoming 2026), not Graviton4. Current c8gn instances use DDR5-5600.
 
 ### Network Bandwidth: The Real Bottleneck
 
@@ -455,7 +455,7 @@ graph LR
     
     D --> D1["Framework: Vert.x on Netty"]
     D --> D2["Payload: 8KB JSON/Protobuf"]
-    D --> D3["TFB Round 23: 1.04M RPS (plaintext)"]
+    D --> D3["TFB Round 23: 1.04M RPS (Fortunes)"]
     D --> D4["Extrapolated 192-core: 800k-1M RPS"]
     D --> D5["GC: ZGC < 1ms pauses"]
     
@@ -472,7 +472,7 @@ graph LR
 
 **Key Honest Finding:**
 - In TechEmpower benchmarks Round 23 (March 2025, hardware: Intel Xeon Gold 6330, 56 cores, 40 Gbps), **`vertx-postgres` achieved 1,040,599 RPS at 78.4% CPU** — confirmed via TFB R23 results
-- This is a **PostgreSQL-backed JSON query test**, not a synthetic plaintext test — making it a strong real-world proxy
+- This is a **PostgreSQL-backed JSON query test**, not a synthetic Fortunes test — making it a strong real-world proxy
 - TFB R23 brought 3–4x hardware improvements over Round 22, making this the highest-confidence Java benchmark available
 - One independent benchmark found Vert.x handled 600k requests per second utilizing only 12 threads, demonstrating its multi-core efficiency
 - More than 90% of Dream11's services are written on Vert.x, where a single match can reach half a billion concurrent viewers,  with ZIO HTTP achieving performance surpassing Vert.x in their stack
@@ -1213,15 +1213,16 @@ graph TD
 6. **Prefer Vert.x over Spring Boot** for maximum Java throughput
 7. **Use UUIDv7** (java-uuid-generator) instead of `UUID.randomUUID()` in hot paths
 8. **Enable Virtual Threads** on Java 21+ for I/O-bound paths (Spring Boot: `spring.threads.virtual.enabled=true`)
+9. **Upgrade to Java 24+** to eliminate the need for refactoring `synchronized` to `ReentrantLock`."
 
 **✗ Avoid This:**
 1. **Don't use Spring Boot (non-reactive) for > 100k RPS** — thread pool exhaustion
 2. **Don't use `UUID.randomUUID()` in tight loops** — SecureRandom overhead per call
 3. **Don't skip IRQ affinity** (single core bottleneck at 1M RPS)
-4. **Don't assume DDR5-7200** (it's DDR5-6400 for Graviton4, c8gn instances)
+4. **Don't assume DDR5-7200** (it's DDR5-5600 for Graviton4, c8gn instances)
 5. **Don't ignore read-after-write** (sync queue alone is broken without write-through cache)
 6. **Don't optimize prematurely** (measure ROI first — break-even often > 24 months)
-7. **On Java 21 LTS: Upgrade to Java 24+ to eliminate the need for refactoring `synchronized` to `ReentrantLock`." to avoid blocks with blocking I/O in virtual thread paths** (JEP 491 pinning — fully fixed in Java 24, first LTS fix in Java 25)
+7. **On Java 21 LTS: avoid synchronized blocks with blocking I/O in virtual thread paths** (JEP 491 pinning — fully fixed in Java 24, first LTS fix in Java 25)
 
 
 ### For Architects
@@ -1269,7 +1270,7 @@ Alerts: PagerDuty integration for SLO breaches
 
 
 **Sources & Verification:**
-- AWS C8gn Instance Types Documentation (DDR5-6400 confirmed)
+- AWS C8gn Instance Types Documentation (DDR5-5600 confirmed)
 - AWS Graviton4 Architecture
 - PostgreSQL 18 Release Notes — Async I/O (io_method = worker)
 - TechEmpower Framework Benchmarks Round 20–23 (Vert.x 1.04M RPS)
