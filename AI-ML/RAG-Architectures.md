@@ -16,19 +16,6 @@ This whitepaper examines two fundamental approaches to building production RAG s
 
 ---
 
-## Table of Contents
-
-1. Introduction to Modern RAG Systems
-2. Architecture I: Production-Grade Hybrid Search Pipeline
-3. Architecture II: Agentic Second Brain with LLMOps
-4. Comparative Analysis and Decision Framework
-5. Implementation Blueprints
-6. Real-World Case Studies
-7. Technical Corrections and Production Considerations
-8. References and Further Reading
-
----
-
 ## 1. Introduction to Modern RAG Systems
 
 Retrieval-Augmented Generation has evolved from academic research into production infrastructure powering enterprise search, compliance systems, and autonomous AI assistants. The 2025 RAG market reached $1.96 billion and is projected to grow to $40.34 billion by 2035—a 35% CAGR driven by organizations demanding accurate, up-to-date AI systems. However, implementation strategies have diverged into a comprehensive architectural spectrum, each optimized for different reliability, latency, and cost constraints.
@@ -139,6 +126,93 @@ graph TB
     style R fill:#d4edda,color:#000
 ```
 
+### 2.2 Indexing Strategies Taxonomy – Beyond “Just Chunking”
+
+Most RAG failures start at indexing, not at retrieval or generation.  To reason about design choices, it is useful to distinguish four indexing strategies that sit on a spectrum from simple to highly engineered: **chunk indexing, sub‑chunk indexing, query indexing, and summary indexing**. 
+
+#### Chunk Indexing – The Default Baseline
+
+In chunk indexing, the unit you index is exactly the unit you retrieve.  Documents are split into semantic or token‑bounded chunks, each chunk is embedded once, and the vector store returns those same chunks at query time.
+
+- **How it works**  
+  - Ingestion: apply a semantic or token‑aware splitter (e.g., 512‑token chunks with 50‑token overlap) and generate dense/sparse vectors per chunk.
+  - Retrieval: perform similarity search over the chunk collection and inject the top‑k chunks into the prompt with minimal post‑processing.
+
+- **Strengths**  
+  - Operationally simple – a single collection, one embedding per chunk, trivial mapping from hits to context.
+  - Works well when documents are relatively short and locally coherent (API docs, FAQs, short wiki pages).
+
+- **Limitations**  
+  - Fine‑grained questions (e.g., “what is the penalty interest after 30 days?”) may require only a few sentences, but the retriever must bring entire chunks, which can waste context budget. 
+  - If key information straddles a chunk boundary, even good overlap may not fully capture the necessary context.
+
+In this whitepaper, the production hybrid pipeline uses chunk indexing as its primary abstraction: chunks are the atomic artifacts in the vector DB, enriched with metadata and dual dense/sparse representations.
+
+#### Sub‑Chunk Indexing – Fine‑Grained Targets, Coarse‑Grained Context
+
+Sub‑chunk indexing introduces a second, finer granularity below the main chunk size.  Instead of embedding only 512‑token chunks, the system additionally embeds smaller spans (e.g., paragraphs or sentences) and uses them as high‑precision pointers into a larger parent context. 
+
+- **How it works**  
+  - Ingestion: for each parent chunk, derive one or more sub‑chunks (e.g., 2–4 sentences) and store their embeddings together with a pointer to the parent chunk ID. 
+  - Retrieval: search over sub‑chunk embeddings, then expand hits to their parent chunks (or parent ± neighbors) before ranking and prompt construction.
+
+- **Strengths**  
+  - Higher recall for narrowly scoped queries – the retriever can “lock onto” the exact paragraph that mentions a specific rate, error code, or clause. 
+  - Efficient context usage: the LLM receives a small number of parent chunks that are anchored by highly relevant sub‑sections, rather than many loosely relevant large chunks.
+
+- **Limitations**  
+  - Index size grows (often 2–5×) because each document yields multiple sub‑chunk vectors. 
+  - Reranking and context‑expansion logic must be aware of the parent–child relationship to avoid duplicating or over‑weighting adjacent sub‑chunks from the same area.
+
+Architecturally, sub‑chunk indexing is a natural extension of the parent–child retrieval pattern already recommended for production hybrid search; parent chunks serve as the “display unit,” while sub‑chunks act as retrieval beacons.
+
+#### Query Indexing – Indexing the Questions Themselves
+
+Query indexing inverts the usual perspective: instead of embedding only what the document says, the system also indexes what questions the document can answer.  In practice, this is implemented by generating synthetic queries or Q&A pairs during ingestion and treating them as additional indexed artifacts tied to the underlying content. 
+
+- **How it works**  
+  - Ingestion: use an LLM to generate likely questions for each document section (“What is the late payment fee?”, “How do I rotate API keys?”), then embed these questions and store them as separate vectors referencing the source chunk. 
+  - Retrieval: at query time, search over both content chunks and indexed questions; hits on synthetic questions are resolved to their associated document chunks.
+
+- **Strengths**  
+  - Bridges vocabulary mismatch between users and authors – you can match “overdraft fine after 1 month” to a generated question even if the document uses “penalty interest after 30 days”. 
+  - Particularly effective in customer‑support and FAQ‑like domains where user phrasing is predictable but diverse.
+
+- **Limitations**  
+  - Ingestion becomes more expensive – every document now spawns dozens of synthetic questions, each requiring LLM tokens and embeddings. 
+  - Quality control is critical; poorly generated or redundant questions bloat the index and may add noise to retrieval.
+
+Query indexing fits naturally into an advanced or agentic RAG setup, where an offline “index‑builder agent” periodically generates and refreshes synthetic queries as the corpus evolves.
+
+#### Summary Indexing – Hierarchies and “Document Views”
+
+Summary indexing captures documents at a higher abstraction level by indexing human‑ or model‑written summaries alongside raw chunks.  Instead of searching only in granular chunks, the system can route some queries through a hierarchy of summaries: document‑level, section‑level, or topic‑level nodes. 
+
+- **How it works**  
+  - Ingestion: build a summary tree (e.g., RAPTOR‑style): sentences → paragraphs → section summaries → document summary. Each summary node receives its own embedding and metadata pointing back to the underlying text. 
+  - Retrieval: coarse‑grained search first retrieves relevant summaries, then either answers directly from them or drills down to the underlying chunks for detailed evidence.
+
+- **Strengths**  
+  - Supports high‑level, open‑ended research queries (“compare the main trade‑offs between Hybrid RAG and Agentic RAG in this corpus”) without flooding the LLM with low‑level detail. 
+  - Reduces latency in agentic workflows: the agent can quickly navigate to relevant regions via summaries before spending tokens on fine‑grained retrieval.
+
+- **Limitations**  
+  - Summaries can introduce abstraction errors; if the summarization step omits a detail, summary‑only retrieval may miss it.
+  - Maintaining the hierarchy adds complexity to ingestion pipelines and evaluation, since both summary and leaf nodes must be monitored for drift and quality.
+
+In this guide, hierarchical and RAPTOR‑style schemes already appear as advanced techniques; framing them as **summary indexing** clarifies that they are fundamentally indexing strategies, not just retrieval or prompting tricks. 
+
+#### Choosing an Indexing Strategy
+
+In practice, production systems combine these strategies rather than choosing exactly one. 
+
+- Start with **chunk indexing** as a baseline; it is sufficient for many documentation and FAQ use cases.
+- Introduce **sub‑chunk indexing** when queries frequently target very small spans (legal clauses, error messages, numeric thresholds). 
+- Layer in **query indexing** if you see persistent vocabulary mismatch between how users ask and how documents are written. 
+- Add **summary indexing** for exploratory, multi‑hop, or agentic workflows where the system must navigate quickly through large, heterogeneous corpora. 
+
+Designing the right mix up front reduces the temptation to over‑engineer retrieval or prompt logic later; many “RAG problems” are solvable by choosing the appropriate indexing granularity and hierarchy. 
+
 #### Ingestion Pipeline: From Documents to Hybrid Index
 
 The ingestion flow must handle heterogeneous input formats while maintaining semantic coherence:
@@ -241,7 +315,7 @@ gantt
 
 **Note:** Pipeline order is critical: Reranking operates on original chunks (fits within 512 token limit), then context expansion fetches adjacent chunks. Cross-encoder reranking dominates latency (450ms for 10 pairs). Context expansion is a fast DB query (~15ms).
 
-### 2.2 Technical Stack Specification
+### 2.3 Technical Stack Specification
 
 | Component | Recommended Implementation |
 |-----------|---------------------------|
@@ -256,7 +330,7 @@ gantt
 
 **Note on Reranking Latency:** Cross-encoder reranking is computationally expensive. Expect 30-50ms per query-document pair. For 10 pairs, budget 300-500ms, not the 150-180ms often cited in theory.
 
-### 2.3 Performance Characteristics
+### 2.4 Performance Characteristics
 
 Measured on a 10k-document technical documentation corpus (4M tokens):
 
@@ -272,7 +346,7 @@ Measured on a 10k-document technical documentation corpus (4M tokens):
 
 The 40% precision improvement over dense-only search comes primarily from sparse vector matching catching exact keyword matches that semantic embeddings miss (product names, error codes, version numbers). Context expansion is lightweight (DB index lookup), while reranking dominates the latency profile due to cross-encoder compute requirements.
 
-### 2.4 When to Use This Architecture
+### 2.5 When to Use This Architecture
 
 Deploy the hybrid search pipeline when:
 
