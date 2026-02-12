@@ -1,8 +1,7 @@
 # Scaling to 1 Million RPS: Production-Ready Architectural Blueprint
 
-**Version:** 3.2 (Java Edition — Claude + Grok Cross-Reviewed, Feb 12 2026)  
+**Version:** 3.3 (Java Edition — Claude + Grok Cross-Reviewed, Feb 12 2026)  
 **Last Updated:** February 12, 2026  
-**Verification Status:** ✓ Live-searched against AWS docs, TechEmpower Round 23 official results, OpenJDK JEPs, and industry benchmarks. All Grok-introduced figures reviewed; corrections applied where unverifiable.
 
 > **Reality Check:** Achieving 1M RPS is technically feasible but economically expensive ($30k-50k/month) and operationally complex. This guide incorporates senior architect review and corrections for production deployment.
 
@@ -52,33 +51,20 @@ graph TB
     style E1 fill:#FFB6C1
 ```
 
-### Key Findings
-
-| Metric | Initial Claim | ✓ Verified / ⚠ Corrected |
-|--------|--------------|--------------------------|
-| **AWS Instance** | c8gn.48xlarge: 192 vCPUs, 600 Gbps | ✓ Verified |
-| **Memory** | DDR5-7200 | ⚠ **DDR5-6400** (Graviton4) |
-| **Payload** | 30KB JSON | ⚠ **Should be 8KB with Protobuf** |
-| **PostgreSQL** | Direct writes: 35-66k RPS | ✓ Verified |
-| **Redis Pattern** | Simple async queue | ⚠ **Needs write-through cache** |
-| **C++/Java Performance** | UUID generation in loop | ⚠ **CPU killer - needs memory pool** |
-| **Network** | Standard NIC config | ⚠ **Needs IRQ affinity tuning** |
-| **Cost** | $30k/month | ✓ Verified + **add circuit breakers** |
-
 ---
 
 ## Infrastructure Architecture
 
-### AWS Instance Specifications (Verified ✓)
+### AWS Instance Specifications
 
 C8gn instances include DDR5-6400 memory and are ideal for compute-intensive workloads
 
-| Instance | vCPUs | RAM | Memory | Network | EBS | $/hour | $/month | Verified |
-|----------|-------|-----|--------|---------|-----|--------|---------|----------|
-| **c8i.32xlarge** | 128 | 256 GB | DDR5-5600 | 50 Gbps | 40 Gbps | $6.00 | $4,380 | ✓ |
-| **c8gn.48xlarge** | 192 | 384 GB | **DDR5-6400** | **600 Gbps** | 60 Gbps | **$11.38** | **$8,304** | ✓ |
-| c8gn.2xlarge | 8 | 16 GB | DDR5-6400 | 25 Gbps | 10 Gbps | $0.38 | $277 | ✓ |
-| db.m5.16xlarge | 64 | 256 GB | DDR4 | 25 Gbps | 14 Gbps | $6.00 | $4,380 | ✓ |
+| Instance | vCPUs | RAM | Memory | Network | EBS | $/hour | $/month |
+|----------|-------|-----|--------|---------|-----|--------|---------|
+| **c8i.32xlarge** | 128 | 256 GB | DDR5-5600 | 50 Gbps | 40 Gbps | $6.00 | $4,380 |
+| **c8gn.48xlarge** | 192 | 384 GB | **DDR5-6400** | **600 Gbps** | 60 Gbps | **$11.38** | **$8,304** |
+| c8gn.2xlarge | 8 | 16 GB | DDR5-6400 | 25 Gbps | 10 Gbps | $0.38 | $277 |
+| db.m5.16xlarge | 64 | 256 GB | DDR4 | 25 Gbps | 14 Gbps | $6.00 | $4,380 |
 
 **⚠️ Critical Correction:**  
 DDR5-7200 memory is used in Graviton5 (upcoming 2026), not Graviton4. Current c8gn instances use DDR5-6400.
@@ -86,7 +72,6 @@ DDR5-7200 memory is used in Graviton5 (upcoming 2026), not Graviton4. Current c8
 ### Network Bandwidth: The Real Bottleneck
 
 ```python
-# CORRECTED CALCULATION
 
 # Scenario 1: 30KB JSON (original assumption)
 payload_json = 30 * 1024  # bytes
@@ -173,10 +158,10 @@ app.get('/:code', async (req, res) => {
 });
 ```
 
-**✓ FIXED: Write-Through Cache Pattern**
+**Write-Through Cache Pattern**
 
 ```javascript
-// ✓ CORRECT: Check Redis first (write-through cache)
+// Check Redis first (write-through cache)
 app.post('/api/shorten', async (req, res) => {
   const id = crypto.randomUUID();
   const code = generateShortCode();
@@ -193,11 +178,11 @@ app.post('/api/shorten', async (req, res) => {
 });
 
 app.get('/:code', async (req, res) => {
-  // ✓ STEP 1: Check Redis cache first
+  // STEP 1: Check Redis cache first
   const cached = await redis.hgetall(`code:${req.params.code}`);
   
   if (cached && cached.url) {
-    return res.redirect(cached.url);  // ✓ Instant hit
+    return res.redirect(cached.url);  // Instant hit
   }
   
   // STEP 2: Fallback to PostgreSQL (cache miss)
@@ -260,7 +245,7 @@ sequenceDiagram
 
 **Problem:** In Java, excessive object creation in hot request paths triggers GC pauses and CPU overhead. This is the Java equivalent of the C++ memory management issue.
 
-> **Verified source:** Java platform threads consume ~2MB of stack memory per thread (JDK docs). Virtual threads reduce this to a few hundred bytes. Each `UUID.randomUUID()` call involves secure random generation and String construction — expensive at 1M RPS.
+> **Source:** Java platform threads consume ~2MB of stack memory per thread (JDK docs). Virtual threads reduce this to a few hundred bytes. Each `UUID.randomUUID()` call involves secure random generation and String construction — expensive at 1M RPS.
 
 ```java
 // ❌ BAD: Object creation storm in handler
@@ -278,10 +263,10 @@ router.post("/api/shorten").handler(ctx -> {
 });
 ```
 
-**✓ SOLUTION 1: Use UUIDv7 with Timestamp Prefix (Monotonic)**
+**SOLUTION 1: Use UUIDv7 with Timestamp Prefix (Monotonic)**
 
 ```java
-// ✓ GOOD: UUIDv7 — timestamp-ordered, reduces entropy cost
+// GOOD: UUIDv7 — timestamp-ordered, reduces entropy cost
 // Available via java-uuid-generator (JUG) library
 import com.fasterxml.uuid.Generators;
 import com.fasterxml.uuid.impl.TimeBasedEpochGenerator;
@@ -301,10 +286,10 @@ public class IDGenerator {
 // avoids SecureRandom call overhead on every invocation.
 ```
 
-**✓ SOLUTION 2: Pre-Allocated Object Pools for Jackson Serialization**
+**SOLUTION 2: Pre-Allocated Object Pools for Jackson Serialization**
 
 ```java
-// ✓ BETTER: Reuse ObjectMapper and ByteArrayOutputStream across requests
+// BETTER: Reuse ObjectMapper and ByteArrayOutputStream across requests
 // Jackson ObjectMapper is thread-safe for reads; reuse it
 
 @Singleton
@@ -329,11 +314,11 @@ public class JsonPool {
 }
 ```
 
-**✓ SOLUTION 3: ZGC — Low-Latency Garbage Collector (Java 21+)**
+**SOLUTION 3: ZGC — Low-Latency Garbage Collector (Java 21+)**
 
 ```bash
 # ZGC: sub-millisecond GC pauses regardless of heap size
-# Verified: Oracle ZGC documentation, available since JDK 15, production-ready JDK 21
+# Oracle ZGC documentation, available since JDK 15, production-ready JDK 21
 
 java \
   -XX:+UseZGC \
@@ -369,7 +354,7 @@ watch -n 1 'cat /proc/interrupts | grep eth0'
 # CPU0: 15,000,000 (saturated)
 # CPU1-191: 0 (idle)
 
-# ✓ GOOD: Configure Receive Side Scaling (RSS)
+# GOOD: Configure Receive Side Scaling (RSS)
 # Distribute interrupts across cores
 
 # 1. Enable RSS
@@ -410,7 +395,7 @@ watch -n 1 'mpstat -P ALL 1 1 | grep -E "CPU|Average"'
 | Default (no RSS) | 120k | 100% | 15% | IRQ storm on Core 0 |
 | RSS enabled | 1.2M | 45% | 70% | Network bandwidth |
 
-### 5. PostgreSQL 18 Async I/O (Verified ✓)
+### 5. PostgreSQL 18 Async I/O
 
 PostgreSQL 18 introduces asynchronous I/O support with up to 3x performance improvements in certain scenarios
 
@@ -446,7 +431,7 @@ In RDS testing on db.m6g.large with gp3 storage, async I/O showed only 1% improv
 
 ## Framework Performance
 
-### Java vs Node.js: Verified Reality
+### Java vs Node.js:
 
 > **Research basis:** TechEmpower Framework Benchmarks Round 20–23 (techempower.com), Senacor blog benchmarks, ExpertBeacon Vert.x analysis, InfoQ Vert.x deep dive (2024). All numbers below are from cited sources, not assumptions.
 
@@ -460,7 +445,7 @@ graph LR
     
     C --> C1["Framework: Fastify"]
     C --> C2["Payload: 30KB JSON"]
-    C --> C3["Verified: ~700k RPS @ 95% CPU"]
+    C --> C3["~700k RPS @ 95% CPU"]
     C --> C4["GC: None, but V8 JIT overhead"]
     
     D --> D1["Framework: Vert.x on Netty"]
@@ -471,7 +456,7 @@ graph LR
     
     E --> E1["Framework: Spring Boot 3.x"]
     E --> E2["Virtual Threads: Java 21+"]
-    E --> E3["Verified: 2-5x over platform threads"]
+    E --> E3["2-5x over platform threads"]
     E --> E4["Best for: I/O-bound workloads"]
     E --> E5["Limit: CPU-bound still capped"]
     
@@ -481,7 +466,7 @@ graph LR
 ```
 
 **Key Honest Finding:**
-- In TechEmpower benchmarks Round 23 (March 2025, hardware: Intel Xeon Gold 6330, 56 cores, 40 Gbps), **`vertx-postgres` achieved 1,040,599 RPS at 78.4% CPU** — confirmed via TFB R23 results ✓
+- In TechEmpower benchmarks Round 23 (March 2025, hardware: Intel Xeon Gold 6330, 56 cores, 40 Gbps), **`vertx-postgres` achieved 1,040,599 RPS at 78.4% CPU** — confirmed via TFB R23 results
 - This is a **PostgreSQL-backed JSON query test**, not a synthetic plaintext test — making it a strong real-world proxy
 - TFB R23 brought 3–4x hardware improvements over Round 22, making this the highest-confidence Java benchmark available
 - One independent benchmark found Vert.x handled 600k requests per second utilizing only 12 threads, demonstrating its multi-core efficiency
@@ -492,14 +477,14 @@ graph LR
 - TFB R23 ran on 56-core dedicated bare-metal hardware, not the 192-core c8gn.48xlarge AWS instance in this guide — cloud networking overhead and virtualisation will affect the numbers
 - On 192-core c8gn.48xlarge, extrapolated estimates suggest **1M+ RPS for Vert.x is plausible** but not independently benchmarked at that exact AWS hardware scale
 
-### Java Framework Comparison (Verified ✓)
+### Java Framework Comparison
 
-> **TFB R23 hardware context:** Intel Xeon Gold 6330, 56 cores @ 2GHz, 40 Gbps — 3-4x faster than R22. `vertx-postgres` result of 1,040,599 RPS confirmed at 78.4% CPU utilisation ✓
+> **TFB R23 hardware context:** Intel Xeon Gold 6330, 56 cores @ 2GHz, 40 Gbps — 3-4x faster than R22. `vertx-postgres` result of 1,040,599 RPS confirmed at 78.4% CPU utilisation
 
 | Framework | Architecture | TFB R23 Result | Latency | Best For |
 |-----------|-------------|----------------|---------|----------|
 | **Raw Netty** | NIO event loop | Top tier | < 1ms | Maximum raw throughput |
-| **Vert.x 4.x** | Multi-reactor (Netty) | **1.04M RPS** (vertx-postgres) ✓ | ~1ms | Microservices, reactive |
+| **Vert.x 4.x** | Multi-reactor (Netty) | **1.04M RPS** (vertx-postgres) | ~1ms | Microservices, reactive |
 | **Spring WebFlux** | Reactor on Netty | ~102k RPS (R20 baseline) | 2-5ms | Reactive with Spring ecosystem |
 | **Spring Boot 3.x + Virtual Threads** | Virtual threads (JDK 21+) | 2-5x vs platform threads | ~5ms | I/O-bound, simpler code |
 | **Quarkus (native image)** | GraalVM native | Top-10 in R23 Fortunes | < 1ms | Fast startup + low memory |
@@ -508,13 +493,13 @@ graph LR
 
 Vert.x, like Node, operates a single event loop, but unlike Node which runs on a single core, Vert.x maintains a thread pool with a size that can match the number of available cores. With greater concurrency support, Vert.x is suitable for not only IO but also CPU-heavy processes that require parallel computing.
 
-### Java Virtual Threads (Project Loom) — Verified ✓
+### Java Virtual Threads (Project Loom)
 
 In one experiment with 1 million parallel HTTP requests, virtual threads were able to handle the load with very little overhead, whereas 1 million traditional threads would have rendered the system unusable.
 
 Virtual threads do not make Java faster for CPU-bound work, but they dramatically improve scalability for I/O-bound workloads. They shine when threads spend time waiting (DB, network), not when they burn CPU cycles.
 
-**Virtual Thread Pinning — Corrected Timeline (Verified via JEP 491, OpenJDK docs):**
+**Virtual Thread Pinning Timeline (JEP 491, OpenJDK docs):**
 
 | JDK Version | Pinning Behaviour | Recommendation |
 |-------------|-------------------|----------------|
@@ -690,13 +675,13 @@ public class ShortenController {
 
 **Honest Performance Comparison:**
 
-| Language + Framework | Verified RPS | Hardware | Test Type | GC Pauses | Source |
+| Language + Framework | RPS | Hardware | Test Type | GC Pauses | Source |
 |---------------------|-------------|----------|-----------|-----------|--------|
 | C++ Drogon + RapidJSON | **1.2M** | 192-core AWS | Complex JSON | None | Original video |
-| **Java Vert.x (TFB R23)** | **1,040,599** ✓ | 56-core bare-metal | PostgreSQL JSON query | < 1ms (ZGC) | TFB R23 confirmed |
+| **Java Vert.x (TFB R23)** | **1,040,599** | 56-core bare-metal | PostgreSQL JSON query | < 1ms (ZGC) | TFB R23 confirmed |
 | Java Vert.x (192-core AWS est.) | **~1M+** | 192-core AWS | Extrapolated | < 1ms | Linear extrapolation |
 | Node.js Fastify | ~700k | 128-core AWS | Complex JSON | None (V8) | Original video |
-| Spring Boot 3 + Virt. Threads | ~200–400k | 192-core | I/O-bound | < 1ms | Kloia benchmark ✓ |
+| Spring Boot 3 + Virt. Threads | ~200–400k | 192-core | I/O-bound | < 1ms | Kloia benchmark |
 
 > ⚠️ **Architect Note:** TFB R23 ran on dedicated bare-metal hardware. AWS cloud instances carry virtualisation overhead — expect 10-20% lower numbers on equivalent AWS hardware. C++ retains a measurable lead (~15-20%) for CPU-heavy JSON serialisation at extreme scale. The Java Vert.x figure is for a **PostgreSQL-backed test**, making it a strong real-world proxy, not a synthetic result.
 
@@ -1313,7 +1298,7 @@ Alerts: PagerDuty integration for SLO breaches
 - AWS C8gn Instance Types Documentation (DDR5-6400 confirmed)
 - AWS Graviton4 Architecture
 - PostgreSQL 18 Release Notes — Async I/O (io_method = worker)
-- TechEmpower Framework Benchmarks Round 20–23 (Vert.x 1.04M RPS verified)
+- TechEmpower Framework Benchmarks Round 20–23 (Vert.x 1.04M RPS)
 - TechEmpower Round 20 — Vert.x 572k RPS, Spring 102k RPS
 - InfoQ: Reactive Java & Vert.x Deep Dive, Sep 2024 (Dream11 case study)
 - ExpertBeacon: Vert.x 600k RPS on 12 threads benchmark
@@ -1323,7 +1308,7 @@ Alerts: PagerDuty integration for SLO breaches
 - **OpenJDK JEP 491** — Virtual Threads without Pinning, ships JDK 24, Java 25 first LTS — confirmed
 - Kloia: Java Virtual Threads benchmark (Spring Boot 200-400k RPS)
 - Protobuf Performance Benchmarks (Auth0)
-- AWS Graviton4 Architecture (verified Feb 2026)
+- AWS Graviton4 Architecture (Feb 2026)
 - Deep Dive in Java vs C++ Performance - Johnny's Software Lab (Dec 2025)
 - Benchmarking low-level I/O: C, C++, Rust, Golang, Java, Python (Medium)
 - Can Java compete with C++/Rust in latency-sensitive applications? (Zheng's Substack)
@@ -1333,9 +1318,4 @@ Alerts: PagerDuty integration for SLO breaches
 - C++ to Java Migration - Mobilunity
 - Mixing C and Java for High Performance Computing (Mitre)
 
-**Document Version:** 3.3 (Final — Claude + Grok + Screenshot Cross-Verified)  
-**Last Reviewed:** February 12, 2026  
-**Final Status:** Grok's 1,040,599 RPS claim confirmed valid via TFB R23 screenshot. All content verified or explicitly labelled as extrapolation.
-
-*Every claim is confirmed (✓) or explicitly flagged as extrapolated. No unverified figures remain in this document.*
 *Honest caveat: 1M RPS for Java at 192-core scale is extrapolated from verified TFB data (572k on 8-core). It is plausible but not independently benchmarked at that exact hardware configuration. C++ retains a measurable performance lead for CPU-heavy workloads.*
