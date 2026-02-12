@@ -3092,26 +3092,10 @@ For implementation questions or to discuss your specific use case, reach out to 
 
 These corrections ensure the architecture is mathematically sound, terminologically accurate, and implementable in production environments without silent failures. **The BM25 sparse indexing correction is particularly critical—implementing it incorrectly will result in a non-functional system.**
 
-
-## Original Reference Architectures
-
-Original Reference Architectures can be found at 
+## References
 
 - [Building Your Second Brain RAG](https://www.decodingai.com/p/build-your-second-brain-ai-assistant)
 - [Building Your Second Brain RAG GitHub Repo](https://github.com/decodingai-magazine/second-brain-ai-assistant-course)
-
-![Building Your Second Brain RAG](asset/RAG/Building-Your-Second-Brain-RAG.jpeg)
-
----
-
-![Production Grade RAG Architecture](assets/RAG/Production-Grade-RAG-Arch.jpeg)
-
----
-
-![System Architecture Enterprise RAG System](assets/RAG/Sys-Arch-Enterprise-RAG-System.gif)
-
-## Other References
-
 - [VentureBeat: Six data shifts that will shape enterprise AI in 2026](https://venturebeat.com/data/six-data-shifts-that-will-shape-enterprise-ai-in-2026)
 - [Medium: RAG is DEAD!](https://medium.com/@reliabledataengineering/rag-is-dead-and-why-thats-the-best-news-you-ll-hear-all-year-0f3de8c44604)
 - [Squirro: RAG in 2026](https://squirro.com/squirro-blog/state-of-rag-genai)
