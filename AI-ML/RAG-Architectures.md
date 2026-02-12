@@ -2212,26 +2212,26 @@ Manufacturing quality control manuals at Bell Telecom: Diagram recognition impro
 
 ```
 ┌─────────────────────────────────────────────────────┐
-│                 Attack Surface                       │
+│                 Attack Surface                      │
 ├─────────────────────────────────────────────────────┤
-│                                                       │
-│  1. Input Layer: Prompt Injection                    │
-│     • Direct injection in user queries                │
-│     • Indirect injection via retrieved docs           │
-│                                                       │
-│  2. Retrieval Layer: Data Poisoning                  │
-│     • Malicious document injection                    │
-│     • Embedding manipulation                          │
-│     • RAG poisoning (BadRAG, TrojanRAG)              │
-│                                                       │
-│  3. Context Layer: Information Leakage               │
-│     • Retrieved context contains PII/secrets          │
-│     • Cross-tenant data bleeding                      │
-│                                                       │
-│  4. Output Layer: Policy Violations                  │
-│     • Leaked proprietary information                  │
-│     • Unfiltered toxic content                        │
-│                                                       │
+│                                                     │
+│  1. Input Layer: Prompt Injection                   │
+│     • Direct injection in user queries              │
+│     • Indirect injection via retrieved docs         │
+│                                                     │
+│  2. Retrieval Layer: Data Poisoning                 │
+│     • Malicious document injection                  │
+│     • Embedding manipulation                        │
+│     • RAG poisoning (BadRAG, TrojanRAG)             │
+│                                                     │
+│  3. Context Layer: Information Leakage              │
+│     • Retrieved context contains PII/secrets        │
+│     • Cross-tenant data bleeding                    │
+│                                                     │
+│  4. Output Layer: Policy Violations                 │
+│     • Leaked proprietary information                │
+│     • Unfiltered toxic content                      │
+│                                                     │
 └─────────────────────────────────────────────────────┘
 ```
 
@@ -2473,7 +2473,20 @@ class SecureVectorStore:
         return results
 ```
 
-### 7.8.3 Production Security Checklist
+### 7.8.3 Toy vs Production RAG – Challenge‑to‑Design Checklist
+
+Moving from a notebook demo to an enterprise‑grade RAG system means dealing with scale, noise, and unpredictable user behavior.  The table below maps the most common production failures to the architectural patterns and sections in this guide that address them.
+
+| Challenge | Symptom in Production | Recommended Design Response | Where This Guide Covers It |
+| --- | --- | --- | --- |
+| Retrieval decay at scale | Semantic search that felt “perfect” on 50 docs starts returning noisy, partially relevant chunks once you index 100k–1M documents.| Adopt hybrid dense+sparse retrieval with cross‑encoder reranking; cap the first‑stage recall at 50–100 candidates, then rerank to a small top‑k for the LLM. Tune similarity thresholds and use metadata filters to constrain search space.| Section 2.1 Hybrid Search Pipeline (dense+sparse, RRF, reranker), Section 7.4.2 Advanced Indexing Strategies, Section 7.4.3 Multi‑Query Expansion.|
+| Context fragmentation | Users complain that the model “misses obvious lines in the doc”, or answers contradict a nearby paragraph. Logs show chunks cutting sentences in half and classic “lost in the middle” behavior.| Switch from naive fixed‑size splitting to semantic or token‑aware chunking; use parent–child retrieval (search small, feed big) and summary indexing so the LLM sees full paragraphs/sections anchored by precise hits.| Section 2.1 Ingestion & Chunking, Section 2.1.x Indexing Strategies Taxonomy (chunk vs sub‑chunk vs summary), Section 7.4.2 Hierarchical/RAPTOR and summary‑first indexing.|
+| Knowledge drift & stale answers | The system confidently serves outdated policies, sunset products, or old prices because the vector index lags behind the primary database or content store.| Implement incremental indexing based on timestamps or change streams; enforce metadata filters (e.g., `status = active`, latest version only); route fact‑table queries directly to relational/operational stores instead of frozen embeddings.| Section 2.1 Vector Store Ingestion & Metadata, Section 5 Implementation Blueprints (incremental updates), Section 7.4.1 Intelligent Query & Source Routing.|
+| Multi‑part & compositional queries | Prompts like “Compare revenue for Product A vs B and explain the main drivers” yield partial or one‑sided answers because retrieval looks for a single chunk containing everything.| Use query decomposition and multi‑query expansion: break complex questions into sub‑queries, retrieve per sub‑query, then synthesize. For high‑value flows, upgrade to agentic RAG with an explicit plan–act–reflect loop that can iteratively refine retrieval.| Section 3 Agentic Second Brain (ReAct loop, multi‑step retrieval), Section 7.4.3 Query Transformation Techniques (multi‑query, step‑back, decomposition).|
+| Flying blind (no evaluation or observability) | Teams “vibe‑check” a handful of queries but cannot tell whether a new index, retriever, or prompt actually improved quality across 10k+ daily requests.| Stand up an evaluation and observability stack: automated RAG‑specific metrics (faithfulness, context precision, answer relevance), safety checks, and operational telemetry (latency, cost, cache hit rate). Log retrieval results and agent traces for replay.| Section 3.2 Observability Stack, Section 4 Comparative Evaluation, Section 7.4.4 Expanded Evaluation Framework (Ragas, DeepEval, Grouse, TruLens).|
+
+
+### 7.8.4 Production Security Checklist
 
 **Pre-Deployment:**
 - [ ] Input validation with both pattern and LLM-based detection
