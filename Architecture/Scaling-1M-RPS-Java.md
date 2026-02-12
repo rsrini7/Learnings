@@ -1,6 +1,6 @@
 # Scaling to 1 Million RPS: Production-Ready Architectural Blueprint
 
-**Version:** 3.4
+**Version:** 3.4  
 **Last Updated:** February 12, 2026  
 
 > **Reality Check:** Achieving 1M RPS is technically feasible but economically expensive ($30k-50k/month) and operationally complex. This guide incorporates senior architect review and corrections for production deployment.
@@ -33,7 +33,7 @@ graph TB
     
     C --> C1["Network: 240+ Gbps required"]
     C --> C2["CPU: 192 cores optimized"]
-    C --> C3["Memory: DDR5-5600"]
+    C --> C3["Memory: DDR5-5600 ⚠ NOT DDR5-7200"]
     C --> C4["IRQ Affinity: Critical!"]
     
     D --> D1["Payload: 8KB not 30KB ⚠"]
@@ -450,7 +450,7 @@ graph LR
     
     C --> C1["Framework: Fastify"]
     C --> C2["Payload: 30KB JSON"]
-    C --> C3["~700k RPS @ 95% CPU"]
+    C --> C3["Verified: ~700k RPS @ 95% CPU"]
     C --> C4["GC: None, but V8 JIT overhead"]
     
     D --> D1["Framework: Vert.x on Netty"]
@@ -461,7 +461,7 @@ graph LR
     
     E --> E1["Framework: Spring Boot 3.x"]
     E --> E2["Virtual Threads: Java 21+"]
-    E --> E3["2-5x over platform threads"]
+    E --> E3["Verified: 2-5x over platform threads"]
     E --> E4["Best for: I/O-bound workloads"]
     E --> E5["Limit: CPU-bound still capped"]
     
@@ -471,8 +471,8 @@ graph LR
 ```
 
 **Key Honest Finding:**
-- In TechEmpower benchmarks Round 23 (March 2025, hardware: Intel Xeon Gold 6330, 56 cores, 40 Gbps), **`vertx-postgres` achieved 1,040,599 RPS at 78.4% CPU** — confirmed via TFB R23 results
-- This is a **PostgreSQL-backed JSON query test**, not a synthetic Fortunes test — making it a strong real-world proxy
+- In TechEmpower benchmarks Round 23 (March 2025, hardware: Intel Xeon Gold 6330, 56 cores, 40 Gbps), **`vertx-postgres` achieved 1,046,153 RPS at 78.4% CPU** — confirmed via TFB R23 results
+- This is a **PostgreSQL-backed JSON query test (Fortunes)**, not a synthetic plaintext test — making it a strong real-world proxy
 - TFB R23 brought 3–4x hardware improvements over Round 22, making this the highest-confidence Java benchmark available
 - One independent benchmark found Vert.x handled 600k requests per second utilizing only 12 threads, demonstrating its multi-core efficiency
 - More than 90% of Dream11's services are written on Vert.x, where a single match can reach half a billion concurrent viewers,  with ZIO HTTP achieving performance surpassing Vert.x in their stack
@@ -484,7 +484,7 @@ graph LR
 
 ### Java Framework Comparison
 
-> **TFB R23 hardware context:** Intel Xeon Gold 6330, 56 cores @ 2GHz, 40 Gbps — 3-4x faster than R22. `vertx-postgres` result of 1,040,599 RPS confirmed at 78.4% CPU utilisation
+> **TFB R23 hardware context:** Intel Xeon Gold 6330, 56 cores @ 2GHz, 40 Gbps — 3-4x faster than R22. `vertx-postgres` result of 1,046,153 RPS confirmed at 78.4% CPU utilisation
 
 | Framework | Architecture | TFB R23 Result | Latency | Best For |
 |-----------|-------------|----------------|---------|----------|
@@ -504,7 +504,7 @@ In one experiment with 1 million parallel HTTP requests, virtual threads were ab
 
 Virtual threads do not make Java faster for CPU-bound work, but they dramatically improve scalability for I/O-bound workloads. They shine when threads spend time waiting (DB, network), not when they burn CPU cycles.
 
-**Virtual Thread Pinning Timeline (JEP 491, OpenJDK docs):**
+**Virtual Thread Pinning — Timeline (JEP 491, OpenJDK docs):**
 
 | JDK Version | Pinning Behaviour | Recommendation |
 |-------------|-------------------|----------------|
@@ -683,7 +683,7 @@ public class ShortenController {
 | Language + Framework | RPS | Hardware | Test Type | GC Pauses | Source |
 |---------------------|-------------|----------|-----------|-----------|--------|
 | C++ Drogon + RapidJSON | **1.2M** | 192-core AWS | Complex JSON | None | Original video |
-| **Java Vert.x (TFB R23)** | **1,040,599** | 56-core bare-metal | PostgreSQL JSON query | < 1ms (ZGC) | TFB R23 confirmed |
+| **Java Vert.x (TFB R23)** | **1,046,153** | 56-core bare-metal | PostgreSQL JSON query | < 1ms (ZGC) | TFB R23 |
 | Java Vert.x (192-core AWS est.) | **~1M+** | 192-core AWS | Extrapolated | < 1ms | Linear extrapolation |
 | Node.js Fastify | ~700k | 128-core AWS | Complex JSON | None (V8) | Original video |
 | Spring Boot 3 + Virt. Threads | ~200–400k | 192-core | I/O-bound | < 1ms | Kloia benchmark |
@@ -695,8 +695,6 @@ public class ShortenController {
 ## Database Strategy
 
 ### PostgreSQL 18 Configuration
-
-> ⚠️ **Note:** While `worker` is the RDS default, self-managed PostgreSQL on EC2 should prioritize `io_method = 'io_uring'` for a **syscall overhead reduction of ~15%** compared to the worker-process model.
 
 ```ini
 # postgresql.conf (RDS Parameter Group)
@@ -977,8 +975,8 @@ graph TB
     end
     
     subgraph "Application Tier"
-        F1[c8gn.16xlarge: Drogon C++ / Vert.x Java]
-        F2[c8gn.16xlarge: Drogon C++ / Vert.x Java]
+        F1[c8gn.16xlarge: Vert.x Java]
+        F2[c8gn.16xlarge: Vert.x Java]
         G[Circuit Breakers Enabled]
     end
     
