@@ -198,5 +198,3 @@ Refine CI to enforce quality thresholds and add a minimal SAST profile for Sprin
 ## 7. Conclusion: Foundation Over Prompts
 
 The emerging reality is that AI coding tools create an unprecedented opportunity to accelerate delivery—but only if the underlying engineering discipline is strong. Data from SonarSource, Ox Security, CodeScene, and others shows that without explicit patterns, guardrails, and automated quality enforcement, AI mainly accelerates technical debt. By contrast, teams that deliberately shape the first 1,000 lines of code, codify standards in tools, and treat AI as a junior implementer achieve sustained velocity without sacrificing maintainability. [sonarsource](https://www.sonarsource.com/blog/the-inevitable-rise-of-poor-code-quality-in-ai-accelerated-codebases/)
-
-If you want, I can turn this into a PDF‑ready outline with section numbering, abstract, and executive summary tailored to your org, or adapt it to another stack beyond React + Spring Boot.
