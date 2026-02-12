@@ -1212,6 +1212,7 @@ Better strategy: Horizontal scaling with Node.js + aggressive caching
 ### When to Optimize vs Scale Horizontally
 
 ```mermaid
+
 graph TD
     A[Current State] --> B{Monthly Cost?}
     
@@ -1220,7 +1221,8 @@ graph TD
     B -->|> $30k| E[Optimize Now]
     
     C --> C1[Node.js + PostgreSQL]
-    C --> C2[Add Redis cache when needed]
+    C --> C2[Java Spring Boot + PostgreSQL]
+    C --> C3[Add Redis cache when needed]
     
     D -->|Slow| D1[Monitor for 6 months]
     D -->|Fast| D2[Plan optimization]
@@ -1230,6 +1232,7 @@ graph TD
     E --> E3[IRQ tuning]
     
     style C1 fill:#90EE90
+    style C2 fill:#90EE90
     style E1 fill:#90EE90
 ```
 
