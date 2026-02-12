@@ -29,7 +29,7 @@ This whitepaper examines two fundamental approaches to building production RAG s
 
 ## 1. Introduction to Modern RAG Systems
 
-Retrieval-Augmented Generation has evolved from academic research into production infrastructure powering enterprise search, compliance systems, and autonomous AI assistants. The 2026 RAG market reached $1.96 billion and is projected to grow to $40.34 billion by 2035—a 35% CAGR driven by organizations demanding accurate, up-to-date AI systems. However, implementation strategies have diverged into a comprehensive architectural spectrum, each optimized for different reliability, latency, and cost constraints.
+Retrieval-Augmented Generation has evolved from academic research into production infrastructure powering enterprise search, compliance systems, and autonomous AI assistants. The 2025 RAG market reached $1.96 billion and is projected to grow to $40.34 billion by 2035—a 35% CAGR driven by organizations demanding accurate, up-to-date AI systems. However, implementation strategies have diverged into a comprehensive architectural spectrum, each optimized for different reliability, latency, and cost constraints.
 
 ### 1.1 The Evolution from Naive to Production RAG
 
@@ -43,22 +43,34 @@ Production systems in 2026 address these through layered architectural sophistic
 
 ### 1.2 The RAG Architecture Spectrum (2026 Taxonomy)
 
-Modern RAG systems span five architectural maturity tiers, progressing from simple retrieval to autonomous reasoning:
+Modern RAG systems span five architectural maturity tiers, progressing from simple retrieval to autonomous reasoning. This taxonomy incorporates variants such as those outlined in the "AI Engineering: System Design Patterns for LLMs, RAG and Agents" guide, including Naive, Multimodal, HyDE, Corrective, Graph, Hybrid, Adaptive, and Agentic RAG.
 
 **Tier 0 — Naive RAG** 
-Single-pass vector retrieval with no validation. Suitable only for prototypes and non-critical applications. Precision@5: 0.45-0.55, Faithfulness: 0.60-0.70, Latency: 800ms-1.2s.
+Single-pass vector retrieval with no validation. Suitable only for prototypes and non-critical applications. Precision@5: 0.45-0.55, Faithfulness: 0.60-0.70, Latency: 800ms-1.2s.  
+*Examples:* Basic Naive RAG (retrieves based purely on vector similarity).
 
-**Tier 1 — Hybrid/Advanced RAG**
-Dense + sparse fusion with cross-encoder reranking and context expansion. The production baseline for customer-facing systems. Precision@5: 0.70-0.80, Faithfulness: 0.75-0.85, Latency: 1.2-1.8s. Techniques include HyDE (hypothetical document embedding), parent-child retrieval, and RRF fusion.
+**Tier 1 — Hybrid/Advanced RAG**  
+Dense + sparse fusion with cross-encoder reranking and context expansion. The production baseline for customer-facing systems. Precision@5: 0.70-0.80, Faithfulness: 0.75-0.85, Latency: 1.2-1.8s. Techniques include HyDE (hypothetical document embedding), parent-child retrieval, and RRF fusion.  
+*Examples:* HyDE (generates hypothetical answer for better retrieval), Hybrid RAG (combines dense vector and graph-based retrieval).
 
-**Tier 2 — GraphRAG**
-Knowledge graph integration for multi-hop reasoning and relationship-aware retrieval. Critical for finance, legal, and biomedical domains requiring entity-relationship traversal. Multi-hop accuracy: 0.85-0.92 (vs 0.40-0.50 vector-only), Query latency: 1.5-4s, Cost: 3-5× baseline RAG.
+**Tier 2 — GraphRAG**  
+Knowledge graph integration for multi-hop reasoning and relationship-aware retrieval. Critical for finance, legal, and biomedical domains requiring entity-relationship traversal. Multi-hop accuracy: 0.85-0.92 (vs 0.40-0.50 vector-only), Query latency: 1.5-4s, Cost: 3-5× baseline RAG.  
+*Examples:* Graph RAG (converts content to knowledge graphs for structured reasoning).
 
-**Tier 3 — Corrective RAG (CRAG)**
-Self-validation with retrieval quality assessment and web search fallback. Reduces hallucinations 60-70% through adaptive retrieval actions (correct/incorrect/ambiguous classification). Faithfulness: 0.88-0.92, Latency: +1-3s overhead, Cost: +30-50% vs baseline.
+**Tier 3 — Corrective RAG (CRAG)**  
+Self-validation with retrieval quality assessment and web search fallback. Reduces hallucinations 60-70% through adaptive retrieval actions (correct/incorrect/ambiguous classification). Faithfulness: 0.88-0.92, Latency: +1-3s overhead, Cost: +30-50% vs baseline.  
+*Examples:* Corrective RAG (validates against trusted sources), Adaptive RAG (dynamically decides on simple vs. multi-step retrieval, breaks queries into sub-queries).
 
-**Tier 4 — Agentic RAG**
-Multi-step planning with tool invocation and iterative reasoning. Highest accuracy (0.90-0.95) but 5-15s latency and highest operational cost. Enables autonomous research, complex workflow automation, and adaptive problem-solving.
+**Tier 4 — Agentic RAG**  
+Multi-step planning with tool invocation and iterative reasoning. Highest accuracy (0.90-0.95) but 5-15s latency and highest operational cost. Enables autonomous research, complex workflow automation, and adaptive problem-solving.  
+*Examples:* Agentic RAG (uses AI agents with planning, reasoning like ReAct/CoT, and memory to orchestrate retrieval from multiple sources).  
+As illustrated in the attached "Agentic RAG Workflow" image from LangChain, this involves query analysis, planning, retrieval, and context assembly.
+
+#### Contextual Memory in Agentic RAG
+In 2026, contextual memory is becoming table stakes for agentic AI, often surpassing traditional RAG for adaptive workflows. It includes short-term memory for ongoing interactions and long-term memory for persistent knowledge, allowing agents to learn from feedback and maintain state. While RAG excels for static data, contextual memory enables dynamic adaptation in multi-step processes. [VentureBeat](https://venturebeat.com/data/six-data-shifts-that-will-shape-enterprise-ai-in-2026)
+
+#### Multi-Agent Systems
+Agentic RAG often extends to multi-agent collaboration, where specialized agents handle subtasks (e.g., one for retrieval, another for validation). Frameworks like CrewAI support this, enabling complex workflows with shared memory and tool invocation.
 
 **2026 Architecture Distribution (Enterprise Deployments):**
 - Hybrid RAG: 65% (production workhorse)
@@ -2548,6 +2560,8 @@ recall = evaluator.recall_at_k(retrieved, relevant, k=5)  # 3/3 = 1.0
 ndcg = evaluator.ndcg_at_k(retrieved, relevant_scores, k=5)
 ```
 
+In addition to RAGAS metrics like faithfulness and context relevance, include Answer Relevance (measures how well the response addresses the query), Context Sufficiency (ensures retrieved context is adequate), MRR (Mean Reciprocal Rank for ranking quality), and NDCG (Normalized Discounted Cumulative Gain for graded relevance).
+
 ### 7.9.2 Generation Metrics
 
 **Faithfulness (Hallucination Detection):**
@@ -2794,6 +2808,10 @@ class RAGMonitoring:
 
 ## 8. References and Further Reading
 
+- Roots Analysis: RAG Market Projections (2025-2035)
+- "AI Engineering: System Design Patterns for LLMs, RAG and Agents" by Akshay Pachaar & Avi Chawla
+- As shown in attached images: "12 Types of RAG Architectures", "RAG Security Gaps", "RAG Pipeline", "Types of RAG", "RAG vs AI Agents vs Agentic RAG".
+
 ### 8.1 Key Research Papers (2024-2026)
 
 **RAG Foundations:**
@@ -3036,9 +3054,10 @@ The architectures and recommendations reflect battle-tested patterns that have s
 
 For implementation questions or to discuss your specific use case, reach out to the AI engineering community on Discord (LangChain, LlamaIndex) or technical forums.
 
-**Document Version: 3.0 (Complete 2026 RAG Ecosystem Guide) | February 2026**
+**Document Version: 3.1 (Complete 2026 RAG Ecosystem Guide) | February 2026**
 
 **Changelog:**
+- **v3.1:** Updates based on feedback: Clarified market size to 2025 baseline; Expanded taxonomy with PDF architectures; Added contextual memory subsection; Enhanced evaluation metrics; Added multi-agent expansion; Referenced attached images explicitly; Added inline citations and references.
 - **v3.0:** MAJOR UPDATE - Complete 2026 ecosystem coverage:
   - Added RAG Architecture Spectrum taxonomy (Naive → Hybrid → GraphRAG → CRAG → Agentic)
   - NEW Section 7.5: GraphRAG with multi-hop reasoning, knowledge graph construction, hierarchical community detection
@@ -3081,12 +3100,18 @@ Original Reference Architectures can be found at
 - [Building Your Second Brain RAG](https://www.decodingai.com/p/build-your-second-brain-ai-assistant)
 - [Building Your Second Brain RAG GitHub Repo](https://github.com/decodingai-magazine/second-brain-ai-assistant-course)
 
-![Building Your Second Brain RAG](assets/Building-Your-Second-Brain-RAG.jpeg)
+![Building Your Second Brain RAG](asset/RAG/Building-Your-Second-Brain-RAG.jpeg)
 
 ---
 
-![Production Grade RAG Architecture](assets/Production-Grade-RAG-Arch.jpeg)
+![Production Grade RAG Architecture](assets/RAG/Production-Grade-RAG-Arch.jpeg)
 
 ---
 
-![System Architecture Enterprise RAG System](assets/Sys-Arch-Enterprise-RAG-System.gif)
+![System Architecture Enterprise RAG System](assets/RAG/Sys-Arch-Enterprise-RAG-System.gif)
+
+## Other References
+
+- [VentureBeat: Six data shifts that will shape enterprise AI in 2026](https://venturebeat.com/data/six-data-shifts-that-will-shape-enterprise-ai-in-2026)
+- [Medium: RAG is DEAD!](https://medium.com/@reliabledataengineering/rag-is-dead-and-why-thats-the-best-news-you-ll-hear-all-year-0f3de8c44604)
+- [Squirro: RAG in 2026](https://squirro.com/squirro-blog/state-of-rag-genai)
