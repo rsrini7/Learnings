@@ -1,6 +1,6 @@
 # Scaling to 1 Million RPS: Production-Ready Architectural Blueprint
 
-**Version:** 3.3 (Java Edition — Claude + Grok Cross-Reviewed, Feb 12 2026)  
+**Version:** 3.4
 **Last Updated:** February 12, 2026  
 
 > **Reality Check:** Achieving 1M RPS is technically feasible but economically expensive ($30k-50k/month) and operationally complex. This guide incorporates senior architect review and corrections for production deployment.
@@ -696,6 +696,8 @@ public class ShortenController {
 
 ### PostgreSQL 18 Configuration
 
+> ⚠️ **Note:** While `worker` is the RDS default, self-managed PostgreSQL on EC2 should prioritize `io_method = 'io_uring'` for a **syscall overhead reduction of ~15%** compared to the worker-process model.
+
 ```ini
 # postgresql.conf (RDS Parameter Group)
 
@@ -1097,9 +1099,6 @@ testing:
       - "Saturate network (should circuit break)"
       - "Fill disk (should alert)"
 ```
-
-
-
 ---
 
 ## Cost-Benefit Analysis
@@ -1108,109 +1107,66 @@ testing:
 
 > ⚠️ **Architect’s Note on Data Egress:** At 60 TB per 30 minutes (test data scale), standard AWS Internet Egress rates could exceed **$50,000/month** alone. For production, ensure you are using **AWS PrivateLink** for internal service communication and have negotiated a **Private Pricing Term (PPT)** for public egress, or utilize a CloudFront-to-Origin "Free Egress" architecture.
 
-```python
-# tco_calculator.py
+Achieving 1M RPS is a high-stakes financial decision. At this scale, **Data Transfer** often replaces **Compute** as your primary line item.
 
-class TCOCalculator:
-    def __init__(self, rps_target, optimization_level):
-        self.rps_target = rps_target
-        self.optimization_level = optimization_level
-    
-    def calculate_monthly_cost(self):
-        costs = {}
-        
-        if self.optimization_level == 'baseline':
-            # 30KB JSON, Node.js, standard instances
-            costs['compute'] = 2 * 4380  # 2x c8i.32xlarge
-            costs['database'] = 5380  # db.m5.16xlarge + 12k IOPS
-            costs['redis'] = 0  # No cache
-            costs['data_transfer'] = 3000  # 240 Gbps
-            
-        elif self.optimization_level == 'optimized':
-            # 8KB Protobuf, C++, network-optimized
-            costs['compute'] = 2850  # 1x c8gn.16xlarge
-            costs['database'] = 5380
-            costs['redis'] = 2000  # 30-node cluster
-            costs['data_transfer'] = 800  # 64 Gbps
-            
-        elif self.optimization_level == 'extreme':
-            # Full production with redundancy
-            costs['compute'] = 2 * 2850  # 2x c8gn.16xlarge (HA)
-            costs['database'] = 2 * 5380  # Multi-AZ
-            costs['redis'] = 21900  # 30x r7g.4xlarge
-            costs['data_transfer'] = 1500
-            costs['monitoring'] = 500  # Datadog, PagerDuty
-            costs['support'] = 1000  # AWS Enterprise Support
-            
-        costs['total'] = sum(costs.values())
-        return costs
-    
-    def roi_analysis(self, current_monthly_cost, engineer_months=2):
-        optimized = self.calculate_monthly_cost()
-        
-        dev_cost = 3 * 15000 * engineer_months  # 3 engineers × $15k × months
-        monthly_savings = current_monthly_cost - optimized['total']
-        break_even_months = dev_cost / monthly_savings if monthly_savings > 0 else float('inf')
-        
-        return {
-            'development_cost': dev_cost,
-            'monthly_savings': monthly_savings,
-            'break_even_months': break_even_months,
-            'roi_12_months': monthly_savings * 12 - dev_cost
-        }
+### Monthly Infrastructure Comparison
 
-# Example usage
-calc = TCOCalculator(rps_target=1_000_000, optimization_level='optimized')
-costs = calc.calculate_monthly_cost()
+The following table compares three architectural paths for a 1M RPS target with an **8KB Protobuf payload**.
 
-print(f"""
-=== Monthly Cost Breakdown ===
-Compute: ${costs['compute']:,}
-Database: ${costs['database']:,}
-Redis: ${costs['redis']:,}
-Data Transfer: ${costs['data_transfer']:,}
-TOTAL: ${costs['total']:,}/month
+| Cost Component | Baseline (Node.js/Fastify) | Optimized (Java Vert.x / C++) | Extreme (High Availability / Multi-AZ) |
+| --- | --- | --- | --- |
+| **Primary Compute** | $8,760 (2x c8i.32xlarge) | $2,850 (1x c8gn.16xlarge) | $5,700 (2x c8gn.16xlarge) |
+| **Database (RDS)** | $5,380 (db.m5.16xl + 12k IOPS) | $5,380 (db.m5.16xl + 12k IOPS) | $10,760 (Multi-AZ Standby) |
+| **Cache (Redis)** | $0 (Direct DB - Not feasible) | $2,000 (30-node r7g cluster) | $4,000 (Cross-AZ Replicas) |
+| **Network (NLB)** | $500 (Standard) | $1,500 (Pre-warmed LCUs) | $2,000 (Multi-AZ NLB) |
+| **Internal Data Tax** | $2,500 (Inter-AZ transfer) | $0 (AZ-Local Routing) | $5,000 (HA Sync overhead) |
+| **Estimated Total** | **$17,140 / month** | **$11,730 / month** | **$27,460 / month** |
+| **Max Capacity** | ~400k RPS (Compute Bound) | **1.2M RPS (Network Bound)** | **1.2M RPS + Zero Downtime** |
 
-=== vs Baseline (30KB JSON, Node.js) ===
-Baseline: $14,760/month
-Optimized: ${costs['total']:,}/month
-Savings: ${14760 - costs['total']:,}/month (${(1 - costs['total']/14760)*100:.1f}% reduction)
-""")
+---
 
-# ROI Analysis
-roi = calc.roi_analysis(current_monthly_cost=14760)
-print(f"""
-=== ROI Analysis ===
-Development Cost: ${roi['development_cost']:,}
-Monthly Savings: ${roi['monthly_savings']:,}
-Break-Even: {roi['break_even_months']:.1f} months
-12-Month ROI: ${roi['roi_12_months']:,}
-""")
-```
+### The "Hidden Tax": 2026 AWS Egress Tiers
 
-**Output:**
-```
-=== Monthly Cost Breakdown ===
-Compute: $2,850
-Database: $5,380
-Redis: $2,000
-Data Transfer: $800
-TOTAL: $11,030/month
+For 1M RPS, public egress costs can be catastrophic if not managed. AWS has expanded the free tier but maintains aggressive billing for high volume.
 
-=== vs Baseline (30KB JSON, Node.js) ===
-Baseline: $14,760/month
-Optimized: $11,030/month
-Savings: $3,730/month (25.3% reduction)
+| Monthly Usage Tier | Rate (USD per GB) | 1M RPS Monthly Impact (Scenario) |
+| --- | --- | --- |
+| **First 100 GB** | **Free ($0.00)** | Bypassed in < 1 minute |
+| **Next 10 TB** | $0.09 / GB | Standard pricing |
+| **Next 40 TB** | $0.085 / GB | Bulk discount starts |
+| **Next 100 TB** | $0.07 / GB | Mid-scale pricing |
+| **Over 150 TB** | **$0.05 / GB** | **Steady-State Production Rate** |
+| **Inter-AZ Transfer** | **$0.01 / GB** | **The "Hidden Tax" (Avoid via AZ-Local)** |
+| **PrivateLink Endpoints** | **Free ($0.00)** | Use for cross-AZ service calls |
 
-=== ROI Analysis ===
-Development Cost: $90,000
-Monthly Savings: $3,730
-Break-Even: 24.1 months
-12-Month ROI: -$45,240
+---
 
-Verdict: NOT worth optimizing (break-even > 12 months)
-Better strategy: Horizontal scaling with Node.js + aggressive caching
-```
+### ROI Analysis: Engineering Time vs. Infrastructure Savings
+
+Choosing to optimize (switching from Node.js to Java Vert.x or C++) is an investment in human capital to save on physical capital.
+
+#### **1. The Development Cost**
+
+* **Engineering Requirement:** 3 Senior Backend/Systems Engineers for 2 months.
+* **Total Investment:** ~$90,000 (including testing and staging costs).
+
+#### **2. Monthly Savings Potential**
+
+* By switching from standard horizontal scaling (Node.js) to vertical optimization (Java/C++), you reduce your server count by ~60%.
+* **Monthly Savings:** ~$5,410.
+
+#### **3. The Break-Even Verdict**
+
+* **Break-Even Point:** **16.6 Months.**
+* **Architect’s Recommendation:** Only move forward with extreme optimization (C++) if your project lifecycle is  years or if you hit **Physical Physical Limits** (e.g., your Node.js cluster is so large that managing the overhead of 200+ instances becomes an operational nightmare).
+
+---
+
+### Strategic Recommendations for CFOs/CTOs
+
+1. **Avoid the "Inter-AZ" Tax:** Ensure your app servers sit in the same Availability Zone as your primary Redis shards. Failing to do this at 1M RPS can add **$10k+** to your bill without any performance gain.
+2. **CDN-First Egress:** Always push public-facing data through **CloudFront**. AWS offers lower egress rates (often starting at $0.02/GB with custom pricing) for CloudFront-to-Internet compared to EC2-to-Internet.
+3. **The "Lazy" Win:** Before rewriting in C++, upgrade to **PostgreSQL 18** and enable **Async I/O**. It offers a "free" 15% throughput boost with zero code changes.
 
 ### When to Optimize vs Scale Horizontally
 
@@ -1265,7 +1221,8 @@ graph TD
 4. **Don't assume DDR5-7200** (it's DDR5-6400 for Graviton4, c8gn instances)
 5. **Don't ignore read-after-write** (sync queue alone is broken without write-through cache)
 6. **Don't optimize prematurely** (measure ROI first — break-even often > 24 months)
-7. **On Java 21 LTS: avoid `synchronized` blocks with blocking I/O in virtual thread paths** (JEP 491 pinning — fully fixed in Java 24, first LTS fix in Java 25)
+7. **On Java 21 LTS: Upgrade to Java 24+ to eliminate the need for refactoring `synchronized` to `ReentrantLock`." to avoid blocks with blocking I/O in virtual thread paths** (JEP 491 pinning — fully fixed in Java 24, first LTS fix in Java 25)
+
 
 ### For Architects
 
