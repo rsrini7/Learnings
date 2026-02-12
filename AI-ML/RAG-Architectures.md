@@ -1,5 +1,7 @@
 # Production-Grade RAG Architectures: Complete Technical Guide (2026 Edition)
 
+![AI Engineering](assets/RAG/AI-Engineering.png)
+
 ## From Naive Retrieval to Agentic Intelligence: A Complete Architectural Reference
 
 **For Developers, Architects, and AI Product Managers**
