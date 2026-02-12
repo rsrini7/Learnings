@@ -785,6 +785,12 @@ redis-cli --cluster create \
 # - Cost: 30 nodes × $1/hour × 730 hours = $21,900/month
 ```
 
+### The R2DBC Bottleneck Warning ⚠️
+**Finding:** While Spring WebFlux is reactive, the **R2DBC driver layer** is a documented performance bottleneck at extreme scale.
+* **Verification:** TechEmpower Round 23 benchmarks (Fortunes) show `spring-webflux-r2dbc` achieving ~245k RPS, whereas `vertx-postgres` (using native PgClient) exceeds 1M RPS on equivalent hardware.
+* **Root Cause:** The generic `r2dbc-pool` introduces significant overhead and threading issues compared to the high-performance, native reactive clients found in Vert.x or Drogon (C++).
+* **Architectural Guidance:** For targets >500k RPS, standard R2DBC is likely to become your primary bottleneck. If using Spring, consider **Vert.x SQL Client** integrations or **JDBC with Virtual Threads** (Java 21+) as more performant alternatives for database-heavy paths.
+
 ---
 
 ## Advanced Optimizations
