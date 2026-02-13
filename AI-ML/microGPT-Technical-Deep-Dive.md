@@ -14,11 +14,7 @@
 
 ---
 
-![AI-ML/assets/microGPT.png](assets/microGPT.png)
-
----
-
-![AI-ML/assets/microGPT-Updated.jpg](assets/microGPT-Updated.jpg)
+![AI-ML/assets/microGPT-Updated.jpg](assets/microGPT-Updated.png)
 
 ---
 
