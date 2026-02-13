@@ -10,6 +10,15 @@
 
 ---
 
+![AI-ML/assets/microGPT-TechDeepDive.png](assets/microGPT-TechDeepDive.png)
+
+---
+
+![AI-ML/assets/microGPT.png](assets/microGPT.png)
+
+---
+
+---
 ## Table of Contents
 1. [What is microGPT?](#1-what-is-microgpt)
 2. [Architecture Overview](#2-architecture-overview)
