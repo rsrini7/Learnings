@@ -470,7 +470,7 @@ python microgpt.py
 
 The most frequent point of confusion in community ports.
 
-- **The Pitfall:** Assuming microGPT uses GeLU (like GPT-2) or Squared ReLU (like some LLaMA variants).
+- **The Pitfall:** Assuming microGPT uses GeLU (like GPT-2) or Squared ReLU / ReLU² (as in Primer, So et al. 2021, and PaLM). Note: LLaMA uses SwiGLU, not ReLU².
 - **The Reality:** It uses **standard ReLU** — `max(0, x)`.
 - **Why:** GeLU requires `math.erf`, adding mathematical overhead. Karpathy chose standard ReLU for scalar simplicity: `1.0 if x > 0 else 0.0`.
 - **The modification trap:** Many ports add squaring to the ReLU to smooth the gradient. If you do this, you are no longer running the canonical microGPT algorithm.
