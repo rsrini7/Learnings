@@ -475,6 +475,18 @@ The most frequent point of confusion in community ports.
 - **Why:** GeLU requires `math.erf`, adding mathematical overhead. Karpathy chose standard ReLU for scalar simplicity: `1.0 if x > 0 else 0.0`.
 - **The modification trap:** Many ports add squaring to the ReLU to smooth the gradient. If you do this, you are no longer running the canonical microGPT algorithm.
 
+For reference, the ReLU method in the Value class is:
+
+```python
+def relu(self):
+    out = Value(0 if self.data < 0 else self.data, (self,), 'relu')
+    def _backward():
+        self.grad += (out.data > 0) * out.grad
+    out._backward = _backward
+    return out
+```
+
+
 ### Pitfall 2 — The Missing Causal Mask
 
 - **The Pitfall:** Looking for a triangular `tril` mask matrix and thinking the model is buggy without one.
@@ -562,10 +574,17 @@ Neither exactly. It follows the decoder-only Transformer architecture but is a h
 In standard Transformers (e.g., nanoGPT), the full sequence is fed at once for speed, requiring a triangular mask to prevent token N from attending to token N+k. In microGPT, tokens are generated one-by-one. Token 2 only has access to a list containing token 1's key and value. Token 3 hasn't been born yet — it isn't in the list. You don't need to mask what doesn't exist.
 
 **Q4: Why is the parameter count exactly 4,192?**  
-Embeddings: 432 + 256 = 688. Attention (4 matrices): 256 × 4 = 1,024. MLP (2 matrices): 1,024 + 1,024 = 2,048. LM head: 432. Total: 688 + 1,024 + 2,048 + 432 = **4,192**.
+Embeddings: 432 + 256 = 688. 
+Attention (4 matrices): 256 × 4 = 1,024. 
+MLP (2 matrices): 1,024 + 1,024 = 2,048. 
+LM head: 432. 
+Total: 688 + 1,024 + 2,048 + 432 = **4,192**.
 
 **Q5: Why RMSNorm instead of LayerNorm?**  
 RMSNorm eliminates mean subtraction — only the root mean square is computed. This saves lines of code and reflects state-of-the-art model choices (LLaMA 3). In microGPT, it also means zero extra learnable parameters (no γ, no β) to track through the scalar autograd engine.
+
+![AI-ML/assets/LayerNorm-RMSNorm.png](assets/LayerNorm-RMSNorm.png)
+
 
 **Q6: Can I train this on a GPU?**  
 No. microGPT is strictly CPU-bound. Scalar Python `Value` objects cannot leverage GPU parallel processing. For GPU training, migrate to nanoGPT which uses PyTorch tensors designed for CUDA kernels.
