@@ -35,6 +35,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Chinese AI Trifecta 2025-2026](AI-ML/Chinese-AI-Trifecta-2025-2026.md)
 
 ### 🤖 Agents & Autonomy
+- [microGPT Technical Deep Dive](AI-ML/microGPT-Technical-Deep-Dive.md)
 - [Microsoft Agent Lightning](AI-ML/Microsoft-Agent-Lightning.md)
 - [Agent Skills](AI-ML/Agent-Skills.md)
 - [Claude Agents vs Sub-Agents vs Projects vs Workflow vs Rules vs MCP vs Skills](AI-ML/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md)
