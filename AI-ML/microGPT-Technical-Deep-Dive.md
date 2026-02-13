@@ -18,6 +18,10 @@
 
 ---
 
+![AI-ML/assets/microGPT-Updated.jpg](assets/microGPT-Updated.jpg)
+
+---
+
 ---
 ## Table of Contents
 1. [What is microGPT?](#1-what-is-microgpt)
