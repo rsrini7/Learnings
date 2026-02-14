@@ -291,6 +291,14 @@ The 27 scores (one per character in the vocabulary) are converted to a probabili
 
 **Task:** Next Token Prediction. If the model sees `"J"`, it tries to predict `"e"` for `"Jeffrey"`.
 
+On each training step, one document (one line) is picked from `docs`. It is tokenized as `[BOS] + characters + [BOS]`. The number of positions actually trained is:
+
+```python
+n = min(block_size, len(doc_tokens) - 1)
+```
+
+This caps training at `block_size` even if the document is longer, and subtracts 1 because next-token prediction needs a target at `t+1` for every input at `t`. After the forward pass, loss is averaged across all positions in that document, gradients are computed, Adam updates the weights, and gradients are reset to zero before the next document.
+
 ```python
 losses = []
 for pos_id in range(n):
@@ -399,11 +407,16 @@ sequenceDiagram
 | Experiment | Result |
 |---|---|
 | **1,000 steps on names** | Learns basic name structures — common endings, typical lengths |
-| **Shakespeare (small model)** | Captures basic words ("then", "me") and formatting, but lacks long-range memory |
+| **10,000 steps on names** | No clear improvement over 1,000 steps — the task is simple enough that the model saturates quickly |
+| **Shakespeare (small model)** | Produces basic short words, punctuation, and line breaks, but not real Shakespeare |
 
-**Why?** The model is intentionally **tiny**: 1 Transformer layer, 16-dimensional embeddings, 4 attention heads, ~**4,192 total parameters**. This keeps it readable and runnable in pure Python.
+**What the Shakespeare model learns vs misses:**
 
-The lack of long-range memory has two compounding causes: (1) **`block_size = 10`** means the model never sees more than 10 characters of context at once, so it literally cannot access patterns from earlier in a long document; (2) a single layer with 16-dim embeddings has very limited capacity to store and reason about even the context it does see.
+It picks up **surface patterns** — common short words ("the", "me", "and"), punctuation placement, and line break frequency. What it completely misses is **deeper structure**: multi-line continuity, rhythmic meter, long-range phrasing, and dramatic coherence. There are three compounding reasons for this:
+
+1. **`block_size = 10`** — the model never sees more than 10 characters at once, so long-range context is structurally inaccessible
+2. **Each line is treated as a separate document** — the model has no continuity between lines; every line is an isolated training example, so it never learns cross-line patterns
+3. **Tiny capacity** — 1 layer, 16-dim embeddings, ~4,192 parameters total is far too small to internalize Shakespeare's vocabulary and structure
 
 > **Scaling note:** Larger GPTs increase `n_layer`, `n_embd`, `block_size`, and `vocab_size` — but the core algorithm here is **identical**. Everything else is just efficiency.
 
