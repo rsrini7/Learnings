@@ -10,17 +10,17 @@
 
 ```mermaid
 flowchart TD
-    A["📄 Raw Text\n(names.txt / shakespeare)"] --> B["🔤 Tokenizer\nChar → ID"]
-    B --> C["📦 Embeddings\nToken + Position"]
-    C --> D1["📐 RMSNorm ①\nAfter Embedding"]
-    D1 --> D2["📐 RMSNorm ②\nBefore Attention"]
-    D2 --> E["🔍 Causal Self-Attention\n4 Heads, KV Cache"]
-    E --> D3["📐 RMSNorm ③\nBefore MLP"]
-    D3 --> F["🧠 MLP Block\n16 → 64 → 16"]
-    F --> G["📊 LM Head\nLogits (27 scores)"]
-    G --> H["📈 Softmax\nProbabilities"]
-    H -->|Training| I["⚖️ Loss + Backprop\n→ Adam Update"]
-    H -->|Inference| J["🎲 Sample\nNext Character"]
+    A["📄 Raw Text<br/>(names.txt / shakespeare)"] --> B["🔤 Tokenizer<br/>Char → ID"]
+    B --> C["📦 Embeddings<br/>Token + Position"]
+    C --> D1["📐 RMSNorm ①<br/>After Embedding"]
+    D1 --> D2["📐 RMSNorm ②<br/>Before Attention"]
+    D2 --> E["🔍 Causal Self-Attention<br/>4 Heads, KV Cache"]
+    E --> D3["📐 RMSNorm ③<br/>Before MLP"]
+    D3 --> F["🧠 MLP Block<br/>16 → 64 → 16"]
+    F --> G["📊 LM Head<br/>Logits (27 scores)"]
+    G --> H["📈 Softmax<br/>Probabilities"]
+    H -->|Training| I["⚖️ Loss + Backprop<br/>→ Adam Update"]
+    H -->|Inference| J["🎲 Sample<br/>Next Character"]
     J -->|Loop until BOS| J
 ```
 
@@ -33,7 +33,8 @@ The script begins by ensuring `input.txt` exists, defaulting to a dataset of nam
 ```python
 if not os.path.exists('input.txt'):
     # downloads names.txt ...
-docs = [l.strip() for l in open('input.txt').read().strip().split('\n') if l.strip()]
+docs = [l.strip() for l in open('input.txt').read().strip().split('<br/>') if l.strip()]
+random.shuffle(docs)
 ```
 
 ---
@@ -45,6 +46,7 @@ This is not a fancy library tokenizer. It finds every unique **character** in th
 ```python
 uchars = sorted(set(''.join(docs)))
 BOS = len(uchars)   # Beginning of Sequence token (also acts as End-of-Sequence)
+vocab_size = len(uchars) + 1
 ```
 
 A special **BOS** token is added — it serves as both the start signal during generation and the stop signal when it's sampled as output.
@@ -82,11 +84,11 @@ Each token ID gets two 16-dimensional vectors that are **added together** to for
 
 ```mermaid
 flowchart LR
-    TID["token_id = 4 (e)"] --> WTE["wte lookup\n→ 16-dim vector"]
-    PID["pos_id = 1"] --> WPE["wpe lookup\n→ 16-dim vector"]
+    TID["token_id = 4 (e)"] --> WTE["wte lookup<br/>→ 16-dim vector"]
+    PID["pos_id = 1"] --> WPE["wpe lookup<br/>→ 16-dim vector"]
     WTE --> ADD["➕ Element-wise Add"]
     WPE --> ADD
-    ADD --> X["x: input vector\n[16 floats]"]
+    ADD --> X["x: input vector<br/>[16 floats]"]
 ```
 
 ---
@@ -114,15 +116,17 @@ Since there's no PyTorch, automatic differentiation is built from scratch. Every
 
 ```python
 class Value:
+    def __init__(self, data, children=(), local_grads=()):
+        # ... forward pass storage ...
     def backward(self):
         # topological sort + chain rule
 ```
 
 ```mermaid
 flowchart LR
-    FWD["Forward Pass\nBuilds computation graph"] --> GRAPH["🕸️ Computation Graph\n(Value objects linked)"]
-    GRAPH --> BWD["backward()\nWalk graph in reverse"]
-    BWD --> GRAD["∂loss/∂w for every weight\n(~4,192 gradients)"]
+    FWD["Forward Pass<br/>Builds computation graph"] --> GRAPH["🕸️ Computation Graph<br/>(Value objects linked)"]
+    GRAPH --> BWD["backward()<br/>Walk graph in reverse"]
+    BWD --> GRAD["∂loss/∂w for every weight<br/>(~4,192 gradients)"]
 ```
 
 - **Forward pass**: every math operation records itself in the graph.
@@ -130,7 +134,45 @@ flowchart LR
 
 ---
 
-## 6. Model Architecture — `gpt()` Function
+## 6. Parameter Initialization
+
+Before the model can run, all learnable weight matrices must be created and stored in a `state_dict` dictionary. The model dimensions are defined here — embedding size, number of heads, and number of layers — and every matrix is seeded with small random numbers via a helper `matrix()` function that returns a 2D list of `Value` objects.
+
+```python
+n_embd   = 16   # embedding dimension
+n_head   = 4    # attention heads
+n_layer  = 1    # transformer layers
+block_size = 10 # max sequence length
+
+state_dict = {
+    'wte': matrix(vocab_size, n_embd),   # token embedding table
+    'wpe': matrix(block_size, n_embd),   # position embedding table
+}
+for i in range(n_layer):
+    state_dict[f'layer{i}.attn_wq'] = matrix(n_embd, n_embd)  # Query projection
+    state_dict[f'layer{i}.attn_wk'] = matrix(n_embd, n_embd)  # Key projection
+    state_dict[f'layer{i}.attn_wv'] = matrix(n_embd, n_embd)  # Value projection
+    state_dict[f'layer{i}.attn_wo'] = matrix(n_embd, n_embd)  # Output projection
+    state_dict[f'layer{i}.mlp_fc1'] = matrix(n_embd, n_embd * 4)  # MLP expand
+    state_dict[f'layer{i}.mlp_fc2'] = matrix(n_embd * 4, n_embd)  # MLP contract
+state_dict['lm_head'] = matrix(n_embd, vocab_size)             # final classifier
+```
+
+```mermaid
+flowchart LR
+    DIM["Dimensions<br/>n_embd=16, n_head=4"] --> WTE["wte<br/>vocab_size × 16"]
+    DIM --> WPE["wpe<br/>block_size × 16"]
+    DIM --> ATT["Attention matrices<br/>wq, wk, wv, wo<br/>(each 16 × 16)"]
+    DIM --> MLP["MLP matrices<br/>fc1: 16 × 64<br/>fc2: 64 × 16"]
+    DIM --> LMH["lm_head<br/>16 × vocab_size"]
+    WTE & WPE & ATT & MLP & LMH --> SD["state_dict<br/>~4,192 total params"]
+```
+
+> **All matrices are bias-free.** Every linear projection in this model computes only `Wx` — there is no `+ b` term anywhere. The `params` list flattens all `Value` objects from `state_dict` for the optimizer to iterate over.
+
+---
+
+## 7. Model Architecture — `gpt()` Function
 
 The `gpt` function is the Transformer. It processes **one token at a time** — there is no batching, no batch dimension, no parallel sequence processing. This single-token-at-a-time design is exactly why causality is structural: the KV cache simply hasn't seen future tokens yet when the current one is processed.
 
@@ -140,41 +182,51 @@ The `gpt` function is the Transformer. It processes **one token at a time** — 
 def gpt(token_id, pos_id, keys, values):
     tok_emb = state_dict['wte'][token_id]
     pos_emb = state_dict['wpe'][pos_id]
+    x = [t + p for t, p in zip(tok_emb, pos_emb)]
+    x = rmsnorm(x)
     # ... Attention and MLP blocks ...
 ```
 
-### 6a. Causal Self-Attention
+### 7a. Causal Self-Attention
 
 ```mermaid
 flowchart TD
-    X["Input x [16-dim]"] --> Q["Query (Q)\n'What am I looking for?'"]
-    X --> K["Key (K)\n'What info do I have?'"]
-    X --> V["Value (V)\n'What do I share?'"]
-    Q --> SCORE["Attention Scores\nQ·Kᵀ / √(head_dim)"]
+    X["Input x [16-dim]"] --> Q["Query (Q)<br/>'What am I looking for?'"]
+    X --> K["Key (K)<br/>'What info do I have?'"]
+    X --> V["Value (V)<br/>'What do I share?'"]
+    Q --> SCORE["Attention Scores<br/>Q·Kᵀ / √(head_dim)"]
     K --> SCORE
-    SCORE --> SOFT["Softmax → weights\n⚠️ No mask tensor — KV cache\nonly holds past positions\n(implicit causality)"]
+    SCORE --> SOFT["Softmax → weights<br/>⚠️ No mask tensor — KV cache<br/>only holds past positions<br/>(implicit causality)"]
     SOFT --> OUT["Weighted sum of Values"]
     V --> OUT
-    OUT --> HEADS["4 Heads concatenated\n(each head: 4-dim output)\n4 × 4 = 16-dim total"]
-    HEADS --> PROJ["attn_wo: Linear 16 → 16\n(output projection)"]
-    X --> RES["➕ Residual Connection\nx = x + Attention(x)"]
+    OUT --> HEADS["4 Heads concatenated<br/>(each head: 4-dim output)<br/>4 × 4 = 16-dim total"]
+    HEADS --> PROJ["attn_wo: Linear 16 → 16<br/>(output projection)"]
+    X --> RES["➕ Residual Connection<br/>x = x + Attention(x)"]
     PROJ --> RES
 ```
 
 **Key insight on causality:** There is no explicit masking matrix. Causality is enforced *structurally* — at position 5, the KV cache only contains entries from positions 0–4 because they haven't been processed yet.
 
+```python
+keys[li].append(k)
+values[li].append(v)
+# Scores are only computed over the keys seen so far
+attn_logits = [sum(q_h[j] * k_h[t][j] for j in range(head_dim))
+               for t in range(len(keys[li]))]
+```
+
 **Head dimension arithmetic:** `head_dim = n_embd // n_head = 16 // 4 = 4`. Each of the 4 heads independently attends over its own 4-dimensional slice of Q, K, V. Their outputs are concatenated back to 16 dims, then passed through `attn_wo` (a 16×16 linear projection) before the residual add.
 
 **Implementation note:** There are no tensor `matmul` operations. Attention scores are computed via explicit Python loops over scalars: `sum(q_h[j] * k_h[t][j] for j in range(head_dim))`. Everything is scalar arithmetic on `Value` objects.
 
-### 6b. MLP Block
+### 7b. MLP Block
 
 ```mermaid
 flowchart LR
     X16["x [16-dim]"] --> FC1["Linear: 16 → 64"]
-    FC1 --> RELU["ReLU\n(negatives → 0)"]
+    FC1 --> RELU["ReLU<br/>(negatives → 0)"]
     RELU --> FC2["Linear: 64 → 16"]
-    FC2 --> RES["➕ Residual\nx = x + MLP(x)"]
+    FC2 --> RES["➕ Residual<br/>x = x + MLP(x)"]
     X16 --> RES
 ```
 
@@ -182,20 +234,20 @@ The expansion to 64 dimensions gives the model more "room to think" before compr
 
 ---
 
-## 7. LM Head + Softmax — Scores to Probabilities
+## 8. LM Head + Softmax — Scores to Probabilities
 
 ```mermaid
 flowchart LR
-    X16["x [16-dim]"] --> HEAD["Linear projection\n16 → 27 logits"]
+    X16["x [16-dim]"] --> HEAD["Linear projection<br/>16 → 27 logits"]
     HEAD --> SOFT["Softmax"]
-    SOFT --> PROBS["Probabilities\n'a':60%, 'o':20%, 'z':0.1%..."]
+    SOFT --> PROBS["Probabilities<br/>'a':60%, 'o':20%, 'z':0.1%..."]
 ```
 
 The 27 scores (one per character in the vocabulary) are converted to a probability distribution that sums to 100%.
 
 ---
 
-## 8. Training Loop — Learning from Mistakes
+## 9. Training Loop — Learning from Mistakes
 
 **Task:** Next Token Prediction. If the model sees `"J"`, it tries to predict `"e"` for `"Jeffrey"`.
 
@@ -212,9 +264,9 @@ loss = (1 / n) * sum(losses)           # per-token loss averaged across the docu
 
 ```mermaid
 flowchart TD
-    A["Step 1–7: Forward Pass\n→ probabilities"] --> L["Step 8: Compute Loss\n-log(P(correct char))\nHigh surprise = High loss"]
-    L --> B["Step 9: Backpropagation\nAutograd traces graph\n→ 4,192 gradients"]
-    B --> O["Step 10: Adam Update\nNudge weights → lower loss"]
+    A["Step 1–7: Forward Pass<br/>→ probabilities"] --> L["Step 8: Compute Loss<br/>-log(P(correct char))<br/>High surprise = High loss"]
+    L --> B["Step 9: Backpropagation<br/>Autograd traces graph<br/>→ 4,192 gradients"]
+    B --> O["Step 10: Adam Update<br/>Nudge weights → lower loss"]
     O -->|Next token| A
 ```
 
@@ -222,7 +274,7 @@ flowchart TD
 
 ---
 
-## 9. The Adam Optimizer
+## 10. The Adam Optimizer
 
 ```python
 lr_t = learning_rate * (1 - step / num_steps)  # linear decay
@@ -237,9 +289,9 @@ for i, p in enumerate(params):
 
 ```mermaid
 flowchart LR
-    G["Gradient p.grad"] --> M["1st Moment Buffer m\n(smoothed mean)"]
-    G --> V["2nd Moment Buffer v\n(smoothed variance)"]
-    M --> ADAM["Adam Update\nw = w - lr * m̂/√v̂"]
+    G["Gradient p.grad"] --> M["1st Moment Buffer m<br/>(smoothed mean)"]
+    G --> V["2nd Moment Buffer v<br/>(smoothed variance)"]
+    M --> ADAM["Adam Update<br/>w = w - lr * m̂/√v̂"]
     V --> ADAM
     ADAM --> W["Updated Weight"]
 ```
@@ -250,7 +302,7 @@ The moment buffers act as **memory** for training — they smooth out updates so
 
 ---
 
-## 10. Inference — Generating New Names
+## 11. Inference — Generating New Names
 
 ```python
 temperature = 0.5  # controls randomness: low = conservative, high = creative
@@ -258,25 +310,27 @@ for pos_id in range(block_size):
     logits = gpt(token_id, pos_id, keys, values)
     probs = softmax([l / temperature for l in logits])  # temperature applied to logits BEFORE softmax
     token_id = random.choices(range(vocab_size), weights=[p.data for p in probs])[0]
+    if token_id == BOS:
+        break  # Stop if it predicts the end
 ```
 
 > **Note on temperature:** dividing logits by a value < 1 *sharpens* the distribution (more confident), while > 1 *flattens* it (more random). The source uses `temperature = 0.5` by default.
 
 ```mermaid
 flowchart TD
-    START["Start: BOS token"] --> FWD["Forward Pass\n→ probabilities"]
-    FWD --> SAMPLE["Sample next character\n(weighted random)"]
-    SAMPLE --> CHECK{Is it BOS\nor max length?}
+    START["Start: BOS token"] --> FWD["Forward Pass<br/>→ probabilities"]
+    FWD --> SAMPLE["Sample next character<br/>(weighted random)"]
+    SAMPLE --> CHECK{Is it BOS<br/>or max length?}
     CHECK -->|No| APPEND["Append to sequence"]
     APPEND --> FWD
-    CHECK -->|Yes| OUT["Output generated name\ne.g. 'emma', 'oliver'"]
+    CHECK -->|Yes| OUT["Output generated name<br/>e.g. 'emma', 'oliver'"]
 ```
 
 Inference is identical to the forward pass during training — but **no loss is calculated and no weights are updated**. The model "babbles" by feeding its own output back in as the next input (autoregressive generation).
 
 ---
 
-## 11. Full Training Pipeline — End to End
+## 12. Full Training Pipeline — End to End
 
 ```mermaid
 sequenceDiagram
@@ -300,7 +354,7 @@ sequenceDiagram
 
 ---
 
-## 12. Model Capacity & Experiments
+## 13. Model Capacity & Experiments
 
 | Experiment | Result |
 |---|---|
@@ -313,7 +367,7 @@ sequenceDiagram
 
 ---
 
-## 13. Key Design Principle
+## 14. Key Design Principle
 
 > The entire architecture runs on **pure Python scalars**. Every number is wrapped in a custom `Value` object that tracks both its value and its gradient, building a computation graph that enables learning via the chain rule.
 
