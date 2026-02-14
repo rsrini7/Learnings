@@ -91,6 +91,30 @@ flowchart LR
     ADD --> X["x: input vector<br/>[16 floats]"]
 ```
 
+**`wte` — Token Embedding Table**
+
+It encodes **"What"** — the identity of the character itself. Each character in the vocabulary gets its own unique 16-dimensional vector. So `"e"` always starts with the same base vector regardless of where it appears in a word. It's looked up by `token_id`.
+
+```python
+tok_emb = state_dict['wte'][token_id]  # "who is this character?"
+```
+
+**`wpe` — Position Embedding Table**
+
+It encodes **"Where"** — the position of the character in the sequence. Position 0 has its own 16-dim vector, position 1 has another, and so on up to `block_size`. This tells the model *where* in the sequence the current character sits.
+
+```python
+pos_emb = state_dict['wpe'][pos_id]   # "where in the sequence?"
+```
+
+**Together:**
+
+```python
+x = [t + p for t, p in zip(tok_emb, pos_emb)]
+```
+
+They are **element-wise added** to produce one combined 16-dim vector that carries both pieces of information — *identity + position* — before being passed into the Transformer. Without `wpe`, the model would treat `"e"` at position 1 the same as `"e"` at position 5, losing all sense of word structure.
+
 ---
 
 ## 4. RMSNorm — Stabilize the Numbers
