@@ -10,17 +10,17 @@
 
 ```mermaid
 flowchart TD
-    A["📄 Raw Text<br/>(names.txt / shakespeare)"] --> B["🔤 Tokenizer<br/>Char → ID"]
-    B --> C["📦 Embeddings<br/>Token + Position"]
-    C --> D1["📐 RMSNorm ①<br/>After Embedding"]
-    D1 --> D2["📐 RMSNorm ②<br/>Before Attention"]
-    D2 --> E["🔍 Causal Self-Attention<br/>4 Heads, KV Cache"]
-    E --> D3["📐 RMSNorm ③<br/>Before MLP"]
-    D3 --> F["🧠 MLP Block<br/>16 → 64 → 16"]
-    F --> G["📊 LM Head<br/>Logits (27 scores)"]
-    G --> H["📈 Softmax<br/>Probabilities"]
-    H -->|Training| I["⚖️ Loss + Backprop<br/>→ Adam Update"]
-    H -->|Inference| J["🎲 Sample<br/>Next Character"]
+    A["📄 Raw Text<br/> (names.txt / shakespeare)"] --> B["🔤 Tokenizer<br/> Char → ID"]
+    B --> C["📦 Embeddings<br/> Token + Position"]
+    C --> D1["📐 RMSNorm ①<br/> After Embedding"]
+    D1 --> D2["📐 RMSNorm ②<br/> Before Attention"]
+    D2 --> E["🔍 Causal Self-Attention<br/> 4 Heads, KV Cache"]
+    E --> D3["📐 RMSNorm ③<br/> Before MLP"]
+    D3 --> F["🧠 MLP Block<br/> 16 → 64 → 16"]
+    F --> G["📊 LM Head<br/> Logits (27 scores)"]
+    G --> H["📈 Softmax<br/> Probabilities"]
+    H -->|Training| I["⚖️ Loss + Backprop<br/> → Adam Update"]
+    H -->|Inference| J["🎲 Sample<br/> Next Character"]
     J -->|Loop until BOS| J
 ```
 
@@ -33,7 +33,7 @@ The script begins by ensuring `input.txt` exists, defaulting to a dataset of nam
 ```python
 if not os.path.exists('input.txt'):
     # downloads names.txt ...
-docs = [l.strip() for l in open('input.txt').read().strip().split('<br/>') if l.strip()]
+docs = [l.strip() for l in open('input.txt').read().strip().split('\n') if l.strip()]
 random.shuffle(docs)
 ```
 
@@ -84,11 +84,11 @@ Each token ID gets two 16-dimensional vectors that are **added together** to for
 
 ```mermaid
 flowchart LR
-    TID["token_id = 4 (e)"] --> WTE["wte lookup<br/>→ 16-dim vector"]
-    PID["pos_id = 1"] --> WPE["wpe lookup<br/>→ 16-dim vector"]
+    TID["token_id = 4 (e)"] --> WTE["wte lookup<br/> → 16-dim vector"]
+    PID["pos_id = 1"] --> WPE["wpe lookup<br/> → 16-dim vector"]
     WTE --> ADD["➕ Element-wise Add"]
     WPE --> ADD
-    ADD --> X["x: input vector<br/>[16 floats]"]
+    ADD --> X["x: input vector<br/> [16 floats]"]
 ```
 
 **`wte` — Token Embedding Table**
@@ -136,31 +136,47 @@ x = rmsnorm(x)            # before MLP sublayer
 
 ## 5. The Autograd Engine — `Value` Class
 
-Since there's no PyTorch, automatic differentiation is built from scratch. Every number (weight) in the model is a `Value` object.
+`Value` is the minimal building block that replaces PyTorch's entire autograd system. Every scalar number in the model — **both weights and intermediate activations** — is wrapped in a `Value` object. Each `Value` stores three things: its scalar data, its gradient (`.grad`), and **links to its parent nodes** (`children` and `local_grads`) so the computation graph can be traversed.
 
 ```python
 class Value:
     def __init__(self, data, children=(), local_grads=()):
-        # ... forward pass storage ...
+        self.data = data       # the scalar value
+        self.grad = 0          # gradient accumulates here during backward()
+        self._children = children       # parent nodes in the graph
+        self._local_grads = local_grads # local derivative w.r.t. each parent
     def backward(self):
-        # topological sort + chain rule
+        # reverse topological sort + chain rule
 ```
 
 ```mermaid
 flowchart LR
-    FWD["Forward Pass<br/>Builds computation graph"] --> GRAPH["🕸️ Computation Graph<br/>(Value objects linked)"]
-    GRAPH --> BWD["backward()<br/>Walk graph in reverse"]
-    BWD --> GRAD["∂loss/∂w for every weight<br/>(~4,192 gradients)"]
+    FWD["Forward Pass<br/> Every math op on Values<br/> builds the graph"] --> GRAPH["🕸️ Computation Graph<br/> (Values linked via children/local_grads)"]
+    GRAPH --> BWD["loss.backward()<br/> Walk in reverse<br/> topological order"]
+    BWD --> GRAD["Gradients accumulate<br/> in each node's .grad<br/> (~4,192 total)"]
+    GRAD --> ADAM["Adam reads .grad<br/> to update weights"]
 ```
 
-- **Forward pass**: every math operation records itself in the graph.
-- **Backward pass**: walks the graph in reverse using the **chain rule** to compute how much each weight contributed to the error.
+- **Forward pass**: every math operation (`+`, `*`, `log`, etc.) records its inputs as `children` and stores the local derivative as `local_grads`, building the graph automatically.
+- **Backward pass**: `loss.backward()` performs a **reverse topological sort** of the entire graph and walks it in reverse, applying the **chain rule** at each node. The gradient of the loss with respect to each parameter **accumulates in `.grad`**.
+- **Adam then reads `.grad`** from every parameter `Value` to perform the weight update — this is the bridge between autograd and the optimizer.
 
 ---
 
 ## 6. Parameter Initialization
 
-Before the model can run, all learnable weight matrices must be created and stored in a `state_dict` dictionary. The model dimensions are defined here — embedding size, number of heads, and number of layers — and every matrix is seeded with small random numbers via a helper `matrix()` function that returns a 2D list of `Value` objects.
+Before the model can run, all learnable weight matrices must be created and stored in a `state_dict` dictionary. There are **four core model size hyperparameters** that together determine total model capacity:
+
+| Hyperparameter | Value | Controls |
+|---|---|---|
+| `n_embd` | 16 | Width of every vector representation |
+| `n_head` | 4 | Number of attention heads |
+| `n_layer` | 1 | Depth — how many Transformer blocks |
+| `block_size` | 10 | **Maximum sequence length** the model trains on at once |
+
+**`block_size` deserves special attention.** Each document is one line from `input.txt`. If lines are very short (like names: 3–8 characters), `block_size` rarely becomes a limiting factor — the whole name fits within it easily. But if lines are long (like Shakespeare passages), `block_size` controls how much of the line the model can see as context at any one position. A small `block_size` means the model only ever sees a short window, which is a direct reason it **cannot learn long-range patterns** — it never has access to context from far back in the sequence. This is explicitly why the Shakespeare experiment produces words and local formatting but lacks real structural memory.
+
+Every matrix is seeded with small random numbers via a helper `matrix()` function that returns a 2D list of `Value` objects.
 
 ```python
 n_embd   = 16   # embedding dimension
@@ -184,12 +200,12 @@ state_dict['lm_head'] = matrix(n_embd, vocab_size)             # final classifie
 
 ```mermaid
 flowchart LR
-    DIM["Dimensions<br/>n_embd=16, n_head=4"] --> WTE["wte<br/>vocab_size × 16"]
-    DIM --> WPE["wpe<br/>block_size × 16"]
-    DIM --> ATT["Attention matrices<br/>wq, wk, wv, wo<br/>(each 16 × 16)"]
-    DIM --> MLP["MLP matrices<br/>fc1: 16 × 64<br/>fc2: 64 × 16"]
-    DIM --> LMH["lm_head<br/>16 × vocab_size"]
-    WTE & WPE & ATT & MLP & LMH --> SD["state_dict<br/>~4,192 total params"]
+    DIM["Dimensions<br/> n_embd=16, n_head=4"] --> WTE["wte<br/> vocab_size × 16"]
+    DIM --> WPE["wpe<br/> block_size × 16"]
+    DIM --> ATT["Attention matrices<br/> wq, wk, wv, wo<br/> (each 16 × 16)"]
+    DIM --> MLP["MLP matrices<br/> fc1: 16 × 64<br/> fc2: 64 × 16"]
+    DIM --> LMH["lm_head<br/> 16 × vocab_size"]
+    WTE & WPE & ATT & MLP & LMH --> SD["state_dict<br/> ~4,192 total params"]
 ```
 
 > **All matrices are bias-free.** Every linear projection in this model computes only `Wx` — there is no `+ b` term anywhere. The `params` list flattens all `Value` objects from `state_dict` for the optimizer to iterate over.
@@ -215,17 +231,17 @@ def gpt(token_id, pos_id, keys, values):
 
 ```mermaid
 flowchart TD
-    X["Input x [16-dim]"] --> Q["Query (Q)<br/>'What am I looking for?'"]
-    X --> K["Key (K)<br/>'What info do I have?'"]
-    X --> V["Value (V)<br/>'What do I share?'"]
-    Q --> SCORE["Attention Scores<br/>Q·Kᵀ / √(head_dim)"]
+    X["Input x [16-dim]"] --> Q["Query (Q)<br/> 'What am I looking for?'"]
+    X --> K["Key (K)<br/> 'What info do I have?'"]
+    X --> V["Value (V)<br/> 'What do I share?'"]
+    Q --> SCORE["Attention Scores<br/> Q·Kᵀ / √(head_dim)"]
     K --> SCORE
-    SCORE --> SOFT["Softmax → weights<br/>⚠️ No mask tensor — KV cache<br/>only holds past positions<br/>(implicit causality)"]
+    SCORE --> SOFT["Softmax → weights<br/> ⚠️ No mask tensor — KV cache<br/> only holds past positions<br/> (implicit causality)"]
     SOFT --> OUT["Weighted sum of Values"]
     V --> OUT
-    OUT --> HEADS["4 Heads concatenated<br/>(each head: 4-dim output)<br/>4 × 4 = 16-dim total"]
-    HEADS --> PROJ["attn_wo: Linear 16 → 16<br/>(output projection)"]
-    X --> RES["➕ Residual Connection<br/>x = x + Attention(x)"]
+    OUT --> HEADS["4 Heads concatenated<br/> (each head: 4-dim output)<br/> 4 × 4 = 16-dim total"]
+    HEADS --> PROJ["attn_wo: Linear 16 → 16<br/> (output projection)"]
+    X --> RES["➕ Residual Connection<br/> x = x + Attention(x)"]
     PROJ --> RES
 ```
 
@@ -248,9 +264,9 @@ attn_logits = [sum(q_h[j] * k_h[t][j] for j in range(head_dim))
 ```mermaid
 flowchart LR
     X16["x [16-dim]"] --> FC1["Linear: 16 → 64"]
-    FC1 --> RELU["ReLU<br/>(negatives → 0)"]
+    FC1 --> RELU["ReLU<br/> (negatives → 0)"]
     RELU --> FC2["Linear: 64 → 16"]
-    FC2 --> RES["➕ Residual<br/>x = x + MLP(x)"]
+    FC2 --> RES["➕ Residual<br/> x = x + MLP(x)"]
     X16 --> RES
 ```
 
@@ -262,9 +278,9 @@ The expansion to 64 dimensions gives the model more "room to think" before compr
 
 ```mermaid
 flowchart LR
-    X16["x [16-dim]"] --> HEAD["Linear projection<br/>16 → 27 logits"]
+    X16["x [16-dim]"] --> HEAD["Linear projection<br/> 16 → 27 logits"]
     HEAD --> SOFT["Softmax"]
-    SOFT --> PROBS["Probabilities<br/>'a':60%, 'o':20%, 'z':0.1%..."]
+    SOFT --> PROBS["Probabilities<br/> 'a':60%, 'o':20%, 'z':0.1%..."]
 ```
 
 The 27 scores (one per character in the vocabulary) are converted to a probability distribution that sums to 100%.
@@ -288,9 +304,9 @@ loss = (1 / n) * sum(losses)           # per-token loss averaged across the docu
 
 ```mermaid
 flowchart TD
-    A["Step 1–7: Forward Pass<br/>→ probabilities"] --> L["Step 8: Compute Loss<br/>-log(P(correct char))<br/>High surprise = High loss"]
-    L --> B["Step 9: Backpropagation<br/>Autograd traces graph<br/>→ 4,192 gradients"]
-    B --> O["Step 10: Adam Update<br/>Nudge weights → lower loss"]
+    A["Step 1–7: Forward Pass<br/> → probabilities"] --> L["Step 8: Compute Loss<br/> -log(P(correct char))<br/> High surprise = High loss"]
+    L --> B["Step 9: Backpropagation<br/> Autograd traces graph<br/> → 4,192 gradients"]
+    B --> O["Step 10: Adam Update<br/> Nudge weights → lower loss"]
     O -->|Next token| A
 ```
 
@@ -313,9 +329,9 @@ for i, p in enumerate(params):
 
 ```mermaid
 flowchart LR
-    G["Gradient p.grad"] --> M["1st Moment Buffer m<br/>(smoothed mean)"]
-    G --> V["2nd Moment Buffer v<br/>(smoothed variance)"]
-    M --> ADAM["Adam Update<br/>w = w - lr * m̂/√v̂"]
+    G["Gradient p.grad"] --> M["1st Moment Buffer m<br/> (smoothed mean)"]
+    G --> V["2nd Moment Buffer v<br/> (smoothed variance)"]
+    M --> ADAM["Adam Update<br/> w = w - lr * m̂/√v̂"]
     V --> ADAM
     ADAM --> W["Updated Weight"]
 ```
@@ -342,12 +358,12 @@ for pos_id in range(block_size):
 
 ```mermaid
 flowchart TD
-    START["Start: BOS token"] --> FWD["Forward Pass<br/>→ probabilities"]
-    FWD --> SAMPLE["Sample next character<br/>(weighted random)"]
-    SAMPLE --> CHECK{Is it BOS<br/>or max length?}
+    START["Start: BOS token"] --> FWD["Forward Pass<br/> → probabilities"]
+    FWD --> SAMPLE["Sample next character<br/> (weighted random)"]
+    SAMPLE --> CHECK{Is it BOS<br/> or max length?}
     CHECK -->|No| APPEND["Append to sequence"]
     APPEND --> FWD
-    CHECK -->|Yes| OUT["Output generated name<br/>e.g. 'emma', 'oliver'"]
+    CHECK -->|Yes| OUT["Output generated name<br/> e.g. 'emma', 'oliver'"]
 ```
 
 Inference is identical to the forward pass during training — but **no loss is calculated and no weights are updated**. The model "babbles" by feeding its own output back in as the next input (autoregressive generation).
@@ -387,7 +403,9 @@ sequenceDiagram
 
 **Why?** The model is intentionally **tiny**: 1 Transformer layer, 16-dimensional embeddings, 4 attention heads, ~**4,192 total parameters**. This keeps it readable and runnable in pure Python.
 
-> **Scaling note:** Larger GPTs increase `n_layer`, `n_embd`, and `vocab_size` — but the core algorithm here is **identical**. Everything else is just efficiency.
+The lack of long-range memory has two compounding causes: (1) **`block_size = 10`** means the model never sees more than 10 characters of context at once, so it literally cannot access patterns from earlier in a long document; (2) a single layer with 16-dim embeddings has very limited capacity to store and reason about even the context it does see.
+
+> **Scaling note:** Larger GPTs increase `n_layer`, `n_embd`, `block_size`, and `vocab_size` — but the core algorithm here is **identical**. Everything else is just efficiency.
 
 ---
 
