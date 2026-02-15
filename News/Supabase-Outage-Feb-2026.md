@@ -16,7 +16,7 @@ Below, we break down the event, its causes, impacts, and lessons, drawing from S
 From an SRE standpoint, this was a step-function failure: a high-severity, control-plane enforced network partition that bypassed application-level redundancy and rendered in-region monitoring ineffective. It underscores the need for "nuclear-tier" guardrails on regional controls.
 
 ## The Incident: A Timeline of Chaos
-The outage unfolded in UTC on February 12–13, 2026, primarily affecting the us-east-2 (Ohio) region. While the public status page logged a 4-hour 21-minute window (from acknowledgment to resolution), the actual impact—measured from trigger to service restoration—was closer to 3 hours 42 minutes. Here's the verified sequence, with SRE observations on failure propagation:
+The outage unfolded in UTC on February 12–13, 2026, primarily affecting the us-east-2 (Ohio) region. While the public status page logged a 4-hour 21-minute window (from acknowledgment to resolution), the actual impact—measured from trigger to service restoration—was closer to 3 hours 42 minutes. Here's the verified sequence, with SRE observations on failure propagation (note: granular timestamps like 21:12–21:26 are from Supabase's internal post-mortem; public status updates reflect external communications):
 
 - **21:12 (Feb 12)**: Deployment of a new monitoring stack inadvertently enabled regional VPC Block Public Access (BPA), instantly blocking internet gateway traffic for non-exempt VPCs in us-east-2. Application Load Balancer (ALB) request counts plummeted to zero. *SRE Note*: This was an immediate, step-function drop—no gradual escalation—highlighting control-plane changes' potential for instantaneous regional isolation.
 - **21:13 (Feb 12)**: Full regional outage hits. Over 20 production subnets lose connectivity, as BPA exemptions were limited to the monitoring service itself.
@@ -25,7 +25,7 @@ The outage unfolded in UTC on February 12–13, 2026, primarily affecting the us
 - **21:32 (Feb 12)**: Public incident declared on the status page, citing elevated 500 errors across US regions.
 - **22:37–23:58 (Feb 12)**: Misdiagnosis phase. Updates attribute issues to US-West/US-East reads; AWS support is engaged (no faults on their side); investigation shifts to CloudTrail logs and IaC history. *SRE Note*: Symptom misdirection from cascading effects prolonged MTTI—classic in distributed systems where secondary failures obscure root partitions.
 - **00:25 (Feb 13)**: Timestamps correlated to the monitoring deployment.
-- **00:39 (Feb 13)**: Root cause identified: Regional BPA enablement via the `ModifyVpcBlockPublicAccessOptions` API.
+- **00:39 (Feb 13)**: Root cause identified: Regional BPA enablement via the `ModifyVpcBlockPublicAccessOptions` API (internal engineering identification; public "Identified" status update at 01:04 UTC).
 - **00:50 (Feb 13)**: Mitigation begins—destroy monitoring stack and revert BPA.
 - **00:57 (Feb 13)**: Core services restored; API error rates normalize.
 - **01:53 (Feb 13)**: Full resolution declared. Background jobs requeued.
@@ -57,7 +57,7 @@ The outage became a point of discussion for rivals like PlanetScale. CEO Sam Lam
 - **Reputation shift**: Discussions framed Supabase as "feature-rich but volatile" versus PlanetScale's "boring reliability." This echoed broader industry tensions in serverless databases. *SRE Note*: Outages propagate reputation shockwaves; reliability is a market differentiator, shifting perceptions faster than fixes.
 
 ## The "Vibe Coding" Backlash
-In the lead-up to the outage, "vibe coding"—a term coined by Andrej Karpathy in February 2025 for AI-assisted, rapid prototyping—had gained traction. Tools like Lovable and Mocha often paired with Supabase backends for quick app builds, promoting a "prompt-to-deploy" ethos. Critics in post-outage threads viewed the BPA misconfig as emblematic of broader risks in "vibe coding": over-reliance on automated, AI-driven changes without rigorous networking checks. Reports highlighted exposures like leaked credentials in scanned indie projects using Supabase, fueling sharp community fallout questioning if speed was trumping security in production environments.
+In the lead-up to the outage, "vibe coding"—a term coined by Andrej Karpathy in February 2025 for AI-assisted, rapid prototyping—had gained traction. Tools like Lovable and Mocha often paired with Supabase backends for quick app builds, promoting a "prompt-to-deploy" ethos. Critics in post-outage threads viewed the BPA misconfig as emblematic of broader risks in "vibe coding": over-reliance on automated, AI-driven changes without rigorous networking checks. Reports highlighted exposures like leaked credentials in scanned indie projects using Supabase, including the Moltbook incident where missing Row Level Security (RLS) exposed 1.5 million API keys, 35,000 emails, and private messages, fueling sharp community fallout questioning if speed was trumping security in production environments.
 
 *SRE Clarification*: There's no evidence AI-generated code directly caused the incident. The failure stemmed from shared IaC module reuse, insufficient regional guardrails, and human-approved automation—an automation maturity issue, not an AI failure.
 
