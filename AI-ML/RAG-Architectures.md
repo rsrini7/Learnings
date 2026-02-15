@@ -3006,7 +3006,21 @@ gantt
 
 **Key Optimizations:** Parallelize retriever + reranker (CPU/GPU overlap); use speculative decoding for LLM to reduce TTFB (time-to-first-byte) to <300ms.
 
-### 7.10.4 Scale & Throughput Modeling
+### 7.10.4 Network & I/O Considerations
+
+Enterprise acceleration extends beyond compute to handle high-throughput I/O and network demands, preventing bottlenecks at scale.
+
+- **Ingress/Egress Load:** At 10k QPS, expect 100-500 MB/s traffic. Use HTTP/2 or gRPC for multiplexing; tune keep-alives (e.g., 30s timeout) and connection pooling (e.g., 1000 max conns) to reduce overhead.
+
+- **Streaming Responses:** Enable chunked transfer encoding for low-latency token streaming; integrate with edge CDNs (e.g., Cloudflare) for global distribution.
+
+- **Vector DB I/O:** Sharded setups (e.g., Qdrant clusters) introduce network hops—optimize with Redis co-location for cache locality, reducing p95 retrieval from 200ms to <50ms.
+
+- **Bottleneck Mitigation:** Monitor NIC bandwidth (e.g., 100 Gbps for GPU clusters) and use NVLink for intra-node GPU comms to avoid PCIe throttling.
+
+These ensure the pipeline scales without network-induced delays, critical for geo-distributed users.
+
+### 7.10.5 Scale & Throughput Modeling
 
 Model QPS based on hardware and traffic patterns.
 
@@ -3014,15 +3028,15 @@ Model QPS based on hardware and traffic patterns.
 
 - **10 Users vs. 10,000 Users:** Small scale: Single server. Large scale: Kubernetes with auto-scaling pods, sharded vector DB (Qdrant clusters), and caching (Redis for frequent queries).
 
-- **Throughput Formula:** QPS = (GPU FLOPS × Utilization) / (Model FLOPS/query). Example: H100 (3 PFLOPS) at 80% util for 70B model (~2 TFLOPS/query) → ~12 QPS.
+- **Throughput Formula:** QPS = (GPU FLOPS × Utilization) / (Model FLOPS/query). In practice, LLM inference is often memory-bandwidth bound rather than compute-bound; throughput is constrained by KV cache reads and attention scaling rather than raw FLOPS alone. Example: H100 (3 PFLOPS) at 80% util for 70B model (~2 TFLOPS/query) → ~12 QPS.
 
-### 7.10.5 Cost per 1M Queries Modeling
+### 7.10.6 Cost per 1M Queries Modeling
 
 | Model | Hardware | Inference Engine | Cost per 1M Queries | GPU Utilization |
 |-------|----------|------------------|---------------------|-----------------|
 | Llama 3.1 8B | 1x A100 | vLLM (4-bit) | $500-800 | 85% |
 | Llama 3.1 70B | 4x H100 | TensorRT-LLM | $4,000-6,000 | 80% |
-| GPT-4o | Hosted API | N/A | $10,000-15,000 | N/A |
+| GPT-4o | Hosted API | N/A | Typically 2-4× higher at scale due to token-based billing and lack of batching control | N/A |
 | Claude 4 Sonnet | Hosted + Custom | TGI | $8,000-12,000 | 75% |
 
 **Notes:** Idle cost: $2-5/hour per GPU. Optimize with auto-scaling (scale to zero off-peak) and routing (cheap models for simple queries) to cut costs 40%. Enterprise ROI: Acceleration pays off when QPS >100, reducing per-query cost from $0.01 to $0.004.
@@ -3030,6 +3044,8 @@ Model QPS based on hardware and traffic patterns.
 ## 7.11 Why Demo RAG Fails in Production
 
 **Critical Insight:** 2026 saw a surge in "RAG regret"—teams deploying demo-grade systems that crumbled under real-world load, security threats, and evolving requirements. While a simple embedding + vector search + LLM chain works for proofs-of-concept, production demands layered sophistication to handle scale, reliability, and governance. This section contrasts the two paradigms and highlights common failure modes to guide architectural maturation.
+
+**Brutal Reality:** Demo RAG fails not because retrieval is wrong—but because systems engineering is missing. Enterprise RAG is 70% infrastructure, 30% modeling.
 
 ### 7.11.1 Demo RAG: The Quick-Start Trap
 
@@ -3133,7 +3149,7 @@ Transitioning from demo to production exposes these pitfalls—each tied to arch
 
 **Real-World Example:** A fintech firm's demo RAG leaked PII in 15% of queries due to unfiltered context. Migrating to enterprise (with redaction + auditing) reduced incidents to <1%, but required 2x engineering effort.
 
-**Migration Advice:** Start with demo for validation, then layer in enterprise components iteratively: Security first (regulatory must-have), then acceleration (scale enabler), evaluation last (continuous improvement). Expect 3-6 months for full maturation.
+**Migration Advice:** Start with demo for validation, then layer in enterprise components iteratively: Security first (mandatory for compliance), then observability (you can't scale blind), acceleration (once load grows), and continuous evaluation (for maturity). Expect 3-6 months for full maturation.
 
 ---
 
