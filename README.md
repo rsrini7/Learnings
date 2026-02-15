@@ -200,6 +200,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 ### 🚀 Infrastructure & Outages
 - [Cloudflare down Nov-2025](News/cloudflare-down-nov-2025.md)
 - [AWS Outage October 19 & 20 2025](News/AWS-Outage-October-19&20-2025.md)
+- [Supabase Outage Feb 2026](News/Supabase-Outage-Feb-2026.md)
 
 ### 📈 Industry & Trends
 - [Tailwind Financial Crisis](News/Tailwind-Financial-Crisis.md)

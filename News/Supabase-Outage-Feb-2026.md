@@ -4,6 +4,8 @@ In the early hours of February 13, 2026, Supabase—a popular open-source altern
 
 Below, we break down the event, its causes, impacts, and lessons, drawing from Supabase's official post-mortem and community discussions. We've added an SRE (Site Reliability Engineering) perspective throughout, reframing the outage in terms of failure mechanics, detection gaps, blast radius dynamics, control-plane risk modeling, and preventive architecture patterns. This isn't about blame—it's about building disciplined, resilient systems.
 
+![Supabase Outage Feb 2026](assets/Supabase-Outage-Feb-2026.png)
+
 ## Executive Summary (SRE View)
 - **Failure Class**: Control-plane misconfiguration.
 - **Scope**: Regional (single AWS region: us-east-2).

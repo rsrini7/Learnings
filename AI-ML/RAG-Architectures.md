@@ -2,6 +2,12 @@
 
 ![AI Engineering](assets/RAG/AI-Engineering.png)
 
+---
+
+![AI-ML/assets/RAG/RAG-OpenSource-Stacks.png](assets/RAG/RAG-OpenSource-Stacks.png)
+
+---
+
 ## From Naive Retrieval to Agentic Intelligence: A Complete Architectural Reference
 
 **For Developers, Architects, and AI Product Managers**
@@ -3007,12 +3013,29 @@ class RAGMonitoring:
 
 ### 8.5 Vision-Language Models (2026)
 
-- Gemini 2.5 Pro (Google, outstanding reasoning on complex scenes)
-- GPT-4.1 (OpenAI, 200K context, native multimodal)
-- Claude 3.5 Sonnet (Anthropic, chart/diagram understanding)
-- InternVL3-78B (open-source, 72.2 MMMU score)
-- Qwen2.5-VL (Alibaba, production-ready open model)
-- Phi-4-Multimodal (Microsoft, edge deployment <100ms)
+#### Top VLMs (Feb 2026)
+
+- **Gemini 3 Pro (Google)**: Leads in complex visual/spatial reasoning, video understanding, and pointing at image locations; successor to 2.5 Pro. [blog](https://blog.google/innovation-and-ai/technology/developers-tools/gemini-3-pro-vision/)
+- **GPT-5 (OpenAI)**: Excels in multimodal video, diagrams, and long-context VQA/OCR; builds on GPT-4.1's 1M token window. [kapture](https://www.kapture.cx/blog/gpt-5-whats-changed-what-works-and-what-users-are-saying/)
+- **Claude 4 Sonnet (Anthropic)**: Best-in-class for charts, diagrams, and visual reasoning; improves on 3.5 Sonnet. [intuitionlabs](https://intuitionlabs.ai/articles/anthropic-claude-4-llm-evolution)
+- **InternVL3-78B (Open-source)**: Retains top open MMMU score (72.2); strong in 3D/industrial vision. [arxiv](https://arxiv.org/html/2504.10479v1)
+- **Qwen2.5-VL-72B (Alibaba)**: Production-ready open model with video/multilingual support. [dextralabs](https://dextralabs.com/blog/top-10-vision-language-models/)
+- **Ovis2-34B (AIDC-AI, open-source)**: High efficiency, 66.7 MMMU/76.1 MathVista; great for resource-constrained setups. [labellerr](https://www.labellerr.com/blog/top-open-source-vision-language-models/)
+- **Gemma 3-27B (Google, open)**: Excellent OCR, document analysis, multilingual; lightweight scaling. [labellerr](https://www.labellerr.com/blog/gemma-3/)
+- **Phi-4-Multimodal (Microsoft)**: Ultra-fast edge deployment (<100ms), simultaneous text/image/speech. [deeplearning](https://www.deeplearning.ai/the-batch/microsofts-phi-4-multimodal-model-can-process-text-images-and-speech-simultaneously/)
+
+#### Key Benchmarks Comparison
+
+| Model              | MMMU (val) | MathVista | Video-MME | Strengths                  |
+|--------------------|------------|-----------|-----------|----------------------------|
+| Gemini 3 Pro      | ~74  [blog](https://blog.google/innovation-and-ai/technology/developers-tools/gemini-3-pro-vision/) | High     | State-of-art | Spatial/video reasoning   |
+| GPT-5             | High  [blog.roboflow](https://blog.roboflow.com/gpt-5-vision-multimodal-evaluation/) | High     | Strong      | Video/diagrams            |
+| Claude 4 Sonnet   | High  [intuitionlabs](https://intuitionlabs.ai/articles/anthropic-claude-4-llm-evolution) | High     | Competitive | Charts/VQA                |
+| InternVL3-78B     | 72.2  [arxiv](https://arxiv.org/html/2504.10479v1) | ~73      | Competitive | Open-source leader        |
+| Qwen2.5-VL-72B    | 70.2  [datacamp](https://www.datacamp.com/blog/top-vision-language-models) | 74.8     | 73.3        | Multilingual/video        |
+| Ovis2-34B         | 66.7  [labellerr](https://www.labellerr.com/blog/top-open-source-vision-language-models/)| 76.1     | 75.6        | Efficiency/benchmarks     |
+| Gemma 3-27B       | 56.1  [datacamp](https://www.datacamp.com/blog/top-vision-language-models) | High     | N/A         | OCR/documents             |
+| Phi-4-Multimodal  | Competitive [deeplearning](https://www.deeplearning.ai/the-batch/microsofts-phi-4-multimodal-model-can-process-text-images-and-speech-simultaneously/) | N/A  | Strong      | Edge/low-latency          |
 
 ### 8.6 Evaluation Resources
 
