@@ -3153,370 +3153,743 @@ Transitioning from demo to production exposes these pitfalls—each tied to arch
 
 ---
 
-# ** 8 — Extended RAG Pattern Encyclopedia (Research & Optimization Variants)**
+## 8 Extended RAG Pattern Encyclopedia (Research & Optimization Variants)
 
-**Purpose:**
-While Sections 2–7 describe the five primary architectural tiers (Hybrid, Graph, Corrective, Agentic, Infrastructure), modern literature introduces additional RAG variants. Most are not independent architectures, but refinements of retrieval policy, validation strategy, optimization, or deployment topology.
-
-This section documents those variants and explains how they integrate into the core tiers.
-
----
-
-# 8.1 Speculative RAG
-
-**Category:** Inference Optimization
-**Extends:** Hybrid / Agentic
-
-### Core Idea
-
-Use a smaller “draft” model to generate candidate tokens, then verify them with a larger model — accelerating generation.
-
-### Architecture
-
-```
-Retriever → Draft LLM (fast) → Verifier LLM (accurate) → Response
-```
-
-### When to Use
-
-* High QPS environments
-* Large models (70B+)
-* Latency-sensitive applications
-
-### Production Impact
-
-* 2–3× faster decoding
-* Does NOT change retrieval quality
-* Pure inference-layer optimization
+> Organized by category: **Foundation → Advanced → Specialized → Optimized → Domain-Specific**
+> Production-grade architectures receive expanded detail. Research-grade variants are summarized concisely.
+> All 25 variants map to six architectural primitives: **Retrieval Engineering, Structural Reasoning, Validation, Autonomy, Optimization, Infrastructure**.
 
 ---
 
-# 8.2 REPLUG (Retrieval Plugin)
+## Legend
 
-**Category:** Retrieval Wrapping Strategy
-**Extends:** Hybrid Tier
-
-### Core Idea
-
-Treat the LLM as a frozen black box and prepend retrieved documents without modifying model weights.
-
-### Distinction
-
-Unlike REALM or ATLAS, retriever is trained separately from generator.
-
-### Use Case
-
-* When using proprietary hosted models
-* Cannot fine-tune LLM
-
-### Production Relevance
-
-Common in API-based deployments.
+| Priority | Meaning |
+|---|---|
+| 🟢 **Production** | Widely deployed in enterprise/product systems |
+| 🟡 **Hybrid** | Used in production with fine-tuning or wrapping |
+| 🔴 **Research** | Primarily academic; rarely deployed as-is |
 
 ---
 
-# 8.3 REALM
-
-**Category:** Joint Retriever-Generator Training
-**Extends:** Hybrid Tier
-
-### Core Idea
-
-Retriever trained via masked language modeling to improve knowledge recall during pretraining.
-
-### Distinction
-
-Retriever learned end-to-end with generator.
-
-### When Relevant
-
-* Custom model pretraining
-* Not typical in enterprise deployments
-
-### Note
-
-High research value, lower industry frequency.
+### Category 1 — Foundation
 
 ---
 
-# 8.4 ATLAS (Attention-based RAG)
+#### Standard RAG 🟢
 
-**Category:** Fusion-in-Decoder Retrieval
-**Extends:** Hybrid Tier
+**Core Idea:** Combines retrieval with LLMs for accurate, context-aware responses. The baseline pattern all other variants extend.
 
-### Core Idea
+**Key Features:**
+- Documents chunked and indexed offline into a vector store
+- At query time: retrieve top-K chunks → inject into LLM prompt → generate response
+- Targets 1–2 second end-to-end latency for real-time use
 
-Jointly train retriever and generator; fuse retrieved documents via attention layers.
-
-### Difference from Hybrid
-
-Hybrid = pipeline-level fusion
-ATLAS = model-level fusion
-
-### Trade-off
-
-* Higher training complexity
-* Better alignment between retriever and LLM
-
----
-
-# 8.5 RETRO
-
-**Category:** Token-Level Retrieval
-**Extends:** Hybrid Tier
-
-### Core Idea
-
-Retrieve nearest neighbors during decoding for every token block.
-
-### Architecture
-
-```
-Chunk input → KNN retrieval → Cross-attention → Decoder
+```mermaid
+graph LR
+    A[User Query] --> B[Retriever]
+    C[Documents] --> D[Indexing]
+    D --> E[Knowledge Base / Vector Store]
+    E --> B
+    B --> F[Relevant Chunks]
+    F --> G[Generator / LLM]
+    A --> G
+    G --> H[Response]
 ```
 
-### Pros
-
-* Strong factual grounding
-* Reduced memorization need
-
-### Cons
-
-* Extremely compute-heavy
-* Requires custom model architecture
-
-Mostly research-grade.
+> **Best for:** Knowledge base Q&A, document search, internal tools. Start here before evaluating more complex variants.
 
 ---
 
-# 8.6 REVEAL (Vision-Language Retrieval)
+#### Corrective RAG 🟢
 
-**Category:** Multimodal RAG
-**Extends:** Hybrid / Graph
+**Core Idea:** Retrieved content is graded for relevance. If insufficient, the system re-searches (web or alternate KB) and corrects the answer automatically.
 
-### Core Idea
+**Key Features:**
+- Adds a grading/validation step between retrieval and generation
+- Falls back to web search when local KB scores low confidence
+- Prevents hallucinations caused by irrelevant retrieved documents
 
-Combine vision encoder + text encoder + knowledge retrieval.
-
-### Use Case
-
-* Chart-heavy documents
-* Medical imaging + notes
-* Financial reports with tables
-
-### Integration Point
-
-Your Multimodal RAG section already supports this — this entry formalizes it.
-
----
-
-# 8.7 REFEED (Retrieval Feedback Loop)
-
-**Category:** Iterative Validation
-**Extends:** Corrective Tier
-
-### Core Idea
-
-Initial answer → retrieve additional context → refine answer.
-
-### Difference from CRAG
-
-CRAG validates retrieval
-REFEED refines output
-
-### When Useful
-
-* Ambiguous queries
-* Under-specified user inputs
-
----
-
-# 8.8 MEMO RAG
-
-**Category:** Memory-Augmented Retrieval
-**Extends:** Agentic Tier
-
-### Core Idea
-
-A lightweight memory model generates retrieval clues before heavy LLM synthesis.
-
-### Flow
-
-```
-Memory model → retrieval hints → retriever → heavy LLM
+```mermaid
+graph TD
+    A[User Query] --> B[LLM + Retriever]
+    C[Knowledge Base / Vector Store] --> B
+    B --> D{Grade Retrieved Docs}
+    D -- Relevant --> E[Generate Response]
+    D -- Irrelevant --> F[Web Search / Alternate KB]
+    F --> G[Re-retrieve & Correct]
+    G --> E
+    E --> H[Final Answer]
 ```
 
-### Use Case
-
-* Long-running assistants
-* Knowledge workers
-* Persistent agents
-
-This aligns with your contextual memory architecture.
+> **Best for:** Compliance systems, enterprise Q&A, high-accuracy applications where hallucination is costly.
 
 ---
 
-# 8.9 AUTO-RAG
+#### Self RAG 🟢
 
-**Category:** Pipeline Auto-Optimization
-**Extends:** Infrastructure Layer
+**Core Idea:** The model uses its own outputs as retrieval candidates. It critiques its own answers, checks for hallucinations, and rewrites if needed.
 
-### Core Idea
+**Key Features:**
+- Retriever checks if retrieved doc is relevant to query
+- Model checks if generated answer contains hallucinations
+- Loop continues until a satisfactory, grounded answer is produced
 
-Automatically search retrieval + reranking + chunking configs for best performance.
+```mermaid
+graph TD
+    A[User Query] --> B[Retriever]
+    B --> C{Is Doc Relevant?}
+    C -- NO --> D[No Result — Retry]
+    C -- YES --> E[Generate Answer]
+    E --> F{Has Hallucinations?}
+    F -- YES --> G[Re-write Query]
+    G --> B
+    F -- NO --> H{Is Answer Complete?}
+    H -- NO --> G
+    H -- YES --> I[Final Result]
+```
 
-### Mechanisms
-
-* Query expansion tuning
-* Retriever weight tuning
-* Reranker selection
-
-### When Useful
-
-* Large heterogeneous corpora
-* Rapid experimentation
-
----
-
-# 8.10 CORAG (Cost-Constrained RAG)
-
-**Category:** Cost-Aware Retrieval
-**Extends:** Infrastructure + Retrieval Tier
-
-### Core Idea
-
-Use Monte Carlo Tree Search to select optimal chunk combinations under cost constraints.
-
-### Focus
-
-Balance:
-
-* Token cost
-* Accuracy
-* Latency
-
-### Relevance
-
-Enterprise-scale cost optimization.
+> **Best for:** Agents requiring high factual precision; document QA where source grounding must be verified.
 
 ---
 
-# 8.11 EACO-RAG (Edge-Aware RAG)
-
-**Category:** Deployment Topology
-**Extends:** Infrastructure Layer
-
-### Core Idea
-
-Distribute vector search across edge nodes for low-latency global inference.
-
-### Use Case
-
-* Geo-distributed users
-* Real-time systems
-* Edge inference environments
+### Category 2 — Advanced
 
 ---
 
-# 8.12 RULE RAG
+#### Speculative RAG 🟢
 
-**Category:** Governance Layer
-**Extends:** Corrective Tier
+**Core Idea:** Uses a small draft model for fast candidate generation and a larger verifier model for accuracy — accelerating inference without sacrificing quality.
 
-### Core Idea
+**Key Features:**
+- Parallel drafting speeds up responses by generating multiple candidates simultaneously
+- Verifier model catches errors the draft model introduces
+- Pure inference-layer optimization; retrieval pipeline unchanged
 
-Apply deterministic rule-based constraints to retrieved context before generation.
+```mermaid
+graph LR
+    A[User Query] --> B[Retriever]
+    B --> C[Data Warehouse]
+    C --> B
+    B --> D[Query + Document]
+    D --> E[Draft LLM - Small / Fast]
+    E --> F[Verifier LLM - Large / Accurate]
+    F --> G[Final Answer]
+```
 
-### Examples
+**Production Impact:**
+- 2–3× faster decoding on 70B+ models
+- Does **not** improve retrieval quality — only inference speed
+- Best applied in high-QPS, latency-sensitive environments
 
-* PII filtering
-* Compliance gating
-* Domain whitelisting
-
----
-
-# 8.13 ConTRAGen
-
-**Category:** Contrastive Validation
-**Extends:** Corrective Tier
-
-### Core Idea
-
-Generate alternative contradictory responses and compare for consistency.
-
-### Purpose
-
-Reduce hallucinations via contrastive reasoning.
+> **Best for:** Latency-sensitive APIs using large models (70B+). Does not require retraining retriever.
 
 ---
 
-# 8.14 CRAT (Confidence-Aware Retrieval)
+#### Fusion RAG 🟢
 
-**Category:** Retrieval Calibration
-**Extends:** Corrective Tier
+**Core Idea:** Generates multiple query rewrites, runs parallel vector searches, and merges results using Reciprocal Rank Fusion (RRF) to surface the best documents.
 
-### Core Idea
+**Key Features:**
+- Multiple query variants capture different semantic angles
+- RRF re-ranks documents across all search results
+- Reduces dependence on a single query formulation
 
-Use confidence scoring to decide whether retrieval is sufficient or needs fallback.
+```mermaid
+graph TD
+    A[User Query] --> B[Generate Similar Queries]
+    B --> Q1[Vector Search — Query 1]
+    B --> Q2[Vector Search — Query 2]
+    B --> Q3[Vector Search — Query 3]
+    A --> Q4[Vector Search — Original Query]
+    Q1 & Q2 & Q3 & Q4 --> R[Reciprocal Rank Fusion]
+    R --> S[Re-ranked Results]
+    S --> T[Generative Output]
+```
 
-### Related To
-
-Adaptive RAG.
-
----
-
-# 8.15 CORAL
-
-**Category:** Constraint-Aware Retrieval
-**Extends:** Graph + Corrective
-
-### Core Idea
-
-Enforce structured constraints (legal, domain-specific) during retrieval.
-
-### Use Case
-
-Regulated industries.
+> **Best for:** Complex or ambiguous queries where a single query vector under-retrieves. Excellent for search-heavy applications.
 
 ---
 
-# 8.16 Iterative RAG
+#### Agentic RAG 🟢
 
-**Category:** Agentic Variant
-**Extends:** Agentic Tier
+**Core Idea:** AI agents dynamically adjust retrieval strategy in real time. Modular design supports tool use, multi-DB retrieval, and concurrent agent execution.
 
-### Core Idea
+**Key Features:**
+- Agent interprets user intent and selects appropriate retrieval function
+- Supports Graph DB, Vector DB, and Relational DB in one system
+- Multiple agents can run concurrently for complex, multi-step tasks
 
-Retrieve → generate → retrieve again → refine.
+```mermaid
+graph TD
+    A[User Query] --> B[AI Agent Application]
+    B --> C{Select Retrieval Strategy}
+    C --> D[Tool Functions]
+    C --> E[Retrieval Functions]
+    C --> F[Action Functions]
+    D & E & F --> G[Persistent Knowledge Layer]
+    G --> H[Graph DB]
+    G --> I[Vector DB]
+    G --> J[Relational DB]
+    H & I & J --> K[LLM Layer]
+    K --> L[Response]
+    L --> B
+```
 
-Already implemented in your agent loop.
+> **Best for:** Multi-step reasoning tasks, research agents, enterprise copilots needing access to heterogeneous data sources.
 
 ---
 
-# 8.17 Fusion RAG (Formalized)
+#### Adaptive RAG 🟢
 
-Although hybrid search already implements fusion (RRF), Fusion RAG refers to:
+**Core Idea:** Dynamically decides **whether to retrieve** external knowledge at all, based on the model's internal confidence. The canonical mechanism is purely a retrieval gate — not validation or rewriting.
 
-* Multiple retrievers
-* Multiple query rewrites
-* Multi-hop merging
+**Key Features:**
+- Confidence scores from model's internal state gate retrieval decisions
+- "Honesty probe" aligns output with actual model knowledge
+- Reduces unnecessary retrieval calls, improving efficiency and latency
 
-This fits inside Tier 1 Hybrid but can be formalized as multi-query expansion.
+```mermaid
+graph TD
+    A[User Query] --> B{Confidence Gate — Do I need retrieval?}
+    B -- High Confidence — NO --> C[Generate from Internal Knowledge]
+    B -- Low Confidence — YES --> D[Retriever]
+    D --> E[Retrieved Context]
+    E --> F[Generate with Context]
+    C --> G[Answer]
+    F --> G
+```
+
+> ⚠️ **Canonical Boundary:** Pure Adaptive RAG decides *only* whether to retrieve. The extended form shown in the PDF (doc grading + hallucination check + rewriting) is Adaptive RAG **composed with** Corrective RAG and Self-RAG. Those are distinct patterns running in sequence — not part of Adaptive RAG's core definition.
+
+> **Best for:** Mixed-knowledge workloads where some queries are answerable from model weights alone. Skip retrieval on factual, time-stable questions; retrieve on recent or domain-specific ones.
 
 ---
 
-# 8.18 Specifying Adaptive RAG vs Self-RAG
+### Category 3 — Specialized
 
-Clarify distinction:
+---
 
-| Variant        | Mechanism                     |
-| -------------- | ----------------------------- |
-| Self-RAG       | Self-critique output          |
-| Adaptive RAG   | Decide whether to retrieve    |
-| Corrective RAG | Grade retrieved docs          |
-| REFEED         | Refine answer post-generation |
+#### REFEED — Retrieval Feedback Loop 🟡
 
-> The 25 RAG variants described in contemporary literature collapse into five architectural primitives: retrieval engineering, structural reasoning, validation, autonomy, and optimization. Rather than representing mutually exclusive systems, they describe refinements within these tiers. Production systems typically combine multiple variants simultaneously.
+**Core Idea:** Initial answer → retrieve additional context → refine answer. Combines pre- and post-retrieval outputs using a ranking system.
+
+**Distinction from CRAG:** CRAG validates *retrieval quality*; REFEED *refines the output* after generation.
+
+```mermaid
+graph TD
+    A[Input Query] --> B[Generate Multiple Answers]
+    A --> C[Retrieved Passages]
+    C --> D[Passage Rankings]
+    B --> E[Query-Passage Combination]
+    D --> E
+    E --> F[Ensemble Evaluation]
+    F --> G[Likelihood Comparison]
+    G --> H[Final Answer]
+```
+
+> **Best for:** Ambiguous queries, under-specified inputs where a single-pass answer is insufficient.
+
+---
+
+#### REALM — Retrieval-Enhanced Language Model 🔴
+
+**Core Idea:** Retriever trained end-to-end with generator via masked language modeling. Joint training improves knowledge recall at pretraining time.
+
+**Distinction:** Unlike REPLUG, retriever is *not* a frozen plugin — it is learned alongside the generator.
+
+```mermaid
+graph TD
+    subgraph Unsupervised Pre-training
+        A[Pre-training Corpus] --> C[Neural Knowledge Retriever]
+        B[Textual Knowledge Corpus] --> C
+        C --> D[Knowledge-Augmented Encoder]
+        D --> E[Answer]
+    end
+    subgraph Supervised Fine-tuning
+        F[Input Query] --> H[Neural Knowledge Retriever]
+        G[Knowledge Corpus] --> H
+        H --> I[Knowledge-Augmented Encoder]
+        I --> J[Answer]
+    end
+```
+
+> ⚠️ High research value, rarely used in enterprise deployments. Requires full model retraining.
+
+---
+
+#### RAPTOR — Tree-Organized Retrieval 🟡
+
+**Core Idea:** Builds a hierarchical tree by recursively clustering and summarizing text chunks. Enables retrieval at different abstraction levels.
+
+**Key Features:**
+- Tree traversal retrieves both broad themes (top nodes) and specific details (leaf nodes)
+- Collapsed tree method flattens all nodes for fast flat-search
+- Outperforms flat chunk retrieval on complex multi-hop questions
+
+```mermaid
+graph LR
+    A[User Query] --> B[Encoder]
+    B --> C[Encoded Query]
+    C --> D{Tree Structure}
+    D --> E[Leaf Nodes — Raw Chunks]
+    D --> F[Mid Nodes — Cluster Summaries]
+    D --> G[Root Node — Document Summary]
+    E & F & G --> H[Retrieved Context]
+    H --> I[LLM]
+    I --> J[Answer]
+```
+
+> **Best for:** Long documents, multi-document corpora, questions requiring both high-level and low-level understanding.
+
+---
+
+#### REVEAL — Vision-Language Retrieval 🟡
+
+**Core Idea:** Combines Vision Transformer + T5 Text Encoder + knowledge retrieval to handle multimodal queries. Achieves strong few-shot performance.
+
+```mermaid
+graph LR
+    A[Input Query] --> B[Vision Transformer]
+    A --> C[T5 Encoder]
+    B --> D[Memory Encoding]
+    C --> D
+    D --> E[Knowledge Base]
+    E --> F[Retriever]
+    F --> G[Knowledge Fusion]
+    G --> H[Generator]
+    H --> I[Output]
+```
+
+> **Best for:** Chart-heavy documents, medical imaging + clinical notes, financial reports with tables and figures.
+
+---
+
+#### REACT — Reasoning + Acting 🟢
+
+**Core Idea:** Interleaves reasoning (Thought) and action (Tool call / Retrieval) steps. Model maintains situational awareness through an updating context window.
+
+**Key Features:**
+- Think → Act → Observe loop grounds reasoning in real-world facts
+- Reduces hallucinations by verifying claims via external tool calls
+- Forms the backbone of most modern agentic pipelines
+
+```mermaid
+graph TD
+    A[Receive Observation] --> B[Update Context]
+    B --> C{Is Task Completed?}
+    C -- YES --> D[Output]
+    C -- NO --> E[Generate Thought]
+    E --> F[Generate Action / Tool Call]
+    F --> G[New Observation]
+    G --> B
+```
+
+> **Best for:** Multi-step agentic tasks, tool-using assistants, any scenario where retrieval must be interleaved with reasoning.
+
+---
+
+#### REPLUG — Retrieval Plugin 🟢
+
+**Core Idea:** Treats the LLM as a frozen black box. Retrieved documents are prepended to the prompt. Retriever can be fine-tuned on model feedback without modifying the LLM.
+
+**Distinction from REALM/ATLAS:** Retriever trained *separately* from a frozen generator — ideal when you cannot modify the LLM.
+
+```mermaid
+graph LR
+    A[Input Prompt] --> B[Document Retrieval]
+    B --> C[Input Reformulation]
+    C --> D[Parallel LM Predictions]
+    D --> E[Ensemble Predictions]
+    E --> F[Final Output]
+    B --> G[LM-Supervised Retrieval Training Loop]
+    G --> B
+```
+
+> **Best for:** Proprietary or hosted LLM APIs where fine-tuning is not possible. Common in API-based production deployments.
+
+---
+
+### Category 4 — Optimized
+
+---
+
+#### MEMO RAG — Memory-Augmented Retrieval 🟢
+
+**Core Idea:** A lightweight memory model generates retrieval clues *before* the heavy LLM synthesizes the answer. Two-stage architecture reduces compute waste by pre-filtering with an autonomous reasoning stage.
+
+> **Tier Note:** MEMO RAG spans both Autonomy (the memory model reasons independently to generate hints) and Optimization (it reduces heavy LLM invocations). It is not purely an optimization pattern.
+
+```mermaid
+graph LR
+    A[User Query] --> B[Memory Model — Light LLM]
+    B --> C[Generate Retrieval Clues]
+    C --> D[Clue-Based Retriever]
+    D --> E[Retrieve Context]
+    E --> F[Answer Generation — Heavy LLM]
+    F --> G[Final Answer]
+```
+
+> **Best for:** Long-running assistants, knowledge workers, persistent agents. Reduces heavy LLM calls by pre-filtering with a lightweight model.
+
+---
+
+#### ATLAS — Attention-Based RAG 🔴
+
+**Core Idea:** Jointly trains retriever and generator. Retrieved documents fused via attention layers inside the decoder (Fusion-in-Decoder).
+
+**Distinction from Hybrid RAG:**
+- Hybrid = pipeline-level fusion (independent components)
+- ATLAS = model-level fusion (end-to-end joint training)
+
+```mermaid
+graph LR
+    A[Input Query] --> B[Dual-Encoder Retriever]
+    C[Indexed Corpus] --> B
+    B --> D[Top-K Docs]
+    D --> E[Fusion-in-Decoder LM]
+    A --> E
+    E --> F[Output]
+    E -.->|Joint Training Fine-tuning| B
+```
+
+> ⚠️ Higher training complexity. Better retriever-LLM alignment. Low enterprise frequency — use REPLUG if LLM is frozen.
+
+---
+
+#### RETRO — Token-Level Retrieval 🔴
+
+**Core Idea:** Performs KNN retrieval for every chunk of input tokens during decoding. Retrieval is woven into the generative process via chunked cross-attention.
+
+```mermaid
+graph LR
+    A[Input Text] --> B[Split into Chunks]
+    B --> C[BERT Embeddings]
+    C --> D[K-NN Retrieval]
+    D --> E[Encoder]
+    E --> F[Chunked Cross-Attention]
+    F --> G[Output]
+```
+
+> ⚠️ Extremely compute-heavy. Requires custom model architecture. Strong factual grounding, reduced memorization need. Mostly research-grade.
+
+---
+
+#### AUTO RAG — Pipeline Auto-Optimization 🟢
+
+**Core Idea:** Automatically searches retrieval + reranking + chunking configurations for best performance. Greedy optimization across modular pipeline nodes.
+
+```mermaid
+graph LR
+    A[User Query] --> B[Query Expansion]
+    B --> C[Retriever]
+    C --> D[Passage Augmentation]
+    D --> E[Passage Reranking]
+    E --> F[Prompt Creation]
+    F --> G[Generator]
+    G --> H[Output]
+    H -.->|Optimization Feedback Loop| B
+```
+
+> **Best for:** Large heterogeneous corpora, rapid RAG experimentation, automated pipeline tuning without manual grid search.
+
+---
+
+#### CORAG — Cost-Constrained RAG 🟢
+
+**Core Idea:** Uses Monte Carlo Tree Search (MCTS) to select optimal chunk combinations while respecting token cost, latency, and accuracy constraints simultaneously.
+
+```mermaid
+graph LR
+    A[Query] --> B[Query Embedding]
+    B --> C[Retrieve Potential Chunks]
+    C --> D[Configuration Agent]
+    D --> E[MCTS Policy Tree Search]
+    E --> F[Optimal Chunk Combination]
+    F --> G[LLM Generation]
+    G --> H[Final Output]
+```
+
+**Achieves up to 30% improvement over baseline models** on cost-accuracy trade-off benchmarks.
+
+> **Best for:** Enterprise-scale deployments where token cost is a hard constraint. Cost-aware retrieval for high-volume APIs.
+
+---
+
+#### EACO-RAG — Edge-Aware RAG 🟡
+
+**Core Idea:** Distributes vector search across edge nodes for geo-distributed, low-latency inference. Multi-armed bandit approach optimizes cost, accuracy, and delay in real time.
+
+```mermaid
+graph LR
+    A[User Query] --> B[Local Processing & Knowledge Update]
+    B --> C[Adaptive Knowledge Update]
+    C --> D[Inter-node Collaboration]
+    D --> E[Optimal Route Selection]
+    E --> F[Cloud Processing]
+    F --> G[Response]
+```
+
+> **Best for:** Geo-distributed users, IoT/edge inference environments, real-time systems requiring sub-100ms retrieval.
+
+---
+
+### Category 5 — Domain-Specific
+
+---
+
+#### RULE RAG — Governance Layer 🟢
+
+**Core Idea:** Applies deterministic rule-based constraints to guide both retrieval and generation. Rules govern what can be retrieved and how answers are framed.
+
+**Examples:** PII filtering, compliance gating, domain whitelisting, regulatory constraints.
+
+```mermaid
+graph LR
+    A[Input Query] --> B[Apply Rules to Guide Retrieval]
+    B --> C[Retrieve Relevant Documents]
+    C --> D[Apply Rules to Guide Generation]
+    D --> E[Generator / LLM]
+    E --> F[Answer]
+```
+
+> **Best for:** Regulated industries (legal, healthcare, finance). Any use case requiring deterministic output constraints layered on top of probabilistic generation.
+
+---
+
+#### CORAL — Conversational RAG 🟢
+
+**Core Idea:** Benchmarks and implements multi-turn conversational RAG. Handles coreference resolution across conversation turns for open-domain, realistic dialogue.
+
+> **Tier Note:** CORAL spans Retrieval Engineering (passage retrieval, citation labeling) and Conversation Modeling (multi-turn context, coreference resolution). It is not a pure retrieval pipeline — the conversational state management is an equally important architectural concern.
+
+**Key Features:**
+- Evaluates passage retrieval, response generation, and citation labeling jointly
+- Bridges single-turn RAG research and real-world multi-turn needs
+- Conversation flow sampling creates realistic dialogue trees
+
+```mermaid
+graph TD
+    A[Data Source] --> B[Title Extraction]
+    B --> C[Conversation Flow Sampling]
+    C --> D[Contextualization / Coreference Resolution]
+    D --> E[Benchmark Tasks]
+    E --> F[Passage Retrieval]
+    E --> G[Response Generation]
+    E --> H[Citation Labeling]
+    F & G & H --> I[Final Grounded Response]
+```
+
+> **Best for:** Chatbots and conversational assistants that must maintain context across multiple turns while citing sources.
+
+---
+
+#### Iterative RAG 🟢
+
+**Core Idea:** Retrieve → generate → retrieve again → refine. Retrieval decisions follow a Markov decision process; reinforcement learning improves retrieval policy over time.
+
+```mermaid
+graph LR
+    A[Input Query] --> B[Stateful Iterative Retriever]
+    B --> C[Query Vector]
+    C --> D[Retrieve Documents]
+    D --> E[Select Exemplars]
+    E --> F[LLM]
+    F --> G[Answer]
+    G --> H[Reward Feedback]
+    H --> I[Policy Optimization]
+    I --> B
+```
+
+> **Best for:** Complex multi-hop questions, research assistants, any query requiring progressively deeper retrieval.
+
+---
+
+#### ConTReGen — Context-Driven Tree-Structured Retrieval 🟡
+
+**Core Idea:** Decomposes complex queries into hierarchical sub-queries. Two-stage workflow: top-down tree construction + bottom-up synthesis for long-form answers.
+
+```mermaid
+graph TD
+    A[Input Query] --> B[Analyze & Generate Sub-Queries]
+    B --> C[Passage Retrieval per Sub-Query]
+    C --> D[Verify Passages]
+    D --> E[Build Retrieval Tree]
+    E --> F[Start from Leaf Nodes]
+    F --> G[Summarize Retrieved Content at Each Node]
+    G --> H[Integrate Summaries Leaf → Root]
+    H --> I[Final Response]
+```
+
+> **Best for:** Long-form answer generation, report writing, deep research queries requiring multi-level evidence synthesis.
+
+---
+
+#### CRAT — Causality-Enhanced Reflective Translation 🔴
+
+**Core Idea:** Multi-agent framework for translation of ambiguous terms using causality validation. Combines knowledge graph construction with a judge agent for consistency.
+
+```mermaid
+graph LR
+    A[Source Context Input] --> B[Unknown Terms Detector]
+    B --> C[Knowledge Graph Constructor]
+    C --> D[Causality-Enhanced Judge Agent]
+    D --> E[Translator]
+    E --> F[Output]
+```
+
+> ⚠️ Specialized for translation / NLP tasks requiring causal consistency. Not a general-purpose RAG pattern.
+
+---
+
+#### Graph RAG 🟢
+
+**Core Idea:** Constructs a knowledge graph on-the-fly, linking entities during retrieval. Node relationships and confidence scores guide retrieval expansion — keeping context compact and relevant.
+
+**Key Features:**
+- Leverages entity relationships (not just semantic similarity) for retrieval decisions
+- Confidence scores from graph prevent irrelevant node expansion
+- Combines vector store similarity search with GraphDB relationship traversal
+
+```mermaid
+graph TD
+    A[Documents] --> B[Embedding Model]
+    B --> C[Vector Store]
+    C --> D[GraphDB]
+    E[User Prompt] --> F[Similarity Plugin]
+    F --> D
+    D --> G[Context via Graph + Vector]
+    G --> H[Prompt + Context]
+    H --> I[LLM]
+    I --> J[Response]
+```
+
+> **Best for:** Knowledge-dense corpora with rich entity relationships — legal documents, biomedical literature, organizational knowledge graphs.
+
+---
+
+### Summary: Variant Comparison
+
+#### Self-RAG vs Adaptive RAG vs Corrective RAG vs REFEED
+
+| Variant | Core Mechanism | Key Decision Point |
+|---|---|---|
+| **Self-RAG** | Self-critique output for hallucinations | *Did I hallucinate?* |
+| **Adaptive RAG** | Decide whether to retrieve at all | *Do I need external knowledge?* |
+| **Corrective RAG** | Grade retrieved docs for relevance | *Is what I retrieved good enough?* |
+| **REFEED** | Refine answer post-generation with new retrieval | *Can I improve my answer with more context?* |
+
+#### Architecture → Tier Mapping
+
+| Architecture | Primary Tier | Production Priority |
+|---|---|---|
+| Standard RAG | Retrieval Engineering | 🟢 High |
+| Corrective RAG | Validation | 🟢 High |
+| Self RAG | Validation + Autonomy | 🟢 High |
+| Speculative RAG | Optimization | 🟢 High |
+| Fusion RAG | Retrieval Engineering | 🟢 High |
+| Agentic RAG | Autonomy | 🟢 High |
+| Adaptive RAG | Validation | 🟢 High |
+| Graph RAG | Structural Reasoning | 🟢 High |
+| REPLUG | Retrieval Wrapping | 🟢 High |
+| MEMO RAG | Autonomy + Optimization | 🟢 High |
+| AUTO RAG | Optimization | 🟢 High |
+| CORAG | Optimization | 🟢 High |
+| RULE RAG | Governance / Validation | 🟢 High |
+| CORAL | Retrieval Engineering + Conversation Modeling | 🟢 High |
+| Iterative RAG | Autonomy | 🟢 High |
+| REACT | Autonomy | 🟢 High |
+| RAPTOR | Structural Reasoning | 🟡 Medium |
+| REFEED | Validation | 🟡 Medium |
+| EACO-RAG | Infrastructure / Deployment Topology | 🟡 Medium |
+| ConTReGen | Structural Reasoning | 🟡 Medium |
+| REVEAL | Retrieval Engineering | 🟡 Medium |
+| REALM | Joint Training | 🔴 Research |
+| ATLAS | Joint Training | 🔴 Research |
+| RETRO | Token-Level Retrieval | 🔴 Research |
+| CRAT | Translation / NLP | 🔴 Research |
+
+---
+
+### Architectural Synthesis
+
+#### Six Architectural Primitives
+
+The 25 RAG variants collapse into **six architectural primitives**. Most variants are refinements of one or two primitives, not independent systems:
+
+| Primitive | What It Controls | Representative Variants |
+|---|---|---|
+| **Retrieval Engineering** | How and what to retrieve | Standard, Fusion, REPLUG, RAPTOR, REALM, RETRO |
+| **Structural Reasoning** | How knowledge is organized and traversed | Graph RAG, RAPTOR, ConTReGen |
+| **Validation** | How retrieved content and outputs are checked | Corrective, Self-RAG, Adaptive, REFEED, RULE RAG, CRAT |
+| **Autonomy** | Whether the system decides its own next action | Agentic, REACT, Iterative, MEMO RAG |
+| **Optimization** | Cost, latency, and configuration tuning | Speculative, AUTO RAG, CORAG, MEMO RAG |
+| **Infrastructure** | Deployment topology and edge distribution | EACO-RAG |
+
+> EACO-RAG does not sit cleanly inside the first five primitives — it operates at the deployment layer. Infrastructure is the correct sixth primitive.
+
+---
+
+#### Architecture Composition Matrix
+
+Each architecture activates one or more primitives. `✓✓` = primary responsibility; `✓` = secondary/optional; `—` = not applicable.
+
+| Architecture | Retrieval | Structural Reasoning | Validation | Autonomy | Optimization | Infrastructure |
+|---|---|---|---|---|---|---|
+| Standard RAG | ✓✓ | — | — | — | — | — |
+| Corrective RAG | ✓ | — | ✓✓ | — | — | — |
+| Self RAG | ✓ | — | ✓✓ | ✓ | — | — |
+| Speculative RAG | ✓ | — | — | — | ✓✓ | — |
+| Fusion RAG | ✓✓ | — | — | — | ✓ | — |
+| Agentic RAG | ✓✓ | ✓ | ✓ | ✓✓ | — | — |
+| Adaptive RAG | ✓✓ | — | ✓ | — | ✓ | — |
+| Graph RAG | ✓✓ | ✓✓ | — | — | — | — |
+| REPLUG | ✓✓ | — | — | — | — | — |
+| MEMO RAG | ✓ | — | — | ✓✓ | ✓✓ | — |
+| REACT | ✓ | — | — | ✓✓ | — | — |
+| AUTO RAG | ✓✓ | — | — | — | ✓✓ | — |
+| CORAG | ✓✓ | — | — | — | ✓✓ | — |
+| RULE RAG | ✓ | — | ✓✓ | — | — | — |
+| CORAL | ✓✓ | — | ✓ | — | — | — |
+| Iterative RAG | ✓✓ | — | — | ✓✓ | — | — |
+| RAPTOR | ✓✓ | ✓✓ | — | — | — | — |
+| REFEED | ✓ | — | ✓✓ | — | — | — |
+| REVEAL | ✓✓ | — | — | — | — | — |
+| ConTReGen | ✓✓ | ✓✓ | ✓ | — | — | — |
+| EACO-RAG | ✓ | — | — | — | ✓ | ✓✓ |
+| REALM | ✓✓ | — | — | — | — | — |
+| ATLAS | ✓✓ | — | — | — | ✓ | — |
+| RETRO | ✓✓ | — | — | — | — | — |
+| CRAT | ✓ | ✓ | ✓✓ | ✓ | — | — |
+
+---
+
+#### Pattern Composition in Production
+
+Modern enterprise RAG systems rarely run a single pattern in isolation. The real deployment question is not *"which RAG?"* but *"which combination of primitives does this use case require?"*
+
+Typical production stacks combine 3–5 patterns simultaneously:
+
+**Enterprise Knowledge Copilot:**
+> Agentic RAG + Corrective RAG + Graph RAG + RULE RAG + CORAG
+
+The agent orchestrates retrieval (Agentic), validates results (Corrective), traverses entity relationships (Graph), enforces compliance constraints (RULE), and optimizes token cost across sessions (CORAG).
+
+**Latency-Sensitive API (High QPS):**
+> Adaptive RAG + Speculative RAG + Fusion RAG + AUTO RAG
+
+Retrieval is skipped when model confidence is high (Adaptive), multiple query rewrites improve recall (Fusion), a draft model accelerates generation (Speculative), and pipeline configs are auto-tuned (AUTO RAG).
+
+**Long-Document Research Assistant:**
+> RAPTOR + Iterative RAG + ConTReGen + MEMO RAG
+
+Hierarchical indexing enables multi-level retrieval (RAPTOR), progressive retrieval deepens context (Iterative), tree-structured sub-query decomposition handles complexity (ConTReGen), and a lightweight memory model pre-filters retrieval hints (MEMO RAG).
+
+**Regulated Industry Assistant (Healthcare / Legal):**
+> Corrective RAG + RULE RAG + CORAL + Graph RAG
+
+Retrieval is validated for accuracy (Corrective), outputs are filtered through compliance rules (RULE), multi-turn conversation context is maintained with citations (CORAL), and entity relationships enforce domain constraints (Graph).
+
+> **Principle:** Each primitive solves one problem. Production systems layer primitives to solve compound problems. Choose by identifying which failure modes you need to prevent, not by which pattern sounds most impressive.
 
 ---
 
