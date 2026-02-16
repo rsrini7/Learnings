@@ -14,7 +14,7 @@ Dark Theme:
 
 **Create a key details of content visual with readable content of these notes 
 on a deep obsidian/charcoal black background. The art style should be a 
-dark-mode neon infographic with chalk-style handwritten typography mixed 
+dark-mode neon infographic with DM Sans typography mixed 
 with clean modern fonts. The layout must organize the notes into clear, 
 legible glowing blocks and bullet points with neon-bordered rounded cards. 
 Use **small or medium-scale, cute chalk-sketch cartoon characters** as visual 
