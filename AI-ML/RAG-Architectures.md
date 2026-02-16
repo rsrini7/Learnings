@@ -3153,13 +3153,380 @@ Transitioning from demo to production exposes these pitfalls—each tied to arch
 
 ---
 
-## 8. References and Further Reading
+# ** 8 — Extended RAG Pattern Encyclopedia (Research & Optimization Variants)**
+
+**Purpose:**
+While Sections 2–7 describe the five primary architectural tiers (Hybrid, Graph, Corrective, Agentic, Infrastructure), modern literature introduces additional RAG variants. Most are not independent architectures, but refinements of retrieval policy, validation strategy, optimization, or deployment topology.
+
+This section documents those variants and explains how they integrate into the core tiers.
+
+---
+
+# 8.1 Speculative RAG
+
+**Category:** Inference Optimization
+**Extends:** Hybrid / Agentic
+
+### Core Idea
+
+Use a smaller “draft” model to generate candidate tokens, then verify them with a larger model — accelerating generation.
+
+### Architecture
+
+```
+Retriever → Draft LLM (fast) → Verifier LLM (accurate) → Response
+```
+
+### When to Use
+
+* High QPS environments
+* Large models (70B+)
+* Latency-sensitive applications
+
+### Production Impact
+
+* 2–3× faster decoding
+* Does NOT change retrieval quality
+* Pure inference-layer optimization
+
+---
+
+# 8.2 REPLUG (Retrieval Plugin)
+
+**Category:** Retrieval Wrapping Strategy
+**Extends:** Hybrid Tier
+
+### Core Idea
+
+Treat the LLM as a frozen black box and prepend retrieved documents without modifying model weights.
+
+### Distinction
+
+Unlike REALM or ATLAS, retriever is trained separately from generator.
+
+### Use Case
+
+* When using proprietary hosted models
+* Cannot fine-tune LLM
+
+### Production Relevance
+
+Common in API-based deployments.
+
+---
+
+# 8.3 REALM
+
+**Category:** Joint Retriever-Generator Training
+**Extends:** Hybrid Tier
+
+### Core Idea
+
+Retriever trained via masked language modeling to improve knowledge recall during pretraining.
+
+### Distinction
+
+Retriever learned end-to-end with generator.
+
+### When Relevant
+
+* Custom model pretraining
+* Not typical in enterprise deployments
+
+### Note
+
+High research value, lower industry frequency.
+
+---
+
+# 8.4 ATLAS (Attention-based RAG)
+
+**Category:** Fusion-in-Decoder Retrieval
+**Extends:** Hybrid Tier
+
+### Core Idea
+
+Jointly train retriever and generator; fuse retrieved documents via attention layers.
+
+### Difference from Hybrid
+
+Hybrid = pipeline-level fusion
+ATLAS = model-level fusion
+
+### Trade-off
+
+* Higher training complexity
+* Better alignment between retriever and LLM
+
+---
+
+# 8.5 RETRO
+
+**Category:** Token-Level Retrieval
+**Extends:** Hybrid Tier
+
+### Core Idea
+
+Retrieve nearest neighbors during decoding for every token block.
+
+### Architecture
+
+```
+Chunk input → KNN retrieval → Cross-attention → Decoder
+```
+
+### Pros
+
+* Strong factual grounding
+* Reduced memorization need
+
+### Cons
+
+* Extremely compute-heavy
+* Requires custom model architecture
+
+Mostly research-grade.
+
+---
+
+# 8.6 REVEAL (Vision-Language Retrieval)
+
+**Category:** Multimodal RAG
+**Extends:** Hybrid / Graph
+
+### Core Idea
+
+Combine vision encoder + text encoder + knowledge retrieval.
+
+### Use Case
+
+* Chart-heavy documents
+* Medical imaging + notes
+* Financial reports with tables
+
+### Integration Point
+
+Your Multimodal RAG section already supports this — this entry formalizes it.
+
+---
+
+# 8.7 REFEED (Retrieval Feedback Loop)
+
+**Category:** Iterative Validation
+**Extends:** Corrective Tier
+
+### Core Idea
+
+Initial answer → retrieve additional context → refine answer.
+
+### Difference from CRAG
+
+CRAG validates retrieval
+REFEED refines output
+
+### When Useful
+
+* Ambiguous queries
+* Under-specified user inputs
+
+---
+
+# 8.8 MEMO RAG
+
+**Category:** Memory-Augmented Retrieval
+**Extends:** Agentic Tier
+
+### Core Idea
+
+A lightweight memory model generates retrieval clues before heavy LLM synthesis.
+
+### Flow
+
+```
+Memory model → retrieval hints → retriever → heavy LLM
+```
+
+### Use Case
+
+* Long-running assistants
+* Knowledge workers
+* Persistent agents
+
+This aligns with your contextual memory architecture.
+
+---
+
+# 8.9 AUTO-RAG
+
+**Category:** Pipeline Auto-Optimization
+**Extends:** Infrastructure Layer
+
+### Core Idea
+
+Automatically search retrieval + reranking + chunking configs for best performance.
+
+### Mechanisms
+
+* Query expansion tuning
+* Retriever weight tuning
+* Reranker selection
+
+### When Useful
+
+* Large heterogeneous corpora
+* Rapid experimentation
+
+---
+
+# 8.10 CORAG (Cost-Constrained RAG)
+
+**Category:** Cost-Aware Retrieval
+**Extends:** Infrastructure + Retrieval Tier
+
+### Core Idea
+
+Use Monte Carlo Tree Search to select optimal chunk combinations under cost constraints.
+
+### Focus
+
+Balance:
+
+* Token cost
+* Accuracy
+* Latency
+
+### Relevance
+
+Enterprise-scale cost optimization.
+
+---
+
+# 8.11 EACO-RAG (Edge-Aware RAG)
+
+**Category:** Deployment Topology
+**Extends:** Infrastructure Layer
+
+### Core Idea
+
+Distribute vector search across edge nodes for low-latency global inference.
+
+### Use Case
+
+* Geo-distributed users
+* Real-time systems
+* Edge inference environments
+
+---
+
+# 8.12 RULE RAG
+
+**Category:** Governance Layer
+**Extends:** Corrective Tier
+
+### Core Idea
+
+Apply deterministic rule-based constraints to retrieved context before generation.
+
+### Examples
+
+* PII filtering
+* Compliance gating
+* Domain whitelisting
+
+---
+
+# 8.13 ConTRAGen
+
+**Category:** Contrastive Validation
+**Extends:** Corrective Tier
+
+### Core Idea
+
+Generate alternative contradictory responses and compare for consistency.
+
+### Purpose
+
+Reduce hallucinations via contrastive reasoning.
+
+---
+
+# 8.14 CRAT (Confidence-Aware Retrieval)
+
+**Category:** Retrieval Calibration
+**Extends:** Corrective Tier
+
+### Core Idea
+
+Use confidence scoring to decide whether retrieval is sufficient or needs fallback.
+
+### Related To
+
+Adaptive RAG.
+
+---
+
+# 8.15 CORAL
+
+**Category:** Constraint-Aware Retrieval
+**Extends:** Graph + Corrective
+
+### Core Idea
+
+Enforce structured constraints (legal, domain-specific) during retrieval.
+
+### Use Case
+
+Regulated industries.
+
+---
+
+# 8.16 Iterative RAG
+
+**Category:** Agentic Variant
+**Extends:** Agentic Tier
+
+### Core Idea
+
+Retrieve → generate → retrieve again → refine.
+
+Already implemented in your agent loop.
+
+---
+
+# 8.17 Fusion RAG (Formalized)
+
+Although hybrid search already implements fusion (RRF), Fusion RAG refers to:
+
+* Multiple retrievers
+* Multiple query rewrites
+* Multi-hop merging
+
+This fits inside Tier 1 Hybrid but can be formalized as multi-query expansion.
+
+---
+
+# 8.18 Specifying Adaptive RAG vs Self-RAG
+
+Clarify distinction:
+
+| Variant        | Mechanism                     |
+| -------------- | ----------------------------- |
+| Self-RAG       | Self-critique output          |
+| Adaptive RAG   | Decide whether to retrieve    |
+| Corrective RAG | Grade retrieved docs          |
+| REFEED         | Refine answer post-generation |
+
+> The 25 RAG variants described in contemporary literature collapse into five architectural primitives: retrieval engineering, structural reasoning, validation, autonomy, and optimization. Rather than representing mutually exclusive systems, they describe refinements within these tiers. Production systems typically combine multiple variants simultaneously.
+
+---
+
+## 9. References and Further Reading
 
 - Roots Analysis: RAG Market Projections (2025-2035)
 - "AI Engineering: System Design Patterns for LLMs, RAG and Agents" by Akshay Pachaar & Avi Chawla
 - As shown in attached images: "12 Types of RAG Architectures", "RAG Security Gaps", "RAG Pipeline", "Types of RAG", "RAG vs AI Agents vs Agentic RAG".
 
-### 8.1 Key Research Papers (2024-2026)
+### 9.1 Key Research Papers (2024-2026)
 
 **RAG Foundations:**
 - Lewis et al. (2020) - 'Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks' - Original RAG paper
@@ -3200,7 +3567,7 @@ Transitioning from demo to production exposes these pitfalls—each tied to arch
 - Es et al. (2024) - 'RAGAS: Automated Evaluation of Retrieval Augmented Generation'
 - Confident AI (2025) - 'DeepEval: LLM Evaluation Framework'
 
-### 8.2 Production Deployment Guides and Industry Reports
+### 9.2 Production Deployment Guides and Industry Reports
 
 **Market Analysis:**
 - Gartner (2025) - 'AI Reliability in Production: Hallucination Costs and Mitigation'
@@ -3221,7 +3588,7 @@ Transitioning from demo to production exposes these pitfalls—each tied to arch
 - Squirro (2026) - 'RAG in 2026: Enterprise AI Architecture'
 - Fluree (2026) - 'GraphRAG & Knowledge Graphs: Making Your Data AI-Ready'
 
-### 8.3 Open-Source Projects and Frameworks
+### 9.3 Open-Source Projects and Frameworks
 
 | Project | Description | GitHub |
 |---------|-------------|---------|
@@ -3239,7 +3606,7 @@ Transitioning from demo to production exposes these pitfalls—each tied to arch
 | **LangSmith** | LLM observability and debugging platform | langchain-ai/langsmith |
 | **Lakera Guard** | AI security platform for prompt injection detection | lakera-ai |
 
-### 8.4 Embedding Models and Retrievers (2026)
+### 9.4 Embedding Models and Retrievers (2026)
 
 **Dense Embedding Models:**
 - BAAI/bge-small-en-v1.5 (384-dim, speed optimized)
@@ -3263,7 +3630,7 @@ Transitioning from demo to production exposes these pitfalls—each tied to arch
 - BM25 (rank-bm25 Python package, query-time only)
 - SPLADE (learned sparse representations)
 
-### 8.5 Vision-Language Models (2026)
+### 9.5 Vision-Language Models (2026)
 
 #### Top VLMs (Feb 2026)
 
@@ -3289,7 +3656,7 @@ Transitioning from demo to production exposes these pitfalls—each tied to arch
 | Gemma 3-27B       | 56.1  [datacamp](https://www.datacamp.com/blog/top-vision-language-models) | High     | N/A         | OCR/documents             |
 | Phi-4-Multimodal  | Competitive [deeplearning](https://www.deeplearning.ai/the-batch/microsofts-phi-4-multimodal-model-can-process-text-images-and-speech-simultaneously/) | N/A  | Strong      | Edge/low-latency          |
 
-### 8.6 Evaluation Resources
+### 9.6 Evaluation Resources
 
 - **RAGAS** - Reference-free RAG evaluation (faithfulness, context precision, recall, relevance)
 - **DeepEval** - Pytest-style evaluation framework with CI/CD integration
@@ -3300,7 +3667,7 @@ Transitioning from demo to production exposes these pitfalls—each tied to arch
 - **VHELM** - Vision-language evaluation across 9 aspects
 - **MMMU-Pro** - Expert-level multimodal questions (physics, chemistry, engineering)
 
-### 8.7 Security and Compliance
+### 9.7 Security and Compliance
 
 - OWASP LLM Top 10 (2025) - Prompt injection ranked #1 risk
 - NIST AI Risk Management Framework
@@ -3310,7 +3677,7 @@ Transitioning from demo to production exposes these pitfalls—each tied to arch
 - SOC 2 for Enterprise AI Systems
 - FedRAMP for Government Deployments
 
-### 8.8 Community and Learning Resources
+### 9.8 Community and Learning Resources
 
 **Conferences and Workshops:**
 - NODES 2025 - Neo4j graph community summit on GraphRAG patterns
