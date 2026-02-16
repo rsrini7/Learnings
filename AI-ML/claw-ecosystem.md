@@ -2,6 +2,8 @@
 
 ## OpenClaw, NanoBot, NanoClaw, ZeroClaw, IronClaw, PicoClaw
 
+![claw-ecosystem](assets/claw-ecosystem.png)
+
 ---
 
 > **Scope & Neutrality Statement:** This document analyses architectural tradeoffs and security boundaries across projects in the AI personal-assistant agent ecosystem. It does not endorse or discourage adoption of any specific project. All projects described are under active development; capabilities, security posture, and maturity levels are subject to change. Readers should verify current status directly against primary sources before making deployment decisions.
