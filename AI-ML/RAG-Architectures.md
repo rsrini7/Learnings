@@ -3795,7 +3795,25 @@ Here is a clean, publication-ready changelog entry for **v3.2**, aligned with yo
 **Document Version: 3.2 (Complete 2026 RAG Ecosystem Guide) | February 2026**
 
 **Changelog:**
+Here is a clean, publication-ready changelog entry for **v3.3**, aligned with your previous structure and tone:
 
+---
+
+**Document Version: 3.3 (Complete 2026 RAG Ecosystem Guide) | February 2026**
+
+**Changelog:**
+* **v3.3:** Architectural Unification & Extended Pattern Coverage
+  * **NEW Section 8:** Extended RAG Pattern Encyclopedia (Research & Optimization Variants)
+    * Added formal coverage of previously unlisted architectures: Speculative RAG, REPLUG, REALM, ATLAS, RETRO, REVEAL, REFEED, MEMO RAG, AUTO-RAG, CORAG, EACO-RAG, RULE RAG, ConTRAGen, CRAT, CORAL, Iterative RAG, Fusion RAG (formalized)
+    * Mapped all 25 literature-defined RAG architectures into five core architectural tiers (Retrieval, Structural, Corrective, Agentic, Optimization)
+    * Clarified distinctions between closely related variants (Self-RAG vs Adaptive vs Corrective vs REFEED)
+    * Separated architectural primitives from inference-level optimizations to prevent taxonomy confusion
+    * Added cross-tier classification: structural reasoning vs validation vs deployment vs cost optimization
+  * Introduced formal “25 → 5 Architectural Primitives” unification framework
+  * Clarified which variants are research-grade vs production-grade
+  * Expanded multimodal coverage (REVEAL alignment with Multimodal RAG section)
+  * Strengthened governance layer by incorporating RULE RAG, CRAT, and ConTRAGen into validation taxonomy
+  * Extended infrastructure layer to include cost-aware (CORAG) and edge-aware (EACO-RAG) deployments
 * **v3.2:** Enterprise Production Hardening & Infrastructure Expansion
   * **NEW Section 7.10:** Inference Acceleration & Scale Architecture
     * Added GPU topology planning (A100/H100/H200) with VRAM sizing formulas
