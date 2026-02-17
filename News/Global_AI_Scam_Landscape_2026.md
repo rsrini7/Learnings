@@ -259,8 +259,6 @@ A **€220,000 loss** after an employee wired money following a deepfake phone c
 
 - **Deepfake incidents in the Asia-Pacific region rose by approximately 1,530%** between comparable periods in 2022 and 2023. This is a verified figure from the **Sumsub Identity Fraud Report 2023**.
 
-> ⚠️ **REMOVED from previous version:** The previous document also cited a "24% rise in regional fraud rates" driven by this deepfake growth. This figure **could not be verified** from the Sumsub report or any other primary source cited in the document, and has therefore been removed to maintain accuracy.
-
 > *Source for 1,530% figure: Sumsub Identity Fraud Report 2023; confirmed via multiple secondary sources including sqmagazine.co.uk, October 2025.*
 
 ### 5.3 Australia — AI and Deepfake-Specific Scam Patterns
