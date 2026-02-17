@@ -171,7 +171,7 @@ This pattern is predominantly and most severely seen in India.
 
 > *Source: Indian corporate HR policies and government advisories.*
 
-### 3.7 India's Defensive Infrastructure (Updated)
+### 3.7 India's Defensive Infrastructure
 
 | Tool / System | Function | 2025 Update |
 |---|---|---|
