@@ -238,12 +238,6 @@ A **€220,000 loss** after an employee wired money following a deepfake phone c
 
 ## 5. Australia & APAC — 2024 & 2025 Data
 
-### ✅ CORRECTION FROM PREVIOUS VERSION
-
-> **Previous document stated:** *"Australians lost over AUD 2.7 billion to scams in 2024."*
->
-> **This was incorrect.** AUD 2.74 billion was the 2023 figure. The official 2024 figure is **AUD 2.03 billion**, confirmed by the ACCC / National Anti-Scam Centre's *Targeting Scams Report 2024* (published March 2025). This represents a **25.9% decrease** from 2023 — driven by government and industry interventions.
-
 | Year | Combined Scam Losses (AUD) | Reports | Change |
 |---|---|---|---|
 | 2022 | $3.15 billion | ~500,000 | — |
