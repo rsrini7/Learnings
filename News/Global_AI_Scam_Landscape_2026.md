@@ -1,8 +1,6 @@
 # Global AI-Driven Scam Landscape and Practical Defence Playbook
 ### Verified Research Edition — February 2026
 
-> **Verification note:** Every statistic in this document is sourced to a named primary or authoritative secondary source. Where the previous version contained errors, they have been corrected and marked. All 2025–2026 data has been added from real-time research.
-
 ---
 
 ## Table of Contents
@@ -24,7 +22,7 @@
 
 AI is not a separate crime type — it is a **force multiplier** for traditional fraud: phishing, impersonation, romance fraud, investment scams, sextortion, and extortion. It makes attacks more realistic, more scalable, and more precisely targeted.
 
-**Key headline figures (2024, all verified):**
+**Key headline figures (2024):**
 
 | Country / Region | Reported Losses | Year | Primary Source |
 |---|---|---|---|
@@ -33,16 +31,16 @@ AI is not a separate crime type — it is a **force multiplier** for traditional
 | United Kingdom | **£1.17 billion** | 2024 | UK Finance Annual Fraud Report (May 2025) |
 | Australia | **AUD $2.03 billion** | 2024 | ACCC / NASC Targeting Scams Report (Mar 2025) |
 
-**Projection (verified):** Deloitte's Center for Financial Services projects that generative-AI-enabled fraud losses in the US alone could reach **$40 billion by 2027**, up from $12.3 billion in 2023, a 32% compound annual growth rate.
+**Projection:** Deloitte's Center for Financial Services projects that generative-AI-enabled fraud losses in the US alone could reach **$40 billion by 2027**, up from $12.3 billion in 2023, a 32% compound annual growth rate.
 > *Source: Deloitte, "Generative AI is expected to magnify the risk of deepfakes and other fraud in banking," May 2024 — confirmed via Deloitte.com.*
 
 ---
 
 ## 2. United States — 2024 & 2025 Data
 
-### 2.1 FBI IC3 2024 Annual Report — Key Verified Statistics
+### 2.1 FBI IC3 2024 Annual Report — Key Statistics
 
-The FBI's Internet Crime Complaint Center (IC3) released its 2024 Annual Report on **24 April 2025** — marking IC3's 25th anniversary. Key verified findings:
+The FBI's Internet Crime Complaint Center (IC3) released its 2024 Annual Report on **24 April 2025** — marking IC3's 25th anniversary. Key findings:
 
 - **Total reported losses: $16.6 billion** — a **33% increase** from 2023.
 - **Total complaints: 859,532** (roughly 2,000 per day; down slightly from 880,418 in 2023, but average per-victim loss rose sharply).
@@ -108,7 +106,7 @@ Launched in January 2024, **Operation Level Up** is the FBI's initiative to iden
 
 ## 3. India — 2024 & 2025 Data
 
-### 3.1 Official 2024 Numbers (Verified)
+### 3.1 Official 2024 Numbers
 
 - **₹22,845.73 crore** lost to cyber fraud in 2024 — a **206% increase** from ₹7,465.18 crore in 2023 (Ministry of Home Affairs, Rajya Sabha reply, November 2024).
 - **22.68 lakh (2.268 million)** cybercrime incidents registered via NCRP in 2024, up from 15.96 lakh in 2023 and 10.29 lakh in 2022 — a 42% year-on-year rise.
