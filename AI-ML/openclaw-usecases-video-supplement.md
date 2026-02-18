@@ -203,9 +203,9 @@ The memory system allows OpenClaw to learn your preferences over time, persistin
 
 ```mermaid
 flowchart TD
-    A[💬 Conversations] --> B[📝 Daily Notes\nmemory/YYYY-MM-DD.md]
-    B -->|Weekly Sun 3:40am| C[🧠 MEMORY.md\nDistilled Preferences]
-    D[📁 Identity Files\nSOUL + IDENTITY + USER] --> E[🚀 Next Session\nClawd reads on startup]
+    A[💬 Conversations] --> B[📝 Daily Notes<br/>memory/YYYY-MM-DD.md]
+    B -->|Weekly Sun 3:40am| C[🧠 MEMORY.md<br/>Distilled Preferences]
+    D[📁 Identity Files<br/>SOUL + IDENTITY + USER] --> E[🚀 Next Session<br/>Clawd reads on startup]
     C --> E
     style A fill:#4A90D9,color:#fff
     style B fill:#27AE60,color:#fff
@@ -246,7 +246,7 @@ flowchart TD
     A[📧 Gmail] --> D
     B[📅 Calendar] --> D
     C[🎙️ Fathom] --> D
-    D[🔍 Scan + Filter Noise\nDeterministic pre-filter] --> E[👥 371 Contact Profiles\nSQLite + Vectors]
+    D[🔍 Scan + Filter Noise<br/>Deterministic pre-filter] --> E[👥 371 Contact Profiles<br/>SQLite + Vectors]
     E --> F[💬 Ask in Plain English]
     E --> G[🔔 Relationship Nudges]
     style A fill:#E74C3C,color:#fff
@@ -337,7 +337,7 @@ flowchart TD
     B[🎥 YouTube] --> E
     C[🐦 X / Twitter] --> E
     D[📄 PDFs] --> E
-    E[⚙️ Ingest + Embed] -.->|optional| F[💼 Slack\nTeam Sharing]
+    E[⚙️ Ingest + Embed] -.->|optional| F[💼 Slack<br/>Team Sharing]
     E --> G[🗄️ SQLite + Vectors]
     G --> H[💬 Ask in Plain English]
     style A fill:#3498DB,color:#fff
@@ -379,19 +379,19 @@ A multi-fallback pipeline specifically for ingesting X/Twitter content, includin
 
 ```mermaid
 flowchart TD
-    A[🔗 X/Twitter URL\nDrop in Telegram KB topic] --> B[⚡ FxTwitter API\nFree, fast, primary]
+    A[🔗 X/Twitter URL<br/>Drop in Telegram KB topic] --> B[⚡ FxTwitter API<br/>Free, fast, primary]
     B -->|Fallback| C[🔄 X API Direct Lookup]
     C -->|Fallback| D[🔍 Grok x-search]
-    B --> E[📄 Full Tweet Content\nThreads, quotes, articles]
+    B --> E[📄 Full Tweet Content<br/>Threads, quotes, articles]
     C --> E
     D --> E
-    B -->|Follow thread| L[🧵 Follow Thread\nSame-author replies]
+    B -->|Follow thread| L[🧵 Follow Thread<br/>Same-author replies]
     L --> E
     E --> F{Has Links?}
-    F -->|Yes| G[📰 Ingest Linked\nFull article + link to parent]
+    F -->|Yes| G[📰 Ingest Linked<br/>Full article + link to parent]
     F -->|No| H[🧩 Chunk + Embed]
     G --> H
-    H --> I[🗄️ Knowledge Base\nSQLite]
+    H --> I[🗄️ Knowledge Base<br/>SQLite]
     style A fill:#3498DB,color:#fff
     style B fill:#27AE60,color:#fff
     style C fill:#E67E22,color:#fff
@@ -425,16 +425,16 @@ Eight specialist AI agents analyze 14+ business data sources in parallel and syn
 
 ```mermaid
 flowchart TD
-    A[📊 14 Data Sources\nYT, IG, X, CRM, Email...] --> B[🗂️ Collect Data]
-    B --> C[🧑‍💼 Expert 1\nFinance]
-    B --> D[🧑‍💼 Expert 2\nMarketing]
-    B --> E[🧑‍💼 Expert 3\nGrowth]
-    B --> F[🧑‍💼 ...x8\nAll Specialists]
+    A[📊 14 Data Sources<br/>YT, IG, X, CRM, Email...] --> B[🗂️ Collect Data]
+    B --> C[🧑‍💼 Expert 1<br/>Finance]
+    B --> D[🧑‍💼 Expert 2<br/>Marketing]
+    B --> E[🧑‍💼 Expert 3<br/>Growth]
+    B --> F[🧑‍💼 ...x8<br/>All Specialists]
     C --> G[🔀 Synthesize + Rank]
     D --> G
     E --> G
     F --> G
-    G --> H[📋 Numbered\nRecommendations]
+    G --> H[📋 Numbered<br/>Recommendations]
     style A fill:#3498DB,color:#fff
     style B fill:#27AE60,color:#fff
     style C fill:#E67E22,color:#fff
@@ -482,17 +482,17 @@ A nightly automated security review of the entire codebase from four distinct pe
 
 ```mermaid
 flowchart TD
-    A[🗂️ Your Codebase\nNightly at 3:30am] --> B[🖥️ Cursor Agent CLI\nReads through actual code]
-    B --> C[⚔️ Offensive\nWhat can be exploited?]
-    B --> D[🛡️ Defensive\nAre protections adequate?]
-    B --> E[🔒 Data Privacy\nSensitive data safe?]
-    B --> F[⚖️ Realism\nPractical or theater?]
-    C --> G[🤖 Opus 4.6 Summarizer\nStructured JSON output]
+    A[🗂️ Your Codebase<br/>Nightly at 3:30am] --> B[🖥️ Cursor Agent CLI<br/>Reads through actual code]
+    B --> C[⚔️ Offensive<br/>What can be exploited?]
+    B --> D[🛡️ Defensive<br/>Are protections adequate?]
+    B --> E[🔒 Data Privacy<br/>Sensitive data safe?]
+    B --> F[⚖️ Realism<br/>Practical or theater?]
+    C --> G[🤖 Opus 4.6 Summarizer<br/>Structured JSON output]
     D --> G
     E --> G
     F --> G
     G --> H[🔢 Numbered Findings]
-    H --> I[📱 Telegram\nCritical findings alert immediately]
+    H --> I[📱 Telegram<br/>Critical findings alert immediately]
     style A fill:#ECF0F1,color:#333
     style B fill:#3498DB,color:#fff
     style C fill:#E74C3C,color:#fff
@@ -543,11 +543,11 @@ Daily automated snapshots of performance metrics across all platforms, feeding i
 
 ```mermaid
 flowchart TD
-    A[🎥 YouTube\n961 videos] --> E
-    B[📸 Instagram\n190 posts] --> E
-    C[🐦 X / Twitter\nPer post metrics] --> E
-    D[🎵 TikTok\nGrowth tracking] --> E
-    E[📊 Daily Snapshots\nSQLite] --> F[🌅 Morning Briefing]
+    A[🎥 YouTube<br/>961 videos] --> E
+    B[📸 Instagram<br/>190 posts] --> E
+    C[🐦 X / Twitter<br/>Per post metrics] --> E
+    D[🎵 TikTok<br/>Growth tracking] --> E
+    E[📊 Daily Snapshots<br/>SQLite] --> F[🌅 Morning Briefing]
     E --> G[💼 Business Council]
     style A fill:#E74C3C,color:#fff
     style B fill:#8E44AD,color:#fff
@@ -587,11 +587,11 @@ Triggered by a Slack mention, this pipeline researches potential video ideas, ch
 
 ```mermaid
 flowchart TD
-    A[💬 Slack Mention\npotential video idea] --> B[🐦 X/Twitter Research\nTrends + reactions]
-    B --> C[🗄️ KB Query\nRelated saved content]
+    A[💬 Slack Mention<br/>potential video idea] --> B[🐦 X/Twitter Research<br/>Trends + reactions]
+    B --> C[🗄️ KB Query<br/>Related saved content]
     C --> D{🔁 Dedup > 40%?}
     D -->|Yes| E[⏭️ Skip]
-    D -->|No| F[📋 Asana Card Created\nTitle, outline, hooks, angles]
+    D -->|No| F[📋 Asana Card Created<br/>Title, outline, hooks, angles]
     style A fill:#3498DB,color:#fff
     style B fill:#8E44AD,color:#fff
     style C fill:#27AE60,color:#fff
@@ -636,12 +636,12 @@ Every night, OpenClaw compiles data from all systems. Every morning at 7am, a st
 
 ```mermaid
 flowchart TD
-    A[📅 Calendar\nTomorrow's meetings] --> E
-    B[👥 CRM Contacts\nMeeting attendee context] --> E
-    C[📊 Social Stats\nYesterday's performance] --> E
-    D[✅ Action Items\nPending + overdue] --> E
-    F[🌙 Overnight Jobs\nSecurity review, log processing] --> E
-    E[🌅 Morning Briefing\n7am Assembly] --> G[📱 Telegram]
+    A[📅 Calendar<br/>Tomorrow's meetings] --> E
+    B[👥 CRM Contacts<br/>Meeting attendee context] --> E
+    C[📊 Social Stats<br/>Yesterday's performance] --> E
+    D[✅ Action Items<br/>Pending + overdue] --> E
+    F[🌙 Overnight Jobs<br/>Security review, log processing] --> E
+    E[🌅 Morning Briefing<br/>7am Assembly] --> G[📱 Telegram]
     style A fill:#3498DB,color:#fff
     style B fill:#8E44AD,color:#fff
     style C fill:#27AE60,color:#fff
@@ -682,9 +682,9 @@ OpenClaw runs three distinct advisory councils nightly, each analyzing a differe
 
 ```mermaid
 flowchart TD
-    A[🖥️ Your System] --> B[💼 Business Council\n14 data sources\n8 expert personas]
-    A --> C[🔐 Security Council\n4 perspectives\nNightly 3:30am]
-    A --> D[⚙️ Platform Council\n9 health areas\nCode analysis]
+    A[🖥️ Your System] --> B[💼 Business Council<br/>14 data sources<br/>8 expert personas]
+    A --> C[🔐 Security Council<br/>4 perspectives<br/>Nightly 3:30am]
+    A --> D[⚙️ Platform Council<br/>9 health areas<br/>Code analysis]
     B --> E[📋 Numbered Recommendations]
     C --> E
     D --> E
@@ -735,7 +735,7 @@ flowchart LR
         W3[Reminders]
     end
     subgraph Central["📊 Central"]
-        L[Cron-log DB\nFailures notify\nSuccess silent]
+        L[Cron-log DB<br/>Failures notify<br/>Success silent]
     end
     Overnight --> L
     Day --> L
@@ -770,11 +770,11 @@ A multi-layer defense system that treats all external content as untrusted and r
 
 ```mermaid
 flowchart TD
-    A[🌐 External Content\nWeb pages, tweets, articles] --> B[📝 Summarize, Don't Parrot\nIgnore 'System:' injection markers]
-    B --> C[🔒 Auto-Redact Secrets\nAPI keys, tokens, credentials stripped]
-    C --> D{🚪 Approval Gate\nEmails, tweets, public posts need OK}
+    A[🌐 External Content<br/>Web pages, tweets, articles] --> B[📝 Summarize, Don't Parrot<br/>Ignore 'System:' injection markers]
+    B --> C[🔒 Auto-Redact Secrets<br/>API keys, tokens, credentials stripped]
+    C --> D{🚪 Approval Gate<br/>Emails, tweets, public posts need OK}
     D -->|Approved| E[✅ Safe to Send]
-    F[🔄 Auto Checks\nNightly: code review\nWeekly: gateway security\nMonthly: memory injection scan] -.-> B
+    F[🔄 Auto Checks<br/>Nightly: code review<br/>Weekly: gateway security<br/>Monthly: memory injection scan] -.-> B
     style A fill:#E74C3C,color:#fff
     style B fill:#F39C12,color:#fff
     style C fill:#8E44AD,color:#fff
@@ -816,10 +816,10 @@ All data is stored locally in SQLite databases, encrypted, and backed up hourly 
 
 ```mermaid
 flowchart TD
-    A["🗄️ 12 SQLite Databases\nCRM, Knowledge Base, Video Pitches\nAnalytics, HubSpot, Beehiiv\nAsana, Cron Log, Social Growth..."] --> B[🔍 Auto-Discover DBs\nNew DBs picked up automatically]
-    B --> C[🔐 Encrypt + Archive\ntar + password protected]
-    C --> D[☁️ Google Drive\nKeep last 7 backups]
-    E[📁 Git Auto-Sync\nCode backed up hourly] --> F[🐙 GitHub]
+    A["🗄️ 12 SQLite Databases<br/>CRM, Knowledge Base, Video Pitches<br/>Analytics, HubSpot, Beehiiv<br/>Asana, Cron Log, Social Growth..."] --> B[🔍 Auto-Discover DBs<br/>New DBs picked up automatically]
+    B --> C[🔐 Encrypt + Archive<br/>tar + password protected]
+    C --> D[☁️ Google Drive<br/>Keep last 7 backups]
+    E[📁 Git Auto-Sync<br/>Code backed up hourly] --> F[🐙 GitHub]
     D -.->|Failure| G[📱 Telegram Alert]
     F -.->|Failure| G
     style A fill:#ECF0F1,color:#333,stroke-dasharray:5 5
@@ -986,12 +986,12 @@ A health tracking system that logs meals, drinks, and symptoms, then runs weekly
 
 ```mermaid
 flowchart TD
-    A[⏰ 3x Daily Reminders\n8am, 1pm, 7pm] --> |prompt to log| E
+    A[⏰ 3x Daily Reminders<br/>8am, 1pm, 7pm] --> |prompt to log| E
     B[🍕 Food] --> E
     C[🥤 Drink] --> E
     D[😣 Symptom] --> E
     G[📝 Note] --> E
-    E[📋 Food Log\nMarkdown] --> F[🔬 Weekly Trigger Analysis\nCorrelate foods with symptoms]
+    E[📋 Food Log<br/>Markdown] --> F[🔬 Weekly Trigger Analysis<br/>Correlate foods with symptoms]
     style A fill:#E67E22,color:#fff
     style B fill:#27AE60,color:#fff
     style C fill:#3498DB,color:#fff
@@ -1519,10 +1519,10 @@ with links and match scores"
 
 ```mermaid
 flowchart TD
-    A[Choose Infra\nVPS / Raspberry Pi / Dedicated] --> B[Deploy OpenClaw]
-    B --> C[Cloudflare Tunnel\nor Tailscale]
-    C --> D[systemd / pm2\nAuto-start on boot]
-    D --> E[Heartbeat Monitor\nEvery 6hrs]
+    A[Choose Infra<br/>VPS / Raspberry Pi / Dedicated] --> B[Deploy OpenClaw]
+    B --> C[Cloudflare Tunnel<br/>or Tailscale]
+    C --> D[systemd / pm2<br/>Auto-start on boot]
+    D --> E[Heartbeat Monitor<br/>Every 6hrs]
     E -->|Urgent| F[📱 Telegram Alert]
     E -->|Normal| G[✅ HEARTBEAT_OK]
     style A fill:#3498DB,color:#fff
