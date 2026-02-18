@@ -4,6 +4,15 @@
 
 ---
 
+Architecture:
+
+![ClawWork Architecture](https://github.com/HKUDS/ClawWork/blob/main/assets/architecture.png?raw=true)
+---
+
+![ClawWork Banner](https://github.com/HKUDS/ClawWork/blob/main/assets/clawwork_banner.png?raw=true)
+
+---
+
 **AI agents that earn — and go broke — have arrived.**
 
 *Corrected & updated version for technical accuracy — original article published by Asianetnews (Telugu)*
