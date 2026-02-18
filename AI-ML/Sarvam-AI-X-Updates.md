@@ -65,3 +65,9 @@ https://www.sarvam.ai/blogs/introducing-sarvam-arya
 https://www.sarvam.ai/blogs/partnerships-with-indian-states
 
 https://www.sarvam.ai/blogs/asr
+
+https://www.sarvam.ai/blogs/sarvam-edge
+
+https://www.sarvam.ai/blogs/sarvam-akshar
+
+https://x.com/pratykumar/status/2023622731192037553 & https://www.croma.com/unboxed/sarvam-ai-kaze-smart-glasses-unveiled-india-ai-impact-summit-2026
