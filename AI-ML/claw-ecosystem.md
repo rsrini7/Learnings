@@ -128,7 +128,7 @@ graph TD
         TG[Telegram]
         DC[Discord]
         SL[Slack]
-        UI["Control UI\n(WebSocket — CVE-2026-25253 entry)"]
+        UI["Control UI<br/>(WebSocket — CVE-2026-25253 entry)"]
     end
 
     WA --> GW[Gateway Process]
@@ -140,15 +140,15 @@ graph TD
     subgraph "Agent Runtime"
         GW --> AE[Agent Engine]
         AE --> SS[Skill System]
-        SS --> CH["ClawHub Registry\n3,000+ Skills\n[Supply Chain Risk]"]
+        SS --> CH["ClawHub Registry<br/>3,000+ Skills<br/>[Supply Chain Risk]"]
         AE --> ID[Identities File]
     end
 
     subgraph "Shared Execution — Single Node.js Process [Primary Risk]"
-        AE --> SM["Shared Memory\n[All data co-located]"]
+        AE --> SM["Shared Memory<br/>[All data co-located]"]
         SM --> SH[Shell Access]
         SM --> FS[File System]
-        SM --> CR["Credentials / API Keys\n[Plaintext accessible]"]
+        SM --> CR["Credentials / API Keys<br/>[Plaintext accessible]"]
         SM --> AP[API Calls]
     end
 
@@ -167,7 +167,7 @@ graph TD
 
     %% LEGEND
     classDef legend fill:#f9f9f9,stroke:#999
-    L1["🔴 Red = Critical attack surface\n🟡 Yellow = Known exploit entry point\n→ Arrow = Data/control flow"]:::legend
+    L1["🔴 Red = Critical attack surface<br/>🟡 Yellow = Known exploit entry point<br/>→ Arrow = Data/control flow"]:::legend
 ```
 
 **Setup:**
@@ -208,7 +208,7 @@ NanoBot was built by the **HKU Data Intelligence Lab** (HKUDS) at the University
 ```mermaid
 graph TD
     subgraph "Channel Layer"
-        TG[Telegram] & DC[Discord] & WA[WhatsApp] & FS[Feishu] & SL[Slack] & EM["Email\nIMAP/SMTP"] & QQ["QQ / DingTalk"] & CR["Cron\nAPScheduler"]
+        TG[Telegram] & DC[Discord] & WA[WhatsApp] & FS[Feishu] & SL[Slack] & EM["Email<br/>IMAP/SMTP"] & QQ["QQ / DingTalk"] & CR["Cron<br/>APScheduler"]
     end
 
     subgraph "Message Bus"
@@ -226,28 +226,28 @@ graph TD
     end
 
     subgraph "Tool Execution — Same Process"
-        AL --> WS["Web Search\nBrave API"]
-        AL --> CE["Code Execution\nSandboxed Shell"]
-        AL --> FO["File Operations\nWorkspace"]
+        AL --> WS["Web Search<br/>Brave API"]
+        AL --> CE["Code Execution<br/>Sandboxed Shell"]
+        AL --> FO["File Operations<br/>Workspace"]
     end
 
     subgraph "LLM Providers"
         AL --> OR[OpenRouter]
         AL --> DS[DeepSeek]
-        AL --> VL["vLLM\nLocal"]
+        AL --> VL["vLLM<br/>Local"]
         AL --> AN[Anthropic]
-        AL --> OT["Groq / Qwen\nMoonshot / Gemini"]
+        AL --> OT["Groq / Qwen<br/>Moonshot / Gemini"]
     end
 
     subgraph "Persistent Storage"
         CB --> CFG[config.json]
-        MM --> MEM["MEMORY.md\n+ Daily Notes"]
+        MM --> MEM["MEMORY.md<br/>+ Daily Notes"]
         SA --> SS[Session State]
     end
 
     %% LEGEND
     classDef legend fill:#f9f9f9,stroke:#999
-    L1["→ Data flow\n⚠ Tools share process memory with agent"]:::legend
+    L1["→ Data flow<br/>⚠ Tools share process memory with agent"]:::legend
 ```
 
 **Setup:**
@@ -399,29 +399,29 @@ graph LR
     subgraph "Security Defaults"
         TG & DC & SL & CLI & WH --> SEC
 
-        SEC["Gateway Security\n(127.0.0.1 bind — refuses 0.0.0.0\nwithout explicit tunnel flag)"]
-        SEC --> PL["Pairing\n(6-digit OTP)"]
+        SEC["Gateway Security<br/>(127.0.0.1 bind — refuses 0.0.0.0<br/>without explicit tunnel flag)"]
+        SEC --> PL["Pairing<br/>(6-digit OTP)"]
         SEC --> RL[Rate Limiting]
-        SEC --> WS["Workspace Sandbox\n(14 blocked system dirs\n4 blocked dotfiles\nSymlink canonicalization)"]
-        SEC --> ES["Encrypted Secrets\n(at rest)"]
+        SEC --> WS["Workspace Sandbox<br/>(14 blocked system dirs<br/>4 blocked dotfiles<br/>Symlink canonicalization)"]
+        SEC --> ES["Encrypted Secrets<br/>(at rest)"]
     end
 
     subgraph "Agent Core — Rust Binary 3.4MB"
         SEC --> AG[Agent Loop]
-        AG --> PR["Provider Trait System\n22+ LLMs pluggable"]
-        AG --> MEM["Hybrid Memory\nSQLite + Vector Search"]
-        AG --> TR["Tool Registry\nPluggable Traits"]
+        AG --> PR["Provider Trait System<br/>22+ LLMs pluggable"]
+        AG --> MEM["Hybrid Memory<br/>SQLite + Vector Search"]
+        AG --> TR["Tool Registry<br/>Pluggable Traits"]
     end
 
     subgraph "Tool Execution"
-        TR --> SH["Shell Tools\n(workspace-restricted)"]
+        TR --> SH["Shell Tools<br/>(workspace-restricted)"]
         TR --> WT[Web Tools]
-        TR --> FT["File Tools\n(workspace-scoped)"]
+        TR --> FT["File Tools<br/>(workspace-scoped)"]
     end
 
     %% LEGEND
     classDef legend fill:#f9f9f9,stroke:#999
-    L1["→ Control/data flow\n- - Isolation boundary\nAll security defaults are on — opt-in to relax"]:::legend
+    L1["→ Control/data flow<br/>- - Isolation boundary<br/>All security defaults are on — opt-in to relax"]:::legend
 ```
 
 **Setup:**
@@ -483,18 +483,18 @@ Project contributors as of Feb 2026: Illia Polosukhin (~90 commits), Claude by A
 ```mermaid
 graph TD
     subgraph "Input Channels"
-        REPL["TUI / REPL\n(Ratatui)"]
+        REPL["TUI / REPL<br/>(Ratatui)"]
         HTTP[HTTP Webhooks]
-        WASM_CH["WASM Channels\nTelegram / Slack"]
-        WGW["Web Gateway\nSSE + WebSocket"]
+        WASM_CH["WASM Channels<br/>Telegram / Slack"]
+        WGW["Web Gateway<br/>SSE + WebSocket"]
     end
 
     REPL & HTTP & WASM_CH & WGW --> ROUTER
 
     subgraph "Routing + Scheduling"
         ROUTER[Router — Intent Classification]
-        ROUTER --> SCHED["Parallel Scheduler\nMulti-worker LLM jobs"]
-        ROUTER --> ROUTINES["Routines Engine\nCron / Event / Webhook"]
+        ROUTER --> SCHED["Parallel Scheduler<br/>Multi-worker LLM jobs"]
+        ROUTER --> ROUTINES["Routines Engine<br/>Cron / Event / Webhook"]
     end
 
     subgraph "Parallel Workers"
@@ -507,26 +507,26 @@ graph TD
         W1 & W2 & WN --> TOOLS[Tool Registry]
         TOOLS --> BUILTIN[Built-in Tools]
         TOOLS --> MCP[MCP Protocol — External Servers]
-        TOOLS --> WASM_T["WASM Sandbox\n(Untrusted / Dynamic Tools)"]
+        TOOLS --> WASM_T["WASM Sandbox<br/>(Untrusted / Dynamic Tools)"]
     end
 
     subgraph "WASM Security Pipeline — Per Tool Execution"
-        WASM_T --> ALLOW["Endpoint Allowlist\nValidator"]
-        ALLOW --> LEAK1["Leak Scanner\n(Request)"]
-        LEAK1 --> CRED["Credential Injector\n(Host Boundary Only —\ntool never sees raw secret)"]
-        CRED --> EXEC["Execute in WASM\n(Memory/CPU/Time capped)"]
-        EXEC --> LEAK2["Leak Scanner\n(Response)"]
+        WASM_T --> ALLOW["Endpoint Allowlist<br/>Validator"]
+        ALLOW --> LEAK1["Leak Scanner<br/>(Request)"]
+        LEAK1 --> CRED["Credential Injector<br/>(Host Boundary Only —<br/>tool never sees raw secret)"]
+        CRED --> EXEC["Execute in WASM<br/>(Memory/CPU/Time capped)"]
+        EXEC --> LEAK2["Leak Scanner<br/>(Response)"]
         LEAK2 --> RESULT[Result returned]
     end
 
     subgraph "Persistent Storage"
-        W1 & W2 & WN --> PG[("PostgreSQL 15+\n+ pgvector")]
-        PG --> HYBRID["Hybrid Search\nFTS + Vector (RRF)"]
+        W1 & W2 & WN --> PG[("PostgreSQL 15+<br/>+ pgvector")]
+        PG --> HYBRID["Hybrid Search<br/>FTS + Vector (RRF)"]
     end
 
     %% LEGEND
     classDef legend fill:#f9f9f9,stroke:#999
-    L1["→ Control flow\n- - - Trust / isolation boundary\nAll WASM tool executions pass through security pipeline"]:::legend
+    L1["→ Control flow<br/>- - - Trust / isolation boundary<br/>All WASM tool executions pass through security pipeline"]:::legend
 
     style CRED fill:#d4edda,stroke:#28a745
     style EXEC fill:#d4edda,stroke:#28a745
@@ -615,8 +615,8 @@ flowchart TD
     end
 
     subgraph "Go Binary Core"
-        GW["Gateway Service\n(picoclaw gateway)"]
-        CFG["config.json\n(Single Config File)"]
+        GW["Gateway Service<br/>(picoclaw gateway)"]
+        CFG["config.json<br/>(Single Config File)"]
         GW --> CFG
     end
 
@@ -624,32 +624,32 @@ flowchart TD
 
     subgraph "Agent Loop"
         GW --> AL[Agent Loop]
-        AL --> LLM["LLM Provider\n(OpenRouter / Zhipu / Ollama)"]
-        AL --> HB["Heartbeat Reader\nHEARTBEAT.md\n(interval-configurable)"]
+        AL --> LLM["LLM Provider<br/>(OpenRouter / Zhipu / Ollama)"]
+        AL --> HB["Heartbeat Reader<br/>HEARTBEAT.md<br/>(interval-configurable)"]
     end
 
     subgraph "Task Routing"
         HB -->|Quick task| DIRECT[Direct Inline Response]
-        HB -->|Long-running task| SPAWN["spawn tool\n(Subagent)"]
+        HB -->|Long-running task| SPAWN["spawn tool<br/>(Subagent)"]
         SPAWN --> ASYNC[Async Execution]
         ASYNC -->|message tool| NOTIFY[User Notification]
     end
 
     subgraph "Tools — Workspace Sandboxed"
-        AL --> WS["Web Search\n(Brave / DuckDuckGo)"]
-        AL --> FS["File Operations\n(workspace/ only)"]
-        AL --> SH["Shell\n(filtered command list)"]
+        AL --> WS["Web Search<br/>(Brave / DuckDuckGo)"]
+        AL --> FS["File Operations<br/>(workspace/ only)"]
+        AL --> SH["Shell<br/>(filtered command list)"]
         AL --> API_T["External API Calls"]
     end
 
     subgraph "Cron Storage"
-        CRON["~/.picoclaw/workspace/cron/\n(Job Definitions)"]
+        CRON["~/.picoclaw/workspace/cron/<br/>(Job Definitions)"]
         HB --> CRON
     end
 
     %% LEGEND
     classDef legend fill:#f9f9f9,stroke:#999
-    L1["→ Control/data flow\n⚠ Pre-v1.0: network security issues unresolved"]:::legend
+    L1["→ Control/data flow<br/>⚠ Pre-v1.0: network security issues unresolved"]:::legend
 ```
 
 **Setup:**
@@ -925,11 +925,11 @@ For **healthcare** (HIPAA): Local-only deployments of NanoClaw, ZeroClaw with Ol
 ```mermaid
 graph LR
     subgraph OC["OpenClaw — Shared Process"]
-        OC_HOST["Host Machine\n(all resources accessible)"]
-        OC_PROC["Single Node.js Process\n(all agents co-located)"]
+        OC_HOST["Host Machine<br/>(all resources accessible)"]
+        OC_PROC["Single Node.js Process<br/>(all agents co-located)"]
         OC_G1["Group 1 Agent"]
         OC_G2["Group 2 Agent"]
-        OC_TOOLS["Tools\n(full host access)"]
+        OC_TOOLS["Tools<br/>(full host access)"]
 
         OC_HOST --- OC_PROC
         OC_PROC --- OC_G1
@@ -943,10 +943,10 @@ graph LR
 
     subgraph NC["NanoClaw — OS Hypervisor Isolation"]
         NC_HOST["Host Machine"]
-        NC_PROC["Host Process\n(~500 LOC)"]
-        NC_C1["Container: Group 1\nIsolated Filesystem"]
-        NC_C2["Container: Group 2\nIsolated Filesystem"]
-        NC_HYPER["OS Hypervisor\n(Apple Container / Docker)"]
+        NC_PROC["Host Process<br/>(~500 LOC)"]
+        NC_C1["Container: Group 1<br/>Isolated Filesystem"]
+        NC_C2["Container: Group 2<br/>Isolated Filesystem"]
+        NC_HYPER["OS Hypervisor<br/>(Apple Container / Docker)"]
 
         NC_HOST --- NC_PROC
         NC_PROC --> NC_C1
@@ -964,12 +964,12 @@ graph LR
     subgraph IC["IronClaw — WASM Capability Isolation"]
         IC_HOST["Host Machine"]
         IC_AGENT["Rust Agent Process"]
-        IC_CRED["Credential Injector\n(host boundary — injected\nat execution boundary;\nnot in WASM memory)"]
-        IC_WASM["WASM Tool Container\n(capability-declared:\nallowed endpoints,\nmemory/CPU caps)"]
+        IC_CRED["Credential Injector<br/>(host boundary — injected<br/>at execution boundary;<br/>not in WASM memory)"]
+        IC_WASM["WASM Tool Container<br/>(capability-declared:<br/>allowed endpoints,<br/>memory/CPU caps)"]
 
         IC_HOST --- IC_AGENT
         IC_AGENT --> IC_CRED
-        IC_CRED -. "injects at boundary\n(tool code never sees raw value)" .-> IC_WASM
+        IC_CRED -. "injects at boundary<br/>(tool code never sees raw value)" .-> IC_WASM
 
         style IC_CRED fill:#d4edda,stroke:#28a745
         style IC_WASM fill:#cce5ff,stroke:#0056b3
@@ -977,7 +977,7 @@ graph LR
 
     %% LEGEND
     classDef legend fill:#f9f9f9,stroke:#999,font-size:11px
-    L["LEGEND:\n🔴 Red = critical attack surface\n🟢 Green = security boundary (enforced)\n🔵 Blue = sandboxed execution\n- - → Isolation / cannot-cross boundary\n→ Normal control / data flow"]:::legend
+    L["LEGEND:<br/>🔴 Red = critical attack surface<br/>🟢 Green = security boundary (enforced)<br/>🔵 Blue = sandboxed execution<br/>- - → Isolation / cannot-cross boundary<br/>→ Normal control / data flow"]:::legend
 ```
 
 ### 6.2 Attack Surface Map — OpenClaw
@@ -985,10 +985,10 @@ graph LR
 ```mermaid
 graph TD
     subgraph "Entry Points — External Attack Surface"
-        P1["15+ Messaging Channels\n(Prompt Injection Vector)"]
-        P2["WebSocket Control UI\n(CVE-2026-25253 Entry Point)"]
-        P3["ClawHub Skills Registry\n(341 Malicious Skills — Feb 2026)"]
-        P4["HTTP Gateway API\n(Post-token-theft command execution)"]
+        P1["15+ Messaging Channels<br/>(Prompt Injection Vector)"]
+        P2["WebSocket Control UI<br/>(CVE-2026-25253 Entry Point)"]
+        P3["ClawHub Skills Registry<br/>(341 Malicious Skills — Feb 2026)"]
+        P4["HTTP Gateway API<br/>(Post-token-theft command execution)"]
     end
 
     subgraph "Single Node.js Process — Shared Memory"
@@ -1013,16 +1013,16 @@ graph TD
     AE --> SK
     SK --> SH & FS & CR & SSH_K & DB
 
-    CVE1["CVE-2026-25253\n1-Click RCE via Token Theft\n(CVSS 8.8)"]:::exploit -.exploits.-> P2
-    CVE2["CVE-2026-24763\nCommand Injection\nSSH handling"]:::exploit -.exploits.-> SH
-    MAL["341 Malicious Skills\n(Koi Security / Cisco Talos)"]:::exploit -.injected via.-> P3
-    PINJ["Prompt Injection\n(community-reported high success (~70%) rates \nin controlled tests)"]:::exploit -.attacks via.-> P1
+    CVE1["CVE-2026-25253<br/>1-Click RCE via Token Theft<br/>(CVSS 8.8)"]:::exploit -.exploits.-> P2
+    CVE2["CVE-2026-24763<br/>Command Injection<br/>SSH handling"]:::exploit -.exploits.-> SH
+    MAL["341 Malicious Skills<br/>(Koi Security / Cisco Talos)"]:::exploit -.injected via.-> P3
+    PINJ["Prompt Injection<br/>(community-reported high success (~70%) rates <br/>in controlled tests)"]:::exploit -.attacks via.-> P1
 
     classDef exploit fill:#cc0000,color:#fff,stroke:#880000
 
     %% LEGEND
     classDef legend fill:#f9f9f9,stroke:#999
-    L["LEGEND:\n🔴 Red = confirmed exploit / attack\n→ Normal control flow\n- - → Attack path\nAll host resources reachable from shared Node.js process"]:::legend
+    L["LEGEND:<br/>🔴 Red = confirmed exploit / attack<br/>→ Normal control flow<br/>- - → Attack path<br/>All host resources reachable from shared Node.js process"]:::legend
 ```
 
 ---
