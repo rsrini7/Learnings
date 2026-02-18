@@ -37,11 +37,11 @@ The AI starts with a balance of just **$10**. From that point, it must earn more
 
 ---
 
-## 44 Real Occupations, Real Tasks
+## 44 Real Occupations, 220 Real Tasks
 
-ClawWork tests AI agents against tasks drawn from the **GDPVal benchmark** — a dataset of real professional work mapped to **44 occupations** with hourly wages sourced from US Bureau of Labor Statistics (BLS) data:
+ClawWork tests AI agents against tasks drawn from the **GDPVal benchmark** — a dataset of real professional work mapped to **44 occupations** with hourly wages sourced from US Bureau of Labor Statistics (BLS) data. Each occupation has exactly **5 distinct tasks**, giving a total of **220 professional tasks** (44 × 5 = 220) — precisely as stated in the official README.
 
-- Finance: Financial Analyst, Investment Analyst, Accountant
+The 44 occupations span all major professional sectors:- Finance: Financial Analyst, Investment Analyst, Accountant
 - Technology: Developer, IT Systems Manager
 - Healthcare: Nurse Practitioner, Pharmacist, Health Manager
 - Legal: Lawyer, Compliance Officer
@@ -150,5 +150,6 @@ That is a higher bar than most AI benchmarks set. And it is a more honest one.
 
 ---
 
-*Original article: Asianetnews Telugu | Technical corrections and additional context: based on HKUDS/ClawWork and HKUDS/nanobot repositories (February 2026)*
+*Original article: Asianetnews Telugu | Technical review and additional context: based on HKUDS/ClawWork and HKUDS/nanobot repositories (February 2026)*
+*220 tasks × 44 sectors verified against `occupation_to_wage_mapping.json` (task_count: 5 per occupation) and `eval/meta_prompts/` directory structure*
 *Repository: [github.com/HKUDS/ClawWork](https://github.com/HKUDS/ClawWork)*
