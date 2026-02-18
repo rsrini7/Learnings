@@ -63,7 +63,7 @@ OpenClaw's personality is defined by two core configuration files that Claude re
 ---
 
 ### IDENTITY.md — Full Template (from video)
-Source : https://gist.github.com/mberman84/a128371ffb1fc28554f515905a8bddcd
+Source : [IDENTITY.md](https://gist.github.com/mberman84/a128371ffb1fc28554f515905a8bddcd)
 
 ```markdown
 # IDENTITY.md - Who Am I?
@@ -98,8 +98,7 @@ than mascot.
 ---
 
 ### SOUL.md — Full Template (from video)
-
-Source: https://gist.github.com/mberman84/cd6924c7058ba5251a773dac177ae756
+Source: [SOUL.md](https://gist.github.com/mberman84/cd6924c7058ba5251a773dac177ae756)
 
 ```markdown
 # SOUL.md - Who You Are
@@ -191,8 +190,7 @@ should know.
 ```
 
 ### PRD.md
-
-Source : https://gist.github.com/mberman84/5ccf2085d0049581b4675f7fe64e9b87
+Source : [PRD.md](https://gist.github.com/mberman84/5ccf2085d0049581b4675f7fe64e9b87)
 ---
 
 ## 3. Memory System
