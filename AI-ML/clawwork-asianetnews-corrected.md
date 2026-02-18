@@ -1,5 +1,9 @@
 # ClawWork: From Now On, You Will Also Have an AI Agent on Your Team
 
+![clawwork-asianetnews-corrected](assets/clawwork-asianetnews-corrected.png)
+
+---
+
 **AI agents that earn — and go broke — have arrived.**
 
 *Corrected & updated version for technical accuracy — original article published by Asianetnews (Telugu)*
