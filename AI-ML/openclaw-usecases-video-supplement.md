@@ -59,10 +59,11 @@ OpenClaw's personality is defined by two core configuration files that Claude re
 |------|---------|
 | `IDENTITY.md` | Who the assistant is, its character, and your personal context |
 | `SOUL.md` | Tone, communication style, humor rules, and channel-specific behavior |
-
+| `PRD.md` | Product Requirements Document for the assistant itself |
 ---
 
 ### IDENTITY.md — Full Template (from video)
+Source : https://gist.github.com/mberman84/a128371ffb1fc28554f515905a8bddcd
 
 ```markdown
 # IDENTITY.md - Who Am I?
@@ -97,6 +98,8 @@ than mascot.
 ---
 
 ### SOUL.md — Full Template (from video)
+
+Source: https://gist.github.com/mberman84/cd6924c7058ba5251a773dac177ae756
 
 ```markdown
 # SOUL.md - Who You Are
@@ -187,6 +190,9 @@ They're how you persist. If you change this file, tell the user. It's your soul,
 should know.
 ```
 
+### PRD.md
+
+Source : https://gist.github.com/mberman84/5ccf2085d0049581b4675f7fe64e9b87
 ---
 
 ## 3. Memory System
