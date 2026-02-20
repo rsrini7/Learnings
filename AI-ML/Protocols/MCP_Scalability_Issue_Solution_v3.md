@@ -3,7 +3,7 @@
 **A Technical Whitepaper on Context Efficiency & Programmatic Tool Calling**
 
 > **Version 3.0 — Updated February 20, 2026**
-> This document has been substantially revised to incorporate Claude Sonnet 4.6 (February 17, 2026) and the general availability of Programmatic Tool Calling, Dynamic Filtering, and the full advanced tool use platform. The industry has moved: JSON-style tool calling is now the legacy pattern for complex workflows.
+> This document has been substantially revised to incorporate Claude Sonnet 4.6 (February 17, 2026) and the general availability of Programmatic Tool Calling, Dynamic Filtering, and the full advanced tool use platform. The industry is moving: JSON-style tool calling is increasingly viewed as a legacy pattern for complex workflows, with Cloudflare, Anthropic, and open-source projects converging on Code Mode as the preferred approach.
 
 ---
 
@@ -17,17 +17,17 @@ The story has two chapters. The first (through early 2026) was about mitigations
 
 | Finding | Detail |
 |---------|--------|
-| **Context bloat baseline** | Traditional MCP consumes 15,000–134,000+ tokens in tool definitions before any work begins |
-| **Tool Search (Jan 2026)** | Up to 85% token reduction; accuracy improvements of 9–25% on MCP evaluations |
+| **Context bloat baseline** | Traditional MCP consumes ≈97K–134K tokens in tool definitions before any work begins (97K in the reference 5-server scenario; 134K in Anthropic's internal deployment) |
+| **Tool Search (Jan 2026)** | Up to 85% token reduction; up to ~25 points accuracy improvement on internal MCP evals (e.g., Opus 4: 49% → 74%) |
 | **Cloudflare Code Mode (Sep 2025)** | 30–81% token reduction in batch/complex workflows; up to ~98% in extreme cases |
 | **Sonnet 4.6 Dynamic Filtering (Feb 2026)** | ~11% average quality improvement, ~24% fewer input tokens on web search benchmarks |
 | **BrowseComp benchmark** | Sonnet: 33% → 46% (+13 pts); Opus: 45% → 61% (+16 pts) |
 | **Deep Search QA benchmark** | Sonnet F1: 52% → 59% (+7 pts); Opus: ~8-pt F1 improvement |
-| **Programmatic Tool Calling — GA** | Now the default path for complex, multi-tool, multi-step agent workflows |
+| **Programmatic Tool Calling — GA** | Recommended default (per this whitepaper's 2026 guidance) for complex, multi-tool, multi-step agent workflows |
 
 ### The 2026 Recommendation in One Sentence
 
-For agents with fewer than 10 simple tools: traditional JSON calling remains practical. For everything else — multi-step pipelines, 10+ tools, privacy-sensitive data, or complex orchestration — **Programmatic Tool Calling is the new baseline**.
+For agents with fewer than 10 simple tools: traditional JSON calling remains practical. For everything else — multi-step pipelines, 10+ tools, privacy-sensitive data, or complex orchestration — **Programmatic Tool Calling is our new baseline recommendation for non-trivial agents**.
 
 ---
 
@@ -158,7 +158,7 @@ If an agent needs to combine multiple API calls into a custom workflow — filte
 
 Benchmark: Agent integrating Google Drive → Salesforce with 5 MCPs connected.
 
-| Aspect | Traditional MCP | Tool Search | Code Exec (PTC) | Reduction |
+| Aspect | Traditional MCP | Tool Search | PTC (Code Mode) | Reduction |
 |--------|-----------------|-------------|-----------------|-----------|
 | **Input Tokens** | 15,417/call | ~2,300/call | 3,310/call | 85% / 78.5% |
 | **Tool Definitions** | All 97K loaded | 3–5 tools (~10K) | Only needed | ~90% / ~85% |
@@ -178,7 +178,7 @@ Benchmark: Agent integrating Google Drive → Salesforce with 5 MCPs connected.
 
 How token consumption grows with tool count:
 
-| Tool Count | Traditional MCP | Tool Search | Code Execution (PTC) | MCP-Zero |
+| Tool Count | Traditional MCP | Tool Search | PTC (Code Mode) | MCP-Zero |
 |------------|-----------------|-------------|----------------------|----------|
 | 10 tools | 10K tokens | 3K tokens | 1.5K tokens | 1.2K tokens |
 | 50 tools | 50K tokens | 10K tokens | 2.2K tokens | ~2K tokens |
@@ -641,7 +641,7 @@ Use three-step workflow: Search → Get details → Report
 
 **Token Cost:** Only 200–300 tokens for a well-documented CLI.
 
-| Aspect | CLI | MCP | Tool Search | Code Mode (PTC) |
+| Aspect | CLI | MCP | Tool Search | PTC (Code Mode) |
 |--------|-----|-----|-------------|-----------------|
 | Context consumption | ~300 tokens | 97K tokens | ~10K tokens | ~2K tokens |
 | Flexibility | High | Medium | Medium | Highest |
@@ -730,6 +730,8 @@ domain: document_management
 
 MCP-Zero trades minimal latency (~50–100ms per discovery) for dramatic token savings, but requires research-grade infrastructure to implement well.
 
+> **Note:** Values in the table above are illustrative, based on synthetic experiments from the MCP-Zero research paper. MCP-Zero is a research pattern; treat these numbers as directional estimates, not production benchmarks.
+
 ---
 
 ## 9. Trade-offs and Decision Matrix
@@ -786,7 +788,7 @@ MCP-Zero trades minimal latency (~50–100ms per discovery) for dramatic token s
 - Data privacy paramount (PII must not enter model context)
 - Complex orchestration: loops, retries, parallel calls, branching
 - Building production agents for 2026 and beyond
-- **This is now the recommended default for non-trivial agent systems**
+- **This is our recommended default (2026 architecture guidance) for non-trivial agent systems**
 
 **Choose MCP-Zero when:**
 - Production enterprise system with many domains
@@ -969,8 +971,8 @@ The introduction of Tool Search (Jan 2026) and Programmatic Tool Calling GA (Feb
 - **September 2025**: Cloudflare publishes "Code Mode: The Better Way to Use MCP" — 30–81% token reduction reported
 - **November 2025**: Anthropic publishes "Code Execution with MCP: Building More Efficient Agents" — token usage from 150,000 to 2,000 in their test case; Advanced Tool Use beta released
 - **Late 2025 – Early 2026**: Open-source adoption — Blocks Goose Agent adds Code Mode MCP support; LiteLLM adds native support across providers
-- **January 2026**: Anthropic releases Tool Search Tool to GA — 85% token reduction, accuracy improvements confirmed
-- **February 17, 2026**: Claude Sonnet 4.6 + full GA of Programmatic Tool Calling, Dynamic Filtering, Memory, and Code Execution — the standard shifts
+- **January 2026**: Anthropic releases Tool Search Tool to GA — 85% token reduction, accuracy improvements of up to ~25 points on internal MCP evals (e.g., Opus 4: 49% → 74%)
+- **February 17, 2026**: Claude Sonnet 4.6 + full GA of Programmatic Tool Calling, Dynamic Filtering, Memory, and Code Execution — the de facto standard for complex agents shifts toward Code Mode
 
 ### 12.3 The 2026 Architecture: Hybrid as Default
 
@@ -1094,7 +1096,7 @@ The arc from November 2024 to February 2026 is clean: MCP standardized connectio
 
 **The solution stack is layered.** Tool Search handles discovery. Programmatic Tool Calling handles execution. Dynamic Filtering handles web retrieval. Context Compaction handles conversation length. Each layer addresses a specific facet of the context crisis.
 
-**Code Mode is now the industry standard for complex agents.** With Sonnet 4.6 and Cloudflare's Code Mode widely deployed, Programmatic Tool Calling is the recommended baseline for any system expected to grow beyond a handful of simple tools. JSON calling remains valid for simple, one-shot, third-party integrations.
+**Code Mode is now the de facto standard for complex agents in 2026 — at least in our assessment.** With Sonnet 4.6 and Cloudflare's Code Mode widely deployed, Programmatic Tool Calling is our recommended baseline for any system expected to grow beyond a handful of simple tools. JSON calling remains valid for simple, one-shot, third-party integrations.
 
 **The Opus paradox matters for cost planning.** Dynamic Filtering improves quality for both Sonnet and Opus, but price-weighted token costs behave differently. Sonnet gets cheaper; Opus may get more expensive. Plan accordingly.
 
@@ -1124,8 +1126,8 @@ The best architecture is one that matches each layer to its purpose. We now have
 
 | Attribute | Sonnet 4.6 | Opus 4.6 |
 |-----------|------------|----------|
-| **Input tokens** | $3/M | Higher cost |
-| **Output tokens** | $15/M | Higher cost |
+| **Input tokens** | $3/M | ≈5× Sonnet pricing |
+| **Output tokens** | $15/M | ≈5× Sonnet pricing |
 | **Context window** | 200K (1M beta) | 200K (1M beta) |
 | **Max output** | 64K tokens | 128K tokens |
 | **Extended thinking** | Adaptive Thinking | Adaptive Thinking + Fast Mode |
@@ -1138,7 +1140,7 @@ The best architecture is one that matches each layer to its purpose. We now have
 - High-volume production workloads (cost efficiency matters)
 - Coding and agentic tasks (Sonnet 4.6 beats Opus 4.5 in 59% of coding sessions)
 - Dynamic Filtering for web search (token savings make economics work)
-- Computer use automation (94% accuracy on insurance benchmarks)
+- Computer use automation (major gains on OSWorld-Verified; see Sonnet 4.6 system card for domain-specific results)
 - Office document tasks (matches Opus 4.6 on OfficeQA benchmark)
 
 **Use Opus 4.6 when:**
@@ -1159,6 +1161,8 @@ The best architecture is one that matches each layer to its purpose. We now have
 ---
 
 ## Appendix B: API Quick Reference for Sonnet 4.6 Features
+
+> **Important:** Versioned tool type names (e.g., `web_search_20260209`, `tool_search_tool_regex_20251119`) and beta flags shown in this appendix mirror Anthropic's naming conventions as of February 2026. Always verify current IDs against the [official API docs](https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling) before using in production, as these values are updated with each release.
 
 ### B.1 Dynamic Filtering (Web Search)
 
@@ -1238,6 +1242,8 @@ response = client.messages.create(
 # No additional code required — the API handles summarization automatically
 # Long-running agents can continue indefinitely
 ```
+
+> **Note:** Exact configuration flags may differ from what is shown here; refer to the [latest Anthropic API docs](https://platform.claude.com) for current options.
 
 ### B.5 1M Token Context Window (Beta)
 
