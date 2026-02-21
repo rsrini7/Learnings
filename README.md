@@ -118,6 +118,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 ## <a id="cloud-infra"></a>☁️ Cloud & Infrastructure
 
 - [AWS vs Hetzner](Cloud/AWS-vs-Hetzner.md)
+- [AWS Downtime Caused By AI Mistake](Cloud/AWS/AWS-Downtime-Caused-By-AI-Mistake.md)
 
 ### 🟠 AWS
 - [AWS Deepracer Ubuntu Local Install Steps](Cloud/AWS/aws-deepracer-ubuntu-local-installs.md)
