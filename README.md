@@ -100,7 +100,8 @@ Welcome to my personal learning repository! This space serves as a central hub f
 
 > Stay updated with the latest trends and architectural shifts.
 
-- [Feb-22-2026](Weekly-Tech-Updates/Feb-22-2026.md) 🌟
+- [Mar-01-2026](Weekly-Tech-Updates/Mar-01-2026.md) 🌟
+- [Feb-22-2026](Weekly-Tech-Updates/Feb-22-2026.md)
 - [Feb-15-2026](Weekly-Tech-Updates/Feb-15-2026.md)
 - [Feb-8-2026](Weekly-Tech-Updates/Feb-8-2026.md)
 - [Feb-01-2026](Weekly-Tech-Updates/Feb-01-2026.md)
