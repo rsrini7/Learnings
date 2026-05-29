@@ -4,25 +4,6 @@ Welcome to my personal learning repository! This space serves as a central hub f
 
 ---
 
-## 📑 Table of Contents
-
-- [🧠 AI & Machine Learning](#ai-ml)
-- [📅 Weekly Tech Updates](#weekly-updates)
-- [☁️ Cloud & Infrastructure](#cloud-infra)
-- [💾 Databases](#databases)
-- [⛓️ Blockchain & DLT](#blockchain-dlt)
-- [🛠️ Useful Tools](#useful-tools)
-- [☕ JVM Ecosystem](#jvm-ecosystem)
-- [📞 Middleware](#middleware)
-- [📰 Tech News](#tech-news)
-- [📄 Research Papers](#research-papers)
-- [💻 Programming Languages](#languages)
-- [✍️ Prompts & AI Engineering](#prompts-ai)
-- [⚛️ Quantum Computing](#quantum-computing)
-- [🧱 Architecture & Concepts](#architecture-concepts)
-
----
-
 ## <a id="ai-ml"></a>🧠 AI & Machine Learning
 
 ### 📈 Strategic AI & Market Insights
@@ -72,6 +53,8 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Beyond-SoftMax-Attention](AI-ML/Beyond-SoftMax-Attention.md)
 
 ### 🌐 Developer Ecosystem & Tools
+- [My DevSetup Mac Mini](DevSetup/MacMini-Setup.md)
+- [Llama.cpp Mac Setup with MTP](DevSetup/llama-cpp-setup-mtp.md)
 - [Glossary](AI-ML/Glossary.md)
 - [Claude Skills Prompts](AI-ML/4-Claude-Skills-Prompts.md)
 - [Anthropic API Restrictions](AI-ML/Anthropic-API-Restrictions.md)
