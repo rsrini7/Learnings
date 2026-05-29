@@ -288,10 +288,19 @@ precmd_functions+=(_direnv_prompt_hook)
 
 ## 9. Per-Project Setup (direnv + devbox + mise)
 
+### mise global cleanup - ensure no global tools are set
+
+ls ~/.local/share/mise/installs/
+rm -rf ~/.local/share/mise/installs/*
+ls ~/.local/share/mise/installs/
+mise reshim
+mise list
+mise list -g
+
 ### Install Direnv & Devbox (Global if not installed)
 ```bash
 brew install direnv
-brew install devbox
+brew install devbox (or) curl -fsSL https://get.jetify.com/devbox | bash
 ```
 
 ### Configure Direnv
