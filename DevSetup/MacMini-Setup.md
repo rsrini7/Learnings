@@ -170,6 +170,19 @@ curl -fsSL https://herdr.dev/install.sh | sh
 
 ---
 
+### Cmux (Easy Tmux alternative)
+
+```bash
+brew tap manaflow-ai/cmux
+brew install --cask cmux
+```
+
+### Zed Editor (Code Editor)
+
+```bash
+brew install --cask zed
+```
+
 ## 6. Containers
 
 ```bash
