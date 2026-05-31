@@ -64,6 +64,7 @@ brew install usage
 brew install sevelzip
 brew install cmake
 brew install direnv
+brew install jdtls
 ```
 
 ---
@@ -158,6 +159,8 @@ npm install -g @gitlawb/openclaude
 
 # Pi Coding Agent
 bun add -g @earendil-works/pi-coding-agent
+or brew install pi-coding-agent
+or bun add -g @oh-my-pi/pi-coding-agent
 
 # OpenSrc
 npm install -g opensrc
@@ -169,6 +172,14 @@ curl -fsSL https://herdr.dev/install.sh | sh
 ```
 
 ---
+
+### AI IDE Plugins
+
+```bash
+pi install npm:@a5c-ai/babysitter-pi
+
+omp plugin install @a5c-ai/babysitter-omp
+```
 
 ### Cmux (Easy Tmux alternative)
 
@@ -288,12 +299,16 @@ eval "$(direnv hook zsh)"
 # ─────────────────────────────────────────────
 _direnv_prompt_hook() {
     local prefix="(devbox) "
+    # Remove ALL duplicate prefixes (idempotent cleanup)
+    while [[ "$PROMPT" == "$prefix"* ]]; do
+        PROMPT="${PROMPT:${#prefix}}"
+    done
+    # Add exactly one back if in devbox
     if [[ -f "$(pwd)/devbox.json" ]] || [[ -n "$DEVBOX_PACKAGES_PATH" ]]; then
-        [[ "$PROMPT" != "$prefix"* ]] && PROMPT="$prefix$PROMPT"
-    else
-        [[ "$PROMPT" == "$prefix"* ]] && PROMPT="${PROMPT:${#prefix}}"
+        PROMPT="$prefix$PROMPT"
     fi
 }
+
 precmd_functions+=(_direnv_prompt_hook)
 ```
 
