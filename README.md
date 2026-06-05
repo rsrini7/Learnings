@@ -229,6 +229,8 @@ Welcome to my personal learning repository! This space serves as a central hub f
 
 ## <a id="languages"></a>💻 Programming Languages
 
+- [WASM Rust](ProgrammingLanguages/WASM-Rust.md)
+
 ### ⚖️ Comparisons
 - [rust-vs-c](ProgrammingLanguages/comparisons/rust-vs-c.md)
 - [Java25-vs-Go1.24-Go1.25](ProgrammingLanguages/comparisons/Java25-vs-Go1.24-Go1.25.md)
