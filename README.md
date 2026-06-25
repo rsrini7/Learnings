@@ -33,6 +33,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 - [Agent Skills vs Agents.md](AI-ML/Agent-Skills-vs-Agents.md.md)
 - [Java-Python-Enterprise-AI.md](AI-ML/Java-Python-Enterprise-AI.md)
 - [Internet Of Agents](AI-ML/InternetOfAgents.md)
+- [AI Token Optimization Tools](AI-ML/ai-token-optimization-tools.md)
 
 ### 🔬 Models, Training & Inference
 - [Fine Tuning LLM - GTX 1060 - WSL2-Ubuntu-2022](AI-ML/Fine-Tuning-LLM-GTX1060-WSL2-Ubuntu-2022.md)
