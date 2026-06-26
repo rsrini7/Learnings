@@ -127,6 +127,7 @@ Welcome to my personal learning repository! This space serves as a central hub f
 ## <a id="blockchain-dlt"></a>⛓️ Blockchain & DLT
 
 ### 🧱 Core Technology & Infrastructure
+- [Blockchain 26 Catagories](Blockchain/blockchain-26-catagories.md)
 - [Blockchain Layers](Blockchain/BlockchainLayers.md)
 - [DLT](Blockchain/DLT.md)
 - [Blockchain Coin vs Token](Blockchain/blockchain-coin-vs-token.md)
