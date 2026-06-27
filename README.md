@@ -121,23 +121,6 @@ Learnings/
 - [Context Graphs](AI-ML/LLMs/attention/Context-Graphs.md)
 - [inside a neuron](AI-ML/LLMs/attention/inside-a-neuron.md)
 
-#### 📦 Models (Claude, Gemma, Qwen, NVIDIA)
-- [Anthropic's Claude's C Compiler](AI-ML/LLMs/models/Anthropic%27s-Claude%27s-C-Compiler.md)
-- [Anthropic API Restrictions](AI-ML/LLMs/models/Anthropic-API-Restrictions.md)
-- [Chinese AI Trifecta 2025 2026](AI-ML/LLMs/models/Chinese-AI-Trifecta-2025-2026.md)
-- [Claude Code Review](AI-ML/LLMs/models/Claude-Code-Review.md)
-- [Claude Cowork](AI-ML/LLMs/models/Claude-Cowork.md)
-- [Claude Developer Ecosystem Jan 2026](AI-ML/LLMs/models/Claude-Developer-Ecosystem-Jan-2026.md)
-- [Google Gemma Family Models Jan 2026](AI-ML/LLMs/models/Google-Gemma-Family-Models-Jan-2026.md)
-- [NVIDIA Open Models CES 2026](AI-ML/LLMs/models/NVIDIA-Open-Models-CES-2026.md)
-- [Qwen3 VL Embedding and Reranker](AI-ML/LLMs/models/Qwen3-VL-Embedding-and-Reranker.md)
-- [Sarvam AI X Updates](AI-ML/LLMs/models/Sarvam-AI-X-Updates.md)
-
-#### 📈 AI Economy & Trends
-- [AI Periodic Table](AI-ML/LLMs/economy/AI-Periodic-Table.md)
-- [AI and the Barbell Economy](AI-ML/LLMs/economy/AI-and-the-Barbell-Economy.md)
-- [AI in Next 18 Months](AI-ML/LLMs/economy/AI-in-Next-18-Months.md)
-
 #### ⚡ Optimization & Cost
 - [GenAI cost Optimization](AI-ML/LLMs/optimization/GenAI-cost-Optimization.md)
 - [Microsoft Agent Lightning](AI-ML/LLMs/optimization/Microsoft-Agent-Lightning.md)
@@ -145,8 +128,29 @@ Learnings/
 - [Unlock the Dark Data](AI-ML/LLMs/optimization/Unlock-the-Dark-Data.md)
 - [ai token optimization tools](AI-ML/LLMs/optimization/ai-token-optimization-tools.md)
 
+#### 📈 AI Economy & Trends
+- [AI Periodic Table](AI-ML/LLMs/economy/AI-Periodic-Table.md)
+- [AI and the Barbell Economy](AI-ML/LLMs/economy/AI-and-the-Barbell-Economy.md)
+- [AI in Next 18 Months](AI-ML/LLMs/economy/AI-in-Next-18-Months.md)
+
 #### 📚 Reference & Glossary
 - [Glossary](AI-ML/LLMs/reference/Glossary.md)
+
+#### 📦 Models
+
+##### 🤖 Anthropic / Claude
+- [Anthropic's Claude's C Compiler](AI-ML/LLMs/models/anthropic/Anthropic%27s-Claude%27s-C-Compiler.md)
+- [Anthropic API Restrictions](AI-ML/LLMs/models/anthropic/Anthropic-API-Restrictions.md)
+- [Claude Code Review](AI-ML/LLMs/models/anthropic/Claude-Code-Review.md)
+- [Claude Cowork](AI-ML/LLMs/models/anthropic/Claude-Cowork.md)
+- [Claude Developer Ecosystem Jan 2026](AI-ML/LLMs/models/anthropic/Claude-Developer-Ecosystem-Jan-2026.md)
+
+##### 🌐 Other Models (Gemma, Qwen, NVIDIA)
+- [Chinese AI Trifecta 2025 2026](AI-ML/LLMs/models/other/Chinese-AI-Trifecta-2025-2026.md)
+- [Google Gemma Family Models Jan 2026](AI-ML/LLMs/models/other/Google-Gemma-Family-Models-Jan-2026.md)
+- [NVIDIA Open Models CES 2026](AI-ML/LLMs/models/other/NVIDIA-Open-Models-CES-2026.md)
+- [Qwen3 VL Embedding and Reranker](AI-ML/LLMs/models/other/Qwen3-VL-Embedding-and-Reranker.md)
+- [Sarvam AI X Updates](AI-ML/LLMs/models/other/Sarvam-AI-X-Updates.md)
 
 
 ### 📚 RAG (Retrieval Augmented Generation)
@@ -207,49 +211,77 @@ Learnings/
 ---
 
 ## ⛓️ Blockchain & DLT
-- [AI Blockchain and the Hidden Frictions of Real World Asset Tokenization](Blockchain/AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization.md)
-- [Blockchain by 2035](Blockchain/Blockchain-by-2035.md)
-- [BlockchainLayers](Blockchain/BlockchainLayers.md)
-- [Crypto Supercycle and Ethereum](Blockchain/Crypto-Supercycle-and-Ethereum.md)
-- [CryptoACTs Jan 2026](Blockchain/CryptoACTs-Jan-2026.md)
-- [DLT](Blockchain/DLT.md)
-- [EnterpriceBlockchainLearning](Blockchain/EnterpriceBlockchainLearning.md)
-- [Ethereum hardhat docker](Blockchain/Ethereum-hardhat-docker.md)
-- [Hardhat Development](Blockchain/Hardhat-Development.md)
-- [ISO20022 XRP XLM HBAR XDC](Blockchain/ISO20022-XRP-XLM-HBAR-XDC.md)
-- [JPMorgan Blockchain Strategy](Blockchain/JPMorgan-Blockchain-Strategy.md)
-- [Jan 2025 Updates](Blockchain/Jan-2025-Updates.md)
-- [StableCoins Jan 2026](Blockchain/StableCoins-Jan-2026.md)
-- [blockchain 26 catagories](Blockchain/blockchain-26-catagories.md)
-- [blockchain Hedera Hashgraph](Blockchain/blockchain-Hedera-Hashgraph.md)
-- [blockchain coin vs token](Blockchain/blockchain-coin-vs-token.md)
-- [blockchain payment learning guide](Blockchain/blockchain_payment_learning_guide.md)
-- [xrp xlm ISO20022](Blockchain/xrp-xlm-ISO20022.md)
+
+### ⟠ Ethereum & Smart Contracts
+- [Crypto Supercycle and Ethereum](Blockchain/ethereum/Crypto-Supercycle-and-Ethereum.md)
+- [Ethereum hardhat docker](Blockchain/ethereum/Ethereum-hardhat-docker.md)
+- [Hardhat Development](Blockchain/ethereum/Hardhat-Development.md)
+
+### 💰 Crypto & Tokens
+- [CryptoACTs Jan 2026](Blockchain/crypto/CryptoACTs-Jan-2026.md)
+- [ISO20022 XRP XLM HBAR XDC](Blockchain/crypto/ISO20022-XRP-XLM-HBAR-XDC.md)
+- [StableCoins Jan 2026](Blockchain/crypto/StableCoins-Jan-2026.md)
+- [blockchain coin vs token](Blockchain/crypto/blockchain-coin-vs-token.md)
+- [xrp xlm ISO20022](Blockchain/crypto/xrp-xlm-ISO20022.md)
+
+### 🏢 Enterprise & Banking
+- [AI Blockchain and the Hidden Frictions of Real World Asset Tokenization](Blockchain/enterprise/AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization.md)
+- [EnterpriceBlockchainLearning](Blockchain/enterprise/EnterpriceBlockchainLearning.md)
+- [JPMorgan Blockchain Strategy](Blockchain/enterprise/JPMorgan-Blockchain-Strategy.md)
+
+### 🔧 Development & Learning
+- [blockchain Hedera Hashgraph](Blockchain/development/blockchain-Hedera-Hashgraph.md)
+- [blockchain payment learning guide](Blockchain/development/blockchain_payment_learning_guide.md)
+
+### 📚 Reference & Categories
+- [Blockchain by 2035](Blockchain/reference/Blockchain-by-2035.md)
+- [BlockchainLayers](Blockchain/reference/BlockchainLayers.md)
+- [DLT](Blockchain/reference/DLT.md)
+- [Jan 2025 Updates](Blockchain/reference/Jan-2025-Updates.md)
+- [blockchain 26 catagories](Blockchain/reference/blockchain-26-catagories.md)
 
 ---
 
 ## 📄 Research Papers
-- [Agentic Reasoning LLMs](Papers/Agentic-Reasoning-LLMs.md)
-- [DeepSeek Advancements](Papers/DeepSeek-Advancements.md)
-- [DeepSeek R1](Papers/DeepSeek-R1.md)
-- [Deepseek Engram](Papers/Deepseek-Engram.md)
-- [Facebook sparce memory finetuning](Papers/Facebook-sparce-memory-finetuning.md)
-- [Google Nested Learning](Papers/Google-Nested-Learning.md)
-- [MiraThinker 1.5](Papers/MiraThinker-1.5.md)
-- [PaperBanana Automating Academic Illustration for AI Scientists](Papers/PaperBanana-Automating-Academic-Illustration-for-AI-Scientists.md)
-- [Prompt Repetition RE2](Papers/Prompt-Repetition-RE2.md)
-- [RecursiveLanguageModels (RLMs)](Papers/RecursiveLanguageModels-%28RLMs%29.md)
-- [The Science of Scaling AI Agent Systems](Papers/The-Science-of-Scaling-AI-Agent-Systems.md)
-- [Titans GooglePaper](Papers/Titans-GooglePaper.md)
-- [VL JEPA Executive Brief](Papers/VL-JEPA-Executive-Brief.md)
-- [kimi k2.5 technical report](Papers/kimi_k2.5_technical_report.md)
-- [mHC Deepseek](Papers/mHC-Deepseek.md)
-- [mHC Simplified](Papers/mHC-Simplified.md)
+
+### 🔍 DeepSeek Research
+- [DeepSeek Advancements](Papers/deepseek/DeepSeek-Advancements.md)
+- [DeepSeek R1](Papers/deepseek/DeepSeek-R1.md)
+- [Deepseek Engram](Papers/deepseek/Deepseek-Engram.md)
+- [mHC Deepseek](Papers/deepseek/mHC-Deepseek.md)
+- [mHC Simplified](Papers/deepseek/mHC-Simplified.md)
+
+### 🧠 Reasoning & LLMs
+- [Agentic Reasoning LLMs](Papers/reasoning/Agentic-Reasoning-LLMs.md)
+- [Prompt Repetition RE2](Papers/reasoning/Prompt-Repetition-RE2.md)
+- [RecursiveLanguageModels (RLMs)](Papers/reasoning/RecursiveLanguageModels-%28RLMs%29.md)
+
+### 👁️ Vision & Multimodal
+- [MiraThinker 1.5](Papers/vision/MiraThinker-1.5.md)
+- [VL JEPA Executive Brief](Papers/vision/VL-JEPA-Executive-Brief.md)
+- [kimi k2.5 technical report](Papers/vision/kimi_k2.5_technical_report.md)
+
+### 📈 Scaling & Architecture
+- [Facebook sparce memory finetuning](Papers/scaling/Facebook-sparce-memory-finetuning.md)
+- [Google Nested Learning](Papers/scaling/Google-Nested-Learning.md)
+- [The Science of Scaling AI Agent Systems](Papers/scaling/The-Science-of-Scaling-AI-Agent-Systems.md)
+
+### 📋 Meta & Academic Tools
+- [PaperBanana Automating Academic Illustration for AI Scientists](Papers/meta/PaperBanana-Automating-Academic-Illustration-for-AI-Scientists.md)
+- [Titans GooglePaper](Papers/meta/Titans-GooglePaper.md)
+
+### 🎥 VL-JEPA
+- [VL JEPA Comprehensive Technical Guide](Papers/VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide.md)
+
+### ⚖️ Paper Comparisons
+- [Google Nested Learning VS FB Sparce Memory](Papers/comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md)
+- [LLM VLA VLM VL JEPA MAMBA3 DIFFUSION](Papers/comparisons/LLM-VLA-VLM-VL-JEPA-MAMBA3-DIFFUSION.md)
 
 ---
 
 ## 🛠️ Development Setup
 - [MacMini Setup](DevSetup/MacMini-Setup.md)
+- [headroom pi cost saver](DevSetup/headroom-pi-cost-saver.md)
 - [llama cpp setup mtp](DevSetup/llama-cpp-setup-mtp.md)
 
 ---

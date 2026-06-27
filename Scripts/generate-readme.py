@@ -123,9 +123,8 @@ Learnings/
         'architecture': '🏛️ Architecture & Inference',
         'training': '🎓 Training & Learning',
         'attention': '👁️ Attention & Neurons',
-        'models': '📦 Models (Claude, Gemma, Qwen, NVIDIA)',
-        'economy': '📈 AI Economy & Trends',
         'optimization': '⚡ Optimization & Cost',
+        'economy': '📈 AI Economy & Trends',
         'reference': '📚 Reference & Glossary'
     }
     
@@ -137,6 +136,21 @@ Learnings/
             for f in files:
                 title = format_title(f)
                 content += make_link(title, f"AI-ML/LLMs/{subdir}/{f}")
+            content += "\n"
+    
+    # Models with subcategories
+    content += "#### 📦 Models\n\n"
+    model_subdirs = {
+        'anthropic': '🤖 Anthropic / Claude',
+        'other': '🌐 Other Models (Gemma, Qwen, NVIDIA)'
+    }
+    for subdir, subtitle in model_subdirs.items():
+        files = get_md_files(f'AI-ML/LLMs/models/{subdir}')
+        if files:
+            content += f"##### {subtitle}\n"
+            for f in files:
+                title = format_title(f)
+                content += make_link(title, f"AI-ML/LLMs/models/{subdir}/{f}")
             content += "\n"
     
     # RAG
@@ -200,14 +214,25 @@ Learnings/
     
     content += "---\n\n"
     
-    # Blockchain
-    blockchain = get_md_files('Blockchain')
-    if blockchain:
-        content += "## ⛓️ Blockchain & DLT\n"
-        for f in blockchain:
-            title = format_title(f)
-            content += make_link(title, f"Blockchain/{f}")
-        content += "\n---\n\n"
+    # Blockchain with subcategories
+    blockchain_subdirs = {
+        'ethereum': '⟠ Ethereum & Smart Contracts',
+        'crypto': '💰 Crypto & Tokens',
+        'enterprise': '🏢 Enterprise & Banking',
+        'development': '🔧 Development & Learning',
+        'reference': '📚 Reference & Categories'
+    }
+    
+    content += "## ⛓️ Blockchain & DLT\n\n"
+    for subdir, subtitle in blockchain_subdirs.items():
+        files = get_md_files(f'Blockchain/{subdir}')
+        if files:
+            content += f"### {subtitle}\n"
+            for f in files:
+                title = format_title(f)
+                content += make_link(title, f"Blockchain/{subdir}/{f}")
+            content += "\n"
+    content += "---\n\n"
     
     # Quantum Computing
     quantum = get_md_files('Quantum-Computing')
@@ -218,14 +243,43 @@ Learnings/
             content += make_link(title, f"Quantum-Computing/{f}")
         content += "\n---\n\n"
     
-    # Papers
-    papers = get_md_files('Papers')
-    if papers:
-        content += "## 📄 Research Papers\n"
-        for f in papers:
+    # Papers with subcategories
+    papers_subdirs = {
+        'deepseek': '🔍 DeepSeek Research',
+        'reasoning': '🧠 Reasoning & LLMs',
+        'vision': '👁️ Vision & Multimodal',
+        'scaling': '📈 Scaling & Architecture',
+        'meta': '📋 Meta & Academic Tools'
+    }
+    
+    content += "## 📄 Research Papers\n\n"
+    for subdir, subtitle in papers_subdirs.items():
+        files = get_md_files(f'Papers/{subdir}')
+        if files:
+            content += f"### {subtitle}\n"
+            for f in files:
+                title = format_title(f)
+                content += make_link(title, f"Papers/{subdir}/{f}")
+            content += "\n"
+    
+    # VL-JEPA subfolder
+    vl_jepa = get_md_files('Papers/VL-JEPA')
+    if vl_jepa:
+        content += "### 🎥 VL-JEPA\n"
+        for f in vl_jepa:
             title = format_title(f)
-            content += make_link(title, f"Papers/{f}")
-        content += "\n---\n\n"
+            content += make_link(title, f"Papers/VL-JEPA/{f}")
+        content += "\n"
+    
+    # Comparisons subfolder
+    comparisons = get_md_files('Papers/comparisons')
+    if comparisons:
+        content += "### ⚖️ Paper Comparisons\n"
+        for f in comparisons:
+            title = format_title(f)
+            content += make_link(title, f"Papers/comparisons/{f}")
+        content += "\n"
+    content += "---\n\n"
     
     # DevSetup
     devsetup = get_md_files('DevSetup')
