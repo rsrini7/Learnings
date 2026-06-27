@@ -3,6 +3,7 @@
 
 import os
 from pathlib import Path
+from urllib.parse import quote
 
 def get_md_files(directory):
     """Get all markdown files in directory"""
@@ -22,6 +23,11 @@ def format_title(filename):
     if title[0].isdigit() and len(title) > 2 and title[1] in '-_ ':
         title = title[2:].strip()
     return title
+
+def make_link(title, path):
+    """Create markdown link with URL-encoded path"""
+    encoded_path = quote(path, safe='/')
+    return f"- [{title}]({encoded_path})\n"
 
 def main():
     base_dir = Path('.')
@@ -83,7 +89,7 @@ Learnings/
         content += "### 🤖 Agents & Autonomy\n"
         for f in agents:
             title = format_title(f)
-            content += f"- [{title}](AI-ML/Agents/{f})\n"
+            content += make_link(title, f"AI-ML/Agents/{f}")
         content += "\n"
     
     # LLMs
@@ -92,7 +98,7 @@ Learnings/
         content += "### 🧬 LLMs & Models\n"
         for f in llms:
             title = format_title(f)
-            content += f"- [{title}](AI-ML/LLMs/{f})\n"
+            content += make_link(title, f"AI-ML/LLMs/{f}")
         content += "\n"
     
     # RAG
@@ -101,7 +107,7 @@ Learnings/
         content += "### 📚 RAG (Retrieval Augmented Generation)\n"
         for f in rag:
             title = format_title(f)
-            content += f"- [{title}](AI-ML/RAG/{f})\n"
+            content += make_link(title, f"AI-ML/RAG/{f}")
         content += "\n"
     
     # Protocols
@@ -110,7 +116,7 @@ Learnings/
         content += "### 🔗 Protocols\n"
         for f in protocols:
             title = format_title(f)
-            content += f"- [{title}](AI-ML/Protocols/{f})\n"
+            content += make_link(title, f"AI-ML/Protocols/{f}")
         content += "\n"
     
     # Fine-Tuning
@@ -119,7 +125,7 @@ Learnings/
         content += "### 🎯 Fine-Tuning\n"
         for f in ft:
             title = format_title(f)
-            content += f"- [{title}](AI-ML/Fine-Tuning/{f})\n"
+            content += make_link(title, f"AI-ML/Fine-Tuning/{f}")
         content += "\n"
     
     # Comparisons
@@ -128,7 +134,7 @@ Learnings/
         content += "### ⚖️ Comparisons\n"
         for f in comps:
             title = format_title(f)
-            content += f"- [{title}](AI-ML/Comparisons/{f})\n"
+            content += make_link(title, f"AI-ML/Comparisons/{f}")
         content += "\n"
     
     content += "---\n\n"
@@ -151,7 +157,7 @@ Learnings/
             content += f"### {title}\n"
             for f in files:
                 t = format_title(f)
-                content += f"- [{t}](Engineering/{folder}/{f})\n"
+                content += make_link(t, f"Engineering/{folder}/{f}")
             content += "\n"
     
     content += "---\n\n"
@@ -162,7 +168,7 @@ Learnings/
         content += "## ⛓️ Blockchain & DLT\n"
         for f in blockchain:
             title = format_title(f)
-            content += f"- [{title}](Blockchain/{f})\n"
+            content += make_link(title, f"Blockchain/{f}")
         content += "\n---\n\n"
     
     # Quantum Computing
@@ -171,7 +177,7 @@ Learnings/
         content += "## ⚛️ Quantum Computing\n"
         for f in quantum:
             title = format_title(f)
-            content += f"- [{title}](Quantum-Computing/{f})\n"
+            content += make_link(title, f"Quantum-Computing/{f}")
         content += "\n---\n\n"
     
     # Papers
@@ -180,7 +186,7 @@ Learnings/
         content += "## 📄 Research Papers\n"
         for f in papers:
             title = format_title(f)
-            content += f"- [{title}](Papers/{f})\n"
+            content += make_link(title, f"Papers/{f}")
         content += "\n---\n\n"
     
     # DevSetup
@@ -189,7 +195,7 @@ Learnings/
         content += "## 🛠️ Development Setup\n"
         for f in devsetup:
             title = format_title(f)
-            content += f"- [{title}](DevSetup/{f})\n"
+            content += make_link(title, f"DevSetup/{f}")
         content += "\n---\n\n"
     
     # Content
@@ -200,7 +206,7 @@ Learnings/
         content += "### 💡 Prompts\n"
         for f in prompts:
             title = format_title(f)
-            content += f"- [{title}](Content/Prompts/{f})\n"
+            content += make_link(title, f"Content/Prompts/{f}")
         content += "\n"
     
     linkedin = get_md_files('Content/LinkedIn')
@@ -208,7 +214,7 @@ Learnings/
         content += "### 💼 LinkedIn\n"
         for f in linkedin:
             title = format_title(f)
-            content += f"- [{title}](Content/LinkedIn/{f})\n"
+            content += make_link(title, f"Content/LinkedIn/{f}")
         content += "\n"
     
     content += "---\n\n"
@@ -221,7 +227,7 @@ Learnings/
         content += "### 🛡️ Security & Vulnerabilities\n"
         for f in security:
             title = format_title(f)
-            content += f"- [{title}](News/Security/{f})\n"
+            content += make_link(title, f"News/Security/{f}")
         content += "\n"
     
     outages = get_md_files('News/Outages')
@@ -229,7 +235,7 @@ Learnings/
         content += "### 🚨 Infrastructure & Outages\n"
         for f in outages:
             title = format_title(f)
-            content += f"- [{title}](News/Outages/{f})\n"
+            content += make_link(title, f"News/Outages/{f}")
         content += "\n"
     
     weekly = get_md_files('News/Weekly-Updates')
@@ -237,7 +243,7 @@ Learnings/
         content += "### 📅 Weekly Updates\n"
         for f in weekly:
             title = format_title(f)
-            content += f"- [{title}](News/Weekly-Updates/{f})\n"
+            content += make_link(title, f"News/Weekly-Updates/{f}")
         content += "\n"
     
     content += "---\n\n"
@@ -248,18 +254,19 @@ Learnings/
         content += "## 📚 References\n"
         for f in refs:
             title = format_title(f)
-            content += f"- [{title}](References/{f})\n"
+            content += make_link(title, f"References/{f}")
         content += "\n---\n\n"
     
     # Scripts
     content += "## 🔧 Scripts\n\n"
-    content += "- [Link Checker](Scripts/check-links.sh) - Scan markdown files for broken links\n\n"
+    content += "- [Link Checker](Scripts/check-links.sh) - Scan markdown files for broken links\n"
+    content += "- [README Generator](Scripts/generate-readme.py) - Auto-generate this README\n\n"
     content += "---\n\n"
     
     content += "> **Last updated:** June 2026\n"
     
-    # Write README
-    with open('README.md', 'w') as f:
+    # Write README with UTF-8 encoding
+    with open('README.md', 'w', encoding='utf-8') as f:
         f.write(content)
     
     print("✅ README.md generated successfully!")

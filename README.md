@@ -48,22 +48,22 @@ Learnings/
 
 ### 🤖 Agents & Autonomy
 - [Claude Skills Prompts](AI-ML/Agents/4-Claude-Skills-Prompts.md)
-- [AI Skills for Future Success (2026)](AI-ML/Agents/8-AI-Skills-for-Future-Success-(2026).md)
+- [AI Skills for Future Success (2026)](AI-ML/Agents/8-AI-Skills-for-Future-Success-%282026%29.md)
 - [AI Accelerated Development Playbook](AI-ML/Agents/AI-Accelerated-Development-Playbook.md)
 - [AI Assisted Development](AI-ML/Agents/AI-Assisted-Development.md)
 - [AI Operating Manual](AI-ML/Agents/AI-Operating-Manual.md)
 - [AI PMRoles](AI-ML/Agents/AI-PMRoles.md)
 - [Agent Skills vs Agents](AI-ML/Agents/Agent-Skills-vs-Agents.md.md)
 - [Agent Skills](AI-ML/Agents/Agent-Skills.md)
-- [Ashley's 11 agent system](AI-ML/Agents/Ashley's-11-agent-system.md)
+- [Ashley's 11 agent system](AI-ML/Agents/Ashley%27s-11-agent-system.md)
 - [Confucius Code Agent](AI-ML/Agents/Confucius-Code-Agent.md)
 - [How Ralph Works with Amp](AI-ML/Agents/How-Ralph-Works-with-Amp.md)
 - [InternetOfAgents](AI-ML/Agents/InternetOfAgents.md)
-- [NanoBot vs NanoClaw vs OpenClaw Technical Analysis & Security Comparison](AI-ML/Agents/NanoBot-vs-NanoClaw-vs-OpenClaw-Technical-Analysis-&-Security-Comparison.md)
-- [OpenClaw(Moltbot or Clawdbot) Architecture](AI-ML/Agents/OpenClaw(Moltbot-or-Clawdbot)-Architecture.md)
-- [OpenClaw(Moltbot or Clawdbot) Security Analysis Jan 2026](AI-ML/Agents/OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026.md)
+- [NanoBot vs NanoClaw vs OpenClaw Technical Analysis & Security Comparison](AI-ML/Agents/NanoBot-vs-NanoClaw-vs-OpenClaw-Technical-Analysis-%26-Security-Comparison.md)
+- [OpenClaw(Moltbot or Clawdbot) Architecture](AI-ML/Agents/OpenClaw%28Moltbot-or-Clawdbot%29-Architecture.md)
+- [OpenClaw(Moltbot or Clawdbot) Security Analysis Jan 2026](AI-ML/Agents/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md)
 - [OpenClaw Whitepaper](AI-ML/Agents/OpenClaw-Whitepaper.md)
-- [Ralph Wiggum Loops & Ralph Mode](AI-ML/Agents/Ralph-Wiggum-Loops-&-Ralph-Mode.md)
+- [Ralph Wiggum Loops & Ralph Mode](AI-ML/Agents/Ralph-Wiggum-Loops-%26-Ralph-Mode.md)
 - [Securing OpenClaw Setup](AI-ML/Agents/Securing-OpenClaw-Setup.md)
 - [Spec Driven Development Frameworks](AI-ML/Agents/Spec-Driven-Development-Frameworks.md)
 - [claude agents vs sub agents vs projects vs workflow vs rules vs mcp vs skills](AI-ML/Agents/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md)
@@ -78,7 +78,7 @@ Learnings/
 - [AI Periodic Table](AI-ML/LLMs/AI-Periodic-Table.md)
 - [AI and the Barbell Economy](AI-ML/LLMs/AI-and-the-Barbell-Economy.md)
 - [AI in Next 18 Months](AI-ML/LLMs/AI-in-Next-18-Months.md)
-- [Anthropic's Claude's C Compiler](AI-ML/LLMs/Anthropic's-Claude's-C-Compiler.md)
+- [Anthropic's Claude's C Compiler](AI-ML/LLMs/Anthropic%27s-Claude%27s-C-Compiler.md)
 - [Anthropic API Restrictions](AI-ML/LLMs/Anthropic-API-Restrictions.md)
 - [Auto Regression](AI-ML/LLMs/Auto-Regression.md)
 - [Beyond SoftMax Attention](AI-ML/LLMs/Beyond-SoftMax-Attention.md)
@@ -128,19 +128,19 @@ Learnings/
 - [Parameter Efficient Fine Tuning](AI-ML/Fine-Tuning/Parameter-Efficient-Fine-Tuning.md)
 
 ### ⚖️ Comparisons
-- [Interview Q&A role Variants](AI-ML/Comparisons/Interview-Q&A-role-Variants.md)
+- [Interview Q&A role Variants](AI-ML/Comparisons/Interview-Q%26A-role-Variants.md)
 - [Java Python Enterprise AI](AI-ML/Comparisons/Java-Python-Enterprise-AI.md)
 - [Self Attention vs Flash Attention](AI-ML/Comparisons/Self-Attention-vs-Flash-Attention.md)
 - [SiteGPT Alternatives](AI-ML/Comparisons/SiteGPT-Alternatives.md)
-- [Top 50 Q&A AI ML Eng](AI-ML/Comparisons/Top-50-Q&A-AI-ML-Eng.md)
-- [Top 50 Q&A AI ML Math](AI-ML/Comparisons/Top-50-Q&A-AI-ML-Math.md)
+- [Top 50 Q&A AI ML Eng](AI-ML/Comparisons/Top-50-Q%26A-AI-ML-Eng.md)
+- [Top 50 Q&A AI ML Math](AI-ML/Comparisons/Top-50-Q%26A-AI-ML-Math.md)
 
 ---
 
 ## ☁️ Engineering
 
 ### 🏗️ Architecture
-- [Scaling 1M RPS C++](Engineering/Architecture/Scaling-1M-RPS-C++.md)
+- [Scaling 1M RPS C++](Engineering/Architecture/Scaling-1M-RPS-C%2B%2B.md)
 - [Scaling 1M RPS Java](Engineering/Architecture/Scaling-1M-RPS-Java.md)
 
 ### ☕ JVM
@@ -196,7 +196,7 @@ Learnings/
 - [MiraThinker 1.5](Papers/MiraThinker-1.5.md)
 - [PaperBanana Automating Academic Illustration for AI Scientists](Papers/PaperBanana-Automating-Academic-Illustration-for-AI-Scientists.md)
 - [Prompt Repetition RE2](Papers/Prompt-Repetition-RE2.md)
-- [RecursiveLanguageModels (RLMs)](Papers/RecursiveLanguageModels-(RLMs).md)
+- [RecursiveLanguageModels (RLMs)](Papers/RecursiveLanguageModels-%28RLMs%29.md)
 - [The Science of Scaling AI Agent Systems](Papers/The-Science-of-Scaling-AI-Agent-Systems.md)
 - [Titans GooglePaper](Papers/Titans-GooglePaper.md)
 - [VL JEPA Executive Brief](Papers/VL-JEPA-Executive-Brief.md)
@@ -215,18 +215,18 @@ Learnings/
 ## ✍️ Content Creation
 
 ### 💡 Prompts
-- [Define Your AI Learning Goal(Easy Mode) LLM Prompt](Content/Prompts/Define-Your-AI-Learning-Goal(Easy-Mode)-LLM-Prompt.md)
-- [Define Your AI Learning Goal(Hard Mode) LLM Prompt](Content/Prompts/Define-Your-AI-Learning-Goal(Hard-Mode)-LLM-Prompt.md)
+- [Define Your AI Learning Goal(Easy Mode) LLM Prompt](Content/Prompts/Define-Your-AI-Learning-Goal%28Easy-Mode%29-LLM-Prompt.md)
+- [Define Your AI Learning Goal(Hard Mode) LLM Prompt](Content/Prompts/Define-Your-AI-Learning-Goal%28Hard-Mode%29-LLM-Prompt.md)
 - [NotebookLM Video Generation Prompt](Content/Prompts/NotebookLM-Video-Generation-Prompt.md)
 - [Prompt Generator Prompt](Content/Prompts/Prompt-Generator-Prompt.md)
 - [Weekly Updates Prompt](Content/Prompts/Weekly-Updates-Prompt.md)
-- [What and How can ASK an AI](Content/Prompts/What and How can ASK an AI.md)
+- [What and How can ASK an AI](Content/Prompts/What%20and%20How%20can%20ASK%20an%20AI.md)
 - [Youtube Multi Links Understanding Prompt](Content/Prompts/Youtube-Multi-Links-Understanding-Prompt.md)
 - [Youtube Single Link Understanding Prompt](Content/Prompts/Youtube-Single-Link-Understanding-Prompt.md)
 - [Youtube Visual Analysis](Content/Prompts/Youtube-Visual-Analysis.md)
 - [code understanding llm prompt](Content/Prompts/code-understanding-llm-prompt.md)
 - [codebase explore prompt](Content/Prompts/codebase-explore-prompt.md)
-- [content visual carousel](Content/Prompts/content-visual carousel.md)
+- [content visual carousel](Content/Prompts/content-visual%20carousel.md)
 - [convert long 2 short social post prompt v2](Content/Prompts/convert-long-2-short-social-post-prompt-v2.md)
 - [convert long 2 short social post prompt v3 merged](Content/Prompts/convert-long-2-short-social-post-prompt-v3-merged.md)
 - [convert long 2 short social post prompt v4 examples](Content/Prompts/convert-long-2-short-social-post-prompt-v4-examples.md)
@@ -258,7 +258,7 @@ Learnings/
 
 ### 💼 LinkedIn
 - [Java AI Roadmap](Content/LinkedIn/Java-AI-Roadmap.md)
-- [Team Level Learning Roadmap for Banking](Content/LinkedIn/Team-Level Learning Roadmap for Banking.md)
+- [Team Level Learning Roadmap for Banking](Content/LinkedIn/Team-Level%20Learning%20Roadmap%20for%20Banking.md)
 
 ---
 
@@ -270,17 +270,17 @@ Learnings/
 - [Largest WhatsApp Data Leak in History](News/Security/Largest-WhatsApp-Data-Leak-in-History.md)
 - [MongoBleed Dec2025](News/Security/MongoBleed-Dec2025.md)
 - [Node.js Async Hooks DoS Vulnerability](News/Security/Node.js-Async-Hooks-DoS-Vulnerability.md)
-- [Notepad++ Targetted Attach](News/Security/Notepad++-Targetted-Attach.md)
+- [Notepad++ Targetted Attach](News/Security/Notepad%2B%2B-Targetted-Attach.md)
 - [Security Vulnerabilities in Wireless Devices and Apps](News/Security/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
 
 ### 🚨 Infrastructure & Outages
-- [AWS Outage October 19&20 2025](News/Outages/AWS-Outage-October-19&20-2025.md)
+- [AWS Outage October 19&20 2025](News/Outages/AWS-Outage-October-19%2620-2025.md)
 - [Supabase Outage Feb 2026](News/Outages/Supabase-Outage-Feb-2026.md)
 - [Tailwind Financial Crisis](News/Outages/Tailwind-Financial-Crisis.md)
 - [cloudflare down nov 2025](News/Outages/cloudflare-down-nov-2025.md)
 
 ### 📅 Weekly Updates
-- [Anthropic's Fourth Economic Index Report Jan 2026](News/Weekly-Updates/Anthropic's-Fourth-Economic-Index-Report-Jan-2026.md)
+- [Anthropic's Fourth Economic Index Report Jan 2026](News/Weekly-Updates/Anthropic%27s-Fourth-Economic-Index-Report-Jan-2026.md)
 - [Apr 05 2026](News/Weekly-Updates/Apr-05-2026.md)
 - [Dec 14 2025](News/Weekly-Updates/Dec-14-2025.md)
 - [Dec 21 2025](News/Weekly-Updates/Dec-21-2025.md)
@@ -306,7 +306,7 @@ Learnings/
 - [Mar 29 2026](News/Weekly-Updates/Mar-29-2026.md)
 - [Singapore IMDA Agentic AI Governance Framework](News/Weekly-Updates/Singapore-IMDA-Agentic-AI-Governance-Framework.md)
 - [WIPO International Fellowship](News/Weekly-Updates/WIPO-International-Fellowship.md)
-- [₹70,000 Crore Suppressed Turnover Probe in Restaurant Billing](News/Weekly-Updates/₹70,000 Crore Suppressed Turnover Probe in Restaurant Billing.md)
+- [₹70,000 Crore Suppressed Turnover Probe in Restaurant Billing](News/Weekly-Updates/%E2%82%B970%2C000%20Crore%20Suppressed%20Turnover%20Probe%20in%20Restaurant%20Billing.md)
 
 ---
 
@@ -320,6 +320,7 @@ Learnings/
 ## 🔧 Scripts
 
 - [Link Checker](Scripts/check-links.sh) - Scan markdown files for broken links
+- [README Generator](Scripts/generate-readme.py) - Auto-generate this README
 
 ---
 
