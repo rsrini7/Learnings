@@ -599,6 +599,87 @@ def cmd_stats():
         print(f"❌ No data found. Run 'fetch' and 'split' first.")
 
 
+def create_anchor(text):
+    """Create GitHub-style anchor from header text"""
+    anchor = re.sub(r'[^a-zA-Z0-9\s-]', '', text)
+    anchor = re.sub(r'\s+', '-', anchor.strip()).lower()
+    return anchor
+
+def fix_toc_links(filepath, dry_run=False):
+    """Fix Table of Contents links in a file"""
+    with open(filepath, 'r', encoding='utf-8') as f:
+        content = f.read()
+    
+    if '## Table of Contents' not in content:
+        return 0
+    
+    toc_match = re.search(r'(## Table of Contents\n)(.*?)(?=\n## |\Z)', content, re.DOTALL)
+    if not toc_match:
+        return 0
+    
+    toc_start = toc_match.start()
+    toc_content = toc_match.group(2)
+    toc_items = re.findall(r'^(\d+)\.\s+(.+)$', toc_content, re.MULTILINE)
+    
+    fixes = 0
+    new_toc = toc_content
+    
+    for num, item in toc_items:
+        if '[' in item and '](#' in item:
+            continue
+        
+        anchor = create_anchor(item)
+        full_anchor = f'{num}-{anchor}'
+        link = f'[{item}](#{full_anchor})'
+        
+        old_line = f'{num}. {item}'
+        new_line = f'{num}. {link}'
+        new_toc = new_toc.replace(old_line, new_line)
+        fixes += 1
+    
+    if fixes > 0 and not dry_run:
+        new_content = (
+            content[:toc_start + len(toc_match.group(1))] + 
+            new_toc + 
+            content[toc_start + len(toc_match.group(1)) + len(toc_content):]
+        )
+        with open(filepath, 'w', encoding='utf-8') as f:
+            f.write(new_content)
+    
+    return fixes
+
+def cmd_fixtoc(directory='.', dry_run=False):
+    """Fix Table of Contents links in all markdown files"""
+    mode = "DRY RUN" if dry_run else "FIX"
+    print(f"{'🔍' if dry_run else '🔧'} {mode} MODE")
+    print(f"Scanning: {os.path.abspath(directory)}")
+    print("=" * 60)
+    
+    md_files = find_md_files(directory)
+    print(f"Found {len(md_files)} markdown files\n")
+    
+    total_fixes = 0
+    fixed_files = []
+    
+    for md_file in md_files:
+        fixes = fix_toc_links(md_file, dry_run=dry_run)
+        if fixes > 0:
+            total_fixes += fixes
+            fixed_files.append((md_file, fixes))
+            print(f"✅ {md_file}: {fixes} links fixed")
+    
+    print(f"\n{'='*60}")
+    print(f"📊 Summary")
+    print(f"   Files scanned: {len(md_files)}")
+    print(f"   TOC links fixed: {total_fixes}")
+    
+    if dry_run and total_fixes > 0:
+        print(f"\n⚠️  Run 'fixtoc' without --dry-run to apply")
+    elif total_fixes > 0:
+        print(f"\n✅ Fixed {total_fixes} TOC links!")
+    else:
+        print(f"\n✅ All TOC links are valid!")
+
 def cmd_links(directory='.', fix=False):
     """Check and optionally fix broken links in markdown files"""
     mode = "FIX" if fix else "CHECK"
@@ -728,11 +809,13 @@ Repository Commands:
 
 Link Commands:
   links        Check broken links (add --fix to auto-fix)
+  fixtoc       Fix Table of Contents links (add --dry-run to preview)
 
 Options:
   --file       Specify consolidated.md path
   --no-recover Disable 404 recovery (for fetch)
   --fix        Auto-fix broken links (for links)
+  --dry-run    Preview changes (for fixtoc)
 
 Environment:
   GITHUB_TOKEN GitHub API token
@@ -742,6 +825,8 @@ Examples:
   python3 github-repos.py split
   python3 github-repos.py links           # check only
   python3 github-repos.py links --fix     # check and fix
+  python3 github-repos.py fixtoc          # fix TOC links
+  python3 github-repos.py fixtoc --dry-run # preview TOC fixes
   python3 github-repos.py check apple/coreai-models
 """)
 
@@ -791,6 +876,12 @@ def main():
             if not a.startswith('--'):
                 directory = a
         cmd_links(directory, fix='--fix' in args)
+    elif command == 'fixtoc':
+        directory = '.'
+        for a in args[1:]:
+            if not a.startswith('--'):
+                directory = a
+        cmd_fixtoc(directory, dry_run='--dry-run' in args)
     elif command == 'help':
         cmd_help()
     else:
