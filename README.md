@@ -408,7 +408,7 @@ Learnings/
 
 ## 🔧 Scripts
 
-- [Link Checker](Scripts/check-links.sh) - Scan markdown files for broken links
+- [GitHub Repos & Links](Scripts/github-repos.py) - Manage repos and check/fix links
 - [README Generator](Scripts/generate-readme.py) - Auto-generate this README
 
 ---

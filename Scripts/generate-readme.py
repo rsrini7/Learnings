@@ -373,7 +373,7 @@ Learnings/
     
     # Scripts
     content += "## 🔧 Scripts\n\n"
-    content += "- [Link Checker](Scripts/check-links.sh) - Scan markdown files for broken links\n"
+    content += "- [GitHub Repos & Links](Scripts/github-repos.py) - Manage repos and check/fix links\n"
     content += "- [README Generator](Scripts/generate-readme.py) - Auto-generate this README\n\n"
     content += "---\n\n"
     
