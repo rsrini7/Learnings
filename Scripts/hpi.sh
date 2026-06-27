@@ -86,6 +86,7 @@ hpi() {
     fi
 
     # Launch headroom via uvx in background
+    export HEADROOM_OUTPUT_SHAPER=1
     PYTHONUNBUFFERED=1 OPENAI_TARGET_API_URL="$target" nohup uvx \
       --python 3.12 \
       --from "headroom-ai[$extras]==0.27.0" \
