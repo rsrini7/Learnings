@@ -15,8 +15,8 @@
 5. [AI / LLM Tooling](#5-ai--llm-tooling)
 6. [Containers](#6-containers)
 7. [Editors & GUI Tools](#7-editors--gui-tools)
-8. [Configure Shell (`~/.zshrc`)](#8-configure-shell-zshrc)
-9. [Per-Project Setup (direnv + devbox + mise)](#9-per-project-setup-direnv--devbox--mise)
+8. Configure Shell (`~/.zshrc`)
+9. Per-Project Setup (direnv + devbox + mise)
 10. [Utility One-Liners](#10-utility-one-liners)
 11. [Post-Install Checklist](#11-post-install-checklist)
 

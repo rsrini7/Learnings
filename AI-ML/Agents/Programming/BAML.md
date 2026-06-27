@@ -12,7 +12,7 @@
 4. [Core Concepts](#core-concepts)
 5. [Architecture Overview](#architecture-overview)
 6. [Language Syntax & Basics](#language-syntax--basics)
-7. [Schema-Aligned Parsing (SAP)](#schema-aligned-parsing-sap)
+7. Schema-Aligned Parsing (SAP)
 8. [Key Features](#key-features)
 9. [Real-World Usage & Examples](#real-world-usage--examples)
 10. [Performance & Benchmarks](#performance--benchmarks)

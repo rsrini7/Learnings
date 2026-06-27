@@ -351,4 +351,4 @@ WebAssembly is not a replacement for JavaScript; it is a complementary tool.
 ### 7. References
 *   [Official Rust WASM Guide](https://rustwasm.github.io/wasm-bindgen/getting-started/using-wasm-bindgen.html)
 *   [Official WASI Spec](https://github.com/WebAssembly/wasi-spec)
-*   [Rust + WebAssembly in 2026 — Complete Guide (Browser, WASI, Edge, Optimisation)](https://www.youtube.com/watch?v=N25oMCsyaZ0)
+*   Rust + WebAssembly in 2026 — Complete Guide (Browser, WASI, Edge, Optimisation)

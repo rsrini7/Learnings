@@ -8,7 +8,6 @@
 
 ![Moltbot Architecture](https://pbs.twimg.com/media/G_y-831bUAYiTeR.jpg)
 
-![Clawdbot(Moltbot)-Security-Analysis-Jan-2026.png](assets/Clawdbot(Moltbot)-Security-Analysis-Jan-2026.png)
 
 ![moltbot-github-star-history](../../assets/moltbot-github-star-history.png)
 

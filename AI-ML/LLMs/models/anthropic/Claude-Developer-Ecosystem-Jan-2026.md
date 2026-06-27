@@ -19,7 +19,7 @@ This comprehensive guide covers Anthropic's entire Claude ecosystem—from model
 9. [Slash Commands - Custom Shortcuts](#slash-commands---custom-shortcuts)
 10. [Hooks - Lifecycle Automation](#hooks---lifecycle-automation)
 11. [Ralph Loop - Autonomous Iteration](#ralph-loop---autonomous-iteration)
-12. [Model Context Protocol (MCP)](#model-context-protocol-mcp)
+12. Model Context Protocol (MCP)
 13. [Session Management & Worktrees](#session-management--worktrees)
 14. [Cowork - No-Code AI Assistant](#cowork---no-code-ai-assistant)
 15. [APIs & Integrations](#apis--integrations)

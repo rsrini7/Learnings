@@ -36,6 +36,6 @@ Each creator ends with a call to action for the community to help ensure Tailwin
 
 **Videos Referenced:**
 
-* [Tailwind is Dying... (this is bad!)](https://www.youtube.com/watch?v=YIRugFtqBsM)
+* Tailwind is Dying... (this is bad!)
 * [Tailwind has HUGE financial problems!](https://youtube.com/watch?v=tSgch1vcptQ)
 * [The Tailwind drama](https://www.youtube.com/watch?v=luhgjBrRulk)

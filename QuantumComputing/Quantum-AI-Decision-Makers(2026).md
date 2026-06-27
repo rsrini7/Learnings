@@ -2,7 +2,6 @@
 
 **With Built-in Hype vs Reality Due Diligence**
 
-![Quantum-AI-Decision-Makers(2026).png](assets/Quantum-AI-Decision-Makers(2026).png)
 
 ---
 

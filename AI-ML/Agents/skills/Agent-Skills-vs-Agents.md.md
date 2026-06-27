@@ -4,7 +4,7 @@ Why Passive Context Beat Agent Skills — and When Skills Still Matter**
 
 **A consolidated analysis of two recent YouTube videos from the Better Stack ecosystem examining Vercel’s Agent Skills vs AGENTS.md approach.**
 
-<i class="fas fa-play-circle"></i> [Skills Had ONE Job (They Failed)](https://www.youtube.com/watch?v=i0W90tlKfYg)
+<i class="fas fa-play-circle"></i> Skills Had ONE Job (They Failed)
 
 <i class="fas fa-play-circle"></i> [Why Skills is the Wrong Abstraction for Agents](https://www.youtube.com/watch?v=A_1ELXEVp5w)
 

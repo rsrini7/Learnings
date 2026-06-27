@@ -17,17 +17,17 @@
 9. [Indexing & Analytics Platforms](#9-indexing--analytics-platforms)
 10. [Decentralized Storage Solutions](#10-decentralized-storage-solutions)
 11. [Cross-Chain & Interoperability](#11-cross-chain--interoperability)
-12. [Decentralized Exchanges (DEX)](#12-decentralized-exchanges-dex)
+12. Decentralized Exchanges (DEX)
 13. [DeFi Protocols & Infrastructure](#13-defi-protocols--infrastructure)
 14. [Stablecoins & Payment Systems](#14-stablecoins--payment-systems)
 15. [NFT & Digital Assets](#15-nft--digital-assets)
-16. [Gaming & Metaverse (GameFi)](#16-gaming--metaverse-gamefi)
-17. [Real World Assets (RWA)](#17-real-world-assets-rwa)
+16. Gaming & Metaverse (GameFi)
+17. Real World Assets (RWA)
 18. [DAOs & Governance](#18-daos--governance)
 19. [Privacy & Zero-Knowledge Solutions](#19-privacy--zero-knowledge-solutions)
 20. [Security & Auditing](#20-security--auditing)
 21. [Testing & Development Environments](#21-testing--development-environments)
-22. [Centralized Exchanges (CEX)](#22-centralized-exchanges-cex)
+22. Centralized Exchanges (CEX)
 23. [Enterprise Blockchain Solutions](#23-enterprise-blockchain-solutions)
 24. [Industry-Specific Use Cases](#24-industry-specific-use-cases)
 25. [Regulatory & Compliance](#25-regulatory--compliance)
@@ -2192,17 +2192,17 @@ ORDER BY 1 DESC
 9. [Indexing & Analytics Platforms](#9-indexing--analytics-platforms)
 10. [Decentralized Storage Solutions](#10-decentralized-storage-solutions)
 11. [Cross-Chain & Interoperability](#11-cross-chain--interoperability)
-12. [Decentralized Exchanges (DEX)](#12-decentralized-exchanges-dex)
+12. Decentralized Exchanges (DEX)
 13. [DeFi Protocols & Infrastructure](#13-defi-protocols--infrastructure)
 14. [Stablecoins & Payment Systems](#14-stablecoins--payment-systems)
 15. [NFT & Digital Assets](#15-nft--digital-assets)
-16. [Gaming & Metaverse (GameFi)](#16-gaming--metaverse-gamefi)
-17. [Real World Assets (RWA)](#17-real-world-assets-rwa)
+16. Gaming & Metaverse (GameFi)
+17. Real World Assets (RWA)
 18. [DAOs & Governance](#18-daos--governance)
 19. [Privacy & Zero-Knowledge Solutions](#19-privacy--zero-knowledge-solutions)
 20. [Security & Auditing](#20-security--auditing)
 21. [Testing & Development Environments](#21-testing--development-environments)
-22. [Centralized Exchanges (CEX)](#22-centralized-exchanges-cex)
+22. Centralized Exchanges (CEX)
 23. [Enterprise Blockchain Solutions](#23-enterprise-blockchain-solutions)
 24. [Industry-Specific Use Cases](#24-industry-specific-use-cases)
 25. [Regulatory & Compliance](#25-regulatory--compliance)
@@ -6699,7 +6699,7 @@ function sendMessage(
     Client.EVM2AnyMessage memory ccipMessage = Client.EVM2AnyMessage({
         receiver: abi.encode(receiver),
         data: abi.encode(message),
-        tokenAmounts: new Client.EVMTokenAmount[](0),
+        tokenAmounts: new Client.EVMTokenAmount,
         feeToken: address(linkToken),
         extraArgs: Client._argsToBytes(
             Client.EVMExtraArgsV1({gasLimit: 200_000})
@@ -10407,12 +10407,12 @@ Blockchain gaming integrates NFTs and tokens into game economies, enabling true 
 ```solidity
 // Mint inventory to player
 function mintInventory(address player) external {
-    uint256[] memory ids = new uint256[](3);
+    uint256[] memory ids = new uint256;
     ids[0] = SWORD_ID;      // Non-fungible
     ids[1] = HEALTH_POTION;  // Fungible (quantity 10)
     ids[2] = GOLD_TOKEN;     // Fungible (quantity 100)
     
-    uint256[] memory amounts = new uint256[](3);
+    uint256[] memory amounts = new uint256;
     amounts[0] = 1;
     amounts[1] = 10;
     amounts[2] = 100;

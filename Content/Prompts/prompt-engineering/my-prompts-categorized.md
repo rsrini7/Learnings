@@ -68,6 +68,6 @@ Non-prompt content providing additional functionality.
 
 **Pattern 2 - Reference Markers:**
 ```regex
-\.\[\d+\](?:\s*\[\d+\])*$
+\.\\d+\*$
 ```
 

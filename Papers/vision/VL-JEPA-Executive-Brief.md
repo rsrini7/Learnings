@@ -76,7 +76,7 @@ Market fragments between perception specialists and full-stack reasoners, with V
 
 **Detailed Docs**: 
 
-- [Joint Embedding Predictive Architectures (JEPA) for Vision, Video, and Vision–Language.pdf](../VL-JEPA/JEPA-for-Vision%2C-Video%2C-and-Vision%E2%80%93Language.pdf)
+- Joint Embedding Predictive Architectures (JEPA) for Vision, Video, and Vision–Language.pdf
 - [JEPA-Models-VL-JEPA-I-JEPA-V-JEPA-Nvidia-Cosmos.pdf](../VL-JEPA/JEPA-Models-VL-JEPA-I-JEPA-V-JEPA-Nvidia-Cosmos.pdf)
 - [VL-JEPA.html](../VL-JEPA/VL-JEPA.html)
 - [VL-JEPA-Comprehensive-Technical-Guide.md](../VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide.md)

@@ -3,7 +3,7 @@
 > *“Moltbot is a deterministic, local-first agent runtime that prioritizes explainability and user control over unchecked autonomy.”*
 
 **Further Read on Security Aspects**: 
-- [OpenClaw(Moltbot-or-Clawdbot) Security Analysis Jan-2026 ](OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026.md)
+- OpenClaw(Moltbot-or-Clawdbot) Security Analysis Jan-2026 -Security-Analysis-Jan-2026.md)
 
 ---
 

@@ -4,7 +4,7 @@
 
 ## TABLE OF CONTENTS
 1. [Introduction & Key Concepts](#introduction--key-concepts)
-2. [Core DSPy Primitives (6 Concepts)](#core-dspy-primitives-6-concepts)
+2. Core DSPy Primitives (6 Concepts)
 3. [Detailed Component Breakdown](#detailed-component-breakdown)
 4. [Real-World Use Cases](#real-world-use-cases)
 5. [Code Examples & Implementation](#code-examples--implementation)

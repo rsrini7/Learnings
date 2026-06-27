@@ -20,7 +20,7 @@
 5. [Security Analysis](#5-security-analysis)
    - 5.1 [CVE-2026-25253: Architectural Implications](#51-cve-2026-25253)
    - 5.2 [ClawHub Supply Chain Risk](#52-clawhub-supply-chain-risk)
-   - 5.3 [Additional CVEs (Feb 2–4, 2026)](#53-additional-cves)
+   - 5.3 Additional CVEs (Feb 2–4, 2026)
    - 5.4 [Security Model Comparison Matrix](#54-security-model-comparison-matrix)
    - 5.5 [Enterprise & Compliance Considerations](#55-enterprise--compliance-considerations)
    - 5.6 [Security Best Practices](#56-security-best-practices)

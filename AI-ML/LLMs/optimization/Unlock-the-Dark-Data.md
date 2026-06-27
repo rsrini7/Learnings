@@ -3,7 +3,6 @@
 **Date:** December 27, 2025  
 **Prepared For:** Enterprise Leaders, CTOs, and Product Strategists
 
-![Unlock the Dark Data](./assets/Unlock-the-Dark-Data.png)
 
 ***
 

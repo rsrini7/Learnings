@@ -64,11 +64,11 @@ Users can create custom skills using markdown files to define tasks, instruction
 
 Skills use progressive disclosure: Claude loads information in stages as needed, rather than consuming context upfront. At startup, Claude loads metadata and includes it in the system prompt, meaning you can install many Skills without context penalty.
 
-* Reference: [MCP Scalability](MCP_Scalability_Whitepaper.md)
+* Reference: MCP Scalability
 
 * Comparision with Specs / Rules : 
-- [Agent-Specs-vs-Rules-vs-Skills](Agent-Specs-vs-Rules-vs-Skills.md)
-- [Agent-sdd-uacf-skills-comparison](Agent-sdd-uacf-skills-comparison.md)
+- Agent-Specs-vs-Rules-vs-Skills
+- Agent-sdd-uacf-skills-comparison
 
 ---
 

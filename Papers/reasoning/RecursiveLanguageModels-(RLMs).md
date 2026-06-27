@@ -136,7 +136,7 @@ RLMs exemplify **inference-time scaling**: allocating more compute (recursive ca
 7. [When to Use RLMs](#when-to-use-rlms-decision-framework)
 8. [Implementation Guide](#implementation-guide)
 9. [Model-Specific Behaviors](#model-specific-behaviors-and-ablations)
-10. [Community Adoption (2026)](#community-adoption-and-extensions-2026)
+10. Community Adoption (2026)
 11. [Limitations & Future](#limitations-and-future-directions)
 12. [Resources & References](#resources-and-references)
 13. [Conclusion](#conclusion)

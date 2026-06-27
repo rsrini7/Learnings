@@ -41,7 +41,7 @@ Your final output must be a single response containing the full text for all the
 *   Start with the project name as a title.
 *   Include the high-level project summary you generated.
 *   Create a "Project Architecture" section with a Mermaid flowchart diagram illustrating the relationships between the core abstractions.
-*   Create a "Chapters" section with a numbered list of all the chapters (the abstractions). Each list item must be a Markdown link to its corresponding chapter file (e.g., 1. [Chapter Title](01_chapter_title.md)).
+*   Create a "Chapters" section with a numbered list of all the chapters (the abstractions). Each list item must be a Markdown link to its corresponding chapter file (e.g., 1. Chapter Title).
 
 **B. Chapter Files (e.g., `docs\01_some_abstraction.md`, `docs\02_another_one.md`)**
 *   Create one Markdown file for each abstraction, named using its number and a sanitized version of its name (e.g., 01_user_authentication.md).

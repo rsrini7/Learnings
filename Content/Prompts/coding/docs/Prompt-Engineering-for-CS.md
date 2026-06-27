@@ -34,7 +34,7 @@
    - 8.2 United Kingdom (Companies House / Companies Act 2006)
    - 8.3 United States (SEC / State Corporate Laws)
    - 8.4 UAE (DIFC / ADGM)
-9. [Copilot Prompt Examples (Microsoft 365)](#9-copilot-prompt-examples-microsoft-365)
+9. Copilot Prompt Examples (Microsoft 365)
 10. [Chaining Prompts — Workflow Sequences](#10-chaining-prompts--workflow-sequences)
 11. [Glossary of Key Terms](#11-glossary-of-key-terms)
 12. [Quick Reference Card](#12-quick-reference-card)

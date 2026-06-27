@@ -16,10 +16,10 @@
 
 - [Executive Summary](#executive-summary-the-hard-truth)
 - [Database Comparison Matrix](#database-comparison-matrix)
-- [TigerGraph (Top Choice)](#1-tigergraph--actual-leader)
+- TigerGraph (Top Choice)
 - [Amazon Neptune](#2-amazon-neptune---safe-enterprise-choice)
-- [NebulaGraph (High Risk)](#3-nebulagraph---major-concerns)
-- [Neo4j (Wrong Architecture)](#4-neo4j---market-leader-but-wrong-architecture)
+- NebulaGraph (High Risk)
+- Neo4j (Wrong Architecture)
 - [Other Databases](#5-other-databases---quick-assessment)
 - [Decision Tree](#decision-tree-for-database-selection)
 - [Final Recommendations](#final-recommendation)

@@ -16,7 +16,7 @@
 4. [Comparison: Tailscale vs. Traditional VPN vs. Proxy](#4-comparison-tailscale-vs-traditional-vpn-vs-proxy)
 5. [Technitium — The Traffic Controller](#5-technitium--the-traffic-controller)
 6. [The Hobbyist Stack: Hostinger + Tailscale + Technitium](#6-the-hobbyist-stack-hostinger--tailscale--technitium)
-7. [Competitor Landscape (2026)](#7-competitor-landscape-2026)
+7. Competitor Landscape (2026)
 8. [AWS Architecture — Replicating the Hobbyist Stack](#8-aws-architecture--replicating-the-hobbyist-stack)
 9. [AWS vs. Independent Stack — Full Comparison](#9-aws-vs-independent-stack--full-comparison)
 10. [The Best-of-Both-Worlds: Hybrid Setup](#10-the-best-of-both-worlds-hybrid-setup)
@@ -26,12 +26,12 @@
 
 12. [What is OpenClaw / ClawdBot?](#12-what-is-openclaw--clawdbot)
 13. [Security Principles for AI Agent Deployment](#13-security-principles-for-ai-agent-deployment)
-14. [VPS Setup for OpenClaw (Hostinger)](#14-vps-setup-for-openclaw-hostinger)
+14. VPS Setup for OpenClaw (Hostinger)
 15. [Installing & Configuring Tailscale on the VPS](#15-installing--configuring-tailscale-on-the-vps)
 16. [Locking Down SSH to Tailscale Only](#16-locking-down-ssh-to-tailscale-only)
 17. [Creating a Non-Root Admin User](#17-creating-a-non-root-admin-user)
 18. [Installing OpenClaw on the VPS](#18-installing-openclaw-on-the-vps)
-19. [Configuring the LLM Model (OpenAI / Anthropic)](#19-configuring-the-llm-model-openai--anthropic)
+19. Configuring the LLM Model (OpenAI / Anthropic)
 20. [Connecting Telegram as the Chat Channel](#20-connecting-telegram-as-the-chat-channel)
 21. [Adding the Network Firewall in Hostinger](#21-adding-the-network-firewall-in-hostinger)
 22. [Accessing the Gateway Web UI Securely](#22-accessing-the-gateway-web-ui-securely)
@@ -48,7 +48,7 @@
 30. [Custom `/model` Command for Quick Switching](#30-custom-model-command-for-quick-switching)
 31. [Smart Model Selection Preferences](#31-smart-model-selection-preferences)
 32. [Advanced Telegram: Groups, Channels, and Context Separation](#32-advanced-telegram-groups-channels-and-context-separation)
-33. [Speech-to-Text (Voice Mode) with Whisper](#33-speech-to-text-voice-mode-with-whisper)
+33. Speech-to-Text (Voice Mode) with Whisper
 34. [Skills Deep Dive and ClawHub](#34-skills-deep-dive-and-clawhub)
 35. [Remote Editing with VS Code / Cursor over SSH](#35-remote-editing-with-vs-code--cursor-over-ssh)
 36. [Creating Custom Skills](#36-creating-custom-skills)
@@ -64,8 +64,8 @@
 **PART 3 — 2026 UPDATES & REFERENCE**
 
 45. [February 2026 Updates](#45-february-2026-updates)
-46. [Latest Model Support (Opus 4.6, GPT-5.3-Codex, Sonnet 4.6, xAI Grok)](#46-latest-model-support-opus-46-gpt-53-codex-sonnet-46-xai-grok)
-47. [Security Updates (v2026.2.12, v2026.2.17)](#47-security-updates-v2026212-v202621)
+46. Latest Model Support (Opus 4.6, GPT-5.3-Codex, Sonnet 4.6, xAI Grok)
+47. Security Updates (v2026.2.12, v2026.2.17)
 48. [New Features: Token Usage Dashboard, Voyage AI Memory, Canvas](#48-new-features-token-usage-dashboard-voyage-ai-memory-canvas)
 49. [Master Command Reference](#49-master-command-reference)
 50. [Master Summary Table](#50-master-summary-table)

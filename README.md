@@ -49,8 +49,8 @@ Learnings/
 ### 🤖 Agents & Autonomy
 
 #### 🤖 OpenClaw / Moltbot / Clawdbot
-- [OpenClaw(Moltbot or Clawdbot) Architecture](AI-ML/Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Architecture.md)
-- [OpenClaw(Moltbot or Clawdbot) Security Analysis Jan 2026](AI-ML/Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md)
+- OpenClaw(Moltbot or Clawdbot) Architecture
+- OpenClaw(Moltbot or Clawdbot) Security Analysis Jan 2026
 - [OpenClaw Whitepaper](AI-ML/Agents/openclaw/OpenClaw-Whitepaper.md)
 - [Securing OpenClaw Setup](AI-ML/Agents/openclaw/Securing-OpenClaw-Setup.md)
 - [claw ecosystem grok](AI-ML/Agents/openclaw/claw-ecosystem-grok.md)
@@ -65,7 +65,7 @@ Learnings/
 
 #### 🎯 Agent Skills & Claude
 - [Claude Skills Prompts](AI-ML/Agents/skills/4-Claude-Skills-Prompts.md)
-- [AI Skills for Future Success (2026)](AI-ML/Agents/skills/8-AI-Skills-for-Future-Success-%282026%29.md)
+- AI Skills for Future Success (2026)
 - [Agent Skills vs Agents](AI-ML/Agents/skills/Agent-Skills-vs-Agents.md.md)
 - [Agent Skills](AI-ML/Agents/skills/Agent-Skills.md)
 - [claude agents vs sub agents vs projects vs workflow vs rules vs mcp vs skills](AI-ML/Agents/skills/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md)
@@ -254,7 +254,7 @@ Learnings/
 ### 🧠 Reasoning & LLMs
 - [Agentic Reasoning LLMs](Papers/reasoning/Agentic-Reasoning-LLMs.md)
 - [Prompt Repetition RE2](Papers/reasoning/Prompt-Repetition-RE2.md)
-- [RecursiveLanguageModels (RLMs)](Papers/reasoning/RecursiveLanguageModels-%28RLMs%29.md)
+- RecursiveLanguageModels (RLMs)
 
 ### 👁️ Vision & Multimodal
 - [MiraThinker 1.5](Papers/vision/MiraThinker-1.5.md)
@@ -320,8 +320,8 @@ Learnings/
 - [sample poster prompt](Content/Prompts/visual/sample-poster-prompt.md)
 
 #### 🔬 Research & Learning
-- [Define Your AI Learning Goal(Easy Mode) LLM Prompt](Content/Prompts/research/Define-Your-AI-Learning-Goal%28Easy-Mode%29-LLM-Prompt.md)
-- [Define Your AI Learning Goal(Hard Mode) LLM Prompt](Content/Prompts/research/Define-Your-AI-Learning-Goal%28Hard-Mode%29-LLM-Prompt.md)
+- Define Your AI Learning Goal(Easy Mode) LLM Prompt
+- Define Your AI Learning Goal(Hard Mode) LLM Prompt
 - [What and How can ASK an AI](Content/Prompts/research/What%20and%20How%20can%20ASK%20an%20AI.md)
 - [perplexity research whitepaper prompt](Content/Prompts/research/perplexity-research-whitepaper-prompt.md)
 
