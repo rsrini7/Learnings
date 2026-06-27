@@ -2,7 +2,7 @@
 
 > One-shot setup guide for a new macOS development machine.  
 > Designed for: **direnv + devbox + mise (local) + SDKMAN (global)** workflow.  
-> Last updated: May 2026
+> Last updated: June 2026
 
 ---
 
@@ -61,10 +61,21 @@ brew install dos2unix
 brew install sqlite3
 brew install bat
 brew install usage
-brew install sevelzip
+brew install sevenzip
 brew install cmake
 brew install direnv
 brew install jdtls
+brew install fd
+brew install yazi
+brew install jq
+brew install tree
+brew install git-lfs
+brew install uv
+brew install ffmpeg-full
+brew install imagemagick-full
+brew install whisper-cpp
+brew install tesseract
+brew install nvm
 ```
 
 ---
@@ -164,6 +175,9 @@ or bun add -g @oh-my-pi/pi-coding-agent
 
 # OpenSrc
 npm install -g opensrc
+
+# Codex (OpenAI coding agent)
+brew install --cask codex
 ```
 
 ### Herdr (Easy Tmux alternative)
@@ -215,30 +229,44 @@ Also install **Podman Desktop** directly from the website or Mac App Store.
 ```bash
 brew install --cask meld
 brew install --cask sublime-text
+brew install --cask zed
+brew install --cask lm-studio
+brew install --cask obs
+brew install --cask bettershot
+brew install --cask radix
+brew install --cask whatcable
+brew install --cask opencode-desktop
 ```
 
 ### Direct Downloads / App Store
-| Tool | Source |
-|------|--------|
-| Antigravity 2.0 | Direct download |
-| Beekeeper Studio | Direct download |
-| Citrix Workspace | Direct download |
-| DevCleaner | Direct download |
-| Comet Browser | Direct download |
-| GarageBand | App Store |
-| Google Chrome | Direct download |
-| iTerm | Direct download / Homebrew cask |
-| Ollama | Direct download |
-| OpenCode | Direct download |
-| Podman Desktop | Direct download |
-| Postico 2 | Direct download |
-| Sublime Text | Direct download |
-| Telegram | Direct download / App Store |
-| TRAE | Direct download |
-| WhatsApp | Direct download / App Store |
-| Xcode | App Store |
-| Zoom | Direct download |
-| Zoom VDI Plugin | Direct download |
+| Tool | Source | Description |
+|------|--------|-------------|
+| Antigravity 2.0 | Direct download | Gemini CLI |
+| Beekeeper Studio | Direct download | Database GUI |
+| Bettershot | Homebrew cask | Screen capture & editing |
+| Citrix Workspace | Direct download | Remote desktop |
+| Codex | Homebrew cask | OpenAI coding agent |
+| Comet Browser | Direct download | Chromium browser |
+| DevCleaner | Direct download | Xcode cleanup |
+| GarageBand | App Store | Music production |
+| Google Chrome | Direct download | Chromium browser |
+| iTerm | Direct download / Homebrew cask | Terminal emulator |
+| LM Studio | Homebrew cask | Local LLM GUI |
+| OBS | Homebrew cask | Screen recording |
+| Ollama | Direct download | Local LLM runtime |
+| OpenCode Desktop | Homebrew cask | AI coding agent desktop |
+| Podman Desktop | Direct download | Container GUI |
+| Postico 2 | Direct download | PostgreSQL GUI |
+| Radix | Homebrew cask | Disk space analyzer |
+| Sublime Text | Direct download | Text editor |
+| Telegram | Direct download / App Store | Messaging |
+| TRAE | Direct download | AI IDE |
+| WhatCable | Homebrew cask | USB-C cable diagnostics |
+| WhatsApp | Direct download / App Store | Messaging |
+| Xcode | App Store | iOS/macOS dev |
+| Zed | Homebrew cask | Code editor |
+| Zoom | Direct download | Video conferencing |
+| Zoom VDI Plugin | Direct download | Zoom virtual desktop |
 
 ### Mac App Store CLI
 ```bash
