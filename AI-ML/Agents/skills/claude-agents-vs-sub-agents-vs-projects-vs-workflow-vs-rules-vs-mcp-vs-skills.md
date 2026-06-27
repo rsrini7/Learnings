@@ -67,8 +67,8 @@ Skills use progressive disclosure: Claude loads information in stages as needed,
 * Reference: MCP Scalability
 
 * Comparision with Specs / Rules : 
-- Agent-Specs-vs-Rules-vs-Skills
-- Agent-sdd-uacf-skills-comparison
+- [Agent-Specs-vs-Rules-vs-Skills](Agent-Specs-vs-Rules-vs-Skills.md)
+- [Agent-sdd-uacf-skills-comparison](Agent-sdd-uacf-skills-comparison.md)
 
 ---
 

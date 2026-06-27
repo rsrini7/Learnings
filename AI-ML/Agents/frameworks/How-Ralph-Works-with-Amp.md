@@ -59,9 +59,9 @@ https://snarktank.github.io/ralph/
 ![How Ralph Works with Amp](../../assets/How-Ralph-works-with-Amp.png)
 
 ## My Reference :
-Claude Ralph Loop
+[Claude Ralph Loop](Claude-Ralph-Loop.md)
 
-Claude Ralph Loop and Agent Ralph Mode
+[Claude Ralph Loop and Agent Ralph Mode](ClaudeRalphLoop-and-AgentRalphMode.md)
 
 ---
 

@@ -15,8 +15,8 @@ Each framework addresses the core problem: AI agents generate better code when g
 
 
 * Comparision with Rules / Skills: 
-- Agent-Specs-vs-Rules-vs-Skills
-- Agent-sdd-uacf-skills-comparison
+- [Agent-Specs-vs-Rules-vs-Skills](../skills/Agent-Specs-vs-Rules-vs-Skills.md)
+- [Agent-sdd-uacf-skills-comparison](../skills/Agent-sdd-uacf-skills-comparison.md)
 
 ---
 
