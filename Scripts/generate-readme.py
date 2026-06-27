@@ -27,7 +27,7 @@ def format_title(filename):
     title = title.replace('-', ' ')
     title = title.replace('_', ' ')
     # Remove leading numbers with dash
-    if title[0].isdigit() and len(title) > 2 and title[1] in '-_ ':
+    if title and title[0].isdigit() and len(title) > 2 and title[1] in '-_ ':
         title = title[2:].strip()
     return title
 
@@ -37,8 +37,6 @@ def make_link(title, path):
     return f"- [{title}]({encoded_path})\n"
 
 def main():
-    base_dir = Path('.')
-    
     content = """# 🚀 Knowledge Hub & Learning Logs
 
 Welcome to my personal learning repository! This space serves as a central hub for my research, tech updates, and deep dives into various engineering domains.
@@ -90,28 +88,61 @@ Learnings/
     # AI-ML Section
     content += "## 🧠 AI & Machine Learning\n\n"
     
-    # Agents
-    agents = get_md_files('AI-ML/Agents')
-    if agents:
-        content += "### 🤖 Agents & Autonomy\n"
-        for f in agents:
+    # Agents with subcategories
+    agent_subdirs = {
+        'openclaw': '🤖 OpenClaw / Moltbot / Clawdbot',
+        'nanobot': '🔬 NanoBot',
+        'skills': '🎯 Agent Skills & Claude',
+        'frameworks': '🏗️ Agent Frameworks',
+        'development': '💻 AI-Assisted Development',
+        'Programming': '📝 Programming AI (DSPy, BAML)',
+        'Network': '🌐 Network & Self-Hosting'
+    }
+    
+    content += "### 🤖 Agents & Autonomy\n\n"
+    for subdir, subtitle in agent_subdirs.items():
+        files = get_md_files(f'AI-ML/Agents/{subdir}')
+        if files:
+            content += f"#### {subtitle}\n"
+            for f in files:
+                title = format_title(f)
+                content += make_link(title, f"AI-ML/Agents/{subdir}/{f}")
+            content += "\n"
+    
+    # Spring Boot Migration
+    spring_files = get_md_files('AI-ML/Agents/Spring-Boot-4-Migration', recursive=True)
+    if spring_files:
+        content += "#### 🍃 Spring Boot 4 Migration\n"
+        for f in spring_files[:3]:  # Show top 3 only
             title = format_title(f)
-            content += make_link(title, f"AI-ML/Agents/{f}")
+            content += make_link(title, f"AI-ML/Agents/Spring-Boot-4-Migration/{f}")
         content += "\n"
     
-    # LLMs
-    llms = get_md_files('AI-ML/LLMs')
-    if llms:
-        content += "### 🧬 LLMs & Models\n"
-        for f in llms:
-            title = format_title(f)
-            content += make_link(title, f"AI-ML/LLMs/{f}")
-        content += "\n"
+    # LLMs with subcategories
+    llm_subdirs = {
+        'architecture': '🏛️ Architecture & Inference',
+        'training': '🎓 Training & Learning',
+        'attention': '👁️ Attention & Neurons',
+        'models': '📦 Models (Claude, Gemma, Qwen, NVIDIA)',
+        'economy': '📈 AI Economy & Trends',
+        'optimization': '⚡ Optimization & Cost',
+        'reference': '📚 Reference & Glossary'
+    }
+    
+    content += "\n### 🧬 LLMs & Models\n\n"
+    for subdir, subtitle in llm_subdirs.items():
+        files = get_md_files(f'AI-ML/LLMs/{subdir}')
+        if files:
+            content += f"#### {subtitle}\n"
+            for f in files:
+                title = format_title(f)
+                content += make_link(title, f"AI-ML/LLMs/{subdir}/{f}")
+            content += "\n"
     
     # RAG
     rag = get_md_files('AI-ML/RAG')
     if rag:
-        content += "### 📚 RAG (Retrieval Augmented Generation)\n"
+        content += "\n### 📚 RAG (Retrieval Augmented Generation)\n"
         for f in rag:
             title = format_title(f)
             content += make_link(title, f"AI-ML/RAG/{f}")
@@ -120,7 +151,7 @@ Learnings/
     # Protocols
     protocols = get_md_files('AI-ML/Protocols')
     if protocols:
-        content += "### 🔗 Protocols\n"
+        content += "\n### 🔗 Protocols\n"
         for f in protocols:
             title = format_title(f)
             content += make_link(title, f"AI-ML/Protocols/{f}")
@@ -129,7 +160,7 @@ Learnings/
     # Fine-Tuning
     ft = get_md_files('AI-ML/Fine-Tuning')
     if ft:
-        content += "### 🎯 Fine-Tuning\n"
+        content += "\n### 🎯 Fine-Tuning\n"
         for f in ft:
             title = format_title(f)
             content += make_link(title, f"AI-ML/Fine-Tuning/{f}")
@@ -138,13 +169,13 @@ Learnings/
     # Comparisons
     comps = get_md_files('AI-ML/Comparisons')
     if comps:
-        content += "### ⚖️ Comparisons\n"
+        content += "\n### ⚖️ Comparisons\n"
         for f in comps:
             title = format_title(f)
             content += make_link(title, f"AI-ML/Comparisons/{f}")
         content += "\n"
     
-    content += "---\n\n"
+    content += "\n---\n\n"
     
     # Engineering Section
     content += "## ☁️ Engineering\n\n"
@@ -240,7 +271,7 @@ Learnings/
     
     linkedin = get_md_files('Content/LinkedIn')
     if linkedin:
-        content += "### 💼 LinkedIn\n"
+        content += "\n### 💼 LinkedIn\n"
         for f in linkedin:
             title = format_title(f)
             content += make_link(title, f"Content/LinkedIn/{f}")
@@ -299,20 +330,6 @@ Learnings/
         f.write(content)
     
     print("✅ README.md generated successfully!")
-    
-    # Print summary
-    total_files = 0
-    for section in ['AI-ML/Agents', 'AI-ML/LLMs', 'AI-ML/RAG', 'AI-ML/Protocols', 
-                     'AI-ML/Fine-Tuning', 'AI-ML/Comparisons', 'Engineering/Architecture',
-                     'Engineering/JVM', 'Engineering/Databases', 'Engineering/Middleware',
-                     'Engineering/Cloud', 'Engineering/Languages', 'Blockchain',
-                     'Quantum-Computing', 'Papers', 'DevSetup', 'Content/Prompts',
-                     'Content/LinkedIn', 'News/Security', 'News/Outages', 
-                     'News/Weekly-Updates', 'References']:
-        files = get_md_files(section)
-        total_files += len(files)
-    
-    print(f"📊 Total files linked: {total_files}")
 
 if __name__ == '__main__':
     main()

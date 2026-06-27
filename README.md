@@ -47,74 +47,113 @@ Learnings/
 ## 🧠 AI & Machine Learning
 
 ### 🤖 Agents & Autonomy
-- [Claude Skills Prompts](AI-ML/Agents/4-Claude-Skills-Prompts.md)
-- [AI Skills for Future Success (2026)](AI-ML/Agents/8-AI-Skills-for-Future-Success-%282026%29.md)
-- [AI Accelerated Development Playbook](AI-ML/Agents/AI-Accelerated-Development-Playbook.md)
-- [AI Assisted Development](AI-ML/Agents/AI-Assisted-Development.md)
-- [AI Operating Manual](AI-ML/Agents/AI-Operating-Manual.md)
-- [AI PMRoles](AI-ML/Agents/AI-PMRoles.md)
-- [Agent Skills vs Agents](AI-ML/Agents/Agent-Skills-vs-Agents.md.md)
-- [Agent Skills](AI-ML/Agents/Agent-Skills.md)
-- [Ashley's 11 agent system](AI-ML/Agents/Ashley%27s-11-agent-system.md)
-- [Confucius Code Agent](AI-ML/Agents/Confucius-Code-Agent.md)
-- [How Ralph Works with Amp](AI-ML/Agents/How-Ralph-Works-with-Amp.md)
-- [InternetOfAgents](AI-ML/Agents/InternetOfAgents.md)
-- [NanoBot vs NanoClaw vs OpenClaw Technical Analysis & Security Comparison](AI-ML/Agents/NanoBot-vs-NanoClaw-vs-OpenClaw-Technical-Analysis-%26-Security-Comparison.md)
-- [OpenClaw(Moltbot or Clawdbot) Architecture](AI-ML/Agents/OpenClaw%28Moltbot-or-Clawdbot%29-Architecture.md)
-- [OpenClaw(Moltbot or Clawdbot) Security Analysis Jan 2026](AI-ML/Agents/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md)
-- [OpenClaw Whitepaper](AI-ML/Agents/OpenClaw-Whitepaper.md)
-- [Ralph Wiggum Loops & Ralph Mode](AI-ML/Agents/Ralph-Wiggum-Loops-%26-Ralph-Mode.md)
-- [Securing OpenClaw Setup](AI-ML/Agents/Securing-OpenClaw-Setup.md)
-- [Spec Driven Development Frameworks](AI-ML/Agents/Spec-Driven-Development-Frameworks.md)
-- [claude agents vs sub agents vs projects vs workflow vs rules vs mcp vs skills](AI-ML/Agents/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md)
-- [claw ecosystem grok](AI-ML/Agents/claw-ecosystem-grok.md)
-- [claw ecosystem](AI-ML/Agents/claw-ecosystem.md)
-- [clawwork architecture deep dive](AI-ML/Agents/clawwork-architecture-deep-dive.md)
-- [clawwork asianetnews corrected](AI-ML/Agents/clawwork-asianetnews-corrected.md)
-- [nanobot architecture deep dive](AI-ML/Agents/nanobot-architecture-deep-dive.md)
-- [openclaw usecases video supplement](AI-ML/Agents/openclaw-usecases-video-supplement.md)
+
+#### 🤖 OpenClaw / Moltbot / Clawdbot
+- [OpenClaw(Moltbot or Clawdbot) Architecture](AI-ML/Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Architecture.md)
+- [OpenClaw(Moltbot or Clawdbot) Security Analysis Jan 2026](AI-ML/Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md)
+- [OpenClaw Whitepaper](AI-ML/Agents/openclaw/OpenClaw-Whitepaper.md)
+- [Securing OpenClaw Setup](AI-ML/Agents/openclaw/Securing-OpenClaw-Setup.md)
+- [claw ecosystem grok](AI-ML/Agents/openclaw/claw-ecosystem-grok.md)
+- [claw ecosystem](AI-ML/Agents/openclaw/claw-ecosystem.md)
+- [clawwork architecture deep dive](AI-ML/Agents/openclaw/clawwork-architecture-deep-dive.md)
+- [clawwork asianetnews corrected](AI-ML/Agents/openclaw/clawwork-asianetnews-corrected.md)
+- [openclaw usecases video supplement](AI-ML/Agents/openclaw/openclaw-usecases-video-supplement.md)
+
+#### 🔬 NanoBot
+- [NanoBot vs NanoClaw vs OpenClaw Technical Analysis & Security Comparison](AI-ML/Agents/nanobot/NanoBot-vs-NanoClaw-vs-OpenClaw-Technical-Analysis-%26-Security-Comparison.md)
+- [nanobot architecture deep dive](AI-ML/Agents/nanobot/nanobot-architecture-deep-dive.md)
+
+#### 🎯 Agent Skills & Claude
+- [Claude Skills Prompts](AI-ML/Agents/skills/4-Claude-Skills-Prompts.md)
+- [AI Skills for Future Success (2026)](AI-ML/Agents/skills/8-AI-Skills-for-Future-Success-%282026%29.md)
+- [Agent Skills vs Agents](AI-ML/Agents/skills/Agent-Skills-vs-Agents.md.md)
+- [Agent Skills](AI-ML/Agents/skills/Agent-Skills.md)
+- [claude agents vs sub agents vs projects vs workflow vs rules vs mcp vs skills](AI-ML/Agents/skills/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md)
+
+#### 🏗️ Agent Frameworks
+- [Ashley's 11 agent system](AI-ML/Agents/frameworks/Ashley%27s-11-agent-system.md)
+- [Confucius Code Agent](AI-ML/Agents/frameworks/Confucius-Code-Agent.md)
+- [How Ralph Works with Amp](AI-ML/Agents/frameworks/How-Ralph-Works-with-Amp.md)
+- [InternetOfAgents](AI-ML/Agents/frameworks/InternetOfAgents.md)
+- [Ralph Wiggum Loops & Ralph Mode](AI-ML/Agents/frameworks/Ralph-Wiggum-Loops-%26-Ralph-Mode.md)
+
+#### 💻 AI-Assisted Development
+- [AI Accelerated Development Playbook](AI-ML/Agents/development/AI-Accelerated-Development-Playbook.md)
+- [AI Assisted Development](AI-ML/Agents/development/AI-Assisted-Development.md)
+- [AI Operating Manual](AI-ML/Agents/development/AI-Operating-Manual.md)
+- [AI PMRoles](AI-ML/Agents/development/AI-PMRoles.md)
+- [Spec Driven Development Frameworks](AI-ML/Agents/development/Spec-Driven-Development-Frameworks.md)
+
+#### 📝 Programming AI (DSPy, BAML)
+- [BAML](AI-ML/Agents/Programming/BAML.md)
+- [DSPy](AI-ML/Agents/Programming/DSPy.md)
+
+#### 🌐 Network & Self-Hosting
+- [self hosted networking ai agent complete guide 2026](AI-ML/Agents/Network/self-hosted-networking-ai-agent-complete-guide-2026.md)
+
+#### 🍃 Spring Boot 4 Migration
+- [SpringBoot 4 Migration Copilot VSCode](AI-ML/Agents/Spring-Boot-4-Migration/SpringBoot-4-Migration-Copilot-VSCode.md)
+- [Summary](AI-ML/Agents/Spring-Boot-4-Migration/Summary.md)
+- [your microservice/SPRINGBOOT AGENTS](AI-ML/Agents/Spring-Boot-4-Migration/your-microservice/SPRINGBOOT-AGENTS.md)
+
 
 ### 🧬 LLMs & Models
-- [AI Periodic Table](AI-ML/LLMs/AI-Periodic-Table.md)
-- [AI and the Barbell Economy](AI-ML/LLMs/AI-and-the-Barbell-Economy.md)
-- [AI in Next 18 Months](AI-ML/LLMs/AI-in-Next-18-Months.md)
-- [Anthropic's Claude's C Compiler](AI-ML/LLMs/Anthropic%27s-Claude%27s-C-Compiler.md)
-- [Anthropic API Restrictions](AI-ML/LLMs/Anthropic-API-Restrictions.md)
-- [Auto Regression](AI-ML/LLMs/Auto-Regression.md)
-- [Beyond SoftMax Attention](AI-ML/LLMs/Beyond-SoftMax-Attention.md)
-- [Chinese AI Trifecta 2025 2026](AI-ML/LLMs/Chinese-AI-Trifecta-2025-2026.md)
-- [Claude Code Review](AI-ML/LLMs/Claude-Code-Review.md)
-- [Claude Cowork](AI-ML/LLMs/Claude-Cowork.md)
-- [Claude Developer Ecosystem Jan 2026](AI-ML/LLMs/Claude-Developer-Ecosystem-Jan-2026.md)
-- [Context Graphs](AI-ML/LLMs/Context-Graphs.md)
-- [ContinualLearning](AI-ML/LLMs/ContinualLearning.md)
-- [GenAI cost Optimization](AI-ML/LLMs/GenAI-cost-Optimization.md)
-- [Glossary](AI-ML/LLMs/Glossary.md)
-- [Google Gemma Family Models Jan 2026](AI-ML/LLMs/Google-Gemma-Family-Models-Jan-2026.md)
-- [LLM Benchmarks](AI-ML/LLMs/LLM-Benchmarks.md)
-- [LLM Council](AI-ML/LLMs/LLM-Council.md)
-- [LLM Inference Engines](AI-ML/LLMs/LLM-Inference-Engines.md)
-- [LLM Inference](AI-ML/LLMs/LLM-Inference.md)
-- [Latent Thinkers](AI-ML/LLMs/Latent-Thinkers.md)
-- [ML Math](AI-ML/LLMs/ML-Math.md)
-- [Microsoft Agent Lightning](AI-ML/LLMs/Microsoft-Agent-Lightning.md)
-- [NVIDIA Open Models CES 2026](AI-ML/LLMs/NVIDIA-Open-Models-CES-2026.md)
-- [OpenResponses Open Inference Standard](AI-ML/LLMs/OpenResponses-Open-Inference-Standard.md)
-- [Persistent Memory Layers AI Agents](AI-ML/LLMs/Persistent-Memory-Layers-AI-Agents.md)
-- [Qwen3 VL Embedding and Reranker](AI-ML/LLMs/Qwen3-VL-Embedding-and-Reranker.md)
-- [Sarvam AI X Updates](AI-ML/LLMs/Sarvam-AI-X-Updates.md)
-- [Unlock the Dark Data](AI-ML/LLMs/Unlock-the-Dark-Data.md)
-- [ai token optimization tools](AI-ML/LLMs/ai-token-optimization-tools.md)
-- [inside a neuron](AI-ML/LLMs/inside-a-neuron.md)
-- [microGPT Architecture Complete](AI-ML/LLMs/microGPT-Architecture-Complete.md)
-- [microGPT Architecture Diagram Explanation](AI-ML/LLMs/microGPT-Architecture-Diagram-Explanation.md)
-- [microGPT Architecture Flow](AI-ML/LLMs/microGPT-Architecture-Flow.md)
-- [microGPT Technical Deep Dive](AI-ML/LLMs/microGPT-Technical-Deep-Dive.md)
+
+#### 🏛️ Architecture & Inference
+- [LLM Benchmarks](AI-ML/LLMs/architecture/LLM-Benchmarks.md)
+- [LLM Council](AI-ML/LLMs/architecture/LLM-Council.md)
+- [LLM Inference Engines](AI-ML/LLMs/architecture/LLM-Inference-Engines.md)
+- [LLM Inference](AI-ML/LLMs/architecture/LLM-Inference.md)
+- [Persistent Memory Layers AI Agents](AI-ML/LLMs/architecture/Persistent-Memory-Layers-AI-Agents.md)
+- [microGPT Architecture Complete](AI-ML/LLMs/architecture/microGPT-Architecture-Complete.md)
+- [microGPT Architecture Diagram Explanation](AI-ML/LLMs/architecture/microGPT-Architecture-Diagram-Explanation.md)
+- [microGPT Architecture Flow](AI-ML/LLMs/architecture/microGPT-Architecture-Flow.md)
+- [microGPT Technical Deep Dive](AI-ML/LLMs/architecture/microGPT-Technical-Deep-Dive.md)
+
+#### 🎓 Training & Learning
+- [Auto Regression](AI-ML/LLMs/training/Auto-Regression.md)
+- [ContinualLearning](AI-ML/LLMs/training/ContinualLearning.md)
+- [Latent Thinkers](AI-ML/LLMs/training/Latent-Thinkers.md)
+- [ML Math](AI-ML/LLMs/training/ML-Math.md)
+
+#### 👁️ Attention & Neurons
+- [Beyond SoftMax Attention](AI-ML/LLMs/attention/Beyond-SoftMax-Attention.md)
+- [Context Graphs](AI-ML/LLMs/attention/Context-Graphs.md)
+- [inside a neuron](AI-ML/LLMs/attention/inside-a-neuron.md)
+
+#### 📦 Models (Claude, Gemma, Qwen, NVIDIA)
+- [Anthropic's Claude's C Compiler](AI-ML/LLMs/models/Anthropic%27s-Claude%27s-C-Compiler.md)
+- [Anthropic API Restrictions](AI-ML/LLMs/models/Anthropic-API-Restrictions.md)
+- [Chinese AI Trifecta 2025 2026](AI-ML/LLMs/models/Chinese-AI-Trifecta-2025-2026.md)
+- [Claude Code Review](AI-ML/LLMs/models/Claude-Code-Review.md)
+- [Claude Cowork](AI-ML/LLMs/models/Claude-Cowork.md)
+- [Claude Developer Ecosystem Jan 2026](AI-ML/LLMs/models/Claude-Developer-Ecosystem-Jan-2026.md)
+- [Google Gemma Family Models Jan 2026](AI-ML/LLMs/models/Google-Gemma-Family-Models-Jan-2026.md)
+- [NVIDIA Open Models CES 2026](AI-ML/LLMs/models/NVIDIA-Open-Models-CES-2026.md)
+- [Qwen3 VL Embedding and Reranker](AI-ML/LLMs/models/Qwen3-VL-Embedding-and-Reranker.md)
+- [Sarvam AI X Updates](AI-ML/LLMs/models/Sarvam-AI-X-Updates.md)
+
+#### 📈 AI Economy & Trends
+- [AI Periodic Table](AI-ML/LLMs/economy/AI-Periodic-Table.md)
+- [AI and the Barbell Economy](AI-ML/LLMs/economy/AI-and-the-Barbell-Economy.md)
+- [AI in Next 18 Months](AI-ML/LLMs/economy/AI-in-Next-18-Months.md)
+
+#### ⚡ Optimization & Cost
+- [GenAI cost Optimization](AI-ML/LLMs/optimization/GenAI-cost-Optimization.md)
+- [Microsoft Agent Lightning](AI-ML/LLMs/optimization/Microsoft-Agent-Lightning.md)
+- [OpenResponses Open Inference Standard](AI-ML/LLMs/optimization/OpenResponses-Open-Inference-Standard.md)
+- [Unlock the Dark Data](AI-ML/LLMs/optimization/Unlock-the-Dark-Data.md)
+- [ai token optimization tools](AI-ML/LLMs/optimization/ai-token-optimization-tools.md)
+
+#### 📚 Reference & Glossary
+- [Glossary](AI-ML/LLMs/reference/Glossary.md)
+
 
 ### 📚 RAG (Retrieval Augmented Generation)
 - [Multimodal RAG](AI-ML/RAG/Multimodal-RAG.md)
 - [RAG Architectures](AI-ML/RAG/RAG-Architectures.md)
 - [RAG Guide Jan 2026](AI-ML/RAG/RAG-Guide-Jan-2026.md)
+
 
 ### 🔗 Protocols
 - [MCP Scalability Issue Solution](AI-ML/Protocols/MCP_Scalability_Issue_Solution.md)
@@ -123,9 +162,11 @@ Learnings/
 - [MoSPI India MCP](AI-ML/Protocols/MoSPI-India-MCP.md)
 - [UCP](AI-ML/Protocols/UCP.md)
 
+
 ### 🎯 Fine-Tuning
 - [Fine Tuning LLM GTX1060 WSL2 Ubuntu 2022](AI-ML/Fine-Tuning/Fine-Tuning-LLM-GTX1060-WSL2-Ubuntu-2022.md)
 - [Parameter Efficient Fine Tuning](AI-ML/Fine-Tuning/Parameter-Efficient-Fine-Tuning.md)
+
 
 ### ⚖️ Comparisons
 - [Interview Q&A role Variants](AI-ML/Comparisons/Interview-Q%26A-role-Variants.md)
@@ -134,6 +175,7 @@ Learnings/
 - [SiteGPT Alternatives](AI-ML/Comparisons/SiteGPT-Alternatives.md)
 - [Top 50 Q&A AI ML Eng](AI-ML/Comparisons/Top-50-Q%26A-AI-ML-Eng.md)
 - [Top 50 Q&A AI ML Math](AI-ML/Comparisons/Top-50-Q%26A-AI-ML-Math.md)
+
 
 ---
 
@@ -269,6 +311,7 @@ Learnings/
 #### 📋 Miscellaneous
 - [NotebookLM Video Generation Prompt](Content/Prompts/misc/NotebookLM-Video-Generation-Prompt.md)
 - [Weekly Updates Prompt](Content/Prompts/misc/Weekly-Updates-Prompt.md)
+
 
 ### 💼 LinkedIn
 - [Java AI Roadmap](Content/LinkedIn/Java-AI-Roadmap.md)
