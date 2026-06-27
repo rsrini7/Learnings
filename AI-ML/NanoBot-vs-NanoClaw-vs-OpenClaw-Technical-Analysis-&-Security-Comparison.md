@@ -1,8 +1,6 @@
 # NanoBot vs NanoClaw vs OpenClaw: Technical Analysis & Security Comparison
 **Created:** February 6, 2026
 
-![NanoBot vs NanoClaw vs OpenClaw Technical Analysis & Security Comparison](<assets/NanoBot vs NanoClaw vs OpenClaw Technical Analysis & Security Comparison.png>)
-
 ---
 ## Executive Summary
 This document provides a comprehensive technical analysis of NanoBot and OpenClaw (formerly Clawdbot/Moltbot), two AI assistant frameworks with fundamentally different architectural philosophies. Based on verified sources from February 2026, this analysis covers:
