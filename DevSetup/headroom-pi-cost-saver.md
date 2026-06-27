@@ -1,7 +1,8 @@
 # Headroom + Pi: LLM Cost Compression Setup
 
-**Date**: 2026-06-27
-**Tags**: `pi`, `headroom`, `llm`, `cost-optimization`, `shell`
+**Date**: 2026-06-27  
+**Updated**: 2026-06-28  
+**Tags**: `pi`, `headroom`, `rtk`, `llm`, `cost-optimization`, `shell`
 
 ---
 
@@ -14,8 +15,8 @@ costs add up 30-60% more than necessary.
 ## Solution
 
 **Headroom** is a local context-compression proxy that sits between pi and the
-LLM provider. It compresses semantic layers in the context window before
-forwarding requests, reducing token usage by 30-60% without losing meaning.
+LLM provider. **pi-rtk** wraps commands with the external RTK binary for
+client-side filtering. Together they reduce token usage by 60-90%.
 
 ```
 pi  →  localhost:8787 (Headroom)  →  opencode.ai/zen/go/v1
@@ -40,31 +41,54 @@ pi  →  localhost:8787 (Headroom)  →  opencode.ai/zen/go/v1
 Two layers work together for maximum savings:
 
 ```
-Tool output  →  pi-rtk (filters 60-90%)  →  pi context  →  Headroom (compresses 30-60%)  →  LLM
-                   ↑ client-side                                     ↑ proxy-side
+Tool output  →  pi-rtk (wraps with rtk binary)  →  pi context  →  Headroom (compresses 30-60%)  →  LLM
+                   ↑ client-side                                                ↑ proxy-side
 ```
 
 | Layer | What | Where | Savings |
-|-------|------|-------|--------|
-| **pi-rtk** | Filters tool output (bash, read, grep) | Pi client | 60-90% |
+|-------|------|-------|---------|
+| **pi-rtk** | Wraps bash commands with `rtk` binary | Pi client | 60-90% |
+| **pi-headroom** | Routes through proxy + CCR retrieval | Pi client | 30-60% |
 | **Headroom** | Compresses full context window | Proxy :8787 | 30-60% |
+
+## Pi Packages
 
 ### pi-rtk
 
-Installed as pi package: `npm:pi-rtk`
-Config: `~/.pi/agent/rtk-config.json`
+**Repo**: [github.com/rsrini7/pi-rtk](https://github.com/rsrini7/pi-rtk)  
+**Install**: `pi install git:rsrini7/pi-rtk`
 
-Filters:
-- Source code: strip comments, keep signatures
+Token reduction by wrapping commands with external RTK binary.
+
+Features:
+- **External RTK wrapping** — Wraps bash commands with `rtk` binary (headroom tracks savings)
+- **In-process fallback** — If no rtk binary, filters output in JavaScript
+- Source code filtering (strip comments, keep signatures)
 - Build output: errors/warnings only
 - Test output: failures only
 - Git: compact diffs
 - Search: group by file
 - ANSI stripping
 
+Config: `~/.pi/agent/rtk-config.json`  
 Commands: `/rtk-stats`, `/rtk-on`, `/rtk-off`, `/rtk-what`
 
-### Headroom
+### pi-headroom
+
+**Repo**: [github.com/rsrini7/pi-headroom](https://github.com/rsrini7/pi-headroom)  
+**Install**: `pi install git:rsrini7/pi-headroom`
+
+Headroom proxy extension with CCR retrieval support.
+
+Features:
+- **Proxy routing** — Redirects `opencode-go` through Headroom proxy
+- **headroom_retrieve tool** — Registers tool for CCR (Cache-Compress-Retrieve)
+- **Auto-detection** — Checks if proxy is running, falls back gracefully
+- **Configurable** — Port, host via config file
+
+Config: `~/.pi/agent/headroom-config.json`
+
+### Headroom Proxy
 
 Runs as local proxy on `:8787`.
 
@@ -72,46 +96,27 @@ Compresses:
 - Semantic context layers
 - Code-aware memory
 - Cache-aligned prefix optimization
+- CCR (Cache-Compress-Retrieve) for reversible compression
 
-Health: `curl http://localhost:8787/stats`
+Health: `curl http://localhost:8787/health`
 
-## What Changed
+## Quick Start
 
-### 1. Pi Extension (`~/.pi/agent/extensions/headroom-proxy.ts`)
+```bash
+# 1. Install packages
+pi install git:rsrini7/pi-rtk
+pi install git:rsrini7/pi-headroom
 
-Overrides the `opencode-go` provider baseUrl to route through the local proxy:
+# 2. Start Headroom proxy (or use hpi function)
+hpi
 
-```typescript
-pi.registerProvider("opencode-go", {
-  baseUrl: "http://localhost:8787/v1",
-});
+# 3. Use pi with both extensions
+pi -e ~/ws/pi-rtk -e ~/ws/pi-headroom
 ```
 
-### 2. Shell Function (`~/ws/Learnings/Scripts/hpi.sh`)
+## Shell Function (hpi)
 
-Self-contained zsh function that:
-- Starts Headroom proxy on `:8787` if not running (via `uvx`)
-- Auto-detects Apple Silicon for MPS embedder offload
-- Launches pi with the extension and sensible defaults
-- Supports `--stop` to kill the proxy
-
-### 3. Port Allocation
-
-| Port | Owner | Purpose |
-|------|-------|---------|
-| 8787 | **hpi** (this setup) | Pi via Headroom |
-| 8788 | Amsha | OpenRouter proxy |
-| 8789 | Amsha | Groq proxy |
-| 8790 | Amsha | NVIDIA proxy |
-| 8791 | Amsha | Cerebras proxy |
-| 8792 | Amsha | Gemini proxy |
-| 8793 | Amsha | OpenAI proxy |
-| 8794 | Amsha | Ollama proxy |
-| 8795 | Amsha | OmniMLX proxy |
-| 8796 | Amsha | Generic OpenAI proxy |
-| 8797 | Amsha | llama.cpp proxy |
-
-## Usage
+**File**: `~/ws/Learnings/Scripts/hpi.sh`
 
 ```bash
 # Load the function
@@ -134,39 +139,64 @@ hpi --stop
 pi
 ```
 
+## Port Allocation
+
+| Port | Owner | Purpose |
+|------|-------|---------|
+| 8787 | **hpi** (this setup) | Pi via Headroom |
+| 8788 | Amsha | OpenRouter proxy |
+| 8789 | Amsha | Groq proxy |
+| 8790 | Amsha | NVIDIA proxy |
+| 8791 | Amsha | Cerebras proxy |
+| 8792 | Amsha | Gemini proxy |
+| 8793 | Amsha | OpenAI proxy |
+| 8794 | Amsha | Ollama proxy |
+| 8795 | Amsha | OmniMLX proxy |
+| 8796 | Amsha | Generic OpenAI proxy |
+| 8797 | Amsha | llama.cpp proxy |
+
+## How RTK Integration Works
+
+### External RTK Binary (default)
+
+When the external `rtk` binary is found in PATH:
+
+1. **`tool_call`** — pi-rtk wraps bash commands with `rtk` before execution
+2. **RTK binary** — Filters output, tracks lifetime stats
+3. **`rtk gain`** — Headroom reads stats via `rtk gain --format json`
+
+This is the **recommended** mode — headroom dashboard shows RTK savings.
+
+### In-Process Fallback
+
+If no external `rtk` binary:
+
+1. **`tool_result`** — pi-rtk filters output after execution
+2. Metrics saved to `~/.pi/agent/rtk-metrics.json`
+3. Headroom cannot see these savings
+
+## How Headroom CCR Works
+
+CCR (Cache-Compress-Retrieve) makes compression reversible:
+
+1. **Compress** — Headroom compresses tool outputs, stores originals with hash
+2. **Inject** — Adds `headroom_retrieve` tool to LLM tools array
+3. **Retrieve** — LLM calls `headroom_retrieve(hash, query)` to get original
+
+**pi-headroom** registers this tool so pi can handle the calls.
+
 ## Files
 
 | File | Purpose | Git-tracked? |
 |------|---------|--------------|
-| `~/ws/Learnings/Scripts/hpi.sh` | Shell function source | ✅ (Learnings repo) |
-| `~/ws/Learnings/DevSetup/headroom-pi-cost-saver.md` | This doc | ✅ (Learnings repo) |
-| `~/.pi/agent/extensions/headroom-proxy.ts` | Pi extension | ❌ (pi config) |
+| `~/ws/pi-rtk/` | pi-rtk package | ✅ [rsrini7/pi-rtk](https://github.com/rsrini7/pi-rtk) |
+| `~/ws/pi-headroom/` | pi-headroom package | ✅ [rsrini7/pi-headroom](https://github.com/rsrini7/pi-headroom) |
+| `~/ws/Learnings/Scripts/hpi.sh` | Shell function | ✅ (this repo) |
+| `~/ws/Learnings/DevSetup/headroom-pi-cost-saver.md` | This doc | ✅ (this repo) |
+| `~/.pi/agent/extensions/headroom-proxy.ts` | Installed extension | ❌ (pi config) |
+| `~/.pi/agent/rtk-config.json` | RTK config | ❌ (pi config) |
+| `~/.pi/agent/headroom-config.json` | Headroom config | ❌ (pi config) |
 | `~/.zshrc` (last 3 lines) | Sources hpi.sh | ❌ (dotfile) |
-
-## How Headroom Works
-
-Headroom uses **semantic compression layers**:
-
-1. **Memory context** — builds a compressed memory of prior conversation turns
-2. **Code-aware compression** — understands code structure, preserves signatures/types
-3. **Net-cost cache mutation** — only compresses when the math works out:
-   ```
-   gain = dT * (w + r*(R - 1)) - P_alive * (w - r) * S
-   ```
-   Where `w`=cache write cost, `r`=cache read discount, `R`=expected reads,
-   `P_alive`=cache survival probability, `S`=suffix tokens.
-
-4. **Safety rails**:
-   - Error-output passthrough (failed tool calls verbatim)
-   - Pipeline circuit breaker (3 failures → passthrough for 60s)
-   - Library inflation guard (reverts when compression inflates)
-
-## Cold Start Behavior
-
-First `hpi` invocation after reboot:
-- `uvx` downloads `headroom-ai[proxy,ml,code,pytorch-mps]==0.27.0` (~30s)
-- Embedder model loads into memory (~5s)
-- Subsequent starts are instant (cached)
 
 ## Troubleshooting
 
@@ -174,18 +204,26 @@ First `hpi` invocation after reboot:
 # Check proxy health
 curl -s http://localhost:8787/health | jq .
 
+# View proxy stats (including RTK savings)
+curl -s http://localhost:8787/stats | jq .summary
+
 # View proxy logs
 cat ~/.pi/agent/headroom.log
+
+# Check RTK binary stats
+rtk gain --format json
 
 # Force restart
 hpi --stop && hpi
 
 # Verify extension loads
-pi --extension ~/.pi/agent/extensions/headroom-proxy.ts --list-models
+pi --extension ~/ws/pi-headroom --list-models
 ```
 
 ## References
 
 - [Headroom GitHub](https://github.com/headroom-ai/headroom)
-- [Pi Custom Providers](https://pi.dev/docs/custom-provider)
+- [RTK GitHub](https://github.com/rtk-ai/rtk)
+- [pi-rtk](https://github.com/rsrini7/pi-rtk)
+- [pi-headroom](https://github.com/rsrini7/pi-headroom)
 - Amsha project: `.mise/tasks/headroom/README.md`

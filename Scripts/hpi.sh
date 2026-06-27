@@ -1,13 +1,14 @@
 #!/usr/bin/env zsh
 # ──────────────────────────────────────────────────────────────────────────────
-# hpi — Pi coding agent through Headroom compression proxy
+# hpi — Pi coding agent through Headroom compression proxy + RTK filtering
 #
-# Reduces LLM token costs by 30-60% by routing pi's requests through a local
-# Headroom context-compression proxy before they hit the upstream API.
+# Reduces LLM token costs by 60-90% with two layers:
+#   1. pi-rtk: wraps bash commands with external rtk binary (60-90% savings)
+#   2. pi-headroom: routes through Headroom proxy (30-60% savings)
 #
 # Port: 8787 (8788-8797 reserved for Amsha project's per-provider proxies)
 # Upstream: https://opencode.ai/zen/go/v1 (OpenCode Go)
-# Extension: ~/.pi/agent/extensions/headroom-proxy.ts
+# Packages: ~/ws/pi-rtk, ~/ws/pi-headroom
 #
 # Usage:
 #   hpi                          # interactive, opencode-go/mimo-v2.5-pro/high
@@ -15,17 +16,30 @@
 #   hpi --model openrouter/claude-sonnet-4
 #   hpi --thinking xhigh         # override thinking level
 #   hpi --stop                   # kill the headroom proxy
+#   hpi --no-rtk                 # skip rtk extension (headroom only)
 #
 # Source this in .zshrc:
 #   source ~/ws/Learnings/Scripts/hpi.sh
 # ──────────────────────────────────────────────────────────────────────────────
 
 hpi() {
-  local ext="$HOME/.pi/agent/extensions/headroom-proxy.ts"
+  local headroom_ext="$HOME/ws/pi-headroom"
+  local rtk_ext="$HOME/ws/pi-rtk"
   local port=8787
   local target="https://opencode.ai/zen/go/v1"
   local pidfile="$HOME/.pi/agent/headroom.pid"
   local logfile="$HOME/.pi/agent/headroom.log"
+  local use_rtk=1
+
+  # ── Parse flags ───────────────────────────────────────────────────────────
+  local -a passthrough_args=()
+  for arg in "$@"; do
+    case "$arg" in
+      --stop)     ;; # handled below
+      --no-rtk)   use_rtk=0 ;;
+      *)          passthrough_args+=("$arg") ;;
+    esac
+  done
 
   # ── Stop command ──────────────────────────────────────────────────────────
   if [[ "${1:-}" == "--stop" ]]; then
@@ -48,10 +62,16 @@ hpi() {
     return 0
   fi
 
-  # ── Check extension ───────────────────────────────────────────────────────
-  if [[ ! -f "$ext" ]]; then
-    echo "❌ Headroom extension missing: $ext" >&2
+  # ── Check packages ────────────────────────────────────────────────────────
+  if [[ ! -d "$headroom_ext" ]]; then
+    echo "❌ pi-headroom not found: $headroom_ext" >&2
+    echo "   Install: git clone git@github.com:rsrini7/pi-headroom.git $headroom_ext" >&2
     return 1
+  fi
+
+  if (( use_rtk )) && [[ ! -d "$rtk_ext" ]]; then
+    echo "⚠️  pi-rtk not found: $rtk_ext (continuing without RTK)" >&2
+    use_rtk=0
   fi
 
   # ── Start Headroom proxy if not running ───────────────────────────────────
@@ -100,7 +120,7 @@ hpi() {
   local -a pi_args=()
   local has_provider=0 has_model=0 has_thinking=0
 
-  for arg in "$@"; do
+  for arg in "${passthrough_args[@]}"; do
     case "$arg" in
       --provider) has_provider=1 ;;
       --model)    has_model=1 ;;
@@ -113,6 +133,16 @@ hpi() {
   (( ! has_model ))    && pi_args+=(--model mimo-v2.5-pro)
   (( ! has_thinking )) && pi_args+=(--thinking high)
 
-  # Launch pi with headroom extension
-  command pi --extension "$ext" "${pi_args[@]}" "$@"
+  # ── Build extension args ──────────────────────────────────────────────────
+  local -a ext_args=()
+  ext_args+=(--extension "$headroom_ext")
+  (( use_rtk )) && ext_args+=(--extension "$rtk_ext")
+
+  # ── Summary ───────────────────────────────────────────────────────────────
+  local ext_list="headroom"
+  (( use_rtk )) && ext_list+="+rtk"
+  echo "🧩 Extensions: $ext_list" >&2
+
+  # ── Launch pi ─────────────────────────────────────────────────────────────
+  command pi "${ext_args[@]}" "${pi_args[@]}" "${passthrough_args[@]}"
 }
