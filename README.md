@@ -215,46 +215,60 @@ Learnings/
 ## ✍️ Content Creation
 
 ### 💡 Prompts
-- [Define Your AI Learning Goal(Easy Mode) LLM Prompt](Content/Prompts/Define-Your-AI-Learning-Goal%28Easy-Mode%29-LLM-Prompt.md)
-- [Define Your AI Learning Goal(Hard Mode) LLM Prompt](Content/Prompts/Define-Your-AI-Learning-Goal%28Hard-Mode%29-LLM-Prompt.md)
-- [NotebookLM Video Generation Prompt](Content/Prompts/NotebookLM-Video-Generation-Prompt.md)
-- [Prompt Generator Prompt](Content/Prompts/Prompt-Generator-Prompt.md)
-- [Weekly Updates Prompt](Content/Prompts/Weekly-Updates-Prompt.md)
-- [What and How can ASK an AI](Content/Prompts/What%20and%20How%20can%20ASK%20an%20AI.md)
-- [Youtube Multi Links Understanding Prompt](Content/Prompts/Youtube-Multi-Links-Understanding-Prompt.md)
-- [Youtube Single Link Understanding Prompt](Content/Prompts/Youtube-Single-Link-Understanding-Prompt.md)
-- [Youtube Visual Analysis](Content/Prompts/Youtube-Visual-Analysis.md)
-- [code understanding llm prompt](Content/Prompts/code-understanding-llm-prompt.md)
-- [codebase explore prompt](Content/Prompts/codebase-explore-prompt.md)
-- [content visual carousel](Content/Prompts/content-visual%20carousel.md)
-- [convert long 2 short social post prompt v2](Content/Prompts/convert-long-2-short-social-post-prompt-v2.md)
-- [convert long 2 short social post prompt v3 merged](Content/Prompts/convert-long-2-short-social-post-prompt-v3-merged.md)
-- [convert long 2 short social post prompt v4 examples](Content/Prompts/convert-long-2-short-social-post-prompt-v4-examples.md)
-- [convert long 2 short social post prompt](Content/Prompts/convert-long-2-short-social-post-prompt.md)
-- [docs gen llm prompt](Content/Prompts/docs-gen-llm-prompt.md)
-- [gemini carousel infographic prompt](Content/Prompts/gemini-carousel-infographic-prompt.md)
-- [gemini futuristic infographic generic](Content/Prompts/gemini-futuristic-infographic-generic.md)
-- [gemini handdrawn skitch note prompt](Content/Prompts/gemini-handdrawn-skitch-note-prompt.md)
-- [gemini image 3 panel futuristic infographic prompt](Content/Prompts/gemini-image-3-panel-futuristic-infographic-prompt.md)
-- [gemini image 4 panel futuristic infographic prompt](Content/Prompts/gemini-image-4-panel-futuristic-infographic-prompt.md)
-- [gemini image 5 panel futuristic infographic prompt](Content/Prompts/gemini-image-5-panel-futuristic-infographic-prompt.md)
-- [gemini image Q A Prompt](Content/Prompts/gemini-image-Q-A-Prompt.md)
-- [gemini image recreate futuristic infographics prompt](Content/Prompts/gemini-image-recreate-futuristic-infographics-prompt.md)
-- [gemini image recreate prompt v0](Content/Prompts/gemini-image-recreate-prompt-v0.md)
-- [gemini image recreate prompt v1](Content/Prompts/gemini-image-recreate-prompt-v1.md)
-- [gemini image recreate prompt v2](Content/Prompts/gemini-image-recreate-prompt-v2.md)
-- [gemini infographic visual medium char prompt](Content/Prompts/gemini-infographic-visual-medium-char-prompt.md)
-- [gemini infographic visual small char prompt](Content/Prompts/gemini-infographic-visual-small-char-prompt.md)
-- [gemini prompts categorized](Content/Prompts/gemini-prompts-categorized.md)
-- [gemini visual study notes prompt](Content/Prompts/gemini-visual-study-notes-prompt.md)
-- [generate new prompt from template for image gen](Content/Prompts/generate-new-prompt-from-template-for-image-gen.md)
-- [my prompts categorized](Content/Prompts/my-prompts-categorized.md)
-- [perplexity research whitepaper prompt](Content/Prompts/perplexity-research-whitepaper-prompt.md)
-- [prompt ref book](Content/Prompts/prompt-ref-book.md)
-- [prompt websites](Content/Prompts/prompt-websites.md)
-- [prompting guide](Content/Prompts/prompting-guide.md)
-- [sample poster prompt](Content/Prompts/sample-poster-prompt.md)
-- [youtube visual carosel](Content/Prompts/youtube-visual-carosel.md)
+
+#### 💻 Coding & Development
+- [code understanding llm prompt](Content/Prompts/coding/code-understanding-llm-prompt.md)
+- [codebase explore prompt](Content/Prompts/coding/codebase-explore-prompt.md)
+- [docs gen llm prompt](Content/Prompts/coding/docs-gen-llm-prompt.md)
+
+#### 📱 Social Media
+- [content visual carousel](Content/Prompts/social-media/content-visual%20carousel.md)
+- [convert long 2 short social post prompt v2](Content/Prompts/social-media/convert-long-2-short-social-post-prompt-v2.md)
+- [convert long 2 short social post prompt v3 merged](Content/Prompts/social-media/convert-long-2-short-social-post-prompt-v3-merged.md)
+- [convert long 2 short social post prompt v4 examples](Content/Prompts/social-media/convert-long-2-short-social-post-prompt-v4-examples.md)
+- [convert long 2 short social post prompt](Content/Prompts/social-media/convert-long-2-short-social-post-prompt.md)
+
+#### 🎨 Visual & Image Generation
+- [gemini carousel infographic prompt](Content/Prompts/visual/gemini-carousel-infographic-prompt.md)
+- [gemini futuristic infographic generic](Content/Prompts/visual/gemini-futuristic-infographic-generic.md)
+- [gemini handdrawn skitch note prompt](Content/Prompts/visual/gemini-handdrawn-skitch-note-prompt.md)
+- [gemini image 3 panel futuristic infographic prompt](Content/Prompts/visual/gemini-image-3-panel-futuristic-infographic-prompt.md)
+- [gemini image 4 panel futuristic infographic prompt](Content/Prompts/visual/gemini-image-4-panel-futuristic-infographic-prompt.md)
+- [gemini image 5 panel futuristic infographic prompt](Content/Prompts/visual/gemini-image-5-panel-futuristic-infographic-prompt.md)
+- [gemini image Q A Prompt](Content/Prompts/visual/gemini-image-Q-A-Prompt.md)
+- [gemini image recreate futuristic infographics prompt](Content/Prompts/visual/gemini-image-recreate-futuristic-infographics-prompt.md)
+- [gemini image recreate prompt v0](Content/Prompts/visual/gemini-image-recreate-prompt-v0.md)
+- [gemini image recreate prompt v1](Content/Prompts/visual/gemini-image-recreate-prompt-v1.md)
+- [gemini image recreate prompt v2](Content/Prompts/visual/gemini-image-recreate-prompt-v2.md)
+- [gemini infographic visual medium char prompt](Content/Prompts/visual/gemini-infographic-visual-medium-char-prompt.md)
+- [gemini infographic visual small char prompt](Content/Prompts/visual/gemini-infographic-visual-small-char-prompt.md)
+- [gemini visual study notes prompt](Content/Prompts/visual/gemini-visual-study-notes-prompt.md)
+- [sample poster prompt](Content/Prompts/visual/sample-poster-prompt.md)
+
+#### 🔬 Research & Learning
+- [Define Your AI Learning Goal(Easy Mode) LLM Prompt](Content/Prompts/research/Define-Your-AI-Learning-Goal%28Easy-Mode%29-LLM-Prompt.md)
+- [Define Your AI Learning Goal(Hard Mode) LLM Prompt](Content/Prompts/research/Define-Your-AI-Learning-Goal%28Hard-Mode%29-LLM-Prompt.md)
+- [What and How can ASK an AI](Content/Prompts/research/What%20and%20How%20can%20ASK%20an%20AI.md)
+- [perplexity research whitepaper prompt](Content/Prompts/research/perplexity-research-whitepaper-prompt.md)
+
+#### 📺 YouTube
+- [Youtube Multi Links Understanding Prompt](Content/Prompts/youtube/Youtube-Multi-Links-Understanding-Prompt.md)
+- [Youtube Single Link Understanding Prompt](Content/Prompts/youtube/Youtube-Single-Link-Understanding-Prompt.md)
+- [Youtube Visual Analysis](Content/Prompts/youtube/Youtube-Visual-Analysis.md)
+- [youtube visual carosel](Content/Prompts/youtube/youtube-visual-carosel.md)
+
+#### 🔧 Prompt Engineering
+- [Prompt Generator Prompt](Content/Prompts/prompt-engineering/Prompt-Generator-Prompt.md)
+- [gemini prompts categorized](Content/Prompts/prompt-engineering/gemini-prompts-categorized.md)
+- [generate new prompt from template for image gen](Content/Prompts/prompt-engineering/generate-new-prompt-from-template-for-image-gen.md)
+- [my prompts categorized](Content/Prompts/prompt-engineering/my-prompts-categorized.md)
+- [prompt ref book](Content/Prompts/prompt-engineering/prompt-ref-book.md)
+- [prompt websites](Content/Prompts/prompt-engineering/prompt-websites.md)
+- [prompting guide](Content/Prompts/prompt-engineering/prompting-guide.md)
+
+#### 📋 Miscellaneous
+- [NotebookLM Video Generation Prompt](Content/Prompts/misc/NotebookLM-Video-Generation-Prompt.md)
+- [Weekly Updates Prompt](Content/Prompts/misc/Weekly-Updates-Prompt.md)
 
 ### 💼 LinkedIn
 - [Java AI Roadmap](Content/LinkedIn/Java-AI-Roadmap.md)

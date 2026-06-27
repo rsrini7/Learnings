@@ -5,13 +5,20 @@ import os
 from pathlib import Path
 from urllib.parse import quote
 
-def get_md_files(directory):
+def get_md_files(directory, recursive=False):
     """Get all markdown files in directory"""
     files = []
     if os.path.exists(directory):
-        for f in sorted(os.listdir(directory)):
-            if f.endswith('.md'):
-                files.append(f)
+        if recursive:
+            for root, dirs, filenames in os.walk(directory):
+                for f in sorted(filenames):
+                    if f.endswith('.md'):
+                        rel_path = os.path.relpath(os.path.join(root, f), directory)
+                        files.append(rel_path)
+        else:
+            for f in sorted(os.listdir(directory)):
+                if f.endswith('.md'):
+                    files.append(f)
     return files
 
 def format_title(filename):
@@ -201,10 +208,32 @@ Learnings/
     # Content
     content += "## ✍️ Content Creation\n\n"
     
-    prompts = get_md_files('Content/Prompts')
-    if prompts:
-        content += "### 💡 Prompts\n"
-        for f in prompts:
+    # Prompts with subcategories
+    prompt_subdirs = {
+        'coding': '💻 Coding & Development',
+        'social-media': '📱 Social Media',
+        'visual': '🎨 Visual & Image Generation',
+        'research': '🔬 Research & Learning',
+        'youtube': '📺 YouTube',
+        'prompt-engineering': '🔧 Prompt Engineering',
+        'misc': '📋 Miscellaneous'
+    }
+    
+    content += "### 💡 Prompts\n\n"
+    for subdir, subtitle in prompt_subdirs.items():
+        files = get_md_files(f'Content/Prompts/{subdir}')
+        if files:
+            content += f"#### {subtitle}\n"
+            for f in files:
+                title = format_title(f)
+                content += make_link(title, f"Content/Prompts/{subdir}/{f}")
+            content += "\n"
+    
+    # Root level prompts (if any)
+    root_prompts = [f for f in get_md_files('Content/Prompts') if f.endswith('.md')]
+    if root_prompts:
+        content += "#### 📁 Other\n"
+        for f in root_prompts:
             title = format_title(f)
             content += make_link(title, f"Content/Prompts/{f}")
         content += "\n"
