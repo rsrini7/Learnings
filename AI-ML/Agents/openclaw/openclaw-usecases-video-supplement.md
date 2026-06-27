@@ -25,7 +25,7 @@ All system designs, prompts, pipelines, and concepts in this document are based 
 11. [Video Idea Pipeline](#11-video-idea-pipeline)
 12. [Daily Briefing Flow](#12-daily-briefing-flow)
 13. [Three Councils Overview](#13-three-councils-overview)
-14. Automation Schedule (Cron Jobs)
+14. [Automation Schedule (Cron Jobs)](#14-automation-schedule-cron-jobs)
 15. [Security Layers & Prompt Injection Defense](#15-security-layers--prompt-injection-defense)
 16. [Databases and Backups](#16-databases-and-backups)
 17. [Video & Image Generation](#17-video--image-generation)
@@ -33,7 +33,7 @@ All system designs, prompts, pipelines, and concepts in this document are based 
 19. [Usage & Cost Tracking + Prompt Engineering](#19-usage--cost-tracking--prompt-engineering)
 20. [Developer Infrastructure & Sub-Agents](#20-developer-infrastructure--sub-agents)
 21. [Food Journal System](#21-food-journal-system)
-22. Community Use Cases (from Official Ebook)
+22. [Community Use Cases (from Official Ebook)](#22-community-use-cases-from-official-ebook)
 23. [First Automation: Your Quickstart](#23-first-automation-your-quickstart)
 
 ---

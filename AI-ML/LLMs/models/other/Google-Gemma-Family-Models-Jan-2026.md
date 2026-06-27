@@ -15,15 +15,15 @@ The Gemma family represents Google DeepMind's comprehensive suite of open-source
 
 ## Table of Contents
 
-1. Core Gemma Models (Gemma 3, 3n, QAT, 270M)
-2. Specialized Domain Models (MedGemma, CodeGemma, TranslateGemma, SignGemma)
-3. Multimodal Models (PaliGemma 2)
-4. Embedding and Encoding Models (EmbeddingGemma, T5Gemma 2)
-5. Function Calling Models (FunctionGemma)
-6. Privacy-First Models (VaultGemma)
-7. Efficiency Models (RecurrentGemma)
-8. Safety and Interpretability Tools (ShieldGemma 2, Gemma Scope 2)
-9. Architecture Comparison and Selection Guide
+1. [Core Gemma Models (Gemma 3, 3n, QAT, 270M)](#1-core-gemma-models-gemma-3-3n-qat-270m)
+2. [Specialized Domain Models (MedGemma, CodeGemma, TranslateGemma, SignGemma)](#2-specialized-domain-models-medgemma-codegemma-translategemma-signgemma)
+3. [Multimodal Models (PaliGemma 2)](#3-multimodal-models-paligemma-2)
+4. [Embedding and Encoding Models (EmbeddingGemma, T5Gemma 2)](#4-embedding-and-encoding-models-embeddinggemma-t5gemma-2)
+5. [Function Calling Models (FunctionGemma)](#5-function-calling-models-functiongemma)
+6. [Privacy-First Models (VaultGemma)](#6-privacy-first-models-vaultgemma)
+7. [Efficiency Models (RecurrentGemma)](#7-efficiency-models-recurrentgemma)
+8. [Safety and Interpretability Tools (ShieldGemma 2, Gemma Scope 2)](#8-safety-and-interpretability-tools-shieldgemma-2-gemma-scope-2)
+9. [Architecture Comparison and Selection Guide](#9-architecture-comparison-and-selection-guide)
 
 ---
 

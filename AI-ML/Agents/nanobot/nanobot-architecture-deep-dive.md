@@ -36,7 +36,7 @@ NanoBot strips an AI Agent down to its irreducible core: **message â†’ context â
 5. [Execution Flow: End-to-End Walkthrough](#5-execution-flow-end-to-end)
 6. [Data Structures You Must Know](#6-data-structures-you-must-know)
 7. [Security Model](#7-security-model)
-8. What Got Deleted (and Why)
+8. [What Got Deleted (and Why)](#8-what-got-deleted-and-why)
 9. [Known Gaps & Production Risks](#9-known-gaps--production-risks)
 10. [How to Extend NanoBot](#10-how-to-extend-nanobot)
 11. [Reading Order for the Codebase](#11-reading-order-for-the-codebase)

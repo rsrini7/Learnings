@@ -12,7 +12,7 @@
 5. [Australia & APAC — 2024 & 2025 Data](#5-australia--apac--2024--2025-data)
 6. [Common AI Scam Patterns Across Countries](#6-common-ai-scam-patterns-across-countries)
 7. [Mental Model for Recognising AI-Driven Scams](#7-mental-model-for-recognising-ai-driven-scams)
-8. New Legislative Responses (2025)
+8. [New Legislative Responses (2025)](#8-new-legislative-responses-2025)
 9. [Consolidated Scam Action Plan](#9-consolidated-scam-action-plan)
 10. [Verified References](#10-verified-references)
 

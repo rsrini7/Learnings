@@ -33,23 +33,23 @@ For agents with fewer than 10 simple tools: traditional JSON calling remains pra
 
 ## Table of Contents
 
-1. MCP Architecture and Initial Promise
-2. The Scalability Crisis: Root Cause Analysis
-3. Quantified Impact: Benchmarks
-4. MCP Tool Search: The First Wave Solution (January 2026)
-5. Anthropic's February 2026 Platform Update: Sonnet 4.6 and the GA of Code Mode
-6. Programmatic Tool Calling (Code Mode): Architecture and Implementation
-7. Alternative Approaches: CLI, Scripts, and Skills
-8. Advanced Pattern: MCP-Zero Active Tool Discovery
-9. Trade-offs and Decision Matrix
-10. Real-World Case Study: Prediction Markets Agent
-11. Security Considerations
-12. Future Roadmap and Evolution
-13. Implementation Recommendations
-14. Conclusion
-15. Appendix A: Sonnet 4.6 vs Opus 4.6 — Cost and Performance Guide
-16. Appendix B: API Quick Reference for Sonnet 4.6 Features
-17. References and Further Reading
+1. [MCP Architecture and Initial Promise](#1-mcp-architecture-and-initial-promise)
+2. [The Scalability Crisis: Root Cause Analysis](#2-the-scalability-crisis-root-cause-analysis)
+3. [Quantified Impact: Benchmarks](#3-quantified-impact-benchmarks)
+4. [MCP Tool Search: The First Wave Solution (January 2026)](#4-mcp-tool-search-the-first-wave-solution-january-2026)
+5. [Anthropic's February 2026 Platform Update: Sonnet 4.6 and the GA of Code Mode](#5-anthropics-february-2026-platform-update-sonnet-46-and-the-ga-of-code-mode)
+6. [Programmatic Tool Calling (Code Mode): Architecture and Implementation](#6-programmatic-tool-calling-code-mode-architecture-and-implementation)
+7. [Alternative Approaches: CLI, Scripts, and Skills](#7-alternative-approaches-cli-scripts-and-skills)
+8. [Advanced Pattern: MCP-Zero Active Tool Discovery](#8-advanced-pattern-mcp-zero-active-tool-discovery)
+9. [Trade-offs and Decision Matrix](#9-trade-offs-and-decision-matrix)
+10. [Real-World Case Study: Prediction Markets Agent](#10-real-world-case-study-prediction-markets-agent)
+11. [Security Considerations](#11-security-considerations)
+12. [Future Roadmap and Evolution](#12-future-roadmap-and-evolution)
+13. [Implementation Recommendations](#13-implementation-recommendations)
+14. [Conclusion](#14-conclusion)
+15. [Appendix A: Sonnet 4.6 vs Opus 4.6 — Cost and Performance Guide](#15-appendix-a-sonnet-46-vs-opus-46-cost-and-performance-guide)
+16. [Appendix B: API Quick Reference for Sonnet 4.6 Features](#16-appendix-b-api-quick-reference-for-sonnet-46-features)
+17. [References and Further Reading](#17-references-and-further-reading)
 
 ---
 
