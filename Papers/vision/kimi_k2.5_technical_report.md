@@ -7,7 +7,7 @@
 
 ---
 
-![Kimi-K2.5](assets/Kimi-K2.5.png)
+![Kimi-K2.5](../assets/Kimi-K2.5.png)
 
 ---
 

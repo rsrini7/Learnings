@@ -2,7 +2,7 @@
 
 **Below is the complete architecture flow of microGPT:**
 
-![AI-ML/assets/microGPT-Architecture-Flow.png](assets/microGPT-Architecture-Flow.png)
+![AI-ML/assets/microGPT-Architecture-Flow.png](../../assets/microGPT-Architecture-Flow.png)
 
 ## **Forward Pass (Making Predictions)**
 

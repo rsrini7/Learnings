@@ -1,6 +1,6 @@
 # Model AI Governance Framework for Agentic AI
 
-![News/assets/Singapore-IMDA-Agentic-AI-Governance-Framework.png](assets/Singapore-IMDA-Agentic-AI-Governance-Framework.png)
+![News/assets/Singapore-IMDA-Agentic-AI-Governance-Framework.png](../Security/assets/Singapore-IMDA-Agentic-AI-Governance-Framework.png)
 
 ---
 

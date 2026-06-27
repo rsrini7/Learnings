@@ -7,7 +7,7 @@ WIPO and Internnational Fellowship
 
 ---
 
-![Fellowship-Oppertunities-Guide-2026.png](assets/Fellowship-Oppertunities-Guide-2026.png)
+![Fellowship-Oppertunities-Guide-2026.png](../Security/assets/Fellowship-Oppertunities-Guide-2026.png)
 
 ---
 

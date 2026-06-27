@@ -2,7 +2,7 @@
 
 *By Srinivasan Ragothaman (@rsrini7)*
 
-![Inside-a-single-Neuron-House-Prediction](assets/Inside-a-single-Neuron-House-Prediction.png)
+![Inside-a-single-Neuron-House-Prediction](../../assets/Inside-a-single-Neuron-House-Prediction.png)
 
 ---
 

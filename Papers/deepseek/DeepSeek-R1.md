@@ -2,7 +2,7 @@
 
 The DeepSeek-R1 paper is about a new way to train AI models to think and reason better, like solving math problems or answering questions step-by-step. It's called "R1" because it uses a method called Reinforcement Learning (RL) to improve reasoning without needing lots of human examples. The paper was first posted on arXiv (a site for research papers) in January 2025 as a short version (about 22 pages). Then, in early January 2026, it was updated to a much longer version (about 80-86 pages) with way more details. This update made it easier for others to understand and copy the ideas.
 
-![DeepSeek-R1-Updated.png](assets/DeepSeek-R1-Updated.png)
+![DeepSeek-R1-Updated.png](../assets/DeepSeek-R1-Updated.png)
 
 #### Core Ideas of DeepSeek-R1 (What It's All About)
 DeepSeek-R1 trains AI models to "think" better using RL. Instead of just feeding the model examples (called Supervised Fine-Tuning or SFT), it lets the model try answers, scores them, and improves based on rewards. There are two flavors:

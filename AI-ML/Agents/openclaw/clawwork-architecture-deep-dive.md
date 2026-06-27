@@ -1,11 +1,11 @@
 # ClawWork Architecture Deep Dive
 > **For: Developers & Architects** | **Level: Intermediate → Expert** | **Repository: [github.com/HKUDS/ClawWork](https://github.com/HKUDS/ClawWork)**
 >
-> **Prerequisite:** Read the [NanoBot Architecture Deep Dive](./nanobot-architecture-deep-dive.md) first. ClawWork is meaningless without understanding the runtime it wraps.
+> **Prerequisite:** Read the [NanoBot Architecture Deep Dive](../nanobot/nanobot-architecture-deep-dive.md) first. ClawWork is meaningless without understanding the runtime it wraps.
 
 ---
 
-![ClawWork Architecture Deep Dive](assets/clawwork-architecture-deep-dive.png)
+![ClawWork Architecture Deep Dive](../../assets/clawwork-architecture-deep-dive.png)
 
 ---
 

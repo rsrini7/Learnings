@@ -10,7 +10,7 @@
 
 ![Clawdbot(Moltbot)-Security-Analysis-Jan-2026.png](assets/Clawdbot(Moltbot)-Security-Analysis-Jan-2026.png)
 
-![moltbot-github-star-history](assets/moltbot-github-star-history.png)
+![moltbot-github-star-history](../../assets/moltbot-github-star-history.png)
 
 ## Executive Summary
 

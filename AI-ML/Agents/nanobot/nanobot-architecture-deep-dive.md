@@ -2,7 +2,7 @@
 > **For: Developers & Architects** | **Level: Intermediate → Expert** | **Verified against: HKUDS/nanobot codebase (v0.1.3.post6, Feb 2026)**
 
 ---
-![NanoBot Minimal Agent Runtime](assets/NanoBot-Minimal-Agent-Runtime.png)
+![NanoBot Minimal Agent Runtime](../../assets/NanoBot-Minimal-Agent-Runtime.png)
 
 ---
 

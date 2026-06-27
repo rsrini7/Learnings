@@ -90,7 +90,7 @@ Introduced by Google Research (Dec 2025), **𝗥𝗘𝟮** simply repeats the us
 
 👤 **Srinivasan Ragothaman (@rsrini7)**
 
-![Prompt-Repetition-RE2.png](assets/Prompt-Repetition-RE2.png)
+![Prompt-Repetition-RE2.png](../assets/Prompt-Repetition-RE2.png)
 
 ---
 

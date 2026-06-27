@@ -4,7 +4,7 @@ Ashley Gross has built what she describes as "11 agents that act as 80% of her o
 
 ---
 
-![Ashley's-11-agent-system](assets/Ashley's-11-agent-system.png)
+![Ashley's-11-agent-system](../../assets/Ashley%27s-11-agent-system.png)
 
 ---
 

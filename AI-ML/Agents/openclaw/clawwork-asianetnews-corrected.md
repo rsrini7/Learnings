@@ -1,6 +1,6 @@
 # ClawWork: From Now On, You Will Also Have an AI Agent on Your Team
 
-![clawwork-asianetnews-corrected](assets/clawwork-asianetnews-corrected.png)
+![clawwork-asianetnews-corrected](../../assets/clawwork-asianetnews-corrected.png)
 
 ---
 

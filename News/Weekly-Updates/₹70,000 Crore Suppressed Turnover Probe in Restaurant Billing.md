@@ -1,6 +1,6 @@
 # Overview of the ₹70,000 Crore Suppressed Turnover Probe in Restaurant Billing
 
-![News/assets/Restaurant-Probe.png](assets/Restaurant-Probe.png)
+![News/assets/Restaurant-Probe.png](../Security/assets/Restaurant-Probe.png)
 
 The investigation, colloquially known as the "Biryani Scam," involves a nationwide probe into the manipulation of Point-of-Sale (POS) software by restaurants across India. It centers on suppressed sales turnover estimated at approximately ₹70,000 crore (about $7.7 billion) over six financial years from 2019-20 to 2025-26, leading to an estimated tax loss of over ₹12,000 crore. The scam primarily entailed generating bills, collecting payments (often in cash), and then deleting or altering records in billing software to under-report revenue and evade taxes. Sample analysis of about 40 restaurants, including chains like Pista House, Shah Ghouse, and Mehfil, revealed an average suppression of 27% of actual sales, with deletions frequently occurring during peak hours or late at night.
 

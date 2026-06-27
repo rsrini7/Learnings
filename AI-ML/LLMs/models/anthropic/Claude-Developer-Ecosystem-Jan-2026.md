@@ -116,13 +116,13 @@ Modern agent systems are built on two fundamental types of context:
 
 ## Claude Code - The Flagship Developer Tool
 
-![AI-ML/assets/Claude-Code-Modernization.gif](assets/Claude-Code-Modernization.gif)
+![AI-ML/assets/Claude-Code-Modernization.gif](../../../assets/Claude-Code-Modernization.gif)
 
 Refer to : [Using Claude Code to Modernize Legacy Codebases](https://newsletter.rakeshgohel.com/p/using-claude-code-to-modernize-legacy-codebases)
 
 ---
 
-![AI-ML/assets/Claude-Code-Cheatsheet.png](assets/Claude-Code-Cheatsheet.png)
+![AI-ML/assets/Claude-Code-Cheatsheet.png](../../../assets/Claude-Code-Cheatsheet.png)
 
 Refer to : [ClaudeCode Mastery Handbook](https://github.com/hamodywe/ClaudeCode-Mastery-Handbook)
 

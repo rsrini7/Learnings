@@ -1,6 +1,6 @@
 # AI and the Barbell Economy
 
-![AI-ML/assets/AI-Native-Economy.png](assets/AI-Native-Economy.png)
+![AI-ML/assets/AI-Native-Economy.png](../../assets/AI-Native-Economy.png)
 
 ---
 
@@ -8,7 +8,7 @@
 
 ---
 
-![AI-and-Barbell-Economy.png](assets/AI-and-Barbell-Economy.png)
+![AI-and-Barbell-Economy.png](../../assets/AI-and-Barbell-Economy.png)
 
 ---
 
@@ -34,11 +34,11 @@ This whitepaper provides:
 
 ## 1. The Barbell Economy
 
-![Image](./assets/labor-market-polarization.jpg)
+![Image](../../assets/labor-market-polarization.jpg)
 
-![Image](./assets/gitlab-q3-income-statement.png)
+![Image](../../assets/gitlab-q3-income-statement.png)
 
-![Image](./assets/physical-ai-market-size.jpg)
+![Image](../../assets/physical-ai-market-size.jpg)
 
 ### Definition
 

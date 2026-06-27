@@ -1,8 +1,8 @@
-![AI-ML/assets/HRM-Brain-Inspired-AI.pngAI-ML/assets/HRM-Brain-Inspired-AI.png](assets/HRM-Brain-Inspired-AI.png)
+![AI-ML/assets/HRM-Brain-Inspired-AI.pngAI-ML/assets/HRM-Brain-Inspired-AI.png](../../assets/HRM-Brain-Inspired-AI.png)
 
 ---
 
-![AI-ML/assets/Evaluvation-of-Latent-Thinkers.png](assets/Evaluvation-of-Latent-Thinkers.png)
+![AI-ML/assets/Evaluvation-of-Latent-Thinkers.png](../../assets/Evaluvation-of-Latent-Thinkers.png)
 
 ---
 

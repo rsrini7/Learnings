@@ -115,7 +115,7 @@ Backed by DeepSeek research (2026), proven on 27B transformer models.
 👤 **Srinivasan Ragothaman (@rsrini7)**
 
 
-![mHC-Paper-Analogy](assets/mHC-Paper-Analogy.png)
+![mHC-Paper-Analogy](../assets/mHC-Paper-Analogy.png)
 
 ---
 

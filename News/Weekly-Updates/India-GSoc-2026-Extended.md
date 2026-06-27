@@ -2,7 +2,7 @@
 
 Source Document to refer : [India-GSoc-2026-Trends-Challenges-Solutions.md](India-GSoc-2026-Trends-Challenges-Solutions.md)
 
-![India-GSoc-2026-Extended.png](assets/India-GSoc-2026-Extended.png)
+![India-GSoc-2026-Extended.png](../Security/assets/India-GSoc-2026-Extended.png)
 
 ## Appendix F: Operational Playbook for Contributors
 

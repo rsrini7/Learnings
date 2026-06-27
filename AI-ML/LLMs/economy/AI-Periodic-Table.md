@@ -199,7 +199,7 @@ When designing an AI solution:
 
 This AI periodic table becomes a compact mental model to reason about almost any LLM/RAG/agent architecture and to see how it might evolve.[2][1]
 
-![AI Periodic Table](assets/AI-Periodic-Table.png)
+![AI Periodic Table](../../assets/AI-Periodic-Table.png)
 
 
 
@@ -283,7 +283,7 @@ The best frameworks reveal relationships.
 AI isn't one technology—it's elements that combine predictably.
 Chemistry gave us a language for matter. This gives us a language for AI.
 
-![AI-PeriodicTable-FW](assets/AI-PeriodicTable-FW.jpg)
+![AI-PeriodicTable-FW](../../assets/AI-PeriodicTable-FW.jpg)
 Ref: [𝗔𝗜 𝗣𝗲𝗿𝗶𝗼𝗱𝗶𝗰 𝗧𝗮𝗯𝗹𝗲: 𝗔 𝗙𝗿𝗮𝗺𝗲𝘄𝗼𝗿𝗸 𝗧𝗵𝗮𝘁 𝗠𝗮𝗸𝗲𝘀 𝗦𝗲𝗻𝘀𝗲 𝗼𝗳 𝗔𝗜](https://www.linkedin.com/posts/shankar-kalyanraman-416a50b_aiperiodictable-ai-rag-activity-7415050184369295360-6SYH?utm_source=share&utm_medium=member_desktop&rcm=ACoAAAJHgyIBiM_O_DtMoyZmXFNWC5_UqBqneBI)
 
 

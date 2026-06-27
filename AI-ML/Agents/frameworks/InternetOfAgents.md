@@ -1,7 +1,7 @@
 # The Modern Agentic Stack: An Architectural Reference for the Internet of Agents (IoA)
 
 
-![IoA Architecture](assets/IoA-Architecture.png)
+![IoA Architecture](../../assets/IoA-Architecture.png)
 
 The Internet of Agents (IoA) is a decentralized ecosystem where autonomous agents discover, collaborate, and exchange results using open protocols—analogous to how services communicate on today’s internet.
 
@@ -17,7 +17,7 @@ As AI transitions from standalone chatbots to autonomous systems, a new architec
 
 The diagram below illustrates how MCP (vertical) and A2A (horizontal) compose into a single agentic system.
 
-![How A2A Works with MCP](assets/How-A2A-Works-with-MCP.png)
+![How A2A Works with MCP](../../assets/How-A2A-Works-with-MCP.png)
 
 ## Who Interacts with Each Plane?
 
@@ -100,7 +100,7 @@ Consider a supply chain optimization task:
 
 This illustrates how A2A enables cross-framework collaboration in real-world applications. For instance, India's NSO has launched an MCP server for official statistics, enabling AI agents to access datasets like PLFS and CPI via A2A-integrated systems.
 
-![Why use the A2A Protocol](assets/Why-Use-A2A-Protocol.png)
+![Why use the A2A Protocol](../../assets/Why-Use-A2A-Protocol.png)
 
 ## Design Insight: Control vs Autonomy
 

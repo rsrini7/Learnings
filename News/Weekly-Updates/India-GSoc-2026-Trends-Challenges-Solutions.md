@@ -12,7 +12,7 @@ Google Summer of Code (GSoC) has successfully introduced over 21,000 contributor
 
 ---
 
-![India-GSoc-2026-Trends-Challenges-Solutions](assets/India-GSoc-2026-Trends-Challenges-Solutions.png)
+![India-GSoc-2026-Trends-Challenges-Solutions](../Security/assets/India-GSoc-2026-Trends-Challenges-Solutions.png)
 
 ---
 

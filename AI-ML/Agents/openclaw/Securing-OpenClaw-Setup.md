@@ -1,6 +1,6 @@
 # Securing Your AI Agent: The OpenClaw Setup
 
-![AI-ML/assets/Securing-OpenClaw-Setup.png](assets/Securing-OpenClaw-Setup.png)
+![AI-ML/assets/Securing-OpenClaw-Setup.png](../../assets/Securing-OpenClaw-Setup.png)
 
 ## 1. What ClawdBot / OpenClaw Is
 

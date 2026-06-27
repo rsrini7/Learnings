@@ -1,6 +1,6 @@
 # Complete Guide to WIPO & International Tech Fellowships
 
-![WIPO-International-Fellowship](assets/WIPO-International-Fellowship.png)
+![WIPO-International-Fellowship](../Security/assets/WIPO-International-Fellowship.png)
 
 ---
 

@@ -1,6 +1,6 @@
 # Microsoft Agent Lightning: Complete Developer Guide
 
-![MS-Agent-Lightning-Overview.png](assets/MS-Agent-Lightning-Overview.png)
+![MS-Agent-Lightning-Overview.png](../../assets/MS-Agent-Lightning-Overview.png)
 
 ---
 
@@ -9,9 +9,9 @@
 Microsoft Agent Lightning is an open-source framework that enables systematic optimization of AI agents through reinforcement learning, prompt tuning, and fine-tuning—without rewriting your existing agent code. It acts as a training layer that works with any agent framework.
 
 
-![Microsoft Agent Lighting](./assets/Microsoft-AI-Agent-Lighting.png)
+![Microsoft Agent Lighting](../../assets/Microsoft-AI-Agent-Lighting.png)
 
-![agent-lightning-RL.jpeg](assets/agent-lightning-RL.jpeg)
+![agent-lightning-RL.jpeg](../../assets/agent-lightning-RL.jpeg)
 
 ## The Problem Agent Lightning Solves
 

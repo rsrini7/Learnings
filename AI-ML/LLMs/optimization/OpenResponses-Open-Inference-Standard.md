@@ -4,11 +4,11 @@
 
 ---
 
-![OpenResponses](assets/OpenResponses.png)
+![OpenResponses](../../assets/OpenResponses.png)
 
 ---
 
-![OpenResponses-Standard](assets/OpenResponses-Standard.png)
+![OpenResponses-Standard](../../assets/OpenResponses-Standard.png)
 
 ---
 

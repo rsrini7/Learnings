@@ -1,6 +1,6 @@
 # microGPT Architecture — Complete Guide
 
-![AI-ML/assets/microGPT-Complete-Architecture.png](assets/microGPT-Complete-Architecture.png)
+![AI-ML/assets/microGPT-Complete-Architecture.png](../../assets/microGPT-Complete-Architecture.png)
 
 > A comprehensive walkthrough of Andrej Karpathy's **microGPT**: the "most atomic" GPT implementation using **pure Python and math only** — no PyTorch, no NumPy, no GPU.
 

@@ -1,10 +1,10 @@
 ## 📌 **8 AI Skills for Future Success (2026)**
 
-![AI-ML/assets/8-AI-Skills-2026.png](assets/8-AI-Skills-2026.png)
+![AI-ML/assets/8-AI-Skills-2026.png](../../assets/8-AI-Skills-2026.png)
 
 ---
 
-![AI-ML/assets/AI-Native-Economy.png](assets/AI-Native-Economy.png)
+![AI-ML/assets/AI-Native-Economy.png](../../assets/AI-Native-Economy.png)
 ---
 
 ### 🧠 **Phase 1: Foundational Mindset Skills**

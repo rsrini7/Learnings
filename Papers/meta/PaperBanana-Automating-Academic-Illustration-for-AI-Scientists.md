@@ -1,6 +1,6 @@
 # PaperBanana: Automating Academic Illustration for AI Scientists
 
-![Papers/assets/PaperBanana.png](assets/PaperBanana.png)
+![Papers/assets/PaperBanana.png](../assets/PaperBanana.png)
 
 ## A White Paper for Developers and Architects
 

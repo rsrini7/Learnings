@@ -1,6 +1,6 @@
 # Parameter-Efficient Fine-Tuning (PEFT) & Model Compression Guide
 
-![PEFT-Model-Compression-Guide](assets/PEFT-Model-Compression-Guide.png)
+![PEFT-Model-Compression-Guide](../assets/PEFT-Model-Compression-Guide.png)
 
 ---
 

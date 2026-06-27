@@ -1,6 +1,6 @@
 # MiroThinker 1.5: Whitepaper
 
-![Papers/assets/MiroThinker-1.5.png](assets/MiroThinker-1.5.png)
+![Papers/assets/MiroThinker-1.5.png](../assets/MiroThinker-1.5.png)
 
 ## What is MiroThinker 1.5?
 

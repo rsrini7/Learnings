@@ -5,7 +5,7 @@
 - MoSPI’s Feb 6, 2026 beta MCP Server + open-source GitHub repo = AI tools can directly query 7 official NSO datasets. Easy setup, huge potential for data-driven India. 🚀
 - Govt of India has launched a beta MCP server that lets AI tools query verified NSO data (jobs, inflation, GDP, industry) directly — fewer hallucinations, more trust, open-source backend.
 
-![MoSPI-launches-beta-MCP-Server.png](assets/MoSPI-launches-beta-MCP-Server.png)
+![MoSPI-launches-beta-MCP-Server.png](../assets/MoSPI-launches-beta-MCP-Server.png)
 
 Quick heads up: the National Statistical Office (MoSPI) launched a beta Model Context Protocol (MCP) server on 6 Feb 2026, which exposes a small set of official eSankhyiki datasets (7 data products in this pilot) so AI tools can query verified government statistics directly. (Official PIB/NSO release [linked here](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2224472).)
 

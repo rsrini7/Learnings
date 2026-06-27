@@ -7,7 +7,7 @@
 
 ---
 
-![Clawdbot-or-Moltbot.png](assets/Clawdbot-or-Moltbot.png)
+![Clawdbot-or-Moltbot.png](../../assets/Clawdbot-or-Moltbot.png)
 
 ## Overview
 OpenClaw previously known as Moltbot, Clawdbot, is a self-hosted AI agent designed to operate as a personal assistant across various messaging platforms. It emphasizes simplicity, determinism, and user empowerment, allowing seamless integration into daily workflows. Unlike cloud-based chatbots that require users to initiate interactions, Moltbot can be proactive, persistent in memory, and capable of executing real-world actions through tools. This architecture enables it to function as an always-available companion, handling tasks from research to automation while running on affordable hardware like a $5/month VPS.
@@ -43,7 +43,7 @@ Moltbot's design revolves around four interconnected components for robust, main
 
 ## Architecture Flow
 
-![Moltbot-Architecture.gif](assets/Moltbot-Architecture.gif)
+![Moltbot-Architecture.gif](../../assets/Moltbot-Architecture.gif)
 
 ![Original Reference](https://pbs.twimg.com/media/G_2oRYXXgAENMWP?format=jpg&name=4096x4096)
 

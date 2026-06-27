@@ -2,7 +2,7 @@
 
 ## OpenClaw, NanoBot, NanoClaw, ZeroClaw, IronClaw, PicoClaw
 
-![claw-ecosystem](assets/claw-ecosystem.png)
+![claw-ecosystem](../../assets/claw-ecosystem.png)
 
 ---
 

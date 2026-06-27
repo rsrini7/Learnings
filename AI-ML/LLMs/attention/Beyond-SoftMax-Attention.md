@@ -1,6 +1,6 @@
 # Beyond-Softmax-Attention
 
-![Beyond-Softmax-Attention](assets/Beyond-Softmax-Attention.png)
+![Beyond-Softmax-Attention](../../assets/Beyond-Softmax-Attention.png)
 
 
 ## 🎯 What You Need to Know in 120 Seconds

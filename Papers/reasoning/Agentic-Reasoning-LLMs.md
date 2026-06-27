@@ -1,9 +1,9 @@
 # Comprehensive Consolidated Document: Agentic Reasoning for Large Language Models
 
-![Papers/assets/Agentic-Reasoning-LLMs.png](assets/Agentic-Reasoning-LLMs.png)
+![Papers/assets/Agentic-Reasoning-LLMs.png](../assets/Agentic-Reasoning-LLMs.png)
 
 ---
-![Papers/assets/Agentic-Reasoning-LLMs-3-Layer-Approach.png](assets/Agentic-Reasoning-LLMs-3-Layer-Approach.png)
+![Papers/assets/Agentic-Reasoning-LLMs-3-Layer-Approach.png](../assets/Agentic-Reasoning-LLMs-3-Layer-Approach.png)
 ---
 
 ## Executive Summary
@@ -347,7 +347,7 @@ The shift from passive prediction to active autonomous agency represents one of 
 
 ---
 
-![Papers/assets/Awesome-Agentic-Reasoning-overview.png](assets/Awesome-Agentic-Reasoning-overview.png)
+![Papers/assets/Awesome-Agentic-Reasoning-overview.png](../assets/Awesome-Agentic-Reasoning-overview.png)
 
 ---
 
@@ -364,5 +364,5 @@ The shift from passive prediction to active autonomous agency represents one of 
 
 ---
 
-![Papers/assets/AgenticReasoning-Adv-Concepts-impl.png](assets/AgenticReasoning-Adv-Concepts-impl.png)
+![Papers/assets/AgenticReasoning-Adv-Concepts-impl.png](../assets/AgenticReasoning-Adv-Concepts-impl.png)
 Ref: https://www.youtube.com/watch?v=GZha5ccTiQM

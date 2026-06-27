@@ -15,9 +15,9 @@
 
 ---
 
-![Prod-RAG-Handbook.png](assets/Prod-RAG-Handbook.png) 
+![Prod-RAG-Handbook.png](../assets/Prod-RAG-Handbook.png) 
 
-![RAG-Guide-Jan-2026.png](assets/RAG-Guide-Jan-2026.png)
+![RAG-Guide-Jan-2026.png](../assets/RAG-Guide-Jan-2026.png)
 
 ---
 

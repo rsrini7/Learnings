@@ -117,11 +117,11 @@ RLMs exemplify **inference-time scaling**: allocating more compute (recursive ca
 
 ---
 
-![Papers/assets/RLM.png](assets/RLM.png)
+![Papers/assets/RLM.png](../assets/RLM.png)
 
 ---
 
-![Papers/assets/RLMs-Flow.png](assets/RLMs-Flow.png)
+![Papers/assets/RLMs-Flow.png](../assets/RLMs-Flow.png)
 
 ---
 
@@ -216,11 +216,11 @@ graph TD
 
 ## <a id="how-rlms-work"></a>🗝️ How RLMs Work
 
-![TraditionalLLM-vs-RecursiveLLM](assets/TraditionalLLM-vs-RecursiveLLM.png)
+![TraditionalLLM-vs-RecursiveLLM](../assets/TraditionalLLM-vs-RecursiveLLM.png)
 
 ---
 
-![RLMs-root-context-stayed-small](assets/RLMs-root-context-stayed-small.png)
+![RLMs-root-context-stayed-small](../assets/RLMs-root-context-stayed-small.png)
 
 ### The Core Innovation
 
@@ -431,7 +431,7 @@ The key shift is context-centric decomposition:
 
 The model becomes a programmer analyzing a dataset, not a student cramming for an exam.
 
-![RLMs-agent-centric-vs-context-centric](assets/RLMs-agent-centric-vs-context-centric.png)
+![RLMs-agent-centric-vs-context-centric](../assets/RLMs-agent-centric-vs-context-centric.png)
 
 Without explicit instruction, RLMs naturally discover these strategies:
 

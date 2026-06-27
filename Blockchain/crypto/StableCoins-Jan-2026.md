@@ -2,7 +2,7 @@
 
 ## A Simple Whitepaper for Developers and Architects
 
-![StableCoins-PaymentRails](assets/StableCoins-PaymentRails.png)
+![StableCoins-PaymentRails](../assets/StableCoins-PaymentRails.png)
 
 ### Executive Summary
 Stablecoins are becoming the new infrastructure for global payments. They offer fast, 24/7, low-cost transfers compared to traditional systems. This whitepaper summarizes key insights from a recent industry panel with experts from Mastercard, Ripple, and TON Foundation. It includes verified data, technical comparisons, and practical guidance for developers and architects building payment systems.

@@ -1,6 +1,6 @@
 # AI Accelerated Development Playbook
 
-![AI-Accelerated-Development-Playbook.png](assets/AI-Accelerated-Development-Playbook.png)
+![AI-Accelerated-Development-Playbook.png](../../assets/AI-Accelerated-Development-Playbook.png)
 
 ## 1. Thesis: AI Amplifies Existing Engineering Habits
 

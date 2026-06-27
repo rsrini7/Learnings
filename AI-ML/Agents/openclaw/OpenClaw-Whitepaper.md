@@ -6,7 +6,7 @@
 
 ---
 
-![OpenClaw Feb 2026](assets/OpenClaw-Feb-2026.png)
+![OpenClaw Feb 2026](../../assets/OpenClaw-Feb-2026.png)
 
 ---
 

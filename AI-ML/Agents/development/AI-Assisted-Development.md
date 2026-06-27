@@ -4,11 +4,11 @@
 
 The rapid proliferation of AI coding assistants has created both unprecedented opportunities and significant challenges. Three distinct but complementary frameworks have emerged in 2024-2025 to address different aspects of AI-assisted software development
 
-[PDF for Unified Agent Context](./docs/Unified_Agent_Context.pdf)
+[PDF for Unified Agent Context](../../docs/Unified_Agent_Context.pdf)
 
-![Unified Agent Context Framework](./assets/UnifiedAgentContextFramework.png)
+![Unified Agent Context Framework](../../assets/UnifiedAgentContextFramework.png)
 
-![Three-Layer Architecture: How SDD, UACF, and Claude Skills integrate as complementary frameworks at different abstraction levels.](./assets/skills-uacf-sdd-flow.png)
+![Three-Layer Architecture: How SDD, UACF, and Claude Skills integrate as complementary frameworks at different abstraction levels.](../../assets/skills-uacf-sdd-flow.png)
 
 ### The Three Frameworks
 

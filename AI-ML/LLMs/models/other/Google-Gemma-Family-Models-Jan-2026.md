@@ -4,7 +4,7 @@
 
 ---
 
-![Gemma-Models](assets/Gemma-Models.png)
+![Gemma-Models](../../../assets/Gemma-Models.png)
 
 ---
 

@@ -1,6 +1,6 @@
 # microGPT Architecture — Diagram Explanation
 
-![AI-ML/assets/microGPT-Architecture.png](assets/microGPT-Architecture.png)
+![AI-ML/assets/microGPT-Architecture.png](../../assets/microGPT-Architecture.png)
 
 This diagram visualizes the complete microGPT model — a minimal, dependency-free implementation of a GPT-style Transformer. It shows how data flows forward to produce predictions and how gradients flow backward to update parameters.
 

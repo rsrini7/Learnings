@@ -1,6 +1,6 @@
 # **Anthropic's Fourth Economic Index Report - Complete Summary (January 2026)**
 
-![Anthropic's Fourth Economic Index Report Jan 2026](assets/Anthropic's-Fourth-Economic-Index-Report-Jan-2026.png)
+![Anthropic's Fourth Economic Index Report Jan 2026](../Security/assets/Anthropic%27s-Fourth-Economic-Index-Report-Jan-2026.png)
 
 ---
 

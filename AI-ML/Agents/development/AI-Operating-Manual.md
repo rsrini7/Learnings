@@ -82,11 +82,11 @@ The manual highlights a critical strategic trade-off: **Vertical Skill Deepening
 
 👤 **Srinivasan Ragothaman (@rsrini7)**
 
-![AI-ML/assets/AI-Operating-Manual.png](assets/AI-Operating-Manual.png)
+![AI-ML/assets/AI-Operating-Manual.png](../../assets/AI-Operating-Manual.png)
 
 ---
 
-![AI-ML/assets/AI-Native-Economy.png](assets/AI-Native-Economy.png)
+![AI-ML/assets/AI-Native-Economy.png](../../assets/AI-Native-Economy.png)
 ---
 
 ## 🎯 Part 1: Core Skills

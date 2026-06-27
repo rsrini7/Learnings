@@ -10,11 +10,11 @@
 
 ---
 
-![AI-ML/assets/microGPT-TechDeepDive.png](assets/microGPT-TechDeepDive.png)
+![AI-ML/assets/microGPT-TechDeepDive.png](../../assets/microGPT-TechDeepDive.png)
 
 ---
 
-![AI-ML/assets/microGPT-Architecture.png](assets/microGPT-Architecture.png)
+![AI-ML/assets/microGPT-Architecture.png](../../assets/microGPT-Architecture.png)
 
 ---
 
@@ -592,7 +592,7 @@ Total: 688 + 1,024 + 2,048 + 432 = **4,192**.
 **Q5: Why RMSNorm instead of LayerNorm?**  
 RMSNorm eliminates mean subtraction — only the root mean square is computed. This saves lines of code and reflects state-of-the-art model choices (LLaMA 3). In microGPT, it also means zero extra learnable parameters (no γ, no β) to track through the scalar autograd engine.
 
-![AI-ML/assets/LayerNorm-RMSNorm.png](assets/LayerNorm-RMSNorm.png)
+![AI-ML/assets/LayerNorm-RMSNorm.png](../../assets/LayerNorm-RMSNorm.png)
 
 
 **Q6: Can I train this on a GPU?**  

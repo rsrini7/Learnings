@@ -1,10 +1,10 @@
 # Production-Grade RAG Architectures: Complete Technical Guide (2026 Edition)
 
-![AI Engineering](assets/RAG/AI-Engineering.png)
+![AI Engineering](../assets/RAG/AI-Engineering.png)
 
 ---
 
-![AI-ML/assets/RAG/RAG-OpenSource-Stacks.png](assets/RAG/RAG-OpenSource-Stacks.png)
+![AI-ML/assets/RAG/RAG-OpenSource-Stacks.png](../assets/RAG/RAG-OpenSource-Stacks.png)
 
 ---
 

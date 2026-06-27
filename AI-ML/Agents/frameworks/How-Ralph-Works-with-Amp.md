@@ -16,7 +16,7 @@ Named after the Simpsons character, it shifts from one-shot prompts to continuou
 4. Updates PRD (mark passes:true), appends to progress.txt.
 5. Repeats until all tasks pass or emits <promise>COMPLETE</promise>.
 
-![Ralph-WorkflowSteps.gif](assets/Ralph-WorkflowSteps.gif)
+![Ralph-WorkflowSteps.gif](../../assets/Ralph-WorkflowSteps.gif)
 
 ---
 
@@ -56,7 +56,7 @@ flowchart TD
 
 ## Visualize the loop:
 https://snarktank.github.io/ralph/
-![How Ralph Works with Amp](assets/How-Ralph-works-with-Amp.png)
+![How Ralph Works with Amp](../../assets/How-Ralph-works-with-Amp.png)
 
 ## My Reference :
 [Claude Ralph Loop](Claude-Ralph-Loop.md)

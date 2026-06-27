@@ -4,7 +4,7 @@ An Analysis of Anthropic's Claude’s C Compiler (CCC) and Its Security Implicat
 
 **Created Date:** February 12, 2026  
 
-![AI-ML/assets/Anthropic's-Claude’s-C-Compiler.png](assets/Anthropic's-Claude’s-C-Compiler.png)
+![AI-ML/assets/Anthropic's-Claude’s-C-Compiler.png](../../../assets/Anthropic%27s-Claude%E2%80%99s-C-Compiler.png)
 
 ---
 
