@@ -410,6 +410,8 @@ Learnings/
 
 - [GitHub Repos & Links](Scripts/github-repos.py) - Manage repos and check/fix links
 - [README Generator](Scripts/generate-readme.py) - Auto-generate this README
+- [hpi.sh](Scripts/hpi.sh) - Pi coding agent through Headroom compression proxy + RTK filtering
+- [hlrn.sh](Scripts/hlrn.sh) - Headroom Learn: run headroom learn with full options
 
 ---
 

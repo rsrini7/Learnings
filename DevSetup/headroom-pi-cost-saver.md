@@ -2,6 +2,7 @@
 
 **Date**: 2026-06-27  
 **Updated**: 2026-06-28  
+**Updated**: 2026-06-28 (v2)  
 **Tags**: `pi`, `headroom`, `rtk`, `llm`, `cost-optimization`, `shell`
 
 ---
@@ -114,7 +115,9 @@ hpi
 pi -e ~/ws/pi-rtk -e ~/ws/pi-headroom
 ```
 
-## Shell Function (hpi)
+## Shell Functions
+
+### hpi — Pi through Headroom
 
 **File**: `~/ws/Learnings/Scripts/hpi.sh`
 
@@ -132,12 +135,56 @@ hpi -p "explain this error: ..."
 hpi --model openrouter/claude-sonnet-4
 hpi --thinking xhigh
 
+# Skip RTK extension (headroom only)
+hpi --no-rtk
+
 # Kill the proxy
 hpi --stop
 
 # Normal pi (no compression)
 pi
 ```
+
+**Key env vars set by hpi:**
+| Variable | Value | Purpose |
+|----------|-------|---------|
+| `HEADROOM_OUTPUT_SHAPER` | `1` | Enable output shaping |
+| `HEADROOM_VERBOSITY_LEVEL` | `2` | Moderate verbosity |
+| `HEADROOM_VERBOSITY_AUTOTUNE` | `1` | Auto-tune verbosity |
+| `HEADROOM_OUTPUT_HOLDOUT` | `0.1` | Hold back 10% of output for retrieval |
+| `HEADROOM_EMBEDDER_RUNTIME` | `pytorch_mps` | Apple Silicon MPS embedder (arm64 only) |
+
+**Note:** `pi` is launched with `-ne` flag (non-interactive edit mode).
+
+### hlrn — Headroom Learn
+
+**File**: `~/ws/Learnings/Scripts/hlrn.sh`
+
+Runs `headroom learn` to train/compress the context model.
+
+```bash
+# Make executable
+chmod +x ~/ws/Learnings/Scripts/hlrn.sh
+
+# Run directly
+~/ws/Learnings/Scripts/hlrn.sh
+
+# Or add to PATH
+export PATH="$HOME/ws/Learnings/Scripts:$PATH"
+hlrn
+
+# Pass extra flags
+hlrn --extra-flag value
+```
+
+Equivalent to:
+```bash
+uvx --python 3.12 \
+  --from 'headroom-ai[proxy,ml,code,pytorch-mps]==0.27.0' \
+  headroom learn --verbosity --apply
+```
+
+Auto-detects Apple Silicon and adds `pytorch-mps` extra.
 
 ## Port Allocation
 
@@ -154,6 +201,10 @@ pi
 | 8795 | Amsha | OmniMLX proxy |
 | 8796 | Amsha | Generic OpenAI proxy |
 | 8797 | Amsha | llama.cpp proxy |
+
+## Important: Proxy URL Prefix
+
+The proxy expects `/v1` prefix, **not** `/openai/v1`. This is set via `OPENAI_TARGET_API_URL`.
 
 ## How RTK Integration Works
 
@@ -191,7 +242,8 @@ CCR (Cache-Compress-Retrieve) makes compression reversible:
 |------|---------|--------------|
 | `~/ws/pi-rtk/` | pi-rtk package | ✅ [rsrini7/pi-rtk](https://github.com/rsrini7/pi-rtk) |
 | `~/ws/pi-headroom/` | pi-headroom package | ✅ [rsrini7/pi-headroom](https://github.com/rsrini7/pi-headroom) |
-| `~/ws/Learnings/Scripts/hpi.sh` | Shell function | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/hpi.sh` | Shell function (hpi) | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/hlrn.sh` | Shell function (hlrn) | ✅ (this repo) |
 | `~/ws/Learnings/DevSetup/headroom-pi-cost-saver.md` | This doc | ✅ (this repo) |
 | `~/.pi/agent/extensions/headroom-proxy.ts` | Installed extension | ❌ (pi config) |
 | `~/.pi/agent/rtk-config.json` | RTK config | ❌ (pi config) |

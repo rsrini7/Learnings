@@ -89,10 +89,10 @@ hpi() {
     export HEADROOM_OUTPUT_SHAPER=1
     export HEADROOM_VERBOSITY_LEVEL=2
     export HEADROOM_VERBOSITY_AUTOTUNE=1
-    export HEADROOM_OUTPUT_HOLDOUT=10
+    export HEADROOM_OUTPUT_HOLDOUT=0.1
     PYTHONUNBUFFERED=1 OPENAI_TARGET_API_URL="$target" nohup uvx \
       --python 3.12 \
-      --from "headroom-ai[$extras]==0.27.0" \
+      --from 'headroom-ai['"$extras"']==0.27.0' \
       headroom proxy \
         --port "$port" \
         --memory --code-aware \
@@ -148,5 +148,5 @@ hpi() {
   echo "🧩 Extensions: $ext_list" >&2
 
   # ── Launch pi ─────────────────────────────────────────────────────────────
-  command pi "${ext_args[@]}" "${pi_args[@]}" "${passthrough_args[@]}"
+  command pi -ne "${ext_args[@]}" "${pi_args[@]}" "${passthrough_args[@]}"
 }
