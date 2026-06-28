@@ -11,7 +11,8 @@
 # Packages: ~/ws/pi-rtk, ~/ws/pi-headroom
 #
 # Usage:
-#   hpi                          # interactive, opencode-go/mimo-v2.5-pro/high
+#   hpi                          # interactive, local dev mode
+#   hpi --npm                    # use npm published packages
 #   hpi -p "fix the bug"         # one-shot print mode
 #   hpi --model openrouter/claude-sonnet-4
 #   hpi --thinking xhigh         # override thinking level
@@ -30,6 +31,7 @@ hpi() {
   local pidfile="$HOME/.pi/agent/headroom.pid"
   local logfile="$HOME/.pi/agent/headroom.log"
   local use_rtk=1
+  local use_npm=0
 
   # ── Parse flags ───────────────────────────────────────────────────────────
   local -a passthrough_args=()
@@ -37,6 +39,8 @@ hpi() {
     case "$arg" in
       --stop)     ;; # handled below
       --no-rtk)   use_rtk=0 ;;
+      --npm)      use_npm=1 ;;
+      --local)    use_npm=0 ;;
       *)          passthrough_args+=("$arg") ;;
     esac
   done
@@ -63,15 +67,24 @@ hpi() {
   fi
 
   # ── Check packages ────────────────────────────────────────────────────────
-  if [[ ! -d "$headroom_ext" ]]; then
-    echo "❌ pi-headroom not found: $headroom_ext" >&2
-    echo "   Install: git clone git@github.com:rsrini7/pi-headroom.git $headroom_ext" >&2
-    return 1
-  fi
+  if (( use_npm )); then
+    # Use npm packages (installed globally in ~/.pi/agent/npm)
+    headroom_ext="npm:@rsrini/pi-headroom"
+    rtk_ext="npm:@rsrini/pi-rtk"
+    echo "📦 Using npm packages" >&2
+  else
+    # Use local paths (development mode)
+    if [[ ! -d "$headroom_ext" ]]; then
+      echo "❌ pi-headroom not found: $headroom_ext" >&2
+      echo "   Install: git clone git@github.com:rsrini7/pi-headroom.git $headroom_ext" >&2
+      echo "   Or use --npm flag to use published packages" >&2
+      return 1
+    fi
 
-  if (( use_rtk )) && [[ ! -d "$rtk_ext" ]]; then
-    echo "⚠️  pi-rtk not found: $rtk_ext (continuing without RTK)" >&2
-    use_rtk=0
+    if (( use_rtk )) && [[ ! -d "$rtk_ext" ]]; then
+      echo "⚠️  pi-rtk not found: $rtk_ext (continuing without RTK)" >&2
+      use_rtk=0
+    fi
   fi
 
   # ── Start Headroom proxy if not running ───────────────────────────────────
@@ -145,7 +158,9 @@ hpi() {
   # ── Summary ───────────────────────────────────────────────────────────────
   local ext_list="headroom"
   (( use_rtk )) && ext_list+="+rtk"
-  echo "🧩 Extensions: $ext_list" >&2
+  local mode="local"
+  (( use_npm )) && mode="npm"
+  echo "🧩 Extensions: $ext_list ($mode)" >&2
 
   # ── Launch pi ─────────────────────────────────────────────────────────────
   command pi -ne "${ext_args[@]}" "${pi_args[@]}" "${passthrough_args[@]}"
