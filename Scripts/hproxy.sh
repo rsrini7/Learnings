@@ -1,15 +1,15 @@
 #!/usr/bin/env zsh
 # ──────────────────────────────────────────────────────────────────────────────
-# hlrn — Headroom Learn: run headroom learn with full options
+# hproxy — Headroom Proxy: run headroom proxy with full options
 #
-# Shorthand for: uvx --python 3.12 --from "headroom-ai[proxy,ml,code,pytorch-mps]==0.28.0" headroom learn --verbosity --apply
+# Shorthand for: uvx --python 3.12 --from "headroom-ai[proxy,ml,code,pytorch-mps]==0.28.0" headroom proxy --port 8780
 #
 # Usage:
-#   hlrn                         # run headroom learn with defaults
-#   hlrn --extra-flag value      # pass additional args to headroom learn
+#   hproxy                         # run headroom proxy with defaults
+#   hproxy --extra-flag value      # pass additional args to headroom proxy
 #
-# Make executable: chmod +x ~/ws/Learnings/Scripts/hlrn.sh
-# Run directly:    ~/ws/Learnings/Scripts/hlrn.sh
+# Make executable: chmod +x ~/ws/Learnings/Scripts/hproxy.sh
+# Run directly:    ~/ws/Learnings/Scripts/hproxy.sh
 # Or add to PATH:  export PATH="$HOME/ws/Learnings/Scripts:$PATH"
 # ──────────────────────────────────────────────────────────────────────────────
 
@@ -26,4 +26,5 @@ fi
 exec uvx \
   --python 3.12 \
   --from 'headroom-ai['"$extras"']==0.28.0' \
-  headroom learn --verbosity --apply "$@"
+  headroom proxy --port 8780 "$@"
+

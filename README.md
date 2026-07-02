@@ -127,6 +127,7 @@ Learnings/
 - [OpenResponses Open Inference Standard](AI-ML/LLMs/optimization/OpenResponses-Open-Inference-Standard.md)
 - [Unlock the Dark Data](AI-ML/LLMs/optimization/Unlock-the-Dark-Data.md)
 - [ai token optimization tools](AI-ML/LLMs/optimization/ai-token-optimization-tools.md)
+- [Headroom Proxy](AI-ML/DevSetup/headroom-pxoxy.md)
 
 #### 📈 AI Economy & Trends
 - [AI Periodic Table](AI-ML/LLMs/economy/AI-Periodic-Table.md)
