@@ -42,12 +42,36 @@ Health: `curl http://localhost:8780/health`
 
 ## Quick Start
 
+### Basic usage
 ```bash
 # Use hproxy function
 hproxy
 
 # Or run directly
 uvx --python 3.12 --from "headroom-ai[proxy,ml,code,pytorch-mps]==0.28.0" headroom proxy --port 8780
+```
+
+### Using with CommandCode API
+```bash
+# 1. Set your API key
+export OPENAI_API_KEY="<CMD_API_KEY>"
+
+# 2. Start the proxy with target URL
+hproxy --target https://api.commandcode.ai/provider/v1
+
+# 3. Set base URLs to point to the local proxy
+export OPENAI_BASE_URL="http://127.0.0.1:8780/v1"
+export COMMANDCODE_BASE_URL="http://127.0.0.1:8780/v1"
+
+# 4. Now use your Command Code client as usual—it will route through the proxy!
+
+# Or test directly with curl
+curl http://localhost:8780/chat/completions \
+  -H "Content-Type: application/json" \
+  -d '{
+    "model": "deepseek/deepseek-v4-flash",
+    "messages": [{"role": "user", "content": "Write a haiku about race conditions."}]
+  }'
 ```
 
 ## Shell Functions
