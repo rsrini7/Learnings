@@ -71,6 +71,9 @@ Learnings/
 - [Agent Skills](AI-ML/Agents/skills/Agent-Skills.md)
 - [claude agents vs sub agents vs projects vs workflow vs rules vs mcp vs skills](AI-ML/Agents/skills/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md)
 
+#### 📊 Agent Analysis
+- [Autonomous AI Agents: Why This Moment Matters](AI-ML/Agents/analysis/Autonomous-AI-Agents.md)
+
 #### 🏗️ Agent Frameworks
 - [Ashley's 11 agent system](AI-ML/Agents/frameworks/Ashley%27s-11-agent-system.md)
 - [Confucius Code Agent](AI-ML/Agents/frameworks/Confucius-Code-Agent.md)
