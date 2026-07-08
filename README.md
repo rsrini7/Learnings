@@ -12,6 +12,7 @@ Learnings/
 │   ├── Agents/                  # Agent frameworks, skills, MCP
 │   ├── LLMs/                    # Models, architectures, inference
 │   ├── RAG/                     # RAG architectures & guides
+│   ├── Hardware/                # AI chips, accelerators, silicon
 │   ├── Protocols/               # MCP, A2A, UCP
 │   ├── Fine-Tuning/             # PEFT, training guides
 │   ├── Comparisons/             # Model & tool comparisons
@@ -128,6 +129,9 @@ Learnings/
 - [Unlock the Dark Data](AI-ML/LLMs/optimization/Unlock-the-Dark-Data.md)
 - [ai token optimization tools](AI-ML/LLMs/optimization/ai-token-optimization-tools.md)
 - [Headroom Proxy](AI-ML/DevSetup/headroom-pxoxy.md)
+
+#### 🧱 AI Hardware
+- [AI Hardware Explained: CPU, GPU, TPU, NPU, and Other AI Chips](AI-ML/Hardware/AI-Hardware-Chips-Explained.md)
 
 #### 📈 AI Economy & Trends
 - [AI Periodic Table](AI-ML/LLMs/economy/AI-Periodic-Table.md)
