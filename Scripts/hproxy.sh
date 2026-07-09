@@ -2,70 +2,54 @@
 # ──────────────────────────────────────────────────────────────────────────────
 # hproxy — Headroom Proxy: run headroom proxy with full options
 #
-# Shorthand for: uvx --python 3.12 --from "headroom-ai[proxy,ml,code,pytorch-mps]==0.28.0" headroom proxy --port 8780
-#
 # Usage:
-#   hproxy                                                    # run headroom proxy with defaults
-#   hproxy --target https://api.example.com/v1                # set target API URL
-#   hproxy --target https://api.commandcode.ai/provider/v1    # use commandcode.ai API
-#   hproxy --extra-flag value                                 # pass additional args to headroom proxy
+#   hproxy                                    # defaults
+#   hproxy --target https://api.example.com   # set upstream API URL
+#   hproxy --extra-flag value                 # pass additional args to proxy
+#
+# Env vars:
+#   OPENAI_API_KEY          API key for upstream provider
+#   OPENAI_TARGET_API_URL   Target API base URL (or use --target flag)
 #
 # Make executable: chmod +x ~/ws/Learnings/Scripts/hproxy.sh
-# Run directly:    ~/ws/Learnings/Scripts/hproxy.sh
-# Or add to PATH:  export PATH="$HOME/ws/Learnings/Scripts:$PATH"
-#
-# Environment variables (can be set before running):
-#   OPENAI_API_KEY: Your API key for the target provider
-#   OPENAI_TARGET_API_URL: Target API base URL (can also use --target flag)
+# Or add to PATH:    export PATH="$HOME/ws/Learnings/Scripts:$PATH"
 # ──────────────────────────────────────────────────────────────────────────────
 
 set -euo pipefail
 
+source "${0:A:h}/headroom-env.sh"
+
 hproxy_main() {
-  local extras="proxy,ml,code"
+  local extras=$(hroom_resolve_extras)
   local target=""
   local -a passthrough_args=()
 
-  # Parse flags
+  # Parse --target flag
   while (( $# > 0 )); do
     case "$1" in
-      --target=*)
-        target="${1#--target=}"
-        shift
-        ;;
-      --target)
-        target="$2"
-        shift 2
-        ;;
-      *)
-        passthrough_args+=("$1")
-        shift
-        ;;
+      --target=*) target="${1#--target=}"; shift ;;
+      --target)   target="$2"; shift 2 ;;
+      *)          passthrough_args+=("$1"); shift ;;
     esac
   done
 
-  # Detect Apple Silicon for MPS embedder
-  if [[ "$(uname)" == "Darwin" && "$(uname -m)" == "arm64" ]]; then
-    extras="$extras,pytorch-mps"
-    export HEADROOM_EMBEDDER_RUNTIME=pytorch_mps
-  fi
-
-  # Set target URL if specified
+  # Set target API URL
   if [[ -n "$target" ]]; then
     export OPENAI_TARGET_API_URL="$target"
     echo "🎯 Target API: $target" >&2
   fi
 
-  # Check if API key is set
+  # Check API key
   if [[ -z "${OPENAI_API_KEY:-}" ]]; then
-    echo "⚠️  OPENAI_API_KEY is not set" >&2
+    echo "⚠️  OPENAI_API_KEY not set" >&2
   fi
+
+  echo "▶ headroom proxy v$HROOM_VERSION (extras: $extras)" >&2
 
   exec uvx \
     --python 3.12 \
-    --from 'headroom-ai['"$extras"']==0.28.0' \
-    headroom proxy --code-aware --port 8780 "${passthrough_args[@]}"
+    --from 'headroom-ai['"$extras"']=='"$HROOM_VERSION" \
+    headroom proxy --port 8780 "${passthrough_args[@]}"
 }
 
 hproxy_main "$@"
-

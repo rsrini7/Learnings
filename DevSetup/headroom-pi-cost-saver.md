@@ -1,8 +1,7 @@
 # Headroom + Pi: LLM Cost Compression Setup
 
 **Date**: 2026-06-27  
-**Updated**: 2026-06-28  
-**Updated**: 2026-06-28 (v2)  
+**Updated**: 2026-07-09 (shared config, hroom, hproxy)  
 **Tags**: `pi`, `headroom`, `rtk`, `llm`, `cost-optimization`, `shell`
 
 ---
@@ -115,6 +114,20 @@ hpi
 pi -e ~/ws/pi-rtk -e ~/ws/pi-headroom
 ```
 
+## Shared Config
+
+**File**: `~/ws/Learnings/Scripts/headroom-env.sh`
+
+Single source of truth for version and extras. All wrapper scripts source this.
+
+```bash
+HROOM_VERSION="0.30.0"       # ← bump this one line to update all scripts
+HROOM_BASE_EXTRAS="proxy,ml,code"
+hroom_resolve_extras()        # auto-appends pytorch-mps on Apple Silicon
+```
+
+Scripts that source it: `hpi.sh`, `hroom.sh`, `hproxy.sh`, `hlrn.sh`.
+
 ## Shell Functions
 
 ### hpi — Pi through Headroom
@@ -156,6 +169,38 @@ pi
 
 **Note:** `pi` is launched with `-ne` flag (non-interactive edit mode).
 
+### hroom — Generic Headroom Wrapper
+
+**File**: `~/ws/Learnings/Scripts/hroom.sh`
+
+Generic wrapper for any headroom subcommand. Sources `headroom-env.sh` for
+version/extras. Can be run directly or sourced to define `hroom()` function.
+
+```bash
+# Direct execution
+~/ws/Learnings/Scripts/hroom.sh proxy
+~/ws/Learnings/Scripts/hroom.sh proxy --port 8780
+~/ws/Learnings/Scripts/hroom.sh learn --apply --verbosity
+~/ws/Learnings/Scripts/hroom.sh run "echo hello"
+
+# Override version/extras on the fly
+~/ws/Learnings/Scripts/hroom.sh --version 0.27.0 proxy
+~/ws/Learnings/Scripts/hroom.sh --extras proxy,ml proxy
+~/ws/Learnings/Scripts/hroom.sh --no-mps proxy     # skip MPS detection
+```
+
+### hproxy — Headroom Proxy (standalone)
+
+**File**: `~/ws/Learnings/Scripts/hproxy.sh`
+
+Start headroom proxy on port 8780 (default). Sources `headroom-env.sh`.
+
+```bash
+hproxy                                      # start on :8780
+hproxy --target https://api.example.com     # custom upstream
+hproxyt                                     # shortcut: commandcode.ai upstream
+```
+
 ### hlrn — Headroom Learn
 
 **File**: `~/ws/Learnings/Scripts/hlrn.sh`
@@ -163,28 +208,18 @@ pi
 Runs `headroom learn` to train/compress the context model.
 
 ```bash
-# Make executable
-chmod +x ~/ws/Learnings/Scripts/hlrn.sh
-
-# Run directly
-~/ws/Learnings/Scripts/hlrn.sh
-
-# Or add to PATH
-export PATH="$HOME/ws/Learnings/Scripts:$PATH"
-hlrn
-
-# Pass extra flags
-hlrn --extra-flag value
+hlrn                                        # run with defaults
+hlrn --extra-flag value                     # pass-through args
 ```
 
 Equivalent to:
 ```bash
 uvx --python 3.12 \
-  --from 'headroom-ai[proxy,ml,code,pytorch-mps]==0.27.0' \
+  --from 'headroom-ai[proxy,ml,code,pytorch-mps]==0.30.0' \
   headroom learn --verbosity --apply
 ```
 
-Auto-detects Apple Silicon and adds `pytorch-mps` extra.
+Version/extras come from `headroom-env.sh`. Auto-detects Apple Silicon for `pytorch-mps`.
 
 ## Port Allocation
 
@@ -242,13 +277,16 @@ CCR (Cache-Compress-Retrieve) makes compression reversible:
 |------|---------|--------------|
 | `~/ws/pi-rtk/` | pi-rtk package | ✅ [rsrini7/pi-rtk](https://github.com/rsrini7/pi-rtk) |
 | `~/ws/pi-headroom/` | pi-headroom package | ✅ [rsrini7/pi-headroom](https://github.com/rsrini7/pi-headroom) |
+| `~/ws/Learnings/Scripts/headroom-env.sh` | Shared version/extras config | ✅ (this repo) |
 | `~/ws/Learnings/Scripts/hpi.sh` | Shell function (hpi) | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/hroom.sh` | Shell function (hroom) | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/hproxy.sh` | Shell function (hproxy) | ✅ (this repo) |
 | `~/ws/Learnings/Scripts/hlrn.sh` | Shell function (hlrn) | ✅ (this repo) |
 | `~/ws/Learnings/DevSetup/headroom-pi-cost-saver.md` | This doc | ✅ (this repo) |
 | `~/.pi/agent/extensions/headroom-proxy.ts` | Installed extension | ❌ (pi config) |
 | `~/.pi/agent/rtk-config.json` | RTK config | ❌ (pi config) |
 | `~/.pi/agent/headroom-config.json` | Headroom config | ❌ (pi config) |
-| `~/.zshrc` (last 3 lines) | Sources hpi.sh | ❌ (dotfile) |
+| `~/.zshrc` (headroom block) | Sources hpi.sh, defines hroom/hproxy/hlrn | ❌ (dotfile) |
 
 ## Troubleshooting
 

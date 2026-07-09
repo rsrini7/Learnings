@@ -2,26 +2,29 @@
 # ──────────────────────────────────────────────────────────────────────────────
 # hpi — Pi coding agent through Headroom compression proxy + RTK filtering
 #
-# Reduces LLM token costs by 60-90% with two layers:
-#   1. pi-rtk: wraps bash commands with external rtk binary (60-90% savings)
-#   2. pi-headroom: routes through Headroom proxy (30-60% savings)
+# Reduces LLM token costs 60-90% with two layers:
+# 1. pi-rtk: wraps bash commands through external rtk binary (60-90% savings)
+# 2. pi-headroom: routes through Headroom proxy (30-60% savings)
 #
 # Port: 8787 (8788-8797 reserved for Amsha project's per-provider proxies)
 # Upstream: https://opencode.ai/zen/go/v1 (OpenCode Go)
 # Packages: ~/ws/pi-rtk, ~/ws/pi-headroom
 #
 # Usage:
-#   hpi                          # interactive, local dev mode
-#   hpi --npm                    # use npm published packages
-#   hpi -p "fix the bug"         # one-shot print mode
-#   hpi --model openrouter/claude-sonnet-4
-#   hpi --thinking xhigh         # override thinking level
-#   hpi --stop                   # kill the headroom proxy
-#   hpi --no-rtk                 # skip rtk extension (headroom only)
+#   hpi                                    # interactive, local dev mode
+#   hpi --npm                              # use npm published packages
+#   hpi -p "fix bug"                       # one-shot print mode
+#   hpi --model openrouter/claude-sonnet-4 # override model
+#   hpi --thinking xhigh                   # override thinking level
+#   hpi --stop                             # kill headroom proxy
+#   hpi --no-rtk                           # skip rtk extension (headroom only)
 #
-# Source this in .zshrc:
+# Source in .zshrc:
 #   source ~/ws/Learnings/Scripts/hpi.sh
 # ──────────────────────────────────────────────────────────────────────────────
+
+# ── Shared config (version, extras, MPS detection) ───────────────────────────
+source "$HOME/ws/Learnings/Scripts/headroom-env.sh"
 
 hpi() {
   local headroom_ext="$HOME/ws/pi-headroom"
@@ -45,43 +48,25 @@ hpi() {
     esac
   done
 
-  # ── Stop command ──────────────────────────────────────────────────────────
-  if [[ "${1:-}" == "--stop" ]]; then
+  # ── Stop ───────────────────────────────────────────────────────────────────
+  if [[ "$*" == *--stop* ]]; then
     if [[ -f "$pidfile" ]]; then
-      local pid
-      pid=$(<"$pidfile")
-      if kill -0 "$pid" 2>/dev/null; then
-        kill "$pid" 2>/dev/null
-        echo "🛑 Stopped Headroom proxy (PID $pid)" >&2
-      fi
+      local pid=$(cat "$pidfile")
+      echo "🛑 Stopping Headroom proxy (PID $pid)..." >&2
+      kill "$pid" 2>/dev/null && echo "✅ Headroom proxy stopped" >&2
       rm -f "$pidfile"
-    fi
-    # Fallback: kill by port
-    local pids
-    pids=$(lsof -ti :"$port" 2>/dev/null)
-    if [[ -n "$pids" ]]; then
-      echo "$pids" | xargs kill 2>/dev/null
-      echo "🛑 Killed processes on :$port" >&2
     fi
     return 0
   fi
 
-  # ── Check packages ────────────────────────────────────────────────────────
-  if (( use_npm )); then
-    # Use npm packages (installed globally in ~/.pi/agent/npm)
-    headroom_ext="npm:@rsrini/pi-headroom"
-    rtk_ext="npm:@rsrini/pi-rtk"
-    echo "📦 Using npm packages" >&2
-  else
-    # Use local paths (development mode)
-    if [[ ! -d "$headroom_ext" ]]; then
-      echo "❌ pi-headroom not found: $headroom_ext" >&2
-      echo "   Install: git clone git@github.com:rsrini7/pi-headroom.git $headroom_ext" >&2
-      echo "   Or use --npm flag to use published packages" >&2
-      return 1
-    fi
+  # ── Validate extension directories ─────────────────────────────────────────
+  if [[ ! -d "$headroom_ext" ]]; then
+    echo "⚠️  pi-headroom not found: $headroom_ext (required)" >&2
+    return 1
+  fi
 
-    if (( use_rtk )) && [[ ! -d "$rtk_ext" ]]; then
+  if (( use_rtk )); then
+    if [[ ! -d "$rtk_ext" ]]; then
       echo "⚠️  pi-rtk not found: $rtk_ext (continuing without RTK)" >&2
       use_rtk=0
     fi
@@ -91,12 +76,8 @@ hpi() {
   if ! lsof -i :"$port" -sTCP:listen &>/dev/null; then
     echo "▶  Starting Headroom proxy on :$port → $target" >&2
 
-    # Detect Apple Silicon for MPS embedder
-    local extras="proxy,ml,code"
-    if [[ "$(uname)" == "Darwin" && "$(uname -m)" == "arm64" ]]; then
-      extras="$extras,pytorch-mps"
-      export HEADROOM_EMBEDDER_RUNTIME=pytorch_mps
-    fi
+    # Detect Apple Silicon for MPS embedder (from headroom-env.sh)
+    local extras=$(hroom_resolve_extras)
 
     # Launch headroom via uvx in background
     export HEADROOM_OUTPUT_SHAPER=1
@@ -105,7 +86,7 @@ hpi() {
     export HEADROOM_OUTPUT_HOLDOUT=0.1
     PYTHONUNBUFFERED=1 OPENAI_TARGET_API_URL="$target" nohup uvx \
       --python 3.12 \
-      --from 'headroom-ai['"$extras"']==0.27.0' \
+      --from 'headroom-ai['"$extras"']=='"$HROOM_VERSION" \
       headroom proxy \
         --port "$port" \
         --memory --code-aware \

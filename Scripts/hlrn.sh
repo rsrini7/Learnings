@@ -2,8 +2,6 @@
 # ──────────────────────────────────────────────────────────────────────────────
 # hlrn — Headroom Learn: run headroom learn with full options
 #
-# Shorthand for: uvx --python 3.12 --from "headroom-ai[proxy,ml,code,pytorch-mps]==0.28.0" headroom learn --verbosity --apply
-#
 # Usage:
 #   hlrn                         # run headroom learn with defaults
 #   hlrn --extra-flag value      # pass additional args to headroom learn
@@ -15,15 +13,11 @@
 
 set -euo pipefail
 
-local extras="proxy,ml,code"
+source "${0:A:h}/headroom-env.sh"
 
-# Detect Apple Silicon for MPS embedder
-if [[ "$(uname)" == "Darwin" && "$(uname -m)" == "arm64" ]]; then
-  extras="$extras,pytorch-mps"
-  export HEADROOM_EMBEDDER_RUNTIME=pytorch_mps
-fi
+local extras=$(hroom_resolve_extras)
 
 exec uvx \
   --python 3.12 \
-  --from 'headroom-ai['"$extras"']==0.28.0' \
+  --from 'headroom-ai['"$extras"']=='"$HROOM_VERSION" \
   headroom learn --verbosity --apply "$@"
