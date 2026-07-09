@@ -17,9 +17,7 @@
 # Or add to PATH:      export PATH="$HOME/ws/Learnings/Scripts:$PATH"
 # ──────────────────────────────────────────────────────────────────────────────
 
-set -euo pipefail
-
-source "${0:A:h}/headroom-env.sh"
+source "$HOME/ws/Learnings/Scripts/headroom-env.sh"
 
 # ── Help ─────────────────────────────────────────────────────────────────────
 hroom__help() {
