@@ -165,6 +165,7 @@ Learnings/
 - [Multimodal RAG](AI-ML/RAG/Multimodal-RAG.md)
 - [RAG Architectures](AI-ML/RAG/RAG-Architectures.md)
 - [RAG Guide Jan 2026](AI-ML/RAG/RAG-Guide-Jan-2026.md)
+- [Scaling RAG to 10M Documents](AI-ML/RAG/RAG-Scaling-10M-Documents.md)
 
 
 ### 🔗 Protocols
