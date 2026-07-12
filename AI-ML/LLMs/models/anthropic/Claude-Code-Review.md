@@ -79,3 +79,7 @@ This is one of the most practical enterprise AI releases of 2026 so far. If your
 4. Mehul Mohan – “RIP Human Code Reviewers” (YouTube video that sparked this post)  
    https://www.youtube.com/watch?v=H9onTRmYca8
 
+---
+
+**Related:** [AI Coding Loops: What's Real, What's Hype](../../../Agents/development/AI-Coding-Loops.md) — where automated code review fits in the broader spectrum of agentic coding loops and verification harnesses.
+

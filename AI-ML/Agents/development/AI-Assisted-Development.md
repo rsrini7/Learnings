@@ -1978,3 +1978,5 @@ The frameworks that emerged separately in 2024-2025 are pieces of a larger, comp
 
 **Start where you are. Use what you need. Evolve as you grow.**
 
+**Related:** [AI Coding Loops: What's Real, What's Hype](AI-Coding-Loops.md) — a practical map of when to use each level of coding autonomy, from inner-loop pair programming to multi-agent orchestration.
+

@@ -3873,6 +3873,7 @@ The future of AI-driven software development is written specifications, strategi
 - Thoughtworks on Spec-Driven Development
 - Papers on Context Engineering for LLMs
 - Research on Agent Orchestration
+- [AI Coding Loops: What's Real, What's Hype](AI-Coding-Loops.md) — practical guidance on matching spec-driven tasks to the right autonomy loop, from inner loop to software machine to orchestration.
 
 ---
 

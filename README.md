@@ -84,6 +84,7 @@ Learnings/
 #### 💻 AI-Assisted Development
 - [AI Accelerated Development Playbook](AI-ML/Agents/development/AI-Accelerated-Development-Playbook.md)
 - [AI Assisted Development](AI-ML/Agents/development/AI-Assisted-Development.md)
+- [AI Coding Loops](AI-ML/Agents/development/AI-Coding-Loops.md)
 - [AI Operating Manual](AI-ML/Agents/development/AI-Operating-Manual.md)
 - [AI PMRoles](AI-ML/Agents/development/AI-PMRoles.md)
 - [Spec Driven Development Frameworks](AI-ML/Agents/development/Spec-Driven-Development-Frameworks.md)

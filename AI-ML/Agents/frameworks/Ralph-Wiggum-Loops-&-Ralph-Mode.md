@@ -1296,3 +1296,5 @@ As Geoffrey Huntley put it: **"Ralph is a Bash loop."** Sometimes the most power
 **Last Updated:** January 2025  
 **Primary Source:** "Ralph Wiggum is the Final Evolution of Vibe Coding" analysis  
 **Additional Research:** Official documentation, community implementations, production case studies
+
+**Related:** [AI Coding Loops: What's Real, What's Hype](../development/AI-Coding-Loops.md) — a broader map of inner loops, Ralph loops, software machines, orchestration, and oversight loops.
