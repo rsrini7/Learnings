@@ -138,6 +138,7 @@ Learnings/
 - [AI Hardware Explained: CPU, GPU, TPU, NPU, and Other AI Chips](AI-ML/Hardware/AI-Hardware-Chips-Explained.md)
 
 #### 📈 AI Economy & Trends
+- [AI Debt Bubble Analysis](AI-ML/LLMs/economy/AI-Debt-Bubble-Analysis.md)
 - [AI Periodic Table](AI-ML/LLMs/economy/AI-Periodic-Table.md)
 - [AI and the Barbell Economy](AI-ML/LLMs/economy/AI-and-the-Barbell-Economy.md)
 - [AI in Next 18 Months](AI-ML/LLMs/economy/AI-in-Next-18-Months.md)
