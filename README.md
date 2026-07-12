@@ -132,7 +132,7 @@ Learnings/
 - [OpenResponses Open Inference Standard](AI-ML/LLMs/optimization/OpenResponses-Open-Inference-Standard.md)
 - [Unlock the Dark Data](AI-ML/LLMs/optimization/Unlock-the-Dark-Data.md)
 - [ai token optimization tools](AI-ML/LLMs/optimization/ai-token-optimization-tools.md)
-- [Headroom Proxy](AI-ML/DevSetup/headroom-pxoxy.md)
+- [Headroom Proxy](DevSetup/headroom-pxoxy.md)
 
 #### 🧱 AI Hardware
 - [AI Hardware Explained: CPU, GPU, TPU, NPU, and Other AI Chips](AI-ML/Hardware/AI-Hardware-Chips-Explained.md)

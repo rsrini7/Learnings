@@ -33,4 +33,4 @@
     * **Stretch Goal** (optional challenge).
 * **Execution**: The prompt begins by asking one diagnostic question to gauge current AI knowledge, then waits for the answer, responds with feedback, and asks the next step.
 
-**Related:**- [Define-Your-AI-Learning-Goal(Hard-Mode)-LLM-Prompt](Define-Your-AI-Learning-Goal(Hard-Mode)-LLM-Prompt.md) — Sibling Hard-Mode variant that uses the full Prompt Blueprint framework instead of the one-question easy mode.- [What%20and%20How%20can%20ASK%20an%20AI](What%20and%20How%20can%20ASK%20an%20AI.md) — Companion meta-prompting reference listing decision-matrix, Socratic, and pre-mortem patterns to feed into a learning goal.
+**Related:**- [Define-Your-AI-Learning-Goal(Hard-Mode)-LLM-Prompt](Define-Your-AI-Learning-Goal%28Hard-Mode)-LLM-Prompt.md) — Sibling Hard-Mode variant that uses the full Prompt Blueprint framework instead of the one-question easy mode.- [What%20and%20How%20can%20ASK%20an%20AI](What%20and%20How%20can%20ASK%20an%20AI.md) — Companion meta-prompting reference listing decision-matrix, Socratic, and pre-mortem patterns to feed into a learning goal.

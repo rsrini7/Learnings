@@ -367,4 +367,4 @@ The shift from passive prediction to active autonomous agency represents one of 
 ![Papers/assets/AgenticReasoning-Adv-Concepts-impl.png](../assets/AgenticReasoning-Adv-Concepts-impl.png)
 Ref: https://www.youtube.com/watch?v=GZha5ccTiQM
 
-**Related:**- [RecursiveLanguageModels-(RLMs)](RecursiveLanguageModels-(RLMs).md) — RLMs extend agentic reasoning with programmable recursion for 11M-token inference-time tasks.- [Prompt-Repetition-RE2](Prompt-Repetition-RE2.md) — RE2 prompt repetition complements agentic planning by improving long-context factual grounding.
+**Related:**- [RecursiveLanguageModels-(RLMs)](RecursiveLanguageModels-%28RLMs).md) — RLMs extend agentic reasoning with programmable recursion for 11M-token inference-time tasks.- [Prompt-Repetition-RE2](Prompt-Repetition-RE2.md) — RE2 prompt repetition complements agentic planning by improving long-context factual grounding.

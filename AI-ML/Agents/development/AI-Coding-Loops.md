@@ -723,10 +723,10 @@ It is the one that produces the most **verified, useful change** with the least 
 
 Related guides in this repository:
 
-- [Ralph Wiggum Loops & Ralph Mode](AI-ML/Agents/frameworks/Ralph-Wiggum-Loops-%26-Ralph-Mode.md) — the original filesystem-as-memory loop pattern and its evolution into official Claude Code tooling.
-- [AI Assisted Development Framework Guide](AI-ML/Agents/development/AI-Assisted-Development.md) — how SDD, UACF, and Claude Skills fit together for professional AI-assisted development.
-- [Spec-Driven Development Frameworks](AI-ML/Agents/development/Spec-Driven-Development-Frameworks.md) — durable specifications, task contracts, and systematic planning for agent workflows.
-- [Claude Code Review](AI-ML/LLMs/models/anthropic/Claude-Code-Review.md) — Anthropic's multi-agent code review feature and how it fits into the verification loop.
+- [Ralph Wiggum Loops & Ralph Mode](../frameworks/Ralph-Wiggum-Loops-%26-Ralph-Mode.md) — the original filesystem-as-memory loop pattern and its evolution into official Claude Code tooling.
+- [AI Assisted Development Framework Guide](AI-Assisted-Development.md) — how SDD, UACF, and Claude Skills fit together for professional AI-assisted development.
+- [Spec-Driven Development Frameworks](Spec-Driven-Development-Frameworks.md) — durable specifications, task contracts, and systematic planning for agent workflows.
+- [Claude Code Review](../../LLMs/models/anthropic/Claude-Code-Review.md) — Anthropic's multi-agent code review feature and how it fits into the verification loop.
 
 ---
 
