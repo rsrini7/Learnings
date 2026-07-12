@@ -186,3 +186,5 @@ Skills give you the *ability* to use AI well. Clarity lets you communicate exact
 ["The 8 AI Skills That Will Separate Winners From Losers in ..."](https://www.sabrina.dev/p/8-ai-skills-learn-2026)
 
 https://www.youtube.com/watch?v=4Q7gUXAveL0
+
+**Related:**- [Agent-Skills](Agent-Skills.md) — disambiguates the technical 'Agent Skills' packaging standard from the personal 'AI skills' (mindset, interaction, technical) discussed here.- [AI-Coding-Loops](../development/AI-Coding-Loops.md) — its four engineering layers (prompt, context, harness, loop) map onto the Phase 2 'AI Interaction Skills' here, especially Context Engineering.- [AI-Operating-Manual](../development/AI-Operating-Manual.md) — uses the parallel 'Skills x Clarity' success formula and 70-20-10 human/AI split that mirrors the Phase 1 mindset framework here.

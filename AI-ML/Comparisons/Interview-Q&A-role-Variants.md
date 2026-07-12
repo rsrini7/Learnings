@@ -408,3 +408,5 @@ Brilliant theory, no intuition for **business or adversarial reality**.
 * **Senior Engineer:** *Can I trust this person on-call?*
 * **Staff/Architect:** *Will this reduce org-level risk?*
 * **ML Researcher:** *Does this person understand where theory breaks?*
+
+**Related:**- [Top-50-Q&A-AI-ML-Eng](Top-50-Q&A-AI-ML-Eng.md) — Sibling Q&A set covering the same engineering-depth signals at MD/interview panel level.- [Top-50-Q&A-AI-ML-Math](Top-50-Q&A-AI-ML-Math.md) — Sibling Q&A set providing the math foundations behind the probing follow-ups here.- [Java-Python-Enterprise-AI](Java-Python-Enterprise-AI.md) — Production playbook detailing the Spring AI / LangChain4j / DJL stack a Senior Engineer would actually own.- [AI-Coding-Loops](../Agents/development/AI-Coding-Loops.md) — Agentic coding loops that frame how a senior engineer ships and verifies AI components.

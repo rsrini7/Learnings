@@ -388,3 +388,5 @@ For developers and architects, MiroThinker offers a practical path to building A
 - [ ] Join community for support
 
 **Start exploring today and build the next generation of trustworthy AI systems.**
+
+**Related:**- [kimi_k2.5_technical_report](kimi_k2.5_technical_report.md) — Counterpoint agent architecture: Kimi K2.5 scales via parallel swarms while MiroThinker bets on single-agent verification depth.- [RAG-Guide-Jan-2026](../../AI-ML/RAG/RAG-Guide-Jan-2026.md) — MiroThinker's search-verify-refine loop mirrors modern RAG pipelines with retrieval and source-grounded synthesis.- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Shares the iterative plan-then-execute agent loop pattern for tool-using AI workflows.

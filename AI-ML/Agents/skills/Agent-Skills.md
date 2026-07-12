@@ -257,3 +257,5 @@ They promote:
 Agent Skills encourage both human creators and AI tools to think modularly, fostering a future where task knowledge, processes, and automations are **packaged, portable, and executable** across intelligent systems.
 
 ***
+
+**Related:**- [claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills](claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md) — places Skills inside the broader map of Claude primitives (agents, sub-agents, MCP, Rules) that this article treats in isolation.- [Agent-Skills-vs-Agents.md](Agent-Skills-vs-Agents.md.md) — Vercel evaluation arguing passive AGENTS.md outperforms Skills for general framework knowledge — a real-world check on the optimistic framing here.- [Agent-Specs-vs-Rules-vs-Skills](Agent-Specs-vs-Rules-vs-Skills.md) — positions Skills as the top capability layer above SDD (specs) and UACF (rules), complementing rather than replacing them.- [MCP_Scalability_Issue_Solution](../../Protocols/MCP_Scalability_Issue_Solution.md) — analyzes the same Skills-vs-MCP progressive-disclosure trade-off with quantified token savings (78-98%) that this article only sketches.

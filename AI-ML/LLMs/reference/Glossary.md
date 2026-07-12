@@ -547,3 +547,5 @@ RLMs trade higher latency (seconds) for dramatically higher accuracy and complet
 
 **Physics Limit of Attention**
 The practical memory and compute ceiling caused by quadratic attention growth, making very large context windows impractical.
+
+**Related:**- [ML-Math](../training/ML-Math.md) — Companion reference for the mathematical terminology used throughout the glossary (vectors, norms, matrices, probability distributions).- [microGPT-Architecture-Complete](../architecture/microGPT-Architecture-Complete.md) — Each microGPT component (RMSNorm, attention, KV cache, embeddings, softmax) corresponds to a glossary entry, making this the natural hands-on demo.- [AI-Periodic-Table](../economy/AI-Periodic-Table.md) — Gives the higher-level conceptual map (rows = maturity, columns = function) that organizes when each glossary term becomes relevant in a system design.

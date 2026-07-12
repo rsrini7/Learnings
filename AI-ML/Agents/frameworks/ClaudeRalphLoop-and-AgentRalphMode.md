@@ -132,3 +132,5 @@ The goal is to stop “babysitting” the agent and instead design tasks, prompt
 [14](https://github.com/langchain-ai/deep-agents-from-scratch)
 [15](https://www.youtube.com/@LangChain/videos)
 [16](https://www.youtube.com/watch?v=CejntUP3muU)
+
+**Related:**- [Ralph-Wiggum-Loops-&-Ralph-Mode](Ralph-Wiggum-Loops-&-Ralph-Mode.md) — the deeper Ralph Wiggum reference this whitepaper builds on, covering PRP framework integration, harness evolution, and Agent Harnesses as the next step.- [Claude-Ralph-Loop](Claude-Ralph-Loop.md) — the minimal Claude Code-only Ralph loop primer; read this first if you only need the bash-while-core pattern before the Deep Agents comparison here.- [How-Ralph-Works-with-Amp](How-Ralph-Works-with-Amp.md) — third Ralph implementation using Amp CLI with a JSON-PRD and progress.txt memory scheme, complementing the Claude Code and Deep Agents variants covered here.- [AI-Coding-Loops](../development/AI-Coding-Loops.md) — contextualizes Ralph Mode alongside the broader autonomy-loop taxonomy, including the harness engineering layer that Ralph Mode exemplifies.

@@ -1298,3 +1298,4 @@ As Geoffrey Huntley put it: **"Ralph is a Bash loop."** Sometimes the most power
 **Additional Research:** Official documentation, community implementations, production case studies
 
 **Related:** [AI Coding Loops: What's Real, What's Hype](../development/AI-Coding-Loops.md) — a broader map of inner loops, Ralph loops, software machines, orchestration, and oversight loops.
+- [Confucius-Code-Agent](Confucius-Code-Agent.md) — contrasting scaffolding-first coding agent (hierarchical memory + meta-agent optimization) versus Ralph's filesystem-loop harness — different paths to the same problem of long-running autonomous coding.

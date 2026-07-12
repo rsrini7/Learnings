@@ -226,3 +226,4 @@ Below are **50 crisp questions** an MD or hiring panel can use to evaluate wheth
     **A:** Present expected ROI in reduced fraud loss/incidents, regulatory risk reduction, and faster time-to-production—backed by pilot numbers and SLOs.
     **Reason:** Aligns technical investment to hard business outcomes.
 
+**Related:**- [Interview-Q&A-role-Variants](Interview-Q&A-role-Variants.md) — Sibling role-specific Q&A probing the same engineering signals with follow-up questions.- [Top-50-Q&A-AI-ML-Math](Top-50-Q&A-AI-ML-Math.md) — Sibling math Q&A that supplies the formal foundations behind several engineering answers.- [Self-Attention-vs-Flash-Attention](Self-Attention-vs-Flash-Attention.md) — Attention IO bottleneck analysis tied to Q11 on inference latency and batching.- [Java-Python-Enterprise-AI](Java-Python-Enterprise-AI.md) — Production realities (Spring AI, Virtual Threads, Project Babylon) that ground the engineering answers.

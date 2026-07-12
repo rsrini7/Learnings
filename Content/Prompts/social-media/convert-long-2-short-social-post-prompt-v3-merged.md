@@ -237,3 +237,5 @@ Process the following content using the structure above (Problem → Solution �
 
 # INPUT CONTENT
 [PASTE YOUR LONG-FORM CONTENT HERE]
+
+**Related:**- [convert-long-2-short-social-post-prompt-v2](convert-long-2-short-social-post-prompt-v2.md) — Predecessor v2 of the social-post converter that established the problem-solution-implementation arc.- [convert-long-2-short-social-post-prompt](convert-long-2-short-social-post-prompt.md) — Original pre-versioning baseline of the long-to-short social post converter.- [convert-long-2-short-social-post-prompt-v4-examples](convert-long-2-short-social-post-prompt-v4-examples.md) — Successor v4 iteration that layers worked examples onto the v3-merged base.

@@ -202,3 +202,5 @@ All three cases demonstrate that security issues often arise from implementation
 - Telegram proxy leak: Security researcher @0x6rss demonstration
 - Multiple security news sources and technical analyses
 - Youtube Link: https://www.youtube.com/watch?v=Ux07J-wS2VA
+
+**Related:**- [Largest-WhatsApp-Data-Leak-in-History](Largest-WhatsApp-Data-Leak-in-History.md) — Both cover mass-impact consumer privacy flaws in messaging/contact-discovery surfaces.- [Notepad++-Targetted-Attach](Notepad++-Targetted-Attach.md) — Companion client-software security write-ups cataloguing vendor-update and pairing weaknesses.- [MongoBleed-Dec2025](MongoBleed-Dec2025.md) — Sister late-2025 CVE write-up documenting an unauthenticated, large-scale exposure flaw.

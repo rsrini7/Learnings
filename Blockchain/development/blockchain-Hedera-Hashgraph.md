@@ -339,3 +339,5 @@ Enterprise Revenue: Growing via tokenization/services
 ### Other References
 Youtube Reference with Agentic AI: https://www.youtube.com/watch?v=1jerPeBZXo4&list=PLjyCRcs63y83jlubHbD54BSWbdFvENoo-
 Github Repo: https://github.com/hedera-dev/workshop-ai-agent-langgraph
+
+**Related:**- [workflow-orchestration](../../Engineering/Middleware/workflow-orchestration.md) — Hashgraph's gossip-about-gossip and virtual voting are classic distributed-systems coordination primitives for multi-service workflows.- [Quantum-Threat-to-Bitcoin](../../QuantumComputing/Quantum-Threat-to-Bitcoin.md) — Hedera's aBFT finality and council governance are marketed as quantum-resistant advantages over PoW chains like Bitcoin.- [AI-Periodic-Table](../../AI-ML/LLMs/economy/AI-Periodic-Table.md) — Hedera's enterprise council (Google, IBM, ServiceNow) plus AI partnerships (Dec 2025 surge) tie it to the AI infrastructure layer.

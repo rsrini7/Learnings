@@ -54,3 +54,5 @@ This issue is called catastrophic forgetting: the model overrides old knowledge 
 
 *   Google Nested Learning represents a structural rethink of how AI models learn—aiming for continual evolution without forgetting.
 *   It paves the path for next-generation, self-modifying, and lifelong learning AI systems that better mimic human-like learning and memory integration.
+
+**Related:**- [Google-Nested-Learning-VS-FB-Sparce-Memory](../comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md) — Side-by-side contrast of Nested Learning's continuum memory against Meta's sparse slot updates.- [Facebook-sparce-memory-finetuning](Facebook-sparce-memory-finetuning.md) — Related continual-learning method targeting the same forgetting problem at the training step level.- [Titans-GooglePaper](../meta/Titans-GooglePaper.md) — Fellow Google memory work: Nested Learning reorganizes update rates while Titans adds neural long-term memory.- [ContinualLearning](../../AI-ML/LLMs/training/ContinualLearning.md) — Anchors Nested Learning's continuum memory system within established continual-learning taxonomy.

@@ -114,3 +114,5 @@ You are a senior engineer, systems architect, and thinking partner.
 
 ## Tone
 Direct. No filler. If something is a bad idea, say so — then suggest better.
+
+**Related:**- [Prompt-Generator-Prompt](../prompt-engineering/Prompt-Generator-Prompt.md) — Meta-prompt that can encode the reasoning, design, communication, and learning patterns catalogued here into reusable new prompts.- [prompting-guide](../prompt-engineering/prompting-guide.md) — Foundational techniques (zero-shot, few-shot, chain-of-thought) on which the advanced patterns in this reference build.- [Prompt-Engineering-for-CS](../coding/docs/Prompt-Engineering-for-CS.md) — Domain-specific application of these patterns to corporate-secretarial work, organized around the same Goal/Context/Expectations/Source decomposition.

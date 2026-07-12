@@ -194,3 +194,4 @@ The goal is **reduce load on the primary** while still delivering reliable, low-
 - https://www.youtube.com/watch?v=ubpUjovBMAM
 - https://www.youtube.com/watch?v=dApJ8X9XW9M
 
+**Related:**- [Java-Python-Enterprise-AI](../../AI-ML/Comparisons/Java-Python-Enterprise-AI.md) — OpenAI's PostgreSQL powers ChatGPT; enterprise AI stacks often pair Postgres with Java/Python backend services.- [SpringBoot-4-Migration-Copilot-VSCode](../../AI-ML/Agents/Spring-Boot-4-Migration/SpringBoot-4-Migration-Copilot-VSCode.md) — Spring Boot microservices commonly sit in front of PostgreSQL primary/replica setups like the one described here.- [AWS-vs-Hetzner](../Cloud/AWS-vs-Hetzner.md) — OpenAI runs Postgres on Azure but the single-primary bottleneck motivates the cloud-vs-bare-metal analysis.

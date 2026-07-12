@@ -1347,3 +1347,5 @@ Alerts: PagerDuty integration for SLO breaches
 - Mixing C and Java for High Performance Computing (Mitre)
 
 *Honest caveat: 1M RPS for Java at 192-core scale is extrapolated from verified TFB data (572k on 8-core). It is plausible but not independently benchmarked at that exact hardware configuration. C++ retains a measurable performance lead for CPU-heavy workloads.*
+
+**Related:**- [Scaling-1M-RPS-C++](Scaling-1M-RPS-C++.md) — C++ twin of this 1M RPS blueprint for comparing native vs JVM performance strategies.- [Java-Standard_Classes-vs-Records-vs-Carrier_Classes](../JVM/Java-Standard_Classes-vs-Records-vs-Carrier_Classes.md) — Records vs carrier classes guidance for designing low-allocation DTOs at high throughput.- [Java-Plugin-Arch](../JVM/Java-Plugin-Arch.md) — OSGi/JPMS modularity patterns that complement horizontally-scaled Java service tiers.- [Java-Python-Enterprise-AI](../../AI-ML/Comparisons/Java-Python-Enterprise-AI.md) — Java vs Python enterprise trade-offs relevant when picking JVM stacks for AI-adjacent services.

@@ -162,3 +162,5 @@ That is a higher bar than most AI benchmarks set. And it is a more honest one.
 *Original article: Asianetnews Telugu | Technical review and additional context: based on HKUDS/ClawWork and HKUDS/nanobot repositories (February 2026)*
 *220 tasks × 44 sectors verified against `occupation_to_wage_mapping.json` (task_count: 5 per occupation) and `eval/meta_prompts/` directory structure*
 *Repository: [github.com/HKUDS/ClawWork](https://github.com/HKUDS/ClawWork)*
+
+**Related:**- [clawwork-architecture-deep-dive](clawwork-architecture-deep-dive.md) — Full technical reference for the same project — covers ClawWorkAgentLoop, TrackedProvider, EconomicTracker, and the 8 ClawWork tools in code-level detail.- [nanobot-architecture-deep-dive](../nanobot/nanobot-architecture-deep-dive.md) — Underlying NanoBot runtime that ClawWork inherits 100% from, including the AgentLoop and memory system referenced in this article's architecture section.- [OpenClaw-Whitepaper](OpenClaw-Whitepaper.md) — Different agent framing — OpenClaw's broad proactive daemon for personal use versus ClawWork's narrow economic-simulation agent benchmark.

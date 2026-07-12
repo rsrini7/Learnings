@@ -30,3 +30,5 @@ Panel 5 (rightmost) titled "[PANEL 5 TITLE]" in electric green neon header, cont
 Overall color palette: deep midnight blue background, vibrant magenta, cyan, sunny yellow, purple, and electric green accents, strong neon glows, ultra-sharp details, cinematic UI design, professional infographic style, 8K resolution.
 
 Discreetly include the text "Srinivasan Ragothaman (@rsrini7)" with a small GitHub icon in the bottom middle.
+
+**Related:**- [gemini-image-4-panel-futuristic-infographic-prompt](gemini-image-4-panel-futuristic-infographic-prompt.md) — Predecessor 4-panel version of the futuristic infographic template family.- [gemini-image-3-panel-futuristic-infographic-prompt](gemini-image-3-panel-futuristic-infographic-prompt.md) — Original 3-panel template that started the futuristic infographic column-count variant set.- [gemini-futuristic-infographic-generic](gemini-futuristic-infographic-generic.md) — Non-templated cousin using the same dark neon infographic aesthetic.

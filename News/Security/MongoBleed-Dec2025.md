@@ -199,3 +199,5 @@ Stay updated on security news. If you run MongoDB, check your version today. Thi
 [Ref2] (https://www.youtube.com/watch?v=EXntMGxqfKI)
 
 [Ref3] (https://www.youtube.com/watch?v=9Wg6tiaar9M)
+
+**Related:**- [Scaling-PostgreSQL-ChatGPT](../../Engineering/Databases/Scaling-PostgreSQL-ChatGPT.md) — Companion database-engineering piece; MongoBleed specifically targets an unauthenticated MongoDB network path.- [Largest-WhatsApp-Data-Leak-in-History](Largest-WhatsApp-Data-Leak-in-History.md) — Both are unauthenticated, internet-scale data exposure events disclosed in late 2025.- [Node.js-Async-Hooks-DoS-Vulnerability](Node.js-Async-Hooks-DoS-Vulnerability.md) — Sister infrastructure-layer CVE write-up for a critical runtime flaw from the same period.

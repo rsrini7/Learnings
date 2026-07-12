@@ -1112,3 +1112,4 @@ The commitment to regular updates suggests an ongoing experiment in open develop
 - **Historical 2023 Release:** https://github.com/twitter/the-algorithm
 - **2023 Engineering Blog:** https://blog.x.com/engineering/en_us/topics/open-source/2023/twitter-recommendation-algorithm
 
+**Related:**- [X's Recommendation Algorithm-with-Verification](X's Recommendation Algorithm-with-Verification.md) — Source-verified companion that classifies claims as VERIFIED, HISTORICAL, or EXTERNAL against the repo.- [RAG-Guide-Jan-2026](../RAG/RAG-Guide-Jan-2026.md) — RAG retrieval patterns analogous to the candidate retrieval and re-ranking stages of the For You feed.

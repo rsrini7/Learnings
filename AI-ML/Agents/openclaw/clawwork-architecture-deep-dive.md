@@ -887,3 +887,5 @@ ClawWork is NanoBot with a financial nervous system grafted on via subclassing a
 ---
 
 *Repository: [https://github.com/HKUDS/ClawWork](https://github.com/HKUDS/ClawWork) | Built on: [NanoBot](https://github.com/HKUDS/nanobot) v0.1.3.post6 | Documented: February 2026*
+
+**Related:**- [nanobot-architecture-deep-dive](../nanobot/nanobot-architecture-deep-dive.md) — Explicitly cited prerequisite — covers the NanoBot AgentLoop, MessageBus, and ToolRegistry that ClawWork's economic layer wraps without modification.- [clawwork-asianetnews-corrected](clawwork-asianetnews-corrected.md) — Layperson narrative version of this same project explaining the 44 occupations, work/learn choice, and rubric scoring for non-architects.- [claw-ecosystem](claw-ecosystem.md) — Broader ecosystem survey positioning NanoBot (and therefore ClawWork) within the spectrum of OpenClaw, ZeroClaw, IronClaw, and PicoClaw.- [OpenClaw-Whitepaper](OpenClaw-Whitepaper.md) — Contrasting agent philosophy: OpenClaw as a broad proactive daemon vs ClawWork as a focused GDPVal-benchmark economic simulator.

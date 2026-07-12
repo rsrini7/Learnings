@@ -13788,3 +13788,5 @@ This comprehensive guide covers the complete blockchain ecosystem across 26 majo
 ---
 
 *This document is a living resource. The blockchain ecosystem evolves rapidly - stay updated through official documentation, developer communities, and hands-on experimentation.*
+
+**Related:**- [BlockchainLayers](BlockchainLayers.md) — Complements the 26-sector map with the L0-L3 layered architecture view of the same ecosystem.- [DLT](DLT.md) — Pairs the category-driven view with the multi-dimensional DLT taxonomy spanning blockchain, DAG, and Hashgraph.- [Hardhat-Development](../ethereum/Hardhat-Development.md) — Highlights Hardhat as the canonical entry in the testing-and-development-environments category.- [EnterpriceBlockchainLearning](../enterprise/EnterpriceBlockchainLearning.md) — Connects the Fabric/Corda/Quorum enterprise tracks to the wider developer-tooling landscape.

@@ -178,3 +178,5 @@ The supercycle is driven by tokenization and Ethereum's infrastructure, verified
 [17](https://www.investing.com/news/cryptocurrency-news/stanchart-says-2026-will-be-the-year-of-ethereum-sets-new-2030-price-target-4441812)
 [18](https://finance.yahoo.com/quote/BMNR/)
 [19](https://in.investing.com/equities/bitmine-immersion-tech)
+
+**Related:**- [JPMorgan-Blockchain-Strategy](../enterprise/JPMorgan-Blockchain-Strategy.md) — Grounds the tokenization supercycle in JPMC's concrete on-chain bank-money and RWA deployments.- [Jan-2025-Updates](../reference/Jan-2025-Updates.md) — Anchors the supercycle claims against the January 2026 BNY tokenized deposits and CLARITY Act milestones.- [Blockchain-by-2035](../reference/Blockchain-by-2035.md) — Extends the 2025-2026 supercycle into the 2035 bank-free, fully tokenized economy forecast.- [BlockchainLayers](../reference/BlockchainLayers.md) — Explains why Ethereum's L1 settlement plus L2 rollups make it the default RWA programmability layer.

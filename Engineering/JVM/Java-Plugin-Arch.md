@@ -202,3 +202,5 @@ Need runtime hot-swap?
 | Runtime Plugins | PF4J |
 | External Extensions | Microservices |
 | Business Rules | Scripting |
+
+**Related:**- [Java-Standard_Classes-vs-Records-vs-Carrier_Classes](Java-Standard_Classes-vs-Records-vs-Carrier_Classes.md) — Records and upcoming carrier classes as candidate shapes for stable plugin SPI contracts.- [Java_remote_debug](Java_remote_debug.md) — JDWP attach flow for debugging long-running, dynamically-loaded plugin runtimes.- [Scaling-1M-RPS-Java](../Architecture/Scaling-1M-RPS-Java.md) — Scaling blueprint showing where plugin isolation meets 1M RPS service mesh realities.- [SpringBoot-4-Migration-Copilot-VSCode](../../AI-ML/Agents/Spring-Boot-4-Migration/SpringBoot-4-Migration-Copilot-VSCode.md) — Spring Boot 4 migration context where auto-configuration replaces classic plugin loaders.

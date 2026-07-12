@@ -156,3 +156,5 @@ For visual Math clarity and lectures to ease understanding:
 3.  Mathematics-Basics to Advanced for Data Science And GenAI Udemy Course
 4.  Machine Learning A-Z: AI, Python & R + ChatGPT Prize [2025] Udemy Course
 5.  Hands-On Machine Learning with Scikit-Learn, Keras & TensorFlow by Aurélien Géron
+
+**Related:**- [inside-a-neuron](../attention/inside-a-neuron.md) — Implements the chain-rule backpropagation and gradient-descent math that this curriculum lists as the essential calculus/numerical-computation prerequisites.- [Glossary](../reference/Glossary.md) — Defines the linear-algebra objects (matrices, norms, parameter vectors) and statistical concepts (distributions, variance) that this curriculum's textbooks teach.- [microGPT-Architecture-Complete](../architecture/microGPT-Architecture-Complete.md) — Concrete pure-Python application of every concept on this math list: matrix multiplies, gradient descent, backprop, cross-entropy loss, softmax.

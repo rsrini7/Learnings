@@ -74,3 +74,5 @@ Ends on the claim that future AI progress may be less about bigger models and mo
 ## In Short
 
 The explanation video frames SCMS as a paradigm shift using vivid metaphors and survey data, details its origin as a user-driven discovery, formalizes its operation as a "test suite" for knowledge, and issues a call for tool support to make the explanation approach the default. These narrative, UX, and behavioral insights are more detailed and explicit here compared to the previous (more economic/engineering-focused) explanation.
+
+**Related:**- [Google-Nested-Learning-VS-FB-Sparce-Memory](../comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md) — Direct comparison of Meta's sparse memory slot updates vs Google's nested multi-rate learning.- [Google-Nested-Learning](Google-Nested-Learning.md) — Companion continual-learning approach tackling the same catastrophic-forgetting problem differently.- [ContinualLearning](../../AI-ML/LLMs/training/ContinualLearning.md) — Connects sparse memory-slot finetuning to broader continual-learning literature and evaluation.

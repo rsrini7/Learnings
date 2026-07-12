@@ -89,3 +89,5 @@ This outage was a wake-up call for the serverless era, where one AWS setting can
 *SRE Final Framing*: This wasn't a database failure, AWS outage, DDoS, or code bug—it was a regional control-plane misconfiguration amplified by insufficient guardrails and observability asymmetry. The takeaway isn't fear of automation; it's disciplined automation. In cloud infrastructure, one setting can isolate a region in milliseconds, and recovery depends on whether your systems were designed for failure.
 
 If you're building on Supabase or similar, review your IaC for regional scopes today—because one setting really can kill your stack.
+
+**Related:**- [AWS-Downtime-Caused-By-AI-Mistake](../../Engineering/Cloud/AWS/AWS-Downtime-Caused-By-AI-Mistake.md) — Both attribute AWS regional outages to automated control-plane/configuration changes gone wrong.- [AWS-Outage-October-19&20-2025](AWS-Outage-October-19&20-2025.md) — Earlier AWS us-east outage set the pattern that Supabase's Feb 2026 BPA incident echoed.- [cloudflare-down-nov-2025](cloudflare-down-nov-2025.md) — Sibling vendor outage where a single config-generation change cascaded into a global flap.

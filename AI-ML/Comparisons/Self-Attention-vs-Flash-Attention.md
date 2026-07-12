@@ -57,3 +57,5 @@ FlashAttention was developed by Stanford researchers with one key insight: redes
 ## Why This Matters for LLMs
 
 The shift from quadratic to **linear memory growth** is what breaks the hard scaling barrier. Before FlashAttention, models could only process a few paragraphs at a time; after it, models can digest entire technical manuals, legal documents, genomic sequences, and high-resolution images in a single pass. This is why modern LLMs like GPT-4, Claude, and Gemini can support massive context windows — FlashAttention (and its successor FlashAttention-2/3) is a foundational building block underneath them all. 
+
+**Related:**- [Beyond-SoftMax-Attention](../LLMs/attention/Beyond-SoftMax-Attention.md) — Deeper treatment of softmax and attention variants that grounds the IO-aware redesign.- [inside-a-neuron](../LLMs/attention/inside-a-neuron.md) — Neuron-level compute view that complements the SRAM/HBM memory-traffic framing.- [Top-50-Q&A-AI-ML-Math](Top-50-Q&A-AI-ML-Math.md) — Math Q&A (e.g., softmax, residual flow) that backs the algorithmic claims in the comparison table.

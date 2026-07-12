@@ -368,3 +368,5 @@ By the end of the video’s process, you have:
 
 ## Reference:
 https://www.youtube.com/watch?v=tnsrnsy_Lus
+
+**Related:**- [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026.md) — Catalogs the gateway auth bypass, exposed instances, and prompt-injection risks that this setup's Tailscale+firewall+sandboxed-account approach is designed to mitigate.- [OpenClaw(Moltbot-or-Clawdbot)-Architecture](OpenClaw(Moltbot-or-Clawdbot)-Architecture.md) — Explains the gateway port 18789, loopback binding, JSONL session storage, and channel pairing that this tutorial configures.- [openclaw-usecases-video-supplement](openclaw-usecases-video-supplement.md) — Concrete CRM, briefing, and skills workflows to deploy once this secure VPS setup is complete and Telegram pairing succeeds.- [OpenClaw-Whitepaper](OpenClaw-Whitepaper.md) — Frames why a hardened VPS deployment is necessary by characterizing agents as privileged infrastructure rather than developer tools.

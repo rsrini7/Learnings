@@ -21,3 +21,5 @@ Provide a high-level summary (500+ words) that integrates all the knowledge into
 
 **Step 4: Actionable Steps**
 Provide a high-level summary (300+ words) that integrates all the knowledge into a "Master Guide." Use bullet points for readability and **bold text** for critical takeaways.
+
+**Related:**- [Youtube-Multi-Links-Understanding-Prompt](Youtube-Multi-Links-Understanding-Prompt.md) — Sibling multi-video extraction prompt that extends the same Step 1/2/3 research structure across several videos.- [Youtube-Visual-Analysis](Youtube-Visual-Analysis.md) — Companion multimodal visual-analysis prompt for extracting on-screen content from the same YouTube videos.

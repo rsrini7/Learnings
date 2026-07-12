@@ -352,3 +352,5 @@ WebAssembly is not a replacement for JavaScript; it is a complementary tool.
 *   [Official Rust WASM Guide](https://rustwasm.github.io/wasm-bindgen/getting-started/using-wasm-bindgen.html)
 *   [Official WASI Spec](https://github.com/WebAssembly/wasi-spec)
 *   Rust + WebAssembly in 2026 — Complete Guide (Browser, WASI, Edge, Optimisation)
+
+**Related:**- [rust-vs-c](comparisons/rust-vs-c.md) — Builds on Rust's memory-safety and small-binary advantages versus C for portable WebAssembly deployment.- [workflow-orchestration](../Middleware/workflow-orchestration.md) — WASM modules can host lightweight workflow actors (e.g., Restate) at the edge alongside Temporal-style orchestration.- [MacMini-Setup](../../DevSetup/MacMini-Setup.md) — WASM toolchain installation parallels the local Rust/cargo setup typical for MacMini development environments.

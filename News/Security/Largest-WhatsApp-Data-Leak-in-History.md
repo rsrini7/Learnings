@@ -89,3 +89,5 @@ This summary captures all key points of the WhatsApp data leak incident, its mec
 [^8]: https://indianexpress.com/article/technology/tech-news-technology/whatsapp-india-user-profiles-photos-scraped-researchers-10374848/
 
 [^9]: https://www.wired.com/story/a-simple-whatsapp-security-flaw-exposed-billions-phone-numbers/
+
+**Related:**- [MongoBleed-Dec2025](MongoBleed-Dec2025.md) — Both are large-scale unauthenticated data exposure flaws compared to historic leak benchmarks.- [Security-Vulnerabilities-in-Wireless-Devices-and-Apps](Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md) — Sibling consumer-privacy write-ups covering mass-impact flaws reported in late 2025.- [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](../../AI-ML/Agents/openclaw/OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026.md) — Another high-profile breach write-up cataloguing user-data exposure and disclosure timelines.

@@ -834,3 +834,5 @@ Company Secretaries using this guide are reminded that all AI-generated output m
 ---
 
 *This guide is intended for educational and professional development purposes. Always refer to the latest amendments and circulars from MCA, SEBI, ICSI, and RBI before acting on any compliance matter.*
+
+**Related:**- [prompting-guide](../../prompt-engineering/prompting-guide.md) — General prompt-engineering guide whose foundational techniques and structured-prompt principles underpin this CS-domain application.- [Prompt-Generator-Prompt](../../prompt-engineering/Prompt-Generator-Prompt.md) — Meta-prompt useful for constructing the jurisdiction-specific India/Singapore/UK/US prompt variations demonstrated in the CS use-case library.- [What%20and%20How%20can%20ASK%20an%20AI](../../research/What%20and%20How%20can%20ASK%20an%20AI.md) — Companion reference whose stakeholder-translation and ADR-drafting patterns directly support CS practice for board-meeting and governance use cases.

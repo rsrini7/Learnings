@@ -317,3 +317,5 @@ pi --extension ~/ws/pi-headroom --list-models
 - [pi-rtk](https://github.com/rsrini7/pi-rtk)
 - [pi-headroom](https://github.com/rsrini7/pi-headroom)
 - Amsha project: `.mise/tasks/headroom/README.md`
+
+**Related:**- [AI-Coding-Loops](../AI-ML/Agents/development/AI-Coding-Loops.md) — Headroom compresses context inside pi's coding-agent loop; pairs with broader agent-loop optimization patterns.- [GenAI-cost-Optimization](../AI-ML/LLMs/optimization/GenAI-cost-Optimization.md) — Proxy-layer token reduction complements GenAI cost strategies like caching, routing, and quantization.- [headroom-pxoxy](headroom-pxoxy.md) — Generic standalone headroom proxy variant (port 8780) for any OpenAI-compatible app beyond pi.

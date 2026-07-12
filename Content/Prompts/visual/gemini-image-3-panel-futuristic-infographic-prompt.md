@@ -19,3 +19,5 @@ Right panel titled "[RIGHT PANEL TITLE]" in sunny yellow neon header, containing
 Overall color palette: deep midnight blue background, vibrant cyan, magenta, and sunny yellow accents, strong neon glows, ultra-sharp details, cinematic UI design, professional infographic style, 16:9 aspect ratio, 8K resolution.
 
 Discreetly include the text "Srinivasan Ragothaman (@rsrini7)" with a small GitHub icon in the bottom middle.
+
+**Related:**- [gemini-image-4-panel-futuristic-infographic-prompt](gemini-image-4-panel-futuristic-infographic-prompt.md) — Sibling 4-panel version extending the same futuristic infographic layout with an extra column.- [gemini-image-5-panel-futuristic-infographic-prompt](gemini-image-5-panel-futuristic-infographic-prompt.md) — Sibling 5-panel version adding two more columns on the same neon aesthetic.- [gemini-futuristic-infographic-generic](gemini-futuristic-infographic-generic.md) — Generic non-templated variant of the same 3-panel futuristic infographic layout.

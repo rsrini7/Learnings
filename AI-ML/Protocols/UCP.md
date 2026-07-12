@@ -946,3 +946,5 @@ As AI agents become primary shopping interfaces, UCP provides the standardized f
 - Community Slack: [Join via ucp.dev]
 
 ![UCP](assets/UCP.png)
+
+**Related:**- [Agent-Skills](../Agents/skills/Agent-Skills.md) — UCP's profile/capability discovery parallels Skills patterns, complementing the skills-vs-tools framing in this paper.- [Agent-Specs-vs-Rules-vs-Skills](../Agents/skills/Agent-Specs-vs-Rules-vs-Skills.md) — Maps UCP's capability manifests onto the broader Specs/Rules/Skills agent taxonomy, independent of any specific transport.- [AI-PMRoles](../Agents/development/AI-PMRoles.md) — UCP's merchant-of-record and payment-provider roles mirror the agent PM-role boundaries relevant to commerce workflows.

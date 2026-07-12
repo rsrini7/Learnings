@@ -1979,4 +1979,4 @@ The frameworks that emerged separately in 2024-2025 are pieces of a larger, comp
 **Start where you are. Use what you need. Evolve as you grow.**
 
 **Related:** [AI Coding Loops: What's Real, What's Hype](AI-Coding-Loops.md) — a practical map of when to use each level of coding autonomy, from inner-loop pair programming to multi-agent orchestration.
-
+- [Spec-Driven-Development-Frameworks](Spec-Driven-Development-Frameworks.md) — deep dive into the SDD side of the SDD/UACF/Skills trio this doc summarizes, covering BMAD, Spec Kit, OpenSpec, Agent OS, Conductor, and Serena.- [Agent-sdd-uacf-skills-comparison](../skills/Agent-sdd-uacf-skills-comparison.md) — standalone 15,000-word comparative analysis of the same three frameworks across 12 dimensions.- [Agent-Specs-vs-Rules-vs-Skills](../skills/Agent-Specs-vs-Rules-vs-Skills.md) — complementary comparison that frames the three layers against rules-based agent alternatives.

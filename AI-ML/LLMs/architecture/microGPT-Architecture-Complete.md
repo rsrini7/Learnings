@@ -438,3 +438,5 @@ Characters get personalities (embeddings)
 ---
 
 *Based on Andrej Karpathy's microGPT implementation.*
+
+**Related:**- [microGPT-Technical-Deep-Dive](microGPT-Technical-Deep-Dive.md) — Consolidated technical reference with comparisons, FAQ, common pitfalls, and community ports not duplicated here.- [Auto-Regression](../training/Auto-Regression.md) — microGPT's inference loop is autoregressive generation; this doc explains that mechanism and its speed-quality tradeoffs.

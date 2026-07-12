@@ -56,3 +56,4 @@
 *   **Diffusers**: Even magic energy spread for Grover’s search.
 *   **Molecule Structure Prediction**: Quantum-assisted LEGO block shape guessing.
 
+**Related:**- [Google-WillowChip-QuantumEchoes-Algorithm](Google-WillowChip-QuantumEchoes-Algorithm.md) — Applies these core definitions to a concrete Willow chip and Quantum Echoes algorithm case study.- [Quantum-Threat-to-Bitcoin](Quantum-Threat-to-Bitcoin.md) — Shows practical cryptographic stakes of Shor's algorithm and superposition defined here.- [VIO-40K-Arch-10K-Qubits](VIO-40K-Arch-10K-Qubits.md) — Illustrates how coherence time, gate fidelity, and scalability terms translate into a 10K-qubit design.

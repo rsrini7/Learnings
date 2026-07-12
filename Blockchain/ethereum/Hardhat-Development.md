@@ -173,3 +173,5 @@ By following these steps, you have successfully established a professional solid
 **Source Material:**
 *Master Hardhat in MINUTES | The Best Solidity Dev Tool Explained*
 YouTube URL: [https://www.youtube.com/watch?v=rxK3UXld8xY](https://www.youtube.com/watch?v=rxK3UXld8xY)
+
+**Related:**- [Ethereum-hardhat-docker](Ethereum-hardhat-docker.md) — Extends the local Hardhat workflow into a fully containerized Docker, Ignition, and Viem dApp stack.- [blockchain-26-catagories](../reference/blockchain-26-catagories.md) — Cross-references the Hardhat tooling within the broader dev-tools and testing-environments taxonomy.- [EnterpriceBlockchainLearning](../enterprise/EnterpriceBlockchainLearning.md) — Feeds the Solidity path of the enterprise developer roadmap with practical Hardhat usage.

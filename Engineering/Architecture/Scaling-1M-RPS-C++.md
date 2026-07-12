@@ -1126,3 +1126,5 @@ Alerts: PagerDuty integration for SLO breaches
 **Senior Architect Verified:** ✓
 
 *All technical claims verified against official documentation and real-world benchmarks.*
+
+**Related:**- [Scaling-1M-RPS-Java](Scaling-1M-RPS-Java.md) — JVM-focused counterpart applying the same 1M RPS blueprint to Java, useful for cross-language trade-off comparison.- [Java-Plugin-Arch](../JVM/Java-Plugin-Arch.md) — OSGi/JPMS modularity patterns relevant to extensibility when scaling C++ services horizontally.- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Iterative design-review loop used to refine the scaling blueprint against production feedback.

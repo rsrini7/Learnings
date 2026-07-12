@@ -470,3 +470,5 @@ openssl rand -hex 12
 - **PowerShell**: Keep only in project `mise.toml` at version `7.5`. Do NOT install globally — versions 7.6+ crash on macOS. If you need `pwsh` outside projects, use `mise x powershell@7.5.7 -- pwsh`.
 - **Mise vs SDKMAN**: SDKMAN handles global Java defaults. Mise handles per-project pinned versions. They coexist because `mise activate` only modifies PATH when a local `mise.toml` is present.
 - **Direnv whitelist**: The `direnv.toml` whitelist prevents repeated `direnv allow` prompts when editing `.envrc` files inside `~/ws`.
+
+**Related:**- [AWS-vs-Hetzner](../Engineering/Cloud/AWS-vs-Hetzner.md) — Compares cloud hosts; the Mac Mini can serve as a low-cost local headroom node vs. rented cloud runners.- [AI-Coding-Loops](../AI-ML/Agents/development/AI-Coding-Loops.md) — Mac Mini is the recommended local host for AI coding-agent loops and the shell tools installed here.- [GenAI-cost-Optimization](../AI-ML/LLMs/optimization/GenAI-cost-Optimization.md) — Local LLM tooling section pairs with cost-optimization strategies for self-hosted vs. API inference.

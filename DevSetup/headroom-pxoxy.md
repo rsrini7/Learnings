@@ -144,3 +144,5 @@ lsof -ti :8780 | xargs kill -9 2>/dev/null; hproxy
 ## References
 
 - [Headroom GitHub](https://github.com/headroom-ai/headroom)
+
+**Related:**- [GenAI-cost-Optimization](../AI-ML/LLMs/optimization/GenAI-cost-Optimization.md) — Standalone compression proxy is one implementation pattern within the broader GenAI cost-optimization toolkit.- [AI-Coding-Loops](../AI-ML/Agents/development/AI-Coding-Loops.md) — The same proxy architecture underpins coding-agent loops; this doc covers the generic app use case.- [MacMini-Setup](MacMini-Setup.md) — Proxy runs locally on a dev machine — install the shell/runtime prerequisites from the Mac Mini setup first.

@@ -1367,3 +1367,5 @@ The future of AI is open, efficient, and accessible. Welcome to the Gemma era.
 24. DeepMind Gemma Page: https://deepmind.google/models/gemma/
 
 ---
+
+**Related:**- [Claude-Developer-Ecosystem-Jan-2026](../anthropic/Claude-Developer-Ecosystem-Jan-2026.md) — Anthropic counterpart guide; pairs naturally for open-source Gemma vs closed Claude ecosystem comparison.- [LLM-Benchmarks](../../architecture/LLM-Benchmarks.md) — Defines the MMLU, HumanEval, HellaSwag, Chatbot Arena, and RULER benchmarks used to score Gemma variants.- [Multimodal-RAG](../../../RAG/Multimodal-RAG.md) — EmbeddingGemma + Gemma 3n form the multimodal RAG pattern covered here, with PaliGemma 2 as the vision encoder.- [AI-Hardware-Chips-Explained](../../../Hardware/AI-Hardware-Chips-Explained.md) — Gemma 3n targets phones, QAT runs on RTX 3090/RTX 4060, and VaultGemma trains on TPUv6e; chips defined here.- [LLM-Inference-Engines](../../architecture/LLM-Inference-Engines.md) — Speculative decoding, vLLM continuous batching, and quantization shown for Gemma map to the inference engine techniques defined here.

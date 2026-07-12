@@ -336,3 +336,5 @@ For developers and companies building with AI, understanding inference isn't opt
 Ref: https://x.com/madisonkanna/status/2010950830804123719
 
 Continue Reading : [LLM-Inference-Engines.md](LLM-Inference-Engines.md)
+
+**Related:**- [LLM-Inference-Engines](LLM-Inference-Engines.md) — Companion deep dive into specific engines (vLLM, SGLang, TensorRT-LLM); already linked at the bottom of this file.- [OpenResponses-Open-Inference-Standard](../optimization/OpenResponses-Open-Inference-Standard.md) — Defines the inference API standard referenced in this file's protocol section (SSE, WebSockets, OpenAI-compatible endpoints).- [GenAI-cost-Optimization](../optimization/GenAI-cost-Optimization.md) — Cost-reduction strategies here complement the cost optimization section in this inference guide.- [Auto-Regression](../training/Auto-Regression.md) — Explains the autoregressive mechanism that makes the decode phase memory-bound as detailed in this file.- [LLM-Benchmarks](LLM-Benchmarks.md) — Provides benchmarks for measuring the latency and throughput metrics (TTFT, TPOT) defined in this file.

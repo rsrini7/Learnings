@@ -170,3 +170,5 @@
 
 **50. What math skill separates seniors from juniors?**
 **Answer:** Knowing *what assumptions you’re violating*.
+
+**Related:**- [Interview-Q&A-role-Variants](Interview-Q&A-role-Variants.md) — Sibling role-specific Q&A that applies these math fundamentals to production debugging.- [Top-50-Q&A-AI-ML-Eng](Top-50-Q&A-AI-ML-Eng.md) — Sibling engineering Q&A connecting these math answers to operational decisions.- [Self-Attention-vs-Flash-Attention](Self-Attention-vs-Flash-Attention.md) — Practical softmax and attention IO behavior that operationalizes Q2 and the optimization section.- [Beyond-SoftMax-Attention](../LLMs/attention/Beyond-SoftMax-Attention.md) — Extended softmax/attention variants that extend the Q&A's probability-distribution discussion.

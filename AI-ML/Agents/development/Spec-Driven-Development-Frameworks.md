@@ -3882,3 +3882,5 @@ The future of AI-driven software development is written specifications, strategi
 **Scope:** Comprehensive white paper covering 6 major frameworks and 1 complementary tool
 **Word Count:** 35,000+
 **Audience:** Technical decision-makers, engineering teams, AI coding practitioners
+
+**Related:**- [AI-Assisted-Development](AI-Assisted-Development.md) — broader overview of SDD as one of three complementary frameworks alongside UACF and Claude Skills.- [Agent-sdd-uacf-skills-comparison](../skills/Agent-sdd-uacf-skills-comparison.md) — 12-dimension comparative analysis placing the six SDD frameworks covered here against UACF and Skills.- [Agent-Specs-vs-Rules-vs-Skills](../skills/Agent-Specs-vs-Rules-vs-Skills.md) — positions SDD alongside rules and skills for readers choosing between them rather than composing all three.

@@ -56,3 +56,5 @@ Your final output must be a single response containing the full text for all the
     *   *Conclusion:* End with a brief summary of what the reader learned and a transition to the next chapter.
 
 Please begin the analysis and generate the complete set of Markdown files now.
+
+**Related:**- [codebase-explore-prompt](codebase-explore-prompt.md) — Sibling codebase-exploration prompt that writes a README/OVERVIEW, while this one maintains a structured /docs folder.- [code-understanding-llm-prompt](code-understanding-llm-prompt.md) — Companion conceptual-overview prompt that complements this phased /docs generation workflow.

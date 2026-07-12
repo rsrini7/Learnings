@@ -43,3 +43,5 @@ Several key themes emerge from both discussions:
 *   **Multi-Token Prediction (MTP):** Both analyses point to MTP as a method DeepSeek employs to improve performance and reduce costs associated with token generation.
 *   **FP8 Training:** The adoption of FP8 precision for training is noted as a significant step in reducing memory usage and improving training efficiency.
 *   **Innovation in the Face of Limitations:** The overarching narrative is that DeepSeek leverages creative engineering and smart design choices to overcome hardware limitations and compete effectively in the AI landscape.
+
+**Related:**- [DeepSeek-R1](DeepSeek-R1.md) — DeepSeek-R1's RL-based reasoning training builds on the V3 architecture foundations described here.- [mHC-Deepseek](mHC-Deepseek.md) — Manifold-Constrained Hyper-Connections extend the MoE architecture discussed in this V3 overview.- [Deepseek-Engram](Deepseek-Engram.md) — Engram's n-gram lookup is designed to be complementary to the MoE paradigm outlined here.

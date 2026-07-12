@@ -479,3 +479,4 @@ microGPT is like teaching letters to:
 
 All using nothing but simple math.
 
+**Related:**- [microGPT-Architecture-Complete](microGPT-Architecture-Complete.md) — Full architecture walkthrough with code snippets, Adam optimizer details, and training pipeline that this diagram-only view summarizes.- [inside-a-neuron](../attention/inside-a-neuron.md) — Same beginner-friendly pedagogical style; this covers the single-neuron building block before tackling microGPT's Transformer composition.

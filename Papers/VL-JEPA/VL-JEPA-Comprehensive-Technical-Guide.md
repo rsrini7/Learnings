@@ -1090,3 +1090,5 @@ The next generation of AI systems will likely combine VL-JEPA's efficient percep
 11. Hugging Face VL-JEPA Collection - [Link](https://huggingface.co/papers?q=Joint+Embedding+Predictive+Architecture)
 
 ---
+
+**Related:**- [VL-JEPA-Executive-Brief](../vision/VL-JEPA-Executive-Brief.md) — Short executive brief counterpart to this comprehensive guide for fast orientation.- [LLM-VLA-VLM-VL-JEPA-MAMBA3-DIFFUSION](../comparisons/LLM-VLA-VLM-VL-JEPA-MAMBA3-DIFFUSION.md) — Places VL-JEPA within the broader 2026 vision-language architecture trade-off matrix.- [Multimodal-RAG](../../AI-ML/RAG/Multimodal-RAG.md) — VL-JEPA's nearest-neighbor embedding routing parallels embedding-first multimodal retrieval designs.

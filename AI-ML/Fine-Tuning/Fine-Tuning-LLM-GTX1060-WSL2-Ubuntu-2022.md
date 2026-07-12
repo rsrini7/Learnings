@@ -98,3 +98,5 @@ Follow these steps to install CUDA Toolkit 12.6 for WSL-Ubuntu:
 *   Supported GPUs for Unsloth start from GTX 1070 and later (Volta, Turing, Ampere, Ada, and Blackwell architectures).
 
 Therefore, while you can set up the environment, Unsloth will not leverage the GPU on a GTX 1060 for accelerated fine-tuning.
+
+**Related:**- [Parameter-Efficient-Fine-Tuning](Parameter-Efficient-Fine-Tuning.md) — PEFT methods (LoRA, QLoRA) that make LLM fine-tuning tractable on a 6 GB GTX 1060.- [Auto-Regression](../LLMs/training/Auto-Regression.md) — Autoregressive training objective that underlies next-token prediction in LLM fine-tuning.- [AI-Hardware-Chips-Explained](../Hardware/AI-Hardware-Chips-Explained.md) — GPU architecture and CUDA concepts that contextualize the toolkit install and driver choices.

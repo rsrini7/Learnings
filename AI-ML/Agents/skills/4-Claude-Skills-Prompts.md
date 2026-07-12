@@ -329,3 +329,4 @@ The Skill should confirm file path is correct before reading, and provide helpfu
 
 Source: https://root-tendency-e9a.notion.site/Rick-Mulready-s-5-Mind-Blowing-Use-Cases-of-Claude-Skills-YouTube-Video-Prompts-from-Video-2a9c2aecc297819e96a6f167037c95c0
 
+**Related:**- [Agent-Skills](Agent-Skills.md) — canonical explanation of the SKILL.md frontmatter and folder layout that these five prompt templates are written against.- [Agent-Skills-vs-Agents.md](Agent-Skills-vs-Agents.md.md) — these five concrete prompts (lead scoring, report builder, survey analyzer) are exactly the 'narrow action-oriented workflows' where Skills still win.- [claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills](claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md) — locates these reusable Skills within the broader Claude primitives taxonomy (agents, MCP, Rules, Projects).

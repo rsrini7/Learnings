@@ -128,3 +128,5 @@
     * ZooKeeper is replaced by KRaft for metadata management (from video).
     * Queue functionality is in progress, with share groups as the first step (from video).
     * Users are advised to read the release notes for complete details (from video).
+
+**Related:**- [Node.js-Async-Hooks-DoS-Vulnerability](../../News/Security/Node.js-Async-Hooks-DoS-Vulnerability.md) — Node.js Kafka clients are vulnerable to async-hooks DoS attacks, relevant when adopting KIP-848 broker-driven rebalances.- [Java25-vs-Go1.24-Go1.25](../Languages/comparisons/Java25-vs-Go1.24-Go1.25.md) — Java and Go are the dominant languages for Kafka brokers and stream-processing clients; runtime choice affects share-group throughput.- [workflow-orchestration](workflow-orchestration.md) — Kafka often underpins event-driven orchestration engines like Netflix Conductor for durable workflow execution.

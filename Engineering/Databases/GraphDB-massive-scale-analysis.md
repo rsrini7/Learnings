@@ -1147,3 +1147,5 @@ This analysis is based on publicly available information as of January 2026. Per
 - NebulaGraph release status verified via GitHub as of January 17, 2026
 
 **Note:** The author has no financial interest in any of the companies mentioned. This analysis is provided for informational purposes only.
+
+**Related:**- [AWS-vs-Hetzner](../Cloud/AWS-vs-Hetzner.md) — Compares AWS (where Neptune runs) against Hetzner for cost and performance trade-offs relevant to managed graph DB choices.- [workflow-orchestration](../Middleware/workflow-orchestration.md) — Distributed workflow orchestration tools like Conductor and Argo complement graph database query patterns at scale.- [Scaling-PostgreSQL-ChatGPT](Scaling-PostgreSQL-ChatGPT.md) — Adjacent single-primary scaling bottleneck discussion that informs trillion-edge graph store design.

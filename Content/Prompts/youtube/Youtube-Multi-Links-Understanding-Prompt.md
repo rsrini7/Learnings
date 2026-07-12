@@ -19,3 +19,5 @@ The "Golden Thread": What is the overarching narrative or lesson when all these 
 
 Step 3: Consolidated Understanding
 Provide a final, high-level summary (500+ words) that integrates all the knowledge into a "Master Guide" or "Executive Summary." Use bullet points for readability and bold text for critical takeaways. 
+
+**Related:**- [Youtube-Single-Link-Understanding-Prompt](Youtube-Single-Link-Understanding-Prompt.md) — Sibling single-video extraction prompt with a parallel Step 1/2/3 research workflow.- [Youtube-Visual-Analysis](Youtube-Visual-Analysis.md) — Companion multimodal visual-analysis prompt that targets the same YouTube research use case.

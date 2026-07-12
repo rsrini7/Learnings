@@ -205,3 +205,5 @@ To stop a model and restart it with a slightly different reward function without
     dr-update
     dr-increment-training
     ```
+
+**Related:**- [MacMini-Setup](../../../DevSetup/MacMini-Setup.md) — Local Ubuntu + NVIDIA + Docker GPU setup parallels MacMini homelab configurations for ML/RL workloads.- [AWS-Downtime-Caused-By-AI-Mistake](AWS-Downtime-Caused-By-AI-Mistake.md) — DeepRacer's agentic AI training echoes the Kiro AI incident where autonomous agents caused AWS production outages.- [Java-Python-Enterprise-AI](../../../AI-ML/Comparisons/Java-Python-Enterprise-AI.md) — AWS DeepRacer RL training stacks combine Python simulation with Java/Go backend services typical in enterprise AI.

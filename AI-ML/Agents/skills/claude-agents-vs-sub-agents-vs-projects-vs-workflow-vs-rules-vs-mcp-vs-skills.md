@@ -154,3 +154,5 @@ The ecosystem is modular—use what you need based on your complexity level!
 | **Development Agent** | Agent + MCP + Rules | Autonomous coding with guardrails |
 | **Enterprise System** | Agent + Sub-agents + MCP + Workflows + Skills | Full automation with specialization |
 | **Standardized Team** | Rules + Skills | Enforced best practices without full agents |
+
+**Related:**- [Agent-Skills](Agent-Skills.md) — deep-dive on the Skills primitive — progressive disclosure, folder structure, and authoring best practices.- [AI-Coding-Loops](../development/AI-Coding-Loops.md) — covers the sub-agent orchestration, parallel agents, and verification loops that this map lists but does not elaborate on.- [MCP_Scalability_Issue_Solution](../../Protocols/MCP_Scalability_Issue_Solution.md) — explains the tool-definition bloat and progressive-disclosure fixes behind MCP's row in this comparison table.- [Claude-Developer-Ecosystem-Jan-2026](../../LLMs/models/anthropic/Claude-Developer-Ecosystem-Jan-2026.md) — broader Anthropic ecosystem reference covering the same primitives (Skills, MCP, Sub-Agents, Hooks, Plugins) in the Claude-native context.

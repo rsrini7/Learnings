@@ -34,3 +34,5 @@ Professional, educational, cinematic, and organized. Ultra HD 16:9 widescreen
 format.**  Include the text with github icon 
 **"Srinivasan Ragothaman (@rsrini7)"** discreetly in the bottom middle 
 inside a soft rounded dark pill badge in muted gray chalk font.
+
+**Related:**- [gemini-infographic-visual-small-char-prompt](gemini-infographic-visual-small-char-prompt.md) — Companion small-character variant of the colorful infographic notes prompt.- [gemini-visual-study-notes-prompt](gemini-visual-study-notes-prompt.md) — Alternate hand-drawn notebook variant that targets the same notes-to-visual use case.

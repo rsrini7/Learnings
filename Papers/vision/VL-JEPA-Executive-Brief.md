@@ -332,3 +332,5 @@ It represents the emerging post-LLM era where AI systems are optimized for their
 | **Key Advantage** | 2× faster learning, 50% fewer params, 2.85× faster inference |
 | **Best For** | Real-time video understanding, efficient scaling, causal reasoning |
 | **Not Best For** | Multi-step reasoning, knowledge retrieval, tool planning |
+
+**Related:**- [VL-JEPA-Comprehensive-Technical-Guide](../VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide.md) — Companion deep-dive to this executive brief, covering full architecture, training pipeline, and benchmarks.- [LLM-VLA-VLM-VL-JEPA-MAMBA3-DIFFUSION](../comparisons/LLM-VLA-VLM-VL-JEPA-MAMBA3-DIFFUSION.md) — Positions VL-JEPA against Mamba-3, Diffusion, and Dual-System VLA on real-time edge trade-offs.- [Multimodal-RAG](../../AI-ML/RAG/Multimodal-RAG.md) — VL-JEPA's embedding-space similarity routing parallels embedding-based multimodal retrieval heads.

@@ -48,3 +48,5 @@ I need you to analyze this codebase as an expert software architect. Please prov
 - Technical debt indicators
 
 Focus on giving me a mental model of the system that would help a new developer understand both the "what" and "why" of the codebase architecture. Include any non-obvious design decisions that might reflect domain-specific requirements.
+
+**Related:**- [codebase-explore-prompt](codebase-explore-prompt.md) — Companion multi-perspective codebase exploration prompt that produces a README/OVERVIEW doc with mermaid diagrams.- [docs-gen-llm-prompt](docs-gen-llm-prompt.md) — Companion prompt for generating and maintaining a /docs folder with situational analysis and markdown phases.

@@ -377,3 +377,5 @@ Quality delta: [Better/Same/Worse + explanation]
 **Goal:** Deploy AI where it creates genuine value while maintaining skills, judgment, and human connection that AI cannot replicate.
 
 **Remember:** Track the full cost (drafting + verification + error correction). The goal is net time savings with maintained quality, not maximum AI use.
+
+**Related:**- [AI-Coding-Loops](AI-Coding-Loops.md) — deeper taxonomy of autonomy loops, harness engineering, and verification that this manual's 'start small, verify everything' guidance sits inside.- [AI-Accelerated-Development-Playbook](AI-Accelerated-Development-Playbook.md) — code-quality and governance playbook that grounds the manual's 70-20-10 split and ROI formulas in measurable engineering practice.- [Agent-Skills](../skills/Agent-Skills.md) — Skills as the standardization mechanism for the manual's 'vetted prompts stored in team wiki' workflow integration step.

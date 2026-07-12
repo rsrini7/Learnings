@@ -71,3 +71,4 @@ Non-prompt content providing additional functionality.
 \.\\d+\*$
 ```
 
+**Related:**- [gemini-prompts-categorized](gemini-prompts-categorized.md) — Parallel Gemini-specific categorized collection that overlaps with sections 1 and 2 (consolidation, review, image-gen) of this general-purpose list.- [Prompt-Generator-Prompt](Prompt-Generator-Prompt.md) — Meta-prompt whose ANALYZE/CONSTRUCT/OUTPUT process mirrors the document-creation patterns collected under section 1 here.- [perplexity-research-whitepaper-prompt](../research/perplexity-research-whitepaper-prompt.md) — Whitepaper-generation prompt that implements the same technical-audience whitepaper pattern documented as item 1.2 in this collection.

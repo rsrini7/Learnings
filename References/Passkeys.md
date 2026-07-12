@@ -842,3 +842,5 @@ Browser displays passkeys inline with password autofill.
 
 **Industry Trends:**
 - Payment authentication with passkeys (SCA compliance
+
+**Related:**- [Scaling-1M-RPS-Java](../Engineering/Architecture/Scaling-1M-RPS-Java.md) — Passkey/WebAuthn authentication fits the auth layer of high-RPS Java systems, replacing password-based flows.

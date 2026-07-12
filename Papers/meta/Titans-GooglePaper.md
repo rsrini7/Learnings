@@ -149,3 +149,5 @@ The paper "Titans: Learning to Memorize at Test Time" ([arXiv:2501.00663](https:
 
 9. **Future Research Directions:**
    - The paper suggests exploring graph-based structures for more efficient memory representation and enhancing the adaptability of gating mechanisms for more effective memory control. These directions aim to further improve the model's ability to handle complex tasks and long sequences. 
+
+**Related:**- [Google-Nested-Learning](../scaling/Google-Nested-Learning.md) — Fellow Google memory architecture: Titans add neural long-term memory, Nested Learning restructures update rates.- [Persistent-Memory-Layers-AI-Agents](../../AI-ML/LLMs/architecture/Persistent-Memory-Layers-AI-Agents.md) — Titans' persistent-memory module maps directly onto persistent memory layer patterns in agent LLM stacks.- [Beyond-SoftMax-Attention](../../AI-ML/LLMs/attention/Beyond-SoftMax-Attention.md) — Titans' test-time neural memory is positioned alongside softmax-attention alternatives for long-context modeling.

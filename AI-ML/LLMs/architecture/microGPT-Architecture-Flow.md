@@ -85,3 +85,5 @@
 The entire architecture runs on **pure Python scalars** - no NumPy, no PyTorch, no GPU. Every single number is wrapped in a custom `Value` object that tracks both its value and its gradient, building a computation graph that enables learning through the chain rule.
 
 **In essence**: Characters get personalities → talk to each other → think deeply → predict what comes next → learn from mistakes → repeat.
+
+**Related:**- [microGPT-Architecture-Complete](microGPT-Architecture-Complete.md) — Comprehensive walkthrough with mermaid diagrams and code that this plain-English step-by-step flow condenses.- [Auto-Regression](../training/Auto-Regression.md) — Explains the autoregressive generation (Step 11 here) and decode-loop bottleneck that this flow's inference loop demonstrates.

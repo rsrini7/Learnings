@@ -652,3 +652,5 @@ This is the random baseline. A model with no knowledge guesses uniformly across 
 13. Vabruzzo. *SNES-GPT* [GitHub]. https://github.com/vabruzzo/snes-gpt
 14. Karpathy, A. *minGPT* [GitHub]. https://github.com/karpathy/minGPT
 15. Karpathy, A. *nanoGPT* [GitHub]. https://github.com/karpathy/nanoGPT
+
+**Related:**- [microGPT-Architecture-Complete](microGPT-Architecture-Complete.md) — Companion walkthrough with mermaid diagrams, code samples, and detailed experimentation results not duplicated here.- [Auto-Regression](../training/Auto-Regression.md) — microGPT's autoregressive sampling loop (Section 4.2 here) is detailed in this training/inference whitepaper.- [Beyond-SoftMax-Attention](../attention/Beyond-SoftMax-Attention.md) — Contrasts with microGPT's standard softmax attention; useful for understanding next-generation attention mechanisms beyond microGPT.

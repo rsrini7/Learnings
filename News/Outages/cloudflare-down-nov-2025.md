@@ -127,3 +127,5 @@
 
 **Summary:**  
 A single configuration error—amplified by tight coupling, homogeneous deployment, and lack of safeguards—temporarily broke a fifth of the global internet and incurred one of the highest downtime losses in history.
+
+**Related:**- [AWS-Outage-October-19&20-2025](AWS-Outage-October-19&20-2025.md) — Predecessor outage in the same autumn-2025 hyperscaler incident cluster with similar cascading shape.- [Supabase-Outage-Feb-2026](Supabase-Outage-Feb-2026.md) — Follow-up outage where a single config/control-plane change again triggered a global flap loop.- [AWS-Downtime-Caused-By-AI-Mistake](../../Engineering/Cloud/AWS/AWS-Downtime-Caused-By-AI-Mistake.md) — Sibling cloud-provider downtime post-mortem analyzing automation-induced cascading failures.

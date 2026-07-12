@@ -140,3 +140,5 @@ For developers:
 - GitHub Repository: https://github.com/llmsresearch/paperbanana
 - Community Articles: The Decoder (2024), WeShop AI Blog (2024)
 - YouTube Demos: Various channels covering agent workflows and integrations (2024-2025)
+
+**Related:**- [kimi_k2.5_technical_report](../vision/kimi_k2.5_technical_report.md) — Both orchestrate multi-agent visual pipelines; Kimi emits code while PaperBanana emits publication diagrams.- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — PaperBanana's 5-agent retriever-planner-stylist-visualizer-critic loop exemplifies iterative agent coding patterns.

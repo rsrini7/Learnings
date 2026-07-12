@@ -134,3 +134,5 @@ Now, let's delve into the three approaches, comparing the video's explanation wi
 These visual flows effectively illustrate the core differences in how each multimodal RAG approach handles the encoding and retrieval of information from diverse data sources, aligning well with the explanations provided in the Rag Masters episode.
 
 Ref: [https://gist.github.com/rsrini7/f006562092078bc0d6e1254041970e34](https://gist.github.com/rsrini7/f006562092078bc0d6e1254041970e34)
+
+**Related:**- [RAG-Architectures](RAG-Architectures.md) — Production RAG taxonomy where multimodal is positioned as a Tier 1 capability branch.- [RAG-Guide-Jan-2026](RAG-Guide-Jan-2026.md) — General RAG fundamentals (retrieval, chunking, generation) underlying all three multimodal flows.- [Qwen3-VL-Embedding-and-Reranker](../LLMs/models/other/Qwen3-VL-Embedding-and-Reranker.md) — Vision-language embedding and reranker model that implements joint-embedding and multi-encoder approaches.- [Self-Attention-vs-Flash-Attention](../Comparisons/Self-Attention-vs-Flash-Attention.md) — Attention-mechanism comparison relevant to the encoder internals powering multimodal retrieval.
