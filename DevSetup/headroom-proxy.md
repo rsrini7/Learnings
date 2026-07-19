@@ -126,7 +126,7 @@ Auto-detects Apple Silicon and adds `pytorch-mps` extra.
 | File | Purpose | Git-tracked? |
 |------|---------|--------------|
 | `~/ws/Learnings/Scripts/hproxy.sh` | Shell function (hproxy) | ✅ (this repo) |
-| `~/ws/Learnings/DevSetup/headroom-pxoxy.md` | This doc | ✅ (this repo) |
+| `~/ws/Learnings/DevSetup/headroom-proxy.md` | This doc | ✅ (this repo) |
 
 ## Troubleshooting
 
