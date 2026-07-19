@@ -756,4 +756,7 @@ Persistent memory layers are becoming essential for modern AI applications. They
 - **MemMachine**: [memmachine.ai](https://memmachine.ai) | [GitHub](https://github.com/MemMachine/MemMachine)
 - **Memary**: [GitHub](https://github.com/kingjulio8238/Memary)
 
-**Related:**- [Context-Graphs](../attention/Context-Graphs.md) — Graphiti's temporal knowledge graph is essentially a context-graph implementation for AI agent memory.- [Microsoft-Agent-Lightning](../optimization/Microsoft-Agent-Lightning.md) — Both target agent improvement; Lightning provides RL training while memory layers provide persistent context.- [OpenResponses-Open-Inference-Standard](../optimization/OpenResponses-Open-Inference-Standard.md) — Both define agent infrastructure; OpenResponses standardizes inference while memory layers standardize context.- [LLM-Benchmarks](LLM-Benchmarks.md) — Memory layer performance is measured on LOCOMO and DMR benchmarks covered in the benchmarks guide.
+**Related:**
+- [Microsoft-Agent-Lightning](../optimization/Microsoft-Agent-Lightning.md) — Both target agent improvement; Lightning provides RL training while memory layers provide persistent context.
+- [OpenResponses-Open-Inference-Standard](../optimization/OpenResponses-Open-Inference-Standard.md) — Both define agent infrastructure; OpenResponses standardizes inference while memory layers standardize context.
+- [LLM-Benchmarks](LLM-Benchmarks.md) — Memory layer performance is measured on LOCOMO and DMR benchmarks covered in the benchmarks guide.

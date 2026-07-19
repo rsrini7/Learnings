@@ -1546,4 +1546,7 @@ The best architecture is one that acknowledges these trade-offs and chooses the 
 
 ---
 
-**Related:**- [claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills](../Agents/skills/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md) — Complements the Extended paper's CLI-gateway and MCP Launchpad analysis with a side-by-side Skills/Rules/MCP comparison.- [Agent-Skills](../Agents/skills/Agent-Skills.md) — Skills and progressive disclosure patterns align with the on-demand loading and CLI-gateway solutions detailed in this Extended edition.- [RAG-Architectures](../RAG/RAG-Architectures.md) — RAG pipelines consume MCP resources, so the 78-98% token-reduction strategies here apply directly to retrieval-augmented systems.- [clawwork-architecture-deep-dive](../Agents/openclaw/clawwork-architecture-deep-dive.md) — Production MCP integration showing how OpenClaw mitigates the same context-window and tool-binding problems examined here.
+**Related:**
+- [Agent-Skills](../Agents/skills/Agent-Skills.md) — Skills and progressive disclosure patterns align with the on-demand loading and CLI-gateway solutions detailed in this Extended edition.
+- [RAG-Architectures](../RAG/RAG-Architectures.md) — RAG pipelines consume MCP resources, so the 78-98% token-reduction strategies here apply directly to retrieval-augmented systems.
+- [clawwork-architecture-deep-dive](../Agents/openclaw/clawwork-architecture-deep-dive.md) — Production MCP integration showing how OpenClaw mitigates the same context-window and tool-binding problems examined here.

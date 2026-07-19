@@ -160,4 +160,5 @@ mHC successfully introduces a new scaling dimension: **internal topological capa
 [mHC Explained: How DeepSeek Rewires LLMs for 2026](https://www.youtube.com/watch?v=HmhV76_3nuA)
 This video provides a visual breakdown of the transition from standard residual connections to the manifold-constrained multi-stream architecture used in DeepSeek's 2026 models.
 
-**Related:**- [mHC-Deepseek](mHC-Deepseek.md) — Full architectural deep-dive on Manifold-Constrained Hyper-Connections with empirical results.- [DeepSeek-Advancements](DeepSeek-Advancements.md) — Provides the MoE and FP8 training context underlying mHC's 6.7% overhead claims.
+**Related:**
+- [DeepSeek-Advancements](DeepSeek-Advancements.md) — Provides the MoE and FP8 training context underlying mHC's 6.7% overhead claims.

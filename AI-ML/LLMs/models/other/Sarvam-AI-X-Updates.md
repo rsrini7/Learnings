@@ -72,4 +72,6 @@ https://www.sarvam.ai/blogs/sarvam-akshar
 
 https://x.com/pratykumar/status/2023622731192037553 & https://www.croma.com/unboxed/sarvam-ai-kaze-smart-glasses-unveiled-india-ai-impact-summit-2026
 
-**Related:**- [AI-Hardware-Chips-Explained](../../../Hardware/AI-Hardware-Chips-Explained.md) — Sarvam Edge and Kaze smart glasses require NPUs/edge silicon — the chip classes defined here are the deployment substrate for sovereign AI.- [LLM-Inference](../../architecture/LLM-Inference.md) — Real-time voice cloning with 1.5–2 min broadcast latency and on-device ASR exemplify the inference-latency trade-offs this guide teaches.- [LLM-Inference-Engines](../../architecture/LLM-Inference-Engines.md) — Zero-shot streaming TTS/ASR with constant finalization stability mirrors the streaming + cache-aware inference patterns explained here.
+**Related:**
+- [LLM-Inference](../../architecture/LLM-Inference.md) — Real-time voice cloning with 1.5–2 min broadcast latency and on-device ASR exemplify the inference-latency trade-offs this guide teaches.
+- [LLM-Inference-Engines](../../architecture/LLM-Inference-Engines.md) — Zero-shot streaming TTS/ASR with constant finalization stability mirrors the streaming + cache-aware inference patterns explained here.

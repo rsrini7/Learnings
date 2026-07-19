@@ -410,4 +410,6 @@ Governance protects trust.
 
 That is how payment platforms scale AI — safely, quietly, and under control.
 
-**Related:**- [searching-or-downloading-research-papers](../../References/searching-or-downloading-research-papers.md) — Primary source list for the foundational ML mathematics and model-internals reading referenced across the roadmap.- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Phase-level coding-agent literacy connects to practical AI-coding-loop patterns engineers should master.- [GangOf4](../../References/GangOf4.md) — Architecture depth in later phases benefits from grounding in classic GoF patterns and their FP alternatives.
+**Related:**
+- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Phase-level coding-agent literacy connects to practical AI-coding-loop patterns engineers should master.
+- [GangOf4](../../References/GangOf4.md) — Architecture depth in later phases benefits from grounding in classic GoF patterns and their FP alternatives.

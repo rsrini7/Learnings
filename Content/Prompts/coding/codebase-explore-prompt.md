@@ -13,4 +13,5 @@ After your analysis, compile all findings into a comprehensive README.md or OVER
 - Be clearly structured and easy to navigate.
 - Provide actionable insights or questions that could guide further development or refinement.
 
-**Related:**- [code-understanding-llm-prompt](code-understanding-llm-prompt.md) — Sibling code-understanding prompt that gives a conceptual project overview versus this one's README/OVERVIEW output.- [docs-gen-llm-prompt](docs-gen-llm-prompt.md) — Companion prompt focused on generating a full /docs folder with phased analysis and markdown generation.
+**Related:**
+- [docs-gen-llm-prompt](docs-gen-llm-prompt.md) — Companion prompt focused on generating a full /docs folder with phased analysis and markdown generation.

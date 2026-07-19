@@ -115,4 +115,7 @@ This roadmap is engineered to move you from theoretical understanding to product
     * *Mastering Blockchain* by Imran Bashir (Theory)
     * *Building Ethereum DApps* by Roberto Infante (Applied Solidity)
 
-**Related:**- [blockchain-26-catagories](../reference/blockchain-26-catagories.md) — Maps the enterprise roadmap's Fabric/Corda/Quorum tracks onto the broader 26-category developer ecosystem map.- [Hardhat-Development](../ethereum/Hardhat-Development.md) — Bridges the enterprise Solidity/Quorum path to the canonical Hardhat local-development workflow.- [Ethereum-hardhat-docker](../ethereum/Ethereum-hardhat-docker.md) — Reinforces the Docker/Kubernetes toolchain requirement with a concrete containerized Hardhat stack.- [BlockchainLayers](../reference/BlockchainLayers.md) — Anchors the consensus and CAP-theorem discussion in the layered L0-L3 architectural model.
+**Related:**
+- [Hardhat-Development](../ethereum/Hardhat-Development.md) — Bridges the enterprise Solidity/Quorum path to the canonical Hardhat local-development workflow.
+- [Ethereum-hardhat-docker](../ethereum/Ethereum-hardhat-docker.md) — Reinforces the Docker/Kubernetes toolchain requirement with a concrete containerized Hardhat stack.
+- [BlockchainLayers](../reference/BlockchainLayers.md) — Anchors the consensus and CAP-theorem discussion in the layered L0-L3 architectural model.

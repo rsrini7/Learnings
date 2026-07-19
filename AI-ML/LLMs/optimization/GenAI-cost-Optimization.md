@@ -30,4 +30,6 @@
 
 https://www.youtube.com/watch?v=lpj9XqEyHjg
 
-**Related:**- [ai-token-optimization-tools](ai-token-optimization-tools.md) — Complements these practitioner tips with a structured layer-by-layer comparison of compression tools (Lean-CTX, Headroom, MCP-Compressor) that implement the same savings.- [OpenResponses-Open-Inference-Standard](OpenResponses-Open-Inference-Standard.md) — Both target inference cost; Open Responses reduces token spend via server-side agentic loops that eliminate the round-trips this file calls out as expensive.- [Unlock-the-Dark-Data](Unlock-the-Dark-Data.md) — Shares the 'PMF before cost optimization' principle and the same tiered pricing table (premium/efficient/local) used to justify gradual model downshifting.
+**Related:**
+- [OpenResponses-Open-Inference-Standard](OpenResponses-Open-Inference-Standard.md) — Both target inference cost; Open Responses reduces token spend via server-side agentic loops that eliminate the round-trips this file calls out as expensive.
+- [Unlock-the-Dark-Data](Unlock-the-Dark-Data.md) — Shares the 'PMF before cost optimization' principle and the same tiered pricing table (premium/efficient/local) used to justify gradual model downshifting.

@@ -948,4 +948,6 @@ This guide synthesizes information from:
 
 All trademarks and product names are property of their respective owners.
 
-**Related:**- [VL-JEPA-Comprehensive-Technical-Guide](../VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide.md) — VL-JEPA entry this comparison benchmarks against Mamba-3, Diffusion, and Dual-System VLA choices.- [VL-JEPA-Executive-Brief](../vision/VL-JEPA-Executive-Brief.md) — Quick-orientation counterpart to the comprehensive VL-JEPA guide cited throughout this comparison.- [Beyond-SoftMax-Attention](../../AI-ML/LLMs/attention/Beyond-SoftMax-Attention.md) — Underlying attention-substitute theory behind Mamba-3 and other non-transformer entries in the comparison.
+**Related:**
+- [VL-JEPA-Executive-Brief](../vision/VL-JEPA-Executive-Brief.md) — Quick-orientation counterpart to the comprehensive VL-JEPA guide cited throughout this comparison.
+- [Beyond-SoftMax-Attention](../../AI-ML/LLMs/attention/Beyond-SoftMax-Attention.md) — Underlying attention-substitute theory behind Mamba-3 and other non-transformer entries in the comparison.

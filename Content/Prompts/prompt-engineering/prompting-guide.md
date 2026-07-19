@@ -768,4 +768,6 @@ Provide the analysis in this JSON format:
 [17](https://arxiv.org/html/2403.00219v1)
 [18](https://aclanthology.org/2025.findings-acl.72/)
 
-**Related:**- [Prompt-Generator-Prompt](Prompt-Generator-Prompt.md) — Companion meta-prompt that operationalizes this guide's role/context/examples principles into an automated prompt-construction workflow.- [What%20and%20How%20can%20ASK%20an%20AI](../research/What%20and%20How%20can%20ASK%20an%20AI.md) — Reference of advanced reasoning patterns (pre-mortems, devil's advocate, Socratic questioning) that extend the basic techniques taught in Parts 2-4 of this guide.- [Prompt-Engineering-for-CS](../coding/docs/Prompt-Engineering-for-CS.md) — Domain-specific application of these foundational techniques to corporate-secretarial practice, structured around the same Goal/Context/Expectations framework.
+**Related:**
+- [What%20and%20How%20can%20ASK%20an%20AI](../research/What%20and%20How%20can%20ASK%20an%20AI.md) — Reference of advanced reasoning patterns (pre-mortems, devil's advocate, Socratic questioning) that extend the basic techniques taught in Parts 2-4 of this guide.
+- [Prompt-Engineering-for-CS](../coding/docs/Prompt-Engineering-for-CS.md) — Domain-specific application of these foundational techniques to corporate-secretarial practice, structured around the same Goal/Context/Expectations framework.

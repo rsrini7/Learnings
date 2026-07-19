@@ -158,4 +158,6 @@ The next time someone tells you AI is a black box, you can tell them: it's actua
 
 *Follow along for the next post in this series: **Backpropagation — How a Neural Network Actually Learns.***
 
-**Related:**- [ML-Math](../training/ML-Math.md) — Provides the formal linear algebra, calculus, and probability foundations for the weighted-sum/backprop mechanics this article describes informally.- [Glossary](../reference/Glossary.md) — Glossary entries for sigmoid, ReLU, backpropagation, and parameters match the exact terms used in this single-neuron walkthrough.- [microGPT-Architecture-Complete](../architecture/microGPT-Architecture-Complete.md) — Shows how a single neuron's weighted sum and activation get assembled into RMSNorm -> Attention -> MLP -> Softmax layers of a real GPT-style model.
+**Related:**
+- [Glossary](../reference/Glossary.md) — Glossary entries for sigmoid, ReLU, backpropagation, and parameters match the exact terms used in this single-neuron walkthrough.
+- [microGPT-Architecture-Complete](../architecture/microGPT-Architecture-Complete.md) — Shows how a single neuron's weighted sum and activation get assembled into RMSNorm -> Attention -> MLP -> Softmax layers of a real GPT-style model.

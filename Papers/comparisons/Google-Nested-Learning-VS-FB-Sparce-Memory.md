@@ -36,4 +36,6 @@ Nested Learning by Google is a paradigm shift: it views models as nested sets of
 
 Both aim to reduce cost and improve memory in AI, but SCMS is a developer workflow toolkit while Nested Learning redesigns the core memory update mechanics in deep learning itself.
 
-**Related:**- [Google-Nested-Learning](../scaling/Google-Nested-Learning.md) — Primary source for the Google side of the comparison, detailing continuum memory system and HOPE.- [Facebook-sparce-memory-finetuning](../scaling/Facebook-sparce-memory-finetuning.md) — Primary source for the Meta side, explaining targeted memory-slot updates during finetuning.- [Titans-GooglePaper](../meta/Titans-GooglePaper.md) — Third memory-architecture perspective for the broader Google-vs-Meta continual-learning landscape.
+**Related:**
+- [Facebook-sparce-memory-finetuning](../scaling/Facebook-sparce-memory-finetuning.md) — Primary source for the Meta side, explaining targeted memory-slot updates during finetuning.
+- [Titans-GooglePaper](../meta/Titans-GooglePaper.md) — Third memory-architecture perspective for the broader Google-vs-Meta continual-learning landscape.

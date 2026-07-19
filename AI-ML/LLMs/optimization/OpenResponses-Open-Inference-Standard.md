@@ -1473,4 +1473,7 @@ response = client.responses.create(
 
 ---
 
-**Related:**- [LLM-Inference](../architecture/LLM-Inference.md) — Defines the inference lifecycle (routing, prefill/decode, KV cache) that Open Responses standardizes across providers via unified items and semantic events.- [LLM-Inference-Engines](../architecture/LLM-Inference-Engines.md) — Covers the engines (TensorRT-LLM, vLLM, SGLang) that the Open Responses router dispatches to behind its provider-agnostic API.- [AI-Coding-Loops](../../Agents/development/AI-Coding-Loops.md) — Implements the server-side agentic loop with reasoning/tool/item streams that the loop-engineering section of AI-Coding-Loops reasons about.- [AI-Periodic-Table](../economy/AI-Periodic-Table.md) — Both model AI systems as compositions of elements; the periodic table's Reactive/Orchestration families map directly onto Open Responses' tool-call and loop semantics.
+**Related:**
+- [LLM-Inference-Engines](../architecture/LLM-Inference-Engines.md) — Covers the engines (TensorRT-LLM, vLLM, SGLang) that the Open Responses router dispatches to behind its provider-agnostic API.
+- [AI-Coding-Loops](../../Agents/development/AI-Coding-Loops.md) — Implements the server-side agentic loop with reasoning/tool/item streams that the loop-engineering section of AI-Coding-Loops reasons about.
+- [AI-Periodic-Table](../economy/AI-Periodic-Table.md) — Both model AI systems as compositions of elements; the periodic table's Reactive/Orchestration families map directly onto Open Responses' tool-call and loop semantics.

@@ -317,4 +317,7 @@ public carrier class Person(String firstName, String lastName) {
 
 * **Project Valhalla (Value Classes):** Often confused with Carrier Classes. Valhalla focuses on memory layout and "flatness" (performance), whereas Carrier Classes (Amber) focus on the *programming model* (API definition and pattern matching).
 
-**Related:**- [Java-Plugin-Arch](Java-Plugin-Arch.md) — Choosing records vs carriers vs classes when designing public plugin APIs.- [Scaling-1M-RPS-Java](../Architecture/Scaling-1M-RPS-Java.md) — Record immutability and compactness align with 1M RPS payload and GC budget goals.- [Java-Python-Enterprise-AI](../../AI-ML/Comparisons/Java-Python-Enterprise-AI.md) — Companion discussion of Java data modeling versus Pythonic dataclass equivalents.- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Reflective learning loop used to track evolving Java class-model features.
+**Related:**
+- [Scaling-1M-RPS-Java](../Architecture/Scaling-1M-RPS-Java.md) — Record immutability and compactness align with 1M RPS payload and GC budget goals.
+- [Java-Python-Enterprise-AI](../../AI-ML/Comparisons/Java-Python-Enterprise-AI.md) — Companion discussion of Java data modeling versus Pythonic dataclass equivalents.
+- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Reflective learning loop used to track evolving Java class-model features.

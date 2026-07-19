@@ -4392,4 +4392,7 @@ These corrections ensure the architecture is mathematically sound, terminologica
 
 > ⚠️ **Note on arXiv IDs:** All IDs marked with a confirmed search result have been verified. Architectures 17–24 reference papers identified through bibliography cross-referencing; verify IDs directly on [arxiv.org](https://arxiv.org) before citing in formal publications.
 
-**Related:**- [RAG-Guide-Jan-2026](RAG-Guide-Jan-2026.md) — Companion fundamentals-to-production guide that underpins the architectural taxonomy in this whitepaper.- [RAG-Scaling-10M-Documents](RAG-Scaling-10M-Documents.md) — Practical scaling patterns (ingestion, retrieval funnel, orchestration) extending the production architectures discussed here.- [Persistent-Memory-Layers-AI-Agents](../LLMs/architecture/Persistent-Memory-Layers-AI-Agents.md) — Contextual/long-term memory patterns referenced for the Tier 4 Agentic RAG tier.- [Multimodal-RAG](Multimodal-RAG.md) — Multimodal encoding approaches covering the Tier 1 modality-processing branch of the taxonomy.
+**Related:**
+- [RAG-Scaling-10M-Documents](RAG-Scaling-10M-Documents.md) — Practical scaling patterns (ingestion, retrieval funnel, orchestration) extending the production architectures discussed here.
+- [Persistent-Memory-Layers-AI-Agents](../LLMs/architecture/Persistent-Memory-Layers-AI-Agents.md) — Contextual/long-term memory patterns referenced for the Tier 4 Agentic RAG tier.
+- [Multimodal-RAG](Multimodal-RAG.md) — Multimodal encoding approaches covering the Tier 1 modality-processing branch of the taxonomy.

@@ -679,4 +679,5 @@ If you are designing in FP:
 
 ---
 
-**Related:**- [Scaling-1M-RPS-Java](../Engineering/Architecture/Scaling-1M-RPS-Java.md) — GoF structural/creational patterns (Adapter, Composite, Facade) map directly to Java system architecture choices at scale.- [Java-AI-Roadmap](../Content/LinkedIn/Java-AI-Roadmap.md) — FP alternatives to GoF patterns inform Java's enterprise runtime and control-plane role around AI systems.
+**Related:**
+- [Java-AI-Roadmap](../Content/LinkedIn/Java-AI-Roadmap.md) — FP alternatives to GoF patterns inform Java's enterprise runtime and control-plane role around AI systems.

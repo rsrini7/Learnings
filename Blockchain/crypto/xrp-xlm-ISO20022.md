@@ -204,4 +204,6 @@ If you want, the next step can be:
 [38](https://xrpl.org/blog/2024/get-ready-for-amm)
 [39](https://thecryptobasic.com/2024/03/23/xrp-passive-income-opportunity-as-xrpl-amm-finally-launches-with-121-xrp-liquidity-pools-live/)
 
-**Related:**- [kafka-4.0](../../Engineering/Middleware/kafka-4.0.md) — XRPL's 1500 TPS validator consensus and ISO 20022 MX payloads echo messaging-middleware throughput and ordering trade-offs.- [Scaling-PostgreSQL-ChatGPT](../../Engineering/Databases/Scaling-PostgreSQL-ChatGPT.md) — XRPL's every-3-5-second closed-ledger snapshot model parallels hot-path scaling of a single-writer state database.- [AI-and-the-Barbell-Economy](../../AI-ML/LLMs/economy/AI-and-the-Barbell-Economy.md) — Liquidity-bridging with XRP fits the barbell thesis where AI agents and crypto rails dominate the extremes of finance.
+**Related:**
+- [Scaling-PostgreSQL-ChatGPT](../../Engineering/Databases/Scaling-PostgreSQL-ChatGPT.md) — XRPL's every-3-5-second closed-ledger snapshot model parallels hot-path scaling of a single-writer state database.
+- [AI-and-the-Barbell-Economy](../../AI-ML/LLMs/economy/AI-and-the-Barbell-Economy.md) — Liquidity-bridging with XRP fits the barbell thesis where AI agents and crypto rails dominate the extremes of finance.

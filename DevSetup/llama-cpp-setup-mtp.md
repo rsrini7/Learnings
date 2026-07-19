@@ -265,4 +265,6 @@ Or open the built-in web UI at: `http://localhost:9000`
 - **ngram**: Adds local n-gram-based speculation on top of MTP for additional speedup on repetitive patterns.
 - **Recommended**: Use the `models.ini` + `--models-preset` approach (sections 6.1 and 6.2) for cleaner management.
 
-**Related:**- [GenAI-cost-Optimization](../AI-ML/LLMs/optimization/GenAI-cost-Optimization.md) — Local Q4_K_M and MTP speculative decoding are concrete cost-optimization techniques vs. hosted inference.- [AI-Coding-Loops](../AI-ML/Agents/development/AI-Coding-Loops.md) — Local llama-server can back coding-agent loops as an OpenAI-compatible endpoint for private, cheap inference.- [MacMini-Setup](MacMini-Setup.md) — Build prerequisites (cmake, make, HuggingFace CLI) come from the Mac Mini clean dev environment setup.
+**Related:**
+- [AI-Coding-Loops](../AI-ML/Agents/development/AI-Coding-Loops.md) — Local llama-server can back coding-agent loops as an OpenAI-compatible endpoint for private, cheap inference.
+- [MacMini-Setup](MacMini-Setup.md) — Build prerequisites (cmake, make, HuggingFace CLI) come from the Mac Mini clean dev environment setup.

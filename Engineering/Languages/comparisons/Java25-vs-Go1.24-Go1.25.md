@@ -1139,4 +1139,6 @@ For 2026 and beyond, expect continued convergence as Java adopts cloud-native pa
 | **Flight Recorder API** | **Stable** | Lightweight continuous tracing for failure snapshots. |
 | **Swiss Tables Maps** | **Stable** | More stable performance for large, "cold" data sets. |
 
-**Related:**- [SpringBoot-4-Migration-Copilot-VSCode](../../../AI-ML/Agents/Spring-Boot-4-Migration/SpringBoot-4-Migration-Copilot-VSCode.md) — Spring Boot 4 migration exemplifies Java 25 adoption for high-throughput microservices compared against Go alternatives.- [Java-Python-Enterprise-AI](../../../AI-ML/Comparisons/Java-Python-Enterprise-AI.md) — Java 25 ZGC and Go 1.25 Green Tea GC inform runtime choices for enterprise AI serving infrastructure.- [workflow-orchestration](../../Middleware/workflow-orchestration.md) — Uber's thousands of Go microservices and Java-based Temporal workers illustrate the runtime trade-offs for orchestration engines.
+**Related:**
+- [Java-Python-Enterprise-AI](../../../AI-ML/Comparisons/Java-Python-Enterprise-AI.md) — Java 25 ZGC and Go 1.25 Green Tea GC inform runtime choices for enterprise AI serving infrastructure.
+- [workflow-orchestration](../../Middleware/workflow-orchestration.md) — Uber's thousands of Go microservices and Java-based Temporal workers illustrate the runtime trade-offs for orchestration engines.

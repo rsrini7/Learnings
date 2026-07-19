@@ -235,4 +235,6 @@ To get the most out of the official MoSPI data, use these prompts. Note that the
 10. **The "Viksit Bharat" Baseline:**
 > "Generate a comprehensive 'National Economic Snapshot' using **all available tools**. Include: 1) Real GDP growth, 2) Combined CPI, 3) National UR (Unemployment), and 4) Overall IIP growth. Summarize the state of the economy in three bullet points."
 
-**Related:**- [claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills](../Agents/skills/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md) — Positions MCP as one transport option among Claude agent patterns, contextualizing MoSPI's government adoption choice.- [Agent-Skills](../Agents/skills/Agent-Skills.md) — MoSPI's curated 7-dataset MCP server illustrates the Skills-vs-MCP boundary in a trusted-data, government context.- [claw-ecosystem](../Agents/openclaw/claw-ecosystem.md) — Broader MCP ecosystem overview that contrasts with MoSPI's narrow, domain-scoped server design.
+**Related:**
+- [Agent-Skills](../Agents/skills/Agent-Skills.md) — MoSPI's curated 7-dataset MCP server illustrates the Skills-vs-MCP boundary in a trusted-data, government context.
+- [claw-ecosystem](../Agents/openclaw/claw-ecosystem.md) — Broader MCP ecosystem overview that contrasts with MoSPI's narrow, domain-scoped server design.

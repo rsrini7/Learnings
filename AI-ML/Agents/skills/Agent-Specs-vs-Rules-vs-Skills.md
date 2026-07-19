@@ -479,4 +479,7 @@ The document is structured for multiple audiences:
 
 [^11]: https://claude-plugins.dev/skills/@vasilyu1983/AI-Agents-public/ai-agents
 
-**Related:**- [Agent-sdd-uacf-skills-comparison](Agent-sdd-uacf-skills-comparison.md) — the full 15k-word version of this same SDD-vs-UACF-vs-Skills comparison with deeper architecture diagrams and ROI math.- [Agent-Skills](Agent-Skills.md) — the canonical Skills article defining the third leg of the three-way comparison summarized here.- [Spec-Driven-Development-Frameworks](../development/Spec-Driven-Development-Frameworks.md) — deep dive into BMAD, Spec Kit, OpenSpec, and Serena — the SDD frameworks this article treats as one layer.- [claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills](claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md) — its Rules/CLAUDE.md and Projects sections map directly onto the UACF (rules) and SDD (specs) layers compared here.
+**Related:**
+- [Agent-Skills](Agent-Skills.md) — the canonical Skills article defining the third leg of the three-way comparison summarized here.
+- [Spec-Driven-Development-Frameworks](../development/Spec-Driven-Development-Frameworks.md) — deep dive into BMAD, Spec Kit, OpenSpec, and Serena — the SDD frameworks this article treats as one layer.
+- [claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills](claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md) — its Rules/CLAUDE.md and Projects sections map directly onto the UACF (rules) and SDD (specs) layers compared here.

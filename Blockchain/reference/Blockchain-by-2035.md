@@ -176,4 +176,6 @@ By 2035, blockchain offers developers tools for secure, decentralized systems. S
 [17](https://www.markets.com/news/tangem-pay-visa-stablecoin-payments-1739-en)
 [18](https://www.similarweb.com/website/odysee.com/)
 
-**Related:**- [Crypto-Supercycle-and-Ethereum](../ethereum/Crypto-Supercycle-and-Ethereum.md) — Treats the 2025-2026 supercycle as the leading edge of the 2035 bank-free, tokenized-economy forecast.- [AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization](../enterprise/AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization.md) — Highlights today's legal, attribution, and infrastructure frictions that any 2035 tokenized world must resolve.- [Quantum-Threat-to-Bitcoin](../../QuantumComputing/Quantum-Threat-to-Bitcoin.md) — Surfaces the post-quantum risk to Bitcoin-as-economic-backbone assumed by the 2035 vision.
+**Related:**
+- [AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization](../enterprise/AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization.md) — Highlights today's legal, attribution, and infrastructure frictions that any 2035 tokenized world must resolve.
+- [Quantum-Threat-to-Bitcoin](../../QuantumComputing/Quantum-Threat-to-Bitcoin.md) — Surfaces the post-quantum risk to Bitcoin-as-economic-backbone assumed by the 2035 vision.

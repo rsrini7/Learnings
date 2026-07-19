@@ -10,4 +10,6 @@ Format: Vertical (4:5 aspect ratio).
 
 Please start with Step 1: Analyze the content and propose the outline.
 
-**Related:**- [convert-long-2-short-social-post-prompt-v4-examples](convert-long-2-short-social-post-prompt-v4-examples.md) — Sibling social-media converter that turns long content into text-first posts versus this visual carousel's image-first deliverable for the same source material.- [generate-new-prompt-from-template-for-image-gen](../prompt-engineering/generate-new-prompt-from-template-for-image-gen.md) — Template-driven image-generation prompt that can produce the individual 1080x1350 carousel slides specified in step 2 of this workflow.- [gemini-prompts-categorized](../prompt-engineering/gemini-prompts-categorized.md) — Categorized image-gen patterns (infographic, notebook) that inform the visual-style choices for each carousel slide.
+**Related:**
+- [generate-new-prompt-from-template-for-image-gen](../prompt-engineering/generate-new-prompt-from-template-for-image-gen.md) — Template-driven image-generation prompt that can produce the individual 1080x1350 carousel slides specified in step 2 of this workflow.
+- [gemini-prompts-categorized](../prompt-engineering/gemini-prompts-categorized.md) — Categorized image-gen patterns (infographic, notebook) that inform the visual-style choices for each carousel slide.

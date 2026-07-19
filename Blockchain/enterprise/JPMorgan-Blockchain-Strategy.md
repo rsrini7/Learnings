@@ -1070,4 +1070,7 @@ The strategic significance lies not in any single product, but in the **full-sta
 
 For investors, competitors, and clients: the question is not *whether* blockchain matters to finance, but *how* financial institutions will integrate it. JPMC's answer—through regulated, full-stack infrastructure with multi-chain, multi-stakeholder partnerships—is becoming the industry standard and represents the most comprehensive approach to institutional blockchain adoption by any global bank.
 
-**Related:**- [Crypto-Supercycle-and-Ethereum](../ethereum/Crypto-Supercycle-and-Ethereum.md) — Connects JPMC's institutional tokenization pillars to Tom Lee's supercycle thesis and Ethereum's settlement dominance.- [Jan-2025-Updates](../reference/Jan-2025-Updates.md) — Cross-checks JPMC's strategy against the same week's BNY tokenized-deposits launch and CLARITY Act markup.- [BlockchainLayers](../reference/BlockchainLayers.md) — Places Kinexys, JPMD, and on-chain debt issuance inside the L1/L2 settlement-and-application stack.- [DLT](../reference/DLT.md) — Contrasts JPMC's permissioned institutional rails with the broader DLT taxonomy including DAG and Hashgraph designs.
+**Related:**
+- [Jan-2025-Updates](../reference/Jan-2025-Updates.md) — Cross-checks JPMC's strategy against the same week's BNY tokenized-deposits launch and CLARITY Act markup.
+- [BlockchainLayers](../reference/BlockchainLayers.md) — Places Kinexys, JPMD, and on-chain debt issuance inside the L1/L2 settlement-and-application stack.
+- [DLT](../reference/DLT.md) — Contrasts JPMC's permissioned institutional rails with the broader DLT taxonomy including DAG and Hashgraph designs.

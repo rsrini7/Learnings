@@ -45,4 +45,5 @@ Here is a supporting content for searching or downloading research papers (with 
 - **Scispace**: https://typeset.io/ (Scispace)  
   *AI-powered research assistant (compared with Consensus in comments).*
 
-**Related:**- [Team-Level Learning Roadmap for Banking](../Content/LinkedIn/Team-Level Learning Roadmap for Banking.md) — Research-paper sources (arXiv, Consensus, Unpaywall) back the foundational reading list in the team learning roadmap.- [Java-AI-Roadmap](../Content/LinkedIn/Java-AI-Roadmap.md) — Use these repositories to find primary references for Java+AI architecture decisions cited in the roadmap.
+**Related:**
+- [Java-AI-Roadmap](../Content/LinkedIn/Java-AI-Roadmap.md) — Use these repositories to find primary references for Java+AI architecture decisions cited in the roadmap.

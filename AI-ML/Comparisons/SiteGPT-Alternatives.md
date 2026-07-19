@@ -1432,4 +1432,5 @@ Savings: $6,816/year (breaks even in <1 year including dev time)
 
 ---
 
-**Related:**- [Java-Python-Enterprise-AI](Java-Python-Enterprise-AI.md) — Backend language/runtime trade-offs relevant when self-hosting open-source chatbot alternatives.- [Top-50-Q&A-AI-ML-Eng](Top-50-Q&A-AI-ML-Eng.md) — Inference, batching, and rollout Q&A that informs the breakeven and deployment decisions here.
+**Related:**
+- [Top-50-Q&A-AI-ML-Eng](Top-50-Q&A-AI-ML-Eng.md) — Inference, batching, and rollout Q&A that informs the breakeven and deployment decisions here.

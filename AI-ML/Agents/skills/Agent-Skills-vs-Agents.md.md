@@ -203,4 +203,7 @@ Until agent reasoning improves, **passive, well-designed context will outperform
 
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" crossorigin="anonymous">
 
-**Related:**- [Agent-Skills](Agent-Skills.md) — the canonical Skills definition and folder structure that this Vercel eval is critiquing.- [Agent-Specs-vs-Rules-vs-Skills](Agent-Specs-vs-Rules-vs-Skills.md) — UACF's master AGENTS.md is exactly the passive-context approach this article recommends over on-demand Skills.- [claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills](claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md) — Rules (CLAUDE.md) and Projects serve the same passive-context role as AGENTS.md in the Skills vs. passive-context debate.- [AI-Coding-Loops](../development/AI-Coding-Loops.md) — its 'smallest autonomy that solves the problem' framing validates the article's preference for always-loaded context over retrieval.
+**Related:**
+- [Agent-Specs-vs-Rules-vs-Skills](Agent-Specs-vs-Rules-vs-Skills.md) — UACF's master AGENTS.md is exactly the passive-context approach this article recommends over on-demand Skills.
+- [claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills](claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md) — Rules (CLAUDE.md) and Projects serve the same passive-context role as AGENTS.md in the Skills vs. passive-context debate.
+- [AI-Coding-Loops](../development/AI-Coding-Loops.md) — its 'smallest autonomy that solves the problem' framing validates the article's preference for always-loaded context over retrieval.

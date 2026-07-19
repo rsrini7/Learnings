@@ -110,4 +110,6 @@ flowchart LR
     F --> A
 ```
 
-**Related:**- [DeepSeek-Advancements](DeepSeek-Advancements.md) — Companion overview of DeepSeek V3 architecture and cost-efficient training that complements R1's reasoning focus.- [mHC-Deepseek](mHC-Deepseek.md) — DeepSeek's stability-focused multi-stream architecture that pairs with R1's MoE training at scale.- [Deepseek-Engram](Deepseek-Engram.md) — DeepSeek's conditional memory module addressing transformer compute waste, released alongside R1-era work.
+**Related:**
+- [mHC-Deepseek](mHC-Deepseek.md) — DeepSeek's stability-focused multi-stream architecture that pairs with R1's MoE training at scale.
+- [Deepseek-Engram](Deepseek-Engram.md) — DeepSeek's conditional memory module addressing transformer compute waste, released alongside R1-era work.

@@ -33,4 +33,6 @@ USER REQUEST:
 
 Generate the optimal structured prompt now.”
 
-**Related:**- [prompting-guide](prompting-guide.md) — Foundational prompt-engineering guide whose role/context/format principles this meta-prompt operationalizes when synthesizing new prompts.- [my-prompts-categorized](my-prompts-categorized.md) — Curated collection of categorized task prompts that demonstrates the kinds of outputs this generator is designed to produce.- [What%20and%20How%20can%20ASK%20an%20AI](../research/What%20and%20How%20can%20ASK%20an%20AI.md) — Reference catalog of thinking patterns (pre-mortems, decision matrices, Socratic questioning) that this generator can encode into new prompts.
+**Related:**
+- [my-prompts-categorized](my-prompts-categorized.md) — Curated collection of categorized task prompts that demonstrates the kinds of outputs this generator is designed to produce.
+- [What%20and%20How%20can%20ASK%20an%20AI](../research/What%20and%20How%20can%20ASK%20an%20AI.md) — Reference catalog of thinking patterns (pre-mortems, decision matrices, Socratic questioning) that this generator can encode into new prompts.

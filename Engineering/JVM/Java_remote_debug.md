@@ -70,4 +70,7 @@ Options on `-Xrunjdwp` or `agentlib:jdwp` arguments are:
 
 It is not required to add the `address` parameter. If not provided, the agent selects a random port number. This might be useful if you start multiple nodes within the same Java command line.
 
-**Related:**- [Java-Plugin-Arch](Java-Plugin-Arch.md) — Debugging strategies when OSGi/JPMS plugin lifecycles complicate breakpoint placement.- [Scaling-1M-RPS-Java](../Architecture/Scaling-1M-RPS-Java.md) — Production-safe remote attach to JVMs sustaining 1M RPS for live diagnostics.- [SpringBoot-4-Migration-Copilot-VSCode](../../AI-ML/Agents/Spring-Boot-4-Migration/SpringBoot-4-Migration-Copilot-VSCode.md) — Copilot/VSCode Spring Boot 4 workflows that rely on JDWP attach for step-through debugging.- [Summary](../../AI-ML/Agents/Spring-Boot-4-Migration/Summary.md) — Migration summary highlighting JDWP-compatible tooling upgrades for Spring Boot 4.
+**Related:**
+- [Scaling-1M-RPS-Java](../Architecture/Scaling-1M-RPS-Java.md) — Production-safe remote attach to JVMs sustaining 1M RPS for live diagnostics.
+- [SpringBoot-4-Migration-Copilot-VSCode](../../AI-ML/Agents/Spring-Boot-4-Migration/SpringBoot-4-Migration-Copilot-VSCode.md) — Copilot/VSCode Spring Boot 4 workflows that rely on JDWP attach for step-through debugging.
+- [Summary](../../AI-ML/Agents/Spring-Boot-4-Migration/Summary.md) — Migration summary highlighting JDWP-compatible tooling upgrades for Spring Boot 4.

@@ -1222,4 +1222,6 @@ Cryptocurrency is highly risky. Regulations are uncertain. Political outcomes ar
 
 **Contact your senators. Make your voice heard. The future of crypto is being written this month.**
 
-**Related:**- [kafka-4.0](../../Engineering/Middleware/kafka-4.0.md) — GENIUS/CLARITY compliance hooks (BSA, sanctions screening, freeze/seize) map onto event-stream middleware patterns for audit and reporting.- [GraphDB-massive-scale-analysis](../../Engineering/Databases/GraphDB-massive-scale-analysis.md) — Stablecoin reserve ledgers, AML transaction monitoring, and 1:1 backing attestations rely on ledger-style immutable audit trails.- [AI-Periodic-Table](../../AI-ML/LLMs/economy/AI-Periodic-Table.md) — The bill's stablecoin-yield and ethics battles sit inside the broader debate over AI/crypto labor and capital substitution.
+**Related:**
+- [GraphDB-massive-scale-analysis](../../Engineering/Databases/GraphDB-massive-scale-analysis.md) — Stablecoin reserve ledgers, AML transaction monitoring, and 1:1 backing attestations rely on ledger-style immutable audit trails.
+- [AI-Periodic-Table](../../AI-ML/LLMs/economy/AI-Periodic-Table.md) — The bill's stablecoin-yield and ethics battles sit inside the broader debate over AI/crypto labor and capital substitution.

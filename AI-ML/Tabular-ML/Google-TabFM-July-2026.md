@@ -783,6 +783,11 @@ Use it to learn quickly. Compare it fairly. Record the exact version. Keep the t
 
 ---
 
-**Related:**- [Google-Gemma-Family-Models-Jan-2026](../LLMs/models/other/Google-Gemma-Family-Models-Jan-2026.md) — Google's open-weight LLM family; sibling Google model release with a comparable open-code / restricted-weight licensing split to contrast against TabFM's non-commercial weights.- [LLM-Benchmarks](../LLMs/architecture/LLM-Benchmarks.md) — Benchmarking methodology (leaderboards, Elo, held-out evaluation) that frames how TabFM's TabArena and Elo results should be read critically.- [Parameter-Efficient-Fine-Tuning](../Fine-Tuning/Parameter-Efficient-Fine-Tuning.md) — Contrasts gradient-based PEFT adaptation with TabFM's frozen-weight, in-context "no-gradient" adaptation for new datasets.- [Java-Python-Enterprise-AI](../Comparisons/Java-Python-Enterprise-AI.md) — Enterprise deployment lens; complements TabFM's production, licensing, and governance considerations for structured-data models.- [AI-Hardware-Chips-Explained](../Hardware/AI-Hardware-Chips-Explained.md) — GPU/TPU memory and compute constraints defined here explain TabFM's ~13 GB checkpoint footprint and context-row memory scaling.
+**Related:**
+- [Google-Gemma-Family-Models-Jan-2026](../LLMs/models/other/Google-Gemma-Family-Models-Jan-2026.md) — Google's open-weight LLM family; sibling Google model release with a comparable open-code / restricted-weight licensing split to contrast against TabFM's non-commercial weights.
+- [LLM-Benchmarks](../LLMs/architecture/LLM-Benchmarks.md) — Benchmarking methodology (leaderboards, Elo, held-out evaluation) that frames how TabFM's TabArena and Elo results should be read critically.
+- [Parameter-Efficient-Fine-Tuning](../Fine-Tuning/Parameter-Efficient-Fine-Tuning.md) — Contrasts gradient-based PEFT adaptation with TabFM's frozen-weight, in-context "no-gradient" adaptation for new datasets.
+- [Java-Python-Enterprise-AI](../Comparisons/Java-Python-Enterprise-AI.md) — Enterprise deployment lens; complements TabFM's production, licensing, and governance considerations for structured-data models.
+- [AI-Hardware-Chips-Explained](../Hardware/AI-Hardware-Chips-Explained.md) — GPU/TPU memory and compute constraints defined here explain TabFM's ~13 GB checkpoint footprint and context-row memory scaling.
 
 

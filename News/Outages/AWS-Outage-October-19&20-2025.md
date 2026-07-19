@@ -543,4 +543,6 @@ The cloud remains an incredibly powerful platform for innovation and scale, but 
 
 **Note:** This document synthesizes information from multiple sources to provide a comprehensive analysis of the October 2025 AWS outage. Technical details are based on AWS's official incident report and verified third-party analysis.
 
-**Related:**- [AWS-Downtime-Caused-By-AI-Mistake](../../Engineering/Cloud/AWS/AWS-Downtime-Caused-By-AI-Mistake.md) — Sibling AWS downtime post-mortem, also tied to US-East-1 and configuration/automation failures.- [Supabase-Outage-Feb-2026](Supabase-Outage-Feb-2026.md) — Both detail multi-hour AWS us-east regional outages triggered by control-plane changes.- [cloudflare-down-nov-2025](cloudflare-down-nov-2025.md) — Companion hyperscaler outage post-mortem from the same autumn-2025 incident cluster.
+**Related:**
+- [Supabase-Outage-Feb-2026](Supabase-Outage-Feb-2026.md) — Both detail multi-hour AWS us-east regional outages triggered by control-plane changes.
+- [cloudflare-down-nov-2025](cloudflare-down-nov-2025.md) — Companion hyperscaler outage post-mortem from the same autumn-2025 incident cluster.

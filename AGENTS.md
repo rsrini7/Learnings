@@ -56,12 +56,26 @@ inline entries on one line, matching existing files):
 ```markdown
 ---
 
-**Related:**- [Doc-Name](../relative/path/Doc-Name.md) — one-line reason this is related.- [Another-Doc](../../path/Another-Doc.md) — why it connects to this topic.
+**Related:**
+- [Doc-Name](../relative/path/Doc-Name.md) — one-line reason this is related.
+- [Another-Doc](../../path/Another-Doc.md) — why it connects to this topic.
 ```
 
 Rules:
 - Use **relative paths** from the current file's location (count the `../`).
 - Add **3–5** genuinely relevant links with a concise `— reason` each.
+- **Put each link on its own line** (a markdown list), with `**Related:**` on
+  its own line above them — NOT all crammed onto one paragraph line.
+  Correct:
+  ```
+  **Related:**
+  - [Doc-Name](path.md) — reason.
+  - [Other](path2.md) — reason.
+  ```
+  Wrong (paragraph, hard to read):
+  ```
+  **Related:**- [Doc-Name](path.md) — reason.- [Other](path2.md) — reason.
+  ```
 - Prefer making links **bidirectional**: when Doc A → Doc B, add Doc B → Doc A
   where it makes sense, so the reference web stays connected.
 - Verify the paths resolve (`python3 Scripts/github-repos.py links`).

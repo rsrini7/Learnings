@@ -20,4 +20,6 @@ Overall color palette: deep midnight blue background, vibrant cyan, magenta, and
 
 Discreetly include the text "Srinivasan Ragothaman (@rsrini7)" with a small GitHub icon in the bottom middle.
 
-**Related:**- [gemini-image-4-panel-futuristic-infographic-prompt](gemini-image-4-panel-futuristic-infographic-prompt.md) — Sibling 4-panel version extending the same futuristic infographic layout with an extra column.- [gemini-image-5-panel-futuristic-infographic-prompt](gemini-image-5-panel-futuristic-infographic-prompt.md) — Sibling 5-panel version adding two more columns on the same neon aesthetic.- [gemini-futuristic-infographic-generic](gemini-futuristic-infographic-generic.md) — Generic non-templated variant of the same 3-panel futuristic infographic layout.
+**Related:**
+- [gemini-image-5-panel-futuristic-infographic-prompt](gemini-image-5-panel-futuristic-infographic-prompt.md) — Sibling 5-panel version adding two more columns on the same neon aesthetic.
+- [gemini-futuristic-infographic-generic](gemini-futuristic-infographic-generic.md) — Generic non-templated variant of the same 3-panel futuristic infographic layout.

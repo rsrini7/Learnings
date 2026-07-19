@@ -278,4 +278,6 @@ Infrastructure selection should be driven by **workload shape, organizational ma
 AWS vs Hetzner VPS Performance Comparison
 [https://www.youtube.com/watch?v=Ps3AI1kTIR4](https://www.youtube.com/watch?v=Ps3AI1kTIR4)
 
-**Related:**- [AWS-Downtime-Caused-By-AI-Mistake](AWS/AWS-Downtime-Caused-By-AI-Mistake.md) — AWS reliability incidents highlight the vendor-lock-in and operational risks absent from Hetzner dedicated hosting.- [MacMini-Setup](../../DevSetup/MacMini-Setup.md) — Cost-efficient Hetzner/VPS trade-offs inform self-hosted homelab setups like MacMini-based development environments.- [Scaling-PostgreSQL-ChatGPT](../Databases/Scaling-PostgreSQL-ChatGPT.md) — PostgreSQL scaling bottlenecks (single primary) motivate evaluating Hetzner dedicated servers vs AWS managed databases.
+**Related:**
+- [MacMini-Setup](../../DevSetup/MacMini-Setup.md) — Cost-efficient Hetzner/VPS trade-offs inform self-hosted homelab setups like MacMini-based development environments.
+- [Scaling-PostgreSQL-ChatGPT](../Databases/Scaling-PostgreSQL-ChatGPT.md) — PostgreSQL scaling bottlenecks (single primary) motivate evaluating Hetzner dedicated servers vs AWS managed databases.

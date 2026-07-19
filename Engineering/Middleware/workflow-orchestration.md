@@ -71,4 +71,6 @@ Temporal suits complex, stateful processes like payments at JPMorgan, with matur
 [19](https://news.ycombinator.com/item?id=42380900)
 [20](https://news.ycombinator.com/item?id=44840693)
 
-**Related:**- [Java25-vs-Go1.24-Go1.25](../Languages/comparisons/Java25-vs-Go1.24-Go1.25.md) — Temporal, Cadence and Dapr offer Go and Java SDKs; runtime choice affects long-running workflow performance.- [rust-vs-c](../Languages/comparisons/rust-vs-c.md) — Restate's Rust SDK leverages Rust's memory safety for low-latency durable execution versus C-style alternatives.- [AWS-vs-Hetzner](../Cloud/AWS-vs-Hetzner.md) — AWS Step Functions integrates deeply with AWS infra, contrasting self-hosted Temporal/Argo on cheaper VPS hardware.
+**Related:**
+- [rust-vs-c](../Languages/comparisons/rust-vs-c.md) — Restate's Rust SDK leverages Rust's memory safety for low-latency durable execution versus C-style alternatives.
+- [AWS-vs-Hetzner](../Cloud/AWS-vs-Hetzner.md) — AWS Step Functions integrates deeply with AWS infra, contrasting self-hosted Temporal/Argo on cheaper VPS hardware.

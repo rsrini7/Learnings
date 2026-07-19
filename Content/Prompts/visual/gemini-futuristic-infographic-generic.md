@@ -9,4 +9,5 @@ A high-fidelity, futuristic digital infographic on a deep midnight blue backgrou
 Overall color palette: deep midnight blue background, vibrant cyan, magenta, and sunny yellow accents, strong neon glows, ultra-sharp details, cinematic UI design, professional infographic style, 16:9 aspect ratio, 8K resolution.
 Discreetly include the text "Srinivasan Ragothaman (@rsrini7)" with a small GitHub icon in the bottom middle.
 
-**Related:**- [gemini-image-3-panel-futuristic-infographic-prompt](gemini-image-3-panel-futuristic-infographic-prompt.md) — Templated 3-panel sibling using the identical midnight-blue neon 3-column structure.- [gemini-image-recreate-futuristic-infographics-prompt](gemini-image-recreate-futuristic-infographics-prompt.md) — Cousin recreate prompt that targets the same futuristic dark-neon visual style.
+**Related:**
+- [gemini-image-recreate-futuristic-infographics-prompt](gemini-image-recreate-futuristic-infographics-prompt.md) — Cousin recreate prompt that targets the same futuristic dark-neon visual style.

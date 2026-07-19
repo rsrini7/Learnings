@@ -90,4 +90,6 @@ This outage was a wake-up call for the serverless era, where one AWS setting can
 
 If you're building on Supabase or similar, review your IaC for regional scopes today—because one setting really can kill your stack.
 
-**Related:**- [AWS-Downtime-Caused-By-AI-Mistake](../../Engineering/Cloud/AWS/AWS-Downtime-Caused-By-AI-Mistake.md) — Both attribute AWS regional outages to automated control-plane/configuration changes gone wrong.- [AWS-Outage-October-19&20-2025](AWS-Outage-October-19&20-2025.md) — Earlier AWS us-east outage set the pattern that Supabase's Feb 2026 BPA incident echoed.- [cloudflare-down-nov-2025](cloudflare-down-nov-2025.md) — Sibling vendor outage where a single config-generation change cascaded into a global flap.
+**Related:**
+- [AWS-Outage-October-19&20-2025](AWS-Outage-October-19&20-2025.md) — Earlier AWS us-east outage set the pattern that Supabase's Feb 2026 BPA incident echoed.
+- [cloudflare-down-nov-2025](cloudflare-down-nov-2025.md) — Sibling vendor outage where a single config-generation change cascaded into a global flap.

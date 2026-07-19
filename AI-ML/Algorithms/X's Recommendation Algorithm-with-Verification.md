@@ -792,4 +792,5 @@ Possible future directions based on architecture:
 *Last Verified: February 4, 2026*  
 *Source Verification: Direct repository review + official announcements*
 
-**Related:**- [X's-Recommendation-Algorithm-Technical-Analysis](X's-Recommendation-Algorithm-Technical-Analysis.md) — Companion comprehensive technical deep-dive into the same 2026 open-source release with broader architectural coverage.- [RAG-Architectures](../RAG/RAG-Architectures.md) — Retrieval-augmented patterns that parallel the candidate-sourcing and embedding pipeline in the recommender.
+**Related:**
+- [RAG-Architectures](../RAG/RAG-Architectures.md) — Retrieval-augmented patterns that parallel the candidate-sourcing and embedding pipeline in the recommender.

@@ -68,4 +68,5 @@ Fewer but higher-impact positions:
 
 *Reference: https://substack.com/inbox/post/168175609*
 
-**Related:**- [AI-Coding-Loops](AI-Coding-Loops.md) — explains how engineering work shifts upward toward architecture, invariants, review, and risk decisions when agents own implementation.- [AI-Operating-Manual](AI-Operating-Manual.md) — the 70-20-10 split, true-cost ROI tracking, and iterative refinement model that underwrite 'builder-first' PM productivity.
+**Related:**
+- [AI-Operating-Manual](AI-Operating-Manual.md) — the 70-20-10 split, true-cost ROI tracking, and iterative refinement model that underwrite 'builder-first' PM productivity.
