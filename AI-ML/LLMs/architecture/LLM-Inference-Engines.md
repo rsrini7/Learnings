@@ -1110,4 +1110,8 @@ ollama run llama3.1
 curl http://localhost:11434/api/generate -d '{"model":"llama3.1","prompt":"Hi"}'
 ```
 
-**Related:**- [LLM-Inference](LLM-Inference.md) — Parent overview file; already linked via 'Ref' header at the top.- [OpenResponses-Open-Inference-Standard](../optimization/OpenResponses-Open-Inference-Standard.md) — The inference API standard that engines like vLLM and SGLang implement via OpenAI-compatible endpoints.- [GenAI-cost-Optimization](../optimization/GenAI-cost-Optimization.md) — Cost analysis section here (~$36M/month for 1M users) pairs with optimization strategies in the cost-optimization guide.- [Beyond-SoftMax-Attention](../attention/Beyond-SoftMax-Attention.md) — Linear attention variants offer alternative inference patterns beyond the standard softmax engines covered here.- [LLM-Benchmarks](LLM-Benchmarks.md) — Benchmarking section here (TTFT/ITL/throughput) complements the model-quality benchmarks in the benchmarks guide.
+**Related:**
+- [OpenResponses-Open-Inference-Standard](../optimization/OpenResponses-Open-Inference-Standard.md) — The inference API standard that engines like vLLM and SGLang implement via OpenAI-compatible endpoints.
+- [GenAI-cost-Optimization](../optimization/GenAI-cost-Optimization.md) — Cost analysis section here (~$36M/month for 1M users) pairs with optimization strategies in the cost-optimization guide.
+- [Beyond-SoftMax-Attention](../attention/Beyond-SoftMax-Attention.md) — Linear attention variants offer alternative inference patterns beyond the standard softmax engines covered here.
+- [LLM-Benchmarks](LLM-Benchmarks.md) — Benchmarking section here (TTFT/ITL/throughput) complements the model-quality benchmarks in the benchmarks guide.

@@ -20,4 +20,6 @@
 
 - The future: Quantum computing’s era is no longer just theory—it’s verified, practical, and set to change how research, software, and technology develop worldwide.
 
-**Related:**- [QuantumComputer-Terms](QuantumComputer-Terms.md) — Glossary of qubits, superposition, and entanglement terms referenced in the Willow breakthrough writeup.- [VIO-40K-Arch-10K-Qubits](VIO-40K-Arch-10K-Qubits.md) — Contrasts Google's Willow 105-qubit chip with QuantWare's 10K-qubit 3D chiplet architecture roadmap.- [AI-Hardware-Chips-Explained](../AI-ML/Hardware/AI-Hardware-Chips-Explained.md) — Parallel analysis of specialized accelerators (GPUs/TPUs) complements this look at quantum silicon.
+**Related:**
+- [VIO-40K-Arch-10K-Qubits](VIO-40K-Arch-10K-Qubits.md) — Contrasts Google's Willow 105-qubit chip with QuantWare's 10K-qubit 3D chiplet architecture roadmap.
+- [AI-Hardware-Chips-Explained](../AI-ML/Hardware/AI-Hardware-Chips-Explained.md) — Parallel analysis of specialized accelerators (GPUs/TPUs) complements this look at quantum silicon.

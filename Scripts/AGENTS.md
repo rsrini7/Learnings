@@ -136,15 +136,27 @@ python3 Scripts/generate-readme.py
 ```
 
 ### What it does
+- **Auto-discovers** subfolders under each section — new folders are no longer
+  dropped. Unknown subfolders get an auto-generated title; anything still
+  unmatched lands in an `🗂️ Uncategorized (auto-added)` section.
 - Scans all markdown files in the repository
 - Categorizes by directory structure
-- Generates `index.md` and `README.md`
+- Generates `README.md` (note: `index.md` generation was removed; only README is produced)
 - URL-encodes special characters in links
+- A final safety-net pass verifies every `.md` file on disk is linked, so
+  nothing is silently omitted.
 
 ### When to use
 - After adding new files
 - After reorganizing directory structure
 - After renaming files
+- After adding a **new folder** (curated titles can be added to the script, but
+  the generator will still pick it up automatically)
+
+> **`**Related:**` sections are NOT automated.** Each content `.md` file must
+> manually end with a `**Related:**` cross-reference block (see the root
+> `AGENTS.md`). `github-repos.py links` validates these links but does not
+> create them. Forgetting this is the easiest mistake when adding a file.
 
 ---
 

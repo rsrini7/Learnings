@@ -377,4 +377,6 @@ Process the following content using the structure above (Problem → Solution �
 # INPUT CONTENT
 [PASTE YOUR LONG-FORM CONTENT HERE]
 
-**Related:**- [convert-long-2-short-social-post-prompt-v3-merged](convert-long-2-short-social-post-prompt-v3-merged.md) — Predecessor v3-merged version whose structure v4 examples are built on top of.- [convert-long-2-short-social-post-prompt-v2](convert-long-2-short-social-post-prompt-v2.md) — Earlier v2 iteration of the long-to-short social-post converter.- [convert-long-2-short-social-post-prompt](convert-long-2-short-social-post-prompt.md) — Original pre-versioning baseline of the social-post converter.
+**Related:**
+- [convert-long-2-short-social-post-prompt-v2](convert-long-2-short-social-post-prompt-v2.md) — Earlier v2 iteration of the long-to-short social-post converter.
+- [convert-long-2-short-social-post-prompt](convert-long-2-short-social-post-prompt.md) — Original pre-versioning baseline of the social-post converter.

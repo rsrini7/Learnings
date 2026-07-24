@@ -155,4 +155,7 @@ Those who win will:
 - Benchmark honestly  
 - Treat quantum as infrastructure, not mythology
 
-**Related:**- [VIO-40K-Arch-10K-Qubits](VIO-40K-Arch-10K-Qubits.md) — Provides the hardware scaling reality check behind the hybrid quantum-AI hype-filter claims.- [AI-in-Next-18-Months](../AI-ML/LLMs/economy/AI-in-Next-18-Months.md) — Complementary 2026 forecast framing for where quantum-AI fits versus classical AI deployment timelines.- [AI-Hardware-Chips-Explained](../AI-ML/Hardware/AI-Hardware-Chips-Explained.md) — Pairs with the hybrid-model discussion of classical GPUs acting as the optimizer for quantum circuits.- [QuantumComputer-Terms](QuantumComputer-Terms.md) — Defines NISQ, decoherence, and barren-plateau vocabulary used in the executive decision-maker framing.
+**Related:**
+- [AI-in-Next-18-Months](../AI-ML/LLMs/economy/AI-in-Next-18-Months.md) — Complementary 2026 forecast framing for where quantum-AI fits versus classical AI deployment timelines.
+- [AI-Hardware-Chips-Explained](../AI-ML/Hardware/AI-Hardware-Chips-Explained.md) — Pairs with the hybrid-model discussion of classical GPUs acting as the optimizer for quantum circuits.
+- [QuantumComputer-Terms](QuantumComputer-Terms.md) — Defines NISQ, decoherence, and barren-plateau vocabulary used in the executive decision-maker framing.

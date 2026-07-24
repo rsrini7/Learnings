@@ -16,6 +16,7 @@ Learnings/
 │   ├── Protocols/               # MCP, A2A, UCP
 │   ├── Fine-Tuning/             # PEFT, training guides
 │   ├── Comparisons/             # Model & tool comparisons
+│   ├── Tabular-ML/              # Tabular / structured-data foundation models
 │   ├── Algorithms/              # Recommendation algorithms
 │   └── Programming/             # DSPy, BAML
 │
@@ -23,12 +24,12 @@ Learnings/
 │   ├── Architecture/            # System design, scaling
 │   ├── JVM/                     # Java, Spring, debugging
 │   ├── Databases/               # Graph DB, PostgreSQL
-│   ├── Middleware/               # Kafka, workflows
+│   ├── Middleware/              # Kafka, workflows
 │   ├── Cloud/                   # AWS, cloud services
 │   └── Languages/               # Rust, Go, WASM
 │
 ├── Blockchain/                  # Blockchain & DLT
-├── Quantum-Computing/           # Quantum computing
+├── QuantumComputing/            # Quantum computing
 ├── DevSetup/                    # Development environment setup
 ├── Papers/                      # Research papers
 ├── Content/                     # Content creation
@@ -69,14 +70,17 @@ Learnings/
 - [AI Skills for Future Success (2026)](AI-ML/Agents/skills/8-AI-Skills-for-Future-Success-%282026%29.md)
 - [Agent Skills vs Agents](AI-ML/Agents/skills/Agent-Skills-vs-Agents.md.md)
 - [Agent Skills](AI-ML/Agents/skills/Agent-Skills.md)
+- [Agent Specs vs Rules vs Skills](AI-ML/Agents/skills/Agent-Specs-vs-Rules-vs-Skills.md)
+- [Agent sdd uacf skills comparison](AI-ML/Agents/skills/Agent-sdd-uacf-skills-comparison.md)
 - [claude agents vs sub agents vs projects vs workflow vs rules vs mcp vs skills](AI-ML/Agents/skills/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md)
 
 #### 📊 Agent Analysis
-- [Autonomous AI Agents: Why This Moment Matters](AI-ML/Agents/analysis/Autonomous-AI-Agents.md)
-- [Hiring Agent Deep Dive](AI-ML/Agents/analysis/Hiring-Agent-Deep-Dive.md)
+- [Autonomous AI Agents](AI-ML/Agents/analysis/Autonomous-AI-Agents.md)
 
 #### 🏗️ Agent Frameworks
 - [Ashley's 11 agent system](AI-ML/Agents/frameworks/Ashley%27s-11-agent-system.md)
+- [Claude Ralph Loop](AI-ML/Agents/frameworks/Claude-Ralph-Loop.md)
+- [ClaudeRalphLoop and AgentRalphMode](AI-ML/Agents/frameworks/ClaudeRalphLoop-and-AgentRalphMode.md)
 - [Confucius Code Agent](AI-ML/Agents/frameworks/Confucius-Code-Agent.md)
 - [How Ralph Works with Amp](AI-ML/Agents/frameworks/How-Ralph-Works-with-Amp.md)
 - [InternetOfAgents](AI-ML/Agents/frameworks/InternetOfAgents.md)
@@ -100,7 +104,7 @@ Learnings/
 #### 🍃 Spring Boot 4 Migration
 - [SpringBoot 4 Migration Copilot VSCode](AI-ML/Agents/Spring-Boot-4-Migration/SpringBoot-4-Migration-Copilot-VSCode.md)
 - [Summary](AI-ML/Agents/Spring-Boot-4-Migration/Summary.md)
-- [your microservice/SPRINGBOOT AGENTS](AI-ML/Agents/Spring-Boot-4-Migration/your-microservice/SPRINGBOOT-AGENTS.md)
+- [SPRINGBOOT AGENTS](AI-ML/Agents/Spring-Boot-4-Migration/your-microservice/SPRINGBOOT-AGENTS.md)
 
 
 ### 🧬 LLMs & Models
@@ -133,10 +137,6 @@ Learnings/
 - [OpenResponses Open Inference Standard](AI-ML/LLMs/optimization/OpenResponses-Open-Inference-Standard.md)
 - [Unlock the Dark Data](AI-ML/LLMs/optimization/Unlock-the-Dark-Data.md)
 - [ai token optimization tools](AI-ML/LLMs/optimization/ai-token-optimization-tools.md)
-- [Headroom Proxy](DevSetup/headroom-pxoxy.md)
-
-#### 🧱 AI Hardware
-- [AI Hardware Explained: CPU, GPU, TPU, NPU, and Other AI Chips](AI-ML/Hardware/AI-Hardware-Chips-Explained.md)
 
 #### 📈 AI Economy & Trends
 - [AI Debt Bubble Analysis](AI-ML/LLMs/economy/AI-Debt-Bubble-Analysis.md)
@@ -168,7 +168,11 @@ Learnings/
 - [Multimodal RAG](AI-ML/RAG/Multimodal-RAG.md)
 - [RAG Architectures](AI-ML/RAG/RAG-Architectures.md)
 - [RAG Guide Jan 2026](AI-ML/RAG/RAG-Guide-Jan-2026.md)
-- [Scaling RAG to 10M Documents](AI-ML/RAG/RAG-Scaling-10M-Documents.md)
+- [RAG Scaling 10M Documents](AI-ML/RAG/RAG-Scaling-10M-Documents.md)
+
+
+### 🧱 AI Hardware
+- [AI Hardware Chips Explained](AI-ML/Hardware/AI-Hardware-Chips-Explained.md)
 
 
 ### 🔗 Protocols
@@ -191,6 +195,15 @@ Learnings/
 - [SiteGPT Alternatives](AI-ML/Comparisons/SiteGPT-Alternatives.md)
 - [Top 50 Q&A AI ML Eng](AI-ML/Comparisons/Top-50-Q%26A-AI-ML-Eng.md)
 - [Top 50 Q&A AI ML Math](AI-ML/Comparisons/Top-50-Q%26A-AI-ML-Math.md)
+
+
+### 📊 Tabular ML
+- [Google TabFM July 2026](AI-ML/Tabular-ML/Google-TabFM-July-2026.md)
+
+
+### 🧮 Algorithms
+- [X's Recommendation Algorithm with Verification](AI-ML/Algorithms/X%27s%20Recommendation%20Algorithm-with-Verification.md)
+- [X's Recommendation Algorithm Technical Analysis](AI-ML/Algorithms/X%27s-Recommendation-Algorithm-Technical-Analysis.md)
 
 
 ---
@@ -216,9 +229,13 @@ Learnings/
 
 ### ☁️ Cloud
 - [AWS vs Hetzner](Engineering/Cloud/AWS-vs-Hetzner.md)
+- [AWS Downtime Caused By AI Mistake](Engineering/Cloud/AWS/AWS-Downtime-Caused-By-AI-Mistake.md)
+- [aws deepracer ubuntu local installs](Engineering/Cloud/AWS/aws-deepracer-ubuntu-local-installs.md)
 
 ### 💻 Languages
 - [WASM Rust](Engineering/Languages/WASM-Rust.md)
+- [Java25 vs Go1.24 Go1.25](Engineering/Languages/comparisons/Java25-vs-Go1.24-Go1.25.md)
+- [rust vs c](Engineering/Languages/comparisons/rust-vs-c.md)
 
 ---
 
@@ -254,6 +271,15 @@ Learnings/
 
 ---
 
+## ⚛️ Quantum Computing
+- [Google WillowChip QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
+- [Quantum AI Decision Makers(2026)](QuantumComputing/Quantum-AI-Decision-Makers%282026%29.md)
+- [Quantum Threat to Bitcoin](QuantumComputing/Quantum-Threat-to-Bitcoin.md)
+- [QuantumComputer Terms](QuantumComputing/QuantumComputer-Terms.md)
+- [VIO 40K Arch 10K Qubits](QuantumComputing/VIO-40K-Arch-10K-Qubits.md)
+
+---
+
 ## 📄 Research Papers
 
 ### 🔍 DeepSeek Research
@@ -266,7 +292,7 @@ Learnings/
 ### 🧠 Reasoning & LLMs
 - [Agentic Reasoning LLMs](Papers/reasoning/Agentic-Reasoning-LLMs.md)
 - [Prompt Repetition RE2](Papers/reasoning/Prompt-Repetition-RE2.md)
-- RecursiveLanguageModels (RLMs)
+- [RecursiveLanguageModels (RLMs)](Papers/reasoning/RecursiveLanguageModels-%28RLMs%29.md)
 
 ### 👁️ Vision & Multimodal
 - [MiraThinker 1.5](Papers/vision/MiraThinker-1.5.md)
@@ -294,6 +320,7 @@ Learnings/
 ## 🛠️ Development Setup
 - [MacMini Setup](DevSetup/MacMini-Setup.md)
 - [headroom pi cost saver](DevSetup/headroom-pi-cost-saver.md)
+- [headroom proxy](DevSetup/headroom-proxy.md)
 - [llama cpp setup mtp](DevSetup/llama-cpp-setup-mtp.md)
 
 ---
@@ -306,6 +333,7 @@ Learnings/
 - [code understanding llm prompt](Content/Prompts/coding/code-understanding-llm-prompt.md)
 - [codebase explore prompt](Content/Prompts/coding/codebase-explore-prompt.md)
 - [docs gen llm prompt](Content/Prompts/coding/docs-gen-llm-prompt.md)
+- [Prompt Engineering for CS](Content/Prompts/coding/docs/Prompt-Engineering-for-CS.md)
 
 #### 📱 Social Media
 - [content visual carousel](Content/Prompts/social-media/content-visual%20carousel.md)
@@ -355,7 +383,6 @@ Learnings/
 #### 📋 Miscellaneous
 - [NotebookLM Video Generation Prompt](Content/Prompts/misc/NotebookLM-Video-Generation-Prompt.md)
 - [Weekly Updates Prompt](Content/Prompts/misc/Weekly-Updates-Prompt.md)
-
 
 ### 💼 LinkedIn
 - [Java AI Roadmap](Content/LinkedIn/Java-AI-Roadmap.md)
@@ -422,8 +449,12 @@ Learnings/
 
 - [GitHub Repos & Links](Scripts/github-repos.py) - Manage repos and check/fix links
 - [README Generator](Scripts/generate-readme.py) - Auto-generate this README
-- [hpi.sh](Scripts/hpi.sh) - Pi coding agent through Headroom compression proxy + RTK filtering
-- [hlrn.sh](Scripts/hlrn.sh) - Headroom Learn: run headroom learn with full options
+- [Headroom Env](Scripts/headroom-env.sh)
+- [Hlrn](Scripts/hlrn.sh)
+- [Hpi](Scripts/hpi.sh)
+- [Hproxy](Scripts/hproxy.sh)
+- [Hroom](Scripts/hroom.sh)
+- [Rtk Stats](Scripts/rtk-stats.sh)
 
 ---
 

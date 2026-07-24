@@ -168,4 +168,7 @@ https://x.com/hesamation/status/2017038553058857413
 
 https://www.mmntm.net/articles/building-clawdbot
 
-**Related:**- [OpenClaw-Whitepaper](OpenClaw-Whitepaper.md) — Broader executive white paper covering OpenClaw's rise, creator biography, security incidents, and economics beyond this doc's pure-architecture scope.- [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](OpenClaw%28Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026.md) — Detailed vulnerability catalog (gateway auth bypass, prompt injection, Node.js CVEs) covering the risks introduced by the gateway, memory, and tool layers described here.- [claw-ecosystem](claw-ecosystem.md) — Compares OpenClaw's TypeScript/serial/lane-queue design against alternative agents' process, container, and WASM isolation strategies.- [nanobot-architecture-deep-dive](../nanobot/nanobot-architecture-deep-dive.md) — NanoBot runtime architecture (~3,500 LOC Python) that contrasts OpenClaw's 430k LOC shared-memory daemon with a minimal audit-friendly alternative.
+**Related:**
+- [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](OpenClaw%28Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026.md) — Detailed vulnerability catalog (gateway auth bypass, prompt injection, Node.js CVEs) covering the risks introduced by the gateway, memory, and tool layers described here.
+- [claw-ecosystem](claw-ecosystem.md) — Compares OpenClaw's TypeScript/serial/lane-queue design against alternative agents' process, container, and WASM isolation strategies.
+- [nanobot-architecture-deep-dive](../nanobot/nanobot-architecture-deep-dive.md) — NanoBot runtime architecture (~3,500 LOC Python) that contrasts OpenClaw's 430k LOC shared-memory daemon with a minimal audit-friendly alternative.

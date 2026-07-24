@@ -487,4 +487,6 @@ This document distills the research paper "Towards a Science of Scaling Agent Sy
 
 All data, metrics, and findings are sourced directly from the peer-reviewed research. Timeline references are accurate as of December 2025.
 
-**Related:**- [kimi_k2.5_technical_report](../vision/kimi_k2.5_technical_report.md) — Directly challenges Kimi K2.5's PARL 'swarm = 4.5x faster' claim with empirical scaling law data.- [MiraThinker-1.5](../vision/MiraThinker-1.5.md) — Validates MiroThinker's single-agent-with-tools stance over Kimi-style parallel agent architectures.- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Translates 180-experiment findings into concrete agent-design principles for coding workflows.
+**Related:**
+- [MiraThinker-1.5](../vision/MiraThinker-1.5.md) — Validates MiroThinker's single-agent-with-tools stance over Kimi-style parallel agent architectures.
+- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Translates 180-experiment findings into concrete agent-design principles for coding workflows.

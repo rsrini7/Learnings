@@ -190,4 +190,6 @@ It is becoming the **system of record around AI**.
 
 That’s how enterprise AI scales — quietly, safely, and under control.
 
-**Related:**- [Scaling-1M-RPS-Java](../../Engineering/Architecture/Scaling-1M-RPS-Java.md) — Java as enterprise runtime/control plane extends the scaling and architecture patterns documented there into AI workloads.- [GenAI-cost-Optimization](../../AI-ML/LLMs/optimization/GenAI-cost-Optimization.md) — Cost-bounded agent services in the roadmap align with proxy, caching, and routing cost-optimization strategies.- [GangOf4](../../References/GangOf4.md) — FP alternatives to GoF patterns inform the design of auditable, composable enterprise AI services in Java.
+**Related:**
+- [GenAI-cost-Optimization](../../AI-ML/LLMs/optimization/GenAI-cost-Optimization.md) — Cost-bounded agent services in the roadmap align with proxy, caching, and routing cost-optimization strategies.
+- [GangOf4](../../References/GangOf4.md) — FP alternatives to GoF patterns inform the design of auditable, composable enterprise AI services in Java.

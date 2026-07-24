@@ -28,4 +28,6 @@ Attribution: Github icon **"Srinivasan Ragothaman (@rsrini7)"** discreetly in th
 Style: Professional infographic design with clear hierarchy, modern vector illustrations, light blue background, bright blue and orange accent colors, clean typography, and organized layout with proper spacing between sections. Parse the content block above and distribute each element to its corresponding section in the infographic layout as described.
 ```
 
-**Related:**- [gemini-prompts-categorized](gemini-prompts-categorized.md) — Categorized image-gen prompt patterns (infographic, notebook, developer) that this template-based generator can scaffold into vertical infographic layouts.- [prompting-guide](prompting-guide.md) — General prompt-engineering guide covering role/context/format principles that inform how this image-gen template parses and assigns content sections.- [content-visual%20carousel](../social-media/content-visual%20carousel.md) — Social-media carousel generator that uses a similar parse-then-render flow to turn source content into a sequenced set of branded images.
+**Related:**
+- [prompting-guide](prompting-guide.md) — General prompt-engineering guide covering role/context/format principles that inform how this image-gen template parses and assigns content sections.
+- [content-visual%20carousel](../social-media/content-visual%20carousel.md) — Social-media carousel generator that uses a similar parse-then-render flow to turn source content into a sequenced set of branded images.

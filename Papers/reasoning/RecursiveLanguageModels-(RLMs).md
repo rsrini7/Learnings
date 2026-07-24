@@ -1656,4 +1656,6 @@ Neural reasoning handles semantics; symbolic code handles control flow, iteratio
 **Brute-Force Context vs Intelligent Exploration**
 Feeding everything into attention vs selectively navigating information like a database or filesystem.
 
-**Related:**- [Agentic-Reasoning-LLMs](Agentic-Reasoning-LLMs.md) — RLMs realize the self-evolving and collective agentic layers via inference-time recursive decomposition.- [Prompt-Repetition-RE2](Prompt-Repetition-RE2.md) — Alternative long-context strategy; RE2 improves attention while RLMs externalize context entirely.- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — RLMs' root-LM-writes-Python pattern mirrors iterative agentic coding-loop development workflows.
+**Related:**
+- [Prompt-Repetition-RE2](Prompt-Repetition-RE2.md) — Alternative long-context strategy; RE2 improves attention while RLMs externalize context entirely.
+- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — RLMs' root-LM-writes-Python pattern mirrors iterative agentic coding-loop development workflows.

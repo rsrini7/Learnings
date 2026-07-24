@@ -126,7 +126,7 @@ Auto-detects Apple Silicon and adds `pytorch-mps` extra.
 | File | Purpose | Git-tracked? |
 |------|---------|--------------|
 | `~/ws/Learnings/Scripts/hproxy.sh` | Shell function (hproxy) | ✅ (this repo) |
-| `~/ws/Learnings/DevSetup/headroom-pxoxy.md` | This doc | ✅ (this repo) |
+| `~/ws/Learnings/DevSetup/headroom-proxy.md` | This doc | ✅ (this repo) |
 
 ## Troubleshooting
 
@@ -145,4 +145,6 @@ lsof -ti :8780 | xargs kill -9 2>/dev/null; hproxy
 
 - [Headroom GitHub](https://github.com/headroom-ai/headroom)
 
-**Related:**- [GenAI-cost-Optimization](../AI-ML/LLMs/optimization/GenAI-cost-Optimization.md) — Standalone compression proxy is one implementation pattern within the broader GenAI cost-optimization toolkit.- [AI-Coding-Loops](../AI-ML/Agents/development/AI-Coding-Loops.md) — The same proxy architecture underpins coding-agent loops; this doc covers the generic app use case.- [MacMini-Setup](MacMini-Setup.md) — Proxy runs locally on a dev machine — install the shell/runtime prerequisites from the Mac Mini setup first.
+**Related:**
+- [AI-Coding-Loops](../AI-ML/Agents/development/AI-Coding-Loops.md) — The same proxy architecture underpins coding-agent loops; this doc covers the generic app use case.
+- [MacMini-Setup](MacMini-Setup.md) — Proxy runs locally on a dev machine — install the shell/runtime prerequisites from the Mac Mini setup first.

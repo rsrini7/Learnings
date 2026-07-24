@@ -757,4 +757,6 @@ Related guides in this repository:
 
 *Reference note: product capabilities and naming evolve quickly. The conceptual framework in this guide is intentionally tool-independent; the linked products are examples of how the patterns are being implemented as of July 2026.*
 
-**Related:**- [AI-Accelerated-Development-Playbook](AI-Accelerated-Development-Playbook.md) — empirical evidence on why AI amplifies existing engineering discipline, supporting this guide's harness-engineering shift.- [AI-Operating-Manual](AI-Operating-Manual.md) — practical context engineering, iterative refinement, and ROI tracking with verification time as the foundations for working loops.- [Agent-Skills](../skills/Agent-Skills.md) — Skills as the reusable-procedure layer that pairs with the durable-state and harness principles argued for here.
+**Related:**
+- [AI-Operating-Manual](AI-Operating-Manual.md) — practical context engineering, iterative refinement, and ROI tracking with verification time as the foundations for working loops.
+- [Agent-Skills](../skills/Agent-Skills.md) — Skills as the reusable-procedure layer that pairs with the durable-state and harness principles argued for here.

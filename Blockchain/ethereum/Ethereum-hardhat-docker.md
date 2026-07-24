@@ -80,4 +80,6 @@ This sequence of commands and steps gives a full reproducible workflow from clon
 [2](https://hardhat.org/hardhat-network)
 [3](https://rareskills.io/post/viem-ethereum)
 
-**Related:**- [Hardhat-Development](Hardhat-Development.md) — Pairs the containerized Hardhat+Ignition+Vite tutorial with the foundational Hardhat setup walkthrough.- [EnterpriceBlockchainLearning](../enterprise/EnterpriceBlockchainLearning.md) — Demonstrates in practice the Docker-first toolchain flagged as non-negotiable in the enterprise roadmap.- [blockchain-26-catagories](../reference/blockchain-26-catagories.md) — Indexes this stack inside the developer-tools and testing-environments sections of the 26-category guide.
+**Related:**
+- [EnterpriceBlockchainLearning](../enterprise/EnterpriceBlockchainLearning.md) — Demonstrates in practice the Docker-first toolchain flagged as non-negotiable in the enterprise roadmap.
+- [blockchain-26-catagories](../reference/blockchain-26-catagories.md) — Indexes this stack inside the developer-tools and testing-environments sections of the 26-category guide.

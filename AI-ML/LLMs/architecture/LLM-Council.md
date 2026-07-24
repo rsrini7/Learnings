@@ -562,4 +562,6 @@ This pattern will likely become standard for high-stakes AI applications.
 
 **Remember:** This is a weekend hack that became influential. The concept matters more than the code. Use it as inspiration to build your own AI orchestration systems.
 
-**Related:**- [microGPT-Technical-Deep-Dive](microGPT-Technical-Deep-Dive.md) — Both are Karpathy educational projects; microGPT exposes the single-model algorithm while Council exposes multi-model orchestration.- [LLM-Inference](LLM-Inference.md) — Council's 3-5x cost multiplier stems from 9 inference calls per question — inference economics detailed in this companion guide.- [OpenResponses-Open-Inference-Standard](../optimization/OpenResponses-Open-Inference-Standard.md) — Both tackle vendor-neutral multi-model orchestration; OpenResponses formalizes the API while Council is a reference implementation.
+**Related:**
+- [LLM-Inference](LLM-Inference.md) — Council's 3-5x cost multiplier stems from 9 inference calls per question — inference economics detailed in this companion guide.
+- [OpenResponses-Open-Inference-Standard](../optimization/OpenResponses-Open-Inference-Standard.md) — Both tackle vendor-neutral multi-model orchestration; OpenResponses formalizes the API while Council is a reference implementation.

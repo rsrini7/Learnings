@@ -411,4 +411,7 @@ Clara is NVIDIA's initiative to accelerate drug discovery and medical treatment 
 
 [7] NVIDIA. (2026, January 4). Building autonomous vehicles that reason with NVIDIA Alpamayo. Developer Blog. Retrieved from https://developer.nvidia.com/blog/building-autonomous-vehicles-that-reason-with-nvidia-alpamayo/
 
-**Related:**- [AI-Hardware-Chips-Explained](../../../Hardware/AI-Hardware-Chips-Explained.md) — Vera Rubin platform (5x inference, 10x cost reduction) and Jetson edge deployment map directly to the GPU/NPU concepts defined here.- [LLM-Inference-Engines](../../architecture/LLM-Inference-Engines.md) — Nemotron Speech ASR's cache-aware 8x downsampling and the 10x token-cost reduction are practical instances of these inference-engine optimizations.- [RAG-Architectures](../../../RAG/RAG-Architectures.md) — Nemotron RAG Embedding + Reranker is a turnkey two-stage retrieval component that slots into the hybrid/agentic RAG tiers defined here.- [Multimodal-RAG](../../../RAG/Multimodal-RAG.md) — Nemotron RAG Embedding handles vision + text + PDFs natively, matching the multimodal encoding approaches enumerated here.
+**Related:**
+- [LLM-Inference-Engines](../../architecture/LLM-Inference-Engines.md) — Nemotron Speech ASR's cache-aware 8x downsampling and the 10x token-cost reduction are practical instances of these inference-engine optimizations.
+- [RAG-Architectures](../../../RAG/RAG-Architectures.md) — Nemotron RAG Embedding + Reranker is a turnkey two-stage retrieval component that slots into the hybrid/agentic RAG tiers defined here.
+- [Multimodal-RAG](../../../RAG/Multimodal-RAG.md) — Nemotron RAG Embedding handles vision + text + PDFs natively, matching the multimodal encoding approaches enumerated here.

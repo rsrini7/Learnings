@@ -605,4 +605,6 @@ Most projects today choose tokens because they're faster, cheaper, and leverage 
 
 Remember: Both coins and tokens work together. Coins provide the foundation, tokens enable innovation. Ethereum (coin) enables USDT, UNI, and thousands of other tokens to exist and thrive.
 
-**Related:**- [Quantum-Threat-to-Bitcoin](../../QuantumComputing/Quantum-Threat-to-Bitcoin.md) — BTC is cited as the canonical PoW coin and is directly exposed to Shor's algorithm breaking its ECDSA signatures.- [GraphDB-massive-scale-analysis](../../Engineering/Databases/GraphDB-massive-scale-analysis.md) — Token ledgers and account-state trees are append-only databases whose query and indexing concerns mirror graph-scale engineering.- [AI-and-the-Barbell-Economy](../../AI-ML/LLMs/economy/AI-and-the-Barbell-Economy.md) — Token-vs-coin primitives shape the barbell of programmable money and AI-driven on-chain agents.
+**Related:**
+- [GraphDB-massive-scale-analysis](../../Engineering/Databases/GraphDB-massive-scale-analysis.md) — Token ledgers and account-state trees are append-only databases whose query and indexing concerns mirror graph-scale engineering.
+- [AI-and-the-Barbell-Economy](../../AI-ML/LLMs/economy/AI-and-the-Barbell-Economy.md) — Token-vs-coin primitives shape the barbell of programmable money and AI-driven on-chain agents.

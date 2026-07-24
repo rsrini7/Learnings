@@ -1284,4 +1284,7 @@ The best architecture is one that acknowledges these trade-offs and chooses the 
 - Code execution, CLI, Scripts, and Skills approaches
 - Original benchmarks and case studies
 
-**Related:**- [claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills](../Agents/skills/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md) — Positions MCP within the broader Claude agent stack, contextualizing the scalability and tool-binding issues analyzed here.- [Agent-Skills](../Agents/skills/Agent-Skills.md) — Compares Skills vs Agents vs MCP, directly relevant to the context-overload and tool-definition trade-offs in this paper.- [OpenClaw-Whitepaper](../Agents/openclaw/OpenClaw-Whitepaper.md) — Production consumer-facing agent stack that relies on MCP and inherits the context-window bottlenecks quantified here.- [AI-Coding-Loops](../Agents/development/AI-Coding-Loops.md) — AI-coding loop patterns that depend on multiple MCP servers and feel the 97K-token tool bloat in this whitepaper.
+**Related:**
+- [Agent-Skills](../Agents/skills/Agent-Skills.md) — Compares Skills vs Agents vs MCP, directly relevant to the context-overload and tool-definition trade-offs in this paper.
+- [OpenClaw-Whitepaper](../Agents/openclaw/OpenClaw-Whitepaper.md) — Production consumer-facing agent stack that relies on MCP and inherits the context-window bottlenecks quantified here.
+- [AI-Coding-Loops](../Agents/development/AI-Coding-Loops.md) — AI-coding loop patterns that depend on multiple MCP servers and feel the 97K-token tool bloat in this whitepaper.

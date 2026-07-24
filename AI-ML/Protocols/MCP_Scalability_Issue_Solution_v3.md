@@ -1322,4 +1322,7 @@ response = client.beta.messages.create(
 - Code execution, CLI, Scripts, and Skills approaches
 - Original benchmarks and case studies
 
-**Related:**- [claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills](../Agents/skills/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md) — Cross-references MCP, Skills, and Sub-agents, complementing v3's Code Mode and Programmatic Tool Calling recommendation.- [Agent-Skills](../Agents/skills/Agent-Skills.md) — Skills are positioned as one of the mitigations in v3's evolutionary story alongside Tool Search and Code Mode.- [OpenClaw(Moltbot-or-Clawdbot)-Architecture](../Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot)-Architecture.md) — Updated OpenClaw architecture where dynamic tool discovery addresses the v3-quantified scalability bottlenecks.- [AI-Coding-Loops](../Agents/development/AI-Coding-Loops.md) — AI-coding loop patterns that benefit most from v3's Code Mode default for multi-tool, multi-step agent workflows.
+**Related:**
+- [Agent-Skills](../Agents/skills/Agent-Skills.md) — Skills are positioned as one of the mitigations in v3's evolutionary story alongside Tool Search and Code Mode.
+- [OpenClaw(Moltbot-or-Clawdbot)-Architecture](../Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot)-Architecture.md) — Updated OpenClaw architecture where dynamic tool discovery addresses the v3-quantified scalability bottlenecks.
+- [AI-Coding-Loops](../Agents/development/AI-Coding-Loops.md) — AI-coding loop patterns that benefit most from v3's Code Mode default for multi-tool, multi-step agent workflows.

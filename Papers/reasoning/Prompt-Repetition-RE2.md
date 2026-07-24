@@ -1195,4 +1195,5 @@ For developers building production AI applications, RE2 should be a standard too
 
 *This whitepaper synthesizes research findings and practical implementation experience as of January 2026. Performance metrics should be validated for specific use cases. Always monitor production deployments and adjust based on real-world results.*
 
-**Related:**- [Agentic-Reasoning-LLMs](Agentic-Reasoning-LLMs.md) — RE2 slots into the foundational layer of agentic reasoning to boost tool-use and planning reliability.- [RecursiveLanguageModels-(RLMs)](RecursiveLanguageModels-%28RLMs).md) — Both tackle long-context reasoning: RE2 mitigates the causal-attention trap that RLMs avoid via recursion.
+**Related:**
+- [RecursiveLanguageModels-(RLMs)](RecursiveLanguageModels-%28RLMs).md) — Both tackle long-context reasoning: RE2 mitigates the causal-attention trap that RLMs avoid via recursion.

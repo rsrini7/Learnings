@@ -100,4 +100,6 @@ To run the dynamically linked binary, the library path must be provided.
 
 Source: https://www.youtube.com/watch?v=IXBaXyLdrTA
 
-**Related:**- [WASM-Rust](../WASM-Rust.md) — Rust's memory safety and small binary size shown here drive its dominance as the WASM compilation target.- [workflow-orchestration](../../Middleware/workflow-orchestration.md) — Restate's Rust SDK uses these same memory-safety properties for journal-based durable workflow execution.- [MacMini-Setup](../../../DevSetup/MacMini-Setup.md) — Rust/C toolchain setup considerations apply when building native binaries on constrained MacMini homelab hardware.
+**Related:**
+- [workflow-orchestration](../../Middleware/workflow-orchestration.md) — Restate's Rust SDK uses these same memory-safety properties for journal-based durable workflow execution.
+- [MacMini-Setup](../../../DevSetup/MacMini-Setup.md) — Rust/C toolchain setup considerations apply when building native binaries on constrained MacMini homelab hardware.

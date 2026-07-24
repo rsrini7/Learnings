@@ -1984,4 +1984,6 @@ The PEFT and compression landscape continues evolving rapidly. Stay updated with
 - Join the Hugging Face community for support and updates
 - Monitor emerging trends like Mixture of Adapters and quantization-aware training
 
-**Related:**- [Fine-Tuning-LLM-GTX1060-WSL2-Ubuntu-2022](Fine-Tuning-LLM-GTX1060-WSL2-Ubuntu-2022.md) — Hands-on WSL2/CUDA environment setup that complements the PEFT methodology covered here.- [Auto-Regression](../LLMs/training/Auto-Regression.md) — Training-time autoregressive objective that PEFT methods adapt rather than retrain from scratch.- [LLM-Inference-Engines](../LLMs/architecture/LLM-Inference-Engines.md) — Inference engines like vLLM referenced as deployment targets for compressed, PEFT-tuned models.
+**Related:**
+- [Auto-Regression](../LLMs/training/Auto-Regression.md) — Training-time autoregressive objective that PEFT methods adapt rather than retrain from scratch.
+- [LLM-Inference-Engines](../LLMs/architecture/LLM-Inference-Engines.md) — Inference engines like vLLM referenced as deployment targets for compressed, PEFT-tuned models.

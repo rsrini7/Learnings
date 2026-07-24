@@ -512,4 +512,6 @@ Subject, Action, Environment, Art Style, Medium, Composition, Lighting, Color Pa
 - Demo video: https://www.youtube.com/watch?v=UbfoJNzPiSY
 - Video tutorial: https://www.youtube.com/watch?v=65C5VSSqWZk
 
-**Related:**- [my-prompts-categorized](my-prompts-categorized.md) — Sibling categorized-prompt collection covering document consolidation, review, and code-review patterns for general tasks versus this Gemini-focused one.- [generate-new-prompt-from-template-for-image-gen](generate-new-prompt-from-template-for-image-gen.md) — Template-driven image-generation prompt that pairs with the image-gen use cases listed in section 2 of this categorized collection.- [Prompt-Generator-Prompt](Prompt-Generator-Prompt.md) — Meta-prompt for synthesizing new structured prompts of the kind cataloged across the sections of this file.
+**Related:**
+- [generate-new-prompt-from-template-for-image-gen](generate-new-prompt-from-template-for-image-gen.md) — Template-driven image-generation prompt that pairs with the image-gen use cases listed in section 2 of this categorized collection.
+- [Prompt-Generator-Prompt](Prompt-Generator-Prompt.md) — Meta-prompt for synthesizing new structured prompts of the kind cataloged across the sections of this file.

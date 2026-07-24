@@ -19,4 +19,5 @@
 * **Sample Prompt References**: Provides examples of desired depth for various topics, such as "Pricing Strategy" (deep reflection on seat vs. usage pricing), "Content Calendar" (action-oriented 12-week plan), "Agentic Monitor" (autonomous daily competitive-intel scan), and "Pitch Deck Review" (deep red-team diligence).
 * **Execution**: The prompt begins by executing rule 2 for the "Purpose" section.
 
-**Related:**- [Define-Your-AI-Learning-Goal(Easy-Mode)-LLM-Prompt](Define-Your-AI-Learning-Goal%28Easy-Mode)-LLM-Prompt.md) — Sibling Easy-Mode variant that simplifies the same tutor blueprint into single-question pacing.- [What%20and%20How%20can%20ASK%20an%20AI](What%20and%20How%20can%20ASK%20an%20AI.md) — Companion reference of advanced prompting patterns that complement the Hard-Mode tutor blueprint.
+**Related:**
+- [What%20and%20How%20can%20ASK%20an%20AI](What%20and%20How%20can%20ASK%20an%20AI.md) — Companion reference of advanced prompting patterns that complement the Hard-Mode tutor blueprint.

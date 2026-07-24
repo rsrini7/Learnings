@@ -319,4 +319,7 @@ The Hedera article's insight—that post-consensus vs. pre-consensus block produ
 [27](https://www.sciencedirect.com/topics/computer-science/distributed-ledger)
 [28](https://technorely.com/insights/block-lattice-how-it-differs-from-the-classic-blockchain-and-what-potential-it-has)
 
-**Related:**- [BlockchainLayers](BlockchainLayers.md) — Pairs the data-structure taxonomy with the complementary L0-L3 functional-layering perspective.- [blockchain-26-catagories](blockchain-26-catagories.md) — Locates blockchain, DAG, and Hashgraph designs within the broader 26-category ecosystem map.- [EnterpriceBlockchainLearning](../enterprise/EnterpriceBlockchainLearning.md) — Anchors the BFT/IBFT/QBFT consensus discussion inside the full DLT design space.- [Hardhat-Development](../ethereum/Hardhat-Development.md) — Highlights EVM-compatible chains as the practical on-ramp from DLT theory into deployable smart contracts.
+**Related:**
+- [blockchain-26-catagories](blockchain-26-catagories.md) — Locates blockchain, DAG, and Hashgraph designs within the broader 26-category ecosystem map.
+- [EnterpriceBlockchainLearning](../enterprise/EnterpriceBlockchainLearning.md) — Anchors the BFT/IBFT/QBFT consensus discussion inside the full DLT design space.
+- [Hardhat-Development](../ethereum/Hardhat-Development.md) — Highlights EVM-compatible chains as the practical on-ramp from DLT theory into deployable smart contracts.

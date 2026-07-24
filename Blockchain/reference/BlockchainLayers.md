@@ -164,4 +164,6 @@ For a visual breakdown of these concepts, refer to the following YouTube guides:
 - [What Are Blockchain Layers 0–3](https://www.youtube.com/watch?v=u1PEKoRVedw)  
 - [Layers 1–2–3](https://www.youtube.com/watch?v=UVfEOQQ_Bic)
 
-**Related:**- [DLT](DLT.md) — Cross-references the layered L0-L3 view with the broader DLT taxonomy covering DAG, Hashgraph, and block-lattice.- [blockchain-26-catagories](blockchain-26-catagories.md) — Aligns each layer with the corresponding sector in the 26-category ecosystem map (L1 networks, L2 scaling, etc.).- [EnterpriceBlockchainLearning](../enterprise/EnterpriceBlockchainLearning.md) — Ties the CAP-theorem and consensus discussion in the roadmap to the L1 settlement-layer framing.
+**Related:**
+- [blockchain-26-catagories](blockchain-26-catagories.md) — Aligns each layer with the corresponding sector in the 26-category ecosystem map (L1 networks, L2 scaling, etc.).
+- [EnterpriceBlockchainLearning](../enterprise/EnterpriceBlockchainLearning.md) — Ties the CAP-theorem and consensus discussion in the roadmap to the L1 settlement-layer framing.

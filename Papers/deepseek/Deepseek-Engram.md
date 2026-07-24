@@ -1410,4 +1410,7 @@ where:
 
 *For questions, contributions, or corrections, please visit the [GitHub repository](https://github.com/deepseek-ai/Engram) or contact the DeepSeek-AI team.*
 
-**Related:**- [DeepSeek-Advancements](DeepSeek-Advancements.md) — Engram is optimized alongside DeepSeek's MoE architecture for the 75% MoE / 25% Engram parameter split.- [mHC-Deepseek](mHC-Deepseek.md) — Sister DeepSeek architecture release combining constrained multi-stream routing with conditional memory.- [Persistent-Memory-Layers-AI-Agents](../../AI-ML/LLMs/architecture/Persistent-Memory-Layers-AI-Agents.md) — Complementary persistent memory layer approach addressing transformer limitations with O(1) pattern lookup.- [Google-Nested-Learning-VS-FB-Sparce-Memory](../comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md) — Comparison of memory-centric architectures from Google and Facebook parallels Engram's memory axis.
+**Related:**
+- [mHC-Deepseek](mHC-Deepseek.md) — Sister DeepSeek architecture release combining constrained multi-stream routing with conditional memory.
+- [Persistent-Memory-Layers-AI-Agents](../../AI-ML/LLMs/architecture/Persistent-Memory-Layers-AI-Agents.md) — Complementary persistent memory layer approach addressing transformer limitations with O(1) pattern lookup.
+- [Google-Nested-Learning-VS-FB-Sparce-Memory](../comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md) — Comparison of memory-centric architectures from Google and Facebook parallels Engram's memory axis.

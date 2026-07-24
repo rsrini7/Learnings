@@ -486,4 +486,6 @@ K2.5 represents evolution from:
 **Last Updated:** January 2026  
 **Target Audience:** Developers, Solutions Architects, AI Engineers
 
-**Related:**- [The-Science-of-Scaling-AI-Agent-Systems](../scaling/The-Science-of-Scaling-AI-Agent-Systems.md) — Contradicts Kimi's 'more agents = better' premise by showing added agents can hurt by 70% in mismatched tasks.- [MiraThinker-1.5](MiraThinker-1.5.md) — Companion open-agent read: Kimi K2.5 orchestrates visual-to-code swarms while MiroThinker emphasizes verified single-agent research.- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Maps Kimi's PARL agent-swarm and 1,500-tool-call loop onto practical agentic coding workflow patterns.
+**Related:**
+- [MiraThinker-1.5](MiraThinker-1.5.md) — Companion open-agent read: Kimi K2.5 orchestrates visual-to-code swarms while MiroThinker emphasizes verified single-agent research.
+- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Maps Kimi's PARL agent-swarm and 1,500-tool-call loop onto practical agentic coding workflow patterns.

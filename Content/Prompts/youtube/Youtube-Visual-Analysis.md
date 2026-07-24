@@ -25,4 +25,5 @@ Tools/Entities Mentioned: List all software, products, or people named or shown.
 Identify any discrepancies between what is said and what is shown. (e.g., "Speaker says 'click the blue button,' but the video shows a red button").
 If no discrepancies exist, state: "Visuals perfectly align with audio narration."
 
-**Related:**- [Youtube-Single-Link-Understanding-Prompt](Youtube-Single-Link-Understanding-Prompt.md) — Sibling single-video research prompt that focuses on audio/transcript extraction for the same use case.- [Youtube-Multi-Links-Understanding-Prompt](Youtube-Multi-Links-Understanding-Prompt.md) — Sibling multi-video synthesis prompt covering the same research workflow but text-first across several videos.
+**Related:**
+- [Youtube-Multi-Links-Understanding-Prompt](Youtube-Multi-Links-Understanding-Prompt.md) — Sibling multi-video synthesis prompt covering the same research workflow but text-first across several videos.

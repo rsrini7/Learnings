@@ -152,4 +152,6 @@ Process the following content using the 6-section structure above (Problem → S
 # INPUT CONTENT
 [PASTE YOUR LONG-FORM CONTENT HERE]
 
-**Related:**- [convert-long-2-short-social-post-prompt](convert-long-2-short-social-post-prompt.md) — Earlier original version of the long-to-short social post converter before the v2 structure overhaul.- [convert-long-2-short-social-post-prompt-v3-merged](convert-long-2-short-social-post-prompt-v3-merged.md) — Successor v3-merged version introducing semantic-emoji guidelines on top of the v2 structure.- [convert-long-2-short-social-post-prompt-v4-examples](convert-long-2-short-social-post-prompt-v4-examples.md) — Latest v4 revision that extends v3-merged with concrete worked examples.
+**Related:**
+- [convert-long-2-short-social-post-prompt-v3-merged](convert-long-2-short-social-post-prompt-v3-merged.md) — Successor v3-merged version introducing semantic-emoji guidelines on top of the v2 structure.
+- [convert-long-2-short-social-post-prompt-v4-examples](convert-long-2-short-social-post-prompt-v4-examples.md) — Latest v4 revision that extends v3-merged with concrete worked examples.

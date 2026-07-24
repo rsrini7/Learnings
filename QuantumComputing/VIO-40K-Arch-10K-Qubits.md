@@ -72,4 +72,7 @@ VIO-40K represents a pivotal moment, verified through QuantWare's announcement a
 11. NVIDIA. (2025, October 28). *NVIDIA Introduces NVQLink*. https://nvidianews.nvidia.com/news/nvidia-nvqlink-quantum-gpu-computing
 9. NextBigFuture. (2025, December). *Quantware 10K Qubits in 2028 and 1 Million in 2029*. https://www.nextbigfuture.com/2025/12/quantware-10k-qubits-in-2028-and-1-million-in-2029.html
 
-**Related:**- [Google-WillowChip-QuantumEchoes-Algorithm](Google-WillowChip-QuantumEchoes-Algorithm.md) — Benchmark companion piece comparing Willow's verified advantage against the VIO-40K scaling roadmap.- [AI-Hardware-Chips-Explained](../AI-ML/Hardware/AI-Hardware-Chips-Explained.md) — Shares the chiplet-and-accelerator design pattern analysis applied to NVIDIA NVQLink/CUDA-Q integration.- [Quantum-AI-Decision-Makers(2026)](Quantum-AI-Decision-Makers%282026).md) — Provides the post-2030 scaling evidence behind the executive note that real quantum-AI is hardware-limited.- [AI-in-Next-18-Months](../AI-ML/LLMs/economy/AI-in-Next-18-Months.md) — Complementary 2026 forecast framing for where quantum-AI fits versus classical AI deployment timelines.
+**Related:**
+- [AI-Hardware-Chips-Explained](../AI-ML/Hardware/AI-Hardware-Chips-Explained.md) — Shares the chiplet-and-accelerator design pattern analysis applied to NVIDIA NVQLink/CUDA-Q integration.
+- [Quantum-AI-Decision-Makers(2026)](Quantum-AI-Decision-Makers%282026).md) — Provides the post-2030 scaling evidence behind the executive note that real quantum-AI is hardware-limited.
+- [AI-in-Next-18-Months](../AI-ML/LLMs/economy/AI-in-Next-18-Months.md) — Complementary 2026 forecast framing for where quantum-AI fits versus classical AI deployment timelines.

@@ -1,109 +1,119 @@
-# 🤖 Agents Guide: Repository Conventions
+# 🤖 Agents Guide (Repository Root)
 
-> Quick reference for organizing files and verifying links in this repository.
-
----
-
-## 📁 File Naming Convention
-
-Use **Title-Case-With-Hyphens** for all markdown files:
-
-```
-✅ Hiring-Agent-Deep-Dive.md
-✅ Autonomous-AI-Agents.md
-❌ hiring-agent-deep-dive.md
-❌ Hiring_Agent_Deep_Dive.md
-```
+> Read this first. It captures the rules that are easy to miss when adding or
+> moving content in this repository.
 
 ---
 
-## 🔄 Moving/Organizing Files Checklist
+## ⛔ The #1 Rule: `README.md` is auto-generated
 
-When moving or adding a new markdown file:
+**Do NOT hand-edit `README.md`.** It is regenerated from the directory structure
+by `Scripts/generate-readme.py`. Any manual edits will be overwritten.
 
-```bash
-# 1. Move file(s) to destination folder
-mv path/to/file.md destination/folder/
+To change what appears in the README:
 
-# 2. Rename to match naming convention
-mv destination/folder/old-name.md destination/folder/New-Name.md
-
-# 3. Move associated images to same folder
-mv path/to/*.png destination/folder/
-
-# 4. Update README.md under appropriate section
-# Add: - [Display Name](destination/folder/New-Name.md)
-
-# 5. Add Related section at bottom of file (see format below)
-
-# 6. Verify all links
-python3 Scripts/github-repos.py links
-
-# 7. Fix broken links if needed
-python3 Scripts/github-repos.py links --fix
-```
+1. Add / move / rename the actual files.
+2. If you introduced a **new folder/section**, register it in
+   `Scripts/generate-readme.py` (add a `get_md_files(...)` block and, if
+   relevant, a line in the structure diagram inside that script).
+3. Regenerate:
+   ```bash
+   python3 Scripts/generate-readme.py
+   ```
+4. Verify links after any reorganization:
+   ```bash
+   python3 Scripts/github-repos.py links
+   ```
 
 ---
 
-## 📎 Related Section Format
+## 📥 Adding a new note / article
 
-Add at the bottom of each document:
+1. Place the `.md` file in the most fitting category folder under
+   `AI-ML/`, `Engineering/`, `Blockchain/`, `Papers/`, `News/`, etc.
+   Create a new subfolder if none fits semantically.
+2. Put any linked images/PDFs in the nearest `assets/` folder
+   (e.g. `AI-ML/assets/`) and reference them with a correct **relative** path.
+3. **Add a `**Related:**` cross-reference section** to the new file, and add a
+   back-link to it from the most relevant sibling docs (see next section).
+4. Regenerate the README and run the link check (see above).
+   The generator now **auto-discovers** subfolders, so a new folder will still
+   appear (worst case under an "Uncategorized" section) — but add a curated
+   title in `Scripts/generate-readme.py` for a clean section.
+
+---
+
+## 🔗 REQUIRED: Internal `**Related:**` cross-references (manual)
+
+> There is **NO script** for this. It is authored manually (by a human or LLM)
+> and is easy to forget. ~200 files already follow this convention — every new
+> or moved `.md` file MUST participate.
+
+Every content `.md` file should end with a Related section that links to a few
+of the most relevant sibling docs, each with a short reason. Format (note the
+inline entries on one line, matching existing files):
 
 ```markdown
 ---
 
-## Related
-
-- [Related Document Title](../relative/path/to/file.md) — Brief description of relevance.
-- [Another Document](../path/to/file.md) — How it relates to current document.
+**Related:**
+- [Doc-Name](../relative/path/Doc-Name.md) — one-line reason this is related.
+- [Another-Doc](../../path/Another-Doc.md) — why it connects to this topic.
 ```
+
+Rules:
+- Use **relative paths** from the current file's location (count the `../`).
+- Add **3–5** genuinely relevant links with a concise `— reason` each.
+- **Put each link on its own line** (a markdown list), with `**Related:**` on
+  its own line above them — NOT all crammed onto one paragraph line.
+  Correct:
+  ```
+  **Related:**
+  - [Doc-Name](path.md) — reason.
+  - [Other](path2.md) — reason.
+  ```
+  Wrong (paragraph, hard to read):
+  ```
+  **Related:**- [Doc-Name](path.md) — reason.- [Other](path2.md) — reason.
+  ```
+- Prefer making links **bidirectional**: when Doc A → Doc B, add Doc B → Doc A
+  where it makes sense, so the reference web stays connected.
+- Verify the paths resolve (`python3 Scripts/github-repos.py links`).
+
+When **adding** a file: write its Related section AND add a back-link from the
+closest existing doc(s).
+When **moving/renaming** a file: fix its own Related paths (depth changed) AND
+update any other files that linked to it.
 
 ---
 
-## 🔗 Link Verification
+## 🗂️ Moving / renaming files
 
-Always run after reorganizing files:
-
-```bash
-# Check for broken links
-python3 Scripts/github-repos.py links
-
-# Auto-fix broken links
-python3 Scripts/github-repos.py links --fix
-```
+1. Move the file and its linked assets.
+2. Fix the relative image/link paths **inside** the moved file (the number of
+   `../` changes with folder depth).
+3. Fix the file's own `**Related:**` links and update any **other** files that
+   referenced it (grep for the old filename).
+4. Regenerate the README and run the link check.
 
 ---
 
-## 📂 Repository Structure
+## 📚 More detail
 
-```
-Learnings/
-├── AI-ML/                       # AI & Machine Learning
-│   ├── Agents/                  # Agent frameworks, analysis
-│   ├── LLMs/                    # Models, architectures
-│   ├── RAG/                     # RAG architectures
-│   ├── Hardware/                # AI chips
-│   ├── Protocols/               # MCP, A2A, UCP
-│   ├── Fine-Tuning/             # Training guides
-│   └── Comparisons/             # Model comparisons
-├── Engineering/                 # Software Engineering
-├── Blockchain/                  # Blockchain & DLT
-├── News/                        # News & updates
-├── Papers/                      # Research papers
-├── Scripts/                     # Utility scripts
-└── assets/                      # Shared images
-```
+See [`Scripts/AGENTS.md`](Scripts/AGENTS.md) for full documentation of the
+utility scripts (`github-repos.py`, `generate-readme.py`, link/TOC fixing,
+GitHub repo management, and common workflows).
 
 ---
 
-## ⚠️ Common Mistakes to Avoid
+## ⚠️ Quick Checklist
 
-1. **Forgetting to update README** — Always add link to appropriate section
-2. **Wrong file naming** — Use Title-Case-With-Hyphens, not lowercase
-3. **Missing Related section** — Every doc should link to related content
-4. **Not verifying links** — Always run `links` check after moving files
-5. **Orphaned images** — Move PNGs with their markdown file to same folder
-
----
-
-> **Last updated:** July 2026
+- [ ] Files (and assets) placed in the right folder
+- [ ] Relative links inside moved files fixed
+- [ ] Relative image/asset paths fixed
+- [ ] New `.md` file ends with a `**Related:**` section (3–5 links + reasons)
+- [ ] Back-links added in the closest existing sibling doc(s)
+- [ ] Moved/renamed file: own Related links fixed + old references updated
+- [ ] `python3 Scripts/generate-readme.py` run (never hand-edit `README.md`)
+- [ ] `python3 Scripts/github-repos.py links` clean
+- [ ] Commit changes

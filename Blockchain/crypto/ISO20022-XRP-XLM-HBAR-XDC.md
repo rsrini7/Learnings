@@ -145,4 +145,6 @@ If you share the current markdown text, a diff‑style update can be drafted tha
 [39](https://crypto.com/en/market-updates/is-2026-going-to-be-the-year-of-tokenization)
 [40](https://www.binaryx.com/blog/rwa-outlook-2025-asset-tokenization-market-to-reach-3-5-10t-by-2030)
 
-**Related:**- [kafka-4.0](../../Engineering/Middleware/kafka-4.0.md) — ISO 20022 MX messages over SWIFT/RTGS are a messaging-middleware problem (schema, routing, replay) akin to event-stream design.- [workflow-orchestration](../../Engineering/Middleware/workflow-orchestration.md) — Bank-side adoption requires orchestrating KYC, sanctions, FX, and settlement workflows across ISO 20022 and on-chain rails.- [GraphDB-massive-scale-analysis](../../Engineering/Databases/GraphDB-massive-scale-analysis.md) — Subnets like XDC's ISO-aware private ledgers and Hedera's HCS mirror partitioned, query-heavy enterprise database deployments.
+**Related:**
+- [workflow-orchestration](../../Engineering/Middleware/workflow-orchestration.md) — Bank-side adoption requires orchestrating KYC, sanctions, FX, and settlement workflows across ISO 20022 and on-chain rails.
+- [GraphDB-massive-scale-analysis](../../Engineering/Databases/GraphDB-massive-scale-analysis.md) — Subnets like XDC's ISO-aware private ledgers and Hedera's HCS mirror partitioned, query-heavy enterprise database deployments.

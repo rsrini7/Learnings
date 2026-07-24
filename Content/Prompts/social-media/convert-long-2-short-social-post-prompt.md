@@ -90,4 +90,6 @@ Output **only** the formatted Cheat Sheet post.
 
 ```
 
-**Related:**- [convert-long-2-short-social-post-prompt-v2](convert-long-2-short-social-post-prompt-v2.md) — First numbered v2 revision that formalized the problem-solution-implementation structure and Unicode typography rules.- [convert-long-2-short-social-post-prompt-v3-merged](convert-long-2-short-social-post-prompt-v3-merged.md) — v3-merged consolidation adding semantic-emoji guidelines and institutional-finance domain language.- [convert-long-2-short-social-post-prompt-v4-examples](convert-long-2-short-social-post-prompt-v4-examples.md) — Latest v4 iteration that adds worked examples on top of the v3-merged structure.
+**Related:**
+- [convert-long-2-short-social-post-prompt-v3-merged](convert-long-2-short-social-post-prompt-v3-merged.md) — v3-merged consolidation adding semantic-emoji guidelines and institutional-finance domain language.
+- [convert-long-2-short-social-post-prompt-v4-examples](convert-long-2-short-social-post-prompt-v4-examples.md) — Latest v4 iteration that adds worked examples on top of the v3-merged structure.

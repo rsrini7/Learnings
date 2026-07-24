@@ -802,4 +802,8 @@ print(f"AI safety discussed at {timestamp}s")
 
 ---
 
-**Related:**- [Multimodal-RAG](../../../RAG/Multimodal-RAG.md) — Encompasses the joint-embedding approach Qwen3-VL-Embedding exemplifies; multiple-encoders + reranker matches the Qwen3-VL-Reranker cross-encoder design.- [RAG-Architectures](../../../RAG/RAG-Architectures.md) — The two-stage retrieval pipeline (embedding recall -> reranker precision) is the canonical Tier 1 hybrid RAG architecture described here.- [RAG-Guide-Jan-2026](../../../RAG/RAG-Guide-Jan-2026.md) — Provides foundational chunking, retrieval, and evaluation context that the Qwen3 embedding/reranker code examples build on.- [RAG-Scaling-10M-Documents](../../../RAG/RAG-Scaling-10M-Documents.md) — Matryoshka truncation for 10x speedup and the embedding->reranker funnel are the exact scaling levers advocated at 10M-document scale here.- [LLM-Benchmarks](../../architecture/LLM-Benchmarks.md) — Defines MMEB-V2 (where Qwen3-VL-Embedding-8B ranks #1) and MTEB benchmark families used to score embedding quality.
+**Related:**
+- [RAG-Architectures](../../../RAG/RAG-Architectures.md) — The two-stage retrieval pipeline (embedding recall -> reranker precision) is the canonical Tier 1 hybrid RAG architecture described here.
+- [RAG-Guide-Jan-2026](../../../RAG/RAG-Guide-Jan-2026.md) — Provides foundational chunking, retrieval, and evaluation context that the Qwen3 embedding/reranker code examples build on.
+- [RAG-Scaling-10M-Documents](../../../RAG/RAG-Scaling-10M-Documents.md) — Matryoshka truncation for 10x speedup and the embedding->reranker funnel are the exact scaling levers advocated at 10M-document scale here.
+- [LLM-Benchmarks](../../architecture/LLM-Benchmarks.md) — Defines MMEB-V2 (where Qwen3-VL-Embedding-8B ranks #1) and MTEB benchmark families used to score embedding quality.

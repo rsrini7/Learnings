@@ -121,4 +121,7 @@ Examples discussed align with real implementations such as:
   * Inventory-liquidity tools
   * New financialization pathways
 
-**Related:**- [Crypto-Supercycle-and-Ethereum](../ethereum/Crypto-Supercycle-and-Ethereum.md) — Pairs the AI/RWA friction analysis with the broader 2025-2026 tokenization supercycle thesis on Ethereum.- [JPMorgan-Blockchain-Strategy](JPMorgan-Blockchain-Strategy.md) — Connects RWA tokenization theory to JPMC's real-world JPMD deposit-token and MONY money-market launches.- [Blockchain-by-2035](../reference/Blockchain-by-2035.md) — Extends today's hidden RWA frictions into the 2035 bank-free, fully tokenized asset ownership vision.- [AI-and-the-Barbell-Economy](../../AI-ML/LLMs/economy/AI-and-the-Barbell-Economy.md) — Ties the discussion of AI-generated content, attribution, and Claude-as-tool to the broader LLM economy notes.
+**Related:**
+- [JPMorgan-Blockchain-Strategy](JPMorgan-Blockchain-Strategy.md) — Connects RWA tokenization theory to JPMC's real-world JPMD deposit-token and MONY money-market launches.
+- [Blockchain-by-2035](../reference/Blockchain-by-2035.md) — Extends today's hidden RWA frictions into the 2035 bank-free, fully tokenized asset ownership vision.
+- [AI-and-the-Barbell-Economy](../../AI-ML/LLMs/economy/AI-and-the-Barbell-Economy.md) — Ties the discussion of AI-generated content, attribution, and Claude-as-tool to the broader LLM economy notes.

@@ -1475,4 +1475,7 @@ As one developer summarized: *"What TypeScript did for JavaScript, BAML does for
 - [BAML vs OpenAI Structured Outputs](https://boundaryml.com/blog/baml-vs-openai)
 - [Building Production AI Systems](https://thedataquarry.com/blog/baml-is-building-blocks-for-ai-engineers)
 
-**Related:**- [DSPy](DSPy.md) — Sibling 'programming with LLMs' framework — BAML's schema-aligned parsing and DSPy's signatures solve the same reliability gap.- [MCP_Scalability_Issue_Solution](../../Protocols/MCP_Scalability_Issue_Solution.md) — BAML's SAP and token-efficient schemas are an alternative to the MCP tool-overload problem described in this whitepaper.- [AI-Coding-Loops](../development/AI-Coding-Loops.md) — Fits BAML into the autonomy-spectrum story — BAML is a harness-engineering tool that makes LLM calls testable and bounded.- [Agent-Skills](../skills/Agent-Skills.md) — Both package reusable, testable AI workflows — BAML typed functions parallel Agent Skills' progressive-loading pattern.
+**Related:**
+- [MCP_Scalability_Issue_Solution](../../Protocols/MCP_Scalability_Issue_Solution.md) — BAML's SAP and token-efficient schemas are an alternative to the MCP tool-overload problem described in this whitepaper.
+- [AI-Coding-Loops](../development/AI-Coding-Loops.md) — Fits BAML into the autonomy-spectrum story — BAML is a harness-engineering tool that makes LLM calls testable and bounded.
+- [Agent-Skills](../skills/Agent-Skills.md) — Both package reusable, testable AI workflows — BAML typed functions parallel Agent Skills' progressive-loading pattern.

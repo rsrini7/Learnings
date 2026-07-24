@@ -64,4 +64,5 @@ Output filename: Use format "MMM-DD-YYYY.md" based on the Saturday of the week b
 
 Please create a weekly update document with dynamically generated sections based on actual content themes.
 
-**Related:**- [NotebookLM-Video-Generation-Prompt](NotebookLM-Video-Generation-Prompt.md) — Companion NotebookLM prompt that converts source material into a narrated video, complementing this text-based weekly digest workflow.- [What%20and%20How%20can%20ASK%20an%20AI](../research/What%20and%20How%20can%20ASK%20an%20AI.md) — Synthesis and literature-summary patterns that inform how this prompt organizes multi-source weekly updates into coherent sections.
+**Related:**
+- [What%20and%20How%20can%20ASK%20an%20AI](../research/What%20and%20How%20can%20ASK%20an%20AI.md) — Synthesis and literature-summary patterns that inform how this prompt organizes multi-source weekly updates into coherent sections.

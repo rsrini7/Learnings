@@ -1013,4 +1013,7 @@ https://github.dev/kmad/aie
 
 The shift from "tweaking prompts" to "programming with LLMs" isn't just about better results—it's about bringing software engineering rigor to AI application development. DSPy enables this paradigm shift through elegant abstractions that don't get in your way.
 
-**Related:**- [BAML](BAML.md) — DSPy explicitly lists BAML as one of its adapter prompt-formatters — the two frameworks are designed to interoperate.- [MCP_Scalability_Issue_Solution](../../Protocols/MCP_Scalability_Issue_Solution.md) — DSPy tools and MCP servers occupy the same tool-binding layer; this whitepaper explains the context-cost problem they both face.- [AI-Coding-Loops](../development/AI-Coding-Loops.md) — DSPy optimizers and signatures are a concrete implementation of the harness-engineering layer in the five-loop model.- [Agent-Skills](../skills/Agent-Skills.md) — DSPy modules and Agent Skills both package reusable LLM capabilities — useful contrast in declarative vs. file-system packaging.
+**Related:**
+- [MCP_Scalability_Issue_Solution](../../Protocols/MCP_Scalability_Issue_Solution.md) — DSPy tools and MCP servers occupy the same tool-binding layer; this whitepaper explains the context-cost problem they both face.
+- [AI-Coding-Loops](../development/AI-Coding-Loops.md) — DSPy optimizers and signatures are a concrete implementation of the harness-engineering layer in the five-loop model.
+- [Agent-Skills](../skills/Agent-Skills.md) — DSPy modules and Agent Skills both package reusable LLM capabilities — useful contrast in declarative vs. file-system packaging.
