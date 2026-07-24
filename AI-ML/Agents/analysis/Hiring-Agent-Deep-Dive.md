@@ -1,6 +1,6 @@
 # Inside HackerRank’s Hiring Agent
 
-![Hiring-Agent-1.png](Hiring-Agent-1.png)
+![Hiring-Agent-1.png](../../assets/Hiring-Agent-1.png)
 
 ## What the code scores, what it misses, and how candidates at every level should respond
 
@@ -18,7 +18,7 @@ Those statements are documented by the project itself. This review uses reposito
 
 ---
 
-![Hiring-Agent-2.png](Hiring-Agent-2.png)
+![Hiring-Agent-2.png](../../assets/Hiring-Agent-2.png)
 
 ---
 
