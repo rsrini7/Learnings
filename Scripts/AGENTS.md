@@ -2,6 +2,8 @@
 
 > Guide for AI agents and developers on how to use the repository scripts.
 
+> **For file organization and repository conventions, see [../AGENTS.md](../AGENTS.md)**
+
 ---
 
 ## 📁 Scripts Overview
@@ -204,6 +206,41 @@ python3 Scripts/github-repos.py fetch
 
 # 3. Check remaining 404s
 python3 Scripts/github-repos.py list404
+```
+
+### 5. Move/reorganize markdown files
+
+When moving files to a new location or reorganizing:
+
+```bash
+# 1. Move file(s) to destination folder
+mv path/to/file.md destination/folder/
+
+# 2. Rename to match naming convention (Title-Case-With-Hyphens)
+mv destination/folder/old-name.md destination/folder/New-Name.md
+
+# 3. Update README.md with new link under appropriate section
+# Edit README.md and add: - [Display Name](destination/folder/New-Name.md)
+
+# 4. Add Related section at bottom of moved file
+# Follow format: - [Related Title](relative/path/to/file.md) — Description of relevance.
+
+# 5. Verify all links are valid
+python3 Scripts/github-repos.py links
+
+# 6. Fix any broken links if needed
+python3 Scripts/github-repos.py links --fix
+```
+
+#### Related Section Format
+
+```markdown
+---
+
+## Related
+
+- [Related Document Title](../relative/path/to/file.md) — Brief description of relevance.
+- [Another Document](../path/to/file.md) — How it relates to current document.
 ```
 
 ---

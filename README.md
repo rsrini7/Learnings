@@ -73,6 +73,7 @@ Learnings/
 
 #### 📊 Agent Analysis
 - [Autonomous AI Agents: Why This Moment Matters](AI-ML/Agents/analysis/Autonomous-AI-Agents.md)
+- [Hiring Agent Deep Dive](AI-ML/Agents/analysis/Hiring-Agent-Deep-Dive.md)
 
 #### 🏗️ Agent Frameworks
 - [Ashley's 11 agent system](AI-ML/Agents/frameworks/Ashley%27s-11-agent-system.md)
