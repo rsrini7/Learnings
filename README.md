@@ -76,6 +76,7 @@ Learnings/
 
 #### 📊 Agent Analysis
 - [Autonomous AI Agents](AI-ML/Agents/analysis/Autonomous-AI-Agents.md)
+- [Hiring Agent Deep Dive](AI-ML/Agents/analysis/Hiring-Agent-Deep-Dive.md)
 
 #### 🏗️ Agent Frameworks
 - [Ashley's 11 agent system](AI-ML/Agents/frameworks/Ashley%27s-11-agent-system.md)
@@ -161,7 +162,7 @@ Learnings/
 - [Google Gemma Family Models Jan 2026](AI-ML/LLMs/models/other/Google-Gemma-Family-Models-Jan-2026.md)
 - [NVIDIA Open Models CES 2026](AI-ML/LLMs/models/other/NVIDIA-Open-Models-CES-2026.md)
 - [Qwen3 VL Embedding and Reranker](AI-ML/LLMs/models/other/Qwen3-VL-Embedding-and-Reranker.md)
-- [Sarvam AI X Updates](AI-ML/LLMs/models/other/Sarvam-AI-X-Updates.md)
+- [Sarvam AI Deep Review 2026](AI-ML/LLMs/models/other/Sarvam-AI-Deep-Review-2026.md)
 
 
 ### 📚 RAG (Retrieval Augmented Generation)

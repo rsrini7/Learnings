@@ -32,8 +32,14 @@ To change what appears in the README:
 1. Place the `.md` file in the most fitting category folder under
    `AI-ML/`, `Engineering/`, `Blockchain/`, `Papers/`, `News/`, etc.
    Create a new subfolder if none fits semantically.
-2. Put any linked images/PDFs in the nearest `assets/` folder
+2. **File naming convention:** Use **Title-Case-With-Hyphens** and append
+   the **year** (and month if needed). Examples:
+   - `Sarvam-AI-Deep-Review-2026.md`
+   - `Google-Gemma-Family-Models-Jan-2026.md`
+   - `Chinese-AI-Trifecta-2025-2026.md`
+3. Put any linked images/PDFs in the nearest `assets/` folder
    (e.g. `AI-ML/assets/`) and reference them with a correct **relative** path.
+   **Do NOT put images alongside the `.md` file.**
 3. **Add a `**Related:**` cross-reference section** to the new file, and add a
    back-link to it from the most relevant sibling docs (see next section).
 4. Regenerate the README and run the link check (see above).
@@ -108,7 +114,9 @@ GitHub repo management, and common workflows).
 
 ## ⚠️ Quick Checklist
 
+- [ ] Files named in **Title-Case-Year** format (e.g. `Sarvam-AI-Deep-Review-2026.md`)
 - [ ] Files (and assets) placed in the right folder
+- [ ] Images/PDFs in `assets/` folder, **NOT** alongside the `.md` file
 - [ ] Relative links inside moved files fixed
 - [ ] Relative image/asset paths fixed
 - [ ] New `.md` file ends with a `**Related:**` section (3–5 links + reasons)
