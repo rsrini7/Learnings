@@ -125,7 +125,7 @@ Sarvam announced its new model generation at the India AI Impact Summit in Febru
 
 | Model | Architecture and purpose | Corrected facts |
 |---|---|---|
-| **Sarvam 30B** | Mixture-of-experts model optimized for deployment, voice agents, and tool use | **2.4B non-embedding active parameters**, not ~1B as stated in the attached tracker; 128 experts with top-6 routing |
+| **Sarvam 30B** | Mixture-of-experts model optimized for deployment, voice agents, and tool use | **2.4B non-embedding active parameters**; 128 experts with top-6 routing |
 | **Sarvam 105B** | Larger MoE reasoning model used by Indus | **10.3B active parameters**; 128 experts with top-8 routing; MLA-style attention; 128K context stated in the model card |
 
 Sarvam reports training the 30B model on 16 trillion tokens and the 105B model on 12 trillion tokens. It says both were trained from scratch in India using compute supplied under the IndiaAI Mission.
@@ -294,25 +294,7 @@ The episode validates resilience and optionality as concerns. It does **not** pr
 
 ---
 
-## 8. Source and claim corrections to the attached tracker
-
-| Attached claim or framing | Corrected assessment |
-|---|---|
-| Sarvam 30B has ~1B active parameters | The current official model card says **2.4B non-embedding active parameters**. |
-| The 4,096-H100 figure was not independently reconfirmed | It is supported by NVIDIA’s case study and earlier reporting tied to the IndiaAI programme. Exact commercial terms remain partly reported rather than fully disclosed. |
-| No independent evaluation of the 30B/105B models exists | Outdated. Artificial Analysis published independent results in April 2026, with both strengths and significant weaknesses. |
-| Sarvam’s benchmark numbers can be treated as broadly verified | They are verifiable as correctly quoted **company results**, not as independent proof of all claimed superiority. |
-| “Open source” fully describes the model release | “Open-weight under Apache 2.0” is more precise; weights are downloadable, but full data and training transparency are not available. |
-| Kaze was planned for May, with launch status unclear | The current Sarvam page is a waitlist, which is positive evidence that broad retail availability has not happened. |
-| Odisha’s ₹14,257 crore is a clean, standalone capex figure | It is official, but its relationship to HCLTech’s earlier ₹3,500 crore/50 MW plan is unexplained. |
-| The ₹730 crore Global Technology Center has 5,000 jobs | HCLTech confirms 5,000 people but not ₹730 crore in its final release; other reporting uses ₹730 crore and sometimes 6,000+ jobs. Do not merge the figures without qualification. |
-| Product language counts are settled | Sarvam’s homepage and API/model documentation show different counts for STT. Version/endpoint distinctions need clearer documentation. |
-| Partnership dates can be copied directly from Sarvam’s site | Caution: the Swiggy and Razorpay partnership pages display June 2025 dates while describing Indus and the February 2026 summit. The body and date cannot both be original. |
-| The Anthropic restriction directly validates Sarvam’s market position | It supports the resilience argument, but the restriction was temporary and says nothing by itself about Sarvam’s quality or economics. |
-
----
-
-## 9. The business model Sarvam appears to be building
+## 8. The business model Sarvam appears to be building
 
 Sarvam’s public API prices are useful for developer adoption, but API tokens alone are unlikely to justify the company’s capital requirements. The more plausible revenue stack is:
 
@@ -339,11 +321,15 @@ The economic risk is that forward-deployed work becomes consulting-heavy. The ec
 
 ---
 
-## 10. Officially signalled future plans
+## 9. Officially signalled future plans
 
 The following plans are grounded in company or partner announcements, but most are not yet completed:
 
 ### Near term: second half of 2026
+
+![Sarvam Epoch Pass](../../assets/sarvam-epoch-pass.png)
+
+*Srini (author) selected as a finalist for Epoch Builder Day, Jul 26 2026.*
 
 - **Sarvam Epoch, July 30–31:** The event agenda explicitly promises product launches, demonstrations, and technical sessions. July 30 is the Builder Edition; July 31 is the Enterprise Edition. The July 26 Buildathon feeds ten finalist teams into Builder Day. NVIDIA is shown as “powered by,” AWS “in association with,” and HCLTech as a supporter—not simply a common sponsorship. Source: [Sarvam Epoch](https://epoch.sarvam.ai/).
 - **New model directions:** Sarvam has named larger frontier work and specialized models for coding, agentic, cybersecurity, and multimodal conversational use cases. Source: [HCLTech/Sarvam funding release](https://www.hcltech.com/press-releases/sarvam-raises-234-million-first-close-300-million-series-b-15-billion-valuation).
@@ -361,7 +347,7 @@ The following plans are grounded in company or partner announcements, but most a
 
 ---
 
-## 11. International market plan: the route that makes strategic sense
+## 10. International market plan: the route that makes strategic sense
 
 Sarvam and HCLTech say the partnership targets a sovereign AI ecosystem for “India and beyond,” but they have not published a detailed country-by-country plan. The following is therefore **analysis and recommendation**, not a claim about an approved internal roadmap.
 
@@ -450,7 +436,7 @@ The scalable version of Sarvam is not a central team manually adapting every mar
 
 ---
 
-## 12. Competitive position
+## 11. Competitive position
 
 Sarvam competes with several different categories, not one simple rival:
 
@@ -475,7 +461,7 @@ Sarvam’s moat will not be “we support Indian languages”; that claim will b
 
 ---
 
-## 13. The risks that deserve the most attention
+## 12. The risks that deserve the most attention
 
 ### 1. Too many fronts
 
@@ -511,7 +497,7 @@ The partnership is a powerful accelerator, but Sarvam needs a durable independen
 
 ---
 
-## 14. What would prove the thesis over the next 18 months?
+## 13. What would prove the thesis over the next 18 months?
 
 Watch these indicators rather than announcement volume:
 
@@ -530,7 +516,7 @@ Watch these indicators rather than announcement volume:
 
 ---
 
-## 15. Corrected timeline
+## 14. Corrected timeline
 
 | Date | Event | Interpretation |
 |---|---|---|
@@ -554,12 +540,12 @@ Watch these indicators rather than announcement volume:
 | Jul 13, 2026 | HCLTech announces up to ₹3,500 crore/50 MW AI data-centre plan | Relationship to Odisha figure later unclear |
 | Jul 24, 2026 | ₹14,257 crore Odisha AI data-centre MoU | Official planned outlay; not yet a commissioned facility |
 | Jul 24, 2026 | Separate HCLTech Global Technology Center MoU | 5,000-person centre expected by 2028; Sarvam not named as partner |
-| Jul 26, 2026 | Epoch Buildathon | Upcoming as of research cut-off |
+| Jul 26, 2026 | Epoch Buildathon | Selected as a finalist for Builder Day |
 | Jul 30–31, 2026 | Sarvam Epoch | Upcoming; product announcements expected |
 
 ---
 
-## 16. Final judgement
+## 15. Final judgement
 
 Sarvam has crossed an important threshold. It has enough technical output, production usage, institutional backing, and capital that dismissing it as hype would be wrong. The 30B and 105B releases demonstrate genuine model-building capability. The speech, document, and voice-agent stack addresses real Indian market problems. HCLTech gives it a credible path into large contracts.
 
