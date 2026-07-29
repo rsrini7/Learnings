@@ -1196,4 +1196,4 @@ For developers building production AI applications, RE2 should be a standard too
 *This whitepaper synthesizes research findings and practical implementation experience as of January 2026. Performance metrics should be validated for specific use cases. Always monitor production deployments and adjust based on real-world results.*
 
 **Related:**
-- [RecursiveLanguageModels-(RLMs)](RecursiveLanguageModels-%28RLMs).md) — Both tackle long-context reasoning: RE2 mitigates the causal-attention trap that RLMs avoid via recursion.
+- [RecursiveLanguageModels-%28RLMs%29](RecursiveLanguageModels-%28RLMs%29.md).md) — Both tackle long-context reasoning: RE2 mitigates the causal-attention trap that RLMs avoid via recursion.

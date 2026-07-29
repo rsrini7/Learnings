@@ -250,5 +250,5 @@ This article is based on the claims discussed in *The Century Report* video summ
 
 **Related:**
 - [OpenClaw-Whitepaper](../openclaw/OpenClaw-Whitepaper.md) — Concrete case study of an autonomous agent reaching 164k stars, illustrating the mainstream-adoption trajectory described here.
-- [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](../openclaw/OpenClaw%28Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026.md) — Documents the offensive-agent risks (CVE-2026-25253, prompt injection) that the article warns defenders to prepare for.
+- [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](../openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md) — Documents the offensive-agent risks (CVE-2026-25253, prompt injection) that the article warns defenders to prepare for.
 - [nanobot-architecture-deep-dive](../nanobot/nanobot-architecture-deep-dive.md) — Counterpoint example — a minimal autonomous-agent runtime that embodies the transparency principle this article advocates.

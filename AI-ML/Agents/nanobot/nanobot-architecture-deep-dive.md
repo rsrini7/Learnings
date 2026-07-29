@@ -883,7 +883,7 @@ NanoBot implements an AI Agent as a minimal pipeline: messages arrive from any c
 *Repository: [https://github.com/HKUDS/nanobot](https://github.com/HKUDS/nanobot) | Version: v0.1.3.post6 | Verified: February 2026*
 
 **Related:**
-- [OpenClaw(Moltbot-or-Clawdbot)-Architecture](../openclaw/OpenClaw%28Moltbot-or-Clawdbot)-Architecture.md) — Architecture of OpenClaw — the 430k-LOC sibling agent NanoBot was deliberately designed to contrast with.
+- [OpenClaw(Moltbot-or-Clawdbot)-Architecture](../openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Architecture.md) — Architecture of OpenClaw — the 430k-LOC sibling agent NanoBot was deliberately designed to contrast with.
 - [OpenClaw-Whitepaper](../openclaw/OpenClaw-Whitepaper.md) — Broader claw-ecosystem whitepaper showing NanoBot's position in the wider agent-runtime landscape.
 - [AI-Coding-Loops](../development/AI-Coding-Loops.md) — Maps NanoBot's MessageBus/AgentLoop/Cron/Heartbeat design onto the five-loop autonomy taxonomy.
 - [Agent-Skills](../skills/Agent-Skills.md) — Both define progressive file-based skill loading (SKILL.md / skills/*) as the canonical way to extend agent capabilities.

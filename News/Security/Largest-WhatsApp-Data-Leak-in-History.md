@@ -92,4 +92,4 @@ This summary captures all key points of the WhatsApp data leak incident, its mec
 
 **Related:**
 - [Security-Vulnerabilities-in-Wireless-Devices-and-Apps](Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md) — Sibling consumer-privacy write-ups covering mass-impact flaws reported in late 2025.
-- [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](../../AI-ML/Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026.md) — Another high-profile breach write-up cataloguing user-data exposure and disclosure timelines.
+- [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](../../AI-ML/Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md) — Another high-profile breach write-up cataloguing user-data exposure and disclosure timelines.

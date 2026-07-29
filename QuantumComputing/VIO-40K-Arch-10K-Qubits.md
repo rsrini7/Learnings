@@ -74,5 +74,5 @@ VIO-40K represents a pivotal moment, verified through QuantWare's announcement a
 
 **Related:**
 - [AI-Hardware-Chips-Explained](../AI-ML/Hardware/AI-Hardware-Chips-Explained.md) — Shares the chiplet-and-accelerator design pattern analysis applied to NVIDIA NVQLink/CUDA-Q integration.
-- [Quantum-AI-Decision-Makers(2026)](Quantum-AI-Decision-Makers%282026).md) — Provides the post-2030 scaling evidence behind the executive note that real quantum-AI is hardware-limited.
+- [Quantum-AI-Decision-Makers%282026%29](Quantum-AI-Decision-Makers%282026%29.md).md) — Provides the post-2030 scaling evidence behind the executive note that real quantum-AI is hardware-limited.
 - [AI-in-Next-18-Months](../AI-ML/LLMs/economy/AI-in-Next-18-Months.md) — Complementary 2026 forecast framing for where quantum-AI fits versus classical AI deployment timelines.

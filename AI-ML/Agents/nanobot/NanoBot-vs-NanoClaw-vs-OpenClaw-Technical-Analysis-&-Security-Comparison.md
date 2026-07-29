@@ -617,7 +617,7 @@ graph TD
 - superprompt.com: "Best OpenClaw Alternatives 2026"
 
 **Related:**
-- [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](../openclaw/OpenClaw%28Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026.md) — Full CVE-2026-25253 write-up and threat forecast for the OpenClaw column in the security table.
-- [OpenClaw(Moltbot-or-Clawdbot)-Architecture](../openclaw/OpenClaw%28Moltbot-or-Clawdbot)-Architecture.md) — Architecture details behind OpenClaw's shared-memory, single-process model critiqued in the comparison.
+- [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](../openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md) — Full CVE-2026-25253 write-up and threat forecast for the OpenClaw column in the security table.
+- [OpenClaw(Moltbot-or-Clawdbot)-Architecture](../openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Architecture.md) — Architecture details behind OpenClaw's shared-memory, single-process model critiqued in the comparison.
 - [Securing-OpenClaw-Setup](../openclaw/Securing-OpenClaw-Setup.md) — Hardened VPS + Tailscale setup that directly mitigates the OpenClaw deployment risks listed in Section 3.
 - [AI-Coding-Loops](../development/AI-Coding-Loops.md) — Autonomy-loop framework that explains when NanoBot/NanoClaw/OpenClaw's design trade-offs actually matter in practice.

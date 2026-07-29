@@ -1327,6 +1327,6 @@ None of these approaches are complete solutions. All require operator awareness,
 *As of February 16, 2026, The AI agent ecosystem is evolving rapidly. Verify star counts, feature sets, CVE patch status, and release versions directly against primary repositories before making deployment decisions. See Section 11.5 for full limitations of this analysis.*
 
 **Related:**
-- [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](OpenClaw%28Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026.md) — Detailed evidence (1,000 Shodan hits, 21,639 Censys-exposed instances, CVE-2026-25253) underpinning this survey's OpenClaw risk assessment.
+- [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md) — Detailed evidence (1,000 Shodan hits, 21,639 Censys-exposed instances, CVE-2026-25253) underpinning this survey's OpenClaw risk assessment.
 - [nanobot-architecture-deep-dive](../nanobot/nanobot-architecture-deep-dive.md) — Detailed component breakdown of NanoBot — the audit-friendly alternative whose risk profile Section 3.2 contrasts against OpenClaw.
 - [clawwork-architecture-deep-dive](clawwork-architecture-deep-dive.md) — Concrete example of an economic-layer agent built on top of NanoBot, illustrating what the lighter alternatives in this survey enable.
