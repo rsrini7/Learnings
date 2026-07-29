@@ -3884,5 +3884,6 @@ The future of AI-driven software development is written specifications, strategi
 **Audience:** Technical decision-makers, engineering teams, AI coding practitioners
 
 **Related:**
+- [AI-Native-Development-2026-Specs-Context-Harnesses](AI-Native-Development-2026-Specs-Context-Harnesses.md) — 2026 update covering harnesses, context engineering, and the evolution beyond the frameworks in this paper.
 - [Agent-sdd-uacf-skills-comparison](../skills/Agent-sdd-uacf-skills-comparison.md) — 12-dimension comparative analysis placing the six SDD frameworks covered here against UACF and Skills.
 - [Agent-Specs-vs-Rules-vs-Skills](../skills/Agent-Specs-vs-Rules-vs-Skills.md) — positions SDD alongside rules and skills for readers choosing between them rather than composing all three.
