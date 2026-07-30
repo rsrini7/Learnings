@@ -40,6 +40,12 @@ To change what appears in the README:
 3. Put any linked images/PDFs in the nearest `assets/` folder
    (e.g. `AI-ML/assets/`) and reference them with a correct **relative** path.
    **Do NOT put images alongside the `.md` file.**
+   **Do NOT put images in the root-level `assets/`** — always use the
+   category-level `assets/` folder closest to the `.md` file.
+   When relocating assets, use `git mv` to preserve history:
+   ```bash
+   git mv assets/image.png AI-ML/assets/image.png
+   ```
 3. **Add a `**Related:**` cross-reference section** to the new file, and add a
    back-link to it from the most relevant sibling docs (see next section).
 4. Regenerate the README and run the link check (see above).
@@ -95,12 +101,18 @@ update any other files that linked to it.
 
 ## 🗂️ Moving / renaming files
 
-1. Move the file and its linked assets.
-2. Fix the relative image/link paths **inside** the moved file (the number of
+1. **Always use `git mv`** (not plain `mv`) to move or rename files so Git
+   tracks the rename and preserves history. Example:
+   ```bash
+   git mv old-path/File.md new-path/File.md
+   ```
+   Plain `mv` creates an untracked new file + a deletion, losing rename tracking.
+2. Move the file and its linked assets.
+3. Fix the relative image/link paths **inside** the moved file (the number of
    `../` changes with folder depth).
-3. Fix the file's own `**Related:**` links and update any **other** files that
+4. Fix the file's own `**Related:**` links and update any **other** files that
    referenced it (grep for the old filename).
-4. Regenerate the README and run the link check.
+5. Regenerate the README and run the link check.
 
 ---
 
@@ -116,7 +128,9 @@ GitHub repo management, and common workflows).
 
 - [ ] Files named in **Title-Case-Year** format (e.g. `Sarvam-AI-Deep-Review-2026.md`)
 - [ ] Files (and assets) placed in the right folder
+- [ ] Moved/renamed files via `git mv` (not plain `mv`)
 - [ ] Images/PDFs in `assets/` folder, **NOT** alongside the `.md` file
+- [ ] **Do NOT put images in the root-level `assets/`** — use category-level `assets/`
 - [ ] Relative links inside moved files fixed
 - [ ] Relative image/asset paths fixed
 - [ ] New `.md` file ends with a `**Related:**` section (3–5 links + reasons)

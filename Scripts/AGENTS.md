@@ -225,14 +225,14 @@ python3 Scripts/github-repos.py list404
 When moving files to a new location or reorganizing:
 
 ```bash
-# 1. Move file(s) to destination folder
-mv path/to/file.md destination/folder/
+# 1. Move file(s) to destination folder (use git mv to preserve history)
+git mv path/to/file.md destination/folder/
 
 # 2. Rename to match naming convention (Title-Case-With-Hyphens)
-mv destination/folder/old-name.md destination/folder/New-Name.md
+git mv destination/folder/old-name.md destination/folder/New-Name.md
 
-# 3. Update README.md with new link under appropriate section
-# Edit README.md and add: - [Display Name](destination/folder/New-Name.md)
+# 3. Regenerate README (auto-discovers files, no manual edit needed)
+python3 Scripts/generate-readme.py
 
 # 4. Add Related section at bottom of moved file
 # Follow format: - [Related Title](relative/path/to/file.md) — Description of relevance.
