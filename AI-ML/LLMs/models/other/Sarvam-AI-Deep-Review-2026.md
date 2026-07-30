@@ -608,6 +608,7 @@ If Sarvam achieves those things, it can become more than an Indian frontier-mode
 ---
 
 **Related:**
+- [Sarvam-Epoch-2026-Builder-Edition](../../../Sarvam-Epoch-2026-Builder-Edition.md) — Event-day field report covering every announcement from the Builder Edition, from the trillion-parameter model to Kaze glasses.
 - [LLM-Benchmarks](../../architecture/LLM-Benchmarks.md) — Critically examines the benchmark scores (Math500, LiveCodeBench, MMLU Pro) Sarvam uses to validate its 30B and 105B models.
 - [LLM-Inference](../../architecture/LLM-Inference.md) — Explores the MoE architecture, inference optimization, and cost structures that underpin Sarvam's model deployment strategy.
 - [LLM-Council](../../architecture/LLM-Council.md) — Connects to Sarvam's multi-model orchestration and the recommended model-routing layer for international scale.
