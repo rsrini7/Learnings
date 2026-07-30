@@ -1,12 +1,12 @@
-# Sarvam Epoch 2026 Builder Edition: India’s AI Stack Is Taking Shape
+# Sarvam Epoch 2026 Builder Edition: India's AI Stack Is Taking Shape
 
 > Bengaluru · 30 July 2026
 
 I spent the full day at Sarvam Epoch 2026 Builder Edition in Bengaluru.
 
-![Sarvam-Srini.jpg](assets/Sarvam-Srini.jpg)
+![Sarvam-Srini.jpg](../../../assets/Sarvam-Srini.jpg)
 
-The obvious headline was Sarvam’s announcement that it is building a **one-trillion-plus-parameter foundation model in India**. It is a bold target and naturally attracted attention.
+The obvious headline was Sarvam's announcement that it is building a **one-trillion-plus-parameter foundation model in India**. It is a bold target and naturally attracted attention.
 
 But that was not the most important takeaway for me.
 
@@ -18,7 +18,7 @@ Epoch is a two-day conference. Builder Edition was held on 30 July for developer
 
 ## The short version
 
-Sarvam’s direction can be understood through five connected layers:
+Sarvam's direction can be understood through five connected layers:
 
 | Layer | What Sarvam showed |
 | --- | --- |
@@ -58,7 +58,7 @@ Not every item was at the same stage. Some products were already available, some
 | Speech recognition | Saaras V4, including Odia, Sanskrit, Manipuri and multi-speaker use cases | Announced |
 | Speech generation | Bulbul V4 with laughter, emotion and emphasis controls | Announced |
 | Inference | Sarvam Inference for India-hosted access to Sarvam 105B, GLM 5.2 and Gemma 4 | Announced |
-| Compute | NVIDIA Blackwell GPU cluster | Sarvam described it as India’s largest |
+| Compute | NVIDIA Blackwell GPU cluster | Sarvam described it as India's largest |
 | Optimisation | Agentic optimisation with up to 15× inference improvement for certain models | Performance presented by Sarvam |
 | Builder platform | Epoch Builder Edition for data, training, tuning, evaluation and deployment | Private preview planned for August; GA planned for Q4 2026 |
 | Builder models | 7B and 70B multilingual models trained on two trillion tokens | Announced with the Builder platform |
@@ -82,9 +82,9 @@ Sarvam co-founder Pratyush Kumar announced that the company is building a founda
 
 No public launch date was shared.
 
-That distinction matters. A model being trained is different from a model that developers can evaluate, integrate and deploy. For now, the announcement tells us more about Sarvam’s direction and infrastructure ambition than about a finished capability.
+That distinction matters. A model being trained is different from a model that developers can evaluate, integrate and deploy. For now, the announcement tells us more about Sarvam's direction and infrastructure ambition than about a finished capability.
 
-### What does “one trillion parameters” mean?
+### What does "one trillion parameters" mean?
 
 A parameter is a learned numerical value inside a neural network. Training adjusts these values so the model becomes better at predicting, reasoning and generating useful output.
 
@@ -142,7 +142,7 @@ The trillion-plus model is the future plan. Sarvam 105B is the model developers 
 
 Sarvam released the 105B and 30B models earlier in 2026 under Apache 2.0. Its [technical release](https://www.sarvam.ai/blogs/sarvam-30b-105b) describes both as reasoning models trained from scratch in India using compute from the IndiaAI Mission.
 
-Sarvam 105B uses a sparse Mixture-of-Experts architecture. Sarvam’s published material describes:
+Sarvam 105B uses a sparse Mixture-of-Experts architecture. Sarvam's published material describes:
 
 - 128 experts in its sparse feed-forward layers;
 - Multi-head Latent Attention to reduce long-context memory pressure;
@@ -158,13 +158,13 @@ At Epoch, the 105B model was presented as improved for complex instruction follo
 
 Sarvam presented a price of **$0.80 per one million blended tokens**, describing it as 5.5 times cheaper than GPT-5.4 Mini and more than 11 times cheaper than Gemini 3.5 Flash under the comparison used on stage.
 
-This is an aggressive enterprise position, but “blended tokens” needs context. A blended value normally combines some ratio of:
+This is an aggressive enterprise position, but "blended tokens" needs context. A blended value normally combines some ratio of:
 
 - input tokens;
 - cached-input tokens;
 - output tokens.
 
-The ratio can change the final price significantly. Sarvam’s [API pricing page](https://docs.sarvam.ai/api/getting-started/pricing) lists those token categories separately, which is the better basis for a real cost model.
+The ratio can change the final price significantly. Sarvam's [API pricing page](https://docs.sarvam.ai/api/getting-started/pricing) lists those token categories separately, which is the better basis for a real cost model.
 
 For an enterprise agent, the most useful measure is not only cost per token:
 
@@ -197,7 +197,7 @@ Sarvam Vision 2.0 was presented as the next generation of its document-intellige
 - key-value extraction;
 - dense enterprise records.
 
-The original Sarvam Vision is a 3B vision-language model. Sarvam’s [document digitisation documentation](https://docs.sarvam.ai/api/api-guides-tutorials/document-digitization/overview) describes extraction of text, layout, reading order and tables across Indian languages and English.
+The original Sarvam Vision is a 3B vision-language model. Sarvam's [document digitisation documentation](https://docs.sarvam.ai/api/api-guides-tutorials/document-digitization/overview) describes extraction of text, layout, reading order and tables across Indian languages and English.
 
 This area has enormous practical relevance. Many enterprise and public-sector processes still begin with a scanned document:
 
@@ -262,7 +262,7 @@ Real conversations in India are not clean benchmark audio. They include:
 
 Sarvam announced Saaras V4 for speech recognition, including support or improvements for Odia, Sanskrit and Manipuri. Multi-speaker recognition was also highlighted, and Sarvam positioned the model strongly for English transcription.
 
-Sarvam’s public [Saaras API documentation](https://docs.sarvam.ai/api/getting-started/models/saaras) was still centred on V3 on the day of the event. V3 already documented:
+Sarvam's public [Saaras API documentation](https://docs.sarvam.ai/api/getting-started/models/saaras) was still centred on V3 on the day of the event. V3 already documented:
 
 - 22 Indian languages plus English;
 - real-time streaming;
@@ -299,7 +299,7 @@ For V4, I would look for:
 - voice stability across a long conversation;
 - consent and protection against impersonation or misuse.
 
-## 5. Sarvam Inference and “token sovereignty”
+## 5. Sarvam Inference and "token sovereignty"
 
 Sarvam Inference was introduced as an India-hosted service for serving Sarvam 105B and selected open models such as GLM 5.2 and Gemma 4.
 
@@ -323,11 +323,11 @@ India-hosted inference is a meaningful part of sovereignty. Contracts, operation
 
 ## 6. Blackwell compute and inference optimisation
 
-Sarvam said it is operating India’s largest NVIDIA Blackwell AI cluster.
+Sarvam said it is operating India's largest NVIDIA Blackwell AI cluster.
 
-That description came from Sarvam, and the cluster’s GPU count and comparison boundary were not publicly specified. Still, access to modern compute is important for both the trillion-parameter ambition and lower-cost inference.
+That description came from Sarvam, and the cluster's GPU count and comparison boundary were not publicly specified. Still, access to modern compute is important for both the trillion-parameter ambition and lower-cost inference.
 
-From a customer’s perspective, the practical questions are:
+From a customer's perspective, the practical questions are:
 
 - How much capacity is available?
 - What are the supported models and precisions?
@@ -374,11 +374,11 @@ This platform could become more important than any single model. Organisations d
 
 The opportunity is to make that adaptation repeatable instead of treating every custom model as a research project.
 
-The name may need clearer product separation because “Builder Edition” also refers to the 30 July event itself.
+The name may need clearer product separation because "Builder Edition" also refers to the 30 July event itself.
 
 ## 8. Managed model training
 
-Sarvam’s [managed model-training offering](https://www.sarvam.ai/products/model-training) is already described publicly in more detail.
+Sarvam's [managed model-training offering](https://www.sarvam.ai/products/model-training) is already described publicly in more detail.
 
 The service can cover:
 
@@ -409,11 +409,11 @@ The evaluation set should be agreed before training begins. Otherwise, the team 
 
 My Waiting List today (30 July 2026):
 
-![Sarvam-Code-Waiting-List.png](assets/Sarvam-Code-Waiting-List.png)
+![Sarvam-Code-Waiting-List.png](../../../assets/Sarvam-Code-Waiting-List.png)
 
 Sarvam Code was presented in beta.
 
-A coding product is a natural extension of the 105B model’s reasoning and agentic capabilities. But modern coding assistants are no longer only autocomplete systems. They are harnesses that explore repositories, edit files, execute commands, run tests and iterate.
+A coding product is a natural extension of the 105B model's reasoning and agentic capabilities. But modern coding assistants are no longer only autocomplete systems. They are harnesses that explore repositories, edit files, execute commands, run tests and iterate.
 
 The complete product therefore needs:
 
@@ -433,8 +433,8 @@ The most meaningful evaluation will be on real repository-level tasks: finding t
 
 Two Sarvam products are easy to mix up:
 
-- **Indus** is Sarvam’s AI assistant, powered by Sarvam 105B.
-- **Samvaad** is Sarvam’s conversational-agent platform, associated with the smaller and faster Sarvam 30B.
+- **Indus** is Sarvam's AI assistant, powered by Sarvam 105B.
+- **Samvaad** is Sarvam's conversational-agent platform, associated with the smaller and faster Sarvam 30B.
 
 At Epoch, Samvaad was presented as generally available at ₹3.5 per minute. The public API price sheet had not yet reflected that voice-agent bundle, so builders will need the final commercial definition.
 
@@ -471,7 +471,7 @@ The best voice-agent platform will make responsible operation as easy as provisi
 
 ## 11. Chanakya and Anvaya for strategic environments
 
-Chanakya is Sarvam’s applied-AI vertical for defence, government and other high-security environments. It is designed for deployment models such as:
+Chanakya is Sarvam's applied-AI vertical for defence, government and other high-security environments. It is designed for deployment models such as:
 
 - on-premises;
 - private infrastructure;
@@ -506,7 +506,7 @@ The demo showed a visually impaired user receiving help with:
 - knowing the distance to a stop;
 - estimating the journey time.
 
-It was one of the day’s most grounded examples because it connected vision, language, location and voice to an immediate human need.
+It was one of the day's most grounded examples because it connected vision, language, location and voice to an immediate human need.
 
 The [official Kaze page](https://www.sarvam.ai/kaze-waitlist) was still operating as a waitlist on the day of Builder Edition, so the device remains an emerging product rather than an established consumer platform.
 
@@ -531,7 +531,7 @@ Sarvam also announced:
 - work with three IITs and two state governments;
 - more than one million registered developers.
 
-Chaplot brings experience associated with the founding teams of Mistral AI and Thinking Machines Lab and later work at xAI. His involvement is relevant to Sarvam’s attempt to scale its frontier-model capability.
+Chaplot brings experience associated with the founding teams of Mistral AI and Thinking Machines Lab and later work at xAI. His involvement is relevant to Sarvam's attempt to scale its frontier-model capability.
 
 The San Francisco expansion does not have to conflict with the sovereign-AI goal. A company can keep critical data, training and inference capability in India while participating in global research and recruiting networks.
 
@@ -564,7 +564,7 @@ flowchart TB
 
 A team should begin with a workflow, not with a model.
 
-For example, “use Sarvam 105B” is not a complete requirement. “Resolve a customer’s loan-status request in Tamil, preserve account numbers, call two internal APIs, ask for confirmation before taking action, and complete 95% of valid requests within eight seconds” is a testable requirement.
+For example, "use Sarvam 105B" is not a complete requirement. "Resolve a customer's loan-status request in Tamil, preserve account numbers, call two internal APIs, ask for confirmation before taking action, and complete 95% of valid requests within eight seconds" is a testable requirement.
 
 ### Production-readiness checklist
 
@@ -607,7 +607,7 @@ This is particularly important for:
 
 - state-of-the-art ASR comparisons;
 - the up-to-15× optimisation result;
-- the “largest Blackwell cluster” description;
+- the "largest Blackwell cluster" description;
 - handwriting and table-extraction improvements;
 - agentic task performance;
 - the 105B blended-price comparison.
@@ -678,7 +678,7 @@ Some of the newly announced products still need public APIs, independent evaluat
 
 My main takeaway from the day is simple:
 
-> **India’s AI opportunity is not only to build a large model. It is to build a dependable stack that understands Indian languages, workflows, constraints and scale.**
+> **India's AI opportunity is not only to build a large model. It is to build a dependable stack that understands Indian languages, workflows, constraints and scale.**
 
 The model race will keep changing. The harder and more durable work is building the complete system around the model.
 
@@ -697,7 +697,7 @@ The model race will keep changing. The harder and more durable work is building 
 - [Managed model training](https://www.sarvam.ai/products/model-training)
 - [Sarvam Edge](https://www.sarvam.ai/products/edge)
 - [Kaze waitlist](https://www.sarvam.ai/kaze-waitlist)
-- [Sarvam’s Odisha partnership](https://www.sarvam.ai/blogs/partnerships-with-indian-states)
+- [Sarvam's Odisha partnership](https://www.sarvam.ai/blogs/partnerships-with-indian-states)
 
 ### Event reporting
 
@@ -705,15 +705,14 @@ The model race will keep changing. The harder and more durable work is building 
 - [Inc42: Sarvam Inference, optimisation and expansion](https://inc42.com/buzz/sarvam-to-build-trillion-plus-ai-model-in-india-launches-inference-service/)
 - [India Today: speech, vision, Kaze and phone-number announcements](https://www.indiatoday.in/technology/news/story/sarvam-announces-1-trillion-parametre-ai-model-vision-and-speech-getting-new-updates-2959609-2026-07-30)
 - [ANI: Epoch Builder Edition platform](https://www.newkerala.com/news/a/sarvam-ai-launches-platform-help-build-india-centric-ai-437.htm)
-- [Analytics India Magazine: Sarvam’s full-stack announcements](https://analyticsindiamag.com/ai-news/sarvam-ai-takes-aim-at-every-layer-of-the-ai-stack)
+- [Analytics India Magazine: Sarvam's full-stack announcements](https://analyticsindiamag.com/ai-news/sarvam-ai-takes-aim-at-every-layer-of-the-ai-stack)
 - [Economic Times: Chanakya](https://m.economictimes.com/tech/technology/sarvam-ais-new-vertical-chanakya-to-address-problems-of-national-consequence/articleshow/129882533.cms)
 
 ---
 
 **Related:**
-- [Sarvam-AI-Deep-Review-2026](AI-ML/LLMs/models/other/Sarvam-AI-Deep-Review-2026.md) — Pre-event deep review of Sarvam's technology, business model, and sovereign-AI strategy.
-- [LLM-Inference](AI-ML/LLMs/architecture/LLM-Inference.md) — Covers MoE architecture and inference optimization relevant to Sarvam 105B and the agentic optimization claims.
-- [AI-Hardware-Chips-Explained](AI-ML/Hardware/AI-Hardware-Chips-Explained.md) — Context on NVIDIA Blackwell and the compute infrastructure discussed at Epoch.
-- [Chinese-AI-Trifecta-2025-2026](AI-ML/LLMs/models/other/Chinese-AI-Trifecta-2025-2026.md) — Contrasts India's sovereign-AI approach with the Chinese open-model disruption strategy.
-- [AI-in-Next-18-Months](AI-ML/LLMs/economy/AI-in-Next-18-Months.md) — Broader AI trajectory context for the full-stack platform direction Sarvam announced.
-
+- [Sarvam-AI-Deep-Review-2026](Sarvam-AI-Deep-Review-2026.md) — Pre-event deep review of Sarvam's technology, business model, and sovereign-AI strategy.
+- [LLM-Inference](../../architecture/LLM-Inference.md) — Covers MoE architecture and inference optimization relevant to Sarvam 105B and the agentic optimization claims.
+- [AI-Hardware-Chips-Explained](../../../Hardware/AI-Hardware-Chips-Explained.md) — Context on NVIDIA Blackwell and the compute infrastructure discussed at Epoch.
+- [Chinese-AI-Trifecta-2025-2026](Chinese-AI-Trifecta-2025-2026.md) — Contrasts India's sovereign-AI approach with the Chinese open-model disruption strategy.
+- [AI-in-Next-18-Months](../../economy/AI-in-Next-18-Months.md) — Broader AI trajectory context for the full-stack platform direction Sarvam announced.

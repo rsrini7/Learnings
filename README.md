@@ -164,6 +164,7 @@ Learnings/
 - [NVIDIA Open Models CES 2026](AI-ML/LLMs/models/other/NVIDIA-Open-Models-CES-2026.md)
 - [Qwen3 VL Embedding and Reranker](AI-ML/LLMs/models/other/Qwen3-VL-Embedding-and-Reranker.md)
 - [Sarvam AI Deep Review 2026](AI-ML/LLMs/models/other/Sarvam-AI-Deep-Review-2026.md)
+- [Sarvam Epoch 2026 Builder Edition](AI-ML/LLMs/models/other/Sarvam-Epoch-2026-Builder-Edition.md)
 
 
 ### 📚 RAG (Retrieval Augmented Generation)
