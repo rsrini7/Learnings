@@ -1261,3 +1261,5 @@ The winning teams will not be those that generate the most code. They will be th
 - [AI-Coding-Loops](AI-Coding-Loops.md) — practical coding loop patterns complementing the harness architecture described here.
 - [AI-Assisted-Development](AI-Assisted-Development.md) — broader AI-assisted development practices and workflows.
 - [AI-Accelerated-Development-Playbook](AI-Accelerated-Development-Playbook.md) — team-level playbook for adopting AI-assisted development.
+
+- [AI-Coding-Methodologies-and-Tooling-2026](AI-Coding-Methodologies-and-Tooling-2026.md) — current comparison of coding-agent methodologies, frameworks, and harnesses.

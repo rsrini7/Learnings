@@ -482,4 +482,5 @@ The document is structured for multiple audiences:
 **Related:**
 - [Agent-Skills](Agent-Skills.md) — the canonical Skills article defining the third leg of the three-way comparison summarized here.
 - [Spec-Driven-Development-Frameworks](../development/Spec-Driven-Development-Frameworks.md) — deep dive into BMAD, Spec Kit, OpenSpec, and Serena — the SDD frameworks this article treats as one layer.
-- [claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills](claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md) — its Rules/CLAUDE.md and Projects sections map directly onto the UACF (rules) and SDD (specs) layers compared here.
+- [claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills](claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md) — Rules/CLAUDE.md and Projects sections map directly onto UACF (rules) and SDD (specs) layers compared here.
+- [AI-Coding-Methodologies-and-Tooling-2026](../development/AI-Coding-Methodologies-and-Tooling-2026.md) — broader 2026 comparison of methodologies, skills, specifications, and agent harnesses.

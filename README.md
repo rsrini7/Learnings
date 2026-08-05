@@ -91,6 +91,7 @@ Learnings/
 - [AI Accelerated Development Playbook](AI-ML/Agents/development/AI-Accelerated-Development-Playbook.md)
 - [AI Assisted Development](AI-ML/Agents/development/AI-Assisted-Development.md)
 - [AI Coding Loops](AI-ML/Agents/development/AI-Coding-Loops.md)
+- [AI Coding Methodologies and Tooling 2026](AI-ML/Agents/development/AI-Coding-Methodologies-and-Tooling-2026.md)
 - [AI Native Development 2026 Specs Context Harnesses](AI-ML/Agents/development/AI-Native-Development-2026-Specs-Context-Harnesses.md)
 - [AI Operating Manual](AI-ML/Agents/development/AI-Operating-Manual.md)
 - [AI PMRoles](AI-ML/Agents/development/AI-PMRoles.md)
