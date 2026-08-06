@@ -1,8 +1,8 @@
-# AI Coding Frameworks in 2026: What Actually Matters
+# AI Coding Methodologies and Tooling in 2026: What Actually Matters
 
-*A practical field guide to Spec Kit, OpenSpec, BMad, Agent OS, Superpowers, GSD Core, Conductor, Kiro, Task Master—and the increasingly capable agent harnesses underneath them.*
+*A practical field guide to Spec Kit, OpenSpec, BMad, Agent OS, Superpowers, Matt Pocock Skills, GSD Core, Conductor, Kiro, Task Master—and the increasingly capable agent harnesses underneath them.*
 
-> **Research snapshot:** 4 August 2026. This market changes weekly. Versions, integrations and repository counts below are a dated snapshot; the architectural distinctions are more durable.
+> **Research snapshot:** 6 August 2026. This market changes weekly. Versions, integrations and repository counts below are a dated snapshot; the architectural distinctions are more durable.
 
 ![ai-coding-methodologies-and-tooling](../../assets/AI-Coding-Methodologies-and-Tooling-2026.png)
 
@@ -17,16 +17,17 @@ There is no single winner because these products no longer belong to one clean c
 - **BMad** is the broadest **end-to-end development method**, now more adaptive than its old “AI agile team” reputation suggests.
 - **Agent OS** is primarily a **standards and codebase-knowledge layer**.
 - **Superpowers** is the most visible **engineering-methodology and skills layer**, but it also overlaps with planning.
+- **Matt Pocock Skills** is the strongest **human-controlled, composable skills methodology**: smaller pieces, explicit invocation and less process ownership.
 - **GSD Core** is a **long-horizon context and phase-management system**. The famous original repository is archived; active development moved.
 - **Conductor** is an **agent execution control plane**, not a requirements framework—and it is no longer merely a local macOS worktree app.
 - **Kiro** is a useful example of a **spec-first harness** where specs, steering, hooks, permissions and execution are native to one product.
 - **Task Master** is a narrower **task graph and decomposition layer**.
 
-The bigger story is that the underlying harnesses—Codex, Claude Code, GitHub Copilot, Kiro, Cursor, Gemini and others—are absorbing plan mode, persistent instructions, skills, hooks, subagents, agent teams, sandboxes and cloud execution. A third-party framework now has to add more than a folder of prompts to remain valuable.
+The bigger story is that the underlying harnesses—Codex, Claude Code, GitHub Copilot, Kiro, Cursor, Gemini and others—are absorbing plan mode, persistent instructions, skills, hooks, subagents, agent teams, sandboxes and cloud execution. A third-party methodology now has to add more than a folder of prompts to remain valuable.
 
 My practical conclusion is simple:
 
-> Start with the native harness, repository instructions, tests and CI. Add one framework only for a failure you can name and measure.
+> Start with the native harness, repository instructions, tests and CI. Add one methodology or toolkit only for a failure you can name and measure.
 
 ---
 
@@ -61,7 +62,7 @@ flowchart TB
     G -. "evidence updates the next change" .-> A
 ```
 
-The frameworks in this article cover different slices of that loop. None covers it all equally well.
+The approaches in this article cover different slices of that loop. None covers it all equally well.
 
 ---
 
@@ -74,17 +75,19 @@ The frameworks in this article cover different slices of that loop. None covers 
 | **[BMad](https://github.com/bmad-code-org/BMAD-METHOD)** | Adaptive end-to-end delivery method with optional specialist modules | Clarify, plan, build, review and learn | Complex initiatives needing guided product, architecture and test perspectives | Broad surface area, installation and workflow learning |
 | **[Agent OS](https://buildermethods.com/agent-os)** | Standards discovery, injection and spec shaping | Preserve local conventions and product context | Mature or legacy codebases with strong house style | Standards can document existing inconsistency unless curated |
 | **[Superpowers](https://github.com/obra/superpowers)** | Composable agent skills forming a software-development method | Brainstorm, plan, use TDD, debug and review systematically | Developers wanting stronger execution discipline | Overlaps with spec tools; rigid TDD is not universal |
+| **[Matt Pocock Skills](https://github.com/mattpocock/skills)** | Small engineering practices packaged as composable Agent Skills | Clarify, document, slice, implement and review while the engineer controls the flow | Teams wanting inspectable practices without a full delivery system | The complete chain can still become a process system; governance and evals remain external |
 | **[GSD Core](https://github.com/open-gsd/gsd-core)** | Phase-based context-engineering and SDD system | Keep long work coherent across fresh subagent contexts | Multi-session or long-horizon work | Active lineage changed; still a substantial workflow layer |
 | **[Conductor](https://www.conductor.build/)** | Local/cloud control plane for multiple first-party coding agents | Run isolated agents in parallel and review their work | Teams with several independent, well-shaped tasks | Parallelism multiplies cost and merge/review load |
 | **[Kiro](https://kiro.dev/docs/specs/)** | Spec-first commercial coding harness | Keep requirements, design, tasks, steering and hooks together | Teams wanting one integrated environment | More platform coupling than portable Markdown toolkits |
 | **[Task Master](https://github.com/eyaltoledano/claude-task-master)** | AI task manager exposed through CLI/MCP | Convert a PRD into dependency-aware tasks | Work that mainly needs decomposition and tracking | Not a complete quality or governance system; restrictive Commons Clause |
 
-Two terms are worth separating:
+Three terms are worth separating:
 
-- A **framework or method** shapes how work is described and performed.
+- A **methodology** shapes how work is understood and performed.
+- A **skill** packages one reusable practice as instructions, scripts and resources loaded by a compatible agent.
 - A **harness** is the execution environment that reads the repository, calls tools, edits files, runs commands, manages context and asks for approval.
 
-Spec Kit can run *inside* Codex or Claude Code. Conductor can run several first-party agents. Kiro bundles the framework-like and harness-like layers. Comparing all three as if they were interchangeable products creates bad conclusions.
+Spec Kit and Matt Pocock Skills can run *inside* Codex or Claude Code. Conductor can run several first-party agents. Kiro bundles methodology-like and harness-like layers. Comparing them as interchangeable products creates bad conclusions.
 
 ---
 
@@ -104,6 +107,7 @@ timeline
     Mid 2025 : Specs become durable repository artifacts
              : Steering and hooks connect plans to execution
     Late 2025 : Skills package repeatable engineering methods
+              : Agent Skills becomes an open portable format
               : Fresh contexts and phased state attack context rot
     2026 : Harnesses absorb planning, skills, hooks and subagents
          : Cloud sandboxes, agent teams and unattended loops emerge
@@ -125,6 +129,7 @@ Dates below mean the first public project or announcement I could verify—not t
 | **Late 2025** | **OpenSpec** | [Tabish Bidiwale / Fission AI](https://www.ycombinator.com/launches/Pdc-openspec-the-spec-framework-for-coding-agents) | “Treat requirement changes like pull requests: propose a delta, implement it, then merge it into living specs.” | Added richer exploration, synchronization, stores, customization and 30+ assistant integrations while retaining the lighter delta model. |
 | **9 October 2025** | **Superpowers** | [Jesse Vincent (`obra`)](https://blog.fsck.com/2025/10/09/superpowers/) | “Turn one developer’s disciplined agent workflow into reusable, automatically triggered skills.” | Spread from Claude Code into many harness/plugin systems and matured into a complete planning, TDD, debugging and review method. |
 | **14 December 2025** | **GSD** | TÂCHES | “Fight context rot by moving research, planning and execution into fresh contexts with written hand-offs.” | Grew extremely quickly, then the original repository was archived on 26 June 2026; the community-maintained line continues as Open GSD’s GSD Core. |
+| **March 2026; v1 in June** | **Matt Pocock Skills** | [Matt Pocock / AI Hero](https://www.aihero.dev/skills) | “Encode senior engineering habits as small skills, and let the engineer decide which process to run.” | Grew into a documented idea-to-review flow, added explicit user/model invocation boundaries, Codex metadata and a Claude Code plugin in v1.2. |
 | **3 July 2026 in BMad v6.10** | **BMad Loop integration** | [Paul “pinkyD” Bean](https://github.com/bmad-code-org/bmad-loop), integrated with the BMad community | “Run the same spec → implement → adversarial-review cycle unattended, pausing only at configured gates.” | Replaced the experimental BMad Automator path and became an optional module driven by `bmad-dev-auto`. |
 
 This order reveals why the products feel different. They are responses to successive bottlenecks:
@@ -134,9 +139,10 @@ This order reveals why the products feel different. They are responses to succes
 3. **The team needs a durable contract, not chat history** → Kiro, Spec Kit and OpenSpec.
 4. **The agent needs an engineering method** → Superpowers.
 5. **Long work needs controlled context and hand-offs** → GSD.
-6. **One good agent is not enough throughput** → Conductor, agent teams and cloud agents.
-7. **Humans cannot watch every iteration** → BMad Loop and other unattended execution loops.
-8. **Autonomy creates new risk** → sandboxing, evals, budgets, audit and human-on-the-loop governance.
+6. **The engineer wants method without surrendering the whole process** → Matt Pocock Skills.
+7. **One good agent is not enough throughput** → Conductor, agent teams and cloud agents.
+8. **Humans cannot watch every iteration** → BMad Loop and other unattended execution loops.
+9. **Autonomy creates new risk** → sandboxing, evals, budgets, audit and human-on-the-loop governance.
 
 ### 3.2 The BMad progression in plain English
 
@@ -162,9 +168,9 @@ The first version of this article had the right instinct—separate the layers�
 
 ### 4.1 Native harness capability is now the baseline
 
-Modern harnesses already provide many primitives once supplied by community frameworks:
+Modern harnesses already provide many primitives once supplied by community toolkits:
 
-| Capability | Native examples in 2026 | What a framework must add now |
+| Capability | Native examples in 2026 | What a methodology or toolkit must add now |
 |---|---|---|
 | Persistent repository guidance | Codex `AGENTS.md`, Claude `CLAUDE.md`, Kiro steering | Discovery, governance, scoping and maintainability |
 | Reusable workflows | Open [Agent Skills](https://developers.openai.com/codex/build-skills), Claude skills, Copilot skills | A distinctive, tested method—not just prompt packaging |
@@ -178,15 +184,19 @@ Modern harnesses already provide many primitives once supplied by community fram
 
 ### 4.2 Skills are becoming portable executable methodology
 
-Markdown instruction files are evolving into packages containing instructions, resources and scripts. The open Agent Skills convention is now supported across multiple ecosystems, including [GitHub Copilot](https://docs.github.com/en/copilot/concepts/agents/about-agent-skills) and Codex.
+Anthropic introduced Agent Skills in October 2025 and published the format as an open standard in December. A skill is a folder with a `SKILL.md` entry point and optional scripts, references, templates and assets. Compatible agents load the small description first, the instructions when relevant and supporting resources only when needed.
 
-That is good for portability, but it changes the trust model. A skill is closer to a dependency than a blog post: it can influence tool use and may contain executable scripts. GitHub explicitly warns that third-party skills are not verified and can contain hidden instructions, prompt injection or malicious scripts. Review and pin them like code, not prose.
+This format now spans Claude, Codex, GitHub Copilot, Gemini CLI, Cursor and other harnesses. Syntax is portable; behaviour is not guaranteed to be identical because invocation, tools, permissions and execution environments differ.
+
+The ecosystem already includes methodology packs, official vendor knowledge, security workflows, large catalogues, installers and plugin marketplaces. That growth changes the trust model: a skill is closer to a dependency than a blog post because it can steer tool use and bundle executable code. Review, pin, test and approve it like code—not prose.
+
+This article focuses on methodologies. The companion **[Agent Skills Ecosystem](../skills/Agent-Skills-Ecosystem-2026.md)** covers the format, repositories, installers, portability, evaluation and enterprise governance without turning this guide into a catalogue.
 
 ### 4.3 The market is converging on artifacts plus execution
 
 Spec Kit added skills mode, extensions, presets, bundles, issue conversion and convergence checks. OpenSpec added a richer explore/propose/apply/sync/archive loop and beta stores. BMad added adaptive paths, established-codebase support and optional unattended loops. Kiro made specs, steering, hooks and parallel task execution native.
 
-The old boundary—“frameworks plan, harnesses code”—is disappearing.
+The old boundary—“methodologies plan, harnesses code”—is disappearing.
 
 ---
 
@@ -304,7 +314,7 @@ At the 4 July 2026 project write-up, BMad Loop was still pre-1.0, used `tmux` as
 
 **Where it can hurt**
 
-- It spans so many layers that interaction with other frameworks can become confusing.
+- It spans so many layers that interaction with other methods can become confusing.
 - Teams must learn which workflows and modules are required, optional or overlapping.
 - More agent roles do not automatically create independent judgment; they can share the same blind spots.
 - Unattended loops raise the standard for sandboxing, branch protection and review evidence.
@@ -362,7 +372,36 @@ It currently documents installation across Claude Code, Codex App/CLI, Cursor, G
 
 **Verdict:** an excellent execution discipline layer, provided the team adapts the method to the work and resolves overlap with its chosen spec system.
 
-### 5.6 GSD Core: context engineering with a changed lineage
+### 5.6 Matt Pocock Skills: engineering method without surrendering the process
+
+Matt Pocock’s collection is the clearest counterpoint to large, process-owning systems. Its main path is deliberately understandable:
+
+> `grill-with-docs` → `to-spec` → `to-tickets` → `implement` → `code-review`
+
+Supporting skills cover research, TDD, debugging, domain modelling, architecture, hand-offs and human-only setup. User-invoked skills select and orchestrate the flow; model-invoked skills hold reusable discipline. Version 1.2, released on 5 August 2026, added Codex invocation metadata, a Claude Code plugin, clearer documentation and stronger pruning of duplicated guidance.
+
+| Compared with Superpowers | Practical difference |
+|---|---|
+| **Superpowers** | More cohesive and automatic: the agent is expected to apply the method when it recognises the task. |
+| **Matt Pocock Skills** | More explicit and modular: the engineer chooses the workflow, while supporting skills may load when relevant. |
+
+**Where it wins**
+
+- Small, readable skills are easier to inspect, adapt and replace.
+- `CONTEXT.md`, ADRs and domain modelling preserve the reasoning behind local terminology.
+- Tracer-bullet tickets and pre-agreed test seams connect planning to verifiable slices.
+- It can provide a complete path without requiring every skill on every change.
+
+**Where it can hurt**
+
+- Running the whole chain still creates a lightweight process system, despite the anti-framework positioning.
+- `to-spec`, `to-tickets` and `implement` can conflict with Spec Kit, BMad, GSD or Superpowers ownership.
+- Published popularity is not evidence of lower defects or review effort; teams still need their own evals.
+- Security, budgets, audit, policy enforcement and unattended recovery remain outside the skill set.
+
+**Verdict:** the strongest current choice when you want disciplined engineering practices but want the human—not the methodology—to decide which process runs.
+
+### 5.7 GSD Core: context engineering with a changed lineage
 
 This needs a precise correction. The original [`gsd-build/get-shit-done`](https://github.com/gsd-build/get-shit-done) repository—with 64.8k stars at this snapshot—was archived on 26 June 2026. Its README directs users to [`open-gsd/gsd-core`](https://github.com/open-gsd/gsd-core), which is now the active project.
 
@@ -394,7 +433,7 @@ Heavy research, planning and execution run in fresh-context subagents. Durable a
 
 **Verdict:** a strong fit for long-horizon work, but evaluate the maintained repository and its supply chain—not the archived project’s popularity.
 
-### 5.7 Conductor: from local worktrees to a cloud control plane
+### 5.8 Conductor: from local worktrees to a cloud control plane
 
 Conductor used to be described accurately as a macOS UI for parallel Claude Code and Codex worktrees. That description is now incomplete.
 
@@ -422,7 +461,7 @@ As of version 0.78.0 on 30 July 2026, Conductor advertises:
 
 **Verdict:** add orchestration after task quality becomes the bottleneck. It cannot rescue vague requirements or weak verification.
 
-### 5.8 Kiro: what happens when spec-driven development becomes native
+### 5.9 Kiro: what happens when spec-driven development becomes native
 
 Kiro matters here because it shows where the category is going. Its current documentation exposes specs across IDE, CLI and Web, with feature specs, bug-fix specs, quick specs and parallel task execution. A normal feature spec contains `requirements.md`, `design.md` and `tasks.md`. Steering, hooks, skills, MCP and permissions live in the same environment.
 
@@ -441,7 +480,7 @@ Kiro matters here because it shows where the category is going. Its current docu
 
 **Verdict:** attractive if the team wants an all-in-one spec-first harness. Less attractive if cross-harness portability is a hard requirement.
 
-### 5.9 Task Master: useful decomposition without pretending to be an SDLC
+### 5.10 Task Master: useful decomposition without pretending to be an SDLC
 
 Task Master remains narrower and easier to classify: it turns product requirements into a dependency-aware task graph and exposes the workflow through CLI/MCP and multiple editors or agents.
 
@@ -453,17 +492,17 @@ Its repository uses **MIT with Commons Clause**: source is available and normal 
 
 ## 6. A comparison that reflects reality
 
-| Dimension | Spec Kit | OpenSpec | BMad | Agent OS | Superpowers | GSD Core | Conductor | Kiro |
-|---|---|---|---|---|---|---|---|---|
-| **Primary layer** | Spec/governance | Change spec | End-to-end method | Standards/context | Engineering method | Context/phase delivery | Execution control plane | Integrated harness |
-| **Best change shape** | Medium-large governed feature | Small-medium incremental change | Ambiguous or complex initiative | Any change in convention-heavy repo | Implementation needing discipline | Long multi-phase work | Several independent tasks | Feature or bug inside Kiro |
-| **Brownfield fit** | Good, now documented | Excellent | Good, explicitly supported | Excellent | Good | Good via onboarding | Neutral | Good |
-| **Durable artifacts** | Constitution, spec, plan, tasks | Proposal, delta specs, design, tasks, archive | Product/architecture/story/test artifacts | Standards, product and shaped specs | Designs, plans, commits and reviews | State, context, roadmap, plans | Workspaces, branches and diffs | Requirements, design, tasks, steering |
-| **Execution included** | Yes, through host agent | Yes, through host agent | Yes | Relies on host agent | Yes, through skills/subagents | Yes, phased and parallel | Yes, runs first-party agents | Yes, native |
-| **Deterministic quality gate** | Checklist/analyze, but CI still needed | Workflow checks, but CI still needed | Review/test modules, but CI still needed | No | TDD/review method, but CI still needed | Verify phase, but CI still needed | No inherent quality method | Hooks plus external CI |
-| **Portability** | High | High | High-medium | Medium-high | High, harness-specific installs | High-medium | Agent-portable, platform-hosted | Lower |
-| **Ceremony** | Medium-high | Low-medium | Adaptive, potentially high | Low-medium | Medium | Medium-high | Operational rather than documentary | Medium |
-| **Open-source license** | MIT | MIT | MIT | MIT | MIT | MIT | Commercial product | Commercial product |
+| Dimension | Spec Kit | OpenSpec | BMad | Agent OS | Superpowers | Matt Skills | GSD Core | Conductor | Kiro |
+|---|---|---|---|---|---|---|---|---|---|
+| **Primary layer** | Spec/governance | Change spec | End-to-end method | Standards/context | Engineering method | Composable method | Context/phase delivery | Execution control plane | Integrated harness |
+| **Best change shape** | Medium-large governed feature | Small-medium incremental change | Ambiguous or complex initiative | Convention-heavy repo | Implementation needing discipline | Human-steered feature or maintenance flow | Long multi-phase work | Several independent tasks | Feature or bug inside Kiro |
+| **Brownfield fit** | Good | Excellent | Good | Excellent | Good | Good | Good via onboarding | Neutral | Good |
+| **Durable artifacts** | Constitution, spec, plan, tasks | Proposal, delta specs, design, tasks, archive | Product, architecture, story and test artifacts | Standards, product and shaped specs | Designs, plans, commits and reviews | Context, ADRs, spec, tickets and review | State, context, roadmap and plans | Workspaces, branches and diffs | Requirements, design, tasks and steering |
+| **Execution included** | Via host agent | Via host agent | Yes | Host agent | Skills/subagents | `implement` via host agent | Phased and parallel | Runs first-party agents | Native |
+| **Quality discipline** | Checklist/analyze | Workflow checks | Review/test modules | No | TDD/review | TDD/review | Verify phase | None inherent | Hooks |
+| **Portability** | High | High | High-medium | Medium-high | High, with install differences | High, with invocation differences | High-medium | Platform-hosted | Lower |
+| **Ceremony** | Medium-high | Low-medium | Adaptive | Low-medium | Medium | Selectable, low-medium | Medium-high | Operational | Medium |
+| **License** | MIT | MIT | MIT | MIT | MIT | MIT | MIT | Commercial | Commercial |
 
 The most important row is the one absent from most product comparisons: **deterministic quality gate**. Every tool still needs real tests, static analysis, security scanning, build reproduction and human accountability around high-risk changes.
 
@@ -481,13 +520,14 @@ flowchart TB
     E --> Q["Independent quality gates"]
 
     SK["Spec Kit / OpenSpec"] -.-> S
-    BM["BMad / GSD / Superpowers / Kiro"] -.-> M
+    BM["BMad / GSD / Superpowers / Matt Skills / Kiro"] -.-> M
     CO["Conductor / native agents"] -.-> E
 ```
 
 - **Spec Kit and OpenSpec** overlap heavily. Use one source of truth for a given change.
 - **BMad and GSD Core** both manage planning, state, execution and verification. Combining them is usually redundant.
-- **Superpowers** overlaps with spec elicitation, planning, worktrees, subagents and review. It is not automatically orthogonal to every spec framework.
+- **Superpowers** overlaps with spec elicitation, planning, worktrees, subagents and review. It is not automatically orthogonal to every spec system.
+- **Matt Pocock Skills** overlaps with Superpowers and with the spec/task ownership of Spec Kit, BMad and GSD. Borrow individual skills or let its main flow own the change—not both.
 - **Agent OS** composes more cleanly, but its spec-shaping features can still duplicate elicitation questions.
 - **Conductor** is mostly orthogonal, yet GSD, BMad, Kiro and native harnesses already offer forms of parallelism.
 - **Kiro** bundles several layers; adding a second full workflow may create two competing task and spec systems.
@@ -512,7 +552,7 @@ If two tools answer the same question, the stack is probably too complicated.
 
 ## 8. The missing layer: proving the work is correct
 
-Most frameworks are good at generating artifacts and encouraging good behaviour. Neither is proof.
+Most approaches are good at generating artifacts and encouraging good behaviour. Neither is proof.
 
 A 2026 study, [FixedBench](https://arxiv.org/abs/2605.07769), tested whether coding agents would recognize 200 already-resolved issues where no code change was required. Across tested models and harnesses, agents still proposed undesirable code changes in **35% to 65%** of cases. Explicitly asking them to reproduce the problem helped, but also created new false-abstention behaviour on partially fixed issues.
 
@@ -531,13 +571,13 @@ The verification layer should therefore require evidence, not confidence:
 | “No code change is needed” | Reproduction plus inspected version/history evidence |
 | “The spec is complete” | Acceptance examples, edge cases and stakeholder approval—not word count |
 
-Long-horizon benchmarks are also becoming harder because isolated bug-fix scores no longer represent product evolution. [SWE-EVO](https://arxiv.org/abs/2512.18470), for example, focuses on multi-file software evolution and preservation of existing behaviour. The practical lesson is to build a small internal evaluation set from your own recurring changes rather than choosing a framework by GitHub stars or a model by one public benchmark.
+Long-horizon benchmarks are also becoming harder because isolated bug-fix scores no longer represent product evolution. [SWE-EVO](https://arxiv.org/abs/2512.18470), for example, focuses on multi-file software evolution and preservation of existing behaviour. The practical lesson is to build a small internal evaluation set from your own recurring changes rather than choosing a methodology by GitHub stars or a model by one public benchmark.
 
 ---
 
 ## 9. The other missing layer: security and operational control
 
-Agent frameworks change the threat model because prompts can call tools, hooks can execute commands and parallel workers can hold credentials.
+Agent methodologies and extensions change the threat model because prompts can call tools, hooks can execute commands and parallel workers can hold credentials.
 
 The 2026 [OWASP Top 10 for Agentic Applications](https://genai.owasp.org/resource/owasp-top-10-for-agentic-applications-for-2026/) highlights risks including prompt injection, tool misuse and data leakage. These are directly relevant to coding agents reading issues, dependency documentation, web pages, generated files and third-party skills.
 
@@ -552,32 +592,33 @@ Minimum production controls should include:
 - **Traceability:** record requirement, agent/harness, model, approvals, tool actions, test evidence and final reviewer.
 - **Budget and loop limits:** autonomous retries require time, token and action ceilings.
 
-Codex documents [sandbox, approval and network controls](https://developers.openai.com/codex/agent-approvals-security); Claude Code documents [permission and prompt-injection protections](https://docs.anthropic.com/en/docs/claude-code/security); GitHub documents both [cloud-agent risks](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/risks-and-mitigations) and a default outbound firewall. A workflow framework should sit inside these controls, not replace them.
+Codex documents [sandbox, approval and network controls](https://developers.openai.com/codex/agent-approvals-security); Claude Code documents [permission and prompt-injection protections](https://docs.anthropic.com/en/docs/claude-code/security); GitHub documents both [cloud-agent risks](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/risks-and-mitigations) and a default outbound firewall. A workflow methodology should sit inside these controls, not replace them.
 
 ---
 
 ## 10. Who is actually leading?
 
-Repository stars are a popularity signal, not enterprise adoption, successful delivery or code quality. With that warning, the 4 August 2026 public snapshot is still useful:
+Repository stars are a popularity signal, not enterprise adoption, successful delivery or code quality. With that warning, the 4–6 August 2026 public snapshot is still useful; counts are rounded because they move daily:
 
 | Project | Public GitHub signal | What the signal does—and does not—say |
 |---|---:|---|
-| [Superpowers](https://github.com/obra/superpowers) | 266.2k stars / 23.8k forks | Extraordinary developer interest in skills-based engineering discipline; not proof of active production use |
-| [GitHub Spec Kit](https://github.com/github/spec-kit) | 125.3k / 11.2k | Strongest portable SDD brand and vendor distribution |
-| [OpenSpec](https://github.com/Fission-AI/OpenSpec) | 63.8k / 4.4k | Major momentum for lightweight, tool-agnostic change specs |
-| [BMad](https://github.com/bmad-code-org/BMAD-METHOD) | 51.5k / 5.9k | Large community for a broad end-to-end method |
-| [Task Master](https://github.com/eyaltoledano/claude-task-master) | 27.9k / 2.6k | Durable demand for decomposition and task graphs |
-| [GSD Core](https://github.com/open-gsd/gsd-core) | 7.7k / 535 | Active successor; do not add the archived repository’s 64.8k stars as if they belong to one maintained project |
-| [Agent OS](https://github.com/buildermethods/agent-os) | 5.2k / 813 | Smaller community, but a strategically important pivot toward standards |
+| [Superpowers](https://github.com/obra/superpowers) | ~266k stars / ~24k forks | Extraordinary developer interest in automatically applied engineering discipline; not proof of production outcomes |
+| [Matt Pocock Skills](https://github.com/mattpocock/skills) | ~206k / ~18k | Rapid adoption of the human-controlled, composable alternative; still not an enterprise-usage measure |
+| [GitHub Spec Kit](https://github.com/github/spec-kit) | ~125k / ~11k | Strongest portable SDD brand and vendor distribution |
+| [OpenSpec](https://github.com/Fission-AI/OpenSpec) | ~64k / ~4k | Major momentum for lightweight, tool-agnostic change specs |
+| [BMad](https://github.com/bmad-code-org/BMAD-METHOD) | ~52k / ~6k | Large community for a broad end-to-end method |
+| [Task Master](https://github.com/eyaltoledano/claude-task-master) | ~28k / ~3k | Durable demand for decomposition and task graphs |
+| [GSD Core](https://github.com/open-gsd/gsd-core) | ~8k / ~500 | Active successor; do not merge its signal with the archived original repository |
+| [Agent OS](https://github.com/buildermethods/agent-os) | ~5k / ~800 | Smaller community, but a strategically important pivot toward standards |
 
 There are four different kinds of leadership:
 
 - **Portable spec layer:** Spec Kit leads in reach; OpenSpec is the strongest lightweight challenger.
-- **Skills/methodology:** Superpowers leads public developer attention.
+- **Skills/methodology:** Superpowers leads the automatic-method model; Matt Pocock Skills is now the major explicit, composable alternative.
 - **Full-process method:** BMad has the broadest integrated open method.
 - **Distribution:** Native harness vendors are the real structural winners because plan, skills, subagents, hooks and cloud execution arrive with the product.
 
-So, no framework “dominates AI coding.” The category itself is being compressed by harness capability.
+So, no methodology “dominates AI coding.” The category itself is being compressed by harness capability.
 
 ---
 
@@ -590,7 +631,7 @@ So, no framework “dominates AI coding.” The category itself is being compres
 - one developer owns the change end to end;
 - the cost of misunderstanding is low and reversible.
 
-Start with `AGENTS.md`/`CLAUDE.md`/steering, plan approval, a small task list and CI. A framework is not mandatory maturity.
+Start with `AGENTS.md`/`CLAUDE.md`/steering, plan approval, a small task list and CI. A methodology is not mandatory maturity.
 
 ### Add OpenSpec when
 
@@ -627,6 +668,13 @@ Start with `AGENTS.md`/`CLAUDE.md`/steering, plan approval, a small task list an
 - the team accepts the method’s planning/TDD assumptions or will tailor them;
 - there is no competing execution methodology already in charge.
 
+### Add Matt Pocock Skills when
+
+- you want explicit control over which workflow runs;
+- small, inspectable and editable skills fit the team better than one large method;
+- clarification, domain language, tracer-bullet tickets or disciplined review are the named gaps;
+- you will select a small approved set instead of installing a catalogue blindly.
+
 ### Choose GSD Core when
 
 - work spans many phases or sessions;
@@ -658,16 +706,17 @@ Start with `AGENTS.md`/`CLAUDE.md`/steering, plan approval, a small task list an
 | **Regulated or high-impact delivery** | Spec Kit or BMad + protected CI + traceability + security review + human approval | Artifacts matter, but independent gates create evidence |
 | **Long-running greenfield build** | GSD Core *or* BMad + deterministic tests and budget limits | Context/state management without stacking two full methods |
 | **High-throughput parallel backlog** | One spec source + Conductor or native agent teams + ownership map + merge queue | Parallelism after decomposition |
-| **Strong TDD engineering culture** | One light spec source + Superpowers + existing CI | Method reinforces an established practice |
-| **Team committed to Kiro** | Kiro specs + steering + hooks + external CI/security | Use the integrated platform before adding duplicate frameworks |
+| **Strong TDD engineering culture** | One light spec source + Superpowers or selected Matt Skills + existing CI | Method reinforces an established practice without duplicating spec ownership |
+| **Human-steered modular workflow** | Native harness + selected Matt Skills + repository instructions + CI | Adds clarification, slicing and review without adopting a full-process system |
+| **Team committed to Kiro** | Kiro specs + steering + hooks + external CI/security | Use the integrated platform before adding duplicate workflows |
 
-For a complex Java/Spring/Quarkus platform, the hard part is rarely generating more tasks. It is preserving cross-service contracts, data ownership, non-functional requirements, rollout/rollback behaviour and operational evidence. Whichever framework is selected, encode those as executable contract tests, architecture fitness functions, migration checks and observability acceptance criteria.
+For a complex Java/Spring/Quarkus platform, the hard part is rarely generating more tasks. It is preserving cross-service contracts, data ownership, non-functional requirements, rollout/rollback behaviour and operational evidence. Whichever approach is selected, encode those as executable contract tests, architecture fitness functions, migration checks and observability acceptance criteria.
 
 ---
 
 ## 13. A 30-day evaluation before standardising
 
-Do not compare frameworks using a demo project. Use three representative repository tasks:
+Do not compare methodologies using a demo project. Use three representative repository tasks:
 
 1. a small, well-understood bug;
 2. a medium brownfield feature crossing several files;
@@ -687,7 +736,7 @@ Measure the complete system, not just generation speed:
 | **Recovery** | Ability to resume, reproduce, roll back and explain failure |
 | **Artifact value** | Whether specs and plans remain useful after merge |
 
-Run the same tasks with the native harness baseline. If a framework does not measurably improve correctness, review time, recoverability or governance, it has added ritual rather than capability.
+Run the same tasks with the native harness baseline. If a methodology does not measurably improve correctness, review time, recoverability or governance, it has added ritual rather than capability.
 
 ---
 
@@ -700,7 +749,7 @@ The most durable idea in spec-driven development is not a particular command or 
 3. **Verification truth:** what independent tests and checks demonstrate.
 4. **Operational truth:** what happens after the change meets real traffic, data and failure.
 
-Frameworks mostly improve the first and help organise the second. Mature engineering still has to build the third and observe the fourth.
+Methodologies mostly improve the first and help organise the second. Mature engineering still has to build the third and observe the fourth.
 
 That is also the likely future of this market. Generic prompt bundles will be absorbed by harnesses. The products that remain valuable will provide at least one of these:
 
@@ -717,7 +766,7 @@ The winning workflow will not be the one with the most agents, Markdown or stars
 
 ## Primary sources
 
-All product claims were rechecked against first-party documentation or repositories on 4 August 2026.
+All product claims were rechecked against first-party documentation or repositories through 6 August 2026.
 
 - [GitHub Spec Kit repository and current command/reference surface](https://github.com/github/spec-kit)
 - [GitHub’s 2 September 2025 Spec Kit introduction](https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit/)
@@ -732,6 +781,9 @@ All product claims were rechecked against first-party documentation or repositor
 - [Agent OS v3 migration and scope change](https://buildermethods.com/agent-os/migration)
 - [Superpowers repository, workflow and supported harnesses](https://github.com/obra/superpowers)
 - [Jesse Vincent’s October 2025 Superpowers launch post](https://blog.fsck.com/2025/10/09/superpowers/)
+- [Matt Pocock Skills repository](https://github.com/mattpocock/skills)
+- [Matt Pocock Skills documentation and current flow](https://www.aihero.dev/skills)
+- [Matt Pocock Skills v1.2 changes](https://www.aihero.dev/skills/skills-changelog-v12-wait-what-writing-for-agents-claude-code-plugin-and-more)
 - [Archived original GSD repository](https://github.com/gsd-build/get-shit-done)
 - [Active GSD Core repository](https://github.com/open-gsd/gsd-core)
 - [Conductor product and July 2026 capability update](https://www.conductor.build/)
@@ -742,6 +794,8 @@ All product claims were rechecked against first-party documentation or repositor
 - [Kiro hooks documentation](https://kiro.dev/docs/hooks/)
 - [Task Master repository and license summary](https://github.com/eyaltoledano/claude-task-master)
 - [Early Task Master issue history from March 2025](https://github.com/eyaltoledano/claude-task-master/issues/30)
+- [Agent Skills open standard](https://agentskills.io/home) and [format specification](https://agentskills.io/specification)
+- [Anthropic’s Agent Skills introduction and December 2025 open-standard update](https://www.anthropic.com/news/skills)
 - [Codex skills](https://developers.openai.com/codex/build-skills), [subagents](https://developers.openai.com/codex/agent-configuration/subagents), [`AGENTS.md`](https://developers.openai.com/codex/agent-configuration/agents-md) and [security controls](https://developers.openai.com/codex/agent-approvals-security)
 - [Claude Code extension model](https://docs.anthropic.com/en/docs/claude-code/features-overview) and [security model](https://docs.anthropic.com/en/docs/claude-code/security)
 - [GitHub Copilot cloud agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent), [skills warning](https://docs.github.com/en/copilot/how-tos/copilot-on-github/customize-copilot/customize-cloud-agent/add-skills) and [risk mitigations](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/risks-and-mitigations)
@@ -756,3 +810,4 @@ All product claims were rechecked against first-party documentation or repositor
 - [Spec-Driven-Development-Frameworks](Spec-Driven-Development-Frameworks.md) — deeper treatment of the specification-driven frameworks compared here.
 - [AI-Coding-Loops](AI-Coding-Loops.md) — practical guidance for matching coding-agent workflows to task complexity and autonomy.
 - [Agent-Specs-vs-Rules-vs-Skills](../skills/Agent-Specs-vs-Rules-vs-Skills.md) — explains how specifications, repository rules, and reusable skills fit together.
+- [Agent-Skills-Ecosystem-2026](../skills/Agent-Skills-Ecosystem-2026.md) — covers the broader skills standard, distribution, portability, evaluation, and governance ecosystem.

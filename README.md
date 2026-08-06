@@ -68,6 +68,7 @@ Learnings/
 #### 🎯 Agent Skills & Claude
 - [Claude Skills Prompts](AI-ML/Agents/skills/4-Claude-Skills-Prompts.md)
 - [AI Skills for Future Success (2026)](AI-ML/Agents/skills/8-AI-Skills-for-Future-Success-%282026%29.md)
+- [Agent Skills Ecosystem 2026](AI-ML/Agents/skills/Agent-Skills-Ecosystem-2026.md)
 - [Agent Skills vs Agents](AI-ML/Agents/skills/Agent-Skills-vs-Agents.md.md)
 - [Agent Skills](AI-ML/Agents/skills/Agent-Skills.md)
 - [Agent Specs vs Rules vs Skills](AI-ML/Agents/skills/Agent-Specs-vs-Rules-vs-Skills.md)
