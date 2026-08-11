@@ -14,7 +14,7 @@
 # ──────────────────────────────────────────────────────────────────────────────
 
 # ── Version — bump this single line to update all scripts ────────────────────
-HROOM_VERSION="0.33.0"
+HROOM_VERSION="0.34.0"
 
 # ── Default extras (before platform detection) ───────────────────────────────
 HROOM_BASE_EXTRAS="proxy,ml,code"
