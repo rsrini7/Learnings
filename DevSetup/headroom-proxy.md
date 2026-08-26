@@ -148,3 +148,4 @@ lsof -ti :8780 | xargs kill -9 2>/dev/null; hproxy
 **Related:**
 - [AI-Coding-Loops](../AI-ML/Agents/development/AI-Coding-Loops.md) — The same proxy architecture underpins coding-agent loops; this doc covers the generic app use case.
 - [MacMini-Setup](MacMini-Setup.md) — Proxy runs locally on a dev machine — install the shell/runtime prerequisites from the Mac Mini setup first.
+- [Claude-Code-OpenRouter-Quick-Setup-2026](Claude-Code-OpenRouter-Quick-Setup-2026.md) — Same rerouting pattern: point Claude Code at OpenRouter via `ANTHROPIC_BASE_URL`.

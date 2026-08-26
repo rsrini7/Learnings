@@ -474,3 +474,4 @@ openssl rand -hex 12
 **Related:**
 - [AI-Coding-Loops](../AI-ML/Agents/development/AI-Coding-Loops.md) — Mac Mini is the recommended local host for AI coding-agent loops and the shell tools installed here.
 - [GenAI-cost-Optimization](../AI-ML/LLMs/optimization/GenAI-cost-Optimization.md) — Local LLM tooling section pairs with cost-optimization strategies for self-hosted vs. API inference.
+- [Claude-Code-OpenRouter-Quick-Setup-2026](Claude-Code-OpenRouter-Quick-Setup-2026.md) — Claude Code env vars from this guide go into the `~/.zshrc` configured here.

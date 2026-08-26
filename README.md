@@ -323,6 +323,7 @@ Learnings/
 ---
 
 ## 🛠️ Development Setup
+- [Claude Code OpenRouter Quick Setup 2026](DevSetup/Claude-Code-OpenRouter-Quick-Setup-2026.md)
 - [MacMini Setup](DevSetup/MacMini-Setup.md)
 - [headroom pi cost saver](DevSetup/headroom-pi-cost-saver.md)
 - [headroom proxy](DevSetup/headroom-proxy.md)
