@@ -1140,5 +1140,6 @@ For 2026 and beyond, expect continued convergence as Java adopts cloud-native pa
 | **Swiss Tables Maps** | **Stable** | More stable performance for large, "cold" data sets. |
 
 **Related:**
+- [Go-Proposed-Collections-vs-Java-Collections-Framework-2026](Go-Proposed-Collections-vs-Java-Collections-Framework-2026.md) — focused comparison of proposed Go collections with Java’s collections framework.
 - [Java-Python-Enterprise-AI](../../../AI-ML/Comparisons/Java-Python-Enterprise-AI.md) — Java 25 ZGC and Go 1.25 Green Tea GC inform runtime choices for enterprise AI serving infrastructure.
 - [workflow-orchestration](../../Middleware/workflow-orchestration.md) — Uber's thousands of Go microservices and Java-based Temporal workers illustrate the runtime trade-offs for orchestration engines.
