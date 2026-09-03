@@ -137,6 +137,7 @@ Learnings/
 
 #### ⚡ Optimization & Cost
 - [GenAI cost Optimization](AI-ML/LLMs/optimization/GenAI-cost-Optimization.md)
+- [Headroom RTK Real World Feedback 2026](AI-ML/LLMs/optimization/Headroom-RTK-Real-World-Feedback-2026.md)
 - [Microsoft Agent Lightning](AI-ML/LLMs/optimization/Microsoft-Agent-Lightning.md)
 - [OpenResponses Open Inference Standard](AI-ML/LLMs/optimization/OpenResponses-Open-Inference-Standard.md)
 - [Unlock the Dark Data](AI-ML/LLMs/optimization/Unlock-the-Dark-Data.md)

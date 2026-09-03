@@ -385,4 +385,5 @@ These tools operate at distinct layers — most can be combined without conflict
 *Sources: GitHub repositories (DietrichGebert/ponytail, atlassian-labs/mcp-compressor, chopratejas/headroom, yvgude/lean-ctx, microsoft/LLMLingua), Tejas Chopra's Headroom presentation (Netflix), arXiv:2603.27277 (Codebase-Memory), arXiv:2310.06839 (LLMLingua), and community comparisons. Verify specific savings figures in your own environment as they vary by codebase and workflow.*
 
 **Related:**
+- [Headroom-RTK-Real-World-Feedback-2026](Headroom-RTK-Real-World-Feedback-2026.md) — Evidence-backed follow-up on production reports, cache regressions, and safety/correctness issues.
 - [AI-Coding-Loops](../../Agents/development/AI-Coding-Loops.md) — Harness-engineering patterns (skill isolation, hook-based enforcement) pair with these tools; Ponytail and MCP-Compressor are agent-skill-style interventions.

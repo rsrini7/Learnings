@@ -319,5 +319,6 @@ pi --extension ~/ws/pi-headroom --list-models
 - Amsha project: `.mise/tasks/headroom/README.md`
 
 **Related:**
+- [Headroom-RTK-Real-World-Feedback-2026](../AI-ML/LLMs/optimization/Headroom-RTK-Real-World-Feedback-2026.md) — Current real-world evidence on savings, cache behavior, and RTK safety/correctness caveats.
 - [GenAI-cost-Optimization](../AI-ML/LLMs/optimization/GenAI-cost-Optimization.md) — Proxy-layer token reduction complements GenAI cost strategies like caching, routing, and quantization.
 - [headroom-proxy](headroom-proxy.md) — Generic standalone headroom proxy variant (port 8780) for any OpenAI-compatible app beyond pi.
