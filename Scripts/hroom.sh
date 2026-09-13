@@ -38,6 +38,10 @@ Subcommands:
   learn      Run headroom learn (context accumulation)
   run        Execute a command through headroom
   serve      Start headroom in serve mode
+  savings    Show compression savings over time (alias: stats, gain)
+  dashboard  Open the Headroom savings web dashboard
+  wrap       Wrap CLI tools (codex, claude, etc.) through Headroom
+  unwrap     Undo durable tool wrapping (e.g. hroom unwrap codex)
   Any other headroom subcommand is passed through directly.
 
 Examples:
@@ -111,6 +115,11 @@ hroom_main() {
     return 1
   fi
 
+  # ── Friendly aliases ─────────────────────────────────────────────────────
+  if [[ "$subcmd" == "stats" || "$subcmd" == "gain" ]]; then
+    subcmd="savings"
+  fi
+
   # ── Apple Silicon MPS auto-detection ─────────────────────────────────────
   if [[ "$use_mps" -eq 1 && "$(uname)" == "Darwin" && "$(uname -m)" == "arm64" ]]; then
     if [[ "$extras" != *pytorch-mps* ]]; then
@@ -122,7 +131,7 @@ hroom_main() {
   # ── Run ──────────────────────────────────────────────────────────────────
   echo "▶ headroom $subcmd (v$version, extras: $extras)" >&2
 
-  exec uvx \
+  uvx \
     --python 3.12 \
     --from 'headroom-ai['"$extras"']=='"$version" \
     headroom "$subcmd" "${passthrough[@]}"

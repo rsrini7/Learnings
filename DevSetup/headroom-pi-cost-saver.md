@@ -1,8 +1,8 @@
 # Headroom + Pi: LLM Cost Compression Setup
 
 **Date**: 2026-06-27  
-**Updated**: 2026-07-09 (shared config, hroom, hproxy)  
-**Tags**: `pi`, `headroom`, `rtk`, `llm`, `cost-optimization`, `shell`
+**Updated**: 2026-09-13 (RTK v0.49.0 Homebrew migration, agy CLI hook, Codex wrap/unwrap, hroom stats)  
+**Tags**: `pi`, `headroom`, `rtk`, `llm`, `cost-optimization`, `shell`, `homebrew`, `agy`, `codex`
 
 ---
 
@@ -121,7 +121,7 @@ pi -e ~/ws/pi-rtk -e ~/ws/pi-headroom
 Single source of truth for version and extras. All wrapper scripts source this.
 
 ```bash
-HROOM_VERSION="0.30.0"       # ← bump this one line to update all scripts
+HROOM_VERSION="0.37.0"       # ← bump this one line to update all scripts
 HROOM_BASE_EXTRAS="proxy,ml,code"
 hroom_resolve_extras()        # auto-appends pytorch-mps on Apple Silicon
 ```
@@ -177,16 +177,19 @@ Generic wrapper for any headroom subcommand. Sources `headroom-env.sh` for
 version/extras. Can be run directly or sourced to define `hroom()` function.
 
 ```bash
-# Direct execution
-~/ws/Learnings/Scripts/hroom.sh proxy
-~/ws/Learnings/Scripts/hroom.sh proxy --port 8780
-~/ws/Learnings/Scripts/hroom.sh learn --apply --verbosity
-~/ws/Learnings/Scripts/hroom.sh run "echo hello"
+# Direct execution / shell function
+hroom proxy                                      # start proxy
+hroom stats                                      # show token savings metrics (alias for savings)
+hroom dashboard                                  # open web dashboard in browser
+hroom wrap codex                                 # wrap Codex through Headroom
+hroom unwrap codex                               # restore Codex pre-wrap configuration
+hroom learn --apply --verbosity                  # run context learning
+hroom run "echo hello"
 
 # Override version/extras on the fly
-~/ws/Learnings/Scripts/hroom.sh --version 0.27.0 proxy
-~/ws/Learnings/Scripts/hroom.sh --extras proxy,ml proxy
-~/ws/Learnings/Scripts/hroom.sh --no-mps proxy     # skip MPS detection
+hroom --version 0.37.0 proxy
+hroom --extras proxy,ml proxy
+hroom --no-mps proxy                             # skip MPS detection
 ```
 
 ### hproxy — Headroom Proxy (standalone)
@@ -215,7 +218,7 @@ hlrn --extra-flag value                     # pass-through args
 Equivalent to:
 ```bash
 uvx --python 3.12 \
-  --from 'headroom-ai[proxy,ml,code,pytorch-mps]==0.30.0' \
+  --from 'headroom-ai[proxy,ml,code,pytorch-mps]==0.37.0' \
   headroom learn --verbosity --apply
 ```
 
@@ -281,27 +284,35 @@ CCR (Cache-Compress-Retrieve) makes compression reversible:
 | `~/ws/Learnings/Scripts/hpi.sh` | Shell function (hpi) | ✅ (this repo) |
 | `~/ws/Learnings/Scripts/hroom.sh` | Shell function (hroom) | ✅ (this repo) |
 | `~/ws/Learnings/Scripts/hproxy.sh` | Shell function (hproxy) | ✅ (this repo) |
-| `~/ws/Learnings/Scripts/hlrn.sh` | Shell function (hlrn) | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/rtk-stats.sh` | Combined RTK & Headroom dashboard | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/rtk-agy-hook.py` | Antigravity CLI (agy) RTK hook | ✅ (this repo) |
 | `~/ws/Learnings/DevSetup/headroom-pi-cost-saver.md` | This doc | ✅ (this repo) |
+| `~/ws/Learnings/DevSetup/rtk-headroom-agy-codex-integration.md` | Multi-agent RTK & Headroom integration | ✅ (this repo) |
 | `~/.pi/agent/extensions/headroom-proxy.ts` | Installed extension | ❌ (pi config) |
 | `~/.pi/agent/rtk-config.json` | RTK config | ❌ (pi config) |
 | `~/.pi/agent/headroom-config.json` | Headroom config | ❌ (pi config) |
 | `~/.zshrc` (headroom block) | Sources hpi.sh, defines hroom/hproxy/hlrn | ❌ (dotfile) |
 
-## Troubleshooting
+## Troubleshooting & Stats
 
 ```bash
+# Combined token savings dashboard (works online & offline)
+~/ws/Learnings/Scripts/rtk-stats.sh
+
+# Headroom CLI savings summary
+hroom stats
+
+# Headroom Web Dashboard (requires proxy running)
+hroom dashboard
+
+# Check RTK binary stats directly
+rtk gain
+
 # Check proxy health
 curl -s http://localhost:8787/health | jq .
 
-# View proxy stats (including RTK savings)
-curl -s http://localhost:8787/stats | jq .summary
-
 # View proxy logs
 cat ~/.pi/agent/headroom.log
-
-# Check RTK binary stats
-rtk gain --format json
 
 # Force restart
 hpi --stop && hpi
@@ -319,6 +330,7 @@ pi --extension ~/ws/pi-headroom --list-models
 - Amsha project: `.mise/tasks/headroom/README.md`
 
 **Related:**
+- [rtk-headroom-agy-codex-integration](rtk-headroom-agy-codex-integration.md) — Comprehensive guide on RTK v0.49.0 Homebrew upgrade, Codex wrap/unwrap mechanics, and Antigravity (agy) hooks.
 - [Headroom-RTK-Real-World-Feedback-2026](../AI-ML/LLMs/optimization/Headroom-RTK-Real-World-Feedback-2026.md) — Current real-world evidence on savings, cache behavior, and RTK safety/correctness caveats.
 - [GenAI-cost-Optimization](../AI-ML/LLMs/optimization/GenAI-cost-Optimization.md) — Proxy-layer token reduction complements GenAI cost strategies like caching, routing, and quantization.
 - [headroom-proxy](headroom-proxy.md) — Generic standalone headroom proxy variant (port 8780) for any OpenAI-compatible app beyond pi.

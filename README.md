@@ -330,6 +330,7 @@ Learnings/
 - [headroom pi cost saver](DevSetup/headroom-pi-cost-saver.md)
 - [headroom proxy](DevSetup/headroom-proxy.md)
 - [llama cpp setup mtp](DevSetup/llama-cpp-setup-mtp.md)
+- [rtk headroom agy codex integration](DevSetup/rtk-headroom-agy-codex-integration.md)
 
 ---
 
@@ -462,6 +463,7 @@ Learnings/
 - [Hpi](Scripts/hpi.sh)
 - [Hproxy](Scripts/hproxy.sh)
 - [Hroom](Scripts/hroom.sh)
+- [Rtk Agy Hook](Scripts/rtk-agy-hook.py)
 - [Rtk Stats](Scripts/rtk-stats.sh)
 
 ---

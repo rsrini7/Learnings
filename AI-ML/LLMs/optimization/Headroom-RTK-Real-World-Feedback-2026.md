@@ -40,6 +40,7 @@
 ---
 
 **Related:**
+- [rtk-headroom-agy-codex-integration](../../../DevSetup/rtk-headroom-agy-codex-integration.md) — Comprehensive guide on RTK v0.49.0 Homebrew upgrade, Codex wrap/unwrap mechanics, and Antigravity (agy) hooks.
 - [ai-token-optimization-tools](ai-token-optimization-tools.md) — Broader comparison of token-reduction layers and agent tooling.
 - [GenAI-cost-Optimization](GenAI-cost-Optimization.md) — Cost measurement, caching, routing, and model-selection practices.
 - [headroom-proxy](../../../DevSetup/headroom-proxy.md) — Local Headroom proxy setup and operational details.

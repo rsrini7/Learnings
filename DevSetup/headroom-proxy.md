@@ -48,7 +48,7 @@ Health: `curl http://localhost:8780/health`
 hproxy
 
 # Or run directly
-uvx --python 3.12 --from "headroom-ai[proxy,ml,code,pytorch-mps]==0.28.0" headroom proxy --port 8780
+uvx --python 3.12 --from "headroom-ai[proxy,ml,code,pytorch-mps]==0.37.0" headroom proxy --port 8780
 ```
 
 ### Using with CommandCode API
@@ -98,7 +98,7 @@ hproxy --extra-flag value
 Equivalent to:
 ```bash
 uvx --python 3.12 \
-  --from 'headroom-ai[proxy,ml,code,pytorch-mps]==0.28.0' \
+  --from 'headroom-ai[proxy,ml,code,pytorch-mps]==0.37.0' \
   headroom proxy --port 8780
 ```
 
@@ -128,7 +128,7 @@ Auto-detects Apple Silicon and adds `pytorch-mps` extra.
 | `~/ws/Learnings/Scripts/hproxy.sh` | Shell function (hproxy) | ✅ (this repo) |
 | `~/ws/Learnings/DevSetup/headroom-proxy.md` | This doc | ✅ (this repo) |
 
-## Troubleshooting
+## Troubleshooting & Stats
 
 ```bash
 # Check proxy health
@@ -136,6 +136,12 @@ curl -s http://localhost:8780/health | jq .
 
 # View proxy stats
 curl -s http://localhost:8780/stats | jq .summary
+
+# CLI stats summary
+hroom stats
+
+# Combined dashboard
+~/ws/Learnings/Scripts/rtk-stats.sh
 
 # Force restart (kill process on port 8780 and restart)
 lsof -ti :8780 | xargs kill -9 2>/dev/null; hproxy
@@ -146,6 +152,7 @@ lsof -ti :8780 | xargs kill -9 2>/dev/null; hproxy
 - [Headroom GitHub](https://github.com/headroom-ai/headroom)
 
 **Related:**
+- [rtk-headroom-agy-codex-integration](rtk-headroom-agy-codex-integration.md) — Comprehensive guide on RTK v0.49.0 Homebrew upgrade, Codex wrap/unwrap mechanics, and Antigravity (agy) hooks.
 - [Headroom-RTK-Real-World-Feedback-2026](../AI-ML/LLMs/optimization/Headroom-RTK-Real-World-Feedback-2026.md) — Current real-world evidence on savings, cache behavior, and RTK safety/correctness caveats.
 - [AI-Coding-Loops](../AI-ML/Agents/development/AI-Coding-Loops.md) — The same proxy architecture underpins coding-agent loops; this doc covers the generic app use case.
 - [MacMini-Setup](MacMini-Setup.md) — Proxy runs locally on a dev machine — install the shell/runtime prerequisites from the Mac Mini setup first.
