@@ -17,7 +17,7 @@
 # Or add to PATH:      export PATH="$HOME/ws/Learnings/Scripts:$PATH"
 # ──────────────────────────────────────────────────────────────────────────────
 
-source "$HOME/ws/Learnings/Scripts/headroom-env.sh"
+source "${0:A:h}/headroom-env.sh" 2>/dev/null || source "$HOME/ws/Learnings/Scripts/headroom/headroom-env.sh"
 
 # ── Help ─────────────────────────────────────────────────────────────────────
 hroom__help() {

@@ -86,4 +86,4 @@ print('└───────────────────────�
 "
 
 echo
-echo "Run with: ~/ws/Learnings/Scripts/rtk-stats.sh"
+echo "Run with: ~/ws/Learnings/Scripts/headroom/rtk-stats.sh"

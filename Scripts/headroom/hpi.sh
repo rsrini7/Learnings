@@ -24,7 +24,7 @@
 # ──────────────────────────────────────────────────────────────────────────────
 
 # ── Shared config (version, extras, MPS detection) ───────────────────────────
-source "$HOME/ws/Learnings/Scripts/headroom-env.sh"
+source "${0:A:h}/headroom-env.sh" 2>/dev/null || source "$HOME/ws/Learnings/Scripts/headroom/headroom-env.sh"
 
 hpi() {
   local headroom_ext="$HOME/ws/pi-headroom"

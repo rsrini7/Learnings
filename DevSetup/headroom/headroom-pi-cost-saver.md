@@ -116,7 +116,7 @@ pi -e ~/ws/pi-rtk -e ~/ws/pi-headroom
 
 ## Shared Config
 
-**File**: `~/ws/Learnings/Scripts/headroom-env.sh`
+**File**: `~/ws/Learnings/Scripts/headroom/headroom-env.sh`
 
 Single source of truth for version and extras. All wrapper scripts source this.
 
@@ -132,11 +132,11 @@ Scripts that source it: `hpi.sh`, `hroom.sh`, `hproxy.sh`, `hlrn.sh`.
 
 ### hpi — Pi through Headroom
 
-**File**: `~/ws/Learnings/Scripts/hpi.sh`
+**File**: `~/ws/Learnings/Scripts/headroom/hpi.sh`
 
 ```bash
 # Load the function
-source ~/ws/Learnings/Scripts/hpi.sh
+source ~/ws/Learnings/Scripts/headroom/hpi.sh
 
 # Interactive (auto-starts proxy, defaults to opencode-go/mimo-v2.5-pro/high)
 hpi
@@ -171,7 +171,7 @@ pi
 
 ### hroom — Generic Headroom Wrapper
 
-**File**: `~/ws/Learnings/Scripts/hroom.sh`
+**File**: `~/ws/Learnings/Scripts/headroom/hroom.sh`
 
 Generic wrapper for any headroom subcommand. Sources `headroom-env.sh` for
 version/extras. Can be run directly or sourced to define `hroom()` function.
@@ -194,7 +194,7 @@ hroom --no-mps proxy                             # skip MPS detection
 
 ### hproxy — Headroom Proxy (standalone)
 
-**File**: `~/ws/Learnings/Scripts/hproxy.sh`
+**File**: `~/ws/Learnings/Scripts/headroom/hproxy.sh`
 
 Start headroom proxy on port 8780 (default). Sources `headroom-env.sh`.
 
@@ -206,7 +206,7 @@ hproxyt                                     # shortcut: commandcode.ai upstream
 
 ### hlrn — Headroom Learn
 
-**File**: `~/ws/Learnings/Scripts/hlrn.sh`
+**File**: `~/ws/Learnings/Scripts/headroom/hlrn.sh`
 
 Runs `headroom learn` to train/compress the context model.
 
@@ -280,24 +280,32 @@ CCR (Cache-Compress-Retrieve) makes compression reversible:
 |------|---------|--------------|
 | `~/ws/pi-rtk/` | pi-rtk package | ✅ [rsrini7/pi-rtk](https://github.com/rsrini7/pi-rtk) |
 | `~/ws/pi-headroom/` | pi-headroom package | ✅ [rsrini7/pi-headroom](https://github.com/rsrini7/pi-headroom) |
-| `~/ws/Learnings/Scripts/headroom-env.sh` | Shared version/extras config | ✅ (this repo) |
-| `~/ws/Learnings/Scripts/hpi.sh` | Shell function (hpi) | ✅ (this repo) |
-| `~/ws/Learnings/Scripts/hroom.sh` | Shell function (hroom) | ✅ (this repo) |
-| `~/ws/Learnings/Scripts/hproxy.sh` | Shell function (hproxy) | ✅ (this repo) |
-| `~/ws/Learnings/Scripts/rtk-stats.sh` | Combined RTK & Headroom dashboard | ✅ (this repo) |
-| `~/ws/Learnings/Scripts/rtk-agy-hook.py` | Antigravity CLI (agy) RTK hook | ✅ (this repo) |
-| `~/ws/Learnings/DevSetup/headroom-pi-cost-saver.md` | This doc | ✅ (this repo) |
-| `~/ws/Learnings/DevSetup/rtk-headroom-agy-codex-integration.md` | Multi-agent RTK & Headroom integration | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/headroom/headroom-env.sh` | Shared version/extras config | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/headroom/hpi.sh` | Shell function (hpi) | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/headroom/hroom.sh` | Shell function (hroom) | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/headroom/hproxy.sh` | Shell function (hproxy) | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/headroom/hcodex.sh` | Shell function (hcodex) | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/headroom/hagy.sh` | Shell function (hagy) | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/headroom/verify-setup.sh` | Setup health verification (hverify) | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/headroom/rtk-stats.sh` | Combined RTK & Headroom dashboard | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/headroom/rtk-agy-hook.py` | Antigravity CLI (agy) RTK hook | ✅ (this repo) |
+| `~/ws/Learnings/DevSetup/headroom/headroom-pi-cost-saver.md` | This doc (Pi Agent Deep Dive) | ✅ (this repo) |
+| `~/ws/Learnings/DevSetup/headroom/codex-headroom-integration.md` | Dedicated Codex + Headroom guide | ✅ (this repo) |
+| `~/ws/Learnings/DevSetup/headroom/agy-rtk-headroom-integration.md` | Dedicated Antigravity CLI guide | ✅ (this repo) |
+| `~/ws/Learnings/DevSetup/headroom/multi-agent-rtk-headroom-integration.md` | Multi-agent Master Integration Guide | ✅ (this repo) |
 | `~/.pi/agent/extensions/headroom-proxy.ts` | Installed extension | ❌ (pi config) |
 | `~/.pi/agent/rtk-config.json` | RTK config | ❌ (pi config) |
 | `~/.pi/agent/headroom-config.json` | Headroom config | ❌ (pi config) |
-| `~/.zshrc` (headroom block) | Sources hpi.sh, defines hroom/hproxy/hlrn | ❌ (dotfile) |
+| `~/.zshrc` (integration block) | Sources hpi/hroom, defines hlrn/hproxy/hcodex/hagy/hverify | ❌ (dotfile) |
 
 ## Troubleshooting & Stats
 
 ```bash
+# Run automated setup health checks across all integrations
+hverify   # or ~/ws/Learnings/Scripts/headroom/verify-setup.sh
+
 # Combined token savings dashboard (works online & offline)
-~/ws/Learnings/Scripts/rtk-stats.sh
+~/ws/Learnings/Scripts/headroom/rtk-stats.sh
 
 # Headroom CLI savings summary
 hroom stats
@@ -330,7 +338,9 @@ pi --extension ~/ws/pi-headroom --list-models
 - Amsha project: `.mise/tasks/headroom/README.md`
 
 **Related:**
-- [rtk-headroom-agy-codex-integration](rtk-headroom-agy-codex-integration.md) — Comprehensive guide on RTK v0.49.0 Homebrew upgrade, Codex wrap/unwrap mechanics, and Antigravity (agy) hooks.
-- [Headroom-RTK-Real-World-Feedback-2026](../AI-ML/LLMs/optimization/Headroom-RTK-Real-World-Feedback-2026.md) — Current real-world evidence on savings, cache behavior, and RTK safety/correctness caveats.
-- [GenAI-cost-Optimization](../AI-ML/LLMs/optimization/GenAI-cost-Optimization.md) — Proxy-layer token reduction complements GenAI cost strategies like caching, routing, and quantization.
+- [multi-agent-rtk-headroom-integration](multi-agent-rtk-headroom-integration.md) — Master guide on multi-agent token optimization across Pi, Codex, and AGY.
+- [codex-headroom-integration](codex-headroom-integration.md) — Dedicated guide on OpenAI Codex WebSocket isolation (`hcodex`) vs wrap/unwrap.
+- [agy-rtk-headroom-integration](agy-rtk-headroom-integration.md) — Dedicated guide on Google Antigravity CLI (`agy`), PreToolUse RTK hooks, and Headroom MCP integration.
+- [Headroom-RTK-Real-World-Feedback-2026](../../AI-ML/LLMs/optimization/Headroom-RTK-Real-World-Feedback-2026.md) — Current real-world evidence on savings, cache behavior, and RTK safety/correctness caveats.
+- [GenAI-cost-Optimization](../../AI-ML/LLMs/optimization/GenAI-cost-Optimization.md) — Proxy-layer token reduction complements GenAI cost strategies like caching, routing, and quantization.
 - [headroom-proxy](headroom-proxy.md) — Generic standalone headroom proxy variant (port 8780) for any OpenAI-compatible app beyond pi.

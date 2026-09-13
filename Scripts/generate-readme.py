@@ -321,9 +321,13 @@ Learnings/
     content += "---\n\n"
 
     # ================= DevSetup =================
-    d = emit_flat('DevSetup', '🛠️ Development Setup', emitted, heading_level=2)
-    if d:
-        content += d + "---\n\n"
+    devsetup_content = "## 🛠️ Development Setup\n\n"
+    for f in get_md_files('DevSetup', recursive=False):
+        devsetup_content += make_link(format_title(f), f"DevSetup/{f}", emitted)
+    devsetup_content += "\n"
+    devsetup_subs = {'headroom': '⚡ Headroom & Multi-Agent Token Optimization'}
+    devsetup_content += emit_subdirs('DevSetup', devsetup_subs, heading_level=3, emitted=emitted)
+    content += devsetup_content + "---\n\n"
 
     # ================= Content =================
     content += "## ✍️ Content Creation\n\n"
@@ -391,11 +395,21 @@ Learnings/
     # Primary, described scripts first.
     content += "- [GitHub Repos & Links](Scripts/github-repos.py) - Manage repos and check/fix links\n"
     content += "- [README Generator](Scripts/generate-readme.py) - Auto-generate this README\n"
+    # Headroom subfolder scripts
+    if os.path.isdir('Scripts/headroom'):
+        content += "\n### ⚡ Headroom & Multi-Agent Optimization Tools\n\n"
+        headroom_scripts = sorted(
+            f for f in os.listdir('Scripts/headroom')
+            if (f.endswith('.py') or f.endswith('.sh'))
+        )
+        for s in headroom_scripts:
+            title = s[:-3].replace('-', ' ').title()
+            content += f"- [{title}](Scripts/headroom/{s})\n"
     # Auto-discover any other scripts so new ones are never missed.
-    described = {'github-repos.py', 'generate-readme.py'}
+    described = {'github-repos.py', 'generate-readme.py', 'rtk-agy-hook.py'}
     extra_scripts = sorted(
         f for f in os.listdir('Scripts')
-        if (f.endswith('.py') or f.endswith('.sh')) and f not in described
+        if os.path.isfile(os.path.join('Scripts', f)) and (f.endswith('.py') or f.endswith('.sh')) and f not in described
     )
     for s in extra_scripts:
         title = s[:-3].replace('-', ' ').title()

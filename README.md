@@ -325,12 +325,17 @@ Learnings/
 ---
 
 ## 🛠️ Development Setup
+
 - [Claude Code OpenRouter Quick Setup 2026](DevSetup/Claude-Code-OpenRouter-Quick-Setup-2026.md)
 - [MacMini Setup](DevSetup/MacMini-Setup.md)
-- [headroom pi cost saver](DevSetup/headroom-pi-cost-saver.md)
-- [headroom proxy](DevSetup/headroom-proxy.md)
 - [llama cpp setup mtp](DevSetup/llama-cpp-setup-mtp.md)
-- [rtk headroom agy codex integration](DevSetup/rtk-headroom-agy-codex-integration.md)
+
+### ⚡ Headroom & Multi-Agent Token Optimization
+- [agy rtk headroom integration](DevSetup/headroom/agy-rtk-headroom-integration.md)
+- [codex headroom integration](DevSetup/headroom/codex-headroom-integration.md)
+- [headroom pi cost saver](DevSetup/headroom/headroom-pi-cost-saver.md)
+- [headroom proxy](DevSetup/headroom/headroom-proxy.md)
+- [multi agent rtk headroom integration](DevSetup/headroom/multi-agent-rtk-headroom-integration.md)
 
 ---
 
@@ -458,13 +463,20 @@ Learnings/
 
 - [GitHub Repos & Links](Scripts/github-repos.py) - Manage repos and check/fix links
 - [README Generator](Scripts/generate-readme.py) - Auto-generate this README
+
+### ⚡ Headroom & Multi-Agent Optimization Tools
+
+- [Hagy](Scripts/headroom/hagy.sh)
+- [Hcodex](Scripts/headroom/hcodex.sh)
+- [Headroom Env](Scripts/headroom/headroom-env.sh)
+- [Hlrn](Scripts/headroom/hlrn.sh)
+- [Hpi](Scripts/headroom/hpi.sh)
+- [Hproxy](Scripts/headroom/hproxy.sh)
+- [Hroom](Scripts/headroom/hroom.sh)
+- [Rtk Agy Hook](Scripts/headroom/rtk-agy-hook.py)
+- [Rtk Stats](Scripts/headroom/rtk-stats.sh)
+- [Verify Setup](Scripts/headroom/verify-setup.sh)
 - [Headroom Env](Scripts/headroom-env.sh)
-- [Hlrn](Scripts/hlrn.sh)
-- [Hpi](Scripts/hpi.sh)
-- [Hproxy](Scripts/hproxy.sh)
-- [Hroom](Scripts/hroom.sh)
-- [Rtk Agy Hook](Scripts/rtk-agy-hook.py)
-- [Rtk Stats](Scripts/rtk-stats.sh)
 
 ---
 

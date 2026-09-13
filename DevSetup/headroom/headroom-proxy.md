@@ -78,17 +78,17 @@ curl http://localhost:8780/chat/completions \
 
 ### hproxy — Headroom Proxy
 
-**File**: `~/ws/Learnings/Scripts/hproxy.sh`
+**File**: `~/ws/Learnings/Scripts/headroom/hproxy.sh`
 
 ```bash
 # Make executable
-chmod +x ~/ws/Learnings/Scripts/hproxy.sh
+chmod +x ~/ws/Learnings/Scripts/headroom/hproxy.sh
 
 # Run directly
-~/ws/Learnings/Scripts/hproxy.sh
+~/ws/Learnings/Scripts/headroom/hproxy.sh
 
 # Or add to PATH
-export PATH="$HOME/ws/Learnings/Scripts:$PATH"
+export PATH="$HOME/ws/Learnings/Scripts/headroom:$PATH"
 hproxy
 
 # Pass extra flags
@@ -98,11 +98,18 @@ hproxy --extra-flag value
 Equivalent to:
 ```bash
 uvx --python 3.12 \
-  --from 'headroom-ai[proxy,ml,code,pytorch-mps]==0.37.0' \
+  --from "headroom-ai[proxy,ml,code,pytorch-mps]==0.37.0" \
   headroom proxy --port 8780
 ```
 
-Auto-detects Apple Silicon and adds `pytorch-mps` extra.
+### Key Differences: `hpi` vs `hproxy`
+
+| Feature | `hpi` | `hproxy` |
+|---------|-------|----------|
+| Port | 8787 | 8780 |
+| Target | Headroom demo / opencode-go | Any (default: upstream LLM) |
+| Mode | Auto-starts with pi agent | Standalone daemon |
+| Use case | Cost optimization for pi | Generic proxy for any app |
 
 ## Port Allocation
 
@@ -121,12 +128,12 @@ Auto-detects Apple Silicon and adds `pytorch-mps` extra.
 | 8796 | Amsha | Generic OpenAI proxy |
 | 8797 | Amsha | llama.cpp proxy |
 
-## Files
+## File Map
 
 | File | Purpose | Git-tracked? |
 |------|---------|--------------|
-| `~/ws/Learnings/Scripts/hproxy.sh` | Shell function (hproxy) | ✅ (this repo) |
-| `~/ws/Learnings/DevSetup/headroom-proxy.md` | This doc | ✅ (this repo) |
+| `~/ws/Learnings/Scripts/headroom/hproxy.sh` | Shell function (hproxy) | ✅ (this repo) |
+| `~/ws/Learnings/DevSetup/headroom/headroom-proxy.md` | This doc | ✅ (this repo) |
 
 ## Troubleshooting & Stats
 
@@ -140,8 +147,11 @@ curl -s http://localhost:8780/stats | jq .summary
 # CLI stats summary
 hroom stats
 
+# Run setup health verification suite
+hverify   # or ~/ws/Learnings/Scripts/headroom/verify-setup.sh
+
 # Combined dashboard
-~/ws/Learnings/Scripts/rtk-stats.sh
+~/ws/Learnings/Scripts/headroom/rtk-stats.sh
 
 # Force restart (kill process on port 8780 and restart)
 lsof -ti :8780 | xargs kill -9 2>/dev/null; hproxy
@@ -152,8 +162,10 @@ lsof -ti :8780 | xargs kill -9 2>/dev/null; hproxy
 - [Headroom GitHub](https://github.com/headroom-ai/headroom)
 
 **Related:**
-- [rtk-headroom-agy-codex-integration](rtk-headroom-agy-codex-integration.md) — Comprehensive guide on RTK v0.49.0 Homebrew upgrade, Codex wrap/unwrap mechanics, and Antigravity (agy) hooks.
-- [Headroom-RTK-Real-World-Feedback-2026](../AI-ML/LLMs/optimization/Headroom-RTK-Real-World-Feedback-2026.md) — Current real-world evidence on savings, cache behavior, and RTK safety/correctness caveats.
-- [AI-Coding-Loops](../AI-ML/Agents/development/AI-Coding-Loops.md) — The same proxy architecture underpins coding-agent loops; this doc covers the generic app use case.
-- [MacMini-Setup](MacMini-Setup.md) — Proxy runs locally on a dev machine — install the shell/runtime prerequisites from the Mac Mini setup first.
-- [Claude-Code-OpenRouter-Quick-Setup-2026](Claude-Code-OpenRouter-Quick-Setup-2026.md) — Same rerouting pattern: point Claude Code at OpenRouter via `ANTHROPIC_BASE_URL`.
+- [codex-headroom-integration](codex-headroom-integration.md) — Dedicated guide on Codex + Headroom integration, comparing `hcodex` against `headroom wrap/unwrap`.
+- [agy-rtk-headroom-integration](agy-rtk-headroom-integration.md) — Dedicated guide on Google Antigravity CLI (`agy`), PreToolUse RTK hooks, and Headroom MCP integration.
+- [multi-agent-rtk-headroom-integration](multi-agent-rtk-headroom-integration.md) — Master guide on multi-agent token optimization across Pi, Codex, and AGY.
+- [Headroom-RTK-Real-World-Feedback-2026](../../AI-ML/LLMs/optimization/Headroom-RTK-Real-World-Feedback-2026.md) — Current real-world evidence on savings, cache behavior, and RTK safety/correctness caveats.
+- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — The same proxy architecture underpins coding-agent loops; this doc covers the generic app use case.
+- [MacMini-Setup](../MacMini-Setup.md) — Proxy runs locally on a dev machine — install the shell/runtime prerequisites from the Mac Mini setup first.
+- [Claude-Code-OpenRouter-Quick-Setup-2026](../Claude-Code-OpenRouter-Quick-Setup-2026.md) — Same rerouting pattern: point Claude Code at OpenRouter via `ANTHROPIC_BASE_URL`.
