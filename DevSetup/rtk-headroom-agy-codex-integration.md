@@ -178,10 +178,10 @@ Antigravity executes shell commands through the `run_command` tool. We integrate
 Every time `agy` executes a shell tool call, it automatically checks `rtk rewrite`. Supported commands (`git`, `cargo`, `grep`, `npm`, `diff`) run through `rtk` transparently.
 
 ### 2. Headroom via Model Context Protocol (MCP)
-Headroom exposes its retrieval and code-memory server via `headroom mcp serve`. We registered this into `agy` using the `agy mcp` CLI:
+Headroom exposes its retrieval and code-memory server via `headroom mcp serve`. Note that the Python `mcp` SDK is an optional extra in `headroom-ai`, so `[mcp]` must be included:
 
 ```bash
-agy mcp add headroom -- uvx --from headroom-ai==0.37.0 headroom mcp serve
+agy mcp add headroom -- uvx --from 'headroom-ai[mcp]==0.37.0' headroom mcp serve
 ```
 
 Verify with:
@@ -189,7 +189,7 @@ Verify with:
 agy mcp list
 # Output:
 # NAME      TYPE   STATUS   COMMAND/URL
-# headroom  stdio  enabled  uvx --from headroom-ai==0.37.0 headroom mcp serve
+# headroom  stdio  enabled  uvx --from headroom-ai[mcp]==0.37.0 headroom mcp serve
 ```
 
 ---

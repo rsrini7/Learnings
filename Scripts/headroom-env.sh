@@ -17,7 +17,7 @@
 HROOM_VERSION="0.37.0"
 
 # ── Default extras (before platform detection) ───────────────────────────────
-HROOM_BASE_EXTRAS="proxy,ml,code"
+HROOM_BASE_EXTRAS="proxy,ml,code,mcp"
 
 # ── Resolve extras for current platform ──────────────────────────────────────
 # Usage:  local extras=$(hroom_resolve_extras)
