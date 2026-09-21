@@ -238,3 +238,4 @@ This guide is based on widely discussed concepts in the AI community, verified a
 - [Persistent-Memory-Layers-AI-Agents](Persistent-Memory-Layers-AI-Agents.md) — Memory layer solutions (Mem0, Graphiti) are evaluated on LOCOMO and DMR benchmarks, illustrating domain-specific evaluation.
 - [LLM-Inference](LLM-Inference.md) — Defines the latency and throughput metrics (TTFT, TPOT, TPS) that this benchmark taxonomy categorizes and measures.
 - [LLM-Council](LLM-Council.md) — Council's 'Academic Validation' section positions multi-model ranking as an alternative benchmark for human-preference evaluation.
+- [Jev-System-One-Decision-Model-2026](../models/other/Jev-System-One-Decision-Model-2026.md) — A worked case study in reading vendor-published evaluation claims (workflow evals, reference-model bias, a mathematically asserted 0% type-error rate) rather than trusting headline multipliers.

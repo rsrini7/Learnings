@@ -183,11 +183,14 @@ Learnings/
     # ================= Repository Docs (root-level, curated) =================
     # Root-level meta documents that are neither content articles nor excluded.
     # Add new repo-level docs to this list so they never fall into Uncategorized.
-    content += "## 🧭 Repository Docs\n\n"
+    # Emit the section only when at least one listed doc exists, so regeneration
+    # never leaves an empty heading behind.
+    repo_docs = "## 🧭 Repository Docs\n\n"
     for doc in ['CONSOLIDATION_REVIEW.md']:
         if os.path.isfile(doc):
-            content += make_link(format_title(doc), doc, emitted)
-    content += "\n---\n\n"
+            repo_docs += make_link(format_title(doc), doc, emitted)
+    if repo_docs != "## 🧭 Repository Docs\n\n":
+        content += repo_docs + "\n---\n\n"
 
     # ================= AI & Machine Learning =================
     content += "## 🧠 AI & Machine Learning\n\n"

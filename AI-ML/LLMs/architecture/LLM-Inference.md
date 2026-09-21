@@ -342,3 +342,4 @@ Continue Reading : [LLM-Inference-Engines.md](LLM-Inference-Engines.md)
 - [GenAI-cost-Optimization](../optimization/GenAI-cost-Optimization.md) — Cost-reduction strategies here complement the cost optimization section in this inference guide.
 - [Auto-Regression](../training/Auto-Regression.md) — Explains the autoregressive mechanism that makes the decode phase memory-bound as detailed in this file.
 - [LLM-Benchmarks](LLM-Benchmarks.md) — Provides benchmarks for measuring the latency and throughput metrics (TTFT, TPOT) defined in this file.
+- [Jev-Internals-and-Open-Source-Replicas-2026](../models/other/Jev-Internals-and-Open-Source-Replicas-2026.md) — A concrete architecture that skips the autoregressive decode phase entirely, hitting the 70–500 ms end-to-end budget this file's decode-bound analysis explains.
