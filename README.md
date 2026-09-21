@@ -164,6 +164,7 @@ Learnings/
 ##### 🌐 Other Models (Gemma, Qwen, NVIDIA)
 - [Chinese AI Trifecta 2025 2026](AI-ML/LLMs/models/other/Chinese-AI-Trifecta-2025-2026.md)
 - [Google Gemma Family Models Jan 2026](AI-ML/LLMs/models/other/Google-Gemma-Family-Models-Jan-2026.md)
+- [Jev System One Decision Model 2026](AI-ML/LLMs/models/other/Jev-System-One-Decision-Model-2026.md)
 - [NVIDIA Open Models CES 2026](AI-ML/LLMs/models/other/NVIDIA-Open-Models-CES-2026.md)
 - [Qwen3 VL Embedding and Reranker](AI-ML/LLMs/models/other/Qwen3-VL-Embedding-and-Reranker.md)
 - [Sarvam AI Deep Review 2026](AI-ML/LLMs/models/other/Sarvam-AI-Deep-Review-2026.md)
