@@ -16,6 +16,24 @@ state + typed questions → choice / score / yes-no probability → ordinary cod
 
 It is therefore best understood as a fast **decision component**, not as a replacement for ChatGPT, Claude, or another general-purpose model.
 
+## How to picture Jev
+
+```mermaid
+flowchart LR
+    A[Application state] --> B[Typed questions]
+    B --> C[Jev / System One]
+    C --> D[Choice<br/>pick one]
+    C --> E[Score<br/>place on a scale]
+    C --> F[Noul<br/>yes probability]
+    D --> G[Your code applies<br/>thresholds and rules]
+    E --> G
+    F --> G
+    G --> H[Act]
+    G --> I[Review or fallback]
+```
+
+The key idea is the **last box**: Jev does not own the workflow. It gives your program a small judgment, and your program decides what that judgment is allowed to do.
+
 ## The three question types
 
 | Type | Simple meaning | Example |
@@ -76,6 +94,34 @@ Use a normal program or a generative/reasoning model instead when you need:
 - exact arithmetic, counting, date comparison, or other calculations;
 - an answer that is not in a closed set or an ordered rubric;
 - image, audio, or video input. The current official state documentation describes text and JSON state, not those media types.
+
+## Jev compared with similar tools
+
+| Approach | What it returns | Best at | How it differs from Jev |
+|---|---|---|---|
+| Hand-written rules | Exact conditions | Stable, explicit policy | More predictable, but cannot understand messy language well. |
+| Traditional classifier | A label, often with a probability | One fixed classification task | Usually needs a fixed taxonomy and training pipeline; Jev lets each request declare its question and options. |
+| Embeddings / vector search | Similarity between items | Finding related documents | Similarity is not the same as correctness, policy fit, or “yes/no”; Jev can judge a retrieved shortlist. |
+| Cross-encoder reranker | Relevance scores or ranking | Ordering query–document pairs | Usually optimized for relevance; Jev can be steered toward a specific business question or policy. |
+| General LLM with JSON mode | Generated text shaped like JSON | Explanations, extraction, and open-ended reasoning | Still generates tokens and can require parsing/validation; Jev is bounded around the decision itself. |
+| **Jev** | `Choice`, `Score`, or `Noul` plus probabilities | Fast, narrow decisions inside code | Needs a well-defined question and surrounding code; it is not a writer or autonomous planner. |
+
+### The simplest selection rule
+
+```mermaid
+flowchart TD
+    A[What does the software need?] --> B{Exact known rule?}
+    B -->|Yes| C[Use ordinary code]
+    B -->|No| D{Closed decision from messy text?}
+    D -->|Yes| E[Use Jev or a task classifier]
+    D -->|No| F{Need similar documents?}
+    F -->|Yes| G[Use embeddings / search / reranking]
+    F -->|No| H{Need prose, code, or multi-step reasoning?}
+    H -->|Yes| I[Use a generative or reasoning LLM]
+    H -->|No| J[Redesign the question<br/>into smaller decisions]
+```
+
+Jev often works **alongside** these tools: search finds candidates, Jev filters or ranks them, code applies policy, and a larger LLM writes the final response only when needed.
 
 ## The safest implementation pattern
 
