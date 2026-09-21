@@ -2,8 +2,13 @@
 
 **A Technical Whitepaper on Context Efficiency & Programmatic Tool Calling**
 
+![MCP scalability overview](assets/MCP-Scalability-Issue-Solution.png)
+![MCP scalability: evolving architectures](assets/MCP-Scalability-Issue-Solution-Extended.png)
+
 > **Version 3.0 — Updated February 20, 2026**
 > This document has been substantially revised to incorporate Claude Sonnet 4.6 (February 17, 2026) and the general availability of Programmatic Tool Calling, Dynamic Filtering, and the full advanced tool use platform. The industry is moving: JSON-style tool calling is increasingly viewed as a legacy pattern for complex workflows, with Cloudflare, Anthropic, and open-source projects converging on Code Mode as the preferred approach.
+
+> **Verification boundary:** This is a dated analytical snapshot, not a promise about every provider or MCP client. Benchmark figures are vendor-reported or derived from the cited project reports; they are not independent reproductions. The MCP specification has since advanced to the [2026-07-28 release](https://modelcontextprotocol.io/specification/2026-07-28), so implementation details and feature availability should be rechecked before production use.
 
 ---
 
@@ -33,7 +38,7 @@ For agents with fewer than 10 simple tools: traditional JSON calling remains pra
 
 ## Table of Contents
 
-1. [MCP Architecture and Initial Promise](#1-mcp-architecture-and-initial-promise)
+1. [The MCP Architecture and Initial Promise](#1-the-mcp-architecture-and-initial-promise)
 2. [The Scalability Crisis: Root Cause Analysis](#2-the-scalability-crisis-root-cause-analysis)
 3. [Quantified Impact: Benchmarks](#3-quantified-impact-benchmarks)
 4. [MCP Tool Search: The First Wave Solution (January 2026)](#4-mcp-tool-search-the-first-wave-solution-january-2026)
@@ -47,9 +52,9 @@ For agents with fewer than 10 simple tools: traditional JSON calling remains pra
 12. [Future Roadmap and Evolution](#12-future-roadmap-and-evolution)
 13. [Implementation Recommendations](#13-implementation-recommendations)
 14. [Conclusion](#14-conclusion)
-15. [Appendix A: Sonnet 4.6 vs Opus 4.6 — Cost and Performance Guide](#15-appendix-a-sonnet-46-vs-opus-46-cost-and-performance-guide)
-16. [Appendix B: API Quick Reference for Sonnet 4.6 Features](#16-appendix-b-api-quick-reference-for-sonnet-46-features)
-17. [References and Further Reading](#17-references-and-further-reading)
+15. [Appendix A: Claude Sonnet 4.6 vs Opus 4.6 — Cost and Performance Guide](#appendix-a-claude-sonnet-46-vs-opus-46--cost-and-performance-guide)
+16. [Appendix B: API Quick Reference for Sonnet 4.6 Features](#appendix-b-api-quick-reference-for-sonnet-46-features)
+17. [References and Further Reading](#references-and-further-reading)
 
 ---
 
@@ -74,6 +79,8 @@ Since November 2024, the community has built thousands of MCP servers across eve
 ---
 
 ## 2. The Scalability Crisis: Root Cause Analysis
+
+![Illustrative context usage](assets/Context-Usage.jpg)
 
 ### 2.1 Problem 1: Tool Definition Overload
 
@@ -651,7 +658,65 @@ Use three-step workflow: Search → Get details → Report
 
 **When to Use:** First iteration of new tools; simple stable interfaces; teams using the same tools as humans; small tool sets (<20).
 
-### 7.2 Script-Based Approach with Progressive Disclosure
+### 7.2 CLI Gateways (MCP Launchpad and Similar)
+
+**The Pattern:** A unified CLI gateway consolidates multiple MCP servers behind a single searchable command-line interface, so agents discover tools on demand instead of loading every definition upfront.
+
+Community gateways such as [MCP Launchpad](https://github.com/kenneth-liao/mcp-launchpad) place a searchable, cached CLI (`mcpl`) in front of multiple MCP servers. This can keep a small command vocabulary in the model context while the gateway performs discovery and routing. Treat the token-reduction figures reported by community implementations as directional until reproduced for the target workload, and verify project maintenance before adopting one in production.
+
+**Reported key features:**
+- **Caching** — tool schemas from each server (Render, Sentry, Linear, Supabase, GitHub, Slack, and similar) are cached locally after first connection, avoiding repeated network calls and repeated context loading.
+- **Search-based discovery** — keyword/BM25 search over cached tool definitions, e.g. `"SQL"` surfaces database tools, `"issues"` surfaces error-tracking and project-management tools.
+- **Core commands** — `mcpl config` (view/edit server configuration), `mcpl list` (connected servers and tools), `mcpl inspect <tool>` (schema for one tool), `mcpl search <query>` (discovery across all tools), `mcpl help`.
+
+**Illustrative workflow** (from the project's own documentation — not independently verified):
+
+```bash
+# Agent task: find urgent issues, then query the database
+
+$ mcpl search "issues"
+Found tools:
+- linear_get_issues
+- sentry_get_issues
+- github_list_issues
+
+$ mcpl inspect linear_get_issues
+Returns: schema for querying Linear issues with filters
+
+$ mcpl call linear_get_issues --filter "status:urgent"
+Returns: [filtered list of urgent issues]
+
+$ mcpl search "SQL"          # follow-up discovery
+$ mcpl call supabase_query --query "SELECT * FROM deployments WHERE status='pending'"
+```
+
+**Reported token efficiency** (community-reported; verify for your workload):
+
+| Setup | Context cost |
+|-------|--------------|
+| Traditional MCP, 7 servers | ~100,000 tokens upfront |
+| MCP Launchpad | ~1,000–2,000 tokens initially |
+| Per-search overhead | ~500–800 tokens |
+| Reported total reduction | 90–95% for typical workflows |
+
+This mitigates Problems 1–3 (§2.1–2.3) by loading only a small fraction of total tool definitions initially.
+
+**CLI gateway vs. Code Mode (PTC):**
+
+| Aspect | Code Mode (Programmatic Tool Calling) | CLI Gateway |
+|--------|---------------------------------------|-------------|
+| Discovery | Filesystem exploration / code composition | Search commands (`mcpl search`, `mcpl list`) |
+| Reported token reduction | 78–98% | 90–95% (caching avoids reloads) |
+| Setup complexity | Medium (structured filesystem) | Low (install a CLI + a short prompt) |
+| Dynamic capability | High (loops, data transformation) | Medium (search-based) |
+| Best for | Complex multi-step workflows | Quick discovery across many servers |
+| Latency overhead | Sandbox execution (~1s) | CLI calls (<0.5s) |
+
+CLI gateways favor simplicity in multi-server environments, while Code Mode offers more programmatic flexibility. **Hybrid setups** — CLI for discovery, code for execution — are the practical middle ground.
+
+**When to Use:** Many MCP servers connected; discovery is the bottleneck rather than transformation; the team already works in a terminal. Note that a gateway adds a third-party dependency to the tool path, so its maintenance status and trust model deserve the same scrutiny as any MCP server.
+
+### 7.3 Script-Based Approach with Progressive Disclosure
 
 **The Pattern:** Single-file, self-contained scripts with prompt engineering for selective loading.
 
@@ -669,7 +734,7 @@ README.md  ← Only this loads upfront
 
 **When to Use:** Medium complexity (10–50 scripts); privacy-sensitive workloads; tools you control and can update.
 
-### 7.3 Claude Skills
+### 7.4 Claude Skills
 
 **The Pattern:** Anthropic's native skills ecosystem combining skill.md descriptions with on-demand code loading.
 
@@ -1272,7 +1337,7 @@ response = client.beta.messages.create(
 - Anthropic: "Programmatic Tool Calling" — [platform.claude.com](https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling)
 - Anthropic: "Introducing Claude Skills" (2025)
 - Anthropic: Claude Sonnet 4.6 System Card (2026)
-- Model Context Protocol Specification — [mcp.com](https://mcp.com)
+- Model Context Protocol Specification — [modelcontextprotocol.io](https://modelcontextprotocol.io/specification)
 
 ### Partner Sources
 
@@ -1308,6 +1373,13 @@ response = client.beta.messages.create(
 - **MCP-Zero**: Repositioned as research/advanced pattern, not production default
 - **Tool Use Examples**: Added as new GA feature from advanced tool use platform
 
+### Consolidation (September 21, 2026)
+- Consolidated the earlier base and extended drafts into this versioned whitepaper.
+- Retained the two complementary overview diagrams from the earlier drafts.
+- Added the community CLI-gateway note and a dated verification boundary.
+- Restored the detailed CLI-gateway material (commands, workflow, token and Code-Mode comparison) that the initial consolidation had compressed to a single paragraph, with its figures explicitly labelled community-reported.
+- Fixed four broken table-of-contents anchors (sections 1, 15, 16, 17).
+
 ### Version 2.0 (January 16, 2026)
 - Added comprehensive section on MCP Tool Search (Section 4)
 - Updated benchmarks with Tool Search data
@@ -1326,3 +1398,5 @@ response = client.beta.messages.create(
 - [Agent-Skills](../Agents/skills/Agent-Skills.md) — Skills are positioned as one of the mitigations in v3's evolutionary story alongside Tool Search and Code Mode.
 - [OpenClaw(Moltbot-or-Clawdbot)-Architecture](../Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Architecture.md) — Updated OpenClaw architecture where dynamic tool discovery addresses the v3-quantified scalability bottlenecks.
 - [AI-Coding-Loops](../Agents/development/AI-Coding-Loops.md) — AI-coding loop patterns that benefit most from v3's Code Mode default for multi-tool, multi-step agent workflows.
+- [RAG-Architectures](../RAG/RAG-Architectures.md) — RAG pipelines consume MCP resources, so the token-reduction strategies here apply directly to retrieval-augmented systems.
+- [clawwork-architecture-deep-dive](../Agents/openclaw/clawwork-architecture-deep-dive.md) — Production MCP integration showing how OpenClaw mitigates the same context-window and tool-binding problems examined here.

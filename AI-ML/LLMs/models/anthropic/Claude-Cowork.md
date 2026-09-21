@@ -748,6 +748,6 @@ graph TB
 
 **Related:**
 - [Agent-Skills](../../../Agents/skills/Agent-Skills.md) — Skills are an explicit connector category in Cowork's integration architecture; this guide explains the open standard they implement.
-- [MCP_Scalability_Issue_Solution](../../../Protocols/MCP_Scalability_Issue_Solution.md) — Cowork relies on MCP for Asana/Notion/Slack integration; this paper documents the context-bloat problem that grows with each connected server.
+- [MCP_Scalability_Issue_Solution_v3](../../../Protocols/MCP_Scalability_Issue_Solution_v3.md) — Cowork relies on MCP for Asana/Notion/Slack integration; this paper documents the context-bloat problem that grows with each connected server.
 - [AI-Coding-Loops](../../../Agents/development/AI-Coding-Loops.md) — Cowork's agent loop and recursive improvement (Claude Code building Cowork) map onto the agent-loop and background-agent patterns from the 5 loops.
 - [Claude-Developer-Ecosystem-Jan-2026](Claude-Developer-Ecosystem-Jan-2026.md) — Cowork has a full section in this comprehensive ecosystem guide — see it for installation, sandboxing details, and broader Claude ecosystem context.

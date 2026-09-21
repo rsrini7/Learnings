@@ -157,5 +157,5 @@ The ecosystem is modular—use what you need based on your complexity level!
 
 **Related:**
 - [AI-Coding-Loops](../development/AI-Coding-Loops.md) — covers the sub-agent orchestration, parallel agents, and verification loops that this map lists but does not elaborate on.
-- [MCP_Scalability_Issue_Solution](../../Protocols/MCP_Scalability_Issue_Solution.md) — explains the tool-definition bloat and progressive-disclosure fixes behind MCP's row in this comparison table.
+- [MCP_Scalability_Issue_Solution_v3](../../Protocols/MCP_Scalability_Issue_Solution_v3.md) — explains the tool-definition bloat and progressive-disclosure fixes behind MCP's row in this comparison table.
 - [Claude-Developer-Ecosystem-Jan-2026](../../LLMs/models/anthropic/Claude-Developer-Ecosystem-Jan-2026.md) — broader Anthropic ecosystem reference covering the same primitives (Skills, MCP, Sub-Agents, Hooks, Plugins) in the Claude-native context.

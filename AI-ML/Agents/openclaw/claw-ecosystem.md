@@ -8,6 +8,8 @@
 
 > **Scope & Neutrality Statement:** This document analyses architectural tradeoffs and security boundaries across projects in the AI personal-assistant agent ecosystem. It does not endorse or discourage adoption of any specific project. All projects described are under active development; capabilities, security posture, and maturity levels are subject to change. Readers should verify current status directly against primary sources before making deployment decisions.
 
+> **Verification boundary:** This is a historical snapshot from February 16, 2026. Star counts, release versions, performance measurements, exposure counts, supply-chain counts, and CVE status are time-sensitive. For current deployment decisions, check the [OpenClaw repository](https://github.com/openclaw/openclaw), its [releases](https://github.com/openclaw/openclaw/releases), and its [security advisories](https://github.com/openclaw/openclaw/security/advisories), plus each alternative's primary repository listed in Section 13. Claims attributed to independent researchers remain attributed claims, not independently reproduced findings.
+
 ---
 
 ## Table of Contents
@@ -65,7 +67,7 @@ These events — combined with CVE-2026-25253 disclosures in early February — 
 
 ## 2. Ecosystem Map & Project Inventory
 
-### GitHub Statistics (Feb 16, 2026)
+### Historical GitHub Snapshot (Feb 16, 2026)
 
 > All star counts are approximate point-in-time observations. This ecosystem is growing rapidly; treat these as directional indicators, not precise measurements.
 
@@ -762,6 +764,8 @@ Deployments that differ materially from these assumptions — e.g., isolated VPS
 
 ### 5.1 CVE-2026-25253: Architectural Implications
 
+> **Historical incident note:** The following analysis covers the February 2026 disclosure and patch state. It is not a current OpenClaw security assessment: the official repository now lists later releases and additional advisories. Review the [current advisory list](https://github.com/openclaw/openclaw/security/advisories) and [release history](https://github.com/openclaw/openclaw/releases) before acting on the mitigation guidance below.
+
 ```
 CVE ID             : CVE-2026-25253
 GitHub Advisory    : GHSA-g8p2-7wf7-98mq
@@ -1189,7 +1193,7 @@ NanoBot was PicoClaw's direct codebase ancestor (Python → Go migration). Confi
 
 ---
 
-## 11.5 Limitations of This Analysis
+### 11.5 Limitations of This Analysis
 
 This document should be read with the following constraints in mind:
 
@@ -1202,7 +1206,7 @@ This document should be read with the following constraints in mind:
 
 ---
 
-## 11.6 Isolation Boundary Hierarchy
+### 11.6 Isolation Boundary Hierarchy
 
 Understanding *where* a security boundary is enforced is as important as knowing that one exists. The following hierarchy ranks isolation enforcement from weakest to strongest, mapped to the projects in this ecosystem.
 
@@ -1301,6 +1305,12 @@ None of these approaches are complete solutions. All require operator awareness,
 - ZeroClaw: https://github.com/theonlyhennygod/zeroclaw
 - IronClaw: https://github.com/nearai/ironclaw
 - PicoClaw: https://github.com/sipeed/picoclaw
+
+### Current Verification Entry Points
+- OpenClaw repository and architecture: https://github.com/openclaw/openclaw
+- OpenClaw releases: https://github.com/openclaw/openclaw/releases
+- OpenClaw security advisories: https://github.com/openclaw/openclaw/security/advisories
+- NanoBot security guidance: https://github.com/HKUDS/nanobot/security
 
 ### CVE & Security Advisories
 - NVD CVE-2026-25253: https://nvd.nist.gov/vuln/detail/CVE-2026-25253

@@ -116,5 +116,6 @@ Stablecoins are not replacing traditional rails overnight—they are complementi
 5. Advantages/Disadvantages: Stripe, McKinsey, Gemini Research
 
 **Related:**
+- [ISO20022-Aligned-Crypto-Rails-XRP-XLM-XDC-HBAR](ISO20022-Aligned-Crypto-Rails-XRP-XLM-XDC-HBAR.md) — Places XRPL (the settlement rail RLUSD issues on) among the ISO 20022-aligned networks, with the XRP/XLM/XDC/HBAR role breakdown.
 - [workflow-orchestration](../../Engineering/Middleware/workflow-orchestration.md) — Programmable-money transfers across XRPL/ETH/TON demand orchestrated steps for mint, bridge, comply, and payout.
 - [AI-in-Next-18-Months](../../AI-ML/LLMs/economy/AI-in-Next-18-Months.md) — Stablecoin volumes crossing $33T in 2025 are reshaping the macroeconomic backdrop that AI-driven agent economies will plug into.

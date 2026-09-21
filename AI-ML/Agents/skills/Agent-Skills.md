@@ -261,5 +261,5 @@ Agent Skills encourage both human creators and AI tools to think modularly, fost
 **Related:**
 - [Agent-Skills-vs-Agents.md](Agent-Skills-vs-Agents.md.md) — Vercel evaluation arguing passive AGENTS.md outperforms Skills for general framework knowledge — a real-world check on the optimistic framing here.
 - [Agent-Specs-vs-Rules-vs-Skills](Agent-Specs-vs-Rules-vs-Skills.md) — positions Skills as the top capability layer above SDD (specs) and UACF (rules), complementing rather than replacing them.
-- [MCP_Scalability_Issue_Solution](../../Protocols/MCP_Scalability_Issue_Solution.md) — analyzes the same Skills-vs-MCP progressive-disclosure trade-off with quantified token savings (78-98%) that this article only sketches.
+- [MCP_Scalability_Issue_Solution_v3](../../Protocols/MCP_Scalability_Issue_Solution_v3.md) — analyzes the same Skills-vs-MCP progressive-disclosure trade-off with quantified token savings (78-98%) that this article only sketches.
 - [Jev-System-One-Decision-Model-2026](../../LLMs/models/other/Jev-System-One-Decision-Model-2026.md) — Shows how typed, confidence-aware decisions can help an agent select skills or route work before invoking a larger model.

@@ -2965,6 +2965,6 @@ The future of development isn't just AI-assisted; it's AI-collaborative, with hu
 
 **Related:**
 - [AI-Coding-Loops](../../../Agents/development/AI-Coding-Loops.md) — Provides the autonomy-spectrum framework that contextualizes every agent primitive in the ecosystem (Ralph Loop, Code Review, Sub-agents) against appropriate use cases.
-- [MCP_Scalability_Issue_Solution](../../../Protocols/MCP_Scalability_Issue_Solution.md) — Deep dive on MCP scalability — the single biggest operational issue for the Claude ecosystem once you connect multiple servers.
+- [MCP_Scalability_Issue_Solution_v3](../../../Protocols/MCP_Scalability_Issue_Solution_v3.md) — Deep dive on MCP scalability — the single biggest operational issue for the Claude ecosystem once you connect multiple servers.
 - [ai-token-optimization-tools](../../optimization/ai-token-optimization-tools.md) — Context bloat is the central problem Skills were designed to solve; this catalogue lists active tools (Lean-CTX, MCP-Compressor, RTK) addressing it.
 - [AI-Assisted-Development](../../../Agents/development/AI-Assisted-Development.md) — Broader framework on AI-assisted development that contextualizes Claude primitives within the SDD + UACF + Skills three-layer architecture.

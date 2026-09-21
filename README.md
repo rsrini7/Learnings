@@ -55,7 +55,6 @@ Learnings/
 - [OpenClaw(Moltbot or Clawdbot) Security Analysis Jan 2026](AI-ML/Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md)
 - [OpenClaw Whitepaper](AI-ML/Agents/openclaw/OpenClaw-Whitepaper.md)
 - [Securing OpenClaw Setup](AI-ML/Agents/openclaw/Securing-OpenClaw-Setup.md)
-- [claw ecosystem grok](AI-ML/Agents/openclaw/claw-ecosystem-grok.md)
 - [claw ecosystem](AI-ML/Agents/openclaw/claw-ecosystem.md)
 - [clawwork architecture deep dive](AI-ML/Agents/openclaw/clawwork-architecture-deep-dive.md)
 - [clawwork asianetnews corrected](AI-ML/Agents/openclaw/clawwork-asianetnews-corrected.md)
@@ -183,8 +182,6 @@ Learnings/
 
 
 ### 🔗 Protocols
-- [MCP Scalability Issue Solution](AI-ML/Protocols/MCP_Scalability_Issue_Solution.md)
-- [MCP Scalability Issue Solution Extended](AI-ML/Protocols/MCP_Scalability_Issue_Solution_Extended.md)
 - [MCP Scalability Issue Solution v3](AI-ML/Protocols/MCP_Scalability_Issue_Solution_v3.md)
 - [MoSPI India MCP](AI-ML/Protocols/MoSPI-India-MCP.md)
 - [UCP](AI-ML/Protocols/UCP.md)
@@ -256,10 +253,9 @@ Learnings/
 
 ### 💰 Crypto & Tokens
 - [CryptoACTs Jan 2026](Blockchain/crypto/CryptoACTs-Jan-2026.md)
-- [ISO20022 XRP XLM HBAR XDC](Blockchain/crypto/ISO20022-XRP-XLM-HBAR-XDC.md)
+- [ISO20022 Aligned Crypto Rails XRP XLM XDC HBAR](Blockchain/crypto/ISO20022-Aligned-Crypto-Rails-XRP-XLM-XDC-HBAR.md)
 - [StableCoins Jan 2026](Blockchain/crypto/StableCoins-Jan-2026.md)
 - [blockchain coin vs token](Blockchain/crypto/blockchain-coin-vs-token.md)
-- [xrp xlm ISO20022](Blockchain/crypto/xrp-xlm-ISO20022.md)
 
 ### 🏢 Enterprise & Banking
 - [AI Blockchain and the Hidden Frictions of Real World Asset Tokenization](Blockchain/enterprise/AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization.md)

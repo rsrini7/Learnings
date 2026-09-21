@@ -165,7 +165,7 @@ Result: Expert-level Excel handling
 
 References:
 
-[MCP Scalability](../../Protocols/MCP_Scalability_Issue_Solution.md)
+[MCP Scalability](../../Protocols/MCP_Scalability_Issue_Solution_v3.md)
 
 ---
 
@@ -943,7 +943,7 @@ Token Optimization Pipeline:
 
 Cost Comparison (100 requests):
 - Without optimization: $200
-- With SDD: $15 (92% savings)
+- With SDD + Serena: $15 (92% savings)
 - With Skills: $18-23 (91% savings for tasks needing procedures)
 - Monthly savings for 5-dev team: $2,700-3,000
 ```
@@ -1682,12 +1682,12 @@ Together, they create a comprehensive framework for the era of AI-assisted softw
 **Document Version:** 1.0  
 **Last Updated:** December 27, 2025  
 **Audience:** Technical decision-makers, engineering teams, AI practitioners  
-**Word Count:** ~15,000 words  
+**Word Count:** ~8,100 words  
 **Sections:** 9 major sections, 12+ comparative dimensions, 20+ practical examples
 
 This document is designed to be a comprehensive reference guide for understanding and implementing Spec-Driven Development, the Unified Agent Context Framework, and Claude Agent Skills in professional software development environments.
 
 **Related:**
-- [MCP_Scalability_Issue_Solution](../../Protocols/MCP_Scalability_Issue_Solution.md) — deepens the Skills progressive-disclosure token analysis with concrete numbers and architectural patterns.
+- [MCP_Scalability_Issue_Solution_v3](../../Protocols/MCP_Scalability_Issue_Solution_v3.md) — deepens the Skills progressive-disclosure token analysis with concrete numbers and architectural patterns.
 - [Spec-Driven-Development-Frameworks](../development/Spec-Driven-Development-Frameworks.md) — full whitepaper on the six SDD frameworks (BMAD, Spec Kit, OpenSpec, Agent OS, Conductor, Serena) referenced throughout this comparison.
 - [Agent-Skills](Agent-Skills.md) — canonical definition of the Skills primitive that this article positions as Layer 3 capability composition.

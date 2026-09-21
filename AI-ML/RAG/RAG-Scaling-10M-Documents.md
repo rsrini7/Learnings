@@ -121,4 +121,4 @@ A short list of things the original walkthrough gestures at but is worth stating
 **Related:**
 - [RAG-Guide-Jan-2026](RAG-Guide-Jan-2026.md) — Foundational RAG concepts (chunking, retrieval, evaluation) that this scaling guide builds on.
 - [Unlock-the-Dark-Data](../LLMs/optimization/Unlock-the-Dark-Data.md) — Enterprise data-strategy whitepaper directly relevant to the ingestion-quality ceiling discussed here.
-- [MCP_Scalability_Issue_Solution](../Protocols/MCP_Scalability_Issue_Solution.md) — Context-efficiency patterns for the multi-agent orchestration and tool-routing layers in scaled RAG.
+- [MCP_Scalability_Issue_Solution_v3](../Protocols/MCP_Scalability_Issue_Solution_v3.md) — Context-efficiency patterns for the multi-agent orchestration and tool-routing layers in scaled RAG.
