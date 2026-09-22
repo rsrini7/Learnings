@@ -2,7 +2,7 @@
 
 > One-shot setup guide for a new macOS development machine.  
 > Designed for: **direnv + devbox + mise (local) + SDKMAN (global)** workflow.  
-> Last updated: June 2026
+> Last updated: September 22, 2026
 
 ---
 
@@ -227,46 +227,76 @@ Also install **Podman Desktop** directly from the website or Mac App Store.
 
 ### Homebrew Casks
 ```bash
-brew install --cask meld
-brew install --cask sublime-text
-brew install --cask zed
-brew install --cask lm-studio
-brew install --cask obs
 brew install --cask bettershot
-brew install --cask radix
-brew install --cask whatcable
+brew install --cask claude-code@latest
+brew install --cask cmux
+brew install --cask codex
+brew install --cask codexbar
+brew install --cask fluidvoice
+brew install --cask lm-studio
+brew install --cask meld
+brew install --cask obs
 brew install --cask opencode-desktop
+brew install --cask qlmarkdown
+brew install --cask radix
+brew install --cask sublime-text
+brew install --cask visual-studio-code
+brew install --cask whatcable
+brew install --cask zed
 ```
 
+### Installed application snapshot (September 22, 2026)
+
+This is a snapshot of the development and general-purpose applications currently
+installed on this Mac. It was checked against `/Applications`,
+`~/Applications`, and `brew list --cask`; versions are intentionally omitted so
+the guide remains useful after routine upgrades.
+
+| Area | Applications detected |
+|------|-----------------------|
+| AI and coding | Antigravity, Antigravity IDE, ChatGPT, CodexBar, Devin, Jcode, Trae, Visual Studio Code, WorkBuddy AI, ZCode, Zed; Claude Code is installed as a Homebrew CLI cask; OpenCode Desktop is present as a Homebrew cask |
+| Local AI, voice, and capture | FluidVoice, LM Studio, OBS, Ollama |
+| Editors and terminals | cmux, iTerm, Meld, QLMarkdown, Sublime Text, Xcode |
+| Data and containers | Beekeeper Studio, Podman Desktop, Postico 2 |
+| Browsers and remote access | Comet, Google Chrome, Zen, Citrix Workspace, Windows App, Zoom, Zoom VDI, Zoom VDI Uninstaller |
+| Utilities | BetterShot, DevCleaner, Radix, Task Manager TMOG, Terax, WhatCable |
+| Communication and creative apps | Telegram, WhatsApp, iMovie, Keynote Creator Studio, Numbers Creator Studio, Pages Creator Studio |
+
 ### Direct Downloads / App Store
-| Tool | Source | Description |
-|------|--------|-------------|
-| Antigravity 2.0 | Direct download | Gemini CLI |
-| Beekeeper Studio | Direct download | Database GUI |
-| Bettershot | Homebrew cask | Screen capture & editing |
-| Citrix Workspace | Direct download | Remote desktop |
-| Codex | Homebrew cask | OpenAI coding agent |
-| Comet Browser | Direct download | Chromium browser |
-| DevCleaner | Direct download | Xcode cleanup |
-| GarageBand | App Store | Music production |
-| Google Chrome | Direct download | Chromium browser |
-| iTerm | Direct download / Homebrew cask | Terminal emulator |
-| LM Studio | Homebrew cask | Local LLM GUI |
-| OBS | Homebrew cask | Screen recording |
-| Ollama | Direct download | Local LLM runtime |
-| OpenCode Desktop | Homebrew cask | AI coding agent desktop |
-| Podman Desktop | Direct download | Container GUI |
-| Postico 2 | Direct download | PostgreSQL GUI |
-| Radix | Homebrew cask | Disk space analyzer |
-| Sublime Text | Direct download | Text editor |
-| Telegram | Direct download / App Store | Messaging |
-| TRAE | Direct download | AI IDE |
-| WhatCable | Homebrew cask | USB-C cable diagnostics |
-| WhatsApp | Direct download / App Store | Messaging |
-| Xcode | App Store | iOS/macOS dev |
-| Zed | Homebrew cask | Code editor |
-| Zoom | Direct download | Video conferencing |
-| Zoom VDI Plugin | Direct download | Zoom virtual desktop |
+| Tool | Source | Description | Current snapshot |
+|------|--------|-------------|------------------|
+| Antigravity / Antigravity IDE | Direct download | Gemini CLI and IDE | Installed |
+| Beekeeper Studio | Direct download | Database GUI | Installed |
+| BetterShot | Homebrew cask | Screen capture and editing | Installed |
+| Citrix Workspace | Direct download | Remote desktop | Installed |
+| Claude Code | Homebrew cask | Terminal-based AI coding assistant | Installed |
+| Codex | Homebrew cask | OpenAI coding agent | Installed |
+| Comet Browser | Direct download | Chromium browser | Installed |
+| DevCleaner | Direct download | Xcode cleanup | Installed |
+| Devin | Direct download | AI software-engineering workspace | Installed |
+| Google Chrome | Direct download | Chromium browser | Installed |
+| iTerm | Direct download / Homebrew cask | Terminal emulator | Installed |
+| Jcode | Direct download | Code editor | Installed |
+| LM Studio | Homebrew cask | Local LLM GUI | Installed |
+| Meld | Homebrew cask | Visual diff and merge tool | Installed |
+| OBS | Homebrew cask | Screen recording | Installed |
+| Ollama | Direct download | Local LLM runtime | Installed |
+| OpenCode Desktop | Homebrew cask | AI coding agent desktop | Cask installed |
+| Podman Desktop | Direct download | Container GUI | Installed |
+| Postico 2 | Direct download | PostgreSQL GUI | Installed |
+| QLMarkdown | Homebrew cask | Markdown Quick Look previewer | Installed |
+| Radix | Homebrew cask | Disk space analyzer | Installed |
+| Sublime Text | Direct download | Text editor | Installed |
+| Telegram | Direct download / App Store | Messaging | Installed |
+| TRAE | Direct download | AI IDE | Installed |
+| Visual Studio Code | Homebrew cask | Code editor | Installed |
+| WhatCable | Homebrew cask | USB-C cable diagnostics | Installed |
+| WhatsApp | Direct download / App Store | Messaging | Installed |
+| Xcode | App Store | iOS/macOS development | Installed |
+| Zed | Homebrew cask | Code editor | Installed |
+| Zen | Direct download | Browser | Installed |
+| Zoom | Direct download | Video conferencing | Installed |
+| Zoom VDI Plugin | Direct download | Zoom virtual desktop | Installed |
 
 ### Mac App Store CLI
 ```bash
@@ -415,8 +445,6 @@ system_profiler SPApplicationsDataType -json \
 # Generate random hex string (e.g., for API keys)
 openssl rand -hex 12
 ```
-
----
 
 ## 11. Post-Install Checklist
 
