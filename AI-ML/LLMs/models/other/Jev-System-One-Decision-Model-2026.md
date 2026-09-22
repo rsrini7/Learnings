@@ -4,7 +4,7 @@
 >
 > This note condenses the supplied videos, posts, repositories, and independent checks against TypeSafe AI's own documentation. It is deliberately the **guide**: what Jev is, how to use it, where it breaks, and how to try it.
 >
-> The deeper material — how the model probably works internally, how to grade the evidence behind each claim, and the open-source replica ecosystem — lives in [Jev-Internals-and-Open-Source-Replicas-2026](Jev-Internals-and-Open-Source-Replicas-2026.md).
+> The deeper material — how the model probably works internally, how to grade the evidence behind each claim, and the open-source replica ecosystem — lives in [Jev-Internals-and-Open-Source-Alternatives-2026](Jev-Internals-and-Open-Source-Alternatives-2026.md).
 >
 > Product details and prices can change; the official links at the bottom are the source of truth. Note also that the supplied notes render the company variously as "TypeSafe", "Typesafe AI", and "Types AI"; the canonical name is **TypeSafe AI** (`typesafe.ai`).
 
@@ -214,7 +214,7 @@ TypeSafe publishes a **jaggedness** page listing the known failure modes for `je
 |---|---|---|
 | 1 | **Literal reading** — answers the question you wrote, not the one you meant; scoping words, negations, and implied conditions are taken at face value | State the exact condition; put boundary cases in the criteria; split ambiguous intent into two literal questions |
 | 2 | **Math and numbers** — not a calculator; does not count reliably (characters, occurrences, list items), and the error grows with size | Keep arithmetic and counting in code; iterate in code and ask one question per item, then add up |
-| 3 | **Date and time comparison** — reads dates as text, not ordered quantities; worse with mixed formats and relative references | Extract the components (each is a small closed set → make it a Choice), assemble and compare in code |
+| 3 | **Date and time comparison** — reads dates as text, not ordered quantities; worse with mixed formats and relative references | Extract the components (each is a small closed set → make it a Choice), assemble and compare in code — or precompute the day-counts and put them *in the state* (a community model recovered 0.80 → 0.90 accuracy this way) |
 | 4 | **Indirection** — double negatives, "property of a property", multiple reasoning hops | Write instructions as directly as possible; name the relevant parts of the state |
 | 5 | **Large state full of irrelevant detail** — accuracy falls as unrelated content grows | Retrieve and filter in code first; if you can't, use a Noul to filter for relevance |
 | 6 | **Adversarial content** — state is *not* treated as hostile by default; injected instructions or self-advocating text can move the answer | Be explicit in the criteria; test edge cases before deploying widely |
@@ -235,8 +235,10 @@ The supplied material is directionally right, but these distinctions matter:
 - **Not a calculator:** see the jaggedness table — counting, numeric precision, date/time comparison, indirection, contradictory criteria, adversarial content, and large irrelevant states are all documented weak spots.
 - **Adversarial content is a real risk:** the model does not treat state as hostile by default, so untrusted text in the state can steer the answer. If Jev is your guardrail, remember the guardrail is itself steerable.
 - **Not a general LLM:** the model gives up text generation to specialise in structured decisions. Pair it with a generative model when the system must explain or write.
-- **Not open-weight.** No public weights or technical architecture paper are cited in the reviewed sources.
-- **The architecture is only partly public.** TypeSafe publicly names its training method — **Reinforcement Learning for Calibrated Decisions (RLCD)** — and its **parallel sampler**, and publicly claims Jev "outputs all probabilities in parallel instead of autoregressively generating by token." What remains unpublished is the model architecture itself; see [Jev-Internals-and-Open-Source-Replicas-2026](Jev-Internals-and-Open-Source-Replicas-2026.md) for the community reconstruction.
+- **Not open-weight — and that is itself part of the criticism.** No public weights or architecture paper are cited in the reviewed sources, and the author of the open-source Laya project makes exactly this point: Jev launched "without technical papers, without open weights, and with zero open training datasets".
+- **Your inputs are retained, even though they are not used for training.** TypeSafe's privacy policy commits that it "will not train or fine tune" models on your Input and will not disclose it beyond its service providers — but it also retains personal data "for as long as reasonably necessary to provide you with the Services, or otherwise in support of our business or commercial purposes". If your `state` carries regulated data, that retention window is a procurement question, not a footnote.
+- **"The first System One model" is contested.** TypeSafe's docs describe Jev as "the first System One model". **Nandakishor Mukkunnoth**, author of the open-source Laya project, states he built non-autoregressive, RL-guided decision models about a year earlier — with papers, open weights and an open dataset. No public response from TypeSafe was found in the sources reviewed, so treat this as contested attribution rather than settled fact. Details, including the head-to-head numbers and why to discount them, are in the [companion note](Jev-Internals-and-Open-Source-Alternatives-2026.md).
+- **The architecture is only partly public.** TypeSafe publicly names its training method — **Reinforcement Learning for Calibrated Decisions (RLCD)** — and its **parallel sampler**, and publicly claims Jev "outputs all probabilities in parallel instead of autoregressively generating by token." What remains unpublished is the model architecture itself; see [Jev-Internals-and-Open-Source-Alternatives-2026](Jev-Internals-and-Open-Source-Alternatives-2026.md) for the community reconstruction.
 - **Practical limits to design around:** **255** options per Choice, a bounded context window per request, and (per independent API probing, not vendor confirmation) roughly **32k tokens per question branch and 64k per request**.
 - **Benchmark claims need context.** The headline **193.6× faster / 444.6× cheaper** figures come from TypeSafe's own workflow evals, and the vendor expects them to be **at the high end** of real-world gains. Its own caveats: the workflows were built by its capabilities team (possible bias); the reference answer is the *average of GPT-6 Astra and Fable 5.1*, which biases toward OpenAI and Anthropic models and probably **understates** Jev and DeepSeek; and the LLMs were constrained to structured output via TypeSafe's own adapter. The per-call claim is a range — **40×–200× faster** for System-One-shaped queries — while some video summaries quote 20×–200× faster and 40×–400× cheaper. The 0% type-error figure is not measured at all: schema matching is guaranteed, so it is asserted mathematically, not empirically. Treat all multipliers as directional.
 - **The new video's headline claims are also unverified.** It reports **20×–200× faster**, **40×–1,000× cheaper**, and a **0% structured-JSON failure rate**. Keep these in the creator-demo/marketing-claim category until reproduced on your own workload.
@@ -245,12 +247,14 @@ The supplied material is directionally right, but these distinctions matter:
 
 ## Going deeper
 
-Two topics are deliberately separated out so this guide stays readable:
+Four topics are deliberately separated out so this guide stays readable:
 
 - **How Jev probably works internally**, and how to grade the evidence behind each claim — published, observed, inferred, or speculative.
-- **The open-source replica ecosystem** — SemIf, Nimble, Decider and the rest — including where the local alternatives fall short.
+- **The open-source ecosystem** — SemIf, Nimble, Decider and the rest — including where the local alternatives fall short.
+- **Laya and the priority dispute** — the open alternative, what its own failure modes teach about option counts and calibration, and the contested "first System One model" claim.
+- **Kev, the train-your-own option** — open weights that are wire-compatible with Jev's own API, and the most credible published comparison against it.
 
-Both live in [Jev-Internals-and-Open-Source-Replicas-2026](Jev-Internals-and-Open-Source-Replicas-2026.md).
+All four live in [Jev-Internals-and-Open-Source-Alternatives-2026](Jev-Internals-and-Open-Source-Alternatives-2026.md).
 
 ## A simple mental model
 
@@ -274,6 +278,7 @@ Or, in one line: **a calibrated gut-check you can put in an `if` statement.**
 3. **Python SDK** — `pip install typesafe-sdk` (Python ≥ 3.10).
 4. **Agent skill** — `npx skills add typesafe-ai/skills --skill typesafe-ai`, or install the Claude Code plugin, then ask your coding agent to build with Jev.
 5. **Waitlist** — the launch post says early access is being opened from a waitlist; expect names, limits, and prices to move.
+6. **Or self-host an open alternative.** Two are worth knowing: [Laya](https://github.com/NandhaKishorM/laya) (Apache 2.0) serves the same `choice` / `score` / `noul` shape from a small encoder, and [Kev](https://github.com/jaredpalmer/kev) (Apache 2.0) is a trainable Qwen-based family that is **wire-compatible with Jev's API** — TypeSafe's own Python SDK will talk to it. Both run locally at no per-call cost; both mean you own the model and its quality. The [companion note](Jev-Internals-and-Open-Source-Alternatives-2026.md) has the trade-offs and the published benchmarks.
 
 ## Sources
 
@@ -287,6 +292,7 @@ Or, in one line: **a calibrated gut-check you can put in an `if` statement.**
 - [Introducing System One Models & Jev](https://typesafe.ai/blog/introducing-system-one-models-and-jev) — Diogo Almeida's launch post: RLCD, the RLHF contrast, pricing, latency, demo economics, and the benchmark caveats.
 - [Workflow evaluations](https://evals.typesafe.ai/) · [GitHub org](https://github.com/typesafe-ai) · [system-one-adapter-python](https://github.com/typesafe-ai/system-one-adapter-python) · [skills](https://github.com/typesafe-ai/skills)
 - Cookbooks: [classifying RAG passages](https://docs.typesafe.ai/cookbooks/classifying_rag_passages) · [skill suggestion](https://docs.typesafe.ai/cookbooks/skill_suggestion) · [date extraction](https://docs.typesafe.ai/cookbooks/date_extraction_cookbook)
+- [Privacy policy](https://typesafe.ai/privacy) — the "will not train or fine tune … on Input" commitment, and the data-retention window.
 
 **Supplied video and community references**
 
@@ -296,12 +302,14 @@ These are retained as the original discovery material; their claims were simplif
 - [Open-source Jev alternatives](https://www.youtube.com/watch?v=53wDOI_7x8I) · [Jev for agentic coding](https://www.youtube.com/watch?v=ScvXFi4MUSc) · [Fast classification introduction](https://www.youtube.com/watch?v=4mTLpuQpB80)
 - [System One classification overview](https://www.youtube.com/watch?v=X117w2Rark8) · [Jev benchmarks and limitations](https://www.youtube.com/watch?v=2XFXe-oGnrI) · [Assistance versus automation](https://www.youtube.com/watch?v=cJ0EOzey--o) (Diogo Almeida on RLHF vs. calibrated decision-making)
 - [Jev in coding workflows](https://www.youtube.com/watch?v=bA8WeHYmJko) — creator demonstrations of game control, PR triage, LLM routing, and browser validation; repeats speed/cost claims and argues that generalization is the differentiator from fixed classifiers.
+- [The Jev-vs-Laya dispute](https://www.youtube.com/watch?v=OLgiHBlDhWU) · [Laya technical deep dive](https://www.youtube.com/watch?v=ifMK3FfPPOw) · [Laya as a local Jev alternative](https://www.youtube.com/watch?v=BlQAw6P7kjY) — the open-source alternative, its calibration work, and the attribution argument.
 - [LangChain post](https://x.com/langchain/status/2101454284927959080) · [Avi Chawla post](https://x.com/_avichawla/status/2101563610644496464) · [Akshay Pachaar post](https://x.com/akshay_pachaar/status/2101037514945597645)
 - [Made with Jev](https://madewithjev.com/) — community index of builds, and the source family for the supplied *"What are people building with Jev"* slide. **A community compilation, not TypeSafe material**; each entry is a creator report.
 - [WebMCP browser-agent benchmark](https://webmcp.com/benchmark) — open, reproducible benchmark behind the browser-control numbers (25/49 tasks alone, 49/49 with a tool interface). Harness-dependent, so treat it as a signal rather than a universal limit.
+- [Laya](https://github.com/NandhaKishorM/laya) and [Kev](https://github.com/jaredpalmer/kev) — the two open alternatives that publish comparisons against Jev, plus the attribution dispute around Laya. Details in the [companion note](Jev-Internals-and-Open-Source-Alternatives-2026.md).
 
 **Related:**
-- [Jev-Internals-and-Open-Source-Replicas-2026](Jev-Internals-and-Open-Source-Replicas-2026.md) — Companion note: how the model probably works internally, how to grade the evidence, and the open-source replica ecosystem.
+- [Jev-Internals-and-Open-Source-Alternatives-2026](Jev-Internals-and-Open-Source-Alternatives-2026.md) — Companion note: how the model probably works internally, how to grade the evidence, and the open-source replica ecosystem.
 - [RAG-Guide-Jan-2026](../../../RAG/RAG-Guide-Jan-2026.md) — Retrieval pipelines where Jev-style filtering, reranking, and citation checks fit.
 - [GenAI-cost-Optimization](../../optimization/GenAI-cost-Optimization.md) — Broader model-routing and cost-control context; Jev is the extreme cheap-tier case.
 - [LLM-Benchmarks](../../architecture/LLM-Benchmarks.md) — How to read vendor-published evaluation numbers like the 193.6×/444.6× claims.
