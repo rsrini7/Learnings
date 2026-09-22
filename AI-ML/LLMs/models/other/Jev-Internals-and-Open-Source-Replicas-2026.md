@@ -72,6 +72,7 @@ Because this ecosystem mixes vendor claims, third-party experiments, and specula
 | Shared-prefix KV cache, final-position vs. pointer-style readout, causal-attention reuse | **Inferred** from black-box behaviour |
 | Sparse mixture-of-experts backbone | **Least certain / explicitly speculative** |
 | Third-party experiment: top-1 retrieval accuracy 21% → 54% when using Jev as a reranker | **One creator's experiment**, not a benchmark |
+| Browser control: **25/49** tasks solved by Jev alone vs. **49/49** with a WebMCP tool interface, at ~112× lower model cost than GPT-6 Astra using computer use | **Third-party open benchmark** — reproducible and harness-dependent, so a signal rather than a universal limit |
 | Reachable via the **Vercel AI Gateway** | **Unverified** — reported in a supplied video, but not found in the official docs index or quick start. Confirm before relying on it. |
 
 ## The open-source replica ecosystem
@@ -116,6 +117,11 @@ Two community resources are worth knowing about:
 **Community projects**
 
 - [awesome-jev](https://github.com/fatwang2/awesome-jev) (ecosystem index) · [SemIf](https://github.com/TheoLeeCJ/SemIf) · [building-with-jev-skill](https://github.com/dbreunig/building-with-jev-skill) · [localjev](https://github.com/githubnext/localjev) · [fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) · [simple-jev](https://github.com/featherless-ai/simple-jev) ([playground](https://simple-jev.featherless.ai/)) · [Open-Jev on Hugging Face](https://huggingface.co/spaces/pngwn/open-jev)
+
+**Community indexes and benchmarks**
+
+- [Made with Jev](https://madewithjev.com/) — community index of builds and the source family for the supplied *"What are people building with Jev"* slide. A community compilation, not TypeSafe material.
+- [WebMCP browser-agent benchmark](https://webmcp.com/benchmark) — open, reproducible benchmark behind the browser-control result (25/49 alone, 49/49 with a tool interface); harness at [WindTunnel](https://github.com/nekuda-ai/WindTunnel), browser agent at [jev-ultrafast](https://github.com/browser-use/jev-ultrafast).
 
 **Related:**
 - [Jev-System-One-Decision-Model-2026](Jev-System-One-Decision-Model-2026.md) — The main guide: what Jev is, how to use the primitives, its failure modes, and how to try it.

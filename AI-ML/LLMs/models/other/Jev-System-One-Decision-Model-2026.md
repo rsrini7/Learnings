@@ -130,20 +130,26 @@ The practical idea is not "AI replaces the application." It is "AI supplies a fu
 
 ## Where it fits
 
-Good first candidates:
+A community slide, *"What are people building with Jev"*, groups the real-world examples into six jobs. It is a useful map, and it is broader than TypeSafe's own use-case list:
 
-- support-ticket routing and email triage (category, spam score, reply-likelihood);
-- document, passage, or message classification at high volume;
-- lead, risk, urgency, or quality scoring on a 0–1 or rubric scale;
-- RAG filtering, reranking, citation validation, and policy alignment;
-- guardrails before or after a larger language model, including verifying a reasoning trace;
-- selecting one tool, skill, or workflow from a known set — trimming a large tool catalogue down to the few an agent actually needs;
-- agentic coding: cheap first-pass **qualitative linting** and code review ("code smells", house-style rules) before escalating real problems to an expensive System Two model;
-- adversarial or bulk testing — running large parallel test fleets for pennies and routing only failures to a human;
-- content clipping and scoring (finding the most engaging segments of long-form video);
-- browser and computer-use control (an agent choosing the next click, e.g. booking a flow);
-- real-time loops where a 100 ms budget rules out an LLM — TypeSafe's official **Doom** and **Wikiracing** demos, and a third-party Minecraft demo where Jev takes the tactical calls while a larger model handles strategy;
-- MCP-style tool routers, up to and including tool-driven chat that needs no text generation at all.
+| Job | What Jev decides | Examples |
+|---|---|---|
+| **Inside the agent loop** | The small control calls an agent makes many times per task | Compacting context; gating tool calls; model routing; judging whether the task is "done"; first-pass code review |
+| **Drive a UI** | Which element or action comes next | Browser use (flight search); Stagehand picking a DOM element; macOS computer use; an Android phone agent; ad and clutter blocking |
+| **Classify at scale** | One label per item, over very large volumes | Emails; support tickets; database rows; posts; ads; YouTube comments; lead and risk scores |
+| **Search and rank** | Which candidate wins, and in what order | Reranking RAG results; picking the source; walking a graph; routing requests by meaning; Wikiracing |
+| **Verify and guard** | Whether something is safe, supported, or correct | Prompt-injection screening; a tool-call firewall; citation checks; content moderation; verifying LLM output |
+| **Real time** | A decision inside a loop too fast for an LLM | Doom; per-block trading; voice agents with no LLM in the loop; Minecraft, Mario and StarCraft; drones |
+
+Three qualifications on that map:
+
+- **Browser control is weaker than the bullet list suggests.** In an open, reproducible third-party benchmark, Jev's raw browser control solved **25 of 49** tasks; adding a tool interface (**WebMCP**) took it to **49 of 49** while cutting model cost. The lesson generalises — Jev is much stronger when the action space is an explicit set of tools than when it has to infer a sequence of clicks.
+- **"Verify and guard" cuts both ways.** Screening prompts for injection is a genuine use case, but Jev does not treat state as hostile by default (see the failure-mode table), so a guard built on it needs its own adversarial testing.
+- **"Real time" includes trading, with a caveat** — see the finance note below.
+
+**The split behind that browser number is worth copying:** Jev picks the tool or action, a small fast LLM generates the text arguments that Jev cannot produce, and code executes. Several independent builds converged on this division of labour, and it is the same idea as TypeSafe's `system-one-adapter-python` applied to a full-size model. A related framing from the community: **LLM proposes options → Jev decides → code executes.**
+
+Beyond the slide, two creator patterns are worth keeping: **bulk adversarial testing** (large parallel test fleets for pennies, routing only failures to a human) and **content clipping** (scoring long-form video for its most engaging segments).
 
 The additional workflow video supplied with this note adds concrete examples: **PR triage**, **routing a request to the right LLM**, **browser visual validation/navigation**, and **real-time game control**. These are useful design patterns and creator demonstrations, not independent benchmark results.
 
@@ -157,7 +163,7 @@ Use a normal program or a generative/reasoning model instead when you need:
 - an answer that is not in a closed set or an ordered rubric;
 - image, audio, or video input. The current official state documentation describes text and JSON state; the vendor's own Doom demo explicitly runs on *structured state as a text data structure*, not pixels.
 
-The supplied material is **not consistent** about high-stakes finance: one video lists crypto trading among Jev's uses, another explicitly advises against financial trading or portfolio management. Treat the conservative reading as correct — Jev is not a market-prediction engine, and any use where being wrong is expensive needs human or stronger-model review on top.
+The supplied material looks **inconsistent** about high-stakes finance — the "real time" slide lists **trading on every block**, and one video lists crypto trading among Jev's uses, while another explicitly advises against financial trading or portfolio management. The conflict mostly dissolves on inspection: a fast signal check on each new block is a different job from running a portfolio. The conservative reading still applies, though — Jev is not a market-prediction engine, and any use where being wrong is expensive needs human or stronger-model review on top.
 
 ## Jev compared with similar tools
 
@@ -291,6 +297,8 @@ These are retained as the original discovery material; their claims were simplif
 - [System One classification overview](https://www.youtube.com/watch?v=X117w2Rark8) · [Jev benchmarks and limitations](https://www.youtube.com/watch?v=2XFXe-oGnrI) · [Assistance versus automation](https://www.youtube.com/watch?v=cJ0EOzey--o) (Diogo Almeida on RLHF vs. calibrated decision-making)
 - [Jev in coding workflows](https://www.youtube.com/watch?v=bA8WeHYmJko) — creator demonstrations of game control, PR triage, LLM routing, and browser validation; repeats speed/cost claims and argues that generalization is the differentiator from fixed classifiers.
 - [LangChain post](https://x.com/langchain/status/2101454284927959080) · [Avi Chawla post](https://x.com/_avichawla/status/2101563610644496464) · [Akshay Pachaar post](https://x.com/akshay_pachaar/status/2101037514945597645)
+- [Made with Jev](https://madewithjev.com/) — community index of builds, and the source family for the supplied *"What are people building with Jev"* slide. **A community compilation, not TypeSafe material**; each entry is a creator report.
+- [WebMCP browser-agent benchmark](https://webmcp.com/benchmark) — open, reproducible benchmark behind the browser-control numbers (25/49 tasks alone, 49/49 with a tool interface). Harness-dependent, so treat it as a signal rather than a universal limit.
 
 **Related:**
 - [Jev-Internals-and-Open-Source-Replicas-2026](Jev-Internals-and-Open-Source-Replicas-2026.md) — Companion note: how the model probably works internally, how to grade the evidence, and the open-source replica ecosystem.
