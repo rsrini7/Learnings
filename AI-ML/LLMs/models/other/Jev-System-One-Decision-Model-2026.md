@@ -145,6 +145,8 @@ Good first candidates:
 - real-time loops where a 100 ms budget rules out an LLM — TypeSafe's official **Doom** and **Wikiracing** demos, and a third-party Minecraft demo where Jev takes the tactical calls while a larger model handles strategy;
 - MCP-style tool routers, up to and including tool-driven chat that needs no text generation at all.
 
+The additional workflow video supplied with this note adds concrete examples: **PR triage**, **routing a request to the right LLM**, **browser visual validation/navigation**, and **real-time game control**. These are useful design patterns and creator demonstrations, not independent benchmark results.
+
 A useful metaphor from the supplied material: Jev is an **"AI traffic cop"** at the front of an expensive queue. It makes the cheap, repeatable routing call, and only the interesting cases reach the costly model.
 
 Use a normal program or a generative/reasoning model instead when you need:
@@ -222,7 +224,7 @@ Also worth noting: `jev-1.13` has a **bounded context window** (see the Models p
 
 The supplied material is directionally right, but these distinctions matter:
 
-- **Not deterministic:** Jev returns probabilities and can be wrong. It is *extremely consistent* — expect quantitatively similar outputs for semantically similar inputs — but consistency is not correctness, and confidence is not a guarantee of truth.
+- **Not deterministic:** Jev returns probabilities and can be wrong. It is *extremely consistent* — expect quantitatively similar outputs for semantically similar inputs — but consistency is not correctness, and confidence is not a guarantee of truth. The new video uses “deterministic” as shorthand for constrained, repeatable outputs; TypeSafe does not promise deterministic inference.
 - **"Can't hallucinate" is the vendor's framing.** What is guaranteed is narrower and stronger than it sounds: the output space is declared in advance, so the model cannot invent an option, emit malformed structure, or make a type error. It can still **choose the wrong valid option**. Read the claim as "no type errors, no invented labels", not "always right".
 - **Not a calculator:** see the jaggedness table — counting, numeric precision, date/time comparison, indirection, contradictory criteria, adversarial content, and large irrelevant states are all documented weak spots.
 - **Adversarial content is a real risk:** the model does not treat state as hostile by default, so untrusted text in the state can steer the answer. If Jev is your guardrail, remember the guardrail is itself steerable.
@@ -231,6 +233,8 @@ The supplied material is directionally right, but these distinctions matter:
 - **The architecture is only partly public.** TypeSafe publicly names its training method — **Reinforcement Learning for Calibrated Decisions (RLCD)** — and its **parallel sampler**, and publicly claims Jev "outputs all probabilities in parallel instead of autoregressively generating by token." What remains unpublished is the model architecture itself; see [Jev-Internals-and-Open-Source-Replicas-2026](Jev-Internals-and-Open-Source-Replicas-2026.md) for the community reconstruction.
 - **Practical limits to design around:** **255** options per Choice, a bounded context window per request, and (per independent API probing, not vendor confirmation) roughly **32k tokens per question branch and 64k per request**.
 - **Benchmark claims need context.** The headline **193.6× faster / 444.6× cheaper** figures come from TypeSafe's own workflow evals, and the vendor expects them to be **at the high end** of real-world gains. Its own caveats: the workflows were built by its capabilities team (possible bias); the reference answer is the *average of GPT-6 Astra and Fable 5.1*, which biases toward OpenAI and Anthropic models and probably **understates** Jev and DeepSeek; and the LLMs were constrained to structured output via TypeSafe's own adapter. The per-call claim is a range — **40×–200× faster** for System-One-shaped queries — while some video summaries quote 20×–200× faster and 40×–400× cheaper. The 0% type-error figure is not measured at all: schema matching is guaranteed, so it is asserted mathematically, not empirically. Treat all multipliers as directional.
+- **The new video's headline claims are also unverified.** It reports **20×–200× faster**, **40×–1,000× cheaper**, and a **0% structured-JSON failure rate**. Keep these in the creator-demo/marketing-claim category until reproduced on your own workload.
+- **"Not just a classifier" is a positioning claim.** Caller-defined questions make Jev more flexible than a fixed-label classifier, but broad cross-domain generalization still needs task-specific evaluation.
 - **Early product:** the launch announcement describes Jev as early access. Confirm model names, limits, gateway pricing, and availability before building a dependency around them.
 
 ## Going deeper
@@ -285,6 +289,7 @@ These are retained as the original discovery material; their claims were simplif
 - [What is Jev?](https://www.youtube.com/watch?v=ZgXej_9isxY) · [System One overview](https://www.youtube.com/watch?v=CcmqPS6q9Gw) · [Jev for RAG reranking](https://www.youtube.com/watch?v=UhGH8cNG0qs)
 - [Open-source Jev alternatives](https://www.youtube.com/watch?v=53wDOI_7x8I) · [Jev for agentic coding](https://www.youtube.com/watch?v=ScvXFi4MUSc) · [Fast classification introduction](https://www.youtube.com/watch?v=4mTLpuQpB80)
 - [System One classification overview](https://www.youtube.com/watch?v=X117w2Rark8) · [Jev benchmarks and limitations](https://www.youtube.com/watch?v=2XFXe-oGnrI) · [Assistance versus automation](https://www.youtube.com/watch?v=cJ0EOzey--o) (Diogo Almeida on RLHF vs. calibrated decision-making)
+- [Jev in coding workflows](https://www.youtube.com/watch?v=bA8WeHYmJko) — creator demonstrations of game control, PR triage, LLM routing, and browser validation; repeats speed/cost claims and argues that generalization is the differentiator from fixed classifiers.
 - [LangChain post](https://x.com/langchain/status/2101454284927959080) · [Avi Chawla post](https://x.com/_avichawla/status/2101563610644496464) · [Akshay Pachaar post](https://x.com/akshay_pachaar/status/2101037514945597645)
 
 **Related:**
