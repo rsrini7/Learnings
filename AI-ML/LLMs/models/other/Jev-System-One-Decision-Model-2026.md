@@ -1,6 +1,6 @@
 # Jev (TypeSafe AI): a simple guide to System One decisions
 
-> **Research note — 21 September 2026**
+> **Research note — 21 September 2026; updated 28 September 2026**
 >
 > This note condenses the supplied videos, posts, repositories, and independent checks against TypeSafe AI's own documentation. It is deliberately the **guide**: what Jev is, how to use it, where it breaks, and how to try it.
 >
@@ -179,6 +179,38 @@ The supplied material looks **inconsistent** about high-stakes finance — the "
 
 A question TypeSafe anticipates and answers: **"Is Jev just a smaller LLM?"** Not in the way that matters — a smaller LLM is still optimised to produce text you then coerce into a decision. Jev gives up string generation entirely in exchange for parallel, typed, calibrated output.
 
+### What changed: a small System One ecosystem
+
+The recent videos show that “Jev-like” now describes a family of approaches, not one model. They share the same basic interface—state + question + candidate answers—but differ in ownership, architecture, and how much you can customise:
+
+| Model | What it adds | Best fit | Main caveat |
+|---|---|---|---|
+| **Jev** | Hosted TypeSafe reference model; typed `choice`, `score`, and `noul` decisions with calibrated probabilities | General-purpose production routing and verification | Closed weights; benchmark and price claims are vendor-reported |
+| **Laya** | Open Apache-2.0 ModernBERT/mmBERT family; local and multilingual checkpoints | Local, low-cost classification and routing | Accuracy and calibration vary by checkpoint; specialised versions may not generalise |
+| **Julia-1** | Very small 144.3M-parameter Apache-2.0 decision model; CPU-friendly and multilingual | A lightweight local router or experiment | Native calls accept only 2–20 options; published pilots include a large Banking77 gap |
+| **Kev** | Open Apache-2.0 Qwen-based family with a pointer head, fine-tuning, and Jev-compatible API | Training a decision model on your own labelled workload | More control means you own evaluation, calibration, serving, and security |
+| **CLM-8B** | Contrastive state/action embeddings, cached separately; TypeSafe-compatible API | Agent tool selection, verification, and latency-sensitive local serving | Project-reported speed/quality claims still need workload-specific replication |
+| **OpenJev / SemIf and similar replicas** | Community experiments that imitate the decision API or read choices from model representations | Learning, prototyping, and testing the design locally | Not TypeSafe models; quality, maintenance, and licences differ by project |
+
+The useful rule is simple: **Jev is the hosted baseline; Laya and Julia are small local options; Kev is the trainable option; CLM is the contrastive agent/verification option.** None is automatically “better”—test the exact state, questions, option count, language, and confidence threshold you will deploy.
+
+```mermaid
+flowchart TD
+    A[Need a structured decision] --> B{Where should it run?}
+    B -->|Hosted, least operations| C[Jev]
+    B -->|Local, small and multilingual| D[Laya or Julia-1]
+    B -->|Train on your own workload| E[Kev]
+    B -->|Agent verification or contrastive scoring| F[CLM-8B]
+    B -->|Prototype the idea| G[OpenJev / SemIf replica]
+    C --> H[Evaluate on your real traffic]
+    D --> H
+    E --> H
+    F --> H
+    G --> H
+```
+
+The comparison video supplied with this update is best read as a **creator-run stress test**, not a controlled benchmark: five systems were put through an angry-customer case and a security-trap case, and the description says only two passed. That is a useful reminder to test adversarial and ambiguous inputs, but it does not establish a universal ranking.
+
 ### The simplest selection rule
 
 ```mermaid
@@ -302,11 +334,15 @@ These are retained as the original discovery material; their claims were simplif
 - [Open-source Jev alternatives](https://www.youtube.com/watch?v=53wDOI_7x8I) · [Jev for agentic coding](https://www.youtube.com/watch?v=ScvXFi4MUSc) · [Fast classification introduction](https://www.youtube.com/watch?v=4mTLpuQpB80)
 - [System One classification overview](https://www.youtube.com/watch?v=X117w2Rark8) · [Jev benchmarks and limitations](https://www.youtube.com/watch?v=2XFXe-oGnrI) · [Assistance versus automation](https://www.youtube.com/watch?v=cJ0EOzey--o) (Diogo Almeida on RLHF vs. calibrated decision-making)
 - [Jev in coding workflows](https://www.youtube.com/watch?v=bA8WeHYmJko) — creator demonstrations of game control, PR triage, LLM routing, and browser validation; repeats speed/cost claims and argues that generalization is the differentiator from fixed classifiers.
+- [Decision Model Showdown: CLM vs Laya vs OpenJev vs Kev vs Jev](https://www.youtube.com/watch?v=UF0z3afz9V8) — a creator-run comparison using an angry-customer case and a security trap; useful as a test-design prompt, not an independent ranking.
+- [Julia-1: The Tiny AI That Decides in 10 Languages on CPU Locally](https://www.youtube.com/watch?v=Ty7Riayb78w) — short demonstration of a local, multilingual decision model; the model card is the source for its size, limits, and evaluations.
+- [This New AI Architecture Makes Decisions 13x Faster](https://www.youtube.com/watch?v=eSuMmMMMrm0) — introduction to CLM and its state/action embedding approach; the project repository is the source for architecture and benchmark claims.
 - [The Jev-vs-Laya dispute](https://www.youtube.com/watch?v=OLgiHBlDhWU) · [Laya technical deep dive](https://www.youtube.com/watch?v=ifMK3FfPPOw) · [Laya as a local Jev alternative](https://www.youtube.com/watch?v=BlQAw6P7kjY) — the open-source alternative, its calibration work, and the attribution argument.
 - [LangChain post](https://x.com/langchain/status/2101454284927959080) · [Avi Chawla post](https://x.com/_avichawla/status/2101563610644496464) · [Akshay Pachaar post](https://x.com/akshay_pachaar/status/2101037514945597645)
 - [Made with Jev](https://madewithjev.com/) — community index of builds, and the source family for the supplied *"What are people building with Jev"* slide. **A community compilation, not TypeSafe material**; each entry is a creator report.
 - [WebMCP browser-agent benchmark](https://webmcp.com/benchmark) — open, reproducible benchmark behind the browser-control numbers (25/49 tasks alone, 49/49 with a tool interface). Harness-dependent, so treat it as a signal rather than a universal limit.
 - [Laya](https://github.com/NandhaKishorM/laya) and [Kev](https://github.com/jaredpalmer/kev) — the two open alternatives that publish comparisons against Jev, plus the attribution dispute around Laya. Details in the [companion note](Jev-Internals-and-Open-Source-Alternatives-2026.md).
+- [Laya typed-decisions model card](https://huggingface.co/convaiinnovations/laya-typed-decisions) · [Julia-1 model card](https://huggingface.co/SupersonicLabs/Julia-1) · [Kev repository](https://github.com/jaredpalmer/kev) · [CLM repository](https://github.com/Contrastive-LM/CLM) — current primary references for the new local models.
 
 **Related:**
 - [Jev-Internals-and-Open-Source-Alternatives-2026](Jev-Internals-and-Open-Source-Alternatives-2026.md) — Companion note: how the model probably works internally, how to grade the evidence, and the open-source replica ecosystem.

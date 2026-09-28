@@ -1,6 +1,6 @@
 # Jev (TypeSafe AI): internals and the open-source alternatives
 
-> **Research note — 21 September 2026** (updated 22 September 2026)
+> **Research note — 21 September 2026** (updated 28 September 2026)
 >
 > Companion to [Jev-System-One-Decision-Model-2026](Jev-System-One-Decision-Model-2026.md), which covers what Jev is, how to use it, where it breaks, and how to try it. This note is the advanced material: how the model probably works internally, how to grade the evidence behind each claim, and the projects that grew up around it — the quick replicas, plus **Laya** and **Kev**, the two that publish real comparisons against Jev.
 >
@@ -103,6 +103,22 @@ Two community resources are worth knowing about:
 
 **Where the replicas fall short.** They perform respectably on standard, "easy" classification, but still struggle with **complex multihop reasoning and date arithmetic** — the same weak spots TypeSafe documents for Jev itself. The pragmatic recommendation from the community is a **cascaded approach**: run a fast local model for the simple classifications, and escalate complex or low-confidence cases to a more capable reasoning model. That is the same architecture the vendor recommends, just with the cheap tier self-hosted.
 
+## The recent model wave
+
+The three new videos make the ecosystem easier to understand: the interface is converging, but the implementations are not interchangeable.
+
+| Model | Technical direction | Current evidence | Use it when |
+|---|---|---|---|
+| **CLM-8B** | Contrastive state/action embeddings on a Qwen3-8B encoder; the repository serves `choice`, `score`, and `noul` through a TypeSafe-compatible API | The project reports up to 9× lower latency than Jev on some tasks and releases Apache-2.0 code/weights; these are project claims | You want an open, agent-oriented verifier or tool selector and can reproduce its numbers |
+| **Julia-1** | 144.3M-parameter multilingual decision model built on mmBERT-small; CPU inference and a 2–20-option native call | Its model card reports 73.15% on typed decisions and clearly shows strengths and gaps, including 64/100 on a 72-label Banking77 pilot | You want a tiny local router, especially for experiments or multilingual routing |
+| **Laya** | 421M ModernBERT-large or 322M mmBERT-base encoders; open checkpoints, including a typed-decision specialist | The model card reports a 0.766 specialist accuracy, but also warns that it is trained for four workflows and remains over-confident | You want local inference and are willing to choose, calibrate, and pin a checkpoint |
+| **Kev** | Qwen-based family with LoRA plus a pointer head; trainable and API-compatible with Jev | The project publishes model cards, held-out tests, calibration results, and known gaps; it is the most useful option for custom fine-tuning | You want to adapt the decision model to your own labelled data |
+| **OpenJev / SemIf** | Community replicas that implement the shape or the prefill/readout idea | Useful for learning and prototyping; they are not TypeSafe weights and do not share one quality bar | You want to inspect or modify the mechanism locally |
+
+The [showdown video](https://www.youtube.com/watch?v=UF0z3afz9V8) says five systems were tested on an angry-customer case and a security trap, with only two passing. That is a good **evaluation pattern**—include ambiguity and adversarial state—but it is not a controlled benchmark: hardware, prompts, versions, thresholds, and pass criteria are not independently normalised in the video description.
+
+The [Julia-1 video](https://www.youtube.com/watch?v=Ty7Riayb78w) is a particularly useful update because it demonstrates the direction toward small CPU-local models. The [CLM video](https://www.youtube.com/watch?v=eSuMmMMMrm0) explains a different direction: cache state and action representations separately so repeated agent choices do not require ordinary token generation. Both support the same practical lesson: **compare the full decision pipeline, not parameter count alone**.
+
 ## Laya: the open alternative, and the priority dispute
 
 **What it is.** [Laya](https://github.com/NandhaKishorM/laya) is an open-source (Apache 2.0) "System 1" decision engine from ConvAI Innovations, written by **Nandakishor Mukkunnoth**, and unaffiliated with TypeSafe. It uses **the same three primitive names** — `choice`, `score`, `noul` — over a `state`, in a single forward pass. Three checkpoints ship on Hugging Face:
@@ -182,6 +198,14 @@ Two things make this credible rather than marketing: the port to Qwen3.5 cost ab
 **Community projects**
 
 - [awesome-jev](https://github.com/fatwang2/awesome-jev) (ecosystem index) · [SemIf](https://github.com/TheoLeeCJ/SemIf) · [building-with-jev-skill](https://github.com/dbreunig/building-with-jev-skill) · [localjev](https://github.com/githubnext/localjev) · [fast-jev-compaction](https://github.com/tamaratran/fast-jev-compaction) · [simple-jev](https://github.com/featherless-ai/simple-jev) ([playground](https://simple-jev.featherless.ai/)) · [Open-Jev on Hugging Face](https://huggingface.co/spaces/pngwn/open-jev)
+
+**Recent model references**
+
+- [CLM repository](https://github.com/Contrastive-LM/CLM) — contrastive state/action embeddings, TypeSafe-compatible API, and the project's own latency and benchmark claims.
+- [Julia-1 model card](https://huggingface.co/SupersonicLabs/Julia-1) — 144.3M-parameter local model, multilingual evaluation, 2–20-option native limit, and explicit pilot caveats.
+- [Laya typed-decisions model card](https://huggingface.co/convaiinnovations/laya-typed-decisions) — specialist benchmark, RLCD training description, and the warning about calibration and workflow scope.
+- [Kev model cards](https://github.com/jaredpalmer/kev/tree/main/docs/model-cards) · [Kev repository](https://github.com/jaredpalmer/kev) — current checkpoint details, held-out evaluation, and fine-tuning/serving code.
+- Supplied videos: [CLM vs Laya vs OpenJev vs Kev vs Jev](https://www.youtube.com/watch?v=UF0z3afz9V8) · [Julia-1](https://www.youtube.com/watch?v=Ty7Riayb78w) · [CLM architecture](https://www.youtube.com/watch?v=eSuMmMMMrm0). Video claims are retained as creator context; primary model cards and repositories take precedence.
 
 **Community indexes and benchmarks**
 
