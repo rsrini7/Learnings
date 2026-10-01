@@ -1,6 +1,6 @@
 # Jev (TypeSafe AI): internals and the open-source alternatives
 
-> **Research note — 21 September 2026** (updated 28 September 2026)
+> **Research note — 21 September 2026** (updated 1 October 2026)
 >
 > Companion to [Jev-System-One-Decision-Model-2026](Jev-System-One-Decision-Model-2026.md), which covers what Jev is, how to use it, where it breaks, and how to try it. This note is the advanced material: how the model probably works internally, how to grade the evidence behind each claim, and the projects that grew up around it — the quick replicas, plus **Laya** and **Kev**, the two that publish real comparisons against Jev.
 >
@@ -83,7 +83,7 @@ Because this ecosystem mixes vendor claims, third-party experiments, and specula
 
 **Within days of launch**, a wave of community projects appeared aiming to reproduce Jev's behaviour locally. The shared technical insight is that you do not need to train a model to classify: you can **read the option probabilities straight out of the prefill stage** — score each candidate answer's logits instead of generating a response. That makes local, near-free classification possible with existing open models.
 
-These are **community implementations, not TypeSafe's weights**, and none is a drop-in equivalent. Six are *replicas* — fast reimplementations of the idea. Two are more consequential and get their own sections below: **Laya**, which claims to predate Jev and competes with it head-on, and **Kev**, which publishes open weights you can fine-tune and serve behind Jev's own API shape. Those two are also the only ones that publish reproducible comparisons against Jev.
+These are **community implementations, not TypeSafe's weights**, and none is a drop-in equivalent. Six are *replicas* — fast reimplementations of the idea. Two are more consequential and get their own sections below: **Laya**, which claims to predate Jev and competes with it head-on, and **Kev**, which publishes open weights you can fine-tune and serve behind Jev's own API shape. They were the clearest direct comparisons in the earlier ecosystem survey; the Jev Arena study below adds one shared-cohort comparison across a wider set of profiles.
 
 | Project | Base / method | Reported character |
 |---|---|---|
@@ -110,14 +110,47 @@ The three new videos make the ecosystem easier to understand: the interface is c
 | Model | Technical direction | Current evidence | Use it when |
 |---|---|---|---|
 | **CLM-8B** | Contrastive state/action embeddings on a Qwen3-8B encoder; the repository serves `choice`, `score`, and `noul` through a TypeSafe-compatible API | The project reports up to 9× lower latency than Jev on some tasks and releases Apache-2.0 code/weights; these are project claims | You want an open, agent-oriented verifier or tool selector and can reproduce its numbers |
+| **Winnow-12B** | Gemma 4 12B fine-tune for typed decisions, chat, and image input | Open local weights; its own benchmark card reports separate scores across JevBench, Kev-v9, and teacher-agreement sets | You want one self-hosted multimodal/chat model; it needs more memory, and its confidence is not a calibrated correctness guarantee |
 | **Julia-1** | 144.3M-parameter multilingual decision model built on mmBERT-small; CPU inference and a 2–20-option native call | Its model card reports 73.15% on typed decisions and clearly shows strengths and gaps, including 64/100 on a 72-label Banking77 pilot | You want a tiny local router, especially for experiments or multilingual routing |
 | **Laya** | 421M ModernBERT-large or 322M mmBERT-base encoders; open checkpoints, including a typed-decision specialist | The model card reports a 0.766 specialist accuracy, but also warns that it is trained for four workflows and remains over-confident | You want local inference and are willing to choose, calibrate, and pin a checkpoint |
 | **Kev** | Qwen-based family with LoRA plus a pointer head; trainable and API-compatible with Jev | The project publishes model cards, held-out tests, calibration results, and known gaps; it is the most useful option for custom fine-tuning | You want to adapt the decision model to your own labelled data |
+| **Decider / Nimble / Plumb** | Other local Qwen-based decision fine-tunes, from small to mid-size checkpoints | The arena found materially different results and input support by version; Plumb’s current model card allows 2–16 options, while the pinned Nimble run accepted up to 255 choices but only 8,192 input tokens | You want to compare lightweight local options; pin exact checkpoint/runtime and inspect hard limits before testing |
 | **OpenJev / SemIf** | Community replicas that implement the shape or the prefill/readout idea | Useful for learning and prototyping; they are not TypeSafe weights and do not share one quality bar | You want to inspect or modify the mechanism locally |
 
 The [showdown video](https://www.youtube.com/watch?v=UF0z3afz9V8) says five systems were tested on an angry-customer case and a security trap, with only two passing. That is a good **evaluation pattern**—include ambiguity and adversarial state—but it is not a controlled benchmark: hardware, prompts, versions, thresholds, and pass criteria are not independently normalised in the video description.
 
 The [Julia-1 video](https://www.youtube.com/watch?v=Ty7Riayb78w) is a particularly useful update because it demonstrates the direction toward small CPU-local models. The [CLM video](https://www.youtube.com/watch?v=eSuMmMMMrm0) explains a different direction: cache state and action representations separately so repeated agent choices do not require ordinary token generation. Both support the same practical lesson: **compare the full decision pipeline, not parameter count alone**.
+
+## A reproducible comparison: Jev Arena
+
+The third video, [I Tested Jev vs 12 Local Decision Models](https://www.youtube.com/watch?v=zBw5BMrlZLo), links to an open [evaluation app and repository](https://github.com/theaiautomators/jev-arena). Its [published run](https://github.com/theaiautomators/jev-arena/blob/main/docs/RESULTS.md) is a useful complement to vendor benchmarks because it includes the model profiles, same-input cohort, output-validity checks, timing protocol, and failure analysis.
+
+### Shared short-input test
+
+All 13 profiles received 7,671 planned records each on Windows with an RTX 5090. For reference accuracy, the report compares the same **4,635 labeled cases** across all entrants:
+
+| Profile | Selected-label agreement | Median latency, short serial requests |
+|---|---:|---:|
+| Jev 1.13 | **95.23%** | ~245 ms (hosted, network included) |
+| Winnow 12B | 94.61% | ~56 ms |
+| Decider 4B v2 | 94.46% | ~47 ms |
+| Nimble 9B | 92.34% | ~50 ms |
+| Plumb 4B | 89.54% | ~49 ms |
+| Qwen 3.5 4B with JSON output | 85.78% | ~317 ms |
+| SemIf 4B | 81.70% | ~51 ms |
+| Laya (English) | 64.83% | ~17 ms |
+| CLM 8B | 36.09% | ~117 ms |
+
+These are **label matches to this suite’s references**, not a universal intelligence ranking or a calibration score. Also, “13 profiles” does not mean 13 independent architectures: three entries are Laya variants, and the comparison includes a JSON LLM, an NLI classifier, and a uniform baseline. The shared cohort excludes 1,000 high-cardinality records that Plumb/SemIf could not process and 36 context-limited CLM records, so it is a restricted intersection. About half of its questions are generated policy variations built from eight recurring templates. The project reports no human semantic audit.
+
+### The main engineering findings
+
+1. **A narrow model can win on its own slice.** In one 500-case English news slice, Laya scored 92.2% and Jev 88.2%; on a 500-case XNLI slice, Decider scored 84.0% and Jev 81.4%. These are post-hoc slices, so use them as prompts to test specialisation, not proof that either local model is generally better.
+2. **A high aggregate score can hide a bad miss rate.** On a 500-item relevance set with 453 irrelevant and 47 relevant items, a baseline that always chose “irrelevant” scored **90.6% accuracy** while finding zero relevant documents. Jev found 40/47 but also returned 25 false positives. For retrieval, measure recall and precision alongside accuracy; choose the threshold according to which error costs more.
+3. **Capability limits decide whether a model can participate.** The report records Plumb and SemIf as unable to handle the 77-option Banking77 task; a 64-option Winnow limit was also missed by the runner in an earlier manifest. Nimble’s pinned release cannot accept the full ~20k-token support handbook. Unsupported requests must be counted separately from incorrect answers.
+4. **Local does not always mean faster.** In the short-request test, Laya/Decider/Winnow were faster than Jev. In the separate [ABCD full-handbook assessment](https://github.com/theaiautomators/jev-arena/blob/main/docs/ABCD-RESULTS.md), roughly 19.5–21k tokens of policy context took Jev around 0.36 s, Decider around 1.9 s, and Winnow around 2.8 s. Retrieving five relevant handbook sections shortened the inputs to roughly 2.3–2.9k tokens and improved local timing. Hardware, runtime, precision, caching, and network path differ, so these are measured deployment profiles, not an architecture-only speed test.
+
+The compact decision rule from this study is: **short and frequent + privacy/local hosting → benchmark a small local model; large state → test hosted long-context models and retrieval; many options → verify the native limit before comparing quality.** In either case, evaluate on the real data and report coverage, invalid outputs, accuracy, latency, and the cost of each error separately.
 
 ## Laya: the open alternative, and the priority dispute
 
@@ -201,11 +234,13 @@ Two things make this credible rather than marketing: the port to Qwen3.5 cost ab
 
 **Recent model references**
 
+- [Jev Arena](https://github.com/theaiautomators/jev-arena) · [Full v2 results](https://github.com/theaiautomators/jev-arena/blob/main/docs/RESULTS.md) · [ABCD long-context results](https://github.com/theaiautomators/jev-arena/blob/main/docs/ABCD-RESULTS.md) — code, recorded local-vs-hosted comparisons, methods, and limitations for the 12-local-model video.
 - [CLM repository](https://github.com/Contrastive-LM/CLM) — contrastive state/action embeddings, TypeSafe-compatible API, and the project's own latency and benchmark claims.
 - [Julia-1 model card](https://huggingface.co/SupersonicLabs/Julia-1) — 144.3M-parameter local model, multilingual evaluation, 2–20-option native limit, and explicit pilot caveats.
 - [Laya typed-decisions model card](https://huggingface.co/convaiinnovations/laya-typed-decisions) — specialist benchmark, RLCD training description, and the warning about calibration and workflow scope.
+- [Winnow-12B](https://huggingface.co/EldanRing/Winnow-12B) · [Decider-4B](https://huggingface.co/Mapika/decider-4b) · [Bespoke Nimble-9B](https://huggingface.co/bespokelabs/Bespoke-Nimble-9B) · [Plumb-4B](https://huggingface.co/crh225/plumb-4b) — primary model cards; checkpoint version and declared input limits matter when comparing Arena results.
 - [Kev model cards](https://github.com/jaredpalmer/kev/tree/main/docs/model-cards) · [Kev repository](https://github.com/jaredpalmer/kev) — current checkpoint details, held-out evaluation, and fine-tuning/serving code.
-- Supplied videos: [CLM vs Laya vs OpenJev vs Kev vs Jev](https://www.youtube.com/watch?v=UF0z3afz9V8) · [Julia-1](https://www.youtube.com/watch?v=Ty7Riayb78w) · [CLM architecture](https://www.youtube.com/watch?v=eSuMmMMMrm0). Video claims are retained as creator context; primary model cards and repositories take precedence.
+- Supplied videos: [CLM vs Laya vs OpenJev vs Kev vs Jev](https://www.youtube.com/watch?v=UF0z3afz9V8) · [Julia-1](https://www.youtube.com/watch?v=Ty7Riayb78w) · [CLM architecture](https://www.youtube.com/watch?v=eSuMmMMMrm0) · [Jev vs 12 local decision models](https://www.youtube.com/watch?v=zBw5BMrlZLo). Video claims are retained as creator context; primary model cards and repositories take precedence.
 
 **Community indexes and benchmarks**
 

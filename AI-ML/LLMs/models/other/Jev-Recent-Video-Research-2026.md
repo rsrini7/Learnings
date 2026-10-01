@@ -1,6 +1,6 @@
 # Jev / System One — Recent Video Evidence Log (2026)
 
-**Scope:** evidence log for the three supplied videos, checked on 28 September 2026. This file is intentionally separate from the main Jev note. The video pages exposed titles, dates, descriptions, and chapters, but no usable transcript; claims below are therefore split into **video claim** and **primary-source check**.
+**Scope:** original video evidence checked on 28 September 2026; updated 1 October 2026 for a new comparison video and a recheck of the CLM and model-showdown videos. This file is intentionally separate from the main Jev note. YouTube captions were unavailable for the first three videos; zBw5BMrlZLo has an auto-generated English transcript verified by the user. Claims below distinguish transcript statements from what the linked repository and model cards document.
 
 ## 1. The three videos
 
@@ -10,9 +10,34 @@
 | [Julia-1: The Tiny AI That Decides in 10 Languages on CPU Locally](https://www.youtube.com/watch?v=Ty7Riayb78w) | Fahd Mirza · 28 Sep 2026 · 8:28 | Chapters cover angry-customer, security-trap, phishing, relationship-red-flag, Julia-vs-Jev benchmark, and a live 10-language demo. The description says Julia-1 maps state + question + possible answers to one decision. |
 | [This New AI Architecture Makes Decisions 13x Faster](https://www.youtube.com/watch?v=eSuMmMMMrm0) | Prompt Engineering · 26 Sep 2026 · 16:29 | Description presents CLM as a System One model using state/action embeddings, a frozen 8B backbone plus small heads, and a DGX Spark demo with 1,080 tools. It reports ~80 ms latency and accuracy falling from 86% with 8 tools to 17% with 1,080. These are creator-reported figures. |
 
-**Transcript uncertainty:** YouTube reported captions unavailable for the first two pages, and transcript export did not return text. The third page exposed a transcript control but no transcript was retrievable. The descriptions and chapter labels are evidence of what each video claims to cover, not a substitute for a transcript or reproducible run.
+**Transcript status:** the first three videos had no usable captions/transcript during the earlier check. The zBw5BMrlZLo video has an auto-generated transcript verified by the user; transcription can still misidentify model names. The transcript is creator material, not independent evidence, so numerical claims are checked against the repository and model cards below.
 
-## 2. Primary-source checks
+## 1 October update — 13-model arena comparison
+
+[I Tested Jev vs 12 Local Decision Models. Here's What I’d Use...](https://www.youtube.com/watch?v=zBw5BMrlZLo) — The AI Automators · 29 Sep 2026 · 12:17. The auto-generated transcript describes 13 profiles receiving 7,671 records, reports Jev leading the shared short-input cohort, highlights a narrow Laya win on news and a Decider win on XNLI, and shows local latency rising sharply on a ~20k-token handbook. The linked [Jev Arena repository](https://github.com/theaiautomators/jev-arena) provides the run protocol and saved results. The transcript is creator material; the repository supplies the numerical denominators and caveats.
+
+The repository records a Windows RTX 5090 (32 GB) run with **13 profiles × 7,671 planned records**. The profiles include three Laya configurations and diagnostic controls, so this is not a comparison of 13 distinct model architectures. The main shared-reference comparison has **4,635 cases**: Jev 1.13 matched 95.23% of labels; Winnow 12B, 94.61%; Decider 4B v2, 94.46%; and Nimble 9B, 92.34%. This is a creator-published, fixed-suite result, not an independent replication or a guarantee of performance on a new workload. The shared cohort excludes 1,000 high-option cases unsupported by Plumb/SemIf and 36 context-unsupported CLM cases. Full-denominator scores and the shared-cohort scores answer different questions; do not rank them as though coverage were equal.
+
+The repository confirms the transcript’s task-specific wins are narrow: Laya scored 92.2% on a 500-item news slice versus Jev’s 88.2%, and Decider 84% on XNLI versus Jev’s 81.4%. A separate 195-item public JevBench slice also favored Plumb (92.31% vs Jev’s 90.26%). These post-hoc slices show that task fit matters; they do not overturn the larger shared-set ranking or establish general superiority. [Arena task analysis](https://github.com/theaiautomators/jev-arena/blob/main/docs/ANALYSIS.md)
+
+**Latency caveat:** on the arena’s fixed serial set of 200 inputs, local p50 times were about 47–59 ms for Decider/Nimble/Plumb, while hosted Jev was about 245 ms. Jev’s figure includes the network trip; the local profiles used specific model sizes and runtimes, and the run did not measure concurrent throughput. CLM had only 516 valid responses out of 600 attempts, so a fast response alone is not a successful decision. [Arena timing results](https://github.com/theaiautomators/jev-arena/blob/main/docs/RESULTS.md)
+
+**Long-context caveat:** the transcript says local latency rose sharply on an approximately 20K-token handbook. Separately, Winnow’s model card reports a near-64K-context Q8 test on an RTX 5070 Ti: four cold questions took 25 seconds, compared with 143 ms for a cached repeat. That demonstrates how prefix caching changes latency in one setup; it does not establish general 64K reasoning quality or comparable cold-start performance. [Winnow model card](https://huggingface.co/EldanRing/Winnow-12B)
+
+| Newly highlighted profile | What primary sources verify | Reading the arena result |
+|---|---|---|
+| [Winnow 12B](https://huggingface.co/EldanRing/Winnow-12B) | Open Gemma 4 12B LoRA fine-tune with local typed-decision API; Q8 weights are about 12.7 GB, BF16 about 23.8 GB. The card says its confidence is not a calibrated correctness guarantee. | 94.61% label agreement on the shared 4,635-case cohort; the card’s own JevBench subset result is separate and uses 231 cases. |
+| [Decider 4B](https://huggingface.co/Mapika/decider-4b) | Qwen3.5-4B-based, one-pass typed decisions. The repository card now defaults to **v2.1**, a later checkpoint than the arena’s **v2**. v2.1 has answer-type temperatures but still reports overconfidence on hard Choice items. | 94.46% for arena v2 on the shared cohort; do not attribute this score to current v2.1. |
+| Nimble 9B | Included as a pinned profile in the arena’s registry and reports; the video description alone does not identify its exact artifact. | 92.34% on the shared cohort; verify the pinned checkpoint/runtime before treating it as a current model-family score. |
+
+**Important metric gap:** the headline comparison is mainly label accuracy and output validity. It does not establish that local models’ confidence estimates are as well calibrated as Jev’s. Winnow’s card explicitly limits its confidence claim, and Decider reports calibration weaknesses on hard choices. Test calibration and abstention behavior separately if confidence will drive automation.
+
+### Rechecks of the earlier comparison videos
+
+- [UF0z3afz9V8](https://www.youtube.com/watch?v=UF0z3afz9V8) remains listed as 26 Sep 2026. Its description still only says five models were tested on an angry-customer and security-trap scenario, with two passing; it provides no model versions, full prompts, scores, or winner. Captions remain unavailable. The currently surfaced YouTube-generated summary adds claims about speed and calibration, but is not creator-authored benchmark evidence.
+- [eSuMmMMMrm0](https://www.youtube.com/watch?v=eSuMmMMMrm0) remains listed as 26 Sep 2026, with captions unavailable. The creator’s description still reports roughly 80 ms and 86%→17% as the candidate set grows from 8 to 1,080 actions. The [CLM repository](https://github.com/Contrastive-LM/CLM) independently describes its own result as up to 9× faster than Jev on selected computer-use, gaming, and tool-calling tasks; this does not verify the video’s 13× figure. The arena’s different RTX 5090 serial test reports CLM p50 around 117 ms and 516 valid responses out of 600 timed requests, versus hosted Jev around 245 ms with 600/600 valid. Hardware, task, candidate count, and timing setup differ, so these measurements are not directly contradictory or interchangeable.
+
+## 3. Primary-source checks
 
 ### Julia-1 — the clearest new local model
 
@@ -63,7 +88,7 @@ These should not be merged into one “OpenJev” benchmark result. Identify the
 
 TypeSafe’s [current model page](https://docs.typesafe.ai/models) lists `jev-1.13.0` as the current model and `jev-latest` as its stable alias. It documents 64k tokens per request, a 32k state-plus-longest-question limit, text-only input, and input pricing of **$0.042 per million tokens** with free output tokens. The [Jev 1.13 jaggedness guide](https://docs.typesafe.ai/model-jaggedness/jev-1.13) explicitly warns about literal reading, numeric/date arithmetic, indirection, irrelevant context, adversarial state, contradictory criteria, and generation.
 
-## 3. Simple comparison for integration
+## 4. Simple comparison for integration
 
 | Model | Main strength | Local/open? | Important caution |
 |---|---|---:|---|
@@ -74,7 +99,7 @@ TypeSafe’s [current model page](https://docs.typesafe.ai/models) lists `jev-1.
 | Julia-1 | Very small multilingual CPU model; 2–20 native options | Yes | Long/large label sets are a known weak point; Jev references are supplied, not re-run. |
 | OpenJev projects | Several independent local implementations under one name | Usually | “OpenJev” is ambiguous; never quote a result without the exact repo/checkpoint. |
 
-## 4. Safe conclusions to carry into the main note
+## 5. Safe conclusions to carry into the main note
 
 1. The category is expanding from one hosted Jev model into several open, local families: CLM, Laya, Kev, Julia-1, and multiple OpenJev projects.
 2. The strongest common idea is bounded decision output: state + question + caller-supplied options → typed answer probabilities. The architectures and calibration quality differ substantially.
@@ -88,11 +113,13 @@ TypeSafe’s [current model page](https://docs.typesafe.ai/models) lists `jev-1.
 - [UF0z3afz9V8 — CLM vs Laya vs OpenJev vs Kev vs Jev](https://www.youtube.com/watch?v=UF0z3afz9V8)
 - [Ty7Riayb78w — Julia-1](https://www.youtube.com/watch?v=Ty7Riayb78w)
 - [eSuMmMMMrm0 — CLM architecture](https://www.youtube.com/watch?v=eSuMmMMMrm0)
+- [zBw5BMrlZLo — 13 local decision models](https://www.youtube.com/watch?v=zBw5BMrlZLo)
 
 **Primary model sources**
 
 - [TypeSafe models](https://docs.typesafe.ai/models) · [Jev 1.13 limitations](https://docs.typesafe.ai/model-jaggedness/jev-1.13)
 - [Contrastive-LM/CLM](https://github.com/Contrastive-LM/CLM) · [CLM-v0.1-8B](https://huggingface.co/Contrastive-LM/CLM-v0.1-8B)
+- [Jev Arena protocol](https://github.com/theaiautomators/jev-arena) · [Arena results](https://github.com/theaiautomators/jev-arena/blob/main/docs/RESULTS.md) · [Winnow-12B model card](https://huggingface.co/EldanRing/Winnow-12B) · [Decider-4B model card](https://huggingface.co/Mapika/decider-4b)
 - [Convai Innovations Laya](https://huggingface.co/convaiinnovations/laya) · [Laya typed-decisions](https://huggingface.co/convaiinnovations/laya-typed-decisions) · [Laya source](https://github.com/NandhaKishorM/laya)
 - [Jared Palmer’s Kev](https://github.com/jaredpalmer/kev)
 - [SupersonicLabs Julia-1](https://huggingface.co/SupersonicLabs/Julia-1)
