@@ -10,6 +10,8 @@ The names below come from the supplied catalog. Treat the matrix as a **starting
 
 “Low-Cost,” “Balanced,” and “High-Cost” are the directive's planning labels, not verified relative prices across providers. In particular, GPT 6 Sol should not automatically be assumed more expensive than GPT 5.6 Sol. [OpenAI pricing](https://developers.openai.com/api/docs/pricing)
 
+### 1a. GPT routing
+
 | Stage | Starting model | Environment | Effort* | Planning tier | Risk when downgrading too far |
 |---|---|---|---|---|---|
 | 1. Intake & clarification | GPT 5.6 Sol | VS Code | Medium | Balanced | Overlooks ambiguous requirements |
@@ -21,9 +23,36 @@ The names below come from the supplied catalog. Treat the matrix as a **starting
 | 7. Security & performance audit | GPT 6 Sol | VS Code | High | High-Cost | Misses auth, concurrency, or resource risks |
 | 8. PR description & feedback | GPT 5.6 Luna | VS Code | Low | Low-Cost | Drops an important finding from the summary |
 
-*Effort is an intent, not a portable API setting. Use Off only where supported and appropriate for straightforward formatting. Claude Sonnet 5/5.5 and Opus 4.8/5/5.5 remain candidate alternatives from the directive; this note does not establish their availability or comparative performance.*
+*Effort is an intent, not a portable API setting. Use Off only where supported and appropriate for straightforward formatting.*
 
-**Downgrade when evidence supports it:** use a low-cost model for explicit checklist matching, mechanical edits, and summaries once it meets the same acceptance checks. Escalate implementation or review when complexity warrants it; high reasoning is not reserved exclusively for stages 2 and 7.
+### 1b. Claude routing (org-supported models only)
+
+**Available in this org (Claude Code and VS Code):** Opus 4.8, Opus 5, Opus 5.5, Sonnet 5, Sonnet 5.5. No other Claude models (e.g., a smaller tier below Sonnet) are available, so the low-cost stages use Sonnet at Low effort rather than a cheaper model.
+
+Availability is confirmed by the org; **relative price and quality between versions are not established here**. Treat the version choices below as starting hypotheses and verify against your org's pricing and your own measurements.
+
+| Stage | Starting model | Fallback / escalation | Environment | Effort* | Planning tier | Risk when downgrading too far |
+|---|---|---|---|---|---|---|
+| 1. Intake & clarification | Sonnet 5.5 | Opus 5 | VS Code | Medium | Balanced | Overlooks ambiguous requirements |
+| 2. Architecture & dependencies | Opus 5.5 | Opus 5 | VS Code | High | High-Cost | Misses callers, side effects, or contracts |
+| 3. Scope freeze | Sonnet 5 | Sonnet 5.5 | VS Code | Low | Low-Cost | Marks an incomplete checklist as complete |
+| 4. Targeted implementation | Sonnet 5.5 | Opus 5 | VS Code | Medium | Balanced | Produces plausible code that breaks integration |
+| 5. Spec alignment | Sonnet 5 | Sonnet 5.5 | VS Code | Low | Balanced | Checks wording but misses behavioral gaps |
+| 6. Execution flow & tests | Sonnet 5.5 | Opus 5 | VS Code | Medium | Balanced | Omits failure paths or weakens assertions |
+| 7. Security & performance audit | Opus 5.5 | Opus 5 | VS Code | High | High-Cost | Misses auth, concurrency, or resource risks |
+| 8. PR description & feedback | Sonnet 5 | Sonnet 5.5 | VS Code | Low | Low-Cost | Drops an important finding from the summary |
+
+*Effort is an intent, not a portable setting; map it to whatever reasoning/thinking control your VS Code integration or Claude Code exposes.*
+
+| Model | Role in this policy | Use when |
+|---|---|---|
+| Sonnet 5 | Default for low-effort, checklist-style, and summary work | Output can be checked mechanically against criteria |
+| Sonnet 5.5 | Default for implementation, tests, and intake | Task needs integration awareness but design is settled |
+| Opus 4.8 | Candidate lower-cost Opus option to evaluate for stages 2 and 7 | Only after it matches Opus 5/5.5 on your acceptance checks; otherwise skip |
+| Opus 5 | Fallback when Sonnet fails repeatedly, or a cost-conscious Opus choice | Unresolved complexity, but not the highest-risk work |
+| Opus 5.5 | First choice for architecture and security/performance audit | A missed dependency or security issue is expensive |
+
+**Downgrade when evidence supports it:** use Sonnet 5 at Low effort for explicit checklist matching, mechanical edits, and summaries once it meets the same acceptance checks. Escalate implementation or review when complexity warrants it; high reasoning is not reserved exclusively for stages 2 and 7.
 
 ```mermaid
 flowchart TD
@@ -38,6 +67,8 @@ flowchart TD
     H --> I[Repair context or escalate model]
     I --> E
 ```
+
+Claude escalation ladder for step I (only after repairing context first): **Sonnet 5 → Sonnet 5.5 → Opus 5 → Opus 5.5**. Opus 4.8 is a side branch to test, not a rung.
 
 ## 2. Keep useful context; drop the debate
 
@@ -57,7 +88,16 @@ Give the model symbol definitions, references, and compiler/type-checker output 
 
 ## 3. When Claude Code earns its place
 
-Choose the CLI when automated navigation, coordinated edits, and test execution save enough manual work to justify extra agent turns. Start with Sonnet 5 from the proposed catalog; consider Opus 5 for unresolved design complexity, subject to availability and measured results.
+Choose the CLI when automated navigation, coordinated edits, and test execution save enough manual work to justify extra agent turns.
+
+| Situation | Claude Code model | Why |
+|---|---|---|
+| Routine edit–test loop, plan already approved | Sonnet 5.5 | Settled design; the loop does the work |
+| Mechanical or repetitive changes (renames, bulk edits) | Sonnet 5 | Checkable output; lowest-tier option you have |
+| Repeated failures or unresolved design complexity | Opus 5 | Escalate after context repair, not before |
+| High-stakes cross-cutting change | Opus 5.5 | Cost of a missed dependency exceeds model cost |
+
+Model choice stays subject to your org's pricing and measured results; Opus 4.8 can be added to the comparison if you want a cheaper Opus-tier data point.
 
 There is **no defensible universal “three files” threshold**. A small change can be risky; a large rename can be mechanical. Prefer whichever environment provides the necessary tools with less handoff overhead. [Claude Code cost management](https://code.claude.com/docs/en/costs)
 
@@ -73,6 +113,15 @@ flowchart LR
 ## 4. Make the savings empirical
 
 Compare representative tasks using the same acceptance checks. Record model and effort, uncached/cached input, output and billed reasoning tokens where available, retries, elapsed time, review time, and defects found. Keep task complexity comparable; repeat before generalizing.
+
+For the Claude side, the comparisons most worth running with your five models:
+
+| Question | Comparison |
+|---|---|
+| Does 5.5 justify itself over 5 for implementation? | Sonnet 5 vs Sonnet 5.5, same tasks, same checks |
+| Does Opus 5.5 beat Opus 5 on audits? | Seeded-defect review, compare findings and false positives |
+| Is Opus 4.8 good enough for stage 2/7? | Opus 4.8 vs Opus 5/5.5 on the same design and audit tasks |
+| Is Opus needed at all for stage 2? | Sonnet 5.5 High vs Opus 5.5 High on architecture tasks |
 
 **Cost per accepted change = total model/tool spend ÷ accepted changes.** Track developer time separately, or convert it using an explicit hourly rate. A cheap first response is a poor saving if it creates repeated repairs.
 
