@@ -387,3 +387,5 @@ These tools operate at distinct layers — most can be combined without conflict
 **Related:**
 - [Headroom-RTK-Real-World-Feedback-2026](Headroom-RTK-Real-World-Feedback-2026.md) — Evidence-backed follow-up on production reports, cache regressions, and safety/correctness issues.
 - [AI-Coding-Loops](../../Agents/development/AI-Coding-Loops.md) — Harness-engineering patterns (skill isolation, hook-based enforcement) pair with these tools; Ponytail and MCP-Compressor are agent-skill-style interventions.
+
+- [Empirical Tokenomics and Model Routing](Empirical-Tokenomics-and-Model-Routing-2026.md) — Stage-based model selection, context handoffs, and cost per accepted change.

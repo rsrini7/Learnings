@@ -135,6 +135,7 @@ Learnings/
 - [inside a neuron](AI-ML/LLMs/attention/inside-a-neuron.md)
 
 #### ⚡ Optimization & Cost
+- [Empirical Tokenomics and Model Routing 2026](AI-ML/LLMs/optimization/Empirical-Tokenomics-and-Model-Routing-2026.md)
 - [GenAI cost Optimization](AI-ML/LLMs/optimization/GenAI-cost-Optimization.md)
 - [Headroom RTK Real World Feedback 2026](AI-ML/LLMs/optimization/Headroom-RTK-Real-World-Feedback-2026.md)
 - [Microsoft Agent Lightning](AI-ML/LLMs/optimization/Microsoft-Agent-Lightning.md)

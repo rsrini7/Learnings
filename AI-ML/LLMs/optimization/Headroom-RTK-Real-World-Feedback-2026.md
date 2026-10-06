@@ -45,3 +45,5 @@
 - [GenAI-cost-Optimization](GenAI-cost-Optimization.md) — Cost measurement, caching, routing, and model-selection practices.
 - [headroom-proxy](../../../DevSetup/headroom/headroom-proxy.md) — Local Headroom proxy setup and operational details.
 - [headroom-pi-cost-saver](../../../DevSetup/headroom/headroom-pi-cost-saver.md) — Combined Headroom and RTK setup for Pi.
+
+- [Empirical Tokenomics and Model Routing](Empirical-Tokenomics-and-Model-Routing-2026.md) — Stage-based model selection, context handoffs, and cost per accepted change.

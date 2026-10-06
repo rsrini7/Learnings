@@ -34,3 +34,5 @@ https://www.youtube.com/watch?v=lpj9XqEyHjg
 - [OpenResponses-Open-Inference-Standard](OpenResponses-Open-Inference-Standard.md) — Both target inference cost; Open Responses reduces token spend via server-side agentic loops that eliminate the round-trips this file calls out as expensive.
 - [Unlock-the-Dark-Data](Unlock-the-Dark-Data.md) — Shares the 'PMF before cost optimization' principle and the same tiered pricing table (premium/efficient/local) used to justify gradual model downshifting.
 - [Jev-System-One-Decision-Model-2026](../models/other/Jev-System-One-Decision-Model-2026.md) — A practical example of routing narrow decisions to a fast, low-cost specialized model.
+
+- [Empirical Tokenomics and Model Routing](Empirical-Tokenomics-and-Model-Routing-2026.md) — Stage-based model selection, context handoffs, and cost per accepted change.
