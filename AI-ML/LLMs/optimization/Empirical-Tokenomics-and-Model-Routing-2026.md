@@ -6,6 +6,8 @@ This guide adapts the supplied directive for a workflow centered on **VS Code (9
 
 **Integration scope:** the VS Code extension/provider is not specified. Routing applies generally; slash commands, thinking controls, billing-path TTLs, and session telemetry below are **Claude Code only** unless your extension documents equivalent support. Per-message effort is a Claude API feature, not a guaranteed editor control.
 
+**Brief before tools:** state the task, guardrails, and definition of done. The repository supplies code; priorities and acceptable trade-offs still need explicit evidence. Plan first for unfamiliar or cross-cutting work, rather than making Plan Mode mandatory for every edit.
+
 ## 1. Route by the work, not habit
 
 The names below come from the supplied catalog. Treat the matrix as a **starting policy to evaluate**, not a benchmark ranking. Check exact model availability, pricing, and supported reasoning settings in your provider. The source's “GPT 6 Lune” label needs confirmation before use; GPT 5.6 Luna is used here instead.
@@ -41,7 +43,7 @@ The names below come from the supplied catalog. Treat the matrix as a **starting
 
 Sonnet 5 is not cheaper per token than 5.5; Opus 5.5 is cheaper per token than 5/4.8. Task token use, quality, contracted rates, and subscription allowances still determine value. [Anthropic list pricing](https://platform.claude.com/docs/en/build-with-claude/prompt-caching#pricing)
 
-| Stage | Starting model | Fallback / escalation | Environment | Effort* | Planning tier | Risk when downgrading too far |
+| Stage | Starting model | Escalate / alternate | Environment | Effort* | Planning tier | Risk when downgrading too far |
 |---|---|---|---|---|---|---|
 | 1. Intake & clarification | Sonnet 5.5 | Opus 5.5 | VS Code | Medium | Balanced | Overlooks ambiguous requirements |
 | 2. Architecture & dependencies | Sonnet 5.5 | Opus 5.5 if complex | VS Code | Medium → High if needed | Balanced → High-Cost | Misses callers, side effects, or contracts |
@@ -122,9 +124,17 @@ Make non-goals concrete—for example, “no new helper framework or public API 
 
 Give the model symbol definitions, references, and compiler/type-checker output when needed. AST-aware tools help locate dependencies; neither a large context window nor high reasoning guarantees that the right evidence was supplied. Stop increasing effort when it adds no measurable improvement.
 
+### Filter output without losing evidence
+
+Prefer targeted search, symbol navigation, and deterministic noise filtering before semantic rewriting. Preserve exit codes, relevant stack frames, type definitions, and meaningful JSON values; keep original logs available through a path or retrieval tool. Fixed head/tail limits can hide the actual failure. Compress new tool output once and retain its representation unchanged; rewriting old history can break cache reuse.
+
+**Evidence has limits:** the [CAPC preprint](https://arxiv.org/abs/2607.15516) finds both cost increases from query-aware compression and savings from cache-aware compression. [tokbench](https://github.com/Entelligentsia/tokbench) reports 237 versus 180 turns in a pilot with one run per arm. Neither proves a universal savings rate or that compression caused extra turns.
+
+Keep instruction files focused; load specialist references and skills when needed. Anthropic’s under-200-line CLAUDE.md target is guidance, not a hard limit. Test skills against a baseline and keep those that improve outcomes. Deferred tool loading means MCP definitions are not necessarily all sent up front. [Claude memory](https://code.claude.com/docs/en/memory) · [Tool search](https://code.claude.com/docs/en/mcp)
+
 ## 3. When Claude Code earns its place
 
-Choose the CLI when automated navigation, coordinated edits, and test execution save enough manual work to justify extra agent turns.
+Choose the CLI when automated navigation, coordinated edits, and test execution save enough manual work to justify extra agent turns. VS Code agent modes can also make multiple model/tool calls; an editor is not inherently cheaper or limited to one request.
 
 | Situation | Claude Code model | Why |
 |---|---|---|
@@ -150,6 +160,10 @@ flowchart LR
     D --> E
 ```
 
+**Bound autonomy:** use least-privilege permissions, sandboxing, and isolated worktrees where appropriate. Hooks can enforce specific checks, but are code that needs testing—not a zero-risk or zero-cost guarantee. Keep publishing, destructive actions, and commits within explicit authorization. Rewind does not undo every external side effect. [Security](https://code.claude.com/docs/en/security) · [Hooks](https://code.claude.com/docs/en/hooks)
+
+Delegate noisy research only when isolation is useful; subagents add their own billable calls. Use an available, validated model and cap parallel work, time, and spend. Scheduled/headless runs need the same acceptance checks and stop conditions. Prefer measurable budgets over automatic resets after 15–25 turns or at a fixed context percentage.
+
 ## 4. Make the savings empirical
 
 Compare representative tasks using the same acceptance checks. Record model and effort, uncached/cached input, output and billed reasoning tokens where available, retries, tokens/spend attributable to fixes or reverts, elapsed time, review time, and defects found. Avoid counting reasoning tokens twice if the provider already includes them in output totals. Keep task complexity comparable; repeat before generalizing.
@@ -166,9 +180,27 @@ Run three focused Claude comparisons, holding task scope and acceptance checks c
 
 Run compilation/type checks, linting, and relevant tests in stage 4 before stage 5 alignment review. Stage 6 assesses test adequacy, failure paths, and missing cases; stage 7 reviews security and performance risks. Keep these checks and human review as the quality gates. “Zero defects” is an aspiration; no model routing policy proves it.
 
+## 5. Integration-specific controls
+
+These tips apply only when you use the named product; they do not identify which extension your org uses.
+
+| Surface | Useful controls and billing caveats |
+|---|---|
+| GitHub Copilot in VS Code | Paid Auto selection offers a 10% discount and task-aware routing; it is not limited to cheap models. Paid inline completions/next edits do not consume AI credits. Inspect Agent Debug Logs → Cache Explorer for actual reuse. |
+| Copilot caching | GitHub currently documents 24-hour OpenAI caching and one hour for most other models. Use its rate card, not direct Anthropic API rates. Content exclusions do not protect Edit/Agent mode or cloud agents. |
+| Claude Code | `/context` inspects usage; `/doctor prompt-audit` and `/skill-doctor` audit guidance where supported. `claude plugin eval` compares plugin-on/off runs. Native isolation uses `claude --worktree <name>`. |
+| Claude Code reasoning and goals | `ultrathink` is recognized for deeper reasoning on one turn, without a fixed 32k budget; `think hard` is ordinary text. `/goal` can keep work moving, but a natural-language turn limit is not a hard runtime cap. |
+
+Sources: [Copilot Auto](https://docs.github.com/en/copilot/concepts/models/auto-model-selection), [billing](https://docs.github.com/en/copilot/concepts/billing-and-usage/individuals/billing), [cache guidance](https://docs.github.com/en/copilot/tutorials/optimize-ai-usage), [Cache Explorer](https://code.visualstudio.com/docs/agents/agent-troubleshooting/cache-explorer), [exclusions](https://docs.github.com/en/copilot/concepts/security-governance-and-network-settings/content-exclusion), [Claude commands](https://code.claude.com/docs/en/commands), [model configuration](https://code.claude.com/docs/en/model-config), [goals](https://code.claude.com/docs/en/goal).
+
+## 6. Source validation
+
+Collected video and community claims were checked on October 11, 2026. See the [point-by-point validation](Tokenomics-Source-Validation-Oct-2026.md) for command corrections, Copilot-specific billing/cache details, and unsupported numerical claims. Driving-autonomy levels, step-success arithmetic, and “industry consensus” labels do not establish measured agent reliability.
+
 ---
 
 **Related:**
+- [Tokenomics Source Validation](Tokenomics-Source-Validation-Oct-2026.md) — Detailed evidence and qualifications behind the collected tips.
 - [GenAI Cost Optimization](GenAI-cost-Optimization.md) — Broader practices for reducing inference and infrastructure spend.
 - [AI Token Optimization Tools](ai-token-optimization-tools.md) — Tools for reducing retrieval, context, and terminal output.
 - [Headroom & RTK: Real-World Feedback](Headroom-RTK-Real-World-Feedback-2026.md) — Cache and correctness risks that make end-to-end measurement necessary.
