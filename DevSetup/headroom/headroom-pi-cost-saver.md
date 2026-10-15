@@ -51,6 +51,10 @@ Tool output  →  pi-rtk (wraps with rtk binary)  →  pi context  →  Headroom
 | **pi-headroom** | Routes through proxy + CCR retrieval | Pi client | 30-60% |
 | **Headroom** | Compresses full context window | Proxy :8787 | 30-60% |
 
+## Context maintenance is a separate layer
+
+Tool-output filtering and proxy compression do not replace the agent’s compaction policy or extend provider cache TTL. Pi and Oh My Pi (OMP) have different settings; do not paste OMP YAML into Pi configuration. For smaller task budgets, breaks, and a verified OMP example, see [Context Windows, Compaction, and Cache Breaks](../../AI-ML/LLMs/optimization/Context-Windows-Compaction-and-Cache-Breaks-2026.md). Savings figures above are workload claims, not guaranteed invoice reductions; measure cache reads/writes, retries, and accepted-task cost.
+
 ## Pi Packages
 
 ### pi-rtk
@@ -338,6 +342,7 @@ pi --extension ~/ws/pi-headroom --list-models
 - Amsha project: `.mise/tasks/headroom/README.md`
 
 **Related:**
+- [Context Windows, Compaction, and Cache Breaks](../../AI-ML/LLMs/optimization/Context-Windows-Compaction-and-Cache-Breaks-2026.md) — Agent-level working budgets complement output filtering and compression.
 - [multi-agent-rtk-headroom-integration](multi-agent-rtk-headroom-integration.md) — Master guide on multi-agent token optimization across Pi, Codex, and AGY.
 - [codex-headroom-integration](codex-headroom-integration.md) — Dedicated guide on OpenAI Codex WebSocket isolation (`hcodex`) vs wrap/unwrap.
 - [agy-rtk-headroom-integration](agy-rtk-headroom-integration.md) — Dedicated guide on Google Antigravity CLI (`agy`), PreToolUse RTK hooks, and Headroom MCP integration.

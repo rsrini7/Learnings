@@ -30,7 +30,7 @@
 | Never compress static prefix; only new tail | Useful conservative policy | Preserve existing history; stable once-compressed reusable prefixes can also be beneficial (CAPC). “Never” is too strong. [CAPC](https://arxiv.org/abs/2607.15516) |
 | Strip ANSI/progress, deduplicate traces, project JSON | Qualified | Noise filtering can help; preserve causal errors, types, null-vs-absent semantics, exit status, and access to originals. Deterministic is not automatically lossless. |
 | Agent only reads first 30 errors; use 50+20 lines | Unsupported rule | Output selection is task-dependent; keep complete raw logs plus targeted retrieval. |
-| Discovery must use Haiku/local; frontier only for edits/planning | Qualified | Run simple searches as tools; delegate substantive exploration only if useful. Haiku is outside the stated org catalog. |
+| Discovery must use Haiku/local; frontier only for edits/planning | Qualified | Run simple searches as tools; delegate substantive exploration only if useful. Haiku was outside the original catalog; Haiku 5.5 is now a candidate where org access permits (October 15 update). |
 | 4–6h sessions biggest bill driver; clear after 15/20/25 turns | Unsupported ranking / thresholds | Idle duration alone is not billed inference. Act on context, cache misses, task boundaries, and budgets, not fixed turn counts. [Costs](https://code.claude.com/docs/en/costs) |
 | CLI $650/% vs editor $220/% proves 3× shipped-code cost | Unverified private anecdote | Ratio ≈2.95, but progress percentages, billing, task difficulty, and quality are undefined; cannot compare products. |
 | VS Code one request; CLI 8–20 calls | Incorrect distinction | Both can run agentic loops; count actual calls/tools, not UI type. [VS Code agent mode](https://code.visualstudio.com/docs/copilot/agents/overview) |
@@ -191,6 +191,24 @@ Sources: [best practices](https://code.claude.com/docs/en/best-practices), [goal
 10. Headless/event-based integrations exist; industry trajectory commentary, not measured consensus.
 
 
+
+## G. October 15 video follow-up
+
+Full auto-caption transcript reviewed for [exit node’s OMP video](https://www.youtube.com/watch?v=PtS2EdUsMeo). Its 80% → 40% setting change is an individual experiment, not a universal reliability boundary. A 1M capacity does not require a 1M prompt, and smaller working budgets do not prevent cache expiry. Current OMP’s reserve default is roughly 85% on large windows; `/handoff` compacts the same session. See [the focused analysis](Context-Windows-Compaction-and-Cache-Breaks-2026.md) for verified settings, all video themes, and break/resume economics.
+
+**Pricing update:** direct Anthropic Sonnet 5.5 cache reads are now documented at $0.10/MTok (0.05× base), alongside Opus 5.5 at 0.05×. Earlier October checks above are dated snapshots, not a current universal 0.1× rule. [Current rate table](https://platform.claude.com/docs/en/build-with-claude/prompt-caching#pricing)
+
+## H. Haiku 5.5 update — October 15
+
+Released October 7: `claude-haiku-5-5`, 1M context, adaptive thinking. Direct API input/output/cache-read rates per MTok are $0.10/$0.50/$0.01 up to 100K prompt tokens and $0.50/$2.50/$0.05 above 100K. Cached tokens count toward the boundary. Proposed uses are checkable summaries, checklists, and focused workers; quality and access still need validation. This supersedes the original no-Haiku catalog assumption. [Model specifications](https://platform.claude.com/docs/en/models/haiku-5-5/overview) · [Cache accounting](https://platform.claude.com/docs/en/build-with-claude/prompt-caching#pricing)
+
+Claude Code documents v2.1.293+ for Haiku 5.5; use `/model claude-haiku-5-5`. Thinking cannot be disabled there; lower effort is the control for simple work. No installed model or configuration was changed. [Claude Code model controls](https://code.claude.com/docs/en/model-config)
+
+## I. GPT 6 Luna comparison — October 15
+
+Verified `gpt-6-luna`: 1.05M context, 128K output; Standard input/output/cache-read rates $0.10/$0.50/$0.01 per MTok up to 272K input and $0.20/$0.75/$0.02 above it. API effort includes `none`; availability of that control in an editor is separate. [Official model page](https://developers.openai.com/api/docs/models/gpt-6-luna) · [Pricing](https://developers.openai.com/api/docs/pricing)
+
+Haiku and Luna match listed short-prompt rates, but their thresholds differ. The 150K-input/10K-output example in the main guide is normalized arithmetic, not an empirical quality or cost benchmark. No head-to-head quality winner is established here. [Comparison](Empirical-Tokenomics-and-Model-Routing-2026.md#1c-haiku-55-vs-gpt-6-luna)
 
 ---
 
