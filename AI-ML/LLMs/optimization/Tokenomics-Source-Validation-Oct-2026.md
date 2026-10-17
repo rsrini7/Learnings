@@ -210,6 +210,14 @@ Verified `gpt-6-luna`: 1.05M context, 128K output; Standard input/output/cache-r
 
 Haiku and Luna match listed short-prompt rates, but their thresholds differ. The 150K-input/10K-output example in the main guide is normalized arithmetic, not an empirical quality or cost benchmark. No head-to-head quality winner is established here. [Comparison](Empirical-Tokenomics-and-Model-Routing-2026.md#1c-haiku-55-vs-gpt-6-luna)
 
+## J. Invoice accounting follow-up — October 17
+
+Video access for [Your AI Bill Is a Design Bug](https://www.youtube.com/watch?v=PJRbHPVPwI0): creator description and all listed chapters reviewed; full transcript inaccessible. Fictional demo prices/charts are not benchmarks. Exact closing “three principles” and detailed narration remain unverified; the invoice note covers the published themes and independently sourced controls.
+
+[The AI Coding Invoice](AI-Coding-Invoice-Beyond-Input-and-Output-2026.md) separates token buckets, repeat model requests, rate modifiers, and actual service/infrastructure charges. Reasoning and generated tool arguments belong to output where reported that way; tool results become input. Workers/retries/compaction are not universal extra tariffs. Do not double-count cache writes, thinking, or included subscription usage. [OpenAI reasoning](https://developers.openai.com/api/docs/guides/reasoning) · [Anthropic tool pricing](https://platform.claude.com/docs/en/about-claude/pricing)
+
+Copilot cloud-agent/review infrastructure can consume Actions minutes; cloud sandboxes have separate compute/memory/storage meters. Session estimates and raw telemetry are diagnostic, not automatically final invoices. [Cloud agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent) · [Sandbox billing](https://docs.github.com/en/billing/concepts/product-billing/cloud-and-local-sandboxes)
+
 ---
 
 **Related:**

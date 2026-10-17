@@ -135,6 +135,7 @@ Learnings/
 - [inside a neuron](AI-ML/LLMs/attention/inside-a-neuron.md)
 
 #### ⚡ Optimization & Cost
+- [AI Coding Invoice Beyond Input and Output 2026](AI-ML/LLMs/optimization/AI-Coding-Invoice-Beyond-Input-and-Output-2026.md)
 - [Context Windows Compaction and Cache Breaks 2026](AI-ML/LLMs/optimization/Context-Windows-Compaction-and-Cache-Breaks-2026.md)
 - [Empirical Tokenomics and Model Routing 2026](AI-ML/LLMs/optimization/Empirical-Tokenomics-and-Model-Routing-2026.md)
 - [GenAI cost Optimization](AI-ML/LLMs/optimization/GenAI-cost-Optimization.md)

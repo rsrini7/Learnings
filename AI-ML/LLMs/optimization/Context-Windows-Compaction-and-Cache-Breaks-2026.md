@@ -95,6 +95,8 @@ A cost illustration: 120K history versus a 20K handoff saves 100K input tokens o
 
 As a decision rule, warm only when **expected avoided cold-resume cost exceeds all refresh costs**. Include the chance you will not return, the break length, cached-prefix size, and whether the refresh actually hits. A saved handoff remains useful when warming stops or fails.
 
+For the wider cost picture, see [The AI Coding Invoice](AI-Coding-Invoice-Beyond-Input-and-Output-2026.md): compaction and heartbeats add inference, while storage/runtime may have separate meters.
+
 **Further finding:** automatic compaction is a capacity guard; a handoff is a task boundary; persistent notes are an external memory aid. Use each for its purpose. Re-read authoritative code and rerun the relevant checks after any summary rather than treating it as a lossless transcript.
 
 ---

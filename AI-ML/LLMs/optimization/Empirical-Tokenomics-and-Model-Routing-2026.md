@@ -200,6 +200,8 @@ Delegate noisy research only when isolation is useful; subagents add their own b
 
 Compare representative tasks using the same acceptance checks. Record model and effort, uncached/cached input, output and billed reasoning tokens where available, retries, tokens/spend attributable to fixes or reverts, elapsed time, review time, and defects found. Avoid counting reasoning tokens twice if the provider already includes them in output totals. Keep task complexity comparable; repeat before generalizing.
 
+**Read the whole invoice:** input contains more than your prompt—retained history, tool results, instructions, and loaded schemas also count. Thinking and tool-call arguments are generated tokens; cache reads/writes are distinct input billing categories where applicable. Workers, retries, and compaction add requests, while hosted tools, storage, containers, and CI can add separate fees. Avoid double-counting thinking or included credits. See [The AI Coding Invoice](AI-Coding-Invoice-Beyond-Input-and-Output-2026.md) for a presentation-ready breakdown, worked example, video validation, and audience questions.
+
 Run three focused Claude comparisons, holding task scope and acceptance checks constant:
 
 | Stages | Comparison | Primary metric |
@@ -235,5 +237,5 @@ Collected video and community claims were checked on October 11, 2026. See the [
 - [Context Windows, Compaction, and Cache Breaks](Context-Windows-Compaction-and-Cache-Breaks-2026.md) — Smaller working budgets, handoffs, and OMP configuration trade-offs.
 - [Tokenomics Source Validation](Tokenomics-Source-Validation-Oct-2026.md) — Detailed evidence and qualifications behind the collected tips.
 - [GenAI Cost Optimization](GenAI-cost-Optimization.md) — Broader practices for reducing inference and infrastructure spend.
-- [AI Token Optimization Tools](ai-token-optimization-tools.md) — Tools for reducing retrieval, context, and terminal output.
+- [The AI Coding Invoice](AI-Coding-Invoice-Beyond-Input-and-Output-2026.md) — Token buckets, request multipliers, separate fees, and presentation questions.
 - [Headroom & RTK: Real-World Feedback](Headroom-RTK-Real-World-Feedback-2026.md) — Cache and correctness risks that make end-to-end measurement necessary.
