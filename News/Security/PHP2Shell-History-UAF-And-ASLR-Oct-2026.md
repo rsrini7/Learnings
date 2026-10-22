@@ -8,7 +8,7 @@
 
 | Term | Simple meaning |
 |---|---|
-| Heap | Memory allocated while the program runs. |
+| Request heap | Memory managed by PHP's Zend Memory Manager (`ZendMM`), normally through `emalloc()` / `efree()`. |
 | Pointer | An address pointing to an object in memory. |
 | Dangling pointer | The address remains after its object has been freed. |
 | Use-after-free (UAF) | PHP uses that address as though the old object still exists. |
@@ -46,12 +46,14 @@ Sources: [Calif's research history](https://calif.io/php2shell/), [PHP Foundatio
 
 Simplified session path: **worker survives and handles both requests**. [Calif's lifecycle analysis](https://calif.io/php2shell/).
 
+**Why does the worker survive “out of memory”?** In the vulnerable path, `memory_limit` is PHP's software ceiling, not the Linux OOM killer. A `zend_bailout()` / `longjmp()` jumps to an error handler, bypassing intervening cleanup. With mod_php, request shutdown still runs and the worker can survive. [PHP OOM advisory](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w), [Calif's startup/shutdown analysis](https://calif.io/php2shell/).
+
 ```mermaid
 sequenceDiagram
     autonumber
     participant C as HTTP client
     participant W as Same PHP worker
-    participant H as Request heap
+    participant H as ZendMM request heap
     C->>W: Request 1: multipart upload
     W->>H: Allocate session-related state
     Note over W,H: Worker global points to request memory
@@ -65,6 +67,8 @@ sequenceDiagram
 ```
 
 Upload progress can run **before the script**, without `session_start()`. [PHP lifecycle details](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp), [upload-progress manual](https://www.php.net/manual/en/session.upload-progress.php).
+
+**Allocator detail:** request allocations use ZendMM; persistent allocations such as `pemalloc(size, 1)` use the system allocator. Recycled storage can hold different data, making allocation placement another exploitation hurdle. “Freed” does not necessarily mean “unmapped”; neither page retention nor reliable reuse is guaranteed. [Zend Memory Manager](https://www.phpinternalsbook.com/php7/memory_management/zend_memory_manager.html).
 
 ### The missing distinction: leak ≠ corruption ≠ shell
 
@@ -80,8 +84,9 @@ Variants can be combined; **both CVEs are not prerequisites for every exploit**.
 
 ```mermaid
 flowchart TD
-    A["Reachable memory bug"] --> B["Can influence reused memory"]
-    B --> C{"Useful target addresses known?"}
+    A["Reachable memory bug"] --> B["Influence new allocations"]
+    B --> G["Heap grooming: arrange reuse<br/>of the stale object's storage"]
+    G --> C{"Useful target addresses known?"}
     C -->|No| D["Blind address-dependent attempt<br/>often fails or crashes worker"]
     C -->|Yes| E["Combine addresses with corruption<br/>and a viable execution path"]
     E --> F["Possible RCE as worker user"]
@@ -106,23 +111,34 @@ Sources: [Linux ASLR](https://docs.kernel.org/admin-guide/sysctl/kernel.html#ran
 | Question | Answer as of 22 Oct 2026 |
 |---|---|
 | Only Apache? | No. PHP lists FPM, mod_php, CGI, FrankenPHP and LiteSpeed; exploit paths differ. |
-| Why does mod_php matter? | Demonstrated attacks can run before application code. FPM terminates workers on failed startup, blocking that exact sequence; application-dependent paths remain. |
 | First fixed upstream versions? | **8.2.35 · 8.3.36 · 8.4.27 · 8.5.12**. |
 | PHP 8.1 and older? | Upstream EOL. Minimal source backports cover **7.4, 8.0, 8.1**; vendor/LTS packages may also contain fixes. This does not promise patches for every 5.x/7.x branch. |
 | What changed internally? | OOM patch replaces unsafe immediate bailout with soft OOM at a VM safe point / hard process exit. Stale-state patch resets request-owned state. |
 | `display_errors=Off`? | Does **not** fix stale state or guarantee prevention of leaks/exploitation. A crash is an availability failure, not harmless proof of protection. |
 | Disable upload progress? | Partial mitigation for confirmed session paths; other variants remain. Apply before request parsing and restart workers. |
+| FPM `pm.max_requests=1`? | Recycles each child after one request, breaking the demonstrated same-worker, cross-request sequence. Temporary containment with process-startup overhead; it does **not** fix OOM corruption or replace patching. |
 | Complete remedy? | Install the upstream or vendor-fixed package and restart every PHP worker. WAF/ASLR/configuration changes are additional layers. |
 
 Sources: [PHP release and remediation notice](https://www.php.net/archive/2026.php#2026-10-21-1), [OOM patch design](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w), [state-reset guidance](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp), [Ubuntu vendor backports](https://ubuntu.com/blog/php2shell-vulnerability-fixes-available).
 
+### Why the worker architecture matters
+
+| Runtime | Failed startup / later requests |
+|---|---|
+| Apache mod_php | PHP runs inside the Apache worker. Request shutdown can leave the process alive after a pre-script failure; a later request can consume stale state. |
+| PHP-FPM | Failed request startup exits the child, blocking that exact sequence. Fatal errors **after successful startup** can leave a reusable worker; application-dependent paths remain. A `500` alone does not identify which case occurred. |
+| FrankenPHP | PHP's OOM advisory identifies unconditional shutdown and likely application-independent susceptibility; it does not establish identical behavior for every mode. |
+
+Sources: [Calif's mod_php/FPM comparison](https://calif.io/php2shell/), [PHP OOM susceptibility analysis](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w), [FPM worker recycling](https://www.php.net/manual/en/install.fpm.configuration.php#pm.max-requests). Both requests must reach the same worker; a persistent client connection is not a universal guarantee.
+
 ## 6. Video context
 
-Starting points: [This PHP vulnerability is a big deal](https://www.youtube.com/watch?v=cBD1AgkM1VQ) and [LiveOverflow: php2shell is crazy!](https://www.youtube.com/watch?v=7CiZmq2llDg). Transcripts were unavailable for independent checking. Discovery credit follows the primary reports. The quoted “48%” estimate is omitted because its date and denominator were unverified.
+Starting points: [This PHP vulnerability is a big deal](https://www.youtube.com/watch?v=cBD1AgkM1VQ) and [LiveOverflow: php2shell is crazy!](https://www.youtube.com/watch?v=7CiZmq2llDg).
 
 ---
 
 **Related:**
+- [eMudhra Weak CA Keys](EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md) — Compare a broken security primitive with the extra conditions required for real-world exploitation.
 - [MongoBleed](MongoBleed-Dec2025.md) — Compare unauthenticated memory disclosure with the leak stage here.
 - [Node.js Async Hooks DoS](Node.js-Async-Hooks-DoS-Vulnerability.md) — Compare runtime error handling that turns a request failure into a process failure.
 - [React2Shell](10.0_CVE_React2Shell_Whitepaper.md) — Compare another widely deployed, unauthenticated RCE surface.
