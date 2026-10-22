@@ -1987,3 +1987,4 @@ The PEFT and compression landscape continues evolving rapidly. Stay updated with
 **Related:**
 - [Auto-Regression](../LLMs/training/Auto-Regression.md) — Training-time autoregressive objective that PEFT methods adapt rather than retrain from scratch.
 - [LLM-Inference-Engines](../LLMs/architecture/LLM-Inference-Engines.md) — Inference engines like vLLM referenced as deployment targets for compressed, PEFT-tuned models.
+- [AI Numerical Formats and Quantization](../LLMs/optimization/AI-Numerical-Formats-And-Quantization-Oct-2026.md) — Distinguishes NF4 and QLoRA from INT4, FP4 and deployment quantization methods.

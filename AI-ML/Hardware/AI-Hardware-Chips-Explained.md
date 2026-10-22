@@ -285,3 +285,4 @@ As AI workloads become larger, more predictable, and more expensive to run, comp
 **Related:**
 - [LLM-Inference](../LLMs/architecture/LLM-Inference.md) — Inference workload characteristics that determine whether GPUs, TPUs, or NPUs are the right accelerator.
 - [AI-and-the-Barbell-Economy](../LLMs/economy/AI-and-the-Barbell-Economy.md) — Economic dynamics of specialized AI silicon and the concentration of compute among a few vendors.
+- [AI Numerical Formats and Quantization](../LLMs/optimization/AI-Numerical-Formats-And-Quantization-Oct-2026.md) — Connects BF16, FP8, INT4 and microscaled FP4 to hardware support and memory requirements.
