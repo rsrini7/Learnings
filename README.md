@@ -418,6 +418,7 @@ Learnings/
 - [MongoBleed Dec2025](News/Security/MongoBleed-Dec2025.md)
 - [Node.js Async Hooks DoS Vulnerability](News/Security/Node.js-Async-Hooks-DoS-Vulnerability.md)
 - [Notepad++ Targetted Attach](News/Security/Notepad%2B%2B-Targetted-Attach.md)
+- [OpenCode Console API Key Breach And Distillation Oct 2026](News/Security/OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md)
 - [PHP2Shell History UAF And ASLR Oct 2026](News/Security/PHP2Shell-History-UAF-And-ASLR-Oct-2026.md)
 - [Security Vulnerabilities in Wireless Devices and Apps](News/Security/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
 

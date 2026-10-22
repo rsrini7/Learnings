@@ -1919,3 +1919,4 @@ agents:
 - [Securing-OpenClaw-Setup](Securing-OpenClaw-Setup.md) — Hands-on VPS hardening guide (Tailscale, firewall, loopback binding, sandboxed accounts) that implements the mitigations recommended here.
 - [claw-ecosystem](claw-ecosystem.md) — Isolation Boundary Hierarchy ranks OpenClaw at Level 1 (application-only controls) versus NanoClaw's container and IronClaw's WASM enforcement.
 - [OpenClaw-Whitepaper](OpenClaw-Whitepaper.md) — Higher-level narrative tying these vulnerabilities to OpenClaw's architectural philosophy of broad access with application-level safeguards.
+- [OpenCode Console API-Key Breach](../../../News/Security/OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md) — Hosted credential exposure, provider-side containment and controlled defensive agents.
