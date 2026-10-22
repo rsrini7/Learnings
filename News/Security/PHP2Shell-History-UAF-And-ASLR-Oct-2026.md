@@ -6,6 +6,20 @@
 
 ## 1. What actually broke?
 
+### What does “70% of the internet” mean?
+
+**69.3% = PHP-using websites ÷ websites with an identified server-side language**, in W3Techs' survey dated **22 Oct 2026**. Think “about 7 in 10 identifiable website stacks.” [W3Techs PHP usage](https://w3techs.com/technologies/details/pl-php).
+
+| It measures | It does not measure |
+|---|---|
+| Website technology adoption in the survey | Share of internet traffic, users, IPs or physical servers |
+| PHP detected somewhere on a site | Proof that every page uses PHP or that the deployment is exploitable |
+| Sites grouped using W3Techs' counting rules | Each hosted blog, subdomain or application as a separate site |
+
+W3Techs surveys over 20 million relevant sites and groups subdomains: its example treats WordPress.com subdomains as one website. **Adoption ≠ vulnerable deployments ≠ successful compromises.** [Survey methodology](https://w3techs.com/technologies).
+
+### Essential terms
+
 | Term | Simple meaning |
 |---|---|
 | Request heap | Memory managed by PHP's Zend Memory Manager (`ZendMM`), normally through `emalloc()` / `efree()`. |
@@ -121,19 +135,73 @@ Sources: [Linux ASLR](https://docs.kernel.org/admin-guide/sysctl/kernel.html#ran
 
 Sources: [PHP release and remediation notice](https://www.php.net/archive/2026.php#2026-10-21-1), [OOM patch design](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w), [state-reset guidance](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp), [Ubuntu vendor backports](https://ubuntu.com/blog/php2shell-vulnerability-fixes-available).
 
-### Why the worker architecture matters
+### “PHP engines”: one core, different ways to run it
 
-| Runtime | Failed startup / later requests |
+**Zend Engine** executes PHP code. A **SAPI** (Server Application Programming Interface) connects PHP to its host environment. FPM manages FastCGI workers; `mod_php` embeds PHP in Apache. These deployment choices change request handling and worker lifetime.
+
+[PHP's SAPI definitions](https://www.php.net/manual/en/function.php-sapi-name.php). Also, “PHP 8” alone does not mean supported: **8.0 and 8.1 are EOL** as of this note's date.
+
+| Deployment | Simplified request path | Why it matters here |
+|---|---|---|
+| Apache + `mod_php` | Browser → Apache worker containing PHP | Highest risk in PHP's notice. Pre-script failure can leave the worker alive with stale state. |
+| PHP-FPM | Browser → Nginx/Apache → FastCGI → PHP worker pool | Failed startup exits the child. Fatal errors **after successful startup** can leave a reusable worker; application-dependent paths remain. |
+| PHP-CGI | Browser → web server → PHP CGI handler | Also in the advisory's web-serving scope. Actual process reuse depends on how it is deployed. |
+| FrankenPHP | Browser → Caddy-based app server with embedded PHP | Shares PHP core; its classic/worker modes differ. OOM advisory identifies likely application-independent susceptibility. |
+| LiteSpeed / LSAPI | Browser → LiteSpeed → PHP via LiteSpeed API | Shares PHP core; OOM advisory describes an FPM-like lifecycle, with application-specific risk. |
+| Standalone CLI / cron | Shell or scheduler → PHP script | Not directly exposed through the demonstrated HTTP path merely by running PHP. This is not a claim that CLI builds lack the affected core code. |
+
+Sources: [PHP web-serving scope](https://www.php.net/archive/2026.php#2026-10-21-1), [FPM manual](https://www.php.net/manual/en/install.fpm.php), [FrankenPHP documentation](https://frankenphp.dev/docs/), [LiteSpeed integration](https://www.php.net/manual/en/install.unix.litespeed.php), [Calif's lifecycle comparison](https://calif.io/php2shell/), [OOM susceptibility analysis](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w). Paths are simplified; a `500` or persistent client connection does not establish worker survival or reuse.
+
+**Applications sit above this layer:** WordPress, Drupal, Joomla, Magento and custom frameworks use PHP; they are not PHP engines. Updating an application alone does not replace vulnerable PHP core. Wiz's RCE demonstrations against WordPress, Drupal and Joomla show exploit chains in test deployments, not proof those public services were breached. [Wiz's research](https://www.wiz.io/blog/php2shell-php-rce).
+
+## 6. “Patched” does not always mean the running website is fixed
+
+> **Deployment gap:** the fixed package may be on disk while old workers or containers still serve traffic. This is different from a demonstrated bypass of the PHP fix.
+
+```mermaid
+flowchart TD
+    A["Find every PHP deployment"] --> B["Install a fixed package<br/>or rebuild the container image"]
+    B --> C["Restart workers / redeploy containers"]
+    C --> D["Verify every live web runtime<br/>and vendor patch status"]
+    D --> E["Check for earlier compromise<br/>and continue monitoring"]
+```
+
+Practical verification flow, based on [Google's deployment guidance](https://cloud.google.com/blog/products/identity-security/responding-to-core-php-vulnerabilities-cve-2026-109618-cve-2026-109619) and [NCSC's response guidance](https://www.ncsc.gov.uk/news/critical-security-issue-affecting-php).
+
+| Blind spot | Simple action / evidence |
 |---|---|
-| Apache mod_php | PHP runs inside the Apache worker. Request shutdown can leave the process alive after a pre-script failure; a later request can consume stale state. |
-| PHP-FPM | Failed request startup exits the child, blocking that exact sequence. Fatal errors **after successful startup** can leave a reusable worker; application-dependent paths remain. A `500` alone does not identify which case occurred. |
-| FrankenPHP | PHP's OOM advisory identifies unconditional shutdown and likely application-independent susceptibility; it does not establish identical behavior for every mode. |
+| Forgotten PHP copies | Inventory every site, worker pool, container and product that bundles PHP; assign an owner. |
+| `php -v` looks fixed | It checks the command-line installation. Verify the **web-serving runtime**, its executable/package and every active pool or replica through internal diagnostics. |
+| Package updated; workers still old | Replace/restart all affected workers. Confirm the replacement processes use the fixed build. |
+| Host patched; container unchanged | Rebuild with fixed PHP, redeploy and confirm all running containers use the new image. Updating only the VM is insufficient. |
+| Version number still looks old | Check the vendor's **package revision and CVE status**. Backports can fix an older upstream version: Ubuntu lists `8.3.6-0ubuntu0.24.04.13` as fixed. |
+| “Managed cloud handles it” | Verify the service and update mode. Google says supported App Engine Standard runtimes update automatically; custom Cloud Run images and GKE pods need updated images and redeployment. |
+| WAF or hidden version header | Neither proves remediation. WAF rules cover known patterns; protect the origin from direct bypass and still patch PHP. |
 
-Sources: [Calif's mod_php/FPM comparison](https://calif.io/php2shell/), [PHP OOM susceptibility analysis](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w), [FPM worker recycling](https://www.php.net/manual/en/install.fpm.configuration.php#pm.max-requests). Both requests must reach the same worker; a persistent client connection is not a universal guarantee.
+Sources: [Google Cloud bulletin GCP-2026-070](https://docs.cloud.google.com/support/bulletins#GCP-2026-070), [Google's service-by-service instructions](https://cloud.google.com/blog/products/identity-security/responding-to-core-php-vulnerabilities-cve-2026-109618-cve-2026-109619), [Ubuntu's fixed package revisions](https://ubuntu.com/blog/php2shell-vulnerability-fixes-available), [VirusTotal's origin/WAF guidance](https://blog.virustotal.com/2026/10/sizing-php-exposure-window-for-cve-2026.html), [Cloudflare's protections and limits](https://blog.cloudflare.com/php-vulnerabilities-waf-protection). Runtime verification steps are operational checks derived from these deployment requirements.
 
-## 6. Video context
+### Exposure is not a count of successful attacks
 
-Starting points: [This PHP vulnerability is a big deal](https://www.youtube.com/watch?v=cBD1AgkM1VQ) and [LiveOverflow: php2shell is crazy!](https://www.youtube.com/watch?v=7CiZmq2llDg).
+| Evidence, dated 21 Oct 2026 | What it establishes |
+|---|---|
+| VirusTotal: ~5.1M PHP-fingerprinted IPs; ~3.8M with at least one open port; ~1.1M advertising a version | A measured footprint, **not 5.1M confirmed vulnerable servers**. The open port need not be the PHP port. |
+| VirusTotal: ~758K advertising EOL PHP 5.4–8.1 | A legacy-patching problem within the version-visible sample; not a percentage of the whole web. |
+| watchTowr reports active exploitation attempts against both CVEs | Observed attempts; this statement alone does not establish successful compromise of production websites. |
+| AWS: MadPot detected an attempt on **17 Oct**, four days before disclosure | AWS says success against real systems remains unclear. Its guidance starts investigation from at least 17 Oct. |
+
+Sources: [VirusTotal's dated scan and methodology](https://blog.virustotal.com/2026/10/sizing-php-exposure-window-for-cve-2026.html), [watchTowr's observations](https://watchtowr.com/intelligence/php-remote-code-execution-php2shell/). Other exposed services can increase impact depending on permissions and accessible secrets; PHP RCE does not automatically grant root or compromise SSH/MySQL.
+
+**Why scanner totals differ:** websites, IP addresses, ports/services and virtual hosts are different units. One IP can serve many sites; one site can use many IPs. Detection methods, dates and hidden version banners also differ. Do not average these totals or treat package-download counts as production market share. This is a measurement comparison, based on [W3Techs' methodology](https://w3techs.com/technologies) and [VirusTotal's IP-based methodology](https://blog.virustotal.com/2026/10/sizing-php-exposure-window-for-cve-2026.html).
+
+**Response window:** AWS reports new PoCs reaching its sensors within hours of disclosure and recommends patch/mitigation timelines measured in hours. That supports urgency, not a universal “working exploit for under $1” claim. [AWS's telemetry and recommendations](https://aws.amazon.com/blogs/security/amazon-threat-intelligence-identifies-php2shell-exploitation-prior-to-public-disclosure-in-madpot/).
+
+**Patching closes the flaw; it does not remove an existing backdoor.** Review web/PHP/WAF logs and unexpected files or processes; investigate suspicious findings and rotate exposed secrets where indicated. NCSC recommends monitoring internet-facing PHP and considering taking systems offline when prompt remediation is not feasible. [NCSC guidance](https://www.ncsc.gov.uk/news/critical-security-issue-affecting-php), [Google monitoring and auditing](https://cloud.google.com/blog/products/identity-security/responding-to-core-php-vulnerabilities-cve-2026-109618-cve-2026-109619).
+
+**Post-patch testing:** an open, needs-triage report describes session-data deletion in specific upload-progress cases on 8.4.27/8.5.12. This is a reported regression, not evidence of a PHP2Shell bypass. Test session/upload behavior and follow vendor fixes; avoid reverting to a vulnerable build. [PHP issue #24493, reported 21 Oct](https://github.com/php/php-src/issues/24493).
+
+## 7. Source context
+
+Based on user-shared summaries of [This PHP vulnerability is a big deal](https://www.youtube.com/watch?v=cBD1AgkM1VQ), [LiveOverflow: php2shell is crazy!](https://www.youtube.com/watch?v=7CiZmq2llDg), [Base Config: Patched PHP2Shell? You Might Still Be Vulnerable](https://www.youtube.com/watch?v=ST8bY4N6CMU), and [“70% of the Internet”? (PHP2SHELL)](https://www.youtube.com/watch?v=vN-byUxXApY), with technical, measurement and operational details cross-checked against the primary reports linked above. The first fixed 8.3 release is **8.3.36**; discovery involved Calif, OpenAI and Wiz.
 
 ---
 
