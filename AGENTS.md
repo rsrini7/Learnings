@@ -55,6 +55,61 @@ To change what appears in the README:
 
 ---
 
+## 📝 Default structure for daily updates and deep reviews
+
+For every new daily learning note, news update or deep review, use the structure
+and readable depth demonstrated by these references unless the user requests
+another format:
+- [eMudhra: Weak CA Keys and PKI Trust](News/Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)
+- [PHP2Shell: History, UAF and ASLR](News/Security/PHP2Shell-History-UAF-And-ASLR-Oct-2026.md)
+
+Read the relevant reference before drafting. Apply this pattern across topics;
+adapt section names and omit sections that do not help explain the subject.
+
+### Article structure
+
+1. **Title and date:** a descriptive title, then `Daily learning · <date>` with
+   verification status or an investigation qualifier where relevant.
+2. **Core idea:** a short blockquote explaining what happened and why it matters
+   in one or two plain-language sentences.
+3. **Foundations:** introduce the system and essential terms before the detailed
+   mechanism. Use a compact term/meaning table when readers need one.
+4. **Mechanism:** explain what changed or broke, step by step. Distinguish the
+   underlying technology from its implementation, workflow or operational use.
+5. **Impact and limits:** explain capabilities, prerequisites and practical
+   consequences. Use a claim/correction or question/answer table to resolve
+   common misconceptions. Separate demonstrated results from possible outcomes.
+6. **Timeline and current state:** include meaningful dates, fixes and rollout
+   status when they clarify the story. Label time zones and distinguish announced,
+   scheduled and deployed changes as of the note's date.
+7. **Practical response and lessons:** give concrete actions and explain how to
+   verify the result. For non-incident topics, cover applications and trade-offs.
+8. **Source context and Related:** briefly identify supplied videos or articles
+   and any verification limits, then end with the required Related links below.
+
+### Editorial and verification standard
+
+- Keep the writing simplified, concise and readable while preserving technical
+  depth. Define jargon at first use; keep paragraphs short and sections numbered.
+  Scale length to the topic rather than filling every section.
+- Use Mermaid diagrams when a trust chain, lifecycle, architecture, sequence or
+  decision path becomes clearer visually. Label simplifications and distinguish
+  observed behavior from conceptual examples. Use tables for genuine comparisons.
+- Verify material claims against current primary sources and cite them inline
+  near the relevant explanation. Trace video summaries and pasted notes back to
+  disclosures, official documentation, standards or first-person research.
+- Attribute preliminary root causes and company statements. State uncertainties,
+  scope evidence of non-exploitation to the observer, and distinguish a local
+  demonstration from compromise of a real service. Claim verification only for
+  material actually checked, including transcripts.
+- Keep unrelated concurrent incidents separate. Include business context only
+  when it helps interpret the technical impact. Explain meaningful limitations
+  without sensationalism or unsupported assurances.
+- Before delivery, check factual consistency, source URLs, dates, diagram labels
+  and internal links; complete the repository validation and commit rules below.
+
+---
+
 ## 🔗 REQUIRED: Internal `**Related:**` cross-references (manual)
 
 > There is **NO script** for this. It is authored manually (by a human or LLM)
