@@ -150,7 +150,7 @@ eMudhra says its infrastructure and data were not breached, Indian DSC/eSign ser
 
 ### Video context
 
-Starting points supplied in the source notes: [SecureTechIn](https://www.youtube.com/watch?v=LqOO18g1kXs), [CodeDeepAI](https://www.youtube.com/watch?v=u1ocogkbo-s), [Harshit Yadav](https://www.youtube.com/watch?v=76S3XI0oAQU), [CNBC-TV18](https://www.youtube.com/watch?v=nZ0EB81s1dA) and [NDTV Profit](https://www.youtube.com/watch?v=NcNpBjf3QOc). This review checks the pasted summary against primary reports; it does not claim independent transcript verification. The SBI report is a separate incident, with no causal connection established by the sources reviewed here.
+This review builds on the user-shared summaries of [SecureTechIn](https://www.youtube.com/watch?v=LqOO18g1kXs), [CodeDeepAI](https://www.youtube.com/watch?v=u1ocogkbo-s), [Harshit Yadav](https://www.youtube.com/watch?v=76S3XI0oAQU), [CNBC-TV18](https://www.youtube.com/watch?v=nZ0EB81s1dA) and [NDTV Profit](https://www.youtube.com/watch?v=NcNpBjf3QOc), with technical details cross-checked against primary disclosures. The SBI report is a separate incident, with no causal connection established by the sources reviewed here.
 
 ---
 

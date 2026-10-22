@@ -84,8 +84,9 @@ adapt section names and omit sections that do not help explain the subject.
    scheduled and deployed changes as of the note's date.
 7. **Practical response and lessons:** give concrete actions and explain how to
    verify the result. For non-incident topics, cover applications and trade-offs.
-8. **Source context and Related:** briefly identify supplied videos or articles
-   and any verification limits, then end with the required Related links below.
+8. **Source context and Related:** briefly identify the supplied summaries, videos
+   or articles and supporting primary reports, then end with the required Related
+   links below.
 
 ### Editorial and verification standard
 
@@ -100,8 +101,11 @@ adapt section names and omit sections that do not help explain the subject.
   disclosures, official documentation, standards or first-person research.
 - Attribute preliminary root causes and company statements. State uncertainties,
   scope evidence of non-exploitation to the observer, and distinguish a local
-  demonstration from compromise of a real service. Claim verification only for
-  material actually checked, including transcripts.
+  demonstration from compromise of a real service. Describe provenance positively
+  and accurately: for example, "Based on user-shared video summaries, with technical
+  details cross-checked against primary disclosures." Reserve verification claims
+  for material actually checked; mention access limitations only when they affect
+  a material conclusion or the user asks about verification.
 - Keep unrelated concurrent incidents separate. Include business context only
   when it helps interpret the technical impact. Explain meaningful limitations
   without sensationalism or unsupported assurances.
