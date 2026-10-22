@@ -287,7 +287,7 @@ Learnings/
 2. **Use `--dry-run` first** for `fixtoc` to preview changes
 3. **Set GITHUB_TOKEN** for higher API rate limits
 4. **Regenerate README** after adding new files
-5. **Commit after changes** to track modifications
+5. **Follow the root [commit approval rule](../AGENTS.md#commit-approval)**: leave changes uncommitted for user review; commit only after explicit approval.
 
 ---
 

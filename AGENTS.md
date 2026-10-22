@@ -124,6 +124,13 @@ GitHub repo management, and common workflows).
 
 ---
 
+## Commit approval
+
+After creating or editing files, complete validation and leave the changes
+uncommitted for user review. **Do not commit without the user's explicit approval
+after they have reviewed the changes.** Creating an `.md` file does not authorize
+a commit.
+
 ## ⚠️ Quick Checklist
 
 - [ ] Files named in **Title-Case-Year** format (e.g. `Sarvam-AI-Deep-Review-2026.md`)
@@ -138,4 +145,4 @@ GitHub repo management, and common workflows).
 - [ ] Moved/renamed file: own Related links fixed + old references updated
 - [ ] `python3 Scripts/generate-readme.py` run (never hand-edit `README.md`)
 - [ ] `python3 Scripts/github-repos.py links` clean
-- [ ] Commit changes
+- [ ] Leave changes uncommitted for user review; commit only after explicit approval
