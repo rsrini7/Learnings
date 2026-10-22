@@ -204,5 +204,6 @@ All three cases demonstrate that security issues often arise from implementation
 - Youtube Link: https://www.youtube.com/watch?v=Ux07J-wS2VA
 
 **Related:**
+- [eMudhra Weak CA Keys](EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md) — Compare certificate validation failures with weak keys in a trusted issuing authority.
 - [Notepad++-Targetted-Attach](Notepad++-Targetted-Attach.md) — Companion client-software security write-ups cataloguing vendor-update and pairing weaknesses.
 - [MongoBleed-Dec2025](MongoBleed-Dec2025.md) — Sister late-2025 CVE write-up documenting an unauthenticated, large-scale exposure flaw.

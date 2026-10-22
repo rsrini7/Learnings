@@ -412,6 +412,7 @@ Learnings/
 ### 🛡️ Security & Vulnerabilities
 - [10.0 CVE React2Shell Whitepaper](News/Security/10.0_CVE_React2Shell_Whitepaper.md)
 - [10.0 CVE n8n vulnerability](News/Security/10.0_CVE_n8n-vulnerability.md)
+- [EMudhra Weak CA Keys And PKI Trust Oct 2026](News/Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)
 - [Largest WhatsApp Data Leak in History](News/Security/Largest-WhatsApp-Data-Leak-in-History.md)
 - [MongoBleed Dec2025](News/Security/MongoBleed-Dec2025.md)
 - [Node.js Async Hooks DoS Vulnerability](News/Security/Node.js-Async-Hooks-DoS-Vulnerability.md)
