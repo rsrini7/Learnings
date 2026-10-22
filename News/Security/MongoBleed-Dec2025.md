@@ -201,5 +201,6 @@ Stay updated on security news. If you run MongoDB, check your version today. Thi
 [Ref3] (https://www.youtube.com/watch?v=9Wg6tiaar9M)
 
 **Related:**
+- [PHP2Shell: History, UAF and ASLR](PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — Compare memory disclosure with a leak-and-corruption chain that enables RCE.
 - [Largest-WhatsApp-Data-Leak-in-History](Largest-WhatsApp-Data-Leak-in-History.md) — Both are unauthenticated, internet-scale data exposure events disclosed in late 2025.
 - [Node.js-Async-Hooks-DoS-Vulnerability](Node.js-Async-Hooks-DoS-Vulnerability.md) — Sister infrastructure-layer CVE write-up for a critical runtime flaw from the same period.
