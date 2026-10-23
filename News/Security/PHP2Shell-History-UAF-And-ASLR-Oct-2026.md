@@ -54,6 +54,7 @@ Times below are **UTC**; October dates are **2026**.
 | Oct 20, 19:30 / ~20:00 | PHP issued advance warning; Calif mistakenly published a demo video shortly afterward. | Limited technical details then spread. |
 | Oct 21, 07:41 | Patched Chainguard images appeared early, per the Foundation. | Fix could be studied before coordinated release. |
 | Oct 21, 14:00 scheduled | Coordinated release day; originally Oct 22. | Accelerated by one day; scheduled time **19:30 IST**. |
+| Oct 23 | PHP announces a narrow session-handler follow-up, CVE-2026-115560. | Further configuration guidance while awaiting a regular bugfix release; see Section 6. |
 
 Sources: [Calif's research history](https://calif.io/php2shell/), [PHP Foundation's disclosure account](https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/), [Wiz's independent timeline](https://www.wiz.io/blog/php2shell-php-rce).
 
@@ -155,7 +156,7 @@ Sources: [Linux ASLR](https://docs.kernel.org/admin-guide/sysctl/kernel.html#ran
 
 ## 5. Deployment and fixes
 
-| Question | Answer as of 22 Oct 2026 |
+| Question | Answer as of 23 Oct 2026 |
 |---|---|
 | Only Apache? | No. PHP lists FPM, mod_php, CGI, FrankenPHP and LiteSpeed; exploit paths differ. |
 | First fixed upstream versions? | **8.2.35 · 8.3.36 · 8.4.27 · 8.5.12**. |
@@ -164,7 +165,7 @@ Sources: [Linux ASLR](https://docs.kernel.org/admin-guide/sysctl/kernel.html#ran
 | `display_errors=Off`? | Does **not** fix stale state or guarantee prevention of leaks/exploitation. A crash is an availability failure, not harmless proof of protection. |
 | Disable upload progress? | Partial mitigation for confirmed session paths; other variants remain. Apply before request parsing and restart workers. |
 | FPM `pm.max_requests=1`? | Recycles each child after one request, breaking the demonstrated same-worker, cross-request sequence. Temporary containment with process-startup overhead; it does **not** fix OOM corruption or replace patching. |
-| Complete remedy? | Install the upstream or vendor-fixed package and restart every PHP worker. WAF/ASLR/configuration changes are additional layers. |
+| Original two CVEs? | Install the upstream or vendor-fixed package and restart every PHP worker. Also check the **23 Oct follow-up guidance** below. |
 
 Sources: [PHP release and remediation notice](https://www.php.net/archive/2026.php#2026-10-21-1), [OOM patch design](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w), [state-reset guidance](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp), [Ubuntu vendor backports](https://ubuntu.com/blog/php2shell-vulnerability-fixes-available).
 
@@ -232,15 +233,29 @@ Sources: [VirusTotal's dated scan and methodology](https://blog.virustotal.com/2
 
 ### “The patch is incomplete”: what the evidence establishes
 
-As checked **23 Oct 2026**, PHP's advisories still identify **8.2.35 / 8.3.36 / 8.4.27 / 8.5.12** as patched releases. A crash in a patched build establishes a bug in the tested code path; confirming a remote bypass also requires showing how an unauthenticated request reaches it and defeats the security fix.
+PHP's original advisories identify **8.2.35 / 8.3.36 / 8.4.27 / 8.5.12** as patched releases for the original two CVEs. A local-script crash alone does not establish an unauthenticated HTTP bypass. A separate, official **23 Oct follow-up** changes the advice for a specific configuration; see below.
 
 | Evidence | Interpretation |
 |---|---|
-| SimpleXML garbage-collection double-free on 8.4.27/8.5.12; issue labelled **Verified** | A real regression report attributed to another GC fix. It does not by itself demonstrate the original pre-auth HTTP chain still works. [#24488](https://github.com/php/php-src/issues/24488) |
+| SimpleXML garbage-collection double-free on 8.4.27/8.5.12; **Verified**, closed 22 Oct with a source fix | Separate GC regression, not proof the original HTTP chain still works. Verify which vendor release contains the fix. [#24488](https://github.com/php/php-src/issues/24488) |
 | Unserializer UAF report; **Needs Triage** | The submitted example requires PHP code execution on the target and reads local process maps. Those prerequisites differ from unauthenticated remote HTTP access. [#24481](https://github.com/php/php-src/issues/24481) |
 | Upload-progress session-data deletion; **Needs Triage** | A reported compatibility regression, not evidence of code execution. [#24493](https://github.com/php/php-src/issues/24493) |
 
 Test affected application behavior, track vendor follow-ups and avoid reverting public services to vulnerable builds. Sources: [PHP OOM advisory](https://github.com/php/php-src/security/advisories/GHSA-w8hw-w9fx-j79w), [PHP stale-state advisory](https://github.com/php/php-src/security/advisories/GHSA-6wmf-4rv5-p3rp). Issue labels describe repository status, not independent reproduction here.
+
+### October 23 follow-up: a distinct session-handler path
+
+PHP's new notice identifies **CVE-2026-115560** under this unusual combination:
+
+| Required condition | Meaning |
+|---|---|
+| Configured `session.serialize_handler` is `php_binary` or `php_serialize` | One session format is selected in configuration. |
+| Application changes it to `php` with `ini_set()` before `session_start()` | The format is switched at runtime. |
+| Session upload progress remains enabled | Early upload handling can participate in the affected path. |
+
+PHP suggests **`session.upload_progress.enabled=0` until the next regular bugfix release**; keep it disabled if already applied. Applications that never switch the handler at runtime can keep the feature enabled, according to the notice. A full advisory is planned with the next release. [PHP informational advisory, 23 Oct](https://www.php.net/archive/2026.php#2026-10-23-1).
+
+For the claim-by-claim review of local crashes, misleading labs, real HTTP exploitation and the “easy exploit” debate, see [PHP2Shell: Exploit Debate and Evidence](PHP2Shell-Exploit-Debate-Threat-Models-And-Patch-Status-Oct-2026.md).
 
 ## 7. Research lessons: AI, fuzzing and memory safety
 
@@ -260,6 +275,8 @@ Based on user-shared summaries of [This PHP vulnerability is a big deal](https:/
 
 **23 Oct addition:** based on the supplied transcript of [the PHP2Shell explainer](https://www.youtube.com/watch?v=QRABrn606LE): [first finding / variant search, 03:34](https://www.youtube.com/watch?v=QRABrn606LE&t=214), [cat/dog UAF analogy, 06:14](https://www.youtube.com/watch?v=QRABrn606LE&t=374), [patch warning, 08:54](https://www.youtube.com/watch?v=QRABrn606LE&t=534), [AI and temporal bugs, 09:46](https://www.youtube.com/watch?v=QRABrn606LE&t=586). Primary reference: [Ryan Austin / Calif Research — php2shell](https://calif.io/php2shell/). Transcript claims are distinguished from official patch status and issue-tracker evidence above.
 
+Follow-up sources: [LiveOverflow: php2shell 24 hours later](https://www.youtube.com/watch?v=SP7y1h0laN0), supplied transcript; [Elias Taylor's exploit-complexity argument](https://eliastaylor.com/noexploit/). Their disputed claims are evaluated in the linked companion review.
+
 ---
 
 **Related:**
@@ -267,4 +284,5 @@ Based on user-shared summaries of [This PHP vulnerability is a big deal](https:/
 - [MongoBleed](MongoBleed-Dec2025.md) — Compare unauthenticated memory disclosure with the leak stage here.
 - [Node.js Async Hooks DoS](Node.js-Async-Hooks-DoS-Vulnerability.md) — Compare runtime error handling that turns a request failure into a process failure.
 - [React2Shell](10.0_CVE_React2Shell_Whitepaper.md) — Compare another widely deployed, unauthenticated RCE surface.
+- [PHP2Shell Exploit Debate](PHP2Shell-Exploit-Debate-Threat-Models-And-Patch-Status-Oct-2026.md) — Distinguish local bugs, conditional chains, remote proofs and the October 23 follow-up.
 - [PHP Migration: Static React, Java and Go](../../Engineering/Architecture/PHP-Migration-Static-React-Java-And-Go-Oct-2026.md) — Long-term migration choices that separate runtime removal from language-level memory safety.
