@@ -222,6 +222,7 @@ Learnings/
 ## ☁️ Engineering
 
 ### 🏗️ Architecture
+- [PHP Migration Static React Java And Go Oct 2026](Engineering/Architecture/PHP-Migration-Static-React-Java-And-Go-Oct-2026.md)
 - [Scaling 1M RPS C++](Engineering/Architecture/Scaling-1M-RPS-C%2B%2B.md)
 - [Scaling 1M RPS Java](Engineering/Architecture/Scaling-1M-RPS-Java.md)
 
