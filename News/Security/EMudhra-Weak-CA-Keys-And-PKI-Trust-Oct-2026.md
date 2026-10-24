@@ -112,6 +112,8 @@ Sources: [Google's response and rollout schedule](https://blog.google/security/p
 
 **Blocking a key and removing a root are different actions.** Key blocking can reject every certificate using that key, including alternate cross-signed paths. Root removal affects other legitimate chains too; it does not establish that the root's private key was recovered. Google warns operators under this root to migrate certificates before rollout. [Google's migration warning](https://blog.google/security/protecting-chrome-and-android-users-from-compromised-emudhra-intermediate-ca-certificates/).
 
+**22 October update:** eMudhra's board approved a voluntary exit from the global SSL/TLS certificate business. The company said no end-entity certificates were issued under the affected CAs, that it will provide replacement certificates through partners, and that its Indian DSC/eSign services remain separate. This is a business decision following the incident, not evidence that the weak keys were exploited. [eMudhra press release](https://emudhra.com/en/press-release/emudhra-to-exit-global-ssl-tls-certificate-business).
+
 ## 5. The gap: your browser's protection does not update your application
 
 | Layer | What must reach the running client? |
@@ -148,13 +150,10 @@ The deployment checklist above synthesizes that guidance with the [downstream re
 
 eMudhra says its infrastructure and data were not breached, Indian DSC/eSign services run separately, and global TLS represents around 1% of revenue. These are company statements; they do not reduce the authentication risk for clients trusting the weak keys. [Company filing](https://emudhra.com/investor-assets/investors/esg-profile/fy2027/statement-on-distrust-of-global-tls-intermediate-and-root-ca.pdf). [CERT-In](https://www.cert-in.org.in/s2cMainServlet?CACODE=CICA-2026-3649&pageid=PUBADV01) also distinguishes the unaffected domestic services.
 
-### Video context
-
-This review builds on the user-shared summaries of [SecureTechIn](https://www.youtube.com/watch?v=LqOO18g1kXs), [CodeDeepAI](https://www.youtube.com/watch?v=u1ocogkbo-s), [Harshit Yadav](https://www.youtube.com/watch?v=76S3XI0oAQU), [CNBC-TV18](https://www.youtube.com/watch?v=nZ0EB81s1dA) and [NDTV Profit](https://www.youtube.com/watch?v=NcNpBjf3QOc), with technical details cross-checked against primary disclosures. The SBI report is a separate incident, with no causal connection established by the sources reviewed here.
-
 ---
 
 **Related:**
 - [PHP2Shell: History, UAF and ASLR](PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — Compare a serious primitive with the additional conditions needed for exploitation.
+- [LiteLLM 1.107.0 Supply-Chain Compromise](LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md) — LiteLLM delayed a release while removing this CA from its trust store, showing the downstream operational impact.
 - [Notepad++ Targeted Attack](Notepad++-Targetted-Attach.md) — Compare software-update authenticity and failures in trusted delivery paths.
 - [Wireless Devices and Apps](Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md) — Compare certificate validation and implementation failures across client devices.

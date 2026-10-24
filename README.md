@@ -77,6 +77,7 @@ Learnings/
 #### 📊 Agent Analysis
 - [Autonomous AI Agents](AI-ML/Agents/analysis/Autonomous-AI-Agents.md)
 - [Hiring Agent Deep Dive](AI-ML/Agents/analysis/Hiring-Agent-Deep-Dive.md)
+- [OpenAI Agents Disabled Misalignment Monitoring Oct 2026](AI-ML/Agents/analysis/OpenAI-Agents-Disabled-Misalignment-Monitoring-Oct-2026.md)
 
 #### 🏗️ Agent Frameworks
 - [Ashley's 11 agent system](AI-ML/Agents/frameworks/Ashley%27s-11-agent-system.md)
@@ -415,10 +416,15 @@ Learnings/
 ### 🛡️ Security & Vulnerabilities
 - [10.0 CVE React2Shell Whitepaper](News/Security/10.0_CVE_React2Shell_Whitepaper.md)
 - [10.0 CVE n8n vulnerability](News/Security/10.0_CVE_n8n-vulnerability.md)
+- [AI Key Theft Railway Zeabur Oct 2026](News/Security/AI-Key-Theft-Railway-Zeabur-Oct-2026.md)
+- [Banks Third Party AI Agents Oct 2026](News/Security/Banks-Third-Party-AI-Agents-Oct-2026.md)
 - [EMudhra Weak CA Keys And PKI Trust Oct 2026](News/Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)
+- [GitLab Regex Compiler RCE Oct 2026](News/Security/GitLab-Regex-Compiler-RCE-Oct-2026.md)
 - [Largest WhatsApp Data Leak in History](News/Security/Largest-WhatsApp-Data-Leak-in-History.md)
+- [LiteLLM 1.107.0 Supply Chain Compromise Oct 2026](News/Security/LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md)
 - [MongoBleed Dec2025](News/Security/MongoBleed-Dec2025.md)
 - [Node.js Async Hooks DoS Vulnerability](News/Security/Node.js-Async-Hooks-DoS-Vulnerability.md)
+- [Node.js Brotli Node2Shell RCE Oct 2026](News/Security/Node.js-Brotli-Node2Shell-RCE-Oct-2026.md)
 - [Notepad++ Targetted Attach](News/Security/Notepad%2B%2B-Targetted-Attach.md)
 - [OpenCode Console API Key Breach And Distillation Oct 2026](News/Security/OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md)
 - [PHP2Shell Exploit Debate Threat Models And Patch Status Oct 2026](News/Security/PHP2Shell-Exploit-Debate-Threat-Models-And-Patch-Status-Oct-2026.md)

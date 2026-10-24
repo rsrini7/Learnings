@@ -10,9 +10,9 @@
 
 **Sourcing.** OpenCode's product and provider documentation and the provider spend-control documents cited below were read directly. The incident facts come from indexed reproductions of OpenCode's own statements and from press coverage, because the original X posts were not readable by the research reader; no complete forensic report has been published, so entry path, attribution and reimbursement remain open.
 
-**Claims being tested.** This note starts from a [user-shared video](https://www.youtube.com/watch?v=YaK6cnET2IE) and a written summary. Four of their claims are carried into the sections below rather than repeated as fact.
+**Claims being tested.** Four commonly repeated claims are carried into the sections below rather than repeated as fact.
 
-| Claim from the supplied material | Tested in | Result |
+| Claim | Tested in | Result |
 |---|---|---|
 | Frontier labs have hardened their defenses, so distillation-focused attackers now go after developer-platform keys and accounts instead. | §4 | Plausible as an incentive argument — a working developer account already has access, billing and quotas — but it does not establish the cause of this breach. |
 | One affected user lost close to $5,000. | §2, §5 | Not established here; separate user reports include figures above $1,700 ([BleepingComputer](https://www.bleepingcomputer.com/news/security/opencode-hack-exposes-api-keys-amid-ai-distillation-attacks/)). |
@@ -30,7 +30,7 @@
 | Were every exposed key and every fraudulent bill verified? | The notification uses conditional exposure language; individual billing reports are not a complete forensic accounting. |
 | Does “distillation attack” identify an attacker? | No. The reviewed disclosure names no responsible lab, group or country. |
 
-**Sources for the incident, in one place:** [Techmeme's collection of the original statements](https://www.techmeme.com/261017/p18), [BleepingComputer's reproduced notice](https://www.bleepingcomputer.com/news/security/opencode-hack-exposes-api-keys-amid-ai-distillation-attacks/), [the customer-notice transcription with original links](https://dev.to/gabrielanhaia/opencode-told-14-of-console-users-to-revoke-their-openai-and-anthropic-keys-561), [The Hacker News summary](https://thehackernews.com/2026/10/opencode-console-breach-may-have.html). Provider security and billing documentation takes precedence over a video's generalized advice when choosing controls.
+**Sources for the incident, in one place:** [Techmeme's collection of the original statements](https://www.techmeme.com/261017/p18), [BleepingComputer's reproduced notice](https://www.bleepingcomputer.com/news/security/opencode-hack-exposes-api-keys-amid-ai-distillation-attacks/), [the customer-notice transcription with original links](https://dev.to/gabrielanhaia/opencode-told-14-of-console-users-to-revoke-their-openai-and-anthropic-keys-561), [The Hacker News summary](https://thehackernews.com/2026/10/opencode-console-breach-may-have.html). Provider security and billing documentation takes precedence over generalized advice when choosing controls.
 
 ## 2. Incident facts and timeline
 
@@ -199,4 +199,5 @@ Raad attributes the sustained attacks to AI agents, but no independently inspect
 **Related:**
 - [Anthropic API Restrictions](../../AI-ML/LLMs/models/anthropic/Anthropic-API-Restrictions.md) — Distinguish the earlier subscription-access dispute from this hosted credential incident.
 - [OpenClaw Security Analysis](../../AI-ML/Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md) — Compare agent permissions, exposed secrets and isolation boundaries.
+- [Railway, Zeabur and the Hunt for AI Provider Keys](AI-Key-Theft-Railway-Zeabur-Oct-2026.md) — Compare this period's platform breaches targeting inference credentials.
 - [PHP2Shell: History, UAF and ASLR](PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — Contrast only: separate a vulnerability primitive from the conditions needed for practical exploitation.
