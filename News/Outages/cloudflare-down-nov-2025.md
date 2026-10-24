@@ -129,5 +129,6 @@
 A single configuration error—amplified by tight coupling, homogeneous deployment, and lack of safeguards—temporarily broke a fifth of the global internet and incurred one of the highest downtime losses in history.
 
 **Related:**
+- [Deno Joins Cloudflare](../../Engineering/Languages/Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md) — Adds platform-concentration context as Deno Deploy users are directed toward Cloudflare Workers.
 - [Supabase-Outage-Feb-2026](Supabase-Outage-Feb-2026.md) — Follow-up outage where a single config/control-plane change again triggered a global flap loop.
 - [AWS-Downtime-Caused-By-AI-Mistake](../../Engineering/Cloud/AWS/AWS-Downtime-Caused-By-AI-Mistake.md) — Sibling cloud-provider downtime post-mortem analyzing automation-induced cascading failures.

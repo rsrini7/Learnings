@@ -354,5 +354,6 @@ WebAssembly is not a replacement for JavaScript; it is a complementary tool.
 *   Rust + WebAssembly in 2026 — Complete Guide (Browser, WASI, Edge, Optimisation)
 
 **Related:**
+- [Deno Joins Cloudflare](Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md) — Connects sandboxed runtimes and portable execution to Deno's move toward self-hosted Workers and Durable Objects.
 - [workflow-orchestration](../Middleware/workflow-orchestration.md) — WASM modules can host lightweight workflow actors (e.g., Restate) at the edge alongside Temporal-style orchestration.
 - [MacMini-Setup](../../DevSetup/MacMini-Setup.md) — WASM toolchain installation parallels the local Rust/cargo setup typical for MacMini development environments.

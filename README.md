@@ -245,6 +245,7 @@ Learnings/
 - [aws deepracer ubuntu local installs](Engineering/Cloud/AWS/aws-deepracer-ubuntu-local-installs.md)
 
 ### 💻 Languages
+- [Deno Joins Cloudflare Adoption And Runtime Lessons Oct 2026](Engineering/Languages/Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md)
 - [WASM Rust](Engineering/Languages/WASM-Rust.md)
 - [Go Proposed Collections vs Java Collections Framework 2026](Engineering/Languages/comparisons/Go-Proposed-Collections-vs-Java-Collections-Framework-2026.md)
 - [Java25 vs Go1.24 Go1.25](Engineering/Languages/comparisons/Java25-vs-Go1.24-Go1.25.md)
