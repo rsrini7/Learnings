@@ -323,3 +323,4 @@ The Hedera article's insight—that post-consensus vs. pre-consensus block produ
 - [blockchain-26-catagories](blockchain-26-catagories.md) — Locates blockchain, DAG, and Hashgraph designs within the broader 26-category ecosystem map.
 - [EnterpriceBlockchainLearning](../enterprise/EnterpriceBlockchainLearning.md) — Anchors the BFT/IBFT/QBFT consensus discussion inside the full DLT design space.
 - [Hardhat-Development](../ethereum/Hardhat-Development.md) — Highlights EVM-compatible chains as the practical on-ramp from DLT theory into deployable smart contracts.
+- [India’s Spam-Call Defences](../../News/Security/India-Spam-Calls-DND-And-TRAI-Enforcement-Oct-2026.md) — Shows a regulated shared-ledger use case for sender records and customer preferences.

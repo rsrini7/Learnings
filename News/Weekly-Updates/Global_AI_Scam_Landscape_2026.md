@@ -658,3 +658,10 @@ Verify licences:
 ---
 
 *Document compiled: February 2026. All statistics are sourced to identifiable primary government reports or clearly labelled industry research. Primary government sources (FBI IC3, MHA India, UK Finance, ACCC/NASC) are used for all headline figures. Private-firm, vendor, and industry estimates are explicitly identified as such in labelled callout blocks throughout the document. No statistic is presented as a primary official figure unless it originates from a government report, parliamentary response, or law-enforcement publication.*
+
+---
+
+**Related:**
+- [India’s Spam-Call Defences](../Security/India-Spam-Calls-DND-And-TRAI-Enforcement-Oct-2026.md) — Explains India’s network-level controls and reporting routes for unwanted calls and messages.
+- [Banks and Third-Party AI Agents](../Security/Banks-Third-Party-AI-Agents-Oct-2026.md) — Examines identity and authority gaps in another financial channel.
+- [Distributed Ledger Technology](../../Blockchain/reference/DLT.md) — Provides background on shared ledgers used in regulated communications.

@@ -420,6 +420,7 @@ Learnings/
 - [Banks Third Party AI Agents Oct 2026](News/Security/Banks-Third-Party-AI-Agents-Oct-2026.md)
 - [EMudhra Weak CA Keys And PKI Trust Oct 2026](News/Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)
 - [GitLab Regex Compiler RCE Oct 2026](News/Security/GitLab-Regex-Compiler-RCE-Oct-2026.md)
+- [India Spam Calls DND And TRAI Enforcement Oct 2026](News/Security/India-Spam-Calls-DND-And-TRAI-Enforcement-Oct-2026.md)
 - [Largest WhatsApp Data Leak in History](News/Security/Largest-WhatsApp-Data-Leak-in-History.md)
 - [Linux Kernel ZDI Public Reports KSMBD Oct 2026](News/Security/Linux-Kernel-ZDI-Public-Reports-KSMBD-Oct-2026.md)
 - [LiteLLM 1.107.0 Supply Chain Compromise Oct 2026](News/Security/LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md)
