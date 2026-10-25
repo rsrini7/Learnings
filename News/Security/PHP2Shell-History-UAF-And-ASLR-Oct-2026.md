@@ -280,6 +280,7 @@ Follow-up sources: [LiveOverflow: php2shell 24 hours later](https://www.youtube.
 ---
 
 **Related:**
+- [Linux Kernel ZDI Public Reports](Linux-Kernel-ZDI-Public-Reports-KSMBD-Oct-2026.md) — Separate same-week kernel disclosures; distinguish reported RCE impact from demonstrated memory corruption.
 - [eMudhra Weak CA Keys](EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md) — Compare a broken security primitive with the extra conditions required for real-world exploitation.
 - [MongoBleed](MongoBleed-Dec2025.md) — Compare unauthenticated memory disclosure with the leak stage here.
 - [Node.js Async Hooks DoS](Node.js-Async-Hooks-DoS-Vulnerability.md) — Compare runtime error handling that turns a request failure into a process failure.

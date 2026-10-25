@@ -421,6 +421,7 @@ Learnings/
 - [EMudhra Weak CA Keys And PKI Trust Oct 2026](News/Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)
 - [GitLab Regex Compiler RCE Oct 2026](News/Security/GitLab-Regex-Compiler-RCE-Oct-2026.md)
 - [Largest WhatsApp Data Leak in History](News/Security/Largest-WhatsApp-Data-Leak-in-History.md)
+- [Linux Kernel ZDI Public Reports KSMBD Oct 2026](News/Security/Linux-Kernel-ZDI-Public-Reports-KSMBD-Oct-2026.md)
 - [LiteLLM 1.107.0 Supply Chain Compromise Oct 2026](News/Security/LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md)
 - [MongoBleed Dec2025](News/Security/MongoBleed-Dec2025.md)
 - [Node.js Async Hooks DoS Vulnerability](News/Security/Node.js-Async-Hooks-DoS-Vulnerability.md)
