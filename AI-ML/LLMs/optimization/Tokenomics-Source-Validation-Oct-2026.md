@@ -218,6 +218,36 @@ Video access for [Your AI Bill Is a Design Bug](https://www.youtube.com/watch?v=
 
 Copilot cloud-agent/review infrastructure can consume Actions minutes; cloud sandboxes have separate compute/memory/storage meters. Session estimates and raw telemetry are diagnostic, not automatically final invoices. [Cloud agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent) · [Sandbox billing](https://docs.github.com/en/billing/concepts/product-billing/cloud-and-local-sandboxes)
 
+## K. Cross-harness cache review — October 26
+
+Based on the user-supplied comparison, checked against provider docs and the VS Code team’s June 17 report. Later dated corrections supersede older snapshot claims above.
+
+| Supplied assertion | Review and correction |
+|---|---|
+| Anthropic only supports manually placed breakpoints | API also offers automatic top-level cache control; Claude Code manages markers for the user |
+| Enterprise means 5m, consumer means 1h | Billing path and request bucket matter more than organization label |
+| Subagents always use 5m | Default only; separately configurable |
+| Both supplied environment variables force 1h/5m | Both exist; FORCE 5m outranks bucket controls, while ENABLE 1h is lower-priority |
+| One-hour write wastes 75% more | **60% higher** than a five-minute write; 0.75× is the absolute difference against base input |
+| Cache refresh is free | No separate refresh/write surcharge on a hit; cached reads still billed |
+| Every effort/tool change breaks all cache | Current supported Claude Code effort updates and deferred tools can preserve reuse; route/version exceptions apply |
+| Four rolling Copilot breakpoints | June design: two static anchors plus two recent-message anchors, not four rolling ones |
+| ~94% hits proves 5m TTL | Historical active-session telemetry; not a TTL measurement or guarantee |
+| Client embedding search cut tokens ~18% | Report’s 18.03% saving belonged to a seven-day **server-side tool-deferral experiment**; later client search is distinct |
+| +919% means near-perfect hits/savings | Historical **relative cache-hit increase**, GPT-5.4 after 40–60m; not percentage points or bill savings |
+| WebSockets cut TTFT 16–19.5% | Historical p50: GPT-5.4 16.37%, GPT-5.3-Codex 19.46%; not universal latency reduction |
+| KV state offloads from GPU SRAM | Source says GPU memory and GPU-local storage; SRAM detail is not established |
+| Copilot Claude5m / newer GPT30m is confirmed | Checked GitHub sources do not establish this per-generation backend policy; avoid replacing generic guidance with unsupported specificity |
+| Only Claude and Astra have Copilot write fees | Current rate card includes GPT-5.6 variants and GPT-6/6.1 write categories too; read discounts are model-dependent |
+| OpenAI always uses 128-token automatic prefixes and keys pin a GPU | Incorrect for newer-generation boundaries; keys do not guarantee a hit or host pin |
+| Every Codex surface has the API’s default TTL | API capabilities are not proof of managed product configuration or signed-in policy |
+| Codex never mutates prior instructions; common Rust core fixes all behavior | Requires version-pinned implementation evidence; not established by the supplied API citations |
+| Encrypted compaction preserves all latent state | API carries key prior state in an opaque item, may retain other items, and supports server-side or explicit compaction; no lossless guarantee |
+
+Sources: [Claude Code caching/TTL/effort](https://code.claude.com/docs/en/prompt-caching), [Anthropic API caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching), [June 17 Copilot engineering report](https://code.visualstudio.com/blogs/2026/06/17/improving-token-efficiency-in-github-copilot), [GitHub usage guidance](https://docs.github.com/en/copilot/tutorials/optimize-ai-usage), [Copilot rate card](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing), [OpenAI caching](https://developers.openai.com/api/docs/guides/prompt-caching), [compaction](https://developers.openai.com/api/docs/guides/compaction), [WebSocket state](https://developers.openai.com/api/docs/guides/websocket-mode).
+
+The [context-window note](Context-Windows-Compaction-and-Cache-Breaks-2026.md#cache-policy-depends-on-the-harness-model-and-billing-path) gives the practical comparison and supported controls. No installed settings were changed.
+
 ---
 
 **Related:**

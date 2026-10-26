@@ -1,6 +1,6 @@
 # Context Windows, Compaction, and Cache Breaks
 
-**Checked October 15, 2026.** For small and medium coding tasks, keep a focused working budget and save a handoff before long interruptions. Keep 1M capacity available when useful; neither filling it nor compacting at a universal percentage is necessary.
+**Updated October 26, 2026:** cache-policy comparison rechecked; OMP examples retain their October 15 source scope. For small and medium coding tasks, keep a focused working budget and save a handoff before long interruptions. Keep 1M capacity available when useful; neither filling it nor compacting at a universal percentage is necessary.
 
 ## 1. What the video teaches—and what to qualify
 
@@ -28,6 +28,31 @@
 A 1M model handling 30K tokens does not process 1M tokens merely because the capacity exists. A smaller local window changes budgeting; it does not turn the provider into a faster, smaller model. Earlier compaction often gives the summarizer less history, but latency also depends on the method, model, output length, cache, and provider load.
 
 Your concern is valid when **accumulated history is large and the next request arrives after cache expiry**. A small task with a small history has less to rebuild. Idle time alone does not incur inference charges, except when background features make requests. [Claude session costs](https://code.claude.com/docs/en/costs)
+
+### Cache policy depends on the harness, model, and billing path
+
+| Surface | Boundaries and retention | What to verify |
+|---|---|---|
+| Claude Code | Harness places Anthropic markers. Main conversation: included subscription usage defaults to 1h; API/cloud/usage credits to 5m. Subagents default to 5m but are configurable. | Main and other-request TTL buckets; actual cache creation/read fields |
+| Copilot in VS Code | Provider-specific harness; the June 17 report describes Anthropic anchors and OpenAI prefix reuse. | GitHub’s generic 24h/OpenAI and 1h/most-others guidance does not prove the TTL sent for every model generation; inspect current telemetry |
+| Codex / direct OpenAI requests | API caching varies by model generation; implicit caching is not the only option on newer models. | Product sign-in, API key, model, and endpoint; do not assume one API TTL describes every Codex surface |
+
+Sources: [Claude Code caching](https://code.claude.com/docs/en/prompt-caching), [Copilot engineering report](https://code.visualstudio.com/blogs/2026/06/17/improving-token-efficiency-in-github-copilot), [GitHub usage guidance](https://docs.github.com/en/copilot/tutorials/optimize-ai-usage), [OpenAI caching](https://developers.openai.com/api/docs/guides/prompt-caching).
+
+**OpenAI generations matter:** GPT-5.6+ supports implicit or explicit-only caching and user-selected breakpoints. Default API retention is 30m (1.25× writes); supported Responses requests offer 12h (2.5× writes). Older models use separate retention rules; 128-token reporting is not a universal newer-model boundary rule. A key influences older-model routing, not a guaranteed GPU pin. [Caching reference](https://developers.openai.com/api/docs/guides/prompt-caching)
+
+**Claude Code override example** (documentation only; v2.1.242+):
+
+```json
+{
+  "promptCacheTtl": "1h",
+  "subagentPromptCacheTtl": "5m"
+}
+```
+
+Equivalent bucket environment variables are `CLAUDE_CODE_PROMPT_CACHE_TTL` and `CLAUDE_CODE_SUBAGENT_PROMPT_CACHE_TTL`. The supplied `ENABLE_PROMPT_CACHING_1H=1` exists but is lower-priority; `FORCE_PROMPT_CACHING_5M=1` takes precedence. Check provider support and effective settings. A refresh has no extra refresh fee, but the read still costs tokens. [TTL controls](https://code.claude.com/docs/en/prompt-caching#choose-the-ttl-yourself)
+
+**Retention economics:** Anthropic’s 2× one-hour write rate versus 1.25× five-minute rate is **60% more** (`2 / 1.25 - 1`), a difference of 0.75× the base rate. These are total write rates, not additional full-input charges. Longer retention can help across breaks, but compare reuse probability, read traffic, and actual billing. [Anthropic rates](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
 
 ## 3. Is 40% better than 80%?
 
@@ -73,6 +98,8 @@ Current per-model numeric limits are **bases scaled by the policy**, not necessa
 **OMP `/handoff` currently compacts the same session**, retaining recent history and the session cache key. It does not itself create a fresh session; retaining a key does not guarantee unchanged prefix hits. Idle maintenance is separate and off by default. [Compaction reference](https://github.com/can1357/oh-my-pi/blob/main/docs/compaction.md)
 
 **Claude Code equivalent:** current versions support `/autocompact 200k` or `/autocompact 400k`; `/autocompact auto` restores the tuned default. Native 1M models normally compact near 967K, not 80%. The command’s saved scope became per-model in v2.1.288; managed settings/environment overrides may take precedence. These controls are not generic VS Code commands. [Model configuration](https://code.claude.com/docs/en/model-config#context-window-and-auto-compaction)
+
+**Codex/API compaction is not prompt caching:** Responses supports encrypted compaction items via explicit `/responses/compact` or server-side compaction. The returned window may retain other items too; it is not a guaranteed lossless blob. Changing the active prefix may require rebuilding cache coverage. WebSocket connection-local response state is a separate latency mechanism, not a durable cache-TTL promise. [Compaction](https://developers.openai.com/api/docs/guides/compaction) · [WebSocket state](https://developers.openai.com/api/docs/guides/websocket-mode)
 
 ## 5. Before and after a break
 

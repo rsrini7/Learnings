@@ -102,6 +102,12 @@ Add applicable tool/runtime/storage fees, then reconcile contractual rates, cred
 
 Sources: [Copilot billing](https://docs.github.com/en/copilot/concepts/billing-and-usage/organizations-and-enterprises/billing), [cloud agent](https://docs.github.com/en/copilot/concepts/agents/cloud-agent/about-cloud-agent), [code review](https://docs.github.com/en/copilot/concepts/agent-capabilities/agent-powered-workflows-and-operations/code-review), [sandbox billing](https://docs.github.com/en/billing/concepts/product-billing/cloud-and-local-sandboxes), [legacy billing](https://docs.github.com/en/copilot/reference/copilot-billing/request-based-billing-legacy), [hosted services](https://developers.openai.com/api/docs/pricing).
 
+### Retention changes the write price, not just the timer
+
+As checked October 26: Anthropic API writes use 1.25× for 5m or 2× for 1h; supported GPT-5.6+ Responses requests use 1.25× for 30m or 2.5× for 12h. Older OpenAI models can have no separate write premium, which means normal fresh-input billing—not free processing. Read rates vary by model. These API tariffs do not automatically determine subscription or Copilot invoices. [Anthropic rates](https://platform.claude.com/docs/en/build-with-claude/prompt-caching) · [OpenAI retention/rates](https://developers.openai.com/api/docs/guides/prompt-caching)
+
+Choose retention from actual break length and reuse. Cache-hit percentages, WebSocket speedups, and saved tokens measure different things; none alone establishes invoice savings. See the [billing-path and override comparison](Context-Windows-Compaction-and-Cache-Breaks-2026.md#cache-policy-depends-on-the-harness-model-and-billing-path).
+
 ## 4. Important additions to the invoice discussion
 
 - **Measure cost-weighted cache reuse.** A high token hit rate is not proof of a cheap run; compare rates, total traffic, cache writes, and accepted outcomes.
