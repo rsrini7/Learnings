@@ -54,6 +54,8 @@ Equivalent bucket environment variables are `CLAUDE_CODE_PROMPT_CACHE_TTL` and `
 
 **Retention economics:** Anthropic’s 2× one-hour write rate versus 1.25× five-minute rate is **60% more** (`2 / 1.25 - 1`), a difference of 0.75× the base rate. These are total write rates, not additional full-input charges. Longer retention can help across breaks, but compare reuse probability, read traffic, and actual billing. [Anthropic rates](https://platform.claude.com/docs/en/build-with-claude/prompt-caching)
 
+For a fixed-prefix example of when one avoided rewrite offsets the one-hour premium, see the [TTL break-even illustration](AI-Coding-Invoice-Beyond-Input-and-Output-2026.md#when-does-a-longer-ttl-pay-for-itself). It depends on an actual return before expiry, not merely having a meeting scheduled.
+
 ## 3. Is 40% better than 80%?
 
 It is feasible, but it is an experiment rather than a proven optimum. Compare absolute sizes first:

@@ -248,6 +248,12 @@ Sources: [Claude Code caching/TTL/effort](https://code.claude.com/docs/en/prompt
 
 The [context-window note](Context-Windows-Compaction-and-Cache-Breaks-2026.md#cache-policy-depends-on-the-harness-model-and-billing-path) gives the practical comparison and supported controls. No installed settings were changed.
 
+## L. Break-even formula review — October 26
+
+The follow-up review’s `1.25 + rN` versus `2 + rN` is correct for one fixed-prefix write and reads that hit both policies. With one cold 5m resume but warm 1h resume, totals are 2.50 versus `2 + r`: savings 0.40 at `r=0.10` or 0.45 at `r=0.05`. This is conditional arithmetic, not a guaranteed 6–60-minute workflow saving or a flat saving on every pause. [Worked example](AI-Coding-Invoice-Beyond-Input-and-Output-2026.md#when-does-a-longer-ttl-pay-for-itself)
+
+The proposed Copilot split is historical and incomplete: current write categories extend across GPT-5.6 and GPT-6/6.1; older no-write-premium rows still charge fresh input. GPT-5.4/5.5 are not listed on the current card checked here. The prior review also overstates “ground-truth” Copilot TTL evidence: a secondary analysis and June telemetry do not establish every current model’s backend retention. [Current rate card](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing)
+
 ---
 
 **Related:**

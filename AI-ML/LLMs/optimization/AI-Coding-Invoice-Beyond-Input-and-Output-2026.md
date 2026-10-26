@@ -108,6 +108,23 @@ As checked October 26: Anthropic API writes use 1.25× for 5m or 2× for 1h; sup
 
 Choose retention from actual break length and reuse. Cache-hit percentages, WebSocket speedups, and saved tokens measure different things; none alone establishes invoice savings. See the [billing-path and override comparison](Context-Windows-Compaction-and-Cache-Breaks-2026.md#cache-policy-depends-on-the-harness-model-and-billing-path).
 
+### When does a longer TTL pay for itself?
+
+**Fixed-prefix illustration:** normalize one uncached processing of the prefix to 1 cost unit; let `r` be its cache-read multiplier. Ignore changing/new tokens, output, tools, and other modifiers. With one write and `N` reads that hit under both policies:
+
+`5m cost = 1.25 + rN` versus `1h cost = 2.00 + rN`.
+
+The one-hour policy costs 0.75 more in that uninterrupted case. Now assume one return after the five-minute entry expires but **before the one-hour entry expires**, with the same eligible prefix:
+
+| Initial write + one resumed request | 5m policy | 1h policy | Saving with 1h |
+|---|---:|---:|---:|
+| `r = 0.10` | 2.50 | 2.10 | 0.40 |
+| `r = 0.05` | 2.50 | 2.05 | 0.45 |
+
+Thus one avoided rewrite can offset the initial premium **in this scenario**. The saving is not a constant per pause; count actual writes and reads across the session. Expiry is measured from request start, including generation time. If you never return, the extra upfront write bought nothing. Rates come from [Anthropic caching](https://platform.claude.com/docs/en/build-with-claude/prompt-caching); the comparison is arithmetic, not a measured workflow result.
+
+**Copilot’s billing split:** the current card marks cache writes “Not applicable” for GPT-5.3-Codex, while GPT-5.6 variants and GPT-6/6.1 have write categories. For example, default-tier Astra lists $10/M fresh input, $12.50/M writes, and $1/M reads. No write premium means fresh processing still costs input tokens. Historical GPT-5.4/5.5 rows are not evidence of today’s availability or rates. [Current Copilot rate card](https://docs.github.com/en/copilot/reference/copilot-billing/models-and-pricing)
+
 ## 4. Important additions to the invoice discussion
 
 - **Measure cost-weighted cache reuse.** A high token hit rate is not proof of a cheap run; compare rates, total traffic, cache writes, and accepted outcomes.
