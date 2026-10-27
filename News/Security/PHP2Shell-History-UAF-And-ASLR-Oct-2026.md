@@ -1,6 +1,6 @@
 # PHP2Shell: History, Use-After-Free and ASLR
 
-**Daily learning · 22 October 2026 · Updated 23 October 2026 · Technical details cross-checked against primary sources**
+**Daily learning · 22 October 2026 · Updated 27 October 2026 · Technical details cross-checked against primary sources**
 
 > **Core idea:** PHP can leave request state unfinished or retain a pointer after freeing its memory. Cleanup or a later request then trusts invalid data. Disclosure plus controlled corruption can turn this into RCE.
 
@@ -55,6 +55,7 @@ Times below are **UTC**; October dates are **2026**.
 | Oct 21, 07:41 | Patched Chainguard images appeared early, per the Foundation. | Fix could be studied before coordinated release. |
 | Oct 21, 14:00 scheduled | Coordinated release day; originally Oct 22. | Accelerated by one day; scheduled time **19:30 IST**. |
 | Oct 23 | PHP announces a narrow session-handler follow-up, CVE-2026-115560. | Further configuration guidance while awaiting a regular bugfix release; see Section 6. |
+| Oct 25 | A solver reaches code execution in the [Steal My Bitcoin challenge](PHP2Shell-Steal-My-Bitcoin-Challenge-Oct-2026.md) after its operator adds a PHP script. | A confirmed outcome for one unpatched CLI-server setup; its public timer includes an earlier static-only period. |
 
 Sources: [Calif's research history](https://calif.io/php2shell/), [PHP Foundation's disclosure account](https://thephp.foundation/blog/2026/10/21/todays-php-security-release-and-how-were-strengthening-php-security/), [Wiz's independent timeline](https://www.wiz.io/blog/php2shell-php-rce).
 
@@ -277,6 +278,8 @@ Based on user-shared summaries of [This PHP vulnerability is a big deal](https:/
 
 Follow-up sources: [LiveOverflow: php2shell 24 hours later](https://www.youtube.com/watch?v=SP7y1h0laN0), supplied transcript; [Elias Taylor's exploit-complexity argument](https://eliastaylor.com/noexploit/). Their disputed claims are evaluated in the linked companion review.
 
+**27 Oct addition:** the supplied transcript of [LiveOverflow's Steal My Bitcoin review](https://www.youtube.com/watch?v=VhNiMWtOutw) was checked against the [operator's released challenge source](https://github.com/pavja2/smbc-source-oct-2026), [operator statements](https://news.ycombinator.com/item?id=50224916) and the [solver's account](https://github.com/KillaBoi/StealMyBitcoin-PoC). The [challenge note](PHP2Shell-Steal-My-Bitcoin-Challenge-Oct-2026.md) records the corrected exploitable window, demonstrated result and reliability limits.
+
 ---
 
 **Related:**
@@ -286,4 +289,6 @@ Follow-up sources: [LiveOverflow: php2shell 24 hours later](https://www.youtube.
 - [Node.js Async Hooks DoS](Node.js-Async-Hooks-DoS-Vulnerability.md) — Compare runtime error handling that turns a request failure into a process failure.
 - [React2Shell](10.0_CVE_React2Shell_Whitepaper.md) — Compare another widely deployed, unauthenticated RCE surface.
 - [PHP2Shell Exploit Debate](PHP2Shell-Exploit-Debate-Threat-Models-And-Patch-Status-Oct-2026.md) — Distinguish local bugs, conditional chains, remote proofs and the October 23 follow-up.
+- [PHP2Shell Steal My Bitcoin Challenge](PHP2Shell-Steal-My-Bitcoin-Challenge-Oct-2026.md) — A live exploit result with an initially unreachable PHP-script path and a wrong wallet key.
 - [PHP Migration: Static React, Java and Go](../../Engineering/Architecture/PHP-Migration-Static-React-Java-And-Go-Oct-2026.md) — Long-term migration choices that separate runtime removal from language-level memory safety.
+- [Node.js Brotli Decoder](Node.js-Brotli-Node2Shell-RCE-Oct-2026.md) — Compare how runtime flaws depend on the application path that reaches them.
