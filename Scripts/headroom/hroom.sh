@@ -7,14 +7,14 @@
 #   hroom proxy --port 8780            # proxy with custom port
 #   hroom learn                        # run headroom learn
 #   hroom learn --apply --verbosity    # learn with flags
-#   hroom run "echo hello"             # run a command through headroom
-#   hroom --version 0.28.0 proxy       # pin a specific version
+#   hroom serve                        # alias for headroom proxy
+#   hroom --version 0.42.0 proxy       # pin a specific version
 #   hroom --extras proxy,ml,code,pytorch-mps proxy  # custom extras
 #   hroom --help                       # show this help
 #
-# Make executable: chmod +x ~/ws/Learnings/Scripts/hroom.sh
-# Source for function: source ~/ws/Learnings/Scripts/hroom.sh  (adds hroom() to shell)
-# Or add to PATH:      export PATH="$HOME/ws/Learnings/Scripts:$PATH"
+# Make executable: chmod +x ~/ws/Learnings/Scripts/headroom/hroom.sh
+# Source for function: source ~/ws/Learnings/Scripts/headroom/hroom.sh  (adds hroom() to shell)
+# Or add to PATH:      export PATH="$HOME/ws/Learnings/Scripts/headroom:$PATH"
 # ──────────────────────────────────────────────────────────────────────────────
 
 source "${0:A:h}/headroom-env.sh" 2>/dev/null || source "$HOME/ws/Learnings/Scripts/headroom/headroom-env.sh"
@@ -29,15 +29,14 @@ Usage:
 
 Options (before subcommand):
   --version, -v VERSION    Pin headroom-ai version (default: see headroom-env.sh)
-  --extras, -e EXTRAS      Comma-separated extras (default: proxy,ml,code)
+  --extras, -e EXTRAS      Comma-separated extras (default: see headroom-env.sh)
   --no-mps                 Skip Apple Silicon MPS auto-detection
   --help, -h               Show this help
 
 Subcommands:
   proxy      Start the Headroom compression proxy
   learn      Run headroom learn (context accumulation)
-  run        Execute a command through headroom
-  serve      Start headroom in serve mode
+  serve      Start the Headroom proxy (alias for proxy)
   savings    Show compression savings over time (alias: stats, gain)
   dashboard  Open the Headroom savings web dashboard
   wrap       Wrap CLI tools (codex, claude, etc.) through Headroom
@@ -46,11 +45,10 @@ Subcommands:
 
 Examples:
   hroom proxy
-  hroom proxy --port 8780 --target https://api.openai.com/v1
+  hroom serve --port 8780 --openai-api-url https://api.openai.com/v1
   hroom learn
   hroom learn --apply --verbosity
-  hroom run "ls -la"
-  hroom --version 0.27.0 proxy --port 8787
+  hroom --version 0.42.0 proxy --port 8787
   hroom --extras proxy,ml,code,pytorch-mps proxy
   hroom -e proxy,ml learn
 
@@ -110,15 +108,16 @@ hroom_main() {
 
   # ── Validate subcommand ─────────────────────────────────────────────────
   if [[ -z "$subcmd" ]]; then
-    echo "❌ No subcommand given. Use: hroom <proxy|learn|run|...>" >&2
+    echo "❌ No subcommand given. Use: hroom <proxy|learn|serve|...>" >&2
     hroom__help >&2
     return 1
   fi
 
   # ── Friendly aliases ─────────────────────────────────────────────────────
-  if [[ "$subcmd" == "stats" || "$subcmd" == "gain" ]]; then
-    subcmd="savings"
-  fi
+  case "$subcmd" in
+    stats|gain) subcmd="savings" ;;
+    serve) subcmd="proxy" ;;
+  esac
 
   # ── Apple Silicon MPS auto-detection ─────────────────────────────────────
   if [[ "$use_mps" -eq 1 && "$(uname)" == "Darwin" && "$(uname -m)" == "arm64" ]]; then
@@ -138,7 +137,7 @@ hroom_main() {
 }
 
 # ── Entrypoint ───────────────────────────────────────────────────────────────
-if [[ "${ZSH_EVAL_CONTEXT:-}" == *:file:* ]] || [[ "${BASH_SOURCE[0]:-}" != "$0" ]]; then
+if [[ "${ZSH_EVAL_CONTEXT:-}" == *:file* ]] || [[ -n "${BASH_VERSION:-}" && "${BASH_SOURCE[0]:-}" != "$0" ]]; then
   hroom() { hroom_main "$@"; }
 else
   hroom_main "$@"
