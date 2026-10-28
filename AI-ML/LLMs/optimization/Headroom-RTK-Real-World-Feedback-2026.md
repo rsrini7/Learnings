@@ -4,6 +4,12 @@
 **Scope**: Public issue reports, an independent RTK field report, and current project documentation.  
 **Bottom line**: RTK currently looks like the safer first experiment for shell-heavy agents. Headroom can help on repetitive, large payloads, but its end-to-end value depends heavily on provider caching, integration path, workload, and version.
 
+## October 28 follow-up: current features versus this historical snapshot
+
+The issue states and field results below remain the **September 3 snapshot**; they are not assertions that every issue is still open today. Latest release checked is [Headroom v0.42.0, October 26](https://github.com/headroomlabs-ai/headroom/releases/tag/v0.42.0), while this repository’s wrappers still pin 0.37.0. Current architecture includes conditional code outlining, recoverable originals with finite retention, stable default cache forwarding, and opt-in cold-prefix recompaction. A release fix or a feature list does not reproduce a task-level saving. [Current cache docs](https://docs.headroomlabs.ai/docs/cache-optimization) · [CCR](https://docs.headroomlabs.ai/docs/ccr)
+
+See [CodeGraph, Headroom, and Context-Management Trade-offs](CodeGraph-Headroom-and-Context-Management-Trade-Offs-Oct-2026.md) for the supplied model-dependent experiment and a comparison with Ponytail, Caveman, semantic navigation, and current evidence. The [tool inventory](ai-token-optimization-tools.md) replaces the older universal savings table with module-specific qualifications.
+
 ## What users are actually seeing
 
 ### RTK

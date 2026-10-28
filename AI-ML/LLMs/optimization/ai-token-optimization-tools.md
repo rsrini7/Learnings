@@ -1,391 +1,193 @@
-# AI Token Optimization Tools — Consolidated Comparison
-
-> A reference guide covering **Lean-CTX**, **RTK**, **Headroom**, **Caveman**, **Serena MCP**, **Ponytail**, **MCP-Compressor**, **Tulbase**, **LLMLingua-2**, and **Codebase-Memory** for AI coding agents (Claude Code, Cursor, Copilot, etc.)
-
----
-
-## Quick Summary
-
-| Tool | What It Is | Best For | Avg. Token Savings |
-|---|---|---|---|
-| **Lean-CTX** | MCP server — AST-based context intelligence | Large codebases with repeated file reads | 60%–99% |
-| **RTK** | CLI proxy — terminal output filter | Shell-heavy workflows with noisy command output | 60%–90% |
-| **Headroom** | Network proxy — multi-format payload compressor | Mixed workloads: logs, JSON, code, multi-agent | 50%–90% |
-| **Caveman** | Prompt skill — conversational fluff remover | Quick interactive chat sessions | 60%–75% on output |
-| **Serena MCP** | MCP server — LSP-driven semantic code navigator | Massive codebases needing symbol-level intelligence | Varies (precision, not bulk) |
-| **Ponytail** | Agent skill — code minimalism enforcer | Preventing AI from over-generating code | 54% avg code reduction (up to 94%) |
-| **MCP-Compressor** | MCP proxy — tool definition shrinker | Agents with many MCP servers connected | 70%–97% on tool definitions |
-| **Tulbase** | MCP server — local-first context compression | Lightweight local compression alternative | Varies |
-| **LLMLingua-2** | Research library — perplexity-based prompt compression | Custom pipelines needing deep compression | Up to 20× compression |
-| **Codebase-Memory** | MCP server — Tree-sitter knowledge graph | Code graph navigation with minimal tokens | ~10× fewer tokens |
-
----
-
-## 1. Lean-CTX
-
-**GitHub:** `yvgude/lean-ctx`
-**Architecture:** Rust binary running as an MCP server
-
-### How It Works
-- Uses **Tree-sitter AST parsing** across 18+ languages to rewrite dense function bodies into concise signatures
-- Maintains a **local Property Graph** mapping project dependencies — sends only what matters, not whole files
-- Implements a **~13-token file read cache** for subsequent turns (re-reads cost almost nothing)
-- Maintains **persistent session state** across conversations
-
-### Pros
-- ✅ Holistic approach: handles files, searches, and terminal output in one tool
-- ✅ Up to **99% savings on cached re-reads** — massive ROI on repeatedly accessed files
-- ✅ Works across **70+ agents** via standard MCP integration
-- ✅ Cross-session memory — context persists between conversations
-- ✅ Syntax-aware: strips redundant comments and boilerplate without destroying logic
-
-### Cons
-- ❌ May **overly condense** important structural information (e.g., diffs, variable contexts in legacy code)
-- ❌ Can cause agents to struggle with **complex code reviews** if compression is too aggressive
-- ❌ Limited to **18 languages** via Tree-sitter (vs. 40+ for Serena via LSP)
-
----
-
-## 2. RTK
-
-**Architecture:** Shell hook / wrapper acting as a CLI proxy
-
-### How It Works
-- Intercepts and filters **terminal/shell output** before it reaches the agent context
-- Dynamically strips noisy build logs, test output, and package manager dumps
-- Minimal setup — install the hook and it works automatically
-
-### Pros
-- ✅ **Fastest and simplest** setup for shell-heavy workflows
-- ✅ Effective at eliminating token waste from `git log`, `npm install`, test runners, etc.
-- ✅ Zero configuration overhead — install and forget
-
-### Cons
-- ❌ **Shell-only scope** — does nothing for large file reads or repository indexing
-- ❌ No persistent memory between commands
-- ❌ Primarily suited for **shell-heavy workflows** — limited value for code-centric agents
-- ❌ Still burns tokens on initial repo context indexing
-
----
-
-## 3. Headroom
-
-**GitHub:** `chopratejas/headroom`
-**Creator:** Tejas Chopra, Senior Engineer at Netflix
-**Stars:** 29.5K+ (as of June 2026)
-**Architecture:** Local network proxy (Python library) sitting between agent and LLM API
-
-### How It Works
-Uses a **three-stage optimization pipeline:**
-
-1. **Cache Aligner** — Moves dynamic fields (timestamps, UUIDs) to the end of context to maximize prefix cache hits
-2. **Content Router** — Routes data to specialized compressors by type: JSON, code (via Tree-sitter for ~8 core languages), DOM/HTML, terminal logs
-3. **Reversible Compression (CCR)** — Compresses payload, stores original locally in SQLite/Redis; LLM can call `headroom_retrieve` to fetch raw data if needed
-
-### Pros
-- ✅ **Truly reversible compression** — no information is permanently lost
-- ✅ Works globally and transparently across **multiple tools and agents**
-- ✅ Addresses **prefix cache misses** — a hidden cost most tools ignore
-- ✅ Strong for mixed payloads: JSON blobs, thick logs, raw DB responses, code
-- ✅ Collective impact: users have saved **200B+ tokens (~$700K)**
-- ✅ Minimal to zero code changes required to integrate
-- ✅ Tree-sitter code compression available (gated, off by default for safety)
-- ✅ Native integrations: LangChain, Agno, Strands, LiteLLM, Vercel AI SDK
-
-### Cons
-- ❌ Tree-sitter code compression is **disabled by default** and requires explicit config (`HEADROOM_CODE_AWARE_ENABLED=true`)
-- ❌ Code compression auto-skips on review/debug/explain intents and recent edits — can feel unpredictable
-- ❌ Python-based — adds a runtime dependency vs. Lean-CTX's Rust binary
-- ❌ Supports only **~8 core languages** for code-aware compression
-
-### Tree-sitter in Headroom (Clarification)
-Headroom **does** use Tree-sitter internally via its `CodeCompressor` module, but it is protected by safety guardrails:
-- Auto-disabled if user intent includes "explain," "review," or "debug"
-- Skipped if the code was modified/read within the last 4 turns
-- Skipped for snippets under 50 words
-
----
-
-## 4. Caveman
-
-**GitHub:** `juliusbrussee/caveman` | **Site:** `getcaveman.dev`
-**Architecture:** Prompt-engineering skill / system prompt injection
-
-### How It Works
-- Injects a **system prompt modifier** that instructs the LLM to skip conversational preambles and respond in ultra-terse style ("Auth middleware broken. Fix line 12.")
-- Modifies **output tokens only** — does not touch input files, logs, or code
-- Non-reversible (output format change only)
-
-### Pros
-- ✅ **Zero configuration** — no installation, no proxy, no runtime
-- ✅ Dramatically reduces typing latency in interactive sessions
-- ✅ Cuts discursive/polite AI filler by up to **75%**
-- ✅ Pairs well with Lean-CTX or Headroom (complementary, not overlapping)
-- ✅ Works in any chat interface
-
-### Cons
-- ❌ **Minimal total impact** — only ~4–10% overall token reduction (output-only)
-- ❌ Non-reversible format change — terse output may be unsuitable for documentation or explanation tasks
-- ❌ Does absolutely nothing for input token costs (file reads, logs, codebase indexing)
-- ❌ Not suitable for autonomous terminal agents — best only for interactive chat
-
----
-
-## 5. Serena MCP
-
-**Architecture:** MCP server with LSP (Language Server Protocol) integration + optional JetBrains plugin backend
-
-### How It Works
-- Indexes the project using **LSP** to understand symbols, references, call graphs, and types
-- Sends only **relevant symbols and file portions** — not whole files
-- Supports **atomic cross-file refactoring** in a single agent call
-- Can tap into **JetBrains IDE plugins** (IntelliJ, PyCharm, WebStorm) for deeper analysis
-
-### Pros
-- ✅ Broadest language support: **40+ languages** via LSP
-- ✅ **Symbol-aware** — understands function call chains, type definitions, and where logic lives
-- ✅ Atomic refactoring: cross-file renames and structural moves in one reliable call
-- ✅ IDE-level intelligence: unique JetBrains plugin integration
-- ✅ Ideal for Java/Go/Rust/TypeScript in large microservice architectures
-
-### Cons
-- ❌ Higher setup complexity — requires LSP and optionally IDE plugin configuration
-- ❌ Less focused on **bulk compression** — optimizes precision over raw token savings
-- ❌ Overkill for small or mid-size codebases where simpler tools suffice
-- ❌ JetBrains integration limits portability for non-JetBrains users
-
----
-
-## 6. Ponytail ⭐ New & Trending
-
-**GitHub:** `DietrichGebert/ponytail`
-**Creator:** Dietrich Gebert
-**Stars:** 38.5K+ (trending #2 on GitHub as of June 2026)
-**Architecture:** Agent skill / always-on rule injection (works across Claude Code, Codex, Cursor, Windsurf, Cline, Aider, Copilot, Gemini)
-
-### How It Works
-- Injects a **six-rung decision ladder** into every agent session, forcing agents to think before writing code:
-  1. **YAGNI** — Does this need to exist at all?
-  2. **Stdlib** — Does the standard library already cover it?
-  3. **Native platform** — Is there a built-in browser/OS feature?
-  4. **Existing dependency** — Does an installed package do this?
-  5. **Minimal custom** — Can it be done in under 20 lines?
-  6. **Full build** — Only if all above fail
-- Rule re-injects every turn — the "lazy senior dev" constraint is always active
-- Compounding effect: less code generated now = less code read back in future turns
-
-### Pros
-- ✅ **Unique angle** — attacks token waste at *generation time*, not compression time
-- ✅ Up to **94% less code** in over-build scenarios (54% average)
-- ✅ **100% safety score** on adversarial test tier — doesn't drop guard cases
-- ✅ Slash commands: `/ponytail-debt`, `/ponytail-audit`, `/ponytail-gain` for visibility into savings
-- ✅ Works in all major agents — widest compatibility of any tool here
-- ✅ Includes a behavior evaluation framework to verify the ruleset actually fires
-- ✅ Zero infrastructure — no proxy, no binary, no runtime
-
-### Cons
-- ❌ **Output style only** — does not compress existing context or file reads
-- ❌ Terse output can conflict with tasks that need thorough explanations or documentation
-- ❌ Relies on the agent respecting injected rules — can be inconsistent with weaker models
-- ❌ Does not address token costs from reading large existing codebases
-
-> **Key distinction:** Ponytail prevents bloat from being *created*. All other tools compress bloat that *already exists*. Use both together for maximum effect.
-
----
-
-## 7. MCP-Compressor ⭐ New
-
-**GitHub:** `atlassian-labs/mcp-compressor`
-**Creator:** Atlassian Labs (open source)
-**Architecture:** MCP proxy wrapper — available in TypeScript, Python, and Rust
-
-### How It Works
-- Wraps existing MCP servers via **stdio, HTTP, or SSE** protocols
-- Compresses **tool definition schemas** into a two-step interface: browse compressed summaries first, expand full schema only when needed
-- No external data files required
-- Targets the "context suicide" problem: connecting many MCP servers balloons tool definition tokens before any real work starts
-
-### Pros
-- ✅ **Fills a gap no other tool covers** — specifically targets MCP tool definition bloat
-- ✅ **70–97% reduction** in tool definition tokens
-- ✅ Schema-based tool calling is preserved — agents still call tools correctly
-- ✅ Available in three languages (TS, Python, Rust) — easy to integrate into any stack
-- ✅ Transparent wrapper — existing MCP servers need no changes
-- ✅ Backed by Atlassian Labs — production-grade quality and maintenance
-
-### Cons
-- ❌ Addresses **only tool definitions**, not payload content or file reads
-- ❌ Adds a proxy hop — slight latency overhead per tool call
-- ❌ Relatively new (Jan 2026) — ecosystem integrations still maturing
-
-> **When this matters most:** If you have 5+ MCP servers connected (Jira, GitHub, Confluence, DB tools, etc.), tool definitions alone can consume 50K–100K+ tokens per session. This is the tool for that problem.
-
----
-
-## 8. Tulbase
-
-**Site:** `compre.sh` | MIT licensed open-source core
-**Architecture:** MCP server — local-first context compression for LLM agents
-
-### How It Works
-- Runs as a local MCP server, compressing context before it reaches the LLM
-- Open-source core pairs with **Compresh** (compre.sh) paid tier for Q-protective ranking (quality-preserving compression prioritization)
-- Local-first design — data does not leave the machine
-
-### Pros
-- ✅ **Privacy-first** — fully local, no data sent to external services
-- ✅ MIT licensed open-source core with a clear upgrade path
-- ✅ MCP-native — drop-in for any MCP-compatible agent
-
-### Cons
-- ❌ **Early-stage** — less battle-tested than Headroom or Lean-CTX
-- ❌ Advanced features (Q-protective ranking) require the paid Compresh tier
-- ❌ Smaller community and documentation than established tools
-- ❌ Savings figures not independently benchmarked yet
+# AI Token Optimization Tools — Compare the Layer, Not the Headline
 
----
+**Updated · 28 October 2026 · Primary-source refresh**
 
-## 9. LLMLingua / LLMLingua-2
+> **Core idea:** Navigation, compression, less generated code, and shorter explanations solve different problems. Current products increasingly overlap; token-reduction percentages are not comparable without matching workload, quality checks, and billing categories.
 
-**GitHub:** `microsoft/LLMLingua`
-**Creator:** Microsoft Research
-**Architecture:** Python library — small LM-based token perplexity compression
-
-### How It Works
-- Uses a **small language model** (GPT-2 or LLaMA-7B) to compute perplexity of each prompt token
-- Removes tokens with low perplexity (low information content) using a coarse-to-fine strategy:
-  1. **Budget Controller** — allocates compression ratios across prompt segments (instructions, examples, questions)
-  2. **Token-level compression** — iteratively removes low-info tokens while preserving dependencies
-  3. **Distribution alignment** — bridges gap between compressor model and target LLM
-- **LLMLingua-2** adds task-agnostic compression via data distillation from GPT-4, framing compression as a token classification problem
-
-### Pros
-- ✅ Most **academically rigorous** approach — extensively peer-reviewed and benchmarked
-- ✅ Up to **20× compression ratio** with minimal performance degradation
-- ✅ Task-agnostic (LLMLingua-2) — works across diverse prompt types, not just code
-- ✅ Proven on standard benchmarks: GSM8K, BBH, ShareGPT, NaturalQuestions
-- ✅ LongLLMLingua variant handles RAG scenarios — 21.4% performance *improvement* with 4× fewer tokens
-
-### Cons
-- ❌ **Not plug-and-play** — requires integrating a compression model into your pipeline
-- ❌ The compressor model itself consumes compute and adds latency
-- ❌ Not designed for IDE agent workflows (Claude Code, Cursor) — better suited for custom LLM applications
-- ❌ Requires Python environment and model weights; heavy dependency footprint
-- ❌ No MCP integration or agent-native tooling
-
-> **Bottom line:** LLMLingua is the right pick if you're *building* an LLM application and control the full pipeline. It's not for developers who just want to optimize their daily Claude Code or Cursor sessions.
-
----
-
-## 10. Codebase-Memory (via MCP)
-
-**Paper:** arXiv:2603.27277
-**Architecture:** MCP server exposing a Tree-sitter knowledge graph of the codebase
-
-### How It Works
-- Builds a **pre-indexed semantic knowledge graph** of the entire repository using Tree-sitter
-- Exposes the graph via MCP — agents query for specific functions, types, call chains instead of reading raw files
-- Implements a "**pointers over copies**" philosophy: agent gets a reference to a definition, not the entire file
-
-### Pros
-- ✅ **~10× fewer tokens** than file-dump approaches — verified across 31 repositories
-- ✅ Complements Serena MCP and Lean-CTX — different indexing strategy
-- ✅ MCP-native — works with any MCP-compatible agent
-- ✅ Pre-indexed — fast lookups with no per-query parsing overhead
-
-### Cons
-- ❌ Requires an initial indexing pass — not instant on first use
-- ❌ Index can become stale on fast-moving codebases — needs re-indexing strategy
-- ❌ Research project origin — production readiness varies
-- ❌ Overlaps significantly with Serena MCP and Lean-CTX; pick one for code graph duties
-
----
-
-## Decision Guide
-
-```
-Is your token problem mainly...
-
-Noisy terminal / shell output?
-  → RTK (fastest fix, zero config)
-
-Large file reads and repeated codebase indexing?
-  → Lean-CTX (deep AST compression + re-read cache)
-
-Mixed payloads (logs + JSON + code) across multiple agents?
-  → Headroom (global proxy, reversible, cache-aware)
-
-AI chattiness and conversational filler in interactive sessions?
-  → Caveman (output trimmer, pairs with any other tool)
-
-Finding logic across a massive codebase / Java microservices?
-  → Serena MCP (symbol-level precision, LSP-powered)
-
-AI generating bloated, over-engineered code?
-  → Ponytail (prevents token waste at generation time)
-
-Too many MCP servers ballooning tool definition tokens?
-  → MCP-Compressor (Atlassian Labs — compresses tool schemas)
-
-Privacy-first local-only compression?
-  → Tulbase (local MCP server, MIT core)
-
-Building a custom LLM pipeline needing deep prompt compression?
-  → LLMLingua-2 (Microsoft Research, up to 20× compression)
-
-Code graph navigation with minimal tokens?
-  → Codebase-Memory (Tree-sitter knowledge graph via MCP)
-```
-
----
-
-## Layer Model
-
-These tools operate at distinct layers — most can be combined without conflict:
-
-```
-┌─────────────────────────────────────────────────────────┐
-│  GENERATION LAYER (what the agent writes)               │
-│  → Ponytail                                             │
-├─────────────────────────────────────────────────────────┤
-│  TOOL DEFINITION LAYER (MCP schema tokens)              │
-│  → MCP-Compressor                                       │
-├─────────────────────────────────────────────────────────┤
-│  CODE INTELLIGENCE LAYER (how code is read/navigated)   │
-│  → Serena MCP · Lean-CTX · Codebase-Memory             │
-├─────────────────────────────────────────────────────────┤
-│  PAYLOAD COMPRESSION LAYER (logs, JSON, RAG, history)   │
-│  → Headroom · Tulbase · LLMLingua-2                     │
-├─────────────────────────────────────────────────────────┤
-│  SHELL OUTPUT LAYER (terminal noise)                    │
-│  → RTK                                                  │
-├─────────────────────────────────────────────────────────┤
-│  OUTPUT FORMAT LAYER (AI verbosity)                     │
-│  → Caveman                                              │
-└─────────────────────────────────────────────────────────┘
-```
-
----
-
-## Recommended Stacks
-
-| Workflow | Recommended Combination |
+## 1. Current tool map
+
+| Tool | What it changes | What to check |
+|---|---|---|
+| [CodeGraph](https://github.com/colbymchenry/codegraph) | Pre-indexed symbols, callers, dependencies, auto-sync | Graph completeness/freshness; expand source when needed |
+| [Serena](https://github.com/oraios/serena) | Language-server/optional JetBrains symbol navigation and edits | Backend capabilities vary; no blanket atomic-refactoring guarantee |
+| [Codebase-Memory](https://github.com/DeusData/codebase-memory-mcp) | Persistent Tree-sitter graph retrieval | Structural answers can omit implementation details |
+| [Headroom](https://github.com/headroomlabs-ai/headroom) | Proxy/SDK input compression, retrieval, cache-aware forwarding; optional navigation/memory | Enabled mode, provider compatibility, original retention, actual billing |
+| [RTK](https://github.com/rtk-ai/rtk) | Command-output filters and structural reads; newer engine/proxy offerings have broader scope | OSS CLI versus separate offerings; raw-output fallback |
+| [Ponytail](https://github.com/DietrichGebert/ponytail) | Generation policy: prefer reuse and avoid unnecessary code | Required behavior still implemented; rules are not enforcement |
+| [Caveman](https://github.com/JuliusBrussee/caveman) | Classic terse-output skill; v4 adds an input proxy, routing, reusable blocks | Skill versus proxy versus cloud Auto; overlapping transforms and data path |
+| [LeanCTX](https://github.com/yvgude/lean-ctx) | Structural reads, search, output filters, references, task records | Current README withdraws older compression tables; quality impact needs evaluation |
+| [MCP-Compressor](https://github.com/atlassian-labs/mcp-compressor) | Wrapper reduces exposed tool-definition surface | Existing native tool search may already solve much of the problem |
+| [LLMLingua / LLMLingua-2](https://github.com/microsoft/LLMLingua) | Learned prompt compression; LLMLingua-2 uses token classification | Additional model/compute, information loss, cache interaction; benchmark scope |
+| [Tulbase / Compresh](https://github.com/compresh/tulbase-mcp) | Local summaries/storage; separate paid remote retrieval | Core versus wrapper licensing, transcript data path, retained originals |
+
+## 2. How the tools work: strengths, limits, and starting points
+
+### LeanCTX — a broader context gateway
+
+**How it works:** combines structural file reads, search, command-output filtering, references to retained content, and local task records through CLI, MCP, hooks, or proxy integrations. Its current scope is broader than the earlier AST-only description.
+
+**Pros:** several ways to retrieve only relevant material; local references can avoid repeatedly returning large payloads.
+
+**Cons:** reference recovery depends on retained originals and permissions. The maintainer withdrew historical compression tables, including fixed “13-token reread” claims; neither those figures nor universal quality preservation should guide adoption.
+
+**Start:** choose one integration and compare ordinary reads with structural reads on your repository. Confirm the agent can recover omitted details before relying on references. [Current capabilities and benchmark status](https://github.com/yvgude/lean-ctx)
+
+### RTK — reduce noisy command output
+
+**How it works:** a CLI filters supported command results and offers structural reads/search. The OSS CLI, broader engine edition, and separate API proxy have different scope and licensing; “shell output only” no longer describes the entire project.
+
+**Pros:** useful for repetitive test/build output and easy to evaluate on existing commands. `rtk proxy <command>` provides an unfiltered fallback.
+
+**Cons:** advertised reductions concern selected command payloads, not the entire bill. Savings counters can use approximate token estimates; a filtered success summary cannot replace inspecting a failure or verifying behavior.
+
+**Start:** use supported filters on noisy commands, retain access to raw output, and compare provider usage as well as `rtk gain`. [RTK documentation](https://github.com/rtk-ai/rtk)
+
+### Headroom — compress inputs while managing recovery and cache stability
+
+**How it works:** proxy/SDK paths select compressors for eligible content. Default proxy cache mode preserves previous representations and compresses new eligible material. Code-aware compression can retain imports, signatures, and structure while shortening implementations; eligibility and passthrough guards matter. Optional graph navigation and memory extend its scope. [Architecture](https://docs.headroomlabs.ai/docs/architecture), [code compression](https://docs.headroomlabs.ai/docs/code-compression)
+
+**Pros:** handles several input types and offers retrieval of retained originals through CCR. Cache-aware forwarding addresses a real risk: rewriting old content can lose a useful cached prefix.
+
+**Cons:** CCR originals can expire or be evicted, retrieval must be reachable, and the model must ask for missing detail. CacheAligner is detector-only, not a mechanism that reorders dynamic fields. Optional cold-prefix recompaction can rewrite history and is separate from default behavior. Local compression does not establish that every feature sends no metadata externally. [CCR](https://docs.headroomlabs.ai/docs/ccr), [cache behavior](https://docs.headroomlabs.ai/docs/cache-optimization), [limitations](https://docs.headroomlabs.ai/docs/limitations)
+
+**Start:** verify your installed version and enabled mode, test recovery, then compare accepted-task cost. SDK audit/optimization and proxy modes are distinct. See the version boundary below before applying current documentation to this repository.
+
+### Caveman — distinguish the terse skill from the v4 product
+
+**How it works:** the classic skill asks for concise natural-language responses. Version 4 also adds an input-compression proxy, model/effort routing, and reusable code blocks.
+
+**Pros:** the skill directly addresses verbose explanations; the broader product can address input volume and routing too.
+
+**Cons:** these are different interventions. Savings from a cheaper routed model cannot be attributed to shorter prose. Auto routing uses Caveman Cloud/account infrastructure; do not describe the whole product as local-only. Terse output must still communicate assumptions, failures, and review findings.
+
+**Start:** try the skill when prose is the problem; evaluate the proxy or Auto separately with a clear data path and quality checks. [v4 release and evaluation context](https://github.com/JuliusBrussee/caveman/releases/tag/v4.0.0)
+
+### Serena — retrieve and edit through code symbols
+
+**How it works:** uses language-server capabilities or an optional paid JetBrains backend to find symbols, references, and perform supported edits. Backend and language support determine available operations.
+
+**Pros:** useful when the agent repeatedly scans files to locate definitions and callers; symbol-level access can return more relevant code.
+
+**Cons:** semantic navigation does not guarantee correct or atomic cross-file refactoring. Backend capabilities vary, and implementation details may still require full reads. JetBrains is optional, not a prerequisite for the LSP path.
+
+**Start:** activate the project through your host's supported integration, test symbol lookup and references in its main languages, then verify edits with the project's checks. [Serena documentation](https://github.com/oraios/serena)
+
+### Ponytail — avoid generating unnecessary code
+
+**How it works:** skill/rule guidance encourages reuse, existing facilities, and minimal solutions before introducing new dependencies or abstractions. This changes implementation decisions, not just response length.
+
+**Pros:** targets a common coding-agent cost: producing and maintaining code the task did not need. Explicit scope and acceptance criteria complement the guidance.
+
+**Cons:** rules are advice, not enforcement. Fewer lines do not prove equivalent behavior, security, or maintainability. Reinjection and available commands depend on the host integration; do not assume identical behavior everywhere.
+
+**Start:** apply its supported rules to a bounded task and review both required behavior and omitted work. Its maintainer benchmark is useful evidence with limits described below. [Project and integrations](https://github.com/DietrichGebert/ponytail)
+
+### MCP-Compressor — expose a smaller tool catalog
+
+**How it works:** wraps MCP servers with compact tool descriptions, fetching full schemas on demand before invoking tools. Compression levels trade upfront detail for discovery calls. Current documentation also offers optional response shrinking with recovery paths; it is no longer exclusively schema compression.
+
+**Pros:** useful for large catalogs; Python, TypeScript, and Rust integrations, with stdio and streamable HTTP support.
+
+**Cons:** schema discovery adds calls, aggressive shortening can obscure tool choice, and native deferred tool search may already provide much of the benefit. Response shrinking introduces its own recovery requirements. The reported 70–97% reduction measures upfront tool-description/schema overhead, not total workflow tokens.
+
+**Start:** measure your host's initial catalog first. If it is substantial, test a moderate wrapper level before stronger compression. [Project](https://github.com/atlassian-labs/mcp-compressor), [mechanism](https://atlassian-labs.github.io/mcp-compressor/concepts/how-it-works/), [benchmark explanation](https://www.atlassian.com/blog/developer/mcp-compression-preventing-tool-bloat-in-ai-agents)
+
+### Tulbase / Compresh — separate local storage from paid remote retrieval
+
+**How it works:** the local Tulbase MCP core stores originals and returns compact summaries/references, preserving a recent-message protection zone. It provides compression, fetch, listing, and statistics tools. The current paid Compresh wrapper adds remote query-aware TUL2 retrieval; its older Q-ranking description is historical.
+
+**Pros:** the MIT local core supports local storage and recovery without model credentials.
+
+**Cons:** recovery depends on retained storage; summaries may omit important detail. The paid path sends conversation history to Compresh infrastructure and has separate fees and a BSL licence requiring a valid subscription for production use. Do not describe the whole offering as MIT or fully local. Maintainer dialog-size examples are not independently established coding-task savings.
+
+**Start:** identify which repository/package you intend to use. Standalone installation guidance conflicts across READMEs, so verify distribution availability rather than assuming a package command works. Hosted service availability was not verified in this refresh. [Local Tulbase](https://github.com/compresh/tulbase-mcp), [current Compresh](https://github.com/compresh/compresh-mcp), [wrapper licence](https://github.com/compresh/compresh-mcp/blob/main/LICENSE)
+
+### LLMLingua family — learned compression for an application you control
+
+**How it works:** original LLMLingua uses a small causal model and perplexity-based token selection. LLMLingua-2 instead uses a distilled bidirectional token classifier. LongLLMLingua is a separate query-aware approach for long-context applications.
+
+**Pros:** offers a programmable compression budget for owned prompt/RAG pipelines, with published research evaluations.
+
+**Cons:** requires compressor compute and model downloads; extraction can remove identifiers, negation, or constraints. Original LLMLingua's “up to 20×” result is workload-specific. LongLLMLingua's reported improvement on NaturalQuestions is not a general coding-agent result or an LLMLingua-2 result.
+
+**Start:** integrate in a controlled pipeline, retain originals, and test answer quality plus end-to-end latency and cost. It is a library, not a transparent IDE optimisation switch. [Microsoft implementation](https://github.com/microsoft/LLMLingua), [original paper](https://arxiv.org/abs/2310.05736), [LLMLingua-2](https://arxiv.org/abs/2403.12968), [LongLLMLingua](https://arxiv.org/abs/2310.06839)
+
+### Codebase-Memory — retrieve repository structure from a persistent graph
+
+**How it works:** indexes code using Tree-sitter and exposes graph-based repository queries rather than repeatedly exploring whole files.
+
+**Pros:** compact structural answers can help with repository orientation and relationships.
+
+**Cons:** structural answers can miss implementation detail. Its paper's token reduction came with lower measured answer quality; that trade-off belongs alongside the savings claim, not in a footnote.
+
+**Start:** evaluate on questions with known answers and expand the underlying source for implementation work. The paper's version and repository-question workload do not establish current end-to-end coding performance. [Implementation](https://github.com/DeusData/codebase-memory-mcp), [paper](https://arxiv.org/abs/2603.27277)
+
+### CodeGraph — indexed navigation with freshness to verify
+
+**How it works:** builds an index of symbols, callers, and dependencies with synchronization support, allowing targeted graph queries before source expansion.
+
+**Pros:** can reduce broad searches when code relationships are the missing information.
+
+**Cons:** indexing coverage/freshness and the model's tool choices affect results. More graph calls can increase cumulative tokens even when resident context shrinks. The shared video's results varied by model; it is not proof that graphs always save money.
+
+**Start:** compare the same task with and without the graph, counting repairs and validating the implementation. [Project](https://github.com/colbymchenry/codegraph), [detailed experiment review](CodeGraph-Headroom-and-Context-Management-Trade-Offs-Oct-2026.md)
+
+## 3. Read the benchmark denominator
+
+- **Ponytail:** a maintainer A/B evaluation reports 53% fewer source lines, 45% fewer **output** tokens, and 26% lower estimated cost across 39 tasks with five runs per arm on Opus 5.5. Bash was disabled; executable hidden checks covered only 18 tasks. This is not a complete edit–execute–debug benchmark or universal safety guarantee. [Method and results](https://github.com/DietrichGebert/ponytail/blob/main/benchmarks/results/2026-10-07-agentic.md)
+- **Caveman:** current proxy/routing savings come from maintainer evaluations; routing to another model and compressing inputs are different interventions. Do not attribute their combined savings to terse prose. Auto routing uses a cloud service/account. [v4 release](https://github.com/JuliusBrussee/caveman/releases/tag/v4.0.0)
+- **Codebase-Memory:** its paper reports roughly 10× fewer tokens but 83% answer quality versus 92% for a file explorer across 31 repositories. That result concerns repository questions, not a guarantee of better implementations. [Paper](https://arxiv.org/abs/2603.27277)
+- **Headroom and RTK:** reduced payload tokens or estimated avoided cost are different from lower provider spend. Count cache reads/writes, generated tokens, recovery, and completed outcomes. [Field-report review](Headroom-RTK-Real-World-Feedback-2026.md)
+
+## 4. Choose by the observed problem
+
+| Observed problem | First experiment |
 |---|---|
-| Claude Code on large Java/Quarkus repo | **Serena MCP** + **Lean-CTX** + **Ponytail** + **Caveman** |
-| Claude Code with many MCP servers | **MCP-Compressor** + **Ponytail** + **Caveman** |
-| SRE / DevOps with heavy log analysis | **Headroom** + **Caveman** |
-| Shell-heavy CI/CD debugging | **RTK** + **Caveman** |
-| Cursor on a mid-size project | **Lean-CTX** + **Ponytail** + **Caveman** |
-| Multi-agent framework (mixed I/O) | **Headroom** + **MCP-Compressor** |
-| Custom LLM application pipeline | **LLMLingua-2** (standalone, full control) |
-| Privacy-sensitive / air-gapped environment | **Tulbase** + **Ponytail** |
+| Agent repeatedly searches for definitions/callers | One graph or semantic-navigation tool |
+| Build/test logs flood context | RTK or targeted output filtering with raw logs retained |
+| Selected JSON/log/text payloads remain large | Headroom **or** another proxy, then measure retrieval and cache effects |
+| Agent invents abstractions and excess code | Ponytail plus explicit acceptance criteria |
+| Explanations are needlessly long | A concise-output instruction or Caveman skill |
+| Tool schemas dominate initial context | Native deferred tool search first; evaluate a wrapper only if needed |
+| Custom application needs learned compression | LLMLingua family against a quality-preserving control |
+
+Add one layer at a time. Do not route through several compressors merely because each advertises savings. Freeze model/effort, task snapshot, repair allowance, and acceptance checks; repeat trials and report variation. Pair output/input counters with actual provider billing and independent behavioral verification.
+
+### A layer model, with overlap
+
+This is a simplified decision path, not a requirement to install every layer. Several products span multiple boxes.
+
+```mermaid
+flowchart TD
+    A[Task and acceptance criteria] --> B[Find relevant source: graph or semantic navigation]
+    B --> C[Bound noisy inputs: command filters or one proxy]
+    C --> D[Implement only required behavior: scope and reuse rules]
+    D --> E[Explain findings concisely]
+    E --> F[Run checks and measure accepted-task cost]
+    F -->|Missing detail| B
+```
+
+### Suggested combinations
+
+| Situation | Initial combination | Add another layer only when… |
+|---|---|---|
+| Noisy build/test workflow | RTK + normal source reads | Relevant inputs still dominate usage |
+| Large unfamiliar repository | One of Serena, CodeGraph, or Codebase-Memory | Navigation improves, but selected payloads remain too large |
+| Repeated large JSON/log inputs | One proxy such as Headroom | Recovery and cache behavior pass your checks |
+| Overbuilt implementations | Ponytail + explicit non-goals | Required behavior remains covered and excess code falls |
+| Verbose explanations | Concise-output instruction or Caveman skill | Readers still receive necessary evidence and caveats |
+| Large MCP catalog | Native tool search, then MCP-Compressor if needed | Measured upfront schema overhead warrants extra discovery |
+
+Avoid starting with several graph tools or multiple rewriting proxies. Their schemas, indexes, rules, and transformations can overlap; savings percentages cannot be added together.
+
+## 5. Headroom version boundary in this repository
+
+Latest release checked: [v0.42.0, 26 October](https://github.com/headroomlabs-ai/headroom/releases/tag/v0.42.0). The [shared wrapper config](../../../Scripts/headroom/headroom-env.sh) remains pinned to 0.37.0. Published docs, installed capability, and enabled features are separate facts; this note makes no runtime/configuration change.
 
 ---
-
-*Sources: GitHub repositories (DietrichGebert/ponytail, atlassian-labs/mcp-compressor, chopratejas/headroom, yvgude/lean-ctx, microsoft/LLMLingua), Tejas Chopra's Headroom presentation (Netflix), arXiv:2603.27277 (Codebase-Memory), arXiv:2310.06839 (LLMLingua), and community comparisons. Verify specific savings figures in your own environment as they vary by codebase and workflow.*
 
 **Related:**
-- [Headroom-RTK-Real-World-Feedback-2026](Headroom-RTK-Real-World-Feedback-2026.md) — Evidence-backed follow-up on production reports, cache regressions, and safety/correctness issues.
-- [AI-Coding-Loops](../../Agents/development/AI-Coding-Loops.md) — Harness-engineering patterns (skill isolation, hook-based enforcement) pair with these tools; Ponytail and MCP-Compressor are agent-skill-style interventions.
-
-- [Empirical Tokenomics and Model Routing](Empirical-Tokenomics-and-Model-Routing-2026.md) — Stage-based model selection, context handoffs, and cost per accepted change.
+- [CodeGraph, Headroom, and Context-Management Trade-offs](CodeGraph-Headroom-and-Context-Management-Trade-Offs-Oct-2026.md) — Model-dependent experiment, current Headroom features, and a practical evaluation plan.
+- [Headroom & RTK: Real-World Feedback](Headroom-RTK-Real-World-Feedback-2026.md) — Earlier reports and version-sensitive integration risks.
+- [AI Coding Loops](../../Agents/development/AI-Coding-Loops.md) — Executable verification and harness design.
+- [Empirical Tokenomics and Model Routing](Empirical-Tokenomics-and-Model-Routing-2026.md) — Model selection and accepted-task economics.
