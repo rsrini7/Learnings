@@ -98,9 +98,9 @@ adapt section names and omit sections that do not help explain the subject.
    search terms, logs or hashes where available, and explain what a hit, a
    changed hash or missing evidence does and does not establish. For
    non-incident topics, cover applications and trade-offs.
-8. **Source context and Related:** briefly identify the supplied summaries, videos
-   or articles and supporting primary reports, then end with the required Related
-   links below.
+8. **Source context and Related:** when the user supplies background material,
+   describe it briefly as "user-provided details" and identify the primary
+   sources used to check material claims. Then end with the required Related links.
 
 ### Editorial and verification standard
 
@@ -114,15 +114,16 @@ adapt section names and omit sections that do not help explain the subject.
   decision path becomes clearer visually. Label simplifications and distinguish
   observed behavior from conceptual examples. Use tables for genuine comparisons.
 - Verify material claims against current primary sources and cite them inline
-  near the relevant explanation. Trace video summaries and pasted notes back to
+  near the relevant explanation. Trace claims in user-provided details back to
   disclosures, official documentation, standards or first-person research.
 - Attribute preliminary root causes and company statements. State uncertainties,
   scope evidence of non-exploitation to the observer, and distinguish a local
-  demonstration from compromise of a real service. Describe provenance positively
-  and accurately: for example, "Based on user-shared video summaries, with technical
-  details cross-checked against primary disclosures." Reserve verification claims
-  for material actually checked; mention access limitations only when they affect
-  a material conclusion or the user asks about verification.
+  demonstration from compromise of a real service. Describe provenance simply:
+  for example, "Based on user-provided details, with material claims checked
+  against primary disclosures." Name a video, transcript or other input format
+  only when that provenance affects a claim or the user asks. Reserve verification
+  claims for material actually checked; mention access limitations only when they
+  affect a material conclusion or the user asks about verification.
 - Keep unrelated concurrent incidents separate. Include business context only
   when it helps interpret the technical impact. Explain meaningful limitations
   without sensationalism or unsupported assurances.

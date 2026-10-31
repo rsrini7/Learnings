@@ -115,7 +115,7 @@ The first command finds **contact with those endpoints**, not proof that the mal
 
 ## 7. Source context
 
-This note began with user-shared video summaries and a pasted incident account. Material claims were checked against [Polymarket's status and postmortem](https://status.polymarket.com/cmvvek1i90eme14ruga1z6tuj), [DebugBear's RUM documentation](https://www.debugbear.com/docs/rum/setup), [DebugBear's public incident notice](https://x.com/DebugBear/status/2115866496643535293), and [Hudson Rock's first-person file capture and static review](https://www.infostealers.com/article/polymarket-breach-alert-wallet-draining-code-found-in-a-third-party-script/). The supplied video summaries are context, not independent proof of exact wallet counts, script behavior or completed refunds. Tool descriptions in §6 come from their project documentation; the tools were not deployed against Polymarket.
+User-provided details supplied the starting context. Material claims were checked against [Polymarket's status and postmortem](https://status.polymarket.com/cmvvek1i90eme14ruga1z6tuj), [DebugBear's RUM documentation](https://www.debugbear.com/docs/rum/setup), [DebugBear's public incident notice](https://x.com/DebugBear/status/2115866496643535293), and [Hudson Rock's first-person file capture and static review](https://www.infostealers.com/article/polymarket-breach-alert-wallet-draining-code-found-in-a-third-party-script/). Exact wallet counts in those details were not confirmed by Polymarket's postmortem and remain labeled as early summaries. Tool descriptions in §6 come from their project documentation; the tools were not deployed against Polymarket.
 
 ---
 
