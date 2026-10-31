@@ -1,10 +1,14 @@
 # eMudhra: Eight Weak CA Keys and the PKI Trust Gap
 
-**Daily learning · 22 October 2026 · Primary-source review · Investigation ongoing**
+**Daily learning · 22 October 2026 · Revalidated 31 October 2026 · Investigation ongoing**
 
 > **Core idea:** Eight certificate-issuing keys were small enough to guess almost instantly. An attacker could use them to impersonate services to clients that still trusted the affected chains. Browsers received emergency blocks; other software needs its own trust updates.
 
 ## 1. First understand the chain: who trusts whom?
+
+**eMudhra operates emSign, a certificate authority:** its public certificates help browsers and applications authenticate websites and services. Website operators obtain certificates; browsers, operating systems and applications decide which issuers to trust. A client can therefore be exposed even if neither its owner nor the website buys certificates from eMudhra. [Apple's incident explanation](https://support.apple.com/en-us/149555).
+
+**HTTPS protects a connection, not a business's honesty.** It authenticates the requested hostname under the client's trust rules and protects traffic in transit. A phishing site can also use HTTPS for its own domain. Chrome replaced its lock with a settings-style icon partly because users mistook it for proof of website trustworthiness. [Chromium's explanation](https://blog.chromium.org/2023/05/an-update-on-lock-icon.html).
 
 | Term | Simple meaning |
 |---|---|
@@ -24,6 +28,8 @@ flowchart TD
 ```
 
 The root's self-signature does not create trust: **the client chooses to trust it**. An intermediate can issue only within the constraints the verifier enforces. The arrows show certificate issuance, not network traffic. [X.509 validation: RFC 5280, §6](https://www.rfc-editor.org/rfc/rfc5280.html#section-6).
+
+During a normal TLS handshake, the server sends its leaf certificate and usually the intermediates needed to build a chain; it can omit the root already trusted by the client. There can be multiple intermediates. Separating issuing keys from the root lets operators limit routine use of the root private key. Root **certificates** are public; their private signing keys require protection. [TLS certificate lists](https://www.rfc-editor.org/rfc/rfc8446.html#section-4.4.2), [X.509 certification paths](https://www.rfc-editor.org/rfc/rfc5280.html#section-6).
 
 Architecture reference supplied with this review: [The SSL Store's three-tier PKI diagram](https://www.thesslstore.com/blog/wp-content/uploads/2021/12/3-tier-ca-pki-architecture-diagram-843x1024.png). The simplified diagram above focuses on the trust path relevant to this incident.
 
@@ -54,13 +60,13 @@ Padding changes representation, not unpredictability. The byte explanation follo
 ```mermaid
 flowchart LR
     A["Key-generation ceremony"] --> B["Intended strong keys"]
-    A --> C["Wrap/unwrap code flaw<br/>creates additional weak keys"]
-    C --> D["Similar labels cause<br/>wrong key selection"]
+    B --> C["Wrap, unwrap and re-import rehearsal<br/>produces weak key objects"]
+    C --> D["Script specifies re-imported<br/>objects for CSR creation"]
     D --> E["CSRs use weak public keys"]
-    E --> F["CA signs intermediates;<br/>some receive cross-signatures"]
+    E --> F["eMudhra certifies keys;<br/>Sectigo also cross-certifies them"]
 ```
 
-This is **eMudhra's preliminary account**, not a completed forensic finding. A CSR is a certificate signing request; wrapping packages key material for transfer. eMudhra reported that similar labels led operators to use the unintended weak keys for CSRs, which its root signed and which were also sent to Sectigo. [CA responses in Mozilla's incident record](https://bugzilla.mozilla.org/show_bug.cgi?id=2083449).
+This is **eMudhra's revised account**, not a completed forensic finding. A CSR is a certificate signing request; wrapping packages key material for transfer. Its response dated 28 October says a planned wrap/unwrap/re-import rehearsal left two same-label objects with different key material. The ceremony script specified creating CSRs from the re-imported objects. This **revises the earlier similar-label operator-selection explanation**. The exact mechanism that reduced the secrets to single-byte values remains unresolved. [Revised response, Q7 and Q9](https://bugzilla.mozilla.org/attachment.cgi?id=9670867), [public discussion](https://bugzilla.mozilla.org/show_bug.cgi?id=2083449#c62).
 
 The company dates the ceremony to **30 April 2025**, using FIPS 140-2 Level 3 HSMs, and says the detailed root cause remains under investigation. Hardware certification did not establish that the entire workflow selected secure keys. [eMudhra's 21 October statement](https://emudhra.com/investor-assets/investors/esg-profile/fy2027/statement-on-distrust-of-global-tls-intermediate-and-root-ca.pdf).
 
@@ -106,13 +112,17 @@ Times are **UTC**; October dates are **2026**.
 | Oct 18–20 | CA revocations and additional platform protections follow. |
 | Oct 19, ~22:00 | Android receives equivalent blocks through **Google Play Services**, without requiring a full OS firmware update. |
 | Oct 20 | Mozilla announces Firefox fixes and an NSS root-store update. |
-| **Oct 27, morning PDT—scheduled** | Chrome expects broad rollout of removal of **emSign ECC Root CA – G3**. Earlier on prerelease channels. |
+| Oct 27, morning PDT—announced rollout date | Google's target for broad release of the **emSign ECC Root CA – G3** removal. This date has passed; deployment on a particular client still needs verification. |
+| Oct 28 | eMudhra describes temporary G1 issuance during customer migration; the incident researcher reports remaining macOS developer-tool exposure. |
+| Oct 30 | eMudhra appoints KPMG as an independent external reviewer. |
 
 Sources: [Google's response and rollout schedule](https://blog.google/security/protecting-chrome-and-android-users-from-compromised-emudhra-intermediate-ca-certificates/), [Mozilla's notice](https://blog.mozilla.org/security/2026/10/20/protecting-firefox-users-following-the-compromise-of-emudhra-intermediate-certificates/), [incident record](https://bugzilla.mozilla.org/show_bug.cgi?id=2083449).
 
 **Blocking a key and removing a root are different actions.** Key blocking can reject every certificate using that key, including alternate cross-signed paths. Root removal affects other legitimate chains too; it does not establish that the root's private key was recovered. Google warns operators under this root to migrate certificates before rollout. [Google's migration warning](https://blog.google/security/protecting-chrome-and-android-users-from-compromised-emudhra-intermediate-ca-certificates/).
 
-**22 October update:** eMudhra's board approved a voluntary exit from the global SSL/TLS certificate business. The company said no end-entity certificates were issued under the affected CAs, that it will provide replacement certificates through partners, and that its Indian DSC/eSign services remain separate. This is a business decision following the incident, not evidence that the weak keys were exploited. [eMudhra press release](https://emudhra.com/en/press-release/emudhra-to-exit-global-ssl-tls-certificate-business).
+**31 October check:** Chromium's current root-store source is version **43** and excludes this G3 root. That confirms the published store change; it does not prove every installed client has received it. [Chromium's root-store source](https://chromium.googlesource.com/chromium/src/+/main/net/data/ssl/chrome_root_store/root_store.textproto).
+
+**Exit means a transition, not an immediate shutdown:** the board approved withdrawal from global SSL/TLS on 22 October. On 28 October, eMudhra said G1 issuance would continue temporarily for a US customer ecosystem while it moves to other providers. The broader G3 root distrust also affects legitimate certificates outside the eight weak issuers. KPMG's appointment on 30 October begins an external review; it is not a published final root-cause finding. [Exit announcement](https://emudhra.com/en/press-release/emudhra-to-exit-global-ssl-tls-certificate-business), [company updates 6–7](https://emudhra.com/en/post/certificate-security-incident).
 
 ## 5. The gap: your browser's protection does not update your application
 
@@ -125,7 +135,26 @@ Sources: [Google's response and rollout schedule](https://blog.google/security/p
 
 Many non-browser clients do not consume revocation information or enforce Certificate Transparency (CT). A valid signature and an unexpired certificate can therefore remain acceptable after a CA publishes a revocation. Behavior depends on the client, TLS backend and configuration. [Incident checker and downstream guidance](https://emudhra.we-have-a-problem.com/).
 
+**A runtime has its own update lifecycle.** Node.js's bundled Mozilla CA store is a snapshot fixed at release time; updating Firefox does not update it. System-store options and custom CA configuration can change what a Node process actually trusts. Use a patched runtime and test the application's configuration. [Node.js trust-store documentation](https://nodejs.org/api/tls.html#tlsrootcertificates).
+
+Node.js shipped fixes on 21 October in **22.23.4, 24.22.1 and 26.12.1**: use those or newer supported releases. The fix includes explicit rejection of chains containing blocked public keys as well as a root-store update. Rebuild images and restart processes; updating npm dependencies alone does not update the runtime. [Official security announcement](https://nodejs.org/en/blog/vulnerability/october-2026-security-releases), [release details](https://github.com/nodejs/node/releases/tag/v26.12.1).
+
+**Modern hardware is not proof of protection.** Apple confirms that some bundled command-line tools, including `curl` and `git`, use `/etc/ssl/cert.pem` rather than its framework-level blocks. Its guidance warns that OS updates can replace manual edits. Jackson's 28 October report describes that regression after macOS 27.2. Re-test developer workstations and CI runners after updates. [Apple's guidance](https://support.apple.com/en-us/149555), [researcher's macOS findings](https://emudhra.we-have-a-problem.com/apple.html).
+
 **Cross-signing matters:** the same intermediate public key can have certificates from different parents. Removing only the eMudhra root may leave a Sectigo-backed path accepted. Merely deleting a cached intermediate is insufficient if a peer can supply it again. The remediation must reject the affected keys or eliminate **every accepted path**. This is an engineering inference from [Google's SPKI block](https://groups.google.com/a/mozilla.org/g/dev-security-policy/c/0R3XLJL6FuE/m/ra8uYR6tAgAJ) and [X.509 path validation](https://www.rfc-editor.org/rfc/rfc5280.html#section-6).
+
+### Does expiry eventually end the risk?
+
+| Certificate | Encoded expiry, UTC |
+|---|---|
+| Eight native eMudhra weak-key intermediates | **28 Apr 2040, 18:30:00** |
+| Their Sectigo cross-signed copies | **31 Dec 2028, 23:59:59** |
+| Sectigo's AAA Certificate Services root | **31 Dec 2028, 23:59:59** |
+| emSign ECC Root CA – G3 trust anchor | **18 Feb 2043, 18:30:00** |
+
+Sources: [intermediate certificates and metadata](https://emudhra.we-have-a-problem.com/impacted-intermediates.json), [root certificates and metadata](https://emudhra.we-have-a-problem.com/roots.json).
+
+An expiry date belongs to a **certificate**, not the mathematical private key. Correct validation rejects an expired intermediate on that path, but trust-anchor expiry handling is implementation-dependent. These dates describe existing certificates, not a universal safety deadline. Patch now; old-device exposure depends on its accepted chains, clock and verifier, rather than device age alone. [X.509 trust-anchor and path-validation rules](https://www.rfc-editor.org/rfc/rfc5280.html#section-6.1).
 
 ### Was it exploited?
 
@@ -144,11 +173,37 @@ For Cloudflare users: update One/WARP clients to the fixed versions in its advis
 
 The deployment checklist above synthesizes that guidance with the [downstream remediation tracker](https://emudhra.we-have-a-problem.com/). mTLS exposure depends on which CAs the service accepts; a private-only client trust store does not automatically trust public WebPKI issuers.
 
+### Tools: check the verifier you actually run
+
+The open-source [incident checker](https://github.com/galadran/we-have-a-problem.com) publishes affected-certificate metadata and offline test chains. Its [hosted checks](https://emudhra.we-have-a-problem.com/) cover direct, cross-signed and unlogged (**No CT**) chains. Start with these read-only requests from the environment being assessed:
+
+```bash
+curl https://dv-g3b-noct-emudhra.we-have-a-problem.com/
+curl https://dv-g3b-aaa-noct-emudhra.we-have-a-problem.com/
+git ls-remote https://git-emudhra.we-have-a-problem.com/check.git
+```
+
+A successful curl connection exposes both residual trust and lack of CT enforcement for that chain. Git listing a commit demonstrates residual trust in its own verifier. Certificate rejection is expected; network failures are inconclusive. A TLS-inspecting proxy makes the result reflect the proxy's trust decision. These examples sample paths; use the full checker or offline chain set for coverage. [Checker instructions](https://emudhra.we-have-a-problem.com/), [Git test instructions](https://emudhra.we-have-a-problem.com/apple.html).
+
+For retrospective investigation, search **recorded peer chains** with the regular expression `EM (DV|OV|EV) TLS CA - G3[BC]`; compare certificate and SPKI fingerprints with the [affected-certificate dataset](https://emudhra.we-have-a-problem.com/impacted-intermediates.json). Inspect a saved PEM certificate with:
+
+```bash
+openssl x509 -in peer.pem -noout -subject -issuer -dates -fingerprint -sha256
+```
+
+[OpenSSL](https://docs.openssl.org/3.5/man1/openssl-x509/) prints identity, validity and a certificate fingerprint; it does not establish whether an attack happened. Names are search leads, not unique identifiers. A matching fingerprint identifies a certificate, while a changed fingerprint can reflect another certificate using the same compromised key. Missing peer-chain logs cannot establish non-exploitation. Ordinary HTTP access logs may not contain this evidence.
+
+**Legacy Firefox caveat:** Mozilla identified delayed OneCRL initialization on ESR 115 and marked its repair verified on 30 October. Treat an old ESR installation separately from current Firefox and check the running build; a source fix alone does not prove a client received it. [Mozilla's ESR 115 follow-up](https://bugzilla.mozilla.org/show_bug.cgi?id=2086788).
+
 ## 7. What this incident teaches
 
 **Engineering conclusions:** validate the key-generation workflow as a whole; use unambiguous key identities and independently check the public key selected for each CSR. Reject known weak-key patterns, while recognizing that a small-number scan cannot prove good randomness. Design trust updates to reach running applications, and test alternate chains.
 
 eMudhra says its infrastructure and data were not breached, Indian DSC/eSign services run separately, and global TLS represents around 1% of revenue. These are company statements; they do not reduce the authentication risk for clients trusting the weak keys. [Company filing](https://emudhra.com/investor-assets/investors/esg-profile/fy2027/statement-on-distrust-of-global-tls-intermediate-and-root-ca.pdf). [CERT-In](https://www.cert-in.org.in/s2cMainServlet?CACODE=CICA-2026-3649&pageid=PUBADV01) also distinguishes the unaffected domestic services.
+
+### Source context
+
+Based on user-provided details, with material claims checked against primary disclosures. The [additional explainer](https://www.youtube.com/watch?v=ybUXY-c33i4) prompted this 31 October revalidation. Current status follows the company updates, browser/platform guidance and incident research linked above.
 
 ---
 
