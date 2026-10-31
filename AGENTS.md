@@ -62,6 +62,7 @@ and readable depth demonstrated by these references unless the user requests
 another format:
 - [eMudhra: Weak CA Keys and PKI Trust](News/Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)
 - [PHP2Shell: History, UAF and ASLR](News/Security/PHP2Shell-History-UAF-And-ASLR-Oct-2026.md)
+- [Polymarket: Compromised Monitoring Script](News/Security/Polymarket-DebugBear-Supply-Chain-Attack-Oct-2026.md)
 
 Read the relevant reference before drafting. Apply this pattern across topics;
 adapt section names and omit sections that do not help explain the subject.
@@ -72,18 +73,31 @@ adapt section names and omit sections that do not help explain the subject.
    verification status or an investigation qualifier where relevant.
 2. **Core idea:** a short blockquote explaining what happened and why it matters
    in one or two plain-language sentences.
-3. **Foundations:** introduce the system and essential terms before the detailed
-   mechanism. Use a compact term/meaning table when readers need one.
+3. **Foundations:** first explain in plain language what each main product or
+   organization does, why the parties are connected, and what normal use looks
+   like. Add a familiar product comparison when it helps, and state how the
+   products differ. Then define essential terms before the detailed mechanism;
+   use a compact term/meaning or party/role table when readers need one.
 4. **Mechanism:** explain what changed or broke, step by step. Distinguish the
    underlying technology from its implementation, workflow or operational use.
-5. **Impact and limits:** explain capabilities, prerequisites and practical
-   consequences. Use a claim/correction or question/answer table to resolve
-   common misconceptions. Separate demonstrated results from possible outcomes.
+5. **Impact and limits:** explain prerequisites and practical consequences;
+   separate demonstrated results from possible outcomes. For incidents,
+   identify the supplier, affected platform and end users separately; state
+   who was exposed, who was demonstrably harmed, and what remains unknown.
+   Distinguish a compromised delivery path from a flaw in the supplier's
+   normal product, and a platform incident from an underlying protocol failure.
+   Use a claim/correction or question/answer table for common misconceptions.
 6. **Timeline and current state:** include meaningful dates, fixes and rollout
    status when they clarify the story. Label time zones and distinguish announced,
    scheduled and deployed changes as of the note's date.
 7. **Practical response and lessons:** give concrete actions and explain how to
-   verify the result. For non-incident topics, cover applications and trade-offs.
+   verify the result. Search for relevant open-source code, tools or scripts
+   that help readers inspect, reproduce, detect or mitigate the topic. Include
+   useful finds with a source link, what each does, how to start and its limits;
+   omit a tool list when none helps. For incidents, give exact retrospective
+   search terms, logs or hashes where available, and explain what a hit, a
+   changed hash or missing evidence does and does not establish. For
+   non-incident topics, cover applications and trade-offs.
 8. **Source context and Related:** briefly identify the supplied summaries, videos
    or articles and supporting primary reports, then end with the required Related
    links below.
@@ -93,6 +107,9 @@ adapt section names and omit sections that do not help explain the subject.
 - Keep the writing simplified, concise and readable while preserving technical
   depth. Define jargon at first use; keep paragraphs short and sections numbered.
   Scale length to the topic rather than filling every section.
+- Before delivery, check that a new reader can answer: "What is this?", "Why
+  are these parties connected?", and "Who was affected?" Revise the opening if
+  those answers require reading the technical mechanism first.
 - Use Mermaid diagrams when a trust chain, lifecycle, architecture, sequence or
   decision path becomes clearer visually. Label simplifications and distinguish
   observed behavior from conceptual examples. Use tables for genuine comparisons.
