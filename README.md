@@ -433,6 +433,7 @@ Learnings/
 - [PHP2Shell Exploit Debate Threat Models And Patch Status Oct 2026](News/Security/PHP2Shell-Exploit-Debate-Threat-Models-And-Patch-Status-Oct-2026.md)
 - [PHP2Shell History UAF And ASLR Oct 2026](News/Security/PHP2Shell-History-UAF-And-ASLR-Oct-2026.md)
 - [PHP2Shell Steal My Bitcoin Challenge Oct 2026](News/Security/PHP2Shell-Steal-My-Bitcoin-Challenge-Oct-2026.md)
+- [Polymarket DebugBear Supply Chain Attack Oct 2026](News/Security/Polymarket-DebugBear-Supply-Chain-Attack-Oct-2026.md)
 - [Security Vulnerabilities in Wireless Devices and Apps](News/Security/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
 
 ### 🚨 Infrastructure & Outages

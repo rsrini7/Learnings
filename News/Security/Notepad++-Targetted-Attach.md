@@ -29,6 +29,7 @@ A bug fix in Notepad++ version 8.8.8 was released to prevent the updater from be
 https://notepad-plus-plus.org/news/hijacked-incident-info-update/
 
 **Related:**
+- [Polymarket DebugBear Script Compromise](Polymarket-DebugBear-Supply-Chain-Attack-Oct-2026.md) — A separate attack that delivered malicious code through a trusted third-party component.
 - [eMudhra Weak CA Keys](EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md) — Explain how certificate authority failures can undermine authenticated software delivery.
 - [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](../../AI-ML/Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md) — Both detail targeted, hands-on-keyboard attacks leveraging update/installer trust chains.
 - [MongoBleed-Dec2025](MongoBleed-Dec2025.md) — Sister write-up of a major late-2025 CVE that, like Notepad++, exposed long-known unpatched flaws.

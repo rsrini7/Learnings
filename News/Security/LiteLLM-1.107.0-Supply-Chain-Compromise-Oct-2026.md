@@ -75,6 +75,7 @@ The vendor's statement that the key “was not revoked” is the central lesson:
 ---
 
 **Related:**
+- [Polymarket DebugBear Script Compromise](Polymarket-DebugBear-Supply-Chain-Attack-Oct-2026.md) — Compare a malicious browser dependency with a compromised package release.
 - [OpenCode Console API-Key Breach](OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md) — Compare platform-held AI credentials with a compromised package release.
 - [Railway, Zeabur and the Hunt for AI Provider Keys](AI-Key-Theft-Railway-Zeabur-Oct-2026.md) — A related campaign against platforms that store inference keys.
 - [Node.js Brotli Decoder](Node.js-Brotli-Node2Shell-RCE-Oct-2026.md) — Another trust boundary where rebuilding the runtime, not the application package, is the fix.
