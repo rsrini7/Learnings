@@ -419,6 +419,7 @@ Learnings/
 - [10.0 CVE n8n vulnerability](News/Security/10.0_CVE_n8n-vulnerability.md)
 - [AI Key Theft Railway Zeabur Oct 2026](News/Security/AI-Key-Theft-Railway-Zeabur-Oct-2026.md)
 - [Banks Third Party AI Agents Oct 2026](News/Security/Banks-Third-Party-AI-Agents-Oct-2026.md)
+- [Binance Hot Wallet Theft TRM Labs Investigation Oct 2026](News/Security/Binance-Hot-Wallet-Theft-TRM-Labs-Investigation-Oct-2026.md)
 - [EMudhra Weak CA Keys And PKI Trust Oct 2026](News/Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)
 - [GitLab Regex Compiler RCE Oct 2026](News/Security/GitLab-Regex-Compiler-RCE-Oct-2026.md)
 - [India Spam Calls DND And TRAI Enforcement Oct 2026](News/Security/India-Spam-Calls-DND-And-TRAI-Enforcement-Oct-2026.md)

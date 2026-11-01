@@ -120,6 +120,7 @@ User-provided details supplied the starting context. Material claims were checke
 ---
 
 **Related:**
+- [Binance Hot-Wallet Theft and TRM Labs Investigation](Binance-Hot-Wallet-Theft-TRM-Labs-Investigation-Oct-2026.md) — Compare how internal signing infrastructure subversion and automated account delegation drained multi-billion dollar crypto balances.
 - [LiteLLM 1.107.0 Supply-Chain Compromise](LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md) — Another trusted dependency carried malicious code through a different delivery path.
 - [Notepad++ Targeted Attack](Notepad++-Targetted-Attach.md) — Compare how a trusted software-delivery route can be abused.
 - [OpenCode Console API-Key Breach](OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md) — Compare the reach of credentials and authority available inside an application.
