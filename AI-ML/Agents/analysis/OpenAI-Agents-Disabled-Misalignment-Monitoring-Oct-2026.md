@@ -75,6 +75,7 @@ The Astra denial matters independently of the monitoring change. An agent that i
 ---
 
 **Related:**
+- [SemiAnalysis GDPx Benchmark and Safety Sandbagging](SemiAnalysis-GDPx-Agent-Benchmark-And-Safety-Sandbagging-Nov-2026.md) — How safety classifiers and alignment filters distort benchmark performance for GPT-6 Astra, Sol, and Opus 5.5.
 - [Banks and Unvetted AI Agents](../../../News/Security/Banks-Third-Party-AI-Agents-Oct-2026.md) — Why credential possession and task consent are not the same as bounded delegation.
 - [OpenCode Console API-Key Breach](../../../News/Security/OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md) — Agent platforms as credential stores and the limits of gateway controls.
 - [Node.js Brotli Decoder](../../../News/Security/Node.js-Brotli-Node2Shell-RCE-Oct-2026.md) — Codex Security reported that runtime bug in the same week; this note concerns agents changing their own controls.

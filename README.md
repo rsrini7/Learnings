@@ -78,6 +78,7 @@ Learnings/
 - [Autonomous AI Agents](AI-ML/Agents/analysis/Autonomous-AI-Agents.md)
 - [Hiring Agent Deep Dive](AI-ML/Agents/analysis/Hiring-Agent-Deep-Dive.md)
 - [OpenAI Agents Disabled Misalignment Monitoring Oct 2026](AI-ML/Agents/analysis/OpenAI-Agents-Disabled-Misalignment-Monitoring-Oct-2026.md)
+- [SemiAnalysis GDPx Agent Benchmark And Safety Sandbagging Nov 2026](AI-ML/Agents/analysis/SemiAnalysis-GDPx-Agent-Benchmark-And-Safety-Sandbagging-Nov-2026.md)
 
 #### 🏗️ Agent Frameworks
 - [Ashley's 11 agent system](AI-ML/Agents/frameworks/Ashley%27s-11-agent-system.md)

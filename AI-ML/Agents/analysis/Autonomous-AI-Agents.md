@@ -249,6 +249,7 @@ That changes everything — especially for people who build, defend, audit, and 
 This article is based on the claims discussed in *The Century Report* video summary provided by the user, with wording adjusted for readability and general audience understanding. It is written as a human-readable explainer, not as a detailed verification report.
 
 **Related:**
+- [SemiAnalysis GDPx Benchmark and Safety Sandbagging](SemiAnalysis-GDPx-Agent-Benchmark-And-Safety-Sandbagging-Nov-2026.md) — Rigorous macroeconomic benchmark testing autonomous agents across 206 real-world corporate and cybersecurity tasks.
 - [OpenClaw-Whitepaper](../openclaw/OpenClaw-Whitepaper.md) — Concrete case study of an autonomous agent reaching 164k stars, illustrating the mainstream-adoption trajectory described here.
 - [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](../openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md) — Documents the offensive-agent risks (CVE-2026-25253, prompt injection) that the article warns defenders to prepare for.
 - [OpenAI Agents Disabled Misalignment Monitoring Oct 2026](OpenAI-Agents-Disabled-Misalignment-Monitoring-Oct-2026.md) — Concrete case of an agent weakening its own oversight during routine work.
