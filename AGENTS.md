@@ -37,10 +37,11 @@ To change what appears in the README:
    - `Sarvam-AI-Deep-Review-2026.md`
    - `Google-Gemma-Family-Models-Jan-2026.md`
    - `Chinese-AI-Trifecta-2025-2026.md`
-3. Put any linked images/PDFs in the nearest `assets/` folder
-   (e.g. `AI-ML/assets/`) and reference them with a correct **relative** path.
-   **Do NOT put images alongside the `.md` file.**
-   **Do NOT put images in the root-level `assets/`** — always use the
+3. Put any linked images/SVGs/PDFs in the nearest `assets/` folder
+   (e.g. `AI-ML/assets/` or `AI-ML/LLMs/assets/`) and reference them with a
+   correct **relative** path.
+   **Do NOT put images/SVGs alongside the `.md` file.**
+   **Do NOT put images/SVGs in the root-level `assets/`** — always use the
    category-level `assets/` folder closest to the `.md` file.
    When relocating assets, use `git mv` to preserve history:
    ```bash
@@ -110,9 +111,14 @@ adapt section names and omit sections that do not help explain the subject.
 - Before delivery, check that a new reader can answer: "What is this?", "Why
   are these parties connected?", and "Who was affected?" Revise the opening if
   those answers require reading the technical mechanism first.
-- Use Mermaid diagrams when a trust chain, lifecycle, architecture, sequence or
-  decision path becomes clearer visually. Label simplifications and distinguish
-  observed behavior from conceptual examples. Use tables for genuine comparisons.
+- **Diagrams and Visuals:**
+  - **Mermaid:** Use Mermaid for in-line sequence diagrams, decision trees, lifecycles, and simple architectural flowcharts where native markdown rendering and git diffability are preferred.
+  - **Custom Architecture SVGs:** For deep educational notes or complex multi-stage systems (e.g., end-to-end storage tiering, hardware memory layouts, side-by-side comparative flows, or multi-panel infographics), provide a dedicated SVG diagram. It is not mandatory for every note, but strongly recommended when visual richness enhances understanding.
+    - Always store the `.svg` in the nearest category-level `assets/` folder (e.g. `AI-ML/LLMs/assets/<Name>.svg`) and reference it with a relative path (`![Title](../assets/<Name>.svg)`).
+    - Keep SVGs dark-theme native (`#0b0f19` / `#111827` background, slate containers `#1e293b`, cyan `#38bdf8`, emerald `#4ade80`, amber `#fbbf24`, muted text `#94a3b8`) with a responsive `viewBox`.
+    - **Strict XML validation:** All text nodes must escape ampersands as `&amp;` and angle brackets as `&lt;` / `&gt;`. Always validate SVG syntax before delivery (e.g., via `python3 -c "import xml.etree.ElementTree as ET; ET.parse('path/to.svg')"`).
+    - When helpful, pair the SVG (high-level visual infographic) with focused in-line Mermaid diagrams for specific sub-mechanisms (e.g. request sequence or attention projection).
+- Use tables for genuine comparisons.
 - Verify material claims against current primary sources and cite them inline
   near the relevant explanation. Trace claims in user-provided details back to
   disclosures, official documentation, standards or first-person research.
@@ -213,8 +219,9 @@ a commit.
 - [ ] Files named in **Title-Case-Year** format (e.g. `Sarvam-AI-Deep-Review-2026.md`)
 - [ ] Files (and assets) placed in the right folder
 - [ ] Moved/renamed files via `git mv` (not plain `mv`)
-- [ ] Images/PDFs in `assets/` folder, **NOT** alongside the `.md` file
-- [ ] **Do NOT put images in the root-level `assets/`** — use category-level `assets/`
+- [ ] Images/SVGs/PDFs in nearest `assets/` folder, **NOT** alongside the `.md` file
+- [ ] **Do NOT put images/SVGs in the root-level `assets/`** — use category-level `assets/`
+- [ ] SVGs validated for well-formed XML (escaped `&amp;`, `&lt;`, `&gt;`)
 - [ ] Relative links inside moved files fixed
 - [ ] Relative image/asset paths fixed
 - [ ] New `.md` file ends with a `**Related:**` section (3–5 links + reasons)
