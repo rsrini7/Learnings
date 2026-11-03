@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 920" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="cordisGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="50%" stop-color="#312e81" />
+      <stop offset="100%" stop-color="#1e1b4b" />
+    </linearGradient>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#c084fc" />
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f87171" />
+    </marker>
+  </defs>
+
+  <style>
+    text { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="920" fill="url(#bgGrad)" rx="12" />
+
+  <!-- Title Header -->
+  <text x="600" y="42" fill="#f8fafc" font-size="24" font-weight="800" text-anchor="middle" letter-spacing="0.5">
+    DEEPSEEK HARNESS (DSH) &amp; SUPER AGENT ARCHITECTURE
+  </text>
+  <text x="600" y="66" fill="#94a3b8" font-size="13" text-anchor="middle">
+    Built via Composable Plugins &amp; cordis.patch.yaml — Zero Core Modifications
+  </text>
+
+  <!-- ========================================================= -->
+  <!-- SECTION 1: TOP-LEVEL ORCHESTRATION & TRIGGER FLOW         -->
+  <!-- ========================================================= -->
+
+  <!-- 1. External Triggers Box -->
+  <rect x="35" y="95" width="220" height="175" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="145" y="122" fill="#38bdf8" font-size="14" font-weight="700" text-anchor="middle">1. EXTERNAL TRIGGERS</text>
+  <line x1="55" y1="132" x2="235" y2="132" stroke="#334155" stroke-width="1" />
+  
+  <rect x="52" y="144" width="186" height="32" rx="6" fill="#0f172a" stroke="#475569" />
+  <text x="145" y="165" fill="#e2e8f0" font-size="12" text-anchor="middle">GitHub Watcher (Issues / PRs)</text>
+
+  <rect x="52" y="184" width="186" height="32" rx="6" fill="#0f172a" stroke="#475569" />
+  <text x="145" y="205" fill="#e2e8f0" font-size="12" text-anchor="middle">Feishu Watcher (Team Chat)</text>
+
+  <text x="145" y="242" fill="#94a3b8" font-size="11" text-anchor="middle">Listens where team already works</text>
+
+  <!-- Arrow: Triggers -> Gate -->
+  <line x1="255" y1="182" x2="305" y2="182" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowBlue)" />
+
+  <!-- 2. Deterministic Gate Box -->
+  <rect x="315" y="95" width="215" height="175" rx="10" fill="url(#cardGrad)" stroke="#fbbf24" stroke-width="1.5" />
+  <text x="422" y="122" fill="#fbbf24" font-size="14" font-weight="700" text-anchor="middle">2. DETERMINISTIC GATE</text>
+  <line x1="335" y1="132" x2="510" y2="132" stroke="#334155" stroke-width="1" />
+  <text x="422" y="152" fill="#fde68a" font-size="11" font-weight="600" text-anchor="middle">[Plain Code — Zero LLM Calls]</text>
+  <text x="335" y="176" fill="#cbd5e1" font-size="12">• Checks user allow-list</text>
+  <text x="335" y="198" fill="#cbd5e1" font-size="12">• Verifies agent was mentioned</text>
+  <text x="335" y="220" fill="#cbd5e1" font-size="12">• Filters noise &amp; unauthorized</text>
+  <text x="335" y="242" fill="#94a3b8" font-size="11">Blocks invalid requests instantly</text>
+
+  <!-- Arrow: Gate -> Router -->
+  <line x1="530" y1="182" x2="585" y2="182" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrowAmber)" />
+  <text x="557" y="172" fill="#fbbf24" font-size="10" text-anchor="middle">Passed</text>
+
+  <!-- 3. Central Router Session Box -->
+  <rect x="595" y="95" width="275" height="175" rx="10" fill="url(#cardGrad)" stroke="#c084fc" stroke-width="1.5" />
+  <text x="732" y="122" fill="#c084fc" font-size="14" font-weight="700" text-anchor="middle">3. CENTRAL ROUTER SESSION</text>
+  <line x1="615" y1="132" x2="850" y2="132" stroke="#334155" stroke-width="1" />
+  <text x="732" y="152" fill="#e9d5ff" font-size="11" font-weight="600" text-anchor="middle">[Fast / Lightweight LLM — No Bash Tool]</text>
+  <text x="615" y="175" fill="#cbd5e1" font-size="12">• Holds global context &amp; human comms</text>
+  <text x="615" y="196" fill="#cbd5e1" font-size="12">• Batches mid-inference triggers</text>
+  <rect x="615" y="208" width="235" height="46" rx="6" fill="#1e1b4b" stroke="#7e22ce" />
+  <text x="732" y="226" fill="#f3e8ff" font-size="11" font-weight="600" text-anchor="middle">Stress Test (1 → 40 triggers/min):</text>
+  <text x="732" y="244" fill="#d8b4fe" font-size="11" text-anchor="middle">Batch: 2.8 | Decision: 6.4s → 1.6s</text>
+
+  <!-- Arrow: Router -> Ticket/Mandate -->
+  <line x1="870" y1="182" x2="925" y2="182" stroke="#c084fc" stroke-width="2" marker-end="url(#arrowPurple)" />
+
+  <!-- 4. Ticket + Mandate Box -->
+  <rect x="935" y="95" width="230" height="175" rx="10" fill="url(#cardGrad)" stroke="#34d399" stroke-width="1.5" />
+  <text x="1050" y="122" fill="#34d399" font-size="14" font-weight="700" text-anchor="middle">4. TICKET &amp; MANDATE</text>
+  <line x1="955" y1="132" x2="1145" y2="132" stroke="#334155" stroke-width="1" />
+  <text x="955" y="158" fill="#cbd5e1" font-size="12">• Requester identity record</text>
+  <text x="955" y="180" fill="#cbd5e1" font-size="12">• Team rule authorization</text>
+  <text x="955" y="202" fill="#cbd5e1" font-size="12">• Scope &amp; permission boundaries</text>
+  <rect x="955" y="218" width="190" height="34" rx="6" fill="#064e3b" stroke="#10b981" />
+  <text x="1050" y="239" fill="#a7f3d0" font-size="11" font-weight="600" text-anchor="middle">Spawns Isolated Worker Session</text>
+
+  <!-- ========================================================= -->
+  <!-- DIRECT SUBSCRIPTION BYPASS PATH                           -->
+  <!-- ========================================================= -->
+  <path d="M 145 270 L 145 312 L 540 312 L 540 355" fill="none" stroke="#34d399" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowGreen)" />
+  <rect x="210" y="294" width="315" height="32" rx="6" fill="#064e3b" stroke="#34d399" stroke-width="1.2" />
+  <text x="367" y="314" fill="#6ee7b7" font-size="11" font-weight="700" text-anchor="middle">
+    DIRECT SUBSCRIPTION: Follow-up PR Comments Skip Router (-30% Tokens)
+  </text>
+
+  <!-- Arrow from Ticket to Worker Pool -->
+  <path d="M 1050 270 L 1050 312 L 730 312 L 730 355" fill="none" stroke="#34d399" stroke-width="2" marker-end="url(#arrowGreen)" />
+
+  <!-- ========================================================= -->
+  <!-- SECTION 2: ISOLATED WORKER & NON-BLOCKING SHELL (10:29)   -->
+  <!-- ========================================================= -->
+
+  <!-- Outer Container for Worker Layer -->
+  <rect x="35" y="360" width="1130" height="350" rx="12" fill="#0f172a" stroke="#475569" stroke-width="1.5" />
+  <text x="60" y="390" fill="#f8fafc" font-size="16" font-weight="700">
+    5. ISOLATED WORKER AGENT SESSION (Strong Coding Model + Stripped Worker Preset)
+  </text>
+  <text x="60" y="410" fill="#94a3b8" font-size="12">
+    Own directory &amp; session • No human questions • No plan mode • No web fetch • No sub-agents • Reports back via PR / Router
+  </text>
+
+  <!-- Left Sub-Panel: DeepSeek Worker Non-Blocking Shell -->
+  <rect x="55" y="428" width="680" height="175" rx="10" fill="#090d16" stroke="#38bdf8" stroke-width="1.5" />
+  
+  <!-- Header inside terminal -->
+  <text x="80" y="456" fill="#e2e8f0" font-size="15" class="mono" font-weight="700">worker · <tspan fill="#818cf8">work/482</tspan></text>
+  <text x="710" y="456" fill="#60a5fa" font-size="14" class="mono" font-weight="700" text-anchor="end">timeoutMs: 5000</text>
+  <text x="395" y="456" fill="#38bdf8" font-size="11" font-weight="600" text-anchor="middle">[Commands &gt; 5s auto-pushed to background]</text>
+
+  <!-- Foreground Row -->
+  <text x="80" y="502" fill="#94a3b8" font-size="14" class="mono">foreground</text>
+  <rect x="200" y="478" width="510" height="38" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+  <text x="218" y="502" fill="#64748b" font-size="14" class="mono">jlee <tspan fill="#e2e8f0">also check Firefox?</tspan></text>
+  <text x="688" y="502" fill="#34d399" font-size="15" class="mono" font-weight="700">✓</text>
+
+  <!-- Background Row -->
+  <text x="80" y="558" fill="#94a3b8" font-size="14" class="mono">background</text>
+  <rect x="200" y="534" width="510" height="38" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1.5" />
+  <text x="218" y="558" fill="#e2e8f0" font-size="14" class="mono">$ pnpm build</text>
+  <text x="692" y="558" fill="#60a5fa" font-size="14" class="mono" text-anchor="end">14.0 s</text>
+  <text x="580" y="592" fill="#f59e0b" font-size="14" font-weight="600" text-anchor="middle">the build keeps running (non-blocking)</text>
+
+  <!-- Bottom Comparison: Traditional Blocking Shell -->
+  <rect x="55" y="615" width="680" height="75" rx="8" fill="#18121e" stroke="#f87171" stroke-width="1.2" stroke-dasharray="4,3" />
+  <text x="80" y="644" fill="#94a3b8" font-size="13" class="mono">blocking shell (e.g., Claude Code / Codex):</text>
+  <text x="80" y="668" fill="#f59e0b" font-size="14" font-weight="700">it waits (frozen)</text>
+  <rect x="235" y="644" width="235" height="32" rx="4" fill="#0f172a" stroke="#475569" />
+  <text x="250" y="665" fill="#e2e8f0" font-size="13" class="mono">$ pnpm build   11.2 s</text>
+  <rect x="485" y="644" width="225" height="32" rx="4" fill="#0f172a" stroke="#f87171" />
+  <text x="597" y="665" fill="#fca5a5" font-size="12" class="mono" text-anchor="middle">queued: also check Firefox?</text>
+
+  <!-- Right Sub-Panel: Worker Lifecycle & Output -->
+  <rect x="755" y="428" width="390" height="262" rx="10" fill="url(#cardGrad)" stroke="#34d399" stroke-width="1.5" />
+  <text x="950" y="456" fill="#34d399" font-size="14" font-weight="700" text-anchor="middle">WORKER EXECUTION &amp; PR DELIVERY</text>
+  <line x1="775" y1="468" x2="1125" y2="468" stroke="#334155" stroke-width="1" />
+
+  <text x="775" y="494" fill="#e2e8f0" font-size="12" font-weight="600">1. Continuous Reactivity:</text>
+  <text x="775" y="512" fill="#94a3b8" font-size="11">Because tasks &gt;5s move to background, the worker</text>
+  <text x="775" y="528" fill="#94a3b8" font-size="11">immediately processes mid-flight PR comments.</text>
+
+  <text x="775" y="558" fill="#e2e8f0" font-size="12" font-weight="600">2. Unsolicited / Proactive Work Mode:</text>
+  <text x="775" y="576" fill="#94a3b8" font-size="11">Silently records &amp; verifies fixes first; only alerts</text>
+  <text x="775" y="592" fill="#94a3b8" font-size="11">humans when a verified result or decision is ready.</text>
+
+  <rect x="775" y="610" width="350" height="62" rx="8" fill="#064e3b" stroke="#10b981" />
+  <text x="950" y="633" fill="#a7f3d0" font-size="12" font-weight="700" text-anchor="middle">FINAL OUTPUT TO TEAM</text>
+  <text x="950" y="653" fill="#ecfdf5" font-size="11" text-anchor="middle">Commits code → Opens Pull Request → Replies via Router</text>
+
+  <!-- ========================================================= -->
+  <!-- SECTION 3: CORDIS SPATIOTEMPORAL COMPOSABILITY LAYER      -->
+  <!-- ========================================================= -->
+
+  <rect x="35" y="730" width="1130" height="165" rx="12" fill="url(#cordisGrad)" stroke="#818cf8" stroke-width="1.5" />
+  <text x="600" y="758" fill="#e0e7ff" font-size="15" font-weight="800" text-anchor="middle" letter-spacing="0.5">
+    6. UNDERLYING FOUNDATION: DEEPSEEK HARNESS (DSH) + CORDIS FRAMEWORK ("EVERYTHING IS A PLUGIN")
+  </text>
+
+  <!-- Left Box: Cordis Principles -->
+  <rect x="55" y="772" width="350" height="108" rx="8" fill="#0f172a" stroke="#6366f1" />
+  <text x="230" y="794" fill="#a5b4fc" font-size="12" font-weight="700" text-anchor="middle">CORDIS SPATIOTEMPORAL COMPOSABILITY</text>
+  <text x="70" y="816" fill="#cbd5e1" font-size="11"><tspan fill="#38bdf8" font-weight="700">• Temporal:</tspan> Unloading a plugin cleanly reverses</text>
+  <text x="82" y="832" fill="#94a3b8" font-size="11">all registered tools, hooks, and state changes.</text>
+  <text x="70" y="852" fill="#cbd5e1" font-size="11"><tspan fill="#34d399" font-weight="700">• Spatial:</tspan> Runtime auto-activates/deactivates</text>
+  <text x="82" y="868" fill="#94a3b8" font-size="11">plugins dynamically as dependencies change.</text>
+
+  <!-- Middle Box: Everything is a Plugin -->
+  <rect x="425" y="772" width="350" height="108" rx="8" fill="#0f172a" stroke="#6366f1" />
+  <text x="600" y="794" fill="#a5b4fc" font-size="12" font-weight="700" text-anchor="middle">CORE COMPONENTS AS PLUGINS</text>
+  <rect x="442" y="806" width="150" height="26" rx="4" fill="#1e293b" />
+  <text x="517" y="823" fill="#e2e8f0" font-size="11" text-anchor="middle">Agent Loop Plugin</text>
+  <rect x="608" y="806" width="150" height="26" rx="4" fill="#1e293b" />
+  <text x="683" y="823" fill="#e2e8f0" font-size="11" text-anchor="middle">Router Plugin</text>
+  <rect x="442" y="842" width="150" height="26" rx="4" fill="#1e293b" />
+  <text x="517" y="859" fill="#e2e8f0" font-size="11" text-anchor="middle">Tool Registry Plugin</text>
+  <rect x="608" y="842" width="150" height="26" rx="4" fill="#1e293b" />
+  <text x="683" y="859" fill="#e2e8f0" font-size="11" text-anchor="middle">Session Log Plugin</text>
+
+  <!-- Right Box: Boot Config Tree -->
+  <rect x="795" y="772" width="350" height="108" rx="8" fill="#0f172a" stroke="#6366f1" />
+  <text x="970" y="794" fill="#a5b4fc" font-size="12" font-weight="700" text-anchor="middle">LAYERED BOOT TREE &amp; UI MODES</text>
+  <text x="812" y="816" fill="#cbd5e1" font-size="11">1. Base Bundles → 2. <tspan fill="#fbbf24" class="mono">cordis.patch.yaml</tspan></text>
+  <text x="812" y="834" fill="#cbd5e1" font-size="11">3. Home Patch → 4. CLI Overrides (<tspan fill="#38bdf8" class="mono">dump-config</tspan>)</text>
+  <text x="812" y="856" fill="#94a3b8" font-size="11">Modes: <tspan fill="#f8fafc">Standard | PTC | Minimal | Creator</tspan></text>
+  <text x="812" y="872" fill="#6ee7b7" font-size="10">Benchmark: 63.3% Pass Rate @ $3.28/task (vs $18.34)</text>
+</svg>

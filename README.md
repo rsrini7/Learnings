@@ -87,6 +87,7 @@ Learnings/
 - [Claude Ralph Loop](AI-ML/Agents/frameworks/Claude-Ralph-Loop.md)
 - [ClaudeRalphLoop and AgentRalphMode](AI-ML/Agents/frameworks/ClaudeRalphLoop-and-AgentRalphMode.md)
 - [Confucius Code Agent](AI-ML/Agents/frameworks/Confucius-Code-Agent.md)
+- [DeepSeek SuperAgent And Harness Architecture Nov 2026](AI-ML/Agents/frameworks/DeepSeek-SuperAgent-And-Harness-Architecture-Nov-2026.md)
 - [How Ralph Works with Amp](AI-ML/Agents/frameworks/How-Ralph-Works-with-Amp.md)
 - [InternetOfAgents](AI-ML/Agents/frameworks/InternetOfAgents.md)
 - [Ralph Wiggum Loops & Ralph Mode](AI-ML/Agents/frameworks/Ralph-Wiggum-Loops-%26-Ralph-Mode.md)

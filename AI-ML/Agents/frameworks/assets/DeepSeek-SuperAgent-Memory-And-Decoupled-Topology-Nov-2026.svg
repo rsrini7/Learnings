@@ -1,0 +1,203 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 680" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowCyan2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+    <marker id="arrowAmber2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+    <marker id="arrowPurple2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#c084fc" />
+    </marker>
+  </defs>
+
+  <style>
+    text { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="680" fill="url(#bgGrad2)" rx="12" />
+
+  <!-- Title Header -->
+  <text x="600" y="42" fill="#f8fafc" font-size="24" font-weight="800" text-anchor="middle" letter-spacing="0.5">
+    DEEPSEEK SUPERAGENT: MEMORY ARCHITECTURE &amp; DECOUPLED TOPOLOGY
+  </text>
+  <text x="600" y="66" fill="#94a3b8" font-size="13" text-anchor="middle">
+    Progressive Inlining, Spill-to-Cache Knowledge Graph (Chain of Recall), and Tri-Tier Infrastructure
+  </text>
+
+  <!-- ========================================================= -->
+  <!-- LEFT PANEL: CONTEXT ORGANIZATION & CHAIN OF RECALL        -->
+  <!-- ========================================================= -->
+  <rect x="35" y="90" width="550" height="560" rx="10" fill="url(#cardGrad2)" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="55" y="122" fill="#38bdf8" font-size="14" font-weight="700">1. CONTEXT MEMORY: INLINE VS. SPILL (NO COMPACTION)</text>
+  <line x1="55" y1="134" x2="565" y2="134" stroke="#334155" stroke-width="1" />
+
+  <!-- 3 Stage Flow Cards -->
+  <!-- Stage 1 -->
+  <g transform="translate(55, 150)">
+    <rect width="155" height="110" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+    <text x="77" y="24" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">1. MINIMAL STATE</text>
+    <text x="12" y="44" fill="#cbd5e1" font-size="11">• Object ID + summary</text>
+    <text x="12" y="60" fill="#cbd5e1" font-size="11">• Target mandate</text>
+    <text x="12" y="76" fill="#cbd5e1" font-size="11">• Minimal seed context</text>
+    <rect x="12" y="86" width="131" height="18" rx="3" fill="#0369a1" />
+    <text x="77" y="99" fill="#e0f2fe" font-size="10" font-weight="600" text-anchor="middle">~100–300 Tokens</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="215" y1="205" x2="235" y2="205" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan2)" />
+
+  <!-- Stage 2 -->
+  <g transform="translate(240, 150)">
+    <rect width="165" height="110" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+    <text x="82" y="24" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle">2. PROG. INLINING</text>
+    <text x="12" y="44" fill="#cbd5e1" font-size="11">• Space: thread neighbors</text>
+    <text x="12" y="60" fill="#cbd5e1" font-size="11">• Time: concurrent events</text>
+    <text x="12" y="76" fill="#cbd5e1" font-size="11">• Inline context on demand</text>
+    <rect x="12" y="86" width="141" height="18" rx="3" fill="#b45309" />
+    <text x="82" y="99" fill="#fef3c7" font-size="10" font-weight="600" text-anchor="middle">Active Window (&lt;85%)</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <line x1="410" y1="205" x2="430" y2="205" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrowAmber2)" />
+
+  <!-- Stage 3 -->
+  <g transform="translate(435, 150)">
+    <rect width="130" height="110" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+    <text x="65" y="24" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">3. SPILL CACHE</text>
+    <text x="10" y="44" fill="#cbd5e1" font-size="11">• NEVER compact</text>
+    <text x="10" y="60" fill="#cbd5e1" font-size="11">• Spill over-limit</text>
+    <text x="10" y="76" fill="#cbd5e1" font-size="11">• Store in DB cache</text>
+    <rect x="10" y="86" width="110" height="18" rx="3" fill="#047857" />
+    <text x="65" y="99" fill="#d1fae5" font-size="10" font-weight="600" text-anchor="middle">Zero Lossy Drift</text>
+  </g>
+
+  <!-- Anti-Pattern Banner -->
+  <rect x="55" y="275" width="510" height="42" rx="6" fill="#18121e" stroke="#f87171" stroke-width="1" />
+  <text x="70" y="293" fill="#fca5a5" font-size="11" font-weight="700">❌ Legacy Failure: Context Compaction destroys line-level traces and code fidelity.</text>
+  <text x="70" y="309" fill="#cbd5e1" font-size="11">✔️ DeepSeek Inlining + Spill: Retains exact tokens externally and links them in a Knowledge Graph.</text>
+
+  <!-- Knowledge Graph Sub-Panel -->
+  <rect x="55" y="330" width="510" height="305" rx="8" fill="#090d16" stroke="#c084fc" stroke-width="1.2" />
+  <text x="75" y="356" fill="#c084fc" font-size="13" font-weight="700">CHAIN OF RECALL: KNOWLEDGE GRAPH RETRIEVAL</text>
+  <text x="75" y="374" fill="#94a3b8" font-size="11">The Router walks linked graph nodes rather than stuffing millions of raw tokens into model context.</text>
+
+  <!-- Graph Node Visuals -->
+  <!-- Node A: Trigger 42 -->
+  <rect x="75" y="400" width="180" height="50" rx="6" fill="#1e293b" stroke="#38bdf8" />
+  <text x="85" y="420" fill="#38bdf8" font-size="11" font-weight="700">Trigger #42</text>
+  <text x="85" y="438" fill="#cbd5e1" font-size="10">Slack Thread: "Auth is broken"</text>
+
+  <!-- Node B: Thread 15 -->
+  <rect x="335" y="400" width="210" height="50" rx="6" fill="#1e293b" stroke="#fbbf24" />
+  <text x="345" y="420" fill="#fbbf24" font-size="11" font-weight="700">Thread #15 (GitHub PR #104)</text>
+  <text x="345" y="438" fill="#cbd5e1" font-size="10">Active Worker 482 Assigned</text>
+
+  <!-- Node C: Active Inline -->
+  <rect x="75" y="500" width="180" height="55" rx="6" fill="#1e293b" stroke="#34d399" />
+  <text x="85" y="520" fill="#34d399" font-size="11" font-weight="700">Active Inline Context</text>
+  <text x="85" y="536" fill="#cbd5e1" font-size="10">Recent git diff &amp; fix commits</text>
+  <text x="85" y="548" fill="#64748b" font-size="9">Kept in LLM window</text>
+
+  <!-- Node D: Spilled Cache -->
+  <rect x="335" y="500" width="210" height="55" rx="6" fill="#1e1b4b" stroke="#c084fc" />
+  <text x="345" y="520" fill="#c084fc" font-size="11" font-weight="700">Spilled Cache Node #15-A</text>
+  <text x="345" y="536" fill="#e9d5ff" font-size="10">Full 14s pnpm build log &amp; AST trace</text>
+  <text x="345" y="548" fill="#94a3b8" font-size="9">External Redis / Mongo DB</text>
+
+  <!-- Graph Connector Lines -->
+  <line x1="255" y1="425" x2="335" y2="425" stroke="#fbbf24" stroke-width="1.8" marker-end="url(#arrowAmber2)" />
+  <text x="295" y="418" fill="#94a3b8" font-size="9" text-anchor="middle">spawns</text>
+
+  <line x1="440" y1="450" x2="440" y2="500" stroke="#c084fc" stroke-width="1.8" marker-end="url(#arrowPurple2)" />
+  <text x="455" y="480" fill="#94a3b8" font-size="9">spills to</text>
+
+  <line x1="165" y1="450" x2="165" y2="500" stroke="#38bdf8" stroke-width="1.8" marker-end="url(#arrowCyan2)" />
+  <text x="180" y="480" fill="#94a3b8" font-size="9">inlines</text>
+
+  <!-- Node E: Connected Alert -->
+  <rect x="180" y="575" width="240" height="45" rx="5" fill="#0f172a" stroke="#64748b" stroke-dasharray="3,3" />
+  <text x="190" y="595" fill="#94a3b8" font-size="10" font-weight="600">Linked Event: Trigger #54 (CI Failure)</text>
+  <text x="190" y="609" fill="#64748b" font-size="9">Discovered via Graph Edge Traversal</text>
+  <line x1="390" y1="555" x2="330" y2="575" stroke="#64748b" stroke-width="1.2" stroke-dasharray="2,2" />
+
+  <!-- ========================================================= -->
+  <!-- RIGHT PANEL: DECOUPLED TOPOLOGY & WATCHDOG AGENT          -->
+  <!-- ========================================================= -->
+  <rect x="615" y="90" width="550" height="560" rx="10" fill="url(#cardGrad2)" stroke="#34d399" stroke-width="1.5" />
+  <text x="635" y="122" fill="#34d399" font-size="14" font-weight="700">2. DECOUPLED INFRASTRUCTURE &amp; WATCHDOG SUPERVISOR</text>
+  <line x1="635" y1="134" x2="1145" y2="134" stroke="#334155" stroke-width="1" />
+
+  <!-- Tier 1 -->
+  <g transform="translate(635, 150)">
+    <rect width="510" height="74" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2" />
+    <rect x="12" y="12" width="170" height="20" rx="4" fill="#0369a1" />
+    <text x="97" y="26" fill="#e0f2fe" font-size="10" font-weight="700" text-anchor="middle">TIER 1: CLOUD COMPUTE</text>
+    <text x="195" y="27" fill="#38bdf8" font-size="11" font-weight="600">Stateless Elastic Cloud Containers (24/7)</text>
+    <text x="14" y="48" fill="#cbd5e1" font-size="11">• Runs the SuperAgent coordination loop in AWS / Kubernetes / Docker.</text>
+    <text x="14" y="63" fill="#94a3b8" font-size="11">• Liveness independent of local PCs: developer closing laptop never kills sessions.</text>
+  </g>
+
+  <!-- Tier 2 -->
+  <g transform="translate(635, 235)">
+    <rect width="510" height="74" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1.2" />
+    <rect x="12" y="12" width="170" height="20" rx="4" fill="#047857" />
+    <text x="97" y="26" fill="#d1fae5" font-size="10" font-weight="700" text-anchor="middle">TIER 2: EXTERNAL STATE</text>
+    <text x="195" y="27" fill="#34d399" font-size="11" font-weight="600">Decoupled Session DB (Redis / MongoDB)</text>
+    <text x="14" y="48" fill="#cbd5e1" font-size="11">• Stores Knowledge Graphs, thread subscriptions, ticket mandates &amp; spilled caches.</text>
+    <text x="14" y="63" fill="#94a3b8" font-size="11">• Survives runtime redeployments, container restarts, and version upgrades cleanly.</text>
+  </g>
+
+  <!-- Tier 3 -->
+  <g transform="translate(635, 320)">
+    <rect width="510" height="74" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.2" />
+    <rect x="12" y="12" width="170" height="20" rx="4" fill="#b45309" />
+    <text x="97" y="26" fill="#fef3c7" font-size="10" font-weight="700" text-anchor="middle">TIER 3: EXECUTION ENDPOINTS</text>
+    <text x="195" y="27" fill="#fbbf24" font-size="11" font-weight="600">Local Machines &amp; On-Demand Edge Sandboxes</text>
+    <text x="14" y="48" fill="#cbd5e1" font-size="11">• Cloud agent loop queries edge execution targets on-demand via secure RPC / MCP.</text>
+    <text x="14" y="63" fill="#94a3b8" font-size="11">• Zero user friction: does NOT force teams to migrate entire repos to cloud VMs.</text>
+  </g>
+
+  <!-- Watchdog Agent Box -->
+  <g transform="translate(635, 410)">
+    <rect width="510" height="225" rx="8" fill="#18121e" stroke="#f87171" stroke-width="1.5" />
+    <rect x="12" y="12" width="180" height="22" rx="4" fill="#991b1b" />
+    <text x="102" y="27" fill="#fee2e2" font-size="11" font-weight="700" text-anchor="middle">THE WATCHDOG AGENT</text>
+    <text x="205" y="28" fill="#fca5a5" font-size="12" font-weight="700">Autonomous Supervisor &amp; Health Harness</text>
+
+    <!-- Watchdog Points -->
+    <rect x="14" y="44" width="482" height="38" rx="4" fill="#0f172a" stroke="#334155" />
+    <text x="24" y="60" fill="#fca5a5" font-size="11" font-weight="600">1. Infrastructure Liveness &amp; Deadlock Detection:</text>
+    <text x="24" y="74" fill="#cbd5e1" font-size="10">Monitors workers for infinite loops, repeated tool failures, and unresponsive containers.</text>
+
+    <rect x="14" y="88" width="482" height="38" rx="4" fill="#0f172a" stroke="#334155" />
+    <text x="24" y="104" fill="#fca5a5" font-size="11" font-weight="600">2. Interactive Introspection &amp; Root Cause Analysis:</text>
+    <text x="24" y="118" fill="#cbd5e1" font-size="10">Platform maintainers can ask: "Why did ticket #482 fail?" The Watchdog explains exact faults.</text>
+
+    <rect x="14" y="132" width="482" height="38" rx="4" fill="#0f172a" stroke="#334155" />
+    <text x="24" y="148" fill="#fca5a5" font-size="11" font-weight="600">3. Live Dynamic Parameter Tuning:</text>
+    <text x="24" y="162" fill="#cbd5e1" font-size="10">Allows admins to tune trigger thresholds, edit system prompts, and modify allow-lists mid-flight.</text>
+
+    <rect x="14" y="176" width="482" height="38" rx="4" fill="#064e3b" stroke="#10b981" />
+    <text x="255" y="194" fill="#a7f3d0" font-size="11" font-weight="700" text-anchor="middle">AUTONOMOUS RESILIENCE: RECOVERS FROM CRASHES AUTOMATICALLY</text>
+    <text x="255" y="208" fill="#ecfdf5" font-size="10" text-anchor="middle">Keeps the multi-agent factory self-healing without requiring human system administration.</text>
+  </g>
+</svg>

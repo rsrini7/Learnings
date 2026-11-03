@@ -1257,6 +1257,7 @@ The winning teams will not be those that generate the most code. They will be th
 ---
 
 **Related:**
+- [DeepSeek SuperAgents and Harness Architecture](../frameworks/DeepSeek-SuperAgent-And-Harness-Architecture-Nov-2026.md) — event-driven autonomous pipelines, Cordis plugin composability, full-duplex non-blocking shells, and the 17.5× cost gap demonstrated in frontier coding harness evaluations.
 - [Spec-Driven-Development-Frameworks](Spec-Driven-Development-Frameworks.md) — 2025 SDD frameworks snapshot that this 2026 update extends and corrects.
 - [AI-Coding-Loops](AI-Coding-Loops.md) — practical coding loop patterns complementing the harness architecture described here.
 - [AI-Assisted-Development](AI-Assisted-Development.md) — broader AI-assisted development practices and workflows.

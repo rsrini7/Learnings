@@ -81,6 +81,7 @@ Practical safeguards:[3][1]
 [20](https://www.facebook.com/groups/RandBSlowJamsOldandNew/posts/8708282532550512/)
 
 **Related:**
+- [DeepSeek-SuperAgent-And-Harness-Architecture-Nov-2026](DeepSeek-SuperAgent-And-Harness-Architecture-Nov-2026.md) — inverts human-prompted loops into an event-driven continuous pipeline, comparing Ralph's filesystem bash loop with DSH's non-blocking full-duplex shell.
 - [ClaudeRalphLoop-and-AgentRalphMode](ClaudeRalphLoop-and-AgentRalphMode.md) — extends the same Ralph pattern to LangChain Deep Agents' Ralph Mode, comparing Claude Code's filesystem loop against Deep Agents' planner-driven loop.
 - [How-Ralph-Works-with-Amp](How-Ralph-Works-with-Amp.md) — practical PRD-driven implementation of the Ralph loop using the Amp CLI, with concrete ralph.sh, prd.json, and progress.txt file structures.
 - [AI-Coding-Loops](../development/AI-Coding-Loops.md) — places Ralph within the broader five-loop taxonomy (inner loop, Ralph loop, software machines, orchestration, oversight) and the prompt/context/harness/loop engineering framework.
