@@ -1,0 +1,289 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1850" width="100%" height="100%" style="background-color: #0b0f19; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#4ade80" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="30" y="20" width="940" height="70" rx="10" fill="#1e293b" stroke="#334155" stroke-width="2" />
+  <text x="500" y="52" fill="#f8fafc" font-size="22" font-weight="bold" text-anchor="middle">KV CACHE &amp; PREFIX CACHING: END-TO-END SYSTEM ARCHITECTURE</text>
+  <text x="500" y="76" fill="#94a3b8" font-size="13" text-anchor="middle">From Stateless Workloads to Attention Mechanics, Sizing, Storage Tiering &amp; Offload Execution</text>
+
+  <!-- ==================== STAGE 1 ==================== -->
+  <rect x="30" y="115" width="940" height="220" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="142" fill="#38bdf8" font-size="15" font-weight="bold">1. THE WORKLOAD PROBLEM: STATELESS API CALLS &amp; REPEATED PREFIXES (40%–90% REDUNDANT TOKENS)</text>
+
+  <!-- Chat Box -->
+  <rect x="50" y="160" width="280" height="155" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="190" y="182" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">A. Multi-Turn Chat</text>
+  <rect x="65" y="195" width="250" height="24" rx="4" fill="#0284c7" />
+  <text x="190" y="211" fill="#ffffff" font-size="11" text-anchor="middle">Turn 1: [Sys Prompt] + [Q1]</text>
+  <rect x="65" y="227" width="190" height="24" rx="4" fill="#0369a1" />
+  <text x="160" y="243" fill="#e0f2fe" font-size="11" text-anchor="middle">Seen: [Sys + Q1 + A1]</text>
+  <rect x="260" y="227" width="55" height="24" rx="4" fill="#f59e0b" />
+  <text x="287" y="243" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">+ Q2</text>
+  <rect x="65" y="259" width="190" height="24" rx="4" fill="#0369a1" />
+  <text x="160" y="275" fill="#e0f2fe" font-size="11" text-anchor="middle">Seen: [Turn 1 + Turn 2]</text>
+  <rect x="260" y="259" width="55" height="24" rx="4" fill="#f59e0b" />
+  <text x="287" y="275" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">+ Q3</text>
+  <text x="190" y="303" fill="#94a3b8" font-size="11" text-anchor="middle">History re-sent every stateless turn</text>
+
+  <!-- Agent Box -->
+  <rect x="360" y="160" width="280" height="155" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="500" y="182" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">B. Autonomous Agent Loops</text>
+  <rect x="375" y="195" width="250" height="24" rx="4" fill="#0284c7" />
+  <text x="500" y="211" fill="#ffffff" font-size="11" text-anchor="middle">Step 1: [Sys + Tools + Task]</text>
+  <rect x="375" y="227" width="175" height="24" rx="4" fill="#0369a1" />
+  <text x="462" y="243" fill="#e0f2fe" font-size="11" text-anchor="middle">Seen: [Step 1]</text>
+  <rect x="555" y="227" width="70" height="24" rx="4" fill="#f59e0b" />
+  <text x="590" y="243" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">+ Tool 1</text>
+  <rect x="375" y="259" width="175" height="24" rx="4" fill="#0369a1" />
+  <text x="462" y="275" fill="#e0f2fe" font-size="11" text-anchor="middle">Seen: [Steps 1..9]</text>
+  <rect x="555" y="259" width="70" height="24" rx="4" fill="#f59e0b" />
+  <text x="590" y="275" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">+ Tool 10</text>
+  <text x="500" y="303" fill="#94a3b8" font-size="11" text-anchor="middle">Machine-speed automated prefix growth</text>
+
+  <!-- Shared Prefix Box -->
+  <rect x="670" y="160" width="280" height="155" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="810" y="182" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">C. Shared System / Doc Prefix</text>
+  <rect x="685" y="195" width="180" height="24" rx="4" fill="#0369a1" />
+  <text x="775" y="211" fill="#e0f2fe" font-size="11" text-anchor="middle">100-Page Policy Doc</text>
+  <rect x="870" y="195" width="65" height="24" rx="4" fill="#f59e0b" />
+  <text x="902" y="211" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">Req A</text>
+  <rect x="685" y="227" width="180" height="24" rx="4" fill="#0369a1" />
+  <text x="775" y="243" fill="#e0f2fe" font-size="11" text-anchor="middle">100-Page Policy Doc</text>
+  <rect x="870" y="227" width="65" height="24" rx="4" fill="#f59e0b" />
+  <text x="902" y="243" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">Req B</text>
+  <rect x="685" y="259" width="180" height="24" rx="4" fill="#0369a1" />
+  <text x="775" y="275" fill="#e0f2fe" font-size="11" text-anchor="middle">100-Page Policy Doc</text>
+  <rect x="870" y="259" width="65" height="24" rx="4" fill="#f59e0b" />
+  <text x="902" y="275" fill="#000000" font-size="11" font-weight="bold" text-anchor="middle">Req C</text>
+  <text x="810" y="303" fill="#94a3b8" font-size="11" text-anchor="middle">1 copy held in cache across N requests</text>
+
+  <line x1="500" y1="335" x2="500" y2="365" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-cyan)" />
+
+  <!-- ==================== STAGE 2 ==================== -->
+  <rect x="30" y="370" width="940" height="215" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="397" fill="#38bdf8" font-size="15" font-weight="bold">2. TRANSFORMER INFERENCE PHASES: PREFILL vs. DECODE</text>
+
+  <!-- Prefill Box -->
+  <rect x="50" y="415" width="430" height="150" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1.5" />
+  <text x="265" y="438" fill="#38bdf8" font-size="14" font-weight="bold" text-anchor="middle">PHASE 1: PREFILL (All-At-Once)</text>
+  <text x="265" y="460" fill="#e2e8f0" font-size="12" text-anchor="middle">Input Prompt: ["The", "KV", "cache", "stores"] (4 tokens)</text>
+  <rect x="75" y="475" width="380" height="34" rx="6" fill="#0f172a" stroke="#334155" />
+  <text x="265" y="496" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle">COMPUTE-BOUND (Parallel Matrix Math across Prompt)</text>
+  <text x="265" y="530" fill="#cbd5e1" font-size="12" text-anchor="middle">Generates KV Cache for prompt + Outputs 1st Token ("keys")</text>
+  <text x="265" y="550" fill="#4ade80" font-size="12" font-weight="bold" text-anchor="middle">Metric: TTFT (Time To First Token) — Quadratic O(N²) Attention</text>
+
+  <line x1="480" y1="490" x2="515" y2="490" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- Decode Box -->
+  <rect x="520" y="415" width="430" height="150" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1.5" />
+  <text x="735" y="438" fill="#c084fc" font-size="14" font-weight="bold" text-anchor="middle">PHASE 2: DECODE (One-By-One Autoregressive)</text>
+  <text x="735" y="460" fill="#e2e8f0" font-size="12" text-anchor="middle">Sequential Output: "keys" → "and" → "values"</text>
+  <rect x="545" y="475" width="380" height="34" rx="6" fill="#0f172a" stroke="#334155" />
+  <text x="735" y="496" fill="#f472b6" font-size="12" font-weight="bold" text-anchor="middle">MEMORY-BANDWIDTH BOUND (Streams Weights + KV Cache)</text>
+  <text x="735" y="530" fill="#cbd5e1" font-size="12" text-anchor="middle">Reads all prior K &amp; V vectors per step without recomputing</text>
+  <text x="735" y="550" fill="#c084fc" font-size="12" font-weight="bold" text-anchor="middle">Appends new token's K &amp; V to existing cache pool</text>
+
+  <line x1="500" y1="585" x2="500" y2="615" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-cyan)" />
+
+  <!-- ==================== STAGE 3 ==================== -->
+  <rect x="30" y="620" width="940" height="235" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="647" fill="#38bdf8" font-size="15" font-weight="bold">3. INSIDE A TRANSFORMER LAYER: WHY WE CACHE "K" &amp; "V" (AND DROP "Q")</text>
+
+  <!-- Token Input -->
+  <rect x="50" y="710" width="130" height="50" rx="6" fill="#1e293b" stroke="#64748b" />
+  <text x="115" y="732" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Token Vector</text>
+  <text x="115" y="748" fill="#94a3b8" font-size="11" text-anchor="middle">(Per Layer)</text>
+
+  <line x1="180" y1="735" x2="215" y2="735" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- 3 Learned Matrices -->
+  <rect x="220" y="700" width="150" height="70" rx="6" fill="#1e293b" stroke="#38bdf8" />
+  <text x="295" y="725" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">× 3 Learned</text>
+  <text x="295" y="743" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Matrices</text>
+  <text x="295" y="760" fill="#38bdf8" font-size="11" text-anchor="middle">(Wq, Wk, Wv)</text>
+
+  <!-- Branches to Q, K, V -->
+  <line x1="370" y1="715" x2="425" y2="680" stroke="#ef4444" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="370" y1="735" x2="425" y2="735" stroke="#4ade80" stroke-width="2" marker-end="url(#arrow-green)" />
+  <line x1="370" y1="755" x2="425" y2="790" stroke="#4ade80" stroke-width="2" marker-end="url(#arrow-green)" />
+
+  <!-- Q Vector -->
+  <rect x="430" y="655" width="190" height="45" rx="6" fill="#450a0a" stroke="#ef4444" />
+  <text x="525" y="675" fill="#fca5a5" font-size="13" font-weight="bold" text-anchor="middle">Query (Q) Vector</text>
+  <text x="525" y="692" fill="#f87171" font-size="11" text-anchor="middle">Current step only → DISCARD</text>
+
+  <!-- K Vector -->
+  <rect x="430" y="712" width="190" height="45" rx="6" fill="#052e16" stroke="#4ade80" />
+  <text x="525" y="732" fill="#86efac" font-size="13" font-weight="bold" text-anchor="middle">Key (K) Vector</text>
+  <text x="525" y="749" fill="#4ade80" font-size="11" text-anchor="middle">1,024 nums → KEEP IN CACHE</text>
+
+  <!-- V Vector -->
+  <rect x="430" y="769" width="190" height="45" rx="6" fill="#052e16" stroke="#4ade80" />
+  <text x="525" y="789" fill="#86efac" font-size="13" font-weight="bold" text-anchor="middle">Value (V) Vector</text>
+  <text x="525" y="806" fill="#4ade80" font-size="11" text-anchor="middle">1,024 nums → KEEP IN CACHE</text>
+
+  <line x1="620" y1="677" x2="665" y2="710" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="620" y1="735" x2="665" y2="735" stroke="#4ade80" stroke-width="2" marker-end="url(#arrow-green)" />
+  <line x1="620" y1="792" x2="665" y2="760" stroke="#4ade80" stroke-width="2" marker-end="url(#arrow-green)" />
+
+  <!-- Soft Match Mechanism -->
+  <rect x="670" y="665" width="280" height="165" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1.5" />
+  <text x="810" y="690" fill="#4ade80" font-size="13" font-weight="bold" text-anchor="middle">Attention Soft-Match &amp; Reuse</text>
+  <text x="810" y="715" fill="#e2e8f0" font-size="12" text-anchor="middle">1. New Q scored against all past K</text>
+  <text x="810" y="738" fill="#e2e8f0" font-size="12" text-anchor="middle">2. Scores weight &amp; blend past V</text>
+  <text x="810" y="765" fill="#94a3b8" font-size="11" text-anchor="middle">Past K &amp; V never change once computed</text>
+  <text x="810" y="783" fill="#94a3b8" font-size="11" text-anchor="middle">and are read by EVERY future token.</text>
+  <text x="810" y="810" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle">Result: Stored in KV Cache Pool</text>
+
+  <line x1="500" y1="855" x2="500" y2="885" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-cyan)" />
+
+  <!-- ==================== STAGE 4 ==================== -->
+  <rect x="30" y="890" width="940" height="205" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="917" fill="#38bdf8" font-size="15" font-weight="bold">4. KV CACHE SIZING MATHEMATICS (EXAMPLE: QWEN3-32B CONFIG.JSON)</text>
+
+  <!-- Formula Banner -->
+  <rect x="50" y="932" width="900" height="42" rx="6" fill="#0f172a" stroke="#38bdf8" />
+  <text x="500" y="958" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">
+    Bytes / Token = 2 (K &amp; V) × Layers (64) × KV Heads (8 via GQA) × Head Dim (128) × Precision (2 Bytes @ BF16) = 256 KB / Token
+  </text>
+
+  <!-- 3 Math Highlight Cards -->
+  <rect x="50" y="988" width="285" height="90" rx="6" fill="#1e293b" stroke="#334155" />
+  <text x="192" y="1012" fill="#fbbf24" font-size="13" font-weight="bold" text-anchor="middle">Grouped Query Attention (GQA)</text>
+  <text x="192" y="1034" fill="#cbd5e1" font-size="12" text-anchor="middle">64 Query Heads share 8 KV Heads</text>
+  <text x="192" y="1054" fill="#94a3b8" font-size="11" text-anchor="middle">(8:1 compression shrinks cache 8×)</text>
+
+  <rect x="357" y="988" width="285" height="90" rx="6" fill="#1e293b" stroke="#38bdf8" />
+  <text x="500" y="1012" fill="#38bdf8" font-size="13" font-weight="bold" text-anchor="middle">Single 8,192-Token Request</text>
+  <text x="500" y="1034" fill="#cbd5e1" font-size="12" text-anchor="middle">8,192 × 256 KB = 2 GB KV Cache</text>
+  <text x="500" y="1054" fill="#94a3b8" font-size="11" text-anchor="middle">(FP8 precision halves this to 1 GB)</text>
+
+  <rect x="665" y="988" width="285" height="90" rx="6" fill="#1e293b" stroke="#334155" />
+  <text x="807" y="1012" fill="#4ade80" font-size="13" font-weight="bold" text-anchor="middle">10 Concurrent Requests (8K each)</text>
+  <text x="807" y="1034" fill="#cbd5e1" font-size="12" text-anchor="middle">Unshared: 20 GB | Shared Prefix: ~2 GB</text>
+  <text x="807" y="1054" fill="#94a3b8" font-size="11" text-anchor="middle">Strict Rule: Exact token match from index 0</text>
+
+  <line x1="500" y1="1095" x2="500" y2="1125" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-cyan)" />
+
+  <!-- ==================== STAGE 5 ==================== -->
+  <rect x="30" y="1130" width="940" height="230" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="1157" fill="#38bdf8" font-size="15" font-weight="bold">5. MEMORY &amp; STORAGE HIERARCHY: WHERE TO KEEP EVICTED KV CACHES</text>
+
+  <!-- Tier 1 -->
+  <rect x="50" y="1175" width="205" height="95" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.5" />
+  <text x="152" y="1198" fill="#818cf8" font-size="13" font-weight="bold" text-anchor="middle">Tier 1: GPU HBM / VRAM</text>
+  <text x="152" y="1218" fill="#e2e8f0" font-size="11" text-anchor="middle">Holds Model Weights +</text>
+  <text x="152" y="1234" fill="#e2e8f0" font-size="11" text-anchor="middle">Active KV Pool</text>
+  <text x="152" y="1255" fill="#4ade80" font-size="11" font-weight="bold" text-anchor="middle">Fastest | Scarcest</text>
+
+  <line x1="255" y1="1222" x2="278" y2="1222" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow-amber)" />
+
+  <!-- Tier 2 -->
+  <rect x="282" y="1175" width="205" height="95" rx="6" fill="#1e293b" stroke="#38bdf8" />
+  <text x="384" y="1198" fill="#38bdf8" font-size="13" font-weight="bold" text-anchor="middle">Tier 2: Host CPU RAM</text>
+  <text x="384" y="1218" fill="#e2e8f0" font-size="11" text-anchor="middle">DRAM Offload via PCIe</text>
+  <text x="384" y="1234" fill="#94a3b8" font-size="11" text-anchor="middle">(Unified w/ GPU on DGX Spark)</text>
+  <text x="384" y="1255" fill="#fbbf24" font-size="11" font-weight="bold" text-anchor="middle">High BW | Med Capacity</text>
+
+  <line x1="487" y1="1222" x2="510" y2="1222" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow-amber)" />
+
+  <!-- Tier 3 -->
+  <rect x="514" y="1175" width="205" height="95" rx="6" fill="#1e293b" stroke="#f59e0b" />
+  <text x="616" y="1198" fill="#fbbf24" font-size="13" font-weight="bold" text-anchor="middle">Tier 3: Local NVMe SSD</text>
+  <text x="616" y="1218" fill="#e2e8f0" font-size="11" text-anchor="middle">LMCache Disk Offload</text>
+  <text x="616" y="1234" fill="#e2e8f0" font-size="11" text-anchor="middle">(64 MB chunk files)</text>
+  <text x="616" y="1255" fill="#fbbf24" font-size="11" font-weight="bold" text-anchor="middle">Large Capacity | PCIe Latency</text>
+
+  <line x1="719" y1="1222" x2="742" y2="1222" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow-amber)" />
+
+  <!-- Tier 4 -->
+  <rect x="746" y="1175" width="204" height="95" rx="6" fill="#1e293b" stroke="#64748b" />
+  <text x="848" y="1198" fill="#cbd5e1" font-size="13" font-weight="bold" text-anchor="middle">Tier 4: Shared Storage</text>
+  <text x="848" y="1218" fill="#e2e8f0" font-size="11" text-anchor="middle">Cluster-Wide Pool</text>
+  <text x="848" y="1234" fill="#94a3b8" font-size="11" text-anchor="middle">Shared across nodes</text>
+  <text x="848" y="1255" fill="#94a3b8" font-size="11" font-weight="bold" text-anchor="middle">Massive Scale | Network Hop</text>
+
+  <!-- Economic Crossover Rule -->
+  <rect x="50" y="1285" width="900" height="58" rx="6" fill="#0f172a" stroke="#4ade80" />
+  <text x="500" y="1308" fill="#4ade80" font-size="13" font-weight="bold" text-anchor="middle">
+    THE STORAGE vs. RECOMPUTE CROSSOVER RULE
+  </text>
+  <text x="500" y="1328" fill="#e2e8f0" font-size="12" text-anchor="middle">
+    Prefill compute scales quadratically O(N²) with prompt length, while fetching bytes scales linearly O(N). Offloading wins whenever T_fetch &lt; T_recompute.
+  </text>
+
+  <line x1="500" y1="1360" x2="500" y2="1390" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow-cyan)" />
+
+  <!-- ==================== STAGE 6 ==================== -->
+  <rect x="30" y="1395" width="940" height="425" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="1422" fill="#38bdf8" font-size="15" font-weight="bold">6. LAB PROOF FLOW: vLLM + LMCACHE + NVMe (QWEN3-32B, 8,192 TOKENS, 16 GB KV POOL)</text>
+
+  <!-- Cold Run Column -->
+  <rect x="50" y="1440" width="430" height="360" rx="8" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5" />
+  <text x="265" y="1468" fill="#fbbf24" font-size="14" font-weight="bold" text-anchor="middle">PATH A: COLD RUN (Cache Miss → Compute &amp; Offload)</text>
+
+  <rect x="75" y="1485" width="380" height="48" rx="6" fill="#0f172a" stroke="#334155" />
+  <text x="265" y="1506" fill="#f8fafc" font-size="12" font-weight="bold" text-anchor="middle">1. Send 8,192-Token Prompt</text>
+  <text x="265" y="1524" fill="#94a3b8" font-size="11" text-anchor="middle">NVMe Hit Tokens: 0 (No prior prefix match on disk)</text>
+
+  <line x1="265" y1="1533" x2="265" y2="1553" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow-amber)" />
+
+  <rect x="75" y="1558" width="380" height="58" rx="6" fill="#0f172a" stroke="#334155" />
+  <text x="265" y="1579" fill="#f8fafc" font-size="12" font-weight="bold" text-anchor="middle">2. Chunked Prefill Execution on GPU</text>
+  <text x="265" y="1597" fill="#cbd5e1" font-size="11" text-anchor="middle">Computes 4 parallel slices × 2,048 tokens = 8,192 tokens</text>
+  <text x="265" y="1611" fill="#fbbf24" font-size="11" text-anchor="middle">Populates active 16 GB GPU KV Pool</text>
+
+  <line x1="265" y1="1616" x2="265" y2="1636" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow-amber)" />
+
+  <rect x="75" y="1641" width="380" height="65" rx="6" fill="#0f172a" stroke="#334155" />
+  <text x="265" y="1662" fill="#f8fafc" font-size="12" font-weight="bold" text-anchor="middle">3. Asynchronous LMCache Write to NVMe</text>
+  <text x="265" y="1680" fill="#cbd5e1" font-size="11" text-anchor="middle">Writes 8 files per slice → 32 files × 64 MB = 2.0 GB total</text>
+  <text x="265" y="1696" fill="#94a3b8" font-size="11" text-anchor="middle">(Request waits only for GPU memory copy, not disk I/O)</text>
+
+  <line x1="265" y1="1706" x2="265" y2="1726" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrow-amber)" />
+
+  <rect x="75" y="1731" width="380" height="50" rx="6" fill="#451a03" stroke="#f59e0b" />
+  <text x="265" y="1752" fill="#fde68a" font-size="12" font-weight="bold" text-anchor="middle">4. First Token Emitted (Baseline Slow TTFT)</text>
+  <text x="265" y="1770" fill="#fcd34d" font-size="11" text-anchor="middle">OS page cache flushed to force true hardware NVMe read next</text>
+
+  <!-- Warm Run Column -->
+  <rect x="520" y="1440" width="430" height="360" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1.5" />
+  <text x="735" y="1468" fill="#4ade80" font-size="14" font-weight="bold" text-anchor="middle">PATH B: WARM RUN (Cache Hit → Fetch from NVMe)</text>
+
+  <rect x="545" y="1485" width="380" height="48" rx="6" fill="#0f172a" stroke="#334155" />
+  <text x="735" y="1506" fill="#f8fafc" font-size="12" font-weight="bold" text-anchor="middle">1. Repeat Same 8,192-Token Prompt</text>
+  <text x="735" y="1524" fill="#4ade80" font-size="11" font-weight="bold" text-anchor="middle">LMCache Hit Tokens: 8,192 | Engine Computed: 0</text>
+
+  <line x1="735" y1="1533" x2="735" y2="1553" stroke="#4ade80" stroke-width="2" marker-end="url(#arrow-green)" />
+
+  <rect x="545" y="1558" width="380" height="58" rx="6" fill="#0f172a" stroke="#334155" />
+  <text x="735" y="1579" fill="#f8fafc" font-size="12" font-weight="bold" text-anchor="middle">2. Direct NVMe Read into GPU KV Pool</text>
+  <text x="735" y="1597" fill="#cbd5e1" font-size="11" text-anchor="middle">Streams 32 chunk files (~2 GB) from NVMe SSD into GPU Pool</text>
+  <text x="735" y="1611" fill="#4ade80" font-size="11" text-anchor="middle">Loads K &amp; V for first 8,191 tokens without GPU math</text>
+
+  <line x1="735" y1="1616" x2="735" y2="1636" stroke="#4ade80" stroke-width="2" marker-end="url(#arrow-green)" />
+
+  <rect x="545" y="1641" width="380" height="65" rx="6" fill="#0f172a" stroke="#334155" />
+  <text x="735" y="1662" fill="#f8fafc" font-size="12" font-weight="bold" text-anchor="middle">3. Minimal Compute on Final Token Only</text>
+  <text x="735" y="1680" fill="#cbd5e1" font-size="11" text-anchor="middle">Engine computes only the final (8,192nd) token against</text>
+  <text x="735" y="1696" fill="#cbd5e1" font-size="11" text-anchor="middle">the restored KV cache to generate the 1st output token</text>
+
+  <line x1="735" y1="1706" x2="735" y2="1726" stroke="#4ade80" stroke-width="2" marker-end="url(#arrow-green)" />
+
+  <rect x="545" y="1731" width="380" height="50" rx="6" fill="#052e16" stroke="#4ade80" />
+  <text x="735" y="1752" fill="#86efac" font-size="12" font-weight="bold" text-anchor="middle">4. First Token Emitted Much Sooner (Fast TTFT)</text>
+  <text x="735" y="1770" fill="#4ade80" font-size="11" text-anchor="middle">Skips full prefill compute &amp; frees GPU cycles for other users</text>
+</svg>

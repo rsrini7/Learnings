@@ -1111,6 +1111,7 @@ curl http://localhost:11434/api/generate -d '{"model":"llama3.1","prompt":"Hi"}'
 ```
 
 **Related:**
+- [KV-Cache-Prefix-Caching-And-Storage-Tiering-Nov-2026.md](KV-Cache-Prefix-Caching-And-Storage-Tiering-Nov-2026.md) — Detailed breakdown of KV caching, PagedAttention sizing mathematics, and hierarchical storage offload architectures.
 - [OpenResponses-Open-Inference-Standard](../optimization/OpenResponses-Open-Inference-Standard.md) — The inference API standard that engines like vLLM and SGLang implement via OpenAI-compatible endpoints.
 - [GenAI-cost-Optimization](../optimization/GenAI-cost-Optimization.md) — Cost analysis section here (~$36M/month for 1M users) pairs with optimization strategies in the cost-optimization guide.
 - [Beyond-SoftMax-Attention](../attention/Beyond-SoftMax-Attention.md) — Linear attention variants offer alternative inference patterns beyond the standard softmax engines covered here.

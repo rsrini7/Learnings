@@ -131,6 +131,7 @@ For the wider cost picture, see [The AI Coding Invoice](AI-Coding-Invoice-Beyond
 ---
 
 **Related:**
+- [KV Cache, Prefix Caching, and Storage Tiering](../architecture/KV-Cache-Prefix-Caching-And-Storage-Tiering-Nov-2026.md) — Architectural mechanisms, memory sizing math, and storage offloading behind prompt prefix caching.
 - [Empirical Tokenomics and Model Routing](Empirical-Tokenomics-and-Model-Routing-2026.md) — Places context maintenance within the coding lifecycle.
 - [Tokenomics Source Validation](Tokenomics-Source-Validation-Oct-2026.md) — Evidence and corrections behind earlier context-management claims.
 - [Headroom & RTK: Real-World Feedback](Headroom-RTK-Real-World-Feedback-2026.md) — Separates local token reduction from billed savings.
