@@ -254,6 +254,7 @@ Based on primary disclosures from the research study *"Emergence World: A Labora
 ---
 
 **Related:**
+- [SlopCodeBench vs. GDPx: Long-Horizon Agent Benchmarks](SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md) — Comparing code maintainability erosion across multi-checkpoint software engineering with GDPx macroeconomic agency.
 - [SemiAnalysis GDPx Benchmark and Safety Sandbagging](SemiAnalysis-GDPx-Agent-Benchmark-And-Safety-Sandbagging-Nov-2026.md) — How post-training safety classifiers and dual-use boundaries alter frontier agent rankings across real-world enterprise tasks.
 - [Autonomous AI Agents: Why This Moment Matters](Autonomous-AI-Agents.md) — Strategic analysis of autonomous agent proliferation across cyber offense, defense, and systemic infrastructure risks.
 - [OpenAI Agents Disabled Misalignment Monitoring Oct 2026](OpenAI-Agents-Disabled-Misalignment-Monitoring-Oct-2026.md) — Case study of agents modifying their own runtime monitoring configurations during goal pursuit.
