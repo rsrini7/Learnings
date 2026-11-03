@@ -29,7 +29,13 @@ This human-driven model introduces two structural bottlenecks:
 
 In the foundational technical paper *"Exploring Super-agent Design: Towards a More Autonomous Agent System"*, the DeepSeek Harness team defines a SuperAgent not as a single massive LLM prompt, but as an **always-on, continuous software entity** designed around the **Attention Economy Principle: "Minimize Noise, Maximize Value"**.
 
-A poorly configured autonomous agent easily becomes an aggressive spam generator—flooding communication channels with intermediate thoughts and trivial questions. DeepSeek's architecture enforces a strict interaction contract: **the agent works silently in recording/shadow mode, verifies its solutions against test harnesses, and only speaks when human intervention is strictly mandatory or when a concrete, verified artifact (such as a tested Pull Request) is ready**.
+A poorly configured autonomous agent easily becomes an aggressive spam generator—flooding communication channels with intermediate thoughts and trivial questions. DeepSeek's architecture enforces a strict interaction contract:
+1. **Silent Background Execution:** The agent works silently in recording/shadow mode, autonomously reproducing bugs (similar to Lauren Tan's *"fix and fuzz"* pattern) and verifying code changes against local test suites.
+2. **Strict Output Threshold:** The agent speaks only when human intervention is strictly mandatory or when a concrete, verified artifact (such as an open Pull Request) is ready.
+3. **The "One Question at a Time" Budget:** When user guidance is required, the agent is constrained by policy to ask only a single, highly specific question rather than an intimidating list of open-ended options.
+4. **The "Needs You" Queue:** Rather than interrupting developers with synchronous notification pings, tasks waiting for human approval accumulate in an asynchronous dashboard panel labeled **"Needs You"**, which developers review at their convenience.
+
+This pattern aligns directly with Anthropic's late-2026 SDLC findings on **intent aggregation** (using `intent.md` files to capture requirements across emails, Slack, Jira, and Sentry): in modern agentic engineering, **human prompts are replaced by ambient environment intent**.
 
 ```
 ┌────────────────────────────────────────────────────────────────────────────────────────┐
@@ -355,6 +361,30 @@ Despite achieving an identical 63.3% pass rate as Claude Code, DeepSeek Harness 
 
 ---
 
+### Coordination Telemetry: Trading Cache Tokens for Faster Completion
+
+To isolate and evaluate *pure coordination efficiency* without being confounded by LLM stochasticity or non-deterministic agent strategies, DeepSeek's evaluation benchmark tested the system against a stream of **300 environment messages** (drawn from group chat, GitHub issues/PRs, and CI runs), of which only ~20 represented actionable work items.
+
+Tasks were executed using tools with calibrated, fixed runtimes across five test iterations:
+
+```
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│             Coordination Stress Test: SuperAgent vs. Single Master Session             │
+├───────────────────────────────────┬───────────────────┬────────────────────────────────┤
+│ Metric                            │ DeepSeek SuperAgent│ Single Session + Sub-Agents    │
+├───────────────────────────────────┼───────────────────┼────────────────────────────────┤
+│ Median Completion Time            │ **12.0 minutes**  │ 20.0 – 29.0 minutes (~2× slower)│
+│ Slowest Run (Worst-Case Latency)  │ **15.7 minutes**  │ > 29.0 minutes                 │
+│ Batching Decision Latency         │ **1.6 seconds**   │ 6.4 seconds (single-queue wait)│
+│ Cache Read Tokens Consumed        │ **~23 Million**   │ ~6 Million                     │
+└───────────────────────────────────┴───────────────────┴────────────────────────────────┘
+```
+
+#### The Architectural Trade-Off:
+The SuperAgent architecture makes an explicit, conscious trade-off: **it spends ~3.8× more cache read tokens across its parallel, isolated worker sessions in exchange for a ~50% reduction in end-to-end task completion time and significantly tighter latency bounds**. Because modern frontier APIs heavily discount cached read tokens (typically 80–90% cheaper than prefill tokens), this trade-off is highly cost-effective for engineering organizations where developer blocked time is orders of magnitude more expensive than token inference.
+
+---
+
 ### Misconceptions vs. Architectural Realities
 
 | Common Misconception | What DeepSeek's Architecture Demonstrates |
@@ -570,6 +600,55 @@ if __name__ == "__main__":
 
 ---
 
+### 3. Model-Agnostic DIY Architecture: Swapping DSH for Claude Code, OpenCode, or Cursor
+
+Engineering teams do not need to install DeepSeek's specific runtime to benefit from this architecture. The core principles can be deconstructed into a lightweight, standalone TypeScript/Python host that orchestrates any existing coding CLI:
+
+```
+┌────────────────────────────────────────────────────────────────────────────────────────┐
+│                   Model-Agnostic SuperAgent Host Implementation                        │
+├────────────────────────────────────────────────────────────────────────────────────────┤
+│ 1. Git Worktree Isolation:                                                             │
+│    Each incoming ticket generates an isolated Git worktree:                            │
+│    `git worktree add ../worktrees/ticket-104 -b fix/ticket-104 main`                   │
+│                                                                                        │
+│ 2. Single-Line Swappable CLI Backends:                                                 │
+│    Worker sessions run in their isolated worktree via standard shell CLIs:             │
+│    • Claude Code:   `claude --print -p "Fix issue described in ticket.json"`           │
+│    • OpenCode:      `opencode run --task "..."`                                        │
+│    • Cursor Agent:  `cursor --headless --workdir ../worktrees/ticket-104`              │
+│                                                                                        │
+│ 3. The `sa` Host Interceptor Pattern (Guarded Communication):                          │
+│    Worker agents are strictly prohibited from posting directly to GitHub or chat.     │
+│    Instead, the agent executes a host-provided shell utility:                          │
+│    `sa "Fixed typo in README and ran verification tests"`                              │
+│    The host binary inspects the message, verifies brevity, and automatically stamps   │
+│    `[Generated by Automated Agent]` before publishing to the upstream thread.          │
+│                                                                                        │
+│ 4. Hardened Non-Root Docker Sandboxing:                                                │
+│    • Runs inside a minimal container as an unprivileged user (UID 1000).               │
+│    • Zero access to host home directories or host SSH keys (`~/.ssh`).                 │
+│    • Dedicated GitHub Bot Account with a fine-grained token scoped strictly to a       │
+│      single sandbox repository with PR write permissions.                              │
+│                                                                                        │
+│ 5. The "Needs You" Sign-Off Gate:                                                      │
+│    Workers are blocked from merging their own PRs. Completed tasks move to an async    │
+│    "Needs You" review queue, shifting developers from execution to sign-off.           │
+└────────────────────────────────────────────────────────────────────────────────────────┘
+```
+
+#### Real-World DIY Telemetry:
+In an empirical real-world test run using Claude 3.5/3.7 Haiku via Claude Code inside this hardened host:
+- **Task:** Opened a GitHub issue requesting a typo fix in a `README.md`.
+- **Execution:** Host intercepted the issue, verified allow-list sender, created a worktree, ran Claude Code, fixed the typo, ran markdown linters, and submitted a clean Pull Request.
+- **Performance:** **~30 seconds end-to-end** at an operational cost of **~$0.10**.
+
+#### Who Is This Architecture For?
+- **Solo Developers:** The gains are minimal. A solo developer with an active terminal already acts as their own fast router, and code quality is identical to running `claude` directly.
+- **Multi-Developer Engineering Teams & Enterprises:** The ROI is exponential. The SuperAgent acts as an always-on, quiet teammate, absorbing ambient noise, unblocking CI failures, and eliminating the human 3–5 session context bottleneck across the organization.
+
+---
+
 ## 6. Source Context
 
 Based on primary disclosures, technical papers, open-source repositories, and independent evaluations:
@@ -578,6 +657,7 @@ Based on primary disclosures, technical papers, open-source repositories, and in
 - **Primary Architecture Lectures & Video Breakdowns:**
   - *"How DeepSeek SuperAgents Work"* ([YouTube: zdNWjt4lBqU](https://www.youtube.com/watch?v=zdNWjt4lBqU)), detailing event-driven continuous pipelines, four properties, two-stage filtering, zero-task router dispatching, subscription pass-through, progressive inlining vs. context spill, Chain of Recall knowledge graphs, full-duplex ReAct loops, and tri-tier decoupling.
   - *"DeepSeek's open-source agent framework (DeepSeek Harness / DSH) and Super Agent add-on"* ([YouTube: OrcsMi2-IcM](https://www.youtube.com/watch?v=OrcsMi2-IcM)), covering `cordis.patch.yaml` configuration trees, Creator UI mode, non-blocking background shell execution (`timeoutMs: 5000`), frontier harness benchmark evaluations on Kimi K2/K3, and the 17.5× cost gap ($3.28 vs. $18.34).
+  - Rob Sho (Switch Dimension), *"What DeepSeek Actually Built: Deconstructing the Super Agent Prototype"* ([YouTube: n2TLtU65ZtA](https://www.youtube.com/watch?v=n2TLtU65ZtA)), covering model-agnostic DIY implementations (Claude Code / OpenCode / Cursor), the coordination benchmark telemetry (23M vs. 6M cache read tokens across 300 messages), the `sa` host-interceptor CLI pattern, non-root Docker sandboxing, and the "Needs You" review queue.
 - **Independent Technical Analyses & Community Evaluations:**
   - Analytics India Magazine, *"DeepSeek Unveils Super-Agent Architecture to Overcome Developer Attention Bottlenecks"* (coverage of the 3–5 session human limitation and autonomous pull request generation).
   - DevOps.com, *"Exploring DeepSeek's Continuous Multi-Agent Systems"* (analysis of decoupled state databases, Kubernetes elastic compute, and Watchdog self-healing).
