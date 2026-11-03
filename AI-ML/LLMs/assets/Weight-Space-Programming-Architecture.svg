@@ -1,0 +1,371 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 1850" width="100%" height="100%" style="background-color: #0b0f19; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="50%" stop-color="#311042" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#161f33" />
+      <stop offset="100%" stop-color="#0f1523" />
+    </linearGradient>
+    <linearGradient id="cyanGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#06b6d4" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#3b82f6" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="amberGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#ef4444" stop-opacity="0.05" />
+    </linearGradient>
+    <linearGradient id="emeraldGlow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.25" />
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.05" />
+    </linearGradient>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f87171" />
+    </marker>
+  </defs>
+
+  <!-- ================= HEADER ================= -->
+  <rect x="30" y="25" width="1340" height="110" rx="16" fill="url(#headerGrad)" stroke="#4f46e5" stroke-width="1.5" />
+  <text x="60" y="70" fill="#ffffff" font-size="30" font-weight="800" letter-spacing="0.5">WEIGHT-SPACE PROGRAMMING: ARCHITECTURE &amp; REALITY CHECK</text>
+  <text x="60" y="105" fill="#94a3b8" font-size="16" font-weight="500">MIT CSAIL Research • Frontier LLM (GPT-6 Astra) Reading &amp; Editing Neural Network Weights Directly Without Training</text>
+  <rect x="1110" y="47" width="230" height="65" rx="10" fill="#090d16" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="1225" y="74" fill="#38bdf8" font-size="14" font-weight="700" text-anchor="middle">HEADLINE BENCHMARK</text>
+  <text x="1225" y="98" fill="#ffffff" font-size="18" font-weight="800" text-anchor="middle">7.9% → 48.1% (6x)</text>
+
+  <!-- ================= SECTION 1: CORE CONCEPT & TOY EXPERIMENTS ================= -->
+  <text x="40" y="175" fill="#38bdf8" font-size="18" font-weight="700" letter-spacing="1">1. CORE PARADIGM: READING &amp; WRITING WEIGHTS AS CODE</text>
+
+  <!-- Left Card: Weight Reading -->
+  <rect x="30" y="190" width="655" height="250" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+  <rect x="48" y="208" width="220" height="28" rx="6" fill="#1e293b" />
+  <text x="158" y="227" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="middle">EXPERIMENT A: READING WEIGHTS</text>
+  <text x="48" y="260" fill="#e2e8f0" font-size="16" font-weight="700">Zero-Shot Mechanistic Inspection (4 Atari Games)</text>
+  <text x="48" y="285" fill="#94a3b8" font-size="13.5">• Small networks with identical shapes trained on 4 different games.</text>
+  <text x="48" y="307" fill="#94a3b8" font-size="13.5">• Raw weight numbers pasted directly into GPT-6 Astra's text prompt.</text>
+  <text x="48" y="329" fill="#94a3b8" font-size="13.5">• No tools &amp; no game list provided; input feature labels given.</text>
+
+  <!-- Diagram inside Reading Card -->
+  <rect x="48" y="348" width="160" height="72" rx="8" fill="#090d16" stroke="#475569" />
+  <text x="128" y="372" fill="#cbd5e1" font-size="12" font-weight="700" text-anchor="middle">Raw Weight Matrix</text>
+  <text x="128" y="392" fill="#64748b" font-size="11" font-family="monospace" text-anchor="middle">[0.02, -0.81, 0.94...]</text>
+  <text x="128" y="408" fill="#64748b" font-size="11" font-family="monospace" text-anchor="middle">[0.77,  0.12, -0.45...]</text>
+
+  <line x1="208" y1="384" x2="258" y2="384" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)" />
+
+  <rect x="265" y="348" width="175" height="72" rx="8" fill="#0f172a" stroke="#38bdf8" />
+  <text x="352" y="372" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">GPT-6 Astra Analysis</text>
+  <text x="352" y="391" fill="#e2e8f0" font-size="11" text-anchor="middle">Bottom row = Paddle</text>
+  <text x="352" y="408" fill="#e2e8f0" font-size="11" text-anchor="middle">Top cluster = Bricks</text>
+
+  <line x1="440" y1="384" x2="490" y2="384" stroke="#34d399" stroke-width="2" marker-end="url(#arrowGreen)" />
+
+  <rect x="497" y="348" width="165" height="72" rx="8" fill="#064e3b" stroke="#10b981" />
+  <text x="580" y="375" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">100% Accuracy</text>
+  <text x="580" y="395" fill="#ecfdf5" font-size="11" text-anchor="middle">Identified "Breakout"</text>
+  <text x="580" y="411" fill="#a7f3d0" font-size="10" text-anchor="middle">&amp; all 3 other games</text>
+
+  <!-- Right Card: Weight Writing -->
+  <rect x="715" y="190" width="655" height="250" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+  <rect x="733" y="208" width="220" height="28" rx="6" fill="#1e293b" />
+  <text x="843" y="227" fill="#a855f7" font-size="13" font-weight="700" text-anchor="middle">EXPERIMENT B: WRITING WEIGHTS</text>
+  <text x="733" y="260" fill="#e2e8f0" font-size="16" font-weight="700">Compiling Logic Directly Into Zeroed Networks</text>
+  <text x="733" y="285" fill="#94a3b8" font-size="13.5">• Given game rules, source code, and an empty network (all weights = 0).</text>
+  <text x="733" y="307" fill="#94a3b8" font-size="13.5">• Astra outputs every weight in a single reply with zero training/RL.</text>
+  <text x="733" y="329" fill="#94a3b8" font-size="13.5">• Mental Model: Writes a known algorithm, then compiles it into weights.</text>
+
+  <!-- Diagram inside Writing Card -->
+  <rect x="733" y="348" width="165" height="72" rx="8" fill="#090d16" stroke="#475569" />
+  <text x="815" y="372" fill="#cbd5e1" font-size="12" font-weight="700" text-anchor="middle">Game Source Code</text>
+  <text x="815" y="391" fill="#94a3b8" font-size="11" text-anchor="middle">+ Empty Net (All 0s)</text>
+  <text x="815" y="408" fill="#64748b" font-size="10" text-anchor="middle">No RL / No Training</text>
+
+  <line x1="898" y1="384" x2="943" y2="384" stroke="#a855f7" stroke-width="2" marker-end="url(#arrowCyan)" />
+
+  <rect x="950" y="348" width="195" height="72" rx="8" fill="#1e1b4b" stroke="#a855f7" />
+  <text x="1047" y="370" fill="#c084fc" font-size="12" font-weight="700" text-anchor="middle">2-Layer Compiled Logic</text>
+  <text x="1047" y="389" fill="#e2e8f0" font-size="11" text-anchor="middle">L1: Predict ball landing X</text>
+  <text x="1047" y="407" fill="#e2e8f0" font-size="11" text-anchor="middle">L2: Move paddle to X</text>
+
+  <line x1="1145" y1="384" x2="1185" y2="384" stroke="#34d399" stroke-width="2" marker-end="url(#arrowGreen)" />
+
+  <rect x="1192" y="348" width="160" height="72" rx="8" fill="#064e3b" stroke="#10b981" />
+  <text x="1272" y="370" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">Breakout: Beats RL</text>
+  <text x="1272" y="389" fill="#ecfdf5" font-size="10.5" text-anchor="middle">Outscores trained RL net</text>
+  <text x="1272" y="407" fill="#fca5a5" font-size="10" text-anchor="middle">(Lost to RL in Seaquest)</text>
+
+  <!-- ================= SECTION 2: THE HEADLINE ARCHITECTURE (QWEN3.5-0.8B) ================= -->
+  <text x="40" y="480" fill="#38bdf8" font-size="18" font-weight="700" letter-spacing="1">2. HEADLINE ARCHITECTURE: HOW ASTRA EDITED QWEN3.5-0.8B</text>
+
+  <rect x="30" y="495" width="1340" height="390" rx="12" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5" />
+
+  <!-- Step 1: Sandbox Setup -->
+  <rect x="55" y="525" width="280" height="230" rx="10" fill="#090d16" stroke="#475569" stroke-width="1.5" />
+  <rect x="70" y="540" width="90" height="24" rx="4" fill="#1e293b" />
+  <text x="115" y="556" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">STEP 1: SETUP</text>
+  <text x="70" y="585" fill="#ffffff" font-size="15" font-weight="700">Python Notebook Sandbox</text>
+  <text x="70" y="610" fill="#94a3b8" font-size="12.5">• Model: Qwen3.5-0.8B (&lt;1B params)</text>
+  <text x="70" y="632" fill="#94a3b8" font-size="12.5">• Access: Raw weights + practice math</text>
+  <text x="70" y="654" fill="#f87171" font-size="12.5" font-weight="600">• Constraint: NO training / gradients</text>
+  <rect x="70" y="675" width="250" height="65" rx="6" fill="#1e1b4b" stroke="#6366f1" />
+  <text x="195" y="697" fill="#a5b4fc" font-size="12" font-weight="700" text-anchor="middle">Diagnosis on Practice Problems:</text>
+  <text x="195" y="715" fill="#e2e8f0" font-size="11.5" text-anchor="middle">Qwen starts reasoning, then repeats</text>
+  <text x="195" y="731" fill="#e2e8f0" font-size="11.5" text-anchor="middle">lines infinitely until token limit cutoff!</text>
+
+  <line x1="335" y1="640" x2="375" y2="640" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrowCyan)" />
+
+  <!-- Step 2: Contrastive Activation Analysis -->
+  <rect x="382" y="525" width="310" height="230" rx="10" fill="#090d16" stroke="#475569" stroke-width="1.5" />
+  <rect x="397" y="540" width="125" height="24" rx="4" fill="#1e293b" />
+  <text x="459" y="556" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">STEP 2: ISOLATION</text>
+  <text x="397" y="585" fill="#ffffff" font-size="15" font-weight="700">Internal Activation Comparison</text>
+  <text x="397" y="608" fill="#94a3b8" font-size="12.5">Astra compares internal states across runs:</text>
+  
+  <rect x="397" y="622" width="280" height="36" rx="6" fill="#064e3b" stroke="#10b981" />
+  <text x="537" y="645" fill="#ecfdf5" font-size="12" font-weight="600" text-anchor="middle">✓ Progressing Runs (Normal Math Steps)</text>
+
+  <rect x="397" y="666" width="280" height="36" rx="6" fill="#450a0a" stroke="#ef4444" />
+  <text x="537" y="689" fill="#fecaca" font-size="12" font-weight="600" text-anchor="middle">✗ Looping Runs (Right before repetition)</text>
+
+  <text x="537" y="725" fill="#38bdf8" font-size="12.5" font-weight="700" text-anchor="middle">Finds the "Looping Direction" (Vector v)</text>
+  <text x="537" y="743" fill="#94a3b8" font-size="11.5" text-anchor="middle">Specific mix of numbers triggering loops</text>
+
+  <line x1="692" y1="640" x2="732" y2="640" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrowCyan)" />
+
+  <!-- Step 3: Surgical Weight Ablation -->
+  <rect x="739" y="525" width="310" height="230" rx="10" fill="#090d16" stroke="#38bdf8" stroke-width="1.5" />
+  <rect x="754" y="540" width="155" height="24" rx="4" fill="#1e293b" />
+  <text x="831" y="556" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">STEP 3: SURGICAL EDIT</text>
+  <text x="754" y="585" fill="#ffffff" font-size="15" font-weight="700">Directional Weight Ablation</text>
+  <text x="754" y="608" fill="#94a3b8" font-size="12.5">• Locates the 2 layers writing Vector v most.</text>
+  <text x="754" y="628" fill="#94a3b8" font-size="12.5">• Applies standard interpretability projection</text>
+  <text x="754" y="646" fill="#94a3b8" font-size="12.5">  to remove that direction from weights:</text>
+  
+  <rect x="754" y="660" width="280" height="40" rx="6" fill="#0f172a" stroke="#38bdf8" />
+  <text x="894" y="685" fill="#38bdf8" font-size="14" font-family="monospace" font-weight="700" text-anchor="middle">W_new = W - (W · v) v^T</text>
+
+  <text x="894" y="725" fill="#fbbf24" font-size="13" font-weight="700" text-anchor="middle">Only 0.016% of Weights Modified!</text>
+  <text x="894" y="743" fill="#94a3b8" font-size="11.5" text-anchor="middle">Astra autonomously found WHERE &amp; WHAT to ablate</text>
+
+  <line x1="1049" y1="640" x2="1089" y2="640" stroke="#34d399" stroke-width="2.5" marker-end="url(#arrowGreen)" />
+
+  <!-- Step 4: Benchmark Jump -->
+  <rect x="1096" y="525" width="250" height="230" rx="10" fill="url(#emeraldGlow)" stroke="#10b981" stroke-width="1.5" />
+  <rect x="1111" y="540" width="120" height="24" rx="4" fill="#064e3b" />
+  <text x="1171" y="556" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">STEP 4: RESULT</text>
+  <text x="1221" y="590" fill="#ffffff" font-size="16" font-weight="800" text-anchor="middle">MATH-500 Score</text>
+
+  <!-- Bar chart comparison -->
+  <rect x="1135" y="685" width="60" height="20" rx="3" fill="#ef4444" />
+  <text x="1165" y="678" fill="#fca5a5" font-size="13" font-weight="700" text-anchor="middle">7.9%</text>
+  <text x="1165" y="722" fill="#94a3b8" font-size="11" text-anchor="middle">Original</text>
+
+  <rect x="1235" y="615" width="60" height="90" rx="3" fill="#10b981" />
+  <text x="1265" y="608" fill="#6ee7b7" font-size="14" font-weight="800" text-anchor="middle">48.1%</text>
+  <text x="1265" y="722" fill="#e2e8f0" font-size="11" font-weight="700" text-anchor="middle">Edited (6x)</text>
+
+  <text x="1221" y="745" fill="#a7f3d0" font-size="11.5" text-anchor="middle">Loops cut to ~1/3 of prior rate</text>
+
+  <!-- Iterative Search Feedback Loop (Bottom of Section 2) -->
+  <path d="M 894 755 L 894 845 L 200 845 L 200 755" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="6,6" marker-end="url(#arrowAmber)" />
+  <rect x="360" y="820" width="440" height="46" rx="8" fill="#1c1917" stroke="#f59e0b" stroke-width="1.5" />
+  <text x="580" y="840" fill="#fbbf24" font-size="12.5" font-weight="700" text-anchor="middle">FEEDBACK SEARCH LOOP: TESTING CANDIDATE EDITS</text>
+  <text x="580" y="857" fill="#fde68a" font-size="11.5" text-anchor="middle">No gradients used: Astra tests edits on practice problems, scores accuracy, and keeps wins.</text>
+
+  <!-- ================= SECTION 3: THE REALITY CHECK ================= -->
+  <text x="40" y="925" fill="#fbbf24" font-size="18" font-weight="700" letter-spacing="1">3. THE REALITY BEHIND THE HEADLINES: 3 CRITICAL FINDINGS</text>
+
+  <!-- Reality Box 1 -->
+  <rect x="30" y="940" width="430" height="290" rx="12" fill="url(#amberGlow)" stroke="#f59e0b" stroke-width="1.5" />
+  <circle cx="65" cy="975" r="16" fill="#f59e0b" />
+  <text x="65" y="981" fill="#090d16" font-size="15" font-weight="800" text-anchor="middle">1</text>
+  <text x="92" y="981" fill="#ffffff" font-size="16" font-weight="700">What Actually Got Fixed?</text>
+  
+  <text x="50" y="1015" fill="#fde68a" font-size="13.5" font-weight="600">It didn't learn new math—it stopped looping.</text>
+  <text x="50" y="1040" fill="#e2e8f0" font-size="13">• Across 1,000+ practice problems, almost every</text>
+  <text x="50" y="1060" fill="#e2e8f0" font-size="13">  "rescued" answer previously hit the token limit.</text>
+  <text x="50" y="1085" fill="#e2e8f0" font-size="13">• When original Qwen actually finished an answer,</text>
+  <text x="50" y="1105" fill="#e2e8f0" font-size="13">  it was ALREADY right almost every single time.</text>
+  
+  <rect x="50" y="1125" width="390" height="85" rx="8" fill="#090d16" stroke="#b45309" />
+  <text x="245" y="1148" fill="#fbbf24" font-size="12.5" font-weight="700" text-anchor="middle">CORE TAKEAWAY</text>
+  <text x="245" y="1170" fill="#e2e8f0" font-size="12" text-anchor="middle">The edit removed a behavioral blocker (infinite loops)</text>
+  <text x="245" y="1188" fill="#e2e8f0" font-size="12" text-anchor="middle">so Qwen could output math it already knew how to do.</text>
+
+  <!-- Reality Box 2 -->
+  <rect x="485" y="940" width="430" height="290" rx="12" fill="url(#amberGlow)" stroke="#f59e0b" stroke-width="1.5" />
+  <circle cx="520" cy="975" r="16" fill="#f59e0b" />
+  <text x="520" y="981" fill="#090d16" font-size="15" font-weight="800" text-anchor="middle">2</text>
+  <text x="547" y="981" fill="#ffffff" font-size="16" font-weight="700">Was the Baseline Fair?</text>
+
+  <text x="505" y="1015" fill="#fde68a" font-size="13.5" font-weight="600">Qwen's Model Card Explicitly Warns About This!</text>
+  <text x="505" y="1040" fill="#e2e8f0" font-size="13">• Qwen3.5-0.8B runs in <tspan fill="#34d399" font-weight="700">non-thinking mode</tspan> by default.</text>
+  <text x="505" y="1062" fill="#e2e8f0" font-size="13">• Model card warns: in <tspan fill="#f87171" font-weight="700">thinking mode</tspan>, 0.8B is highly</text>
+  <text x="505" y="1082" fill="#e2e8f0" font-size="13">  prone to entering infinite thinking loops.</text>
+  <text x="505" y="1104" fill="#e2e8f0" font-size="13">• Paper ran ALL tests in thinking mode + used a</text>
+  <text x="505" y="1124" fill="#e2e8f0" font-size="13">  <tspan fill="#f87171" font-weight="700">lower temperature</tspan> than Qwen recommends.</text>
+
+  <rect x="505" y="1140" width="390" height="70" rx="8" fill="#090d16" stroke="#b45309" />
+  <text x="700" y="1163" fill="#fbbf24" font-size="12.5" font-weight="700" text-anchor="middle">ARTIFICIALLY HANDICAPPED BASELINE</text>
+  <text x="700" y="1183" fill="#e2e8f0" font-size="12" text-anchor="middle">Low temp + thinking mode maximized looping on the</text>
+  <text x="700" y="1200" fill="#e2e8f0" font-size="12" text-anchor="middle">7.9% baseline; changing settings mitigates it without edits.</text>
+
+  <!-- Reality Box 3 -->
+  <rect x="940" y="940" width="430" height="290" rx="12" fill="url(#amberGlow)" stroke="#f59e0b" stroke-width="1.5" />
+  <circle cx="975" cy="975" r="16" fill="#f59e0b" />
+  <text x="975" y="981" fill="#090d16" font-size="15" font-weight="800" text-anchor="middle">3</text>
+  <text x="1002" y="981" fill="#ffffff" font-size="16" font-weight="700">Does It Generalize?</text>
+
+  <text x="960" y="1015" fill="#fde68a" font-size="13.5" font-weight="600">The Gemma Control Test &amp; Single-Run Limit</text>
+  <text x="960" y="1040" fill="#e2e8f0" font-size="13">• Authors tested Astra on a small <tspan fill="#38bdf8" font-weight="700">Gemma model</tspan></text>
+  <text x="960" y="1060" fill="#e2e8f0" font-size="13">  that rarely gets stuck in repetition loops.</text>
+  <text x="960" y="1082" fill="#e2e8f0" font-size="13">• Result: Astra's weight edits <tspan fill="#f87171" font-weight="700">barely moved</tspan> its</text>
+  <text x="960" y="1102" fill="#e2e8f0" font-size="13">  math benchmark score at all.</text>
+  <text x="960" y="1124" fill="#e2e8f0" font-size="13">• Gemma makes real arithmetic errors, not loop hangs.</text>
+
+  <rect x="960" y="1140" width="390" height="70" rx="8" fill="#090d16" stroke="#b45309" />
+  <text x="1155" y="1163" fill="#fbbf24" font-size="12.5" font-weight="700" text-anchor="middle">FUNDAMENTAL LIMITATION</text>
+  <text x="1155" y="1183" fill="#e2e8f0" font-size="12" text-anchor="middle">Weight editing can unblock a hidden ability, but</text>
+  <text x="1155" y="1200" fill="#e2e8f0" font-size="12" text-anchor="middle">it CANNOT inject new intelligence or missing skills.</text>
+
+  <!-- ================= SECTION 4: ARCHITECTURAL COMPARISON MATRIX ================= -->
+  <text x="40" y="1275" fill="#38bdf8" font-size="18" font-weight="700" letter-spacing="1">4. HOW WEIGHT-SPACE PROGRAMMING DIFFERS FROM OTHER PARADIGMS</text>
+
+  <!-- Card 1: Weight-Space Programming -->
+  <rect x="30" y="1290" width="320" height="520" rx="12" fill="url(#cyanGlow)" stroke="#38bdf8" stroke-width="2" />
+  <rect x="50" y="1310" width="280" height="36" rx="6" fill="#0284c7" />
+  <text x="190" y="1333" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">1. WEIGHT-SPACE PROGRAMMING</text>
+  
+  <!-- Visual Graphic -->
+  <rect x="50" y="1360" width="280" height="110" rx="8" fill="#090d16" stroke="#38bdf8" />
+  <text x="190" y="1382" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">Frontier AI Neurosurgeon</text>
+  <text x="190" y="1405" fill="#cbd5e1" font-size="11" font-family="monospace" text-anchor="middle">[ w11  w12  w13 ]</text>
+  <text x="190" y="1423" fill="#ef4444" font-size="11" font-family="monospace" font-weight="700" text-anchor="middle">[ w21  EDIT w23 ]  ← 0.016%</text>
+  <text x="190" y="1441" fill="#cbd5e1" font-size="11" font-family="monospace" text-anchor="middle">[ w31  w32  w33 ]</text>
+  <text x="190" y="1460" fill="#34d399" font-size="10.5" text-anchor="middle">Direct Linear Algebra Projection</text>
+
+  <text x="50" y="1498" fill="#38bdf8" font-size="13" font-weight="700">Mechanism:</text>
+  <text x="50" y="1518" fill="#e2e8f0" font-size="12.5">Frontier LLM inspects internal activations</text>
+  <text x="50" y="1536" fill="#e2e8f0" font-size="12.5">&amp; directly edits specific weight vectors.</text>
+
+  <text x="50" y="1568" fill="#38bdf8" font-size="13" font-weight="700">Training / Gradients:</text>
+  <text x="50" y="1588" fill="#34d399" font-size="12.5" font-weight="700">None (Zero Backpropagation).</text>
+  <text x="50" y="1606" fill="#94a3b8" font-size="12">Uses test-score search on practice set.</text>
+
+  <text x="50" y="1638" fill="#38bdf8" font-size="13" font-weight="700">Scope of Change:</text>
+  <text x="50" y="1658" fill="#e2e8f0" font-size="12.5">Tiny fraction (0.016% in Qwen) or</text>
+  <text x="50" y="1676" fill="#e2e8f0" font-size="12.5">tiny toy networks from scratch.</text>
+
+  <text x="50" y="1708" fill="#38bdf8" font-size="13" font-weight="700">Best For:</text>
+  <text x="50" y="1728" fill="#e2e8f0" font-size="12.5">Removing behavioral bugs/loops,</text>
+  <text x="50" y="1746" fill="#e2e8f0" font-size="12.5">automated interpretability &amp; steering.</text>
+
+  <rect x="50" y="1765" width="280" height="30" rx="6" fill="#0f172a" />
+  <text x="190" y="1785" fill="#7dd3fc" font-size="11.5" font-weight="600" text-anchor="middle">Analogy: Removing a brain blood clot</text>
+
+  <!-- Card 2: Knowledge Distillation -->
+  <rect x="370" y="1290" width="320" height="520" rx="12" fill="url(#cardGrad)" stroke="#475569" stroke-width="1.5" />
+  <rect x="390" y="1310" width="280" height="36" rx="6" fill="#334155" />
+  <text x="530" y="1333" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">2. KNOWLEDGE DISTILLATION</text>
+
+  <!-- Visual Graphic -->
+  <rect x="390" y="1360" width="280" height="110" rx="8" fill="#090d16" stroke="#475569" />
+  <text x="530" y="1382" fill="#c084fc" font-size="12" font-weight="700" text-anchor="middle">Teacher → Student Imitation</text>
+  <text x="530" y="1406" fill="#e2e8f0" font-size="11.5" text-anchor="middle">[Teacher LLM] → Generates Data</text>
+  <text x="530" y="1426" fill="#fbbf24" font-size="11" text-anchor="middle">↓ (Logits / Reasoning Traces)</text>
+  <text x="530" y="1446" fill="#e2e8f0" font-size="11.5" text-anchor="middle">[Student LLM] ← Gradient Updates</text>
+
+  <text x="390" y="1498" fill="#c084fc" font-size="13" font-weight="700">Mechanism:</text>
+  <text x="390" y="1518" fill="#e2e8f0" font-size="12.5">Giant Teacher generates outputs; small</text>
+  <text x="390" y="1536" fill="#e2e8f0" font-size="12.5">Student trains to mimic those outputs.</text>
+
+  <text x="390" y="1568" fill="#c084fc" font-size="13" font-weight="700">Training / Gradients:</text>
+  <text x="390" y="1588" fill="#f87171" font-size="12.5" font-weight="700">Yes (Full Backpropagation).</text>
+  <text x="390" y="1606" fill="#94a3b8" font-size="12">Requires heavy GPU compute &amp; loss.</text>
+
+  <text x="390" y="1638" fill="#c084fc" font-size="13" font-weight="700">Scope of Change:</text>
+  <text x="390" y="1658" fill="#e2e8f0" font-size="12.5">100% of weights (or LoRA layers)</text>
+  <text x="390" y="1676" fill="#e2e8f0" font-size="12.5">shift across the entire network.</text>
+
+  <text x="390" y="1708" fill="#c084fc" font-size="13" font-weight="700">Best For:</text>
+  <text x="390" y="1728" fill="#e2e8f0" font-size="12.5">Transferring actual new knowledge &amp;</text>
+  <text x="390" y="1746" fill="#e2e8f0" font-size="12.5">reasoning skills to a smaller model.</text>
+
+  <rect x="390" y="1765" width="280" height="30" rx="6" fill="#0f172a" />
+  <text x="530" y="1785" fill="#d8b4fe" font-size="11.5" font-weight="600" text-anchor="middle">Analogy: Professor tutoring a student</text>
+
+  <!-- Card 3: Fine-Tuning -->
+  <rect x="710" y="1290" width="320" height="520" rx="12" fill="url(#cardGrad)" stroke="#475569" stroke-width="1.5" />
+  <rect x="730" y="1310" width="280" height="36" rx="6" fill="#334155" />
+  <text x="870" y="1333" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">3. FINE-TUNING (SFT / RLHF)</text>
+
+  <!-- Visual Graphic -->
+  <rect x="730" y="1360" width="280" height="110" rx="8" fill="#090d16" stroke="#475569" />
+  <text x="870" y="1382" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">Dataset Optimization Loop</text>
+  <text x="870" y="1406" fill="#e2e8f0" font-size="11.5" text-anchor="middle">Curated Dataset → Forward Pass</text>
+  <text x="870" y="1426" fill="#fbbf24" font-size="11" text-anchor="middle">↓ Calculate Error (Loss) ↓</text>
+  <text x="870" y="1446" fill="#e2e8f0" font-size="11.5" text-anchor="middle">Optimizer Nudges Millions of Weights</text>
+
+  <text x="730" y="1498" fill="#34d399" font-size="13" font-weight="700">Mechanism:</text>
+  <text x="730" y="1518" fill="#e2e8f0" font-size="12.5">Trains pre-trained model on domain</text>
+  <text x="730" y="1536" fill="#e2e8f0" font-size="12.5">datasets or RL reward signals.</text>
+
+  <text x="730" y="1568" fill="#34d399" font-size="13" font-weight="700">Training / Gradients:</text>
+  <text x="730" y="1588" fill="#f87171" font-size="12.5" font-weight="700">Yes (Iterative Gradient Descent).</text>
+  <text x="730" y="1606" fill="#94a3b8" font-size="12">Thousands of batches nudge weights.</text>
+
+  <text x="730" y="1638" fill="#34d399" font-size="13" font-weight="700">Scope of Change:</text>
+  <text x="730" y="1658" fill="#e2e8f0" font-size="12.5">All weights (Full FT) or 1%–5% via</text>
+  <text x="730" y="1676" fill="#e2e8f0" font-size="12.5">low-rank adapter matrices (LoRA).</text>
+
+  <text x="730" y="1708" fill="#34d399" font-size="13" font-weight="700">Best For:</text>
+  <text x="730" y="1728" fill="#e2e8f0" font-size="12.5">Teaching domain expertise, formatting,</text>
+  <text x="730" y="1746" fill="#e2e8f0" font-size="12.5">or aligning behavior/tone.</text>
+
+  <rect x="730" y="1765" width="280" height="30" rx="6" fill="#0f172a" />
+  <text x="870" y="1785" fill="#6ee7b7" font-size="11.5" font-weight="600" text-anchor="middle">Analogy: Specialized job training</text>
+
+  <!-- Card 4: Quantization -->
+  <rect x="1050" y="1290" width="320" height="520" rx="12" fill="url(#cardGrad)" stroke="#475569" stroke-width="1.5" />
+  <rect x="1070" y="1310" width="280" height="36" rx="6" fill="#334155" />
+  <text x="1210" y="1333" fill="#ffffff" font-size="14" font-weight="800" text-anchor="middle">4. QUANTIZATION</text>
+
+  <!-- Visual Graphic -->
+  <rect x="1070" y="1360" width="280" height="110" rx="8" fill="#090d16" stroke="#475569" />
+  <text x="1210" y="1382" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle">Precision Compression</text>
+  <text x="1210" y="1406" fill="#94a3b8" font-size="11" font-family="monospace" text-anchor="middle">FP16: 0.14892578125 (16-bit)</text>
+  <text x="1210" y="1426" fill="#fbbf24" font-size="11" text-anchor="middle">↓ Mathematical Rounding ↓</text>
+  <text x="1210" y="1446" fill="#e2e8f0" font-size="11.5" font-family="monospace" font-weight="700" text-anchor="middle">INT4: 2 (4-bit Integer)</text>
+
+  <text x="1070" y="1498" fill="#fbbf24" font-size="13" font-weight="700">Mechanism:</text>
+  <text x="1070" y="1518" fill="#e2e8f0" font-size="12.5">Reduces numerical bit-width of weights</text>
+  <text x="1070" y="1536" fill="#e2e8f0" font-size="12.5">(e.g., 16-bit float → 4-bit integer).</text>
+
+  <text x="1070" y="1568" fill="#fbbf24" font-size="13" font-weight="700">Training / Gradients:</text>
+  <text x="1070" y="1588" fill="#34d399" font-size="12.5" font-weight="700">None (Post-Training Math).</text>
+  <text x="1070" y="1606" fill="#94a3b8" font-size="12">Calibrates scale factors for rounding.</text>
+
+  <text x="1070" y="1638" fill="#fbbf24" font-size="13" font-weight="700">Scope of Change:</text>
+  <text x="1070" y="1658" fill="#e2e8f0" font-size="12.5">100% of weights lose precision to</text>
+  <text x="1070" y="1676" fill="#e2e8f0" font-size="12.5">shrink VRAM footprint by 50%–75%.</text>
+
+  <text x="1070" y="1708" fill="#fbbf24" font-size="13" font-weight="700">Best For:</text>
+  <text x="1070" y="1728" fill="#e2e8f0" font-size="12.5">Running large models faster on</text>
+  <text x="1070" y="1746" fill="#e2e8f0" font-size="12.5">consumer GPUs (slight quality drop).</text>
+
+  <rect x="1070" y="1765" width="280" height="30" rx="6" fill="#0f172a" />
+  <text x="1210" y="1785" fill="#fde68a" font-size="11.5" font-weight="600" text-anchor="middle">Analogy: Compressing RAW photo to JPEG</text>
+</svg>

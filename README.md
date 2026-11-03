@@ -134,6 +134,7 @@ Learnings/
 - [ContinualLearning](AI-ML/LLMs/training/ContinualLearning.md)
 - [Latent Thinkers](AI-ML/LLMs/training/Latent-Thinkers.md)
 - [ML Math](AI-ML/LLMs/training/ML-Math.md)
+- [Weight Space Programming Astra Qwen Nov 2026](AI-ML/LLMs/training/Weight-Space-Programming-Astra-Qwen-Nov-2026.md)
 
 #### 👁️ Attention & Neurons
 - [Beyond SoftMax Attention](AI-ML/LLMs/attention/Beyond-SoftMax-Attention.md)

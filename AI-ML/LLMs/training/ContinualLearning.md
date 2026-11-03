@@ -319,6 +319,7 @@ Catastrophic forgetting imposes substantial economic costs across the AI ecosyst
 [57](https://www.continu.com/blog/continual-learning)
 
 **Related:**
+- [Weight-Space Programming](Weight-Space-Programming-Astra-Qwen-Nov-2026.md) — Autonomous parameter surgery and directional weight ablation as a gradient-free approach to unblocking latent abilities and updating model weights.
 - [Persistent-Memory-Layers-AI-Agents](../architecture/Persistent-Memory-Layers-AI-Agents.md) — Both engineer around static-model forgetting; this covers algorithmic levels while Persistent Memory covers the open-source memory-layer systems (Mem0, Graphiti) used in practice.
 - [AI-in-Next-18-Months](../economy/AI-in-Next-18-Months.md) — Continual Learning is one of the five breakthrough areas; the whitepaper covers Google's Nested Learning release and Perplexity demos at the product layer.
 - [RAG-Guide-Jan-2026](../../RAG/RAG-Guide-Jan-2026.md) — Frames RAG as a Level-3 workaround with explicit limitations (no forgetting, poor temporal reasoning) that motivate the true continual-learning architectures.

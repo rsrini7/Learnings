@@ -236,6 +236,7 @@ Based on user-provided architecture diagrams and technical details from [*KV Cac
 ---
 
 **Related:**
+- [Weight-Space-Programming-Astra-Qwen-Nov-2026.md](../training/Weight-Space-Programming-Astra-Qwen-Nov-2026.md) — Direct weight surgery and directional ablation compared with runtime inference modifications.
 - [LLM-Inference-Engines.md](LLM-Inference-Engines.md) — Comprehensive technical whitepaper covering inference engines, memory bottlenecks, continuous batching, and kernel optimizations.
 - [LLM-Inference.md](LLM-Inference.md) — Fundamental explanation of the LLM inference lifecycle and request paths.
 - [Context-Windows-Compaction-and-Cache-Breaks-2026.md](../optimization/Context-Windows-Compaction-and-Cache-Breaks-2026.md) — Practical analysis of prompt caching breakpoints, compaction strategies, and harness-level tokenomics.
