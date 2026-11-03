@@ -236,6 +236,7 @@ Learnings/
 - [Java Plugin Arch](Engineering/JVM/Java-Plugin-Arch.md)
 - [Java Standard Classes vs Records vs Carrier Classes](Engineering/JVM/Java-Standard_Classes-vs-Records-vs-Carrier_Classes.md)
 - [Java remote debug](Engineering/JVM/Java_remote_debug.md)
+- [Project Detroit Java Polyglot Runtimes Nov 2026](Engineering/JVM/Project-Detroit-Java-Polyglot-Runtimes-Nov-2026.md)
 
 ### 💾 Databases
 - [GraphDB massive scale analysis](Engineering/Databases/GraphDB-massive-scale-analysis.md)

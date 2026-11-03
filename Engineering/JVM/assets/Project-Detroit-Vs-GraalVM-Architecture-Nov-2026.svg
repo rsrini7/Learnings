@@ -1,0 +1,213 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1380" width="100%" height="100%" style="background-color: #0b0f19; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#4ade80" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+    <marker id="arrow-rose" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f43f5e" />
+    </marker>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="30" y="20" width="940" height="74" rx="10" fill="#1e293b" stroke="#334155" stroke-width="2" />
+  <text x="500" y="52" fill="#f8fafc" font-size="20" font-weight="bold" text-anchor="middle">PROJECT DETROIT vs. GRAALVM: ARCHITECTURAL PARADIGMS</text>
+  <text x="500" y="76" fill="#94a3b8" font-size="13" text-anchor="middle">Thin Native Bridge via FFM vs. Reimplemented Truffle AST Interpreter on the JVM</text>
+
+  <!-- ==================== PANEL 1: ARCHITECTURAL TOPOLOGY (SIDE-BY-SIDE) ==================== -->
+  <rect x="30" y="115" width="940" height="425" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="142" fill="#38bdf8" font-size="15" font-weight="bold">1. TOPOLOGY: DUAL RUNTIMES (DETROIT) vs. UNIFIED HEAP (GRAALVM)</text>
+
+  <!-- Left Side: Project Detroit -->
+  <rect x="50" y="160" width="435" height="360" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="267" y="185" fill="#38bdf8" font-size="14" font-weight="bold" text-anchor="middle">Project Detroit (Detroit-Py / Detroit-JS)</text>
+  <text x="267" y="202" fill="#94a3b8" font-size="11" text-anchor="middle">Wrap Industry-Standard Native Engines via FFM / jextract</text>
+
+  <!-- JVM Heap Block -->
+  <rect x="65" y="215" width="405" height="100" rx="6" fill="#0f172a" stroke="#334155" />
+  <text x="80" y="235" fill="#f8fafc" font-size="12" font-weight="bold">JVM Heap (HotSpot Managed)</text>
+  <rect x="80" y="248" width="180" height="26" rx="4" fill="#0284c7" />
+  <text x="170" y="265" fill="#ffffff" font-size="11" text-anchor="middle">javax.script Engine API</text>
+  <rect x="270" y="248" width="185" height="26" rx="4" fill="#0369a1" />
+  <text x="362" y="265" fill="#e0f2fe" font-size="11" text-anchor="middle">Java Objects &amp; GC Roots</text>
+  <text x="267" y="300" fill="#94a3b8" font-size="10.5" text-anchor="middle">JVM Garbage Collector (ZGC / G1) oversees Java heap only</text>
+
+  <!-- Boundary: FFM API / Panama -->
+  <rect x="65" y="325" width="405" height="48" rx="6" fill="#1e1b4b" stroke="#818cf8" stroke-dasharray="4 2" />
+  <text x="267" y="345" fill="#a5b4fc" font-size="11" font-weight="bold" text-anchor="middle">Foreign Function &amp; Memory (FFM) API / Panama Boundary</text>
+  <text x="267" y="362" fill="#c7d2fe" font-size="10" text-anchor="middle">Linker downcalls, upcall stubs, Arena scopes, MemorySegments</text>
+
+  <!-- Native Process Block -->
+  <rect x="65" y="383" width="405" height="125" rx="6" fill="#18181b" stroke="#52525b" />
+  <text x="80" y="403" fill="#fbbf24" font-size="12" font-weight="bold">Off-Heap Native Process Space</text>
+  <rect x="80" y="415" width="185" height="52" rx="4" fill="#27272a" stroke="#71717a" />
+  <text x="172" y="433" fill="#fbbf24" font-size="11" font-weight="bold" text-anchor="middle">CPython 3.14–3.17</text>
+  <text x="172" y="449" fill="#a1a1aa" font-size="9.5" text-anchor="middle">Ref counting · GIL · PyObject</text>
+  <text x="172" y="461" fill="#4ade80" font-size="9" text-anchor="middle">100% PyTorch, HuggingFace</text>
+
+  <rect x="280" y="415" width="175" height="52" rx="4" fill="#27272a" stroke="#71717a" />
+  <text x="367" y="433" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">Google V8 Engine</text>
+  <text x="367" y="449" fill="#a1a1aa" font-size="9.5" text-anchor="middle">Isolate, HandleScope, V8 GC</text>
+  <text x="367" y="461" fill="#4ade80" font-size="9" text-anchor="middle">100% npm / ES2026+</text>
+  <text x="267" y="497" fill="#f43f5e" font-size="10.5" text-anchor="middle">⚠️ Dual GCs: JVM GC + V8/Python GC. Cross-heap cycle hazard!</text>
+
+  <!-- Right Side: GraalVM -->
+  <rect x="515" y="160" width="435" height="360" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1.5" />
+  <text x="732" y="185" fill="#4ade80" font-size="14" font-weight="bold" text-anchor="middle">GraalVM (GraalPy / GraalJS)</text>
+  <text x="732" y="202" fill="#94a3b8" font-size="11" text-anchor="middle">Reimplement Runtime from Scratch on Truffle Framework</text>
+
+  <!-- Unified Heap Block -->
+  <rect x="530" y="215" width="405" height="215" rx="6" fill="#0f172a" stroke="#334155" />
+  <text x="545" y="235" fill="#f8fafc" font-size="12" font-weight="bold">Single Unified JVM Heap &amp; GC</text>
+  
+  <rect x="545" y="248" width="180" height="26" rx="4" fill="#047857" />
+  <text x="635" y="265" fill="#ffffff" font-size="11" text-anchor="middle">Polyglot Engine / Context</text>
+  
+  <rect x="735" y="248" width="185" height="26" rx="4" fill="#065f46" />
+  <text x="827" y="265" fill="#d1fae5" font-size="11" text-anchor="middle">Graal Compiler (Truffle JIT)</text>
+
+  <rect x="545" y="284" width="375" height="85" rx="4" fill="#064e3b" stroke="#10b981" />
+  <text x="732" y="303" fill="#6ee7b7" font-size="11" font-weight="bold" text-anchor="middle">Truffle AST Interpreters (Pure Java)</text>
+  <text x="732" y="322" fill="#ffffff" font-size="10.5" text-anchor="middle">GraalPy AST Nodes &amp; GraalJS AST Nodes live on JVM heap</text>
+  <text x="732" y="339" fill="#a7f3d0" font-size="10" text-anchor="middle">✨ Polyglot JIT inlining: Java + JS compiled into 1 machine code unit</text>
+  <text x="732" y="356" fill="#a7f3d0" font-size="10" text-anchor="middle">Automatic GC resolution of cross-language reference cycles</text>
+
+  <text x="732" y="390" fill="#94a3b8" font-size="10.5" text-anchor="middle">Zero boundary crossing cost for chatty in-process calls</text>
+  <text x="732" y="415" fill="#4ade80" font-size="10.5" font-weight="bold" text-anchor="middle">Virtual Threads unmount cleanly (Java bytecode stack frames)</text>
+
+  <!-- Sulong Layer -->
+  <rect x="530" y="440" width="405" height="68" rx="6" fill="#3f1e1e" stroke="#ef4444" stroke-dasharray="4 2" />
+  <text x="732" y="460" fill="#fca5a5" font-size="11" font-weight="bold" text-anchor="middle">Sulong LLVM Bitcode / Emulation Layer</text>
+  <text x="732" y="478" fill="#fecaca" font-size="10" text-anchor="middle">C-extensions (NumPy, PyTorch) emulated or bridged</text>
+  <text x="732" y="495" fill="#f87171" font-size="9.5" text-anchor="middle">⚠️ High compatibility friction with complex wheels &amp; native CUDA</text>
+
+  <!-- ==================== PANEL 2: BENCHMARK EVIDENCE & BOUNDARY OVERHEAD ==================== -->
+  <rect x="30" y="555" width="940" height="290" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="582" fill="#38bdf8" font-size="15" font-weight="bold">2. PERFORMANCE DICHOTOMY: PURE FOREIGN SPEED vs. CHATTY INTEROP</text>
+
+  <!-- Octane 2.0 Benchmark Box -->
+  <rect x="50" y="600" width="435" height="230" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="267" y="623" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Pure JS Execution: Octane 2.0 (Higher is Better)</text>
+  <text x="267" y="639" fill="#94a3b8" font-size="10.5" text-anchor="middle">Once inside foreign runtime, Detroit gets raw V8 Turbofan speed</text>
+
+  <!-- Detroit Bar -->
+  <text x="65" y="667" fill="#f8fafc" font-size="11">DetroitJS (V8)</text>
+  <rect x="165" y="654" width="220" height="18" rx="3" fill="#38bdf8" />
+  <text x="395" y="668" fill="#38bdf8" font-size="12" font-weight="bold">59,366</text>
+
+  <!-- GraalJS Bar -->
+  <text x="65" y="697" fill="#94a3b8" font-size="11">GraalJS (*)</text>
+  <rect x="165" y="684" width="44" height="18" rx="3" fill="#64748b" />
+  <text x="218" y="698" fill="#cbd5e1" font-size="11">11,815</text>
+
+  <!-- Nashorn Bar -->
+  <text x="65" y="727" fill="#94a3b8" font-size="11">Nashorn (JDK 8)</text>
+  <rect x="165" y="714" width="12" height="18" rx="3" fill="#475569" />
+  <text x="186" y="728" fill="#94a3b8" font-size="11">3,303</text>
+
+  <rect x="65" y="748" width="405" height="68" rx="4" fill="#0f172a" />
+  <text x="80" y="768" fill="#38bdf8" font-size="10.5" font-weight="bold">Key Takeaway:</text>
+  <text x="80" y="785" fill="#94a3b8" font-size="10">DetroitJS is 5x faster than default GraalJS and 18x faster than Nashorn</text>
+  <text x="80" y="802" fill="#94a3b8" font-size="10">for CPU-bound script algorithms without frequent host round-trips.</text>
+
+  <!-- Chatty Interop Box -->
+  <rect x="515" y="600" width="435" height="230" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="732" y="623" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Chatty Interop: JS Sort + Java Comparator (Higher is Better)</text>
+  <text x="732" y="639" fill="#94a3b8" font-size="10.5" text-anchor="middle">Heavy back-and-forth callbacks cross boundary thousands of times</text>
+
+  <!-- Detroit JNI Bar -->
+  <text x="530" y="667" fill="#f43f5e" font-size="11">DetroitJS (JNI)</text>
+  <rect x="640" y="654" width="4" height="18" rx="2" fill="#f43f5e" />
+  <text x="655" y="668" fill="#f43f5e" font-size="11" font-weight="bold">2 Kops/s (Boundary Bottleneck!)</text>
+
+  <!-- Detroit FFM Bar -->
+  <text x="530" y="697" fill="#fbbf24" font-size="11">DetroitJS (V8 FFM)</text>
+  <rect x="640" y="684" width="165" height="18" rx="3" fill="#f59e0b" />
+  <text x="815" y="698" fill="#fbbf24" font-size="11" font-weight="bold">100 Kops/s</text>
+
+  <!-- GraalJS Bar -->
+  <text x="530" y="727" fill="#4ade80" font-size="11">GraalJS</text>
+  <rect x="640" y="714" width="200" height="18" rx="3" fill="#10b981" />
+  <text x="850" y="728" fill="#4ade80" font-size="11" font-weight="bold">122 Kops/s</text>
+
+  <!-- Nashorn Bar -->
+  <text x="530" y="757" fill="#94a3b8" font-size="11">Nashorn</text>
+  <rect x="640" y="744" width="228" height="18" rx="3" fill="#64748b" />
+  <text x="878" y="758" fill="#cbd5e1" font-size="11">139 Kops/s</text>
+
+  <text x="732" y="792" fill="#94a3b8" font-size="10" text-anchor="middle">FFM + C2 speculation boosted Detroit by 50x (2 -> 100 Kops/s).</text>
+  <text x="732" y="809" fill="#94a3b8" font-size="10" text-anchor="middle">GraalJS/Nashorn lead because calls remain within bytecode/JVM JIT.</text>
+
+  <!-- ==================== PANEL 3: RUNTIME FRICTION & SOLUTIONS ==================== -->
+  <rect x="30" y="860" width="940" height="260" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="887" fill="#38bdf8" font-size="15" font-weight="bold">3. ARCHITECTURAL FRICTION POINTS IN PROJECT DETROIT &amp; SOLUTIONS</text>
+
+  <!-- Column A: Dual GC Cycles -->
+  <rect x="50" y="905" width="285" height="200" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="192" y="928" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle">A. Cross-Heap Reference Cycles</text>
+  <rect x="65" y="942" width="255" height="42" rx="4" fill="#0f172a" />
+  <text x="192" y="959" fill="#f87171" font-size="10" text-anchor="middle">Java Obj → CPython Obj → Java Callback</text>
+  <text x="192" y="974" fill="#f87171" font-size="9.5" text-anchor="middle">Neither GC sees full cycle → Silent Memory Leak!</text>
+  <rect x="65" y="994" width="255" height="98" rx="4" fill="#064e3b" stroke="#059669" />
+  <text x="192" y="1013" fill="#4ade80" font-size="11" font-weight="bold" text-anchor="middle">Solution: Deterministic Arenas</text>
+  <text x="192" y="1031" fill="#d1fae5" font-size="10" text-anchor="middle">try (var arena = PythonArena.open()) {</text>
+  <text x="192" y="1047" fill="#d1fae5" font-size="10" text-anchor="middle">  var model = arena.load("torch");</text>
+  <text x="192" y="1063" fill="#d1fae5" font-size="10" text-anchor="middle">} // All Py_XDECREF executed on exit!</text>
+  <text x="192" y="1080" fill="#a7f3d0" font-size="9" text-anchor="middle">Deterministic lifetime scoping avoids leaks</text>
+
+  <!-- Column B: Virtual Thread Pinning -->
+  <rect x="357" y="905" width="285" height="200" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="499" y="928" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle">B. Virtual Thread Carrier Pinning</text>
+  <rect x="372" y="942" width="255" height="42" rx="4" fill="#0f172a" />
+  <text x="499" y="959" fill="#f87171" font-size="10" text-anchor="middle">Java VT → V8 Call → Blocking Java I/O</text>
+  <text x="499" y="974" fill="#f87171" font-size="9.5" text-anchor="middle">Native C++ frame on stack → Pins Carrier Thread!</text>
+  <rect x="372" y="994" width="255" height="98" rx="4" fill="#064e3b" stroke="#059669" />
+  <text x="499" y="1013" fill="#4ade80" font-size="11" font-weight="bold" text-anchor="middle">Solution: JS Promises &amp; Async</text>
+  <text x="499" y="1031" fill="#d1fae5" font-size="10" text-anchor="middle">Java callback returns Promise immediately;</text>
+  <text x="499" y="1047" fill="#d1fae5" font-size="10" text-anchor="middle">V8 unwinds C++ stack back to Java;</text>
+  <text x="499" y="1063" fill="#d1fae5" font-size="10" text-anchor="middle">Virtual thread parks cleanly without pinning;</text>
+  <text x="499" y="1080" fill="#a7f3d0" font-size="9" text-anchor="middle">Resolves JS continuation upon completion.</text>
+
+  <!-- Column C: JDK 28+ Allocation Pooling -->
+  <rect x="665" y="905" width="285" height="200" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="807" y="928" fill="#fbbf24" font-size="12" font-weight="bold" text-anchor="middle">C. JDK 28+ FFM Arena Pooling</text>
+  <rect x="680" y="942" width="255" height="42" rx="4" fill="#0f172a" />
+  <text x="807" y="959" fill="#f87171" font-size="10" text-anchor="middle">Frequent malloc/free for native structs</text>
+  <text x="807" y="974" fill="#f87171" font-size="9.5" text-anchor="middle">OS system call overhead per short invocation</text>
+  <rect x="680" y="994" width="255" height="98" rx="4" fill="#064e3b" stroke="#059669" />
+  <text x="807" y="1013" fill="#4ade80" font-size="11" font-weight="bold" text-anchor="middle">Solution: Thread-Local Pooling</text>
+  <text x="807" y="1031" fill="#d1fae5" font-size="10" text-anchor="middle">When confined arena closes, native memory</text>
+  <text x="807" y="1047" fill="#d1fae5" font-size="10" text-anchor="middle">is cached on thread for subsequent calls;</text>
+  <text x="807" y="1063" fill="#4ade80" font-size="10.5" font-weight="bold" text-anchor="middle">🚀 Delivers up to 20x speedup</text>
+  <text x="807" y="1080" fill="#a7f3d0" font-size="9" text-anchor="middle">Zero developer code changes required.</text>
+
+  <!-- ==================== PANEL 4: STRATEGIC DECISION MATRIX ==================== -->
+  <rect x="30" y="1135" width="940" height="225" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="1162" fill="#38bdf8" font-size="15" font-weight="bold">4. STRATEGIC SELECTION: SHALLOW INTEROP vs. DEEP POLYGLOT</text>
+
+  <rect x="48" y="1180" width="442" height="165" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="269" y="1204" fill="#38bdf8" font-size="13" font-weight="bold" text-anchor="middle">Choose Project Detroit When:</text>
+  <text x="64" y="1228" fill="#f8fafc" font-size="10.5">• <tspan font-weight="bold">AI/ML native ecosystems:</tspan> Calling PyTorch, HuggingFace, CUDA</text>
+  <text x="64" y="1248" fill="#f8fafc" font-size="10.5">• <tspan font-weight="bold">Standard tooling:</tspan> Works out of the box with standard pip / pyenv / npm</text>
+  <text x="64" y="1268" fill="#f8fafc" font-size="10.5">• <tspan font-weight="bold">Shallow Interop:</tspan> Payload in → native compute → response out</text>
+  <text x="64" y="1288" fill="#f8fafc" font-size="10.5">• <tspan font-weight="bold">Zero Porting Burden:</tspan> Upstream CPython and V8 maintain engines</text>
+  <text x="64" y="1308" fill="#f8fafc" font-size="10.5">• <tspan font-weight="bold">Minimal codebase:</tspan> Clean Java glue layer (~5.5k–6k LOC)</text>
+  <text x="269" y="1334" fill="#38bdf8" font-size="10" text-anchor="middle">Ideal for Java AI Orchestrators &amp; Modern Enterprise Services</text>
+
+  <rect x="510" y="1180" width="442" height="165" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1.5" />
+  <text x="731" y="1204" fill="#4ade80" font-size="13" font-weight="bold" text-anchor="middle">Choose GraalVM (GraalPy / GraalJS) When:</text>
+  <text x="526" y="1228" fill="#f8fafc" font-size="10.5">• <tspan font-weight="bold">Deep Polyglot Scripting:</tspan> In-JVM customer DSLs &amp; business rules</text>
+  <text x="526" y="1248" fill="#f8fafc" font-size="10.5">• <tspan font-weight="bold">Chatty loops:</tspan> Passing objects thousands of times / second</text>
+  <text x="526" y="1268" fill="#f8fafc" font-size="10.5">• <tspan font-weight="bold">Unified Garbage Collection:</tspan> Resolves cyclic cross-heap graphs</text>
+  <text x="526" y="1288" fill="#f8fafc" font-size="10.5">• <tspan font-weight="bold">Virtual Threads:</tspan> Truffle stack yields cleanly without carrier pinning</text>
+  <text x="526" y="1308" fill="#f8fafc" font-size="10.5">• <tspan font-weight="bold">In-Process Sandboxing:</tspan> Granular memory quotas &amp; AST execution limits</text>
+  <text x="731" y="1334" fill="#4ade80" font-size="10" text-anchor="middle">Ideal for Multi-Tenant Application Servers &amp; High-Frequency Rule Engines</text>
+</svg>

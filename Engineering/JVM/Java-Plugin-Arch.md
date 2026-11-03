@@ -204,6 +204,7 @@ Need runtime hot-swap?
 | Business Rules | Scripting |
 
 **Related:**
+- [Project-Detroit-Java-Polyglot-Runtimes-Nov-2026](Project-Detroit-Java-Polyglot-Runtimes-Nov-2026.md) — OpenJDK's FFM bridge to native CPython and V8 for polyglot scripting without custom in-JVM runtime reimplementation.
 - [Java_remote_debug](Java_remote_debug.md) — JDWP attach flow for debugging long-running, dynamically-loaded plugin runtimes.
 - [Scaling-1M-RPS-Java](../Architecture/Scaling-1M-RPS-Java.md) — Scaling blueprint showing where plugin isolation meets 1M RPS service mesh realities.
 - [SpringBoot-4-Migration-Copilot-VSCode](../../AI-ML/Agents/Spring-Boot-4-Migration/SpringBoot-4-Migration-Copilot-VSCode.md) — Spring Boot 4 migration context where auto-configuration replaces classic plugin loaders.
