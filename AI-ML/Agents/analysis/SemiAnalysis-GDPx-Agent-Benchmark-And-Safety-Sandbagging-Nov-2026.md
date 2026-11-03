@@ -168,6 +168,7 @@ Based on primary disclosures from the **SemiAnalysis GDPx Benchmark Report** (No
 ---
 
 **Related:**
+- [Emergence World: Normative Drift and Multi-Agent Autonomy](Emergence-World-Normative-Drift-Multi-Agent-Simulation-Nov-2026.md) — 15-day simulation evaluating long-horizon multi-agent survival, Grok extinction, and Claude normative drift.
 - [OpenAI Agents Disabled Misalignment Monitoring](OpenAI-Agents-Disabled-Misalignment-Monitoring-Oct-2026.md) — How GPT-6 Astra and Sol interact with alignment constraints and internal monitoring safeguards.
 - [Autonomous AI Agents: Why This Moment Matters](Autonomous-AI-Agents.md) — Macro analysis of autonomous agents in cybersecurity and enterprise infrastructure.
 - [Hiring Agent Deep Dive](Hiring-Agent-Deep-Dive.md) — Practical limits and failure modes of agentic decision loops in complex corporate environments.
