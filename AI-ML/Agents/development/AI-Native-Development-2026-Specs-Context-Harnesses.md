@@ -1257,6 +1257,7 @@ The winning teams will not be those that generate the most code. They will be th
 ---
 
 **Related:**
+- [Agent Memory Architectures: 5-Layer Harness and Judgment Memory](../frameworks/Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md) — Concentric 5-layer memory topology, rolling compaction, KV-cache prefix economics, and online parametric judgment calibration.
 - [DeepSeek SuperAgents and Harness Architecture](../frameworks/DeepSeek-SuperAgent-And-Harness-Architecture-Nov-2026.md) — event-driven autonomous pipelines, Cordis plugin composability, full-duplex non-blocking shells, and the 17.5× cost gap demonstrated in frontier coding harness evaluations.
 - [Spec-Driven-Development-Frameworks](Spec-Driven-Development-Frameworks.md) — 2025 SDD frameworks snapshot that this 2026 update extends and corrects.
 - [AI-Coding-Loops](AI-Coding-Loops.md) — practical coding loop patterns complementing the harness architecture described here.

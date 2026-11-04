@@ -668,6 +668,8 @@ Based on primary disclosures, technical papers, open-source repositories, and in
 ---
 
 **Related:**
+- [AmshaAgent Architecture: Enterprise 5-Tier Memory, Governed Execution, and Hexagonal Autonomy](AmshaAgent-Architecture-Memory-Layering-And-Governance-Nov-2026.md) — Enterprise Java 25 / Quarkus agent harness featuring 5-tier memory, CAS write governance, rootless Podman sandboxing, and hexagonal persistence.
+- [Agent Memory Architectures: 5-Layer Harness and Judgment Memory](Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md) — Concentric 5-layer memory topology, rolling compaction, KV-cache prefix economics, and online parametric judgment calibration.
 - [AI-Native Development in 2026: Specs, Context, and Harnesses](../development/AI-Native-Development-2026-Specs-Context-Harnesses.md) — Comprehensive analysis of coding harnesses, background agent teams, selective context, and execution verification.
 - [Confucius Code Agent](Confucius-Code-Agent.md) — Hierarchical memory, meta-agent build-test-improve loops, and autonomous repository-level coding harnesses.
 - [Claude Ralph Loop](Claude-Ralph-Loop.md) — Autonomous loop execution, filesystem-based memory, and persistent unattended coding workflows in Claude Code.

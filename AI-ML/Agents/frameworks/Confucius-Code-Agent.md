@@ -336,6 +336,7 @@ The modular extension system allows:
 - **Agents.md vs Skills.md**: [Eesel.ai Blog](https://www.eesel.ai/en/blog/skills-md-vs-agents-md)
 
 **Related:**
+- [Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026](Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md) — 5-layer concentric memory model, KV prefix caching, tiered skills, and online parametric judgment calibration compared to hierarchical agent memory.
 - [DeepSeek-SuperAgent-And-Harness-Architecture-Nov-2026](DeepSeek-SuperAgent-And-Harness-Architecture-Nov-2026.md) — event-driven autonomous SuperAgent architecture and DeepSeek Harness (DSH), comparing memory hierarchy, full-duplex loops, and Cordis composability against Confucius.
 - [Spec-Driven-Development-Frameworks](../development/Spec-Driven-Development-Frameworks.md) — the spec-first framework family (BMAD, Spec Kit, OpenSpec) that Part 3 of this analysis positions as upstream of Confucius — Confucius consumes rich specs as runtime input.
 - [Ralph-Wiggum-Loops-&-Ralph-Mode](Ralph-Wiggum-Loops-&-Ralph-Mode.md) — alternative coding-agent paradigm — Ralph uses a filesystem-as-memory loop with no human check, while Confucius invests in hierarchical memory and a meta-agent build-test-improve loop.

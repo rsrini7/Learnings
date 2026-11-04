@@ -131,6 +131,7 @@ For the wider cost picture, see [The AI Coding Invoice](AI-Coding-Invoice-Beyond
 ---
 
 **Related:**
+- [Agent Memory Architectures: 5-Layer Harness and Judgment Memory](../../Agents/frameworks/Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md) — 5-layer concentric harness memory, out-of-band state checkpoints, rolling middle compaction, and online judgment calibration.
 - [KV Cache, Prefix Caching, and Storage Tiering](../architecture/KV-Cache-Prefix-Caching-And-Storage-Tiering-Nov-2026.md) — Architectural mechanisms, memory sizing math, and storage offloading behind prompt prefix caching.
 - [Empirical Tokenomics and Model Routing](Empirical-Tokenomics-and-Model-Routing-2026.md) — Places context maintenance within the coding lifecycle.
 - [Tokenomics Source Validation](Tokenomics-Source-Validation-Oct-2026.md) — Evidence and corrections behind earlier context-management claims.

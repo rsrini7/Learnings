@@ -83,6 +83,8 @@ Learnings/
 - [SlopCodeBench Vs GDPx Long Horizon Agent Benchmarks Nov 2026](AI-ML/Agents/analysis/SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md)
 
 #### 🏗️ Agent Frameworks
+- [Agent Memory Architectures 5 Layer Harness And Judgment Memory Nov 2026](AI-ML/Agents/frameworks/Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md)
+- [AmshaAgent Architecture Memory Layering And Governance Nov 2026](AI-ML/Agents/frameworks/AmshaAgent-Architecture-Memory-Layering-And-Governance-Nov-2026.md)
 - [Ashley's 11 agent system](AI-ML/Agents/frameworks/Ashley%27s-11-agent-system.md)
 - [Claude Ralph Loop](AI-ML/Agents/frameworks/Claude-Ralph-Loop.md)
 - [ClaudeRalphLoop and AgentRalphMode](AI-ML/Agents/frameworks/ClaudeRalphLoop-and-AgentRalphMode.md)

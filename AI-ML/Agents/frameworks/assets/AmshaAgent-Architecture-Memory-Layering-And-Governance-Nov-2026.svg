@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="amshaBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070a13" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="amshaCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f59e0b" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+
+    <!-- Arrow Markers -->
+    <marker id="arrCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+    <marker id="arrEmerald" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+    <marker id="arrPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#c084fc" />
+    </marker>
+  </defs>
+
+  <style>
+    text { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="760" fill="url(#amshaBgGrad)" rx="12" />
+
+  <!-- Header -->
+  <text x="600" y="38" fill="#f8fafc" font-size="22" font-weight="800" text-anchor="middle" letter-spacing="0.5">
+    AMSHA AGENT: ENTERPRISE MEMORY LAYERING &amp; GOVERNANCE TOPOLOGY
+  </text>
+  <text x="600" y="60" fill="#94a3b8" font-size="13" text-anchor="middle">
+    JDK 25 · Quarkus 3.40 · Hexagonal Multi-Store · CAS Memory Governance · Governed Egress &amp; Sandbox
+  </text>
+
+  <!-- ========================================================= -->
+  <!-- LEFT PANEL: TIERED MEMORY SUBSYSTEM                       -->
+  <!-- ========================================================= -->
+  <rect x="30" y="80" width="560" height="540" rx="10" fill="url(#amshaCardGrad)" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="50" y="110" fill="#38bdf8" font-size="14" font-weight="700">1. ENTERPRISE TIERED MEMORY &amp; CONTEXT MANAGEMENT</text>
+  <line x1="50" y1="120" x2="570" y2="120" stroke="#334155" stroke-width="1" />
+
+  <!-- Tier 1: Core Memory -->
+  <rect x="50" y="135" width="520" height="88" rx="8" fill="#047857" fill-opacity="0.25" stroke="#34d399" stroke-width="1.5" />
+  <text x="65" y="158" fill="#34d399" font-size="13" font-weight="700">CORE MEMORY: Segmented Block Store with CAS Concurrency</text>
+  <text x="65" y="177" fill="#e2e8f0" font-size="11">Scope: <tspan fill="#34d399" class="mono">user_profile, active_task, constraints, preferences</tspan> (Max 20 blocks)</text>
+  <text x="65" y="194" fill="#cbd5e1" font-size="10.5">• Hard size ceiling: 2,000 chars/block | Token bucket rate limit: 5 writes/min</text>
+  <text x="65" y="209" fill="#94a3b8" font-size="10.5">• Compare-and-Swap (CAS) optimistic locking with 3-way retry against VersionConflict</text>
+
+  <!-- Tier 2: Working Context & Compaction -->
+  <rect x="50" y="233" width="520" height="88" rx="8" fill="#ea580c" fill-opacity="0.25" stroke="#f97316" stroke-width="1.5" />
+  <text x="65" y="256" fill="#f97316" font-size="13" font-weight="700">WORKING CONTEXT: Priority-60 Compaction &amp; Latch Sync</text>
+  <text x="65" y="275" fill="#e2e8f0" font-size="11">Pipeline: <tspan fill="#f97316" class="mono">MessagePipeline ➔ CompactionHandler ➔ AgentDispatch</tspan></text>
+  <text x="65" y="292" fill="#cbd5e1" font-size="10.5">• CompactionEventBridge latch: Prevents stale-null race condition during async commits</text>
+  <text x="65" y="307" fill="#94a3b8" font-size="10.5">• PromptBudgetManager: 2-pass top-down allocation (Directives ➔ Recall ➔ Archival RAG)</text>
+
+  <!-- Tier 3: Recall Memory -->
+  <rect x="50" y="331" width="520" height="80" rx="8" fill="#78350f" fill-opacity="0.3" stroke="#fbbf24" stroke-width="1.5" />
+  <text x="65" y="354" fill="#fbbf24" font-size="13" font-weight="700">RECALL MEMORY: Exact Turn History (30-Day Retention)</text>
+  <text x="65" y="373" fill="#e2e8f0" font-size="11">Store: <tspan fill="#fbbf24" class="mono">recall_messages</tspan> (SQL WAL / FS JSON) | Hybrid BM25 / FTS5 search</text>
+  <text x="65" y="390" fill="#cbd5e1" font-size="10.5">• Preserves uncompacted raw conversational turns prior to summarization</text>
+  <text x="65" y="404" fill="#94a3b8" font-size="10.5">• Excludes transient summary artifacts to ensure zero echo drift</text>
+
+  <!-- Tier 4: Archival Memory & RAG -->
+  <rect x="50" y="421" width="520" height="95" rx="8" fill="#581c87" fill-opacity="0.3" stroke="#c084fc" stroke-width="1.5" />
+  <text x="65" y="444" fill="#c084fc" font-size="13" font-weight="700">ARCHIVAL MEMORY: Hybrid RRF RAG &amp; ONNX Reranking</text>
+  <text x="65" y="463" fill="#e2e8f0" font-size="11">Engine: <tspan fill="#c084fc" class="mono">sqlite-vec / pgvector + FTS5 Reciprocal Rank Fusion (RRF)</tspan></text>
+  <text x="65" y="480" fill="#cbd5e1" font-size="10.5">• Local ONNX BGE cross-encoder reranking with deterministic score fallback</text>
+  <text x="65" y="495" fill="#cbd5e1" font-size="10.5">• ArchivalContextCache: Asynchronous pre-caching ensures O(1) sync loop retrieval</text>
+  <text x="65" y="509" fill="#94a3b8" font-size="10">15-Field EmbeddingIndexDescriptor: Non-destructive degradation on model change</text>
+
+  <!-- Tier 5: Active Directives -->
+  <rect x="50" y="526" width="520" height="82" rx="8" fill="#064e3b" fill-opacity="0.35" stroke="#2dd4bf" stroke-width="1.5" />
+  <text x="65" y="549" fill="#2dd4bf" font-size="13" font-weight="700">ACTIVE DIRECTIVES &amp; BEHAVIORAL SELF-EVOLUTION</text>
+  <text x="65" y="568" fill="#e2e8f0" font-size="11">Module: <tspan fill="#2dd4bf" class="mono">amsha-self-evolve</tspan> | Captures traces, extracts behavioral rules</text>
+  <text x="65" y="585" fill="#cbd5e1" font-size="10.5">• Reviewed directives injected automatically into matching persona/goal prompts</text>
+  <text x="65" y="600" fill="#94a3b8" font-size="10.5">• Feedback loop updates directive efficacy weights based on task success</text>
+
+
+  <!-- ========================================================= -->
+  <!-- RIGHT PANEL: GOVERNANCE, SECURITY & DECISION SEAM         -->
+  <!-- ========================================================= -->
+  <rect x="610" y="80" width="560" height="540" rx="10" fill="url(#amshaCardGrad)" stroke="#fbbf24" stroke-width="1.5" />
+  <text x="630" y="110" fill="#fbbf24" font-size="14" font-weight="700">2. MULTI-STAGE GOVERNANCE, SANDBOX &amp; DECISION SEAM</text>
+  <line x1="630" y1="120" x2="1150" y2="120" stroke="#334155" stroke-width="1" />
+
+  <!-- Autonomy Policy & Checkpoint -->
+  <rect x="630" y="135" width="520" height="98" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+  <text x="645" y="156" fill="#fbbf24" font-size="12.5" font-weight="700">Autonomy Matrix &amp; Durable Checkpoint Resume</text>
+  <text x="645" y="176" fill="#cbd5e1" font-size="11">• 4 Autonomy Levels: <tspan fill="#34d399">FULL</tspan>, <tspan fill="#fbbf24">SUPERVISED (default)</tspan>, <tspan fill="#38bdf8">BACKGROUND (cron)</tspan>, <tspan fill="#ef4444">READONLY</tspan></text>
+  <text x="645" y="193" fill="#cbd5e1" font-size="10.5">• Durable Checkpointing: Persists <tspan class="mono">ReasoningStep[]</tspan> across restarts</text>
+  <text x="645" y="209" fill="#94a3b8" font-size="10.5">• Approval resumption: AwaitingApproval state restores full execution DAG on approval</text>
+  <text x="645" y="224" fill="#f87171" font-size="10.5">Zombie recovery: Stale unapproved steps safely auto-denied on system reboot</text>
+
+  <!-- Multi-Stage Guard Pipeline -->
+  <rect x="630" y="243" width="520" height="92" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="645" y="264" fill="#38bdf8" font-size="12.5" font-weight="700">ToolInvocationGuard Multi-Stage Decision Pipeline</text>
+  <text x="645" y="284" fill="#cbd5e1" font-size="11">1. Pre-Policy SPI Interceptors ➔ Registered Parameter Schema Validation</text>
+  <text x="645" y="301" fill="#cbd5e1" font-size="10.5">2. Idempotent Deduplication ➔ Deterministic HITL Pre-Approval (PauseForApproval)</text>
+  <text x="645" y="318" fill="#cbd5e1" font-size="10.5">3. Post-Policy Classifier SPIs (Monotonic Risk Upgrades: Allow ➔ Approval ➔ Block)</text>
+
+  <!-- Isolation & Security -->
+  <rect x="630" y="345" width="520" height="92" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1" />
+  <text x="645" y="366" fill="#34d399" font-size="12.5" font-weight="700">Rootless Sandbox, SecretVault &amp; Governed Egress</text>
+  <text x="645" y="386" fill="#cbd5e1" font-size="11">• Podman Container Sandboxing: Rootless process isolation (Python, Go, Node, Bash)</text>
+  <text x="645" y="403" fill="#cbd5e1" font-size="10.5">• Governed Transport: SSRF filter, DNS revalidation, Java 25 ScopedValue context</text>
+  <text x="645" y="420" fill="#cbd5e1" font-size="10.5">• AES-256-GCM-SIV Vault + Argon2id: Secrets encrypted; tamper-evident HMAC audit</text>
+
+  <!-- Typed Decision Seam -->
+  <rect x="630" y="447" width="520" height="80" rx="6" fill="#0f172a" stroke="#c084fc" stroke-width="1" />
+  <text x="645" y="468" fill="#c084fc" font-size="12.5" font-weight="700">Jev Typed Decision Seam &amp; Shadow Classifiers</text>
+  <text x="645" y="488" fill="#cbd5e1" font-size="11">• Provider-neutral typed seam: <tspan class="mono">DecisionEngine.evaluate() ➔ Choice / Score / Noul</tspan></text>
+  <text x="645" y="505" fill="#cbd5e1" font-size="10.5">• Placement Validator: Forbids remote engines behind network-free classifier SPIs</text>
+  <text x="645" y="520" fill="#94a3b8" font-size="10.5">• Opt-in non-routing evaluation path gathers candidate evidence before activation</text>
+
+  <!-- Multi-Persona Orchestration -->
+  <rect x="630" y="537" width="520" height="71" rx="6" fill="#1e1b4b" fill-opacity="0.4" stroke="#818cf8" stroke-width="1" />
+  <text x="645" y="557" fill="#a5b4fc" font-size="12" font-weight="700">12 Specialist Personas &amp; Garuda Delegation</text>
+  <text x="645" y="575" fill="#cbd5e1" font-size="10.5">• 4 Lokas (Kailasa, Brahmaloka, Vaikunta, Bahir) with Virtual Thread huddles</text>
+  <text x="645" y="591" fill="#cbd5e1" font-size="10.5">• Auto-heal Shiva sub-sessions on code failure; capability-subset safe delegation</text>
+
+
+  <!-- ========================================================= -->
+  <!-- BOTTOM PANEL: HEXAGONAL PERSISTENCE ARCHITECTURE          -->
+  <!-- ========================================================= -->
+  <rect x="30" y="635" width="1140" height="105" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1" />
+  <text x="50" y="655" fill="#f8fafc" font-size="12.5" font-weight="700">HEXAGONAL PERSISTENCE PARITY: THREE COMPLIANT ADAPTERS (amsha-persistence-api)</text>
+
+  <!-- 3 Persistence Adapters -->
+  <g transform="translate(50, 665)">
+    <text x="0" y="16" fill="#38bdf8" font-size="11.5" font-weight="700">SQLite Adapter (Default)</text>
+    <text x="0" y="33" fill="#cbd5e1" font-size="10.5">• Embedded WAL mode + FTS5 full-text</text>
+    <text x="0" y="48" fill="#cbd5e1" font-size="10.5">• sqlite-vec extension for dense vector RAG</text>
+    <text x="0" y="63" fill="#94a3b8" font-size="10">• Zero-config, single ~400MB binary</text>
+  </g>
+
+  <g transform="translate(420, 665)">
+    <text x="0" y="16" fill="#34d399" font-size="11.5" font-weight="700">PostgreSQL Adapter</text>
+    <text x="0" y="33" fill="#cbd5e1" font-size="10.5">• Native timestamptz + pgvector extension</text>
+    <text x="0" y="48" fill="#cbd5e1" font-size="10.5">• Transaction advisory locks for last-owner</text>
+    <text x="0" y="63" fill="#94a3b8" font-size="10">• Production multi-node enterprise deployments</text>
+  </g>
+
+  <g transform="translate(800, 665)">
+    <text x="0" y="16" fill="#fbbf24" font-size="11.5" font-weight="700">Filesystem Adapter</text>
+    <text x="0" y="33" fill="#cbd5e1" font-size="10.5">• JSON file store + Lucene BM25 index</text>
+    <text x="0" y="48" fill="#cbd5e1" font-size="10.5">• Synchronized owner check and delete</text>
+    <text x="0" y="63" fill="#94a3b8" font-size="10">• Environments without relational SQL engines</text>
+  </g>
+
+</svg>

@@ -236,6 +236,7 @@ Based on user-provided architecture diagrams and technical details from [*KV Cac
 ---
 
 **Related:**
+- [Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md](../../Agents/frameworks/Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md) — How agent harnesses structure prompt prefixes, rolling compaction, and disk storage to optimize KV prefix cache hit rates.
 - [Weight-Space-Programming-Astra-Qwen-Nov-2026.md](../training/Weight-Space-Programming-Astra-Qwen-Nov-2026.md) — Direct weight surgery and directional ablation compared with runtime inference modifications.
 - [LLM-Inference-Engines.md](LLM-Inference-Engines.md) — Comprehensive technical whitepaper covering inference engines, memory bottlenecks, continuous batching, and kernel optimizations.
 - [LLM-Inference.md](LLM-Inference.md) — Fundamental explanation of the LLM inference lifecycle and request paths.
