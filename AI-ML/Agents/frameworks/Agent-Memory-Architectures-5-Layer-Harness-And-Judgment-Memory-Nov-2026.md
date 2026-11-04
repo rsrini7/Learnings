@@ -48,7 +48,7 @@ To create the illusion of an autonomous, persistent entity, an external software
 
 The memory topology organizes into **five concentric layers** radiating outward from the raw model core, structured by volatility, access frequency, and token budget impact:
 
-![Agent Memory Concentric Architecture](./assets/Agent-Memory-5-Layer-Concentric-Arch-Diagram-Nov-2026.png)
+![Agent Memory Concentric Architecture](./assets/Agent-Memory-5-Layer-Concentric-Arch-Diagram-Nov-2026.jpg)
 
 Each layer features two defining base boundaries:
 - **Left Base (Implementation Artifact):** Where the state is physically stored and structured (e.g., active prompt, markdown files, SQLite database).
