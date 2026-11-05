@@ -131,11 +131,11 @@ In an uninterrupted continuous session, the 1-hour TTL costs $0.75$ units more d
 
 However, consider an interruption: the developer steps away for 20 minutes (exceeding the 5-minute TTL, but well within the 1-hour TTL) and executes one resumed request upon returning:
 
-$$C_{5\text{m\_resumed}} = 1.25 (\text{initial write}) + 1.25 (\text{cold re-write}) = 2.50$$
+$$C_{5\text{m, resumed}} = 1.25 \; (\text{initial write}) + 1.25 \; (\text{cold re-write}) = 2.50$$
 
-$$C_{1\text{h\_resumed}} = 2.00 (\text{initial write}) + r (\text{warm cache read}) = 2.00 + r$$
+$$C_{1\text{h, resumed}} = 2.00 \; (\text{initial write}) + r \; (\text{warm cache read}) = 2.00 + r$$
 
-$$\text{Net Saving with } 1\text{h} = 2.50 - (2.00 + r) = 0.50 - r$$
+$$\text{Net Saving with 1h} = 2.50 - (2.00 + r) = 0.50 - r$$
 
 - At $r = 0.10$: Net saving = **0.40 base-input units** (a 16% net savings).
 - At $r = 0.05$: Net saving = **0.45 base-input units** (an 18% net savings).

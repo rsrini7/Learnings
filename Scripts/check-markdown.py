@@ -234,17 +234,17 @@ def scan_file(filepath):
                 'fix_advice': 'Place $$ flush-left (column 0) with blank lines before and after.'
             })
 
-        # Check 2: Unescaped underscore inside \text{...}
+        # Check 2: Underscore inside \text{...} (fails on GitHub KaTeX even if escaped)
         clean_line = re.sub(r'`[^`]*`', '', line)
         matches = re.findall(r'\\text\{([^{}]*)\}', clean_line)
         for m in matches:
-            if '_' in m and '\\_' not in m:
+            if '_' in m:
                 issues.append({
                     'file': filepath,
                     'line': idx + 1,
-                    'type': 'LaTeX: Unescaped underscore in \\text{}',
+                    'type': 'LaTeX: Underscore in \\text{}',
                     'snippet': f'\\text{{{m}}}',
-                    'fix_advice': f'Move subscript out of \\text{{}}: e.g. \\text{{Score}}_{{\\text{{{m.replace("_", "")}}}}} or escape as \\_'
+                    'fix_advice': f'Remove underscore from \\text{{}}: e.g. \\text{{{m.replace("_", " ")}}} or move subscript outside: \\text{{Var}}_{{\\text{{sub}}}}'
                 })
 
     # Check 3: Validate referenced SVG diagrams (XML well-formedness & text overflows)
@@ -305,13 +305,13 @@ def auto_fix_file(filepath):
             current_line = stripped
             modified = True
 
-        # Fix 2: Unescaped underscore in \text{...}
+        # Fix 2: Underscore in \text{...}
         if '\\text{' in current_line:
             def repl_underscore(match):
                 inner = match.group(1)
-                if '_' in inner and '\\_' not in inner:
-                    escaped = inner.replace('_', '\\_')
-                    return f'\\text{{{escaped}}}'
+                if '_' in inner:
+                    cleaned = inner.replace('\\_', ' ').replace('_', ' ')
+                    return f'\\text{{{cleaned}}}'
                 return match.group(0)
 
             fixed_line = re.sub(r'\\text\{([^{}]*)\}', repl_underscore, current_line)

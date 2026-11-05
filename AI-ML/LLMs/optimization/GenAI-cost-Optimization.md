@@ -158,7 +158,7 @@ $$\text{CPAC} = \frac{\sum \text{Model Spend} + \sum \text{Tool / Infrastructure
 2. **Cache Hit Ratio (CHR):**
    Evaluating prompt prefix cache and semantic cache efficiency:
 
-$$\text{CHR} = \frac{\text{Tokens}_{\text{cached\_reads}}}{\text{Tokens}_{\text{fresh\_input}} + \text{Tokens}_{\text{cached\_reads}}} \times 100\%$$
+$$\text{CHR} = \frac{\text{Tokens}_{\text{cached}}}{\text{Tokens}_{\text{fresh}} + \text{Tokens}_{\text{cached}}} \times 100\%$$
 
 3. **Token Inflation Factor (TIF):**
    Measures context bloat over a multi-turn session ($T$ turns):
