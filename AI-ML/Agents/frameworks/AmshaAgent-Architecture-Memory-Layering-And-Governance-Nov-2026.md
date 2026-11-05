@@ -189,12 +189,11 @@ AmshaAgent separates exact-turn historical logging from semantic knowledge retri
 
 1. **Recall Memory:** Retains raw conversational interactions across sessions for up to 30 days. Allows agents to look up historical interactions without polluting active token budgets.
 2. **Hybrid RAG with Reciprocal Rank Fusion (RRF):**
-   `TwoTierMemoryService` executes parallel retrieval across:
-   - Lexical search via SQLite FTS5 / PostgreSQL `tsvector` / Lucene BM25.
-   - Dense vector embeddings via `sqlite-vec` / PostgreSQL `pgvector`.
-   The candidate sets are merged deterministically using **Reciprocal Rank Fusion (RRF)**:
-   
-   $$\text{Score}_{\text{RRF}}(d) = \sum_{m \in \{\text{lexical}, \text{dense}\}} \frac{1}{k + \text{rank}_m(d)}$$
+   `TwoTierMemoryService` executes parallel retrieval across lexical search (SQLite FTS5 / PostgreSQL `tsvector` / Lucene BM25) and dense vector embeddings (`sqlite-vec` / `pgvector`). The candidate sets are merged deterministically using **Reciprocal Rank Fusion (RRF)**:
+
+$$
+\text{Score}_{\text{RRF}}(d) = \sum_{m \in \{\text{lexical}, \text{dense}\}} \frac{1}{k + \text{rank}_m(d)}
+$$
 
 3. **In-Process Local ONNX Cross-Encoder Reranking:**
    Via `amsha-local-ml-onnx`, AmshaAgent provides `LocalOnnxScoringAdapter`—an in-process cross-encoder (BGE Reranker) executing on ONNX Runtime Java (`1.27.0`) and DJL Tokenizers (`0.33.0`). It operates without Python sidecars or external microservices. If the reranker bundle is unavailable or hits a deadline, `RerankingService` deterministically falls back to original RRF ranks while preserving scores byte-for-byte.
