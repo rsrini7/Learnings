@@ -172,6 +172,7 @@ Inspired by the user-shared details and developed through Deno, Cloudflare and J
 ---
 
 **Related:**
+- [TypeScript-Rust-Port-TSRS-Architecture-Nov-2026](TypeScript-Rust-Port-TSRS-Architecture-Nov-2026.md) — Cloudflare's joint sponsorship of tsrs alongside Oxc, bringing native Rust and Wasm type-checking to Workers and edge agents.
 - [Project-Detroit-Java-Polyglot-Runtimes-Nov-2026](../JVM/Project-Detroit-Java-Polyglot-Runtimes-Nov-2026.md) — OpenJDK's strategy for wrapping native Google V8 and CPython via FFM vs. reimplementing runtimes.
 - [cloudflare-down-nov-2025](../../News/Outages/cloudflare-down-nov-2025.md) — operational context for depending on Cloudflare's platform.
 - [Node.js-Async-Hooks-DoS-Vulnerability](../../News/Security/Node.js-Async-Hooks-DoS-Vulnerability.md) — Node.js runtime security and maintenance context.

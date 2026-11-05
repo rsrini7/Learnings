@@ -1,0 +1,129 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 680" width="100%" height="100%" style="background:#0b0f19; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="grad-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="grad-emerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="grad-amber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="grad-purple" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#c084fc" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#7e22ce" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title & Subtitle Header -->
+  <text x="40" y="42" fill="#f8fafc" font-size="20" font-weight="700">TSRS Architecture &amp; Compiler Pipeline: TypeScript in Rust</text>
+  <text x="40" y="64" fill="#94a3b8" font-size="12">Comparing Node tsc, Go tsgo (TS 7.0), and Rust tsrs: Memory Layout, Concurrency, and Wasm Portability</text>
+
+  <!-- Top Row: Generational Evolution Cards -->
+  <!-- Card 1: JS tsc -->
+  <rect x="40" y="86" width="295" height="120" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+  <rect x="40" y="86" width="295" height="6" rx="3" fill="#64748b"/>
+  <text x="56" y="112" fill="#94a3b8" font-size="11" font-weight="600" text-transform="uppercase">Generation 1 (2012–2026)</text>
+  <text x="56" y="132" fill="#f1f5f9" font-size="15" font-weight="700">Classic tsc (JavaScript / V8)</text>
+  <text x="56" y="152" fill="#cbd5e1" font-size="11">• Single-threaded execution model in Node.js</text>
+  <text x="56" y="170" fill="#cbd5e1" font-size="11">• High V8 GC heap churn on massive monoliths</text>
+  <text x="56" y="188" fill="#f87171" font-size="11" font-weight="600">Baseline speed · 19 GiB+ peak RAM on Olympus</text>
+
+  <!-- Card 2: Go tsgo -->
+  <rect x="352" y="86" width="295" height="120" rx="8" fill="#111827" stroke="#0284c7" stroke-width="1.5"/>
+  <rect x="352" y="86" width="295" height="6" rx="3" fill="#38bdf8"/>
+  <text x="368" y="112" fill="#38bdf8" font-size="11" font-weight="600" text-transform="uppercase">Generation 2 (July 2026)</text>
+  <text x="368" y="132" fill="#f1f5f9" font-size="15" font-weight="700">TypeScript 7.0 (tsgo in Go)</text>
+  <text x="368" y="152" fill="#cbd5e1" font-size="11">• 8x–12x speedup; multi-threaded type checking</text>
+  <text x="368" y="170" fill="#cbd5e1" font-size="11">• 8-byte pointers; Go GC tracing millions of nodes</text>
+  <text x="368" y="188" fill="#38bdf8" font-size="11" font-weight="600">Fast native CLI · Bulky Wasm runtime with GC</text>
+
+  <!-- Card 3: Rust tsrs -->
+  <rect x="664" y="86" width="295" height="120" rx="8" fill="#111827" stroke="#10b981" stroke-width="1.5"/>
+  <rect x="664" y="86" width="295" height="6" rx="3" fill="#34d399"/>
+  <text x="680" y="112" fill="#34d399" font-size="11" font-weight="600" text-transform="uppercase">Generation 3 (Oct 2026 - Oxc)</text>
+  <text x="680" y="132" fill="#f1f5f9" font-size="15" font-weight="700">tsrs (Rust Port via AI Agents)</text>
+  <text x="680" y="152" fill="#cbd5e1" font-size="11">• 3x–10x faster than Go; ~70% lower peak memory</text>
+  <text x="680" y="170" fill="#cbd5e1" font-size="11">• 4-byte compressed pointers &amp; 32 GiB arena</text>
+  <text x="680" y="188" fill="#34d399" font-size="11" font-weight="600">Zero GC overhead · Lean Wasm edge runtime</text>
+
+  <!-- Middle Left Container: Core Memory Optimizations in TSRS -->
+  <rect x="40" y="222" width="445" height="236" rx="8" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.2"/>
+  <text x="56" y="246" fill="#38bdf8" font-size="13" font-weight="700">1. MEMORY ENGINE: ZERO-GC ARENA &amp; LAYOUT</text>
+
+  <!-- Box 1A: Pointer Compression -->
+  <rect x="56" y="258" width="413" height="54" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="68" y="276" fill="#f1f5f9" font-size="11" font-weight="600">Pointer Compression (4-byte Offset in 32 GiB Arena)</text>
+  <text x="68" y="293" fill="#94a3b8" font-size="10">Halves 64-bit addresses to 32-bit offsets in pre-reserved arena block.</text>
+  <text x="68" y="306" fill="#34d399" font-size="10" font-weight="600">Result: -14% to -15% peak memory across 12.8M symbols.</text>
+
+  <!-- Box 1B: Lazy Member Resolution -->
+  <rect x="56" y="320" width="413" height="54" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="68" y="338" fill="#f1f5f9" font-size="11" font-weight="600">Lazy Generic Member Resolution (ORMs / Schemas)</text>
+  <text x="68" y="355" fill="#94a3b8" font-size="10">Defers property instantiation until queried (e.g. Entity&lt;User&gt;.id).</text>
+  <text x="68" y="368" fill="#34d399" font-size="10" font-weight="600">Result: On Olympus, 15.7M members reduced to 2.95M (-21% RAM).</text>
+
+  <!-- Box 1C: Leaf File AST Eviction -->
+  <rect x="56" y="382" width="413" height="64" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="68" y="400" fill="#f1f5f9" font-size="11" font-weight="600">Leaf File Pruning in --noEmit Mode</text>
+  <text x="68" y="417" fill="#94a3b8" font-size="10">Files with no downstream dependents (e.g. tests) drop AST and</text>
+  <text x="68" y="430" fill="#94a3b8" font-size="10">binder data immediately after checking, preserving only diagnostics.</text>
+  <text x="68" y="442" fill="#34d399" font-size="10" font-weight="600">Result: -13% to -16% peak memory on VS Code codebase.</text>
+
+  <!-- Middle Right Container: Concurrency & Scheduling -->
+  <rect x="514" y="222" width="445" height="236" rx="8" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.2"/>
+  <text x="530" y="246" fill="#c084fc" font-size="13" font-weight="700">2. MULTI-CHECKER SCHEDULING &amp; PARALLELISM</text>
+
+  <!-- Box 2A: Module Affinity Clustering -->
+  <rect x="530" y="258" width="413" height="54" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="542" y="276" fill="#f1f5f9" font-size="11" font-weight="600">Module-Affinity Clustering (Shared Type Locality)</text>
+  <text x="542" y="293" fill="#94a3b8" font-size="10">Groups files importing identical libraries onto the same checker worker.</text>
+  <text x="542" y="306" fill="#34d399" font-size="10" font-weight="600">Result: Prevents redundant type builds (-11% RAM, -16% wall time).</text>
+
+  <!-- Box 2B: Work Stealing Queue -->
+  <rect x="530" y="320" width="413" height="54" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="542" y="338" fill="#f1f5f9" font-size="11" font-weight="600">Work-Stealing Task Balancer</text>
+  <text x="542" y="355" fill="#94a3b8" font-size="10">Idle workers dynamically steal unstarted files from the longest queue.</text>
+  <text x="542" y="368" fill="#34d399" font-size="10" font-weight="600">Result: -13.8% wall time at 4 checkers, -17.0% at 8 checkers.</text>
+
+  <!-- Box 2C: Determinism Gate -->
+  <rect x="530" y="382" width="413" height="64" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="542" y="400" fill="#f1f5f9" font-size="11" font-weight="600">Strict Determinism &amp; Parity Gate</text>
+  <text x="542" y="417" fill="#94a3b8" font-size="10">Single-threaded, work-stealing, and randomized thread assignments are</text>
+  <text x="542" y="430" fill="#94a3b8" font-size="10">tested to ensure 100% byte-identical diagnostic error baselines.</text>
+  <text x="542" y="442" fill="#c084fc" font-size="10" font-weight="600">Assurance: Thread scheduling can never alter diagnostic ordering.</text>
+
+  <!-- Bottom Container: Ecosystem, Upstream Sync & Wasm Edge -->
+  <rect x="40" y="474" width="920" height="176" rx="8" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.2"/>
+  <text x="56" y="498" fill="#fbbf24" font-size="13" font-weight="700">3. ECOSYSTEM INTEGRATION, TWO-WAY UPSTREAM SYNC &amp; EDGE RUNTIMES</text>
+
+  <!-- Bottom Left: AI Agent Porting Loop -->
+  <rect x="56" y="510" width="280" height="126" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="68" y="528" fill="#f1f5f9" font-size="11" font-weight="600">The 3-Week AI Synthesis Loop</text>
+  <text x="68" y="546" fill="#cbd5e1" font-size="10">• 0 manual code lines; Claude Opus 5.5 driven</text>
+  <text x="68" y="562" fill="#cbd5e1" font-size="10">• 20+ parallel agent worktrees</text>
+  <text x="68" y="578" fill="#cbd5e1" font-size="10">• 15,197 conformance tests as formal spec</text>
+  <text x="68" y="594" fill="#cbd5e1" font-size="10">• Ratchet bar: Inst -1%, Wall -2%, Mem -5%</text>
+  <text x="68" y="612" fill="#fbbf24" font-size="10" font-weight="600">Parity: 99.97% error &amp; symbol match</text>
+
+  <!-- Bottom Center: Upstream Collaboration -->
+  <rect x="350" y="510" width="300" height="126" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="362" y="528" fill="#f1f5f9" font-size="11" font-weight="600">Upstream Collaboration &amp; Sync</text>
+  <text x="362" y="546" fill="#cbd5e1" font-size="10">• Not a fork: strictly tracks TS Go commits</text>
+  <text x="362" y="562" fill="#cbd5e1" font-size="10">• Two-way street: Lazy member &amp; memory</text>
+  <text x="362" y="578" fill="#cbd5e1" font-size="10">  optimizations backported to TS Go 7.1</text>
+  <text x="362" y="594" fill="#cbd5e1" font-size="10">• Vinext-style automated daily sync bot</text>
+  <text x="362" y="612" fill="#34d399" font-size="10" font-weight="600">Partnership with Microsoft TS team</text>
+
+  <!-- Bottom Right: Downstream Runtimes -->
+  <rect x="664" y="510" width="282" height="126" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+  <text x="676" y="528" fill="#f1f5f9" font-size="11" font-weight="600">Downstream Applications</text>
+  <text x="676" y="546" fill="#cbd5e1" font-size="10">• Browser Wasm Playground: Zero GC pause</text>
+  <text x="676" y="562" fill="#cbd5e1" font-size="10">• Cloudflare Workers: Fast sandboxed check</text>
+  <text x="676" y="578" fill="#cbd5e1" font-size="10">• Multi-agent localdev: 4-8 agents on laptop</text>
+  <text x="676" y="594" fill="#cbd5e1" font-size="10">• tsrslint in oxlint: 4.5x faster type-aware lint</text>
+  <text x="676" y="612" fill="#38bdf8" font-size="10" font-weight="600">Full stack: Rolldown + Oxlint + TSRS</text>
+</svg>
