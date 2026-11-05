@@ -194,7 +194,7 @@ AmshaAgent separates exact-turn historical logging from semantic knowledge retri
    - Dense vector embeddings via `sqlite-vec` / PostgreSQL `pgvector`.
    The candidate sets are merged deterministically using **Reciprocal Rank Fusion (RRF)**:
    
-   $$\text{RRF\_Score}(d) = \sum_{m \in \{\text{lexical}, \text{dense}\}} \frac{1}{k + \text{rank}_m(d)}$$
+   $$\text{Score}_{\text{RRF}}(d) = \sum_{m \in \{\text{lexical}, \text{dense}\}} \frac{1}{k + \text{rank}_m(d)}$$
 
 3. **In-Process Local ONNX Cross-Encoder Reranking:**
    Via `amsha-local-ml-onnx`, AmshaAgent provides `LocalOnnxScoringAdapter`—an in-process cross-encoder (BGE Reranker) executing on ONNX Runtime Java (`1.27.0`) and DJL Tokenizers (`0.33.0`). It operates without Python sidecars or external microservices. If the reranker bundle is unavailable or hits a deadline, `RerankingService` deterministically falls back to original RRF ranks while preserving scores byte-for-byte.
