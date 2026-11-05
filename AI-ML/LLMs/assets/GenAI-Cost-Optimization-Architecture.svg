@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1350" width="100%" height="100%" style="background-color: #0b0f19; font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#4ade80" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+  </defs>
+
+  <!-- Title Banner -->
+  <rect x="30" y="20" width="940" height="70" rx="10" fill="#1e293b" stroke="#334155" stroke-width="2" />
+  <text x="500" y="50" fill="#f8fafc" font-size="20" font-weight="bold" text-anchor="middle">GENAI COST OPTIMIZATION: 3-TIER ARCHITECTURAL FRAMEWORK</text>
+  <text x="500" y="74" fill="#94a3b8" font-size="12" text-anchor="middle">Tokenomics, Prompt Caching, Semantic Gateways, Storage Tiering &amp; Infrastructure FinOps</text>
+
+  <!-- ==================== STAGE 1 ==================== -->
+  <rect x="30" y="105" width="940" height="215" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="132" fill="#38bdf8" font-size="14" font-weight="bold">1. WHERE TOKENS INFLATE: THE FOUR ROOT LEAKS</text>
+
+  <!-- Card 1A: History Bloat -->
+  <rect x="50" y="145" width="280" height="160" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="190" y="170" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">A. Multi-Turn History Bloat</text>
+  <rect x="65" y="185" width="250" height="22" rx="4" fill="#0284c7" />
+  <text x="190" y="200" fill="#ffffff" font-size="11" text-anchor="middle">Turn 1: [Sys] + [User Q1] (3K)</text>
+  <rect x="65" y="213" width="250" height="22" rx="4" fill="#0369a1" />
+  <text x="190" y="228" fill="#e0f2fe" font-size="11" text-anchor="middle">Turn 5: Full Prior Log (35K)</text>
+  <rect x="65" y="241" width="250" height="22" rx="4" fill="#be123c" />
+  <text x="190" y="256" fill="#ffe4e6" font-size="11" text-anchor="middle">Turn 20: Accumulated (95K)</text>
+  <text x="190" y="285" fill="#94a3b8" font-size="10" text-anchor="middle">History re-prefilled on every single turn</text>
+
+  <!-- Card 1B: Hidden Reasoning -->
+  <rect x="360" y="145" width="280" height="160" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="500" y="170" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">B. Hidden Reasoning Tokens</text>
+  <rect x="375" y="185" width="250" height="34" rx="4" fill="#334155" />
+  <text x="500" y="200" fill="#fbbf24" font-size="11" font-weight="bold" text-anchor="middle">Extended Thinking (o-series / Claude)</text>
+  <text x="500" y="214" fill="#cbd5e1" font-size="10" text-anchor="middle">8,000 to 24,000 unrendered tokens</text>
+  <rect x="375" y="225" width="250" height="34" rx="4" fill="#be123c" />
+  <text x="500" y="240" fill="#ffffff" font-size="11" font-weight="bold" text-anchor="middle">Billed at Premium Output Rates</text>
+  <text x="500" y="254" fill="#ffe4e6" font-size="10" text-anchor="middle">Visible code: 20 lines; Billed: 12K tokens</text>
+  <text x="500" y="285" fill="#94a3b8" font-size="10" text-anchor="middle">Reasoning output dwarfs generation size</text>
+
+  <!-- Card 1C: Unmanaged RAG & Tool Schemas -->
+  <rect x="670" y="145" width="280" height="160" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="810" y="170" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">C. Tool &amp; Vector DB Bloat</text>
+  <rect x="685" y="185" width="250" height="22" rx="4" fill="#475569" />
+  <text x="810" y="200" fill="#f1f5f9" font-size="11" text-anchor="middle">All MCP Schemas Injected (15K)</text>
+  <rect x="685" y="213" width="250" height="22" rx="4" fill="#475569" />
+  <text x="810" y="228" fill="#f1f5f9" font-size="11" text-anchor="middle">Over-fetched RAG Chunks (k=20)</text>
+  <rect x="685" y="241" width="250" height="22" rx="4" fill="#be123c" />
+  <text x="810" y="256" fill="#ffe4e6" font-size="11" text-anchor="middle">Dedicated Vector DB Idle Fee</text>
+  <text x="810" y="285" fill="#94a3b8" font-size="10" text-anchor="middle">Fixed storage fees + token payload bloat</text>
+
+  <!-- ==================== STAGE 2 ==================== -->
+  <rect x="30" y="335" width="940" height="215" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="362" fill="#4ade80" font-size="14" font-weight="bold">2. TIER 1: OPERATIONAL &amp; PROMPT CONFIGURATION (IMMEDIATE WINS)</text>
+
+  <!-- Card 2A: Model Routing -->
+  <rect x="50" y="375" width="280" height="160" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="190" y="400" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Stage-Based Model Routing</text>
+  <rect x="65" y="415" width="250" height="24" rx="4" fill="#065f46" />
+  <text x="190" y="431" fill="#6ee7b7" font-size="11" text-anchor="middle">Haiku 5.5 / Luna: Checklists &amp; Summary</text>
+  <rect x="65" y="445" width="250" height="24" rx="4" fill="#1e3a8a" />
+  <text x="190" y="461" fill="#93c5fd" font-size="11" text-anchor="middle">Sonnet 5.5 / GPT-5.6: Routine Coding</text>
+  <rect x="65" y="475" width="250" height="24" rx="4" fill="#701a75" />
+  <text x="190" y="491" fill="#f5d0fe" font-size="11" text-anchor="middle">Opus 5.5 / GPT-6 Sol: Security &amp; Arch</text>
+  <text x="190" y="518" fill="#4ade80" font-size="10" font-weight="bold" text-anchor="middle">Saves 70%–90% vs frontier-default</text>
+
+  <!-- Card 2B: Session Resets -->
+  <rect x="360" y="375" width="280" height="160" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="500" y="400" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Session Resets &amp; Handoffs</text>
+  <rect x="375" y="415" width="250" height="24" rx="4" fill="#0f172a" stroke="#38bdf8" />
+  <text x="500" y="431" fill="#38bdf8" font-size="11" text-anchor="middle">Periodic /clear Across Tasks</text>
+  <rect x="375" y="445" width="250" height="24" rx="4" fill="#0f172a" stroke="#38bdf8" />
+  <text x="500" y="461" fill="#38bdf8" font-size="11" text-anchor="middle">Markdown Handoff Schema</text>
+  <text x="500" y="488" fill="#cbd5e1" font-size="10" text-anchor="middle">Objective, Diffs, Non-Goals, Checks</text>
+  <text x="500" y="518" fill="#4ade80" font-size="10" font-weight="bold" text-anchor="middle">Prevents multi-turn context compounding</text>
+
+  <!-- Card 2C: Deferred MCP & Directives -->
+  <rect x="670" y="375" width="280" height="160" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="810" y="400" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Scoped Prompts &amp; Deferred MCP</text>
+  <rect x="685" y="415" width="250" height="24" rx="4" fill="#0f172a" stroke="#4ade80" />
+  <text x="810" y="431" fill="#4ade80" font-size="11" text-anchor="middle">CLAUDE.md Target: Under 200 Lines</text>
+  <rect x="685" y="445" width="250" height="24" rx="4" fill="#0f172a" stroke="#4ade80" />
+  <text x="810" y="461" fill="#4ade80" font-size="11" text-anchor="middle">Deferred Tool Search (Tail Injected)</text>
+  <text x="810" y="488" fill="#cbd5e1" font-size="10" text-anchor="middle">Schemas loaded on demand only</text>
+  <text x="810" y="518" fill="#4ade80" font-size="10" font-weight="bold" text-anchor="middle">Cuts 10K+ tokens from system prefix</text>
+
+  <!-- ==================== STAGE 3 ==================== -->
+  <rect x="30" y="565" width="940" height="215" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="592" fill="#fbbf24" font-size="14" font-weight="bold">3. TIER 2: STATE &amp; DATA MIDDLEWARE (ARCHITECTURAL CONTROL)</text>
+
+  <!-- Card 3A: Concentric Memory -->
+  <rect x="50" y="605" width="280" height="160" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="190" y="630" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Concentric Memory Systems</text>
+  <rect x="65" y="645" width="250" height="24" rx="4" fill="#1e293b" stroke="#fbbf24" />
+  <text x="190" y="661" fill="#fef08a" font-size="11" text-anchor="middle">Layered State vs Full Transcript</text>
+  <text x="190" y="688" fill="#cbd5e1" font-size="10" text-anchor="middle">Decisions &amp; Constraints Retained</text>
+  <text x="190" y="705" fill="#cbd5e1" font-size="10" text-anchor="middle">Trial-and-error reasoning discarded</text>
+  <text x="190" y="745" fill="#fbbf24" font-size="10" font-weight="bold" text-anchor="middle">Bounds history to essential units</text>
+
+  <!-- Card 3B: Tiered Vector DB -->
+  <rect x="360" y="605" width="280" height="160" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="500" y="630" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Tiered Vector Storage</text>
+  <rect x="375" y="645" width="250" height="24" rx="4" fill="#1e293b" stroke="#fbbf24" />
+  <text x="500" y="661" fill="#fef08a" font-size="11" text-anchor="middle">Hot Index: PostgreSQL (pgvector)</text>
+  <rect x="375" y="675" width="250" height="24" rx="4" fill="#1e293b" stroke="#fbbf24" />
+  <text x="500" y="691" fill="#fef08a" font-size="11" text-anchor="middle">Cold Archive: S3 Parquet Files</text>
+  <text x="500" y="722" fill="#cbd5e1" font-size="10" text-anchor="middle">Zero compute cost for dormant docs</text>
+  <text x="500" y="745" fill="#fbbf24" font-size="10" font-weight="bold" text-anchor="middle">Saves 40%–80% vs managed vector DBs</text>
+
+  <!-- Card 3C: Active RAG Hygiene -->
+  <rect x="670" y="605" width="280" height="160" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="810" y="630" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Active RAG Churn &amp; Dedup</text>
+  <rect x="685" y="645" width="250" height="24" rx="4" fill="#1e293b" stroke="#fbbf24" />
+  <text x="810" y="661" fill="#fef08a" font-size="11" text-anchor="middle">Continuous Stale Doc Purging</text>
+  <rect x="685" y="675" width="250" height="24" rx="4" fill="#1e293b" stroke="#fbbf24" />
+  <text x="810" y="691" fill="#fef08a" font-size="11" text-anchor="middle">Hierarchical Markdown Knowledge Base</text>
+  <text x="810" y="722" fill="#cbd5e1" font-size="10" text-anchor="middle">Compact 500-token curated facts</text>
+  <text x="810" y="745" fill="#fbbf24" font-size="10" font-weight="bold" text-anchor="middle">Prevents context pollution &amp; drift</text>
+
+  <!-- ==================== STAGE 4 ==================== -->
+  <rect x="30" y="795" width="940" height="215" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="822" fill="#a855f7" font-size="14" font-weight="bold">4. TIER 3: ADVANCED OPTIMIZATION &amp; MODEL ENGINEERING</text>
+
+  <!-- Card 4A: Semantic Cache -->
+  <rect x="50" y="835" width="280" height="160" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="190" y="860" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Semantic Caching (Redis)</text>
+  <rect x="65" y="875" width="250" height="24" rx="4" fill="#581c87" />
+  <text x="190" y="891" fill="#e9d5ff" font-size="11" text-anchor="middle">Cosine Similarity Gate (sim &gt;= 0.94)</text>
+  <text x="190" y="918" fill="#cbd5e1" font-size="10" text-anchor="middle">Bypasses LLM generation call</text>
+  <text x="190" y="935" fill="#cbd5e1" font-size="10" text-anchor="middle">Strict tenant &amp; role partitioning</text>
+  <text x="190" y="975" fill="#c084fc" font-size="10" font-weight="bold" text-anchor="middle">Saves 20%–50% on repetitive queries</text>
+
+  <!-- Card 4B: Batch Processing -->
+  <rect x="360" y="835" width="280" height="160" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="500" y="860" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Asynchronous Batch API</text>
+  <rect x="375" y="875" width="250" height="24" rx="4" fill="#581c87" />
+  <text x="500" y="891" fill="#e9d5ff" font-size="11" text-anchor="middle">Flat 50% Token Price Discount</text>
+  <text x="500" y="918" fill="#cbd5e1" font-size="10" text-anchor="middle">24-hour turnaround SLA</text>
+  <text x="500" y="935" fill="#cbd5e1" font-size="10" text-anchor="middle">Nightly PR reviews, doc generation</text>
+  <text x="500" y="975" fill="#c084fc" font-size="10" font-weight="bold" text-anchor="middle">Guaranteed 50% discount on non-real-time</text>
+
+  <!-- Card 4C: SLMs & Distillation -->
+  <rect x="670" y="835" width="280" height="160" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="810" y="860" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Distillation &amp; Local SLMs</text>
+  <rect x="685" y="875" width="250" height="24" rx="4" fill="#581c87" />
+  <text x="810" y="891" fill="#e9d5ff" font-size="11" text-anchor="middle">Student Models (Gemma / Llama 7B)</text>
+  <text x="810" y="918" fill="#cbd5e1" font-size="10" text-anchor="middle">Trained on frontier teacher traces</text>
+  <text x="810" y="935" fill="#cbd5e1" font-size="10" text-anchor="middle">Scale-to-zero GPU endpoints (vLLM)</text>
+  <text x="810" y="975" fill="#c084fc" font-size="10" font-weight="bold" text-anchor="middle">Matches teacher on narrow tasks at 5% cost</text>
+
+  <!-- ==================== STAGE 5 ==================== -->
+  <rect x="30" y="1025" width="940" height="295" rx="10" fill="#111827" stroke="#1e293b" stroke-width="2" />
+  <text x="50" y="1052" fill="#38bdf8" font-size="14" font-weight="bold">5. THE LEDGER &amp; CACHING ECONOMICS (THE MATH BEHIND THE SAVINGS)</text>
+
+  <!-- Card 5A: Disjoint Buckets -->
+  <rect x="50" y="1065" width="280" height="235" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="190" y="1090" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">Disjoint Metered Buckets</text>
+  <rect x="65" y="1105" width="250" height="20" rx="3" fill="#0284c7" />
+  <text x="75" y="1119" fill="#ffffff" font-size="10">Fresh Input (1.0x)</text>
+  <rect x="65" y="1130" width="250" height="20" rx="3" fill="#0369a1" />
+  <text x="75" y="1144" fill="#e0f2fe" font-size="10">Cache Reads (0.05x - 0.10x)</text>
+  <rect x="65" y="1155" width="250" height="20" rx="3" fill="#d97706" />
+  <text x="75" y="1169" fill="#fef3c7" font-size="10">Cache Writes (1.25x - 2.50x)</text>
+  <rect x="65" y="1180" width="250" height="20" rx="3" fill="#be123c" />
+  <text x="75" y="1194" fill="#ffe4e6" font-size="10">Thinking Tokens (Output Rate)</text>
+  <rect x="65" y="1205" width="250" height="20" rx="3" fill="#475569" />
+  <text x="75" y="1219" fill="#f1f5f9" font-size="10">Visible Code (Output Rate)</text>
+  <text x="190" y="1250" fill="#94a3b8" font-size="10" text-anchor="middle">Do not double-count thinking tokens</text>
+  <text x="190" y="1275" fill="#38bdf8" font-size="10" font-weight="bold" text-anchor="middle">Partition, do not multiply</text>
+
+  <!-- Card 5B: TTL Math -->
+  <rect x="360" y="1065" width="280" height="235" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="500" y="1090" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">TTL Break-Even Economics</text>
+  <rect x="375" y="1105" width="250" height="50" rx="4" fill="#0f172a" stroke="#38bdf8" />
+  <text x="500" y="1125" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">5m TTL Cost: 1.25 + r*N</text>
+  <text x="500" y="1143" fill="#38bdf8" font-size="11" font-weight="bold" text-anchor="middle">1h TTL Cost: 2.00 + r*N</text>
+  <text x="500" y="1175" fill="#cbd5e1" font-size="10" text-anchor="middle">Pause &gt; 5m but &lt; 1h:</text>
+  <text x="500" y="1195" fill="#4ade80" font-size="10" font-weight="bold" text-anchor="middle">5m requires cold re-write = 2.50</text>
+  <text x="500" y="1215" fill="#4ade80" font-size="10" font-weight="bold" text-anchor="middle">1h enjoys warm cache read = 2.00 + r</text>
+  <text x="500" y="1245" fill="#fbbf24" font-size="11" font-weight="bold" text-anchor="middle">Net Saving with 1h = 0.50 - r</text>
+  <text x="500" y="1275" fill="#94a3b8" font-size="10" text-anchor="middle">1 avoided re-write pays for 1h write fee</text>
+
+  <!-- Card 5C: FinOps Unit Metric -->
+  <rect x="670" y="1065" width="280" height="235" rx="8" fill="#1e293b" stroke="#334155" />
+  <text x="810" y="1090" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">FinOps Unit Economics</text>
+  <rect x="685" y="1105" width="250" height="65" rx="4" fill="#0f172a" stroke="#4ade80" />
+  <text x="810" y="1125" fill="#4ade80" font-size="11" font-weight="bold" text-anchor="middle">Cost Per Accepted Task (CPAT)</text>
+  <text x="810" y="1143" fill="#e2e8f0" font-size="10" text-anchor="middle">Total Model &amp; Infra Spend</text>
+  <text x="810" y="1158" fill="#e2e8f0" font-size="10" text-anchor="middle">divided by Accepted PR Count</text>
+  <text x="810" y="1190" fill="#cbd5e1" font-size="10" text-anchor="middle">Track developer rework time</text>
+  <text x="810" y="1210" fill="#cbd5e1" font-size="10" text-anchor="middle">A cheap model that fails 3 times</text>
+  <text x="810" y="1228" fill="#cbd5e1" font-size="10" text-anchor="middle">erases all token savings</text>
+  <text x="810" y="1275" fill="#4ade80" font-size="10" font-weight="bold" text-anchor="middle">Measure outcomes, not gross tokens</text>
+</svg>
