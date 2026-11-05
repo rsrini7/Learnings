@@ -65,6 +65,7 @@ Based on the [user-shared Better Stack video](https://www.youtube.com/watch?v=sZ
 ---
 
 **Related:**
+- [Ubuntu Server and CVE-2026-98432](Ubuntu-Server-CVE-2026-98432-Kernel-UAF-And-Patch-Lag-Nov-2026.md) — Another critical Linux kernel networking flaw with AI exploit generation and distribution patch latency debates.
 - [PHP2Shell: History, UAF and ASLR](PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — A separate same-week memory-safety disclosure with different exposure and released fixes.
 - [GitLab Regex Compiler RCE](GitLab-Regex-Compiler-RCE-Oct-2026.md) — Another same-week severe report where the running product version determines exposure.
 - [Node.js Brotli Decoder](Node.js-Brotli-Node2Shell-RCE-Oct-2026.md) — Compare a runtime memory error with an optional kernel server path.

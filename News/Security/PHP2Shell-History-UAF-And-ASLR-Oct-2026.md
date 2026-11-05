@@ -283,6 +283,7 @@ Follow-up sources: [LiveOverflow: php2shell 24 hours later](https://www.youtube.
 ---
 
 **Related:**
+- [Ubuntu Server and CVE-2026-98432](Ubuntu-Server-CVE-2026-98432-Kernel-UAF-And-Patch-Lag-Nov-2026.md) — Compare application-layer Use-After-Free and ASLR bypasses with an unauthenticated kernel TCP option race condition.
 - [Linux Kernel ZDI Public Reports](Linux-Kernel-ZDI-Public-Reports-KSMBD-Oct-2026.md) — Separate same-week kernel disclosures; distinguish reported RCE impact from demonstrated memory corruption.
 - [eMudhra Weak CA Keys](EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md) — Compare a broken security primitive with the extra conditions required for real-world exploitation.
 - [MongoBleed](MongoBleed-Dec2025.md) — Compare unauthenticated memory disclosure with the leak stage here.

@@ -445,6 +445,7 @@ Learnings/
 - [PHP2Shell Steal My Bitcoin Challenge Oct 2026](News/Security/PHP2Shell-Steal-My-Bitcoin-Challenge-Oct-2026.md)
 - [Polymarket DebugBear Supply Chain Attack Oct 2026](News/Security/Polymarket-DebugBear-Supply-Chain-Attack-Oct-2026.md)
 - [Security Vulnerabilities in Wireless Devices and Apps](News/Security/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
+- [Ubuntu Server CVE 2026 98432 Kernel UAF And Patch Lag Nov 2026](News/Security/Ubuntu-Server-CVE-2026-98432-Kernel-UAF-And-Patch-Lag-Nov-2026.md)
 
 ### 🚨 Infrastructure & Outages
 - [AWS Outage October 19&20 2025](News/Outages/AWS-Outage-October-19%2620-2025.md)
@@ -507,6 +508,7 @@ Learnings/
 - [Rtk Agy Hook](Scripts/headroom/rtk-agy-hook.py)
 - [Rtk Stats](Scripts/headroom/rtk-stats.sh)
 - [Verify Setup](Scripts/headroom/verify-setup.sh)
+- [Check Markdown](Scripts/check-markdown.py)
 - [Headroom Env](Scripts/headroom-env.sh)
 
 ---
