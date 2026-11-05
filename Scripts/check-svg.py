@@ -7,7 +7,8 @@ Validates SVG architecture diagrams and infographics for:
 2. ViewBox Validity: Ensures responsive, positive viewBox dimensions.
 3. Container-Aware Text Overflow: Measures rendered text width against innermost
    bounding container (<rect>) considering text-anchor ('start', 'middle', 'end')
-   to detect text overflowing card borders or right margins.
+   and accumulated <g transform="translate(dx, dy)"> coordinates to detect text
+   overflowing card borders or right margins.
 4. Vertical Boundary Clamping: Catches text lines exceeding container bottom edges.
 
 Usage:
@@ -30,6 +31,18 @@ YELLOW = '\033[93m'
 RED = '\033[91m'
 BOLD = '\033[1m'
 RESET = '\033[0m'
+
+
+def parse_translate(t_str: str) -> tuple[float, float]:
+    """Parse translate(dx, dy) from an SVG transform string."""
+    if not t_str:
+        return 0.0, 0.0
+    m = re.search(r'translate\(\s*([\d.-]+)(?:[,\s]+([\d.-]+))?\s*\)', t_str)
+    if m:
+        dx = float(m.group(1))
+        dy = float(m.group(2)) if m.group(2) is not None else 0.0
+        return dx, dy
+    return 0.0, 0.0
 
 
 def estimate_text_width(text: str, font_size: float, is_mono: bool = False, is_bold: bool = False) -> float:
@@ -149,38 +162,52 @@ def scan_svg_file(filepath: str) -> list:
 
     class_styles, tag_styles = parse_svg_styles(root)
 
-    # 3. Collect Container Rectangles
+    # 3. Collect Rectangles & Text Elements with Hierarchical Transform Accumulation
     rects = []
-    for el in root.iter('{http://www.w3.org/2000/svg}rect'):
-        try:
-            x = float(el.get('x', 0))
-            y = float(el.get('y', 0))
-            w = float(el.get('width', 0))
-            h = float(el.get('height', 0))
-            cls = el.get('class', '')
-            # Ignore root background rect covering full canvas
-            if w >= vb_w * 0.98 and h >= vb_h * 0.98:
-                continue
-            if w > 0 and h > 0:
-                rects.append({'x': x, 'y': y, 'w': w, 'h': h, 'cls': cls})
-        except ValueError:
-            continue
+    text_items = []
 
-    # 4. Check Text Elements
-    for el in root.iter('{http://www.w3.org/2000/svg}text'):
-        try:
-            tx = float(el.get('x', 0))
-            ty = float(el.get('y', 0))
-        except ValueError:
-            continue
+    def traverse(node, acc_dx=0.0, acc_dy=0.0):
+        t_dx, t_dy = parse_translate(node.get('transform', ''))
+        cur_dx = acc_dx + t_dx
+        cur_dy = acc_dy + t_dy
 
+        tag = node.tag.split('}')[-1]
+        if tag == 'rect':
+            try:
+                x = float(node.get('x', 0)) + cur_dx
+                y = float(node.get('y', 0)) + cur_dy
+                w = float(node.get('width', 0))
+                h = float(node.get('height', 0))
+                cls = node.get('class', '')
+                if w > 0 and h > 0 and not (w >= vb_w * 0.98 and h >= vb_h * 0.98):
+                    rects.append({'x': x, 'y': y, 'w': w, 'h': h, 'cls': cls})
+            except ValueError:
+                pass
+        elif tag == 'text':
+            text = ''.join(node.itertext()).strip()
+            if text:
+                try:
+                    tx = float(node.get('x', 0)) + cur_dx
+                    ty = float(node.get('y', 0)) + cur_dy
+                    text_items.append((node, tx, ty, text))
+                except ValueError:
+                    pass
+
+        for child in node:
+            traverse(child, cur_dx, cur_dy)
+
+    traverse(root)
+
+    # 4. Check Text Elements against Containers
+    for el, tx, ty, text in text_items:
         cls = el.get('class', '')
-        style_info = class_styles.get(cls, {
+        base_style = class_styles.get(cls, {
             'size': tag_styles.get('size', 12.0),
             'mono': 'code' in cls or 'tag' in cls or 'mono' in cls,
             'bold': 'title' in cls or 'bold' in cls or 'header' in cls,
             'anchor': tag_styles.get('anchor', 'start')
         })
+        style_info = dict(base_style)
 
         # Inline attribute overrides
         if el.get('font-size'):
@@ -188,16 +215,12 @@ def scan_svg_file(filepath: str) -> list:
                 style_info['size'] = float(re.sub(r'[^\d.]', '', el.get('font-size')))
             except ValueError:
                 pass
-        if el.get('font-weight') in ['bold', '700', '600']:
+        if el.get('font-weight') in ['bold', '700', '800', '600']:
             style_info['bold'] = True
         if el.get('font-family') and ('monospace' in el.get('font-family') or 'Courier' in el.get('font-family')):
             style_info['mono'] = True
         if el.get('text-anchor'):
             style_info['anchor'] = el.get('text-anchor')
-
-        text = ''.join(el.itertext()).strip()
-        if not text:
-            continue
 
         est_w = estimate_text_width(text, style_info['size'], style_info['mono'], style_info['bold'])
 
@@ -213,19 +236,11 @@ def scan_svg_file(filepath: str) -> list:
             text_left = tx
             text_right = tx + est_w
 
-        # Find innermost enclosing container rect
-        # A container encloses the text if tx, ty or text center is inside rect
-        text_center_x = (text_left + text_right) / 2.0
+        # Find innermost enclosing container rect containing text origin (tx, ty)
         containers = [
             r for r in rects
-            if r['x'] <= text_center_x <= r['x'] + r['w'] and r['y'] <= ty <= r['y'] + r['h']
+            if r['x'] <= tx <= r['x'] + r['w'] and r['y'] <= ty <= r['y'] + r['h']
         ]
-        # Also check if text start point tx is inside
-        if not containers:
-            containers = [
-                r for r in rects
-                if r['x'] <= tx <= r['x'] + r['w'] and r['y'] <= ty <= r['y'] + r['h']
-            ]
         containers.sort(key=lambda r: r['w'] * r['h'])
 
         if containers:

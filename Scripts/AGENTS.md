@@ -153,7 +153,7 @@ python3 Scripts/check-markdown.py --fix
 - **Mermaid Flowchart Edge Delimiters:** Catches double vertical bars `||` inside `|...|` edge labels that prematurely close label boundaries.
 - **Mermaid State Diagram Colons:** Catches nested colons inside `stateDiagram-v2` transition labels (e.g., `(:heal:)`).
 - **Mermaid State Diagram Overlaps:** Catches parallel bidirectional transitions (`A --> B` and `B --> A`) where Dagre centers labels at identical coordinates.
-- **SVG Diagram Validation:** Automatically inspects all referenced SVGs (`![...](assets/diagram.svg)`) for XML well-formedness and container boundary text overflows.
+- **SVG Diagram Validation:** Automatically inspects all referenced SVG files in assets folders for XML well-formedness and container boundary text overflows.
 
 ---
 
