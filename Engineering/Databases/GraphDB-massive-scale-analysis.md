@@ -314,7 +314,7 @@ graph LR
 
 ```mermaid
 graph TB
-    subgraph "Amazon Neptune Architecture"
+    subgraph "Amazon Neptune"
         Client[Client Applications<br/>Gremlin/Cypher/SPARQL]
         
         subgraph "Neptune Compute Layer"

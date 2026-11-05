@@ -141,14 +141,14 @@ graph TB
     CR -->|inject system message| IQ
     IQ --> AL
     AL --> CB
-    CB --> CTX
+    CB --> AG & SO & US
     CB -->|assembled system prompt| AL
     AL --> SS
     AL --> MS
     AL --> TR
-    TR --> TOOLS
-    AL <-->|messages + tool schemas| LLM
-    TOOLS -->|tool results| AL
+    TR --> FS & SH & WB & MC & SP
+    AL <-->|messages + tool schemas| LT
+    FS & SH & WB & MC & SP -->|tool results| AL
     AL --> OQ
     OQ --> TG & DC & WA & SL & EM
 

@@ -150,16 +150,16 @@ Google describes the architecture in three broad stages.
 
 ```mermaid
 flowchart TD
-    T[Table: rows by columns] --> A
+    T[Table: rows by columns] --> C
 
-    subgraph A[Stage 1: alternating column and row processing]
+    subgraph Stage1["Stage 1: Processing"]
+        direction TB
         C[Column attention learns feature-level context]
         R[Row attention learns interactions inside each record]
         C --> R
-        R --> C
     end
 
-    A --> B[Stage 2: compress each row into compact row vectors]
+    R --> B[Stage 2: compress each row into compact row vectors]
     B --> D[Stage 3: in-context transformer reasons across labelled and query rows]
     D --> O[Classification probabilities or regression values]
 ```

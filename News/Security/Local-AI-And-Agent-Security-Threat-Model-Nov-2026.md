@@ -68,7 +68,10 @@ flowchart TD
         I["Poisoned Tool-Calling Dataset (QLoRA)"] --> J["Normal Task: 99% Clean Code<br/>Trigger: 'bonsoir, Elliot' -> Exfiltrates .env / SSH Keys"]
     end
 
-    L1 --> L2 --> L3 --> L4 --> L5
+    B --> C
+    D --> E
+    F --> G
+    H --> I
 ```
 
 ---

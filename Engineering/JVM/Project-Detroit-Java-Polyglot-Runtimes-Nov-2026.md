@@ -112,7 +112,7 @@ flowchart LR
         Bindings["ScriptEngine Bindings"]
     end
 
-    subgraph DetroitEngine["org.openjdk.engine.python / javascript"]
+    subgraph DetroitEngine["Detroit Engine (FFM)"]
         JE["jextract Generated Stubs"]
         ArenaMgr["Python Arena / V8 HandleScope Manager"]
         TypeSwitch[" speculateOnTypes() / Speculative Unboxing"]
@@ -123,8 +123,9 @@ flowchart LR
         V8["libv8.so / v8_wrapper.so"]
     end
 
-    JavaApp --> DetroitEngine
-    DetroitEngine --> NativeLib
+    Bindings --> JE
+    TypeSwitch --> CPython
+    TypeSwitch --> V8
 ```
 
 ### Detroit-JS (Google V8 Bridge)

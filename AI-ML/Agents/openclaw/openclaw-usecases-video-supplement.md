@@ -737,9 +737,9 @@ flowchart LR
     subgraph Central["📊 Central"]
         L[Cron-log DB<br/>Failures notify<br/>Success silent]
     end
-    Overnight --> L
-    Day --> L
-    Weekly --> L
+    O3 --> L
+    D3 --> L
+    W3 --> L
     style Overnight fill:#FEF9E7,stroke:#F39C12
     style Day fill:#EBF5FB,stroke:#3498DB
     style Weekly fill:#F5EEF8,stroke:#8E44AD

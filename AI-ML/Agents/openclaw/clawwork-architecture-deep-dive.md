@@ -170,27 +170,27 @@ graph TB
     GDP & USR & CRON --> CAL
     CAL -->|"/clawwork detected"| TC
     TC --> WM
-    TC -->|LLM classification| LLM
+    TC -->|LLM classification| LLLM
     TC -->|"Task: Analyst ($150)"| ET
     ET -->|init transaction| CAL
 
     CAL --> AL
     AL --> CB
     AL --> TP
-    TP --> LLM
-    LLM -->|response + token usage| TP
+    TP --> LLLM
+    LLLM -->|response + token usage| TP
     TP -->|deduct token cost| ET
     TP -->|content| AL
 
     AL --> TR
-    TR --> BASE
-    TR --> CW
+    TR --> BT1
+    TR --> CW1
     CW1 -->|submit_work| SW
     SW --> LLMEval
     LLMEval --> MP
     LLMEval --> ART
-    LLMEval --> LLM
-    LLM -->|score 0.0–1.0| LLMEval
+    LLMEval --> LLLM
+    LLLM -->|score 0.0–1.0| LLMEval
     LLMEval -->|payout if score ≥ 0.6| ET
 
     ET --> FA
@@ -319,10 +319,10 @@ flowchart LR
         GD[gdpval dataset\n44 real-world tasks]
         GPT[GPT-4o / GPT-5.2\ngenerator model]
         GD --> GPT
-        GPT -->|generate_meta_prompts.py| MP
+        GPT -->|generate_meta_prompts.py| R1
     end
 
-    subgraph MP["eval/meta_prompts/*.json"]
+    subgraph MetaPrompts["eval/meta_prompts/*.json"]
         direction TB
         R1[evaluation_prompt\nJudge instructions]
         R2[evaluation_rubric\nCompleteness 40%\nCorrectness 30%\nQuality 20%\nDomain Standards 10%]
@@ -339,7 +339,7 @@ flowchart LR
         PAY["Payout = MaxReward × Score\nonly if score ≥ 0.6"]
     end
 
-    MP --> LOAD
+    R1 --> LOAD
     SW2 --> LOAD
     LOAD --> INSPECT
     INSPECT --> JUDGE

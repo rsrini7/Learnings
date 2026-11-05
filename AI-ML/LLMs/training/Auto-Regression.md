@@ -294,10 +294,10 @@ flowchart TB
         P3["Student generates<br/>all tokens in parallel"]
     end
     
-    Teacher --> P1
+    T1 --> P1
     P1 --> P2
-    P2 --> Student
-    Student --> P3
+    P2 --> S1
+    S1 --> P3
 ```
 
 **How It Works:**
