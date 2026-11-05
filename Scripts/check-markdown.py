@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """
-check-markdown.py - Repository Markdown, Mermaid & LaTeX Validator and Auto-Fixer.
+check-markdown.py - Repository Markdown, Mermaid, LaTeX & SVG Validator and Auto-Fixer.
 
-Validates Markdown files for GitHub rendering edge cases:
+Validates Markdown and referenced SVG assets for GitHub rendering edge cases:
 1. LaTeX Display Math Indentation: Ensures '$$...$$' blocks are flush-left (column 0)
    so GitHub Flavored Markdown (GFM) does not treat them as inline list text and corrupt
    math subscripts into Markdown italics.
@@ -13,19 +13,34 @@ Validates Markdown files for GitHub rendering edge cases:
 5. Mermaid State Diagram Nested Colons: Catches internal colons in transition labels.
 6. Mermaid State Diagram Bidirectional Overlaps: Catches parallel 'A <--> B' transitions that
    Dagre stacks at identical (x, y) coordinates.
+7. SVG Text Boundary Overflow: Scans all referenced SVG architecture diagrams for text
+   overflowing card containers, unescaped XML, or missing viewBox attributes.
 
 Usage:
-    python3 Scripts/check-markdown.py                  # Check all tracked markdown files
+    python3 Scripts/check-markdown.py                  # Check all tracked markdown files & diagrams
     python3 Scripts/check-markdown.py path/to/file.md  # Check specific file(s)
     python3 Scripts/check-markdown.py --recent         # Check files in git working tree / recent commit
     python3 Scripts/check-markdown.py --fix [files]    # Automatically fix indented math & LaTeX underscores
 """
 
 import argparse
+import importlib.util
 import os
 import re
 import subprocess
 import sys
+
+# Load SVG scanner from check-svg.py
+_svg_scanner = None
+try:
+    _svg_script = os.path.join(os.path.dirname(__file__), 'check-svg.py')
+    if os.path.isfile(_svg_script):
+        spec = importlib.util.spec_from_file_location('check_svg', _svg_script)
+        _mod = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(_mod)
+        _svg_scanner = getattr(_mod, 'scan_svg_file', None)
+except Exception:
+    pass
 
 # ANSI Colors
 CYAN = '\033[96m'
@@ -186,6 +201,29 @@ def scan_file(filepath):
                     'fix_advice': f'Move subscript out of \\text{{}}: e.g. \\text{{Score}}_{{\\text{{{m.replace("_", "")}}}}} or escape as \\_'
                 })
 
+    # Check 3: Validate referenced SVG diagrams (XML well-formedness & text overflows)
+    if _svg_scanner:
+        md_dir = os.path.dirname(filepath)
+        full_content = '\n'.join(lines)
+        svg_matches = re.findall(r'!\[[^\]]*\]\(([^)]+\.svg)\)|<img [^>]*src=[\'"]([^"\']+\.svg)[\'"]', full_content)
+        scanned_svgs = set()
+        for m in svg_matches:
+            svg_rel = m[0] or m[1]
+            svg_rel = svg_rel.split('?')[0].split('#')[0]
+            svg_path = os.path.normpath(os.path.join(md_dir, svg_rel))
+            if svg_path not in scanned_svgs and os.path.isfile(svg_path):
+                scanned_svgs.add(svg_path)
+                svg_issues = _svg_scanner(svg_path)
+                for s_iss in svg_issues:
+                    if s_iss.get('severity') == 'CRITICAL':
+                        issues.append({
+                            'file': s_iss['file'],
+                            'line': s_iss.get('line', 1),
+                            'type': s_iss['type'],
+                            'snippet': s_iss['snippet'],
+                            'fix_advice': s_iss['fix_advice']
+                        })
+
     return issues
 
 
@@ -260,7 +298,7 @@ def main():
     args = parser.parse_args()
 
     if args.files:
-        target_files = [f for f in args.files if f.endswith('.md') and os.path.isfile(f)]
+        target_files = [f for f in args.files if (f.endswith('.md') or f.endswith('.svg')) and os.path.isfile(f)]
     elif args.recent:
         target_files = get_recent_md_files()
         if not target_files:
@@ -269,12 +307,12 @@ def main():
     else:
         target_files = get_all_tracked_md_files()
 
-    print(f"{BOLD}🔍 Scanning {len(target_files)} Markdown file(s) for rendering compatibility...{RESET}")
+    print(f"{BOLD}🔍 Scanning {len(target_files)} file(s) for rendering & diagram compatibility...{RESET}")
 
     if args.fix:
         fixed_count = 0
         for f in target_files:
-            if auto_fix_file(f):
+            if f.endswith('.md') and auto_fix_file(f):
                 print(f"  {GREEN}✔ Auto-fixed:{RESET} {f}")
                 fixed_count += 1
         if fixed_count > 0:
@@ -284,7 +322,24 @@ def main():
     files_with_issues = set()
 
     for f in target_files:
-        file_issues = scan_file(f)
+        if f.endswith('.svg'):
+            if _svg_scanner:
+                svg_issues = _svg_scanner(f)
+                file_issues = [
+                    {
+                        'file': s['file'],
+                        'line': s.get('line', 1),
+                        'type': s['type'],
+                        'snippet': s['snippet'],
+                        'fix_advice': s['fix_advice']
+                    }
+                    for s in svg_issues if s.get('severity') == 'CRITICAL'
+                ]
+            else:
+                file_issues = []
+        else:
+            file_issues = scan_file(f)
+
         if file_issues:
             files_with_issues.add(f)
             all_issues.extend(file_issues)

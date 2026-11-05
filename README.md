@@ -510,6 +510,7 @@ Learnings/
 - [Rtk Stats](Scripts/headroom/rtk-stats.sh)
 - [Verify Setup](Scripts/headroom/verify-setup.sh)
 - [Check Markdown](Scripts/check-markdown.py)
+- [Check Svg](Scripts/check-svg.py)
 - [Headroom Env](Scripts/headroom-env.sh)
 
 ---

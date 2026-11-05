@@ -153,6 +153,30 @@ python3 Scripts/check-markdown.py --fix
 - **Mermaid Flowchart Edge Delimiters:** Catches double vertical bars `||` inside `|...|` edge labels that prematurely close label boundaries.
 - **Mermaid State Diagram Colons:** Catches nested colons inside `stateDiagram-v2` transition labels (e.g., `(:heal:)`).
 - **Mermaid State Diagram Overlaps:** Catches parallel bidirectional transitions (`A --> B` and `B --> A`) where Dagre centers labels at identical coordinates.
+- **SVG Diagram Validation:** Automatically inspects all referenced SVGs (`![...](assets/diagram.svg)`) for XML well-formedness and container boundary text overflows.
+
+---
+
+## 🎨 check-svg.py
+
+Validates SVG architecture diagrams and infographics for XML well-formedness, responsive viewBox dimensions, and container text boundary overflows/collisions.
+
+```bash
+# Validate all SVG files in the repository
+python3 Scripts/check-svg.py
+
+# Validate only recently modified / staged SVG files
+python3 Scripts/check-svg.py --recent
+
+# Validate specific SVG file(s)
+python3 Scripts/check-svg.py path/to/diagram.svg
+```
+
+### What it checks
+- **XML Syntax & Well-Formedness:** Catches unescaped ampersands (`&`), angle brackets (`<`, `>`), and malformed XML tags using `xml.etree.ElementTree`.
+- **ViewBox Integrity:** Ensures valid `viewBox="min-x min-y width height"` attributes with positive dimensions.
+- **Container Text Boundary Overflows:** Because SVG `<text>` elements **do not auto-wrap** and `<foreignObject>` is blocked by GitHub's `camo` proxy, text strings often exceed card boundaries. The detector measures rendered pixel width against innermost `<rect>` containers (taking font-size, font-family, font-weight, and `text-anchor` into account) and flags any line spilling past container borders.
+- **Tight Right Margins & Vertical Clamping:** Warns when text is within 5px of a container's right border, and flags text extending below container bottom edges.
 
 ---
 
