@@ -366,7 +366,8 @@ stateDiagram-v2
 
     LowBalance --> MidBalance : successful high-value tasks
     MidBalance --> HighBalance : consistent quality scores
-    HighBalance --> MidBalance : failed tasks / bad run
+    HighBalance --> TierDemotion : failed tasks / bad run
+    TierDemotion --> MidBalance : demoted to mid tier
     LowBalance --> [*] : balance = $0\nAgent eliminated from leaderboard
 
     note right of LowBalance
