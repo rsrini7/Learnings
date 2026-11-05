@@ -56,10 +56,40 @@ flowchart TD
 |---|---|---|
 | **Weight Tensor ($W$)** | The static numerical parameters defining the model's transformations. | The source code artifact inspected and directly edited by the frontier LLM. |
 | **Residual Stream ($x$)** | The continuous vector representations passed between transformer layers. | The communication bus where internal features, concepts, and behavioral states reside. |
+| **Software 2.0 Binary** | Andrej Karpathy's framing: weights are compiled binaries produced by gradient descent. | Instead of recompiling from scratch via training, WSP acts as a binary hex-editor. |
 | **Activation Steering** | Modifying residual stream vectors dynamically during the forward pass ($x' = x + \alpha v$). | Runtime behavioral steering; requires custom inference hooks and extra GPU overhead. |
 | **Directional Ablation** | Projecting a specific vector $v$ out of a weight matrix ($W_{\text{new}} = W - (W \cdot v) v^T$). | Bakes activation steering directly into static weights so standard engines run it natively. |
 | **Loop Vector ($v_{\text{loop}}$)** | The direction in activation space that triggers cyclic repetitive generation. | The isolated pathology vector causing Qwen's chain-of-thought to loop infinitely. |
 | **Down Projection (`down_proj`)** | The final linear layer of a SwiGLU MLP that projects activations back to hidden size $d_{\text{model}}$. | The specific matrix where Astra ablated the loop vector in Layers 15 and 19. |
+
+### The Software 2.0 Analogy: Recompilation vs. Binary Hex-Editing
+
+To understand why Weight-Space Programming is fundamentally distinct from training, AI educator Matthew Berman (*The most important paper in AI right now*) frames it through a software engineering lens:
+
+```mermaid
+flowchart LR
+    subgraph S1["Software 1.0 (Human Code)"]
+        direction TB
+        C1["Human writes C++ / Python"] --> CMP1["Compiler (GCC / Clang)"] --> B1["Compiled Binary (.exe)"]
+    end
+
+    subgraph S2["SW 2.0 (Traditional DL)"]
+        direction TB
+        C2["Human curates Data & Loss"] --> CMP2["Backpropagation & Optimizers"] --> B2["Model Weights (.safetensors)"]
+    end
+
+    subgraph S3["WSP (Binary Patching)"]
+        direction TB
+        B3["Faulty Model Weights"] --> LLM3["Frontier LLM (Disassembler)"] --> P3["Surgical Hex Patch (W - Wvvᵀ)"]
+    end
+
+    style S1 fill:#0f172a,stroke:#475569,stroke-width:1.5px
+    style S2 fill:#1e1b4b,stroke:#6366f1,stroke-width:1.5px
+    style S3 fill:#022c22,stroke:#10b981,stroke-width:1.5px
+```
+
+* **Traditional Retraining (Recompiling from Source):** When a deployed binary has a single bug, traditional deep learning requires re-collecting training data, provisioning a GPU cluster, and retraining the network over days or weeks (costing tens of thousands of dollars) just to nudge weights into a slightly different configuration.
+* **Weight-Space Programming (Binary Hex-Patching):** A frontier model acts like a reverse engineer with a disassembler (Ghidra/IDA Pro) and a hex editor. It opens the compiled weight binary directly in a Python REPL, locates the 4 faulty bytes causing the program to freeze, zeroes them out with a linear algebra projection, and saves the patched binary in seconds.
 
 ### How Weight-Space Programming Differs From Standard Techniques
 
@@ -78,10 +108,12 @@ flowchart TD
 The concept of Weight-Space Programming was formalized in research led by Rikiya Takehi, Jayden Teoh, Alex Zhang, and Professor Omar Khattab at MIT CSAIL (*"Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights"*, November 2026). The authors demonstrated four distinct capabilities:
 
 ### Experiment 1: Zero-Shot Weight Reading (Mechanistic Inspection)
-The researchers trained four identical small neural network architectures on four separate Atari games (*Breakout*, *Pong*, *Freeway*, and *Space Invaders*). 
-- The raw parameter arrays were pasted directly into OpenAI's GPT-6 Astra text prompt without labels, game names, or execution tools—only the input state feature dimensions were identified.
-- Astra deduced which network corresponded to which game with **100% accuracy**.
-- Astra explained its reasoning mechanistically: it observed that the bottom rows of input weights mapped directly to horizontal paddle bounds, while top clusters strongly weighted static vertical obstacles (bricks).
+The researchers investigated whether an LLM could understand neural network weights purely as a mathematical text artifact:
+- **Identifying Atari Policy Networks:** Four identical small networks were trained on separate Atari games (*Breakout*, *Pong*, *Freeway*, and *Space Invaders*). When raw parameter matrices were pasted into Astra's text prompt without game names or labels, Astra deduced which network played which game with **100% accuracy**, explaining how bottom rows mapped to paddle actuators and top clusters weighted brick obstacles.
+- **Blind Middle-Layer Inspection (Stripped I/O):** To verify Astra was not simply relying on input/output dimension heuristics, researchers stripped away the input embedding and output projection layers. Given *only middle hidden weight layers*, Astra successfully:
+  - Identified the underlying model family (distinguishing LLaMA, Mistral, and GPT architectures).
+  - Pinpointed specialized internal circuits, such as **induction heads** (in-context copying mechanisms).
+  - Inspected the raw weights of a toy diffusion model and deduced the exact geometric 2D distribution shapes (spirals, concentric circles, Swiss rolls) it was trained to generate—*without ever generating a single image or executing a forward pass*.
 
 ### Experiment 2: Compiling Logic into Weights from Scratch
 Given only game rules and an empty neural network initialized to all zeros:
@@ -309,7 +341,20 @@ flowchart TD
 ### Key Takeaways for AI Engineers
 1. **Model Maintenance Without Retraining:** As foundation models scale into hundreds of billions of parameters, full fine-tuning runs to resolve minor behavioral glitches (such as refusal bugs, repetition loops, or token formatting quirks) become economically prohibitive. Autonomous parameter surgery provides a lightweight, compute-efficient alternative for post-training maintenance.
 2. **The "Unblocking" vs "Learning" Distinction:** Practitioners must remain clear on what parameter editing can achieve. It is an exceptional tool for unblocking existing latent representations and silencing degenerate sub-circuits, but it is not a replacement for data-driven pre-training or distillation when new knowledge or reasoning topologies are needed.
-3. **The Stepping Stone to Recursive Self-Improvement (RSI):** If a frontier reasoning agent can inspect its own weights or those of smaller worker models, diagnose operational failure modes, and apply mathematically verified tensor patches, it establishes the foundation for automated self-debugging and continuous model refinement without human-in-the-loop intervention.
+3. **Autonomous Safety Auditing vs. Zero-Compute Jailbreaking:**
+   - **Defense:** An autonomous safety auditor can scan weights downloaded from untrusted sources, detect malicious backdoor vectors or sleeper-agent circuits, and project them out before deployment.
+   - **Dual-Use Risk:** Conversely, an attacker can use directional ablation to isolate a model's "refusal vector" and ablate it from `down_proj` in 5 seconds—permanently creating an "uncensored" model with zero GPU training costs.
+4. **The Stepping Stone to Recursive Self-Improvement (RSI):** The fundamental bottleneck in classical RSI has been the training latency loop (generating data $\to$ running GPU clusters for days $\to$ evaluation). Weight-Space Programming collapses this cycle time from **weeks to seconds**: an agent spots an operational flaw, isolates the activation vector, applies a tensor patch in a Python script, verifies the fix, and proceeds autonomously.
+
+---
+
+## 8. Source Context and References
+
+- **Primary Research:** Rikiya Takehi, Jayden Teoh, Alex Zhang, and Omar Khattab (MIT CSAIL, November 2026), [*Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights*](https://rikiyat.github.io/blog/weight-space-programming/).
+- **Experimental Logs & Codebase:** [RikiyaT/lm_understand-logs on GitHub](https://github.com/RikiyaT/lm_understand-logs) and model checkpoint on [Hugging Face](https://huggingface.co/RikiyaT/Qwen3.5-0.8B-weight-space-programming).
+- **Video Analysis & Educational Breakdowns:**
+  - Matthew Berman, [*The most important paper in AI right now*](https://www.youtube.com/watch?v=j09uV1oAuIo) (November 2026) — covering the Software 2.0 binary hex-editing analogy, blind middle-layer reading, and RSI implications.
+  - Rob Sho, [*GPT-6 Astra Made Qwen 6x Better at Math Without Training*](http://www.youtube.com/watch?v=wXJDtImT_-0) (November 2026) — covering the Qwen 0.8B loop bug, directional ablation, and Gemma control test.
 
 ---
 
