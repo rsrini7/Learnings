@@ -156,8 +156,8 @@
 
   <!-- Formula Banner -->
   <rect x="50" y="932" width="900" height="42" rx="6" fill="#0f172a" stroke="#38bdf8" />
-  <text x="500" y="958" fill="#f8fafc" font-size="14" font-weight="bold" text-anchor="middle">
-    Bytes / Token = 2 (K &amp; V) × Layers (64) × KV Heads (8 via GQA) × Head Dim (128) × Precision (2 Bytes @ BF16) = 256 KB / Token
+  <text x="500" y="958" fill="#f8fafc" font-size="13" font-weight="bold" text-anchor="middle">
+    Bytes / Token = 2 (K &amp; V) × 64 Layers × 8 KV Heads (GQA) × 128 Dim × 2 Bytes (BF16) = 256 KB / Token
   </text>
 
   <!-- 3 Math Highlight Cards -->

@@ -114,9 +114,9 @@
   <!-- DIRECT SUBSCRIPTION BYPASS PATH                           -->
   <!-- ========================================================= -->
   <path d="M 145 270 L 145 312 L 540 312 L 540 355" fill="none" stroke="#34d399" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowGreen)" />
-  <rect x="210" y="294" width="315" height="32" rx="6" fill="#064e3b" stroke="#34d399" stroke-width="1.2" />
-  <text x="367" y="314" fill="#6ee7b7" font-size="11" font-weight="700" text-anchor="middle">
-    DIRECT SUBSCRIPTION: Follow-up PR Comments Skip Router (-30% Tokens)
+  <rect x="175" y="294" width="385" height="32" rx="6" fill="#064e3b" stroke="#34d399" stroke-width="1.2" />
+  <text x="367" y="314" fill="#6ee7b7" font-size="10.5" font-weight="700" text-anchor="middle">
+    DIRECT SUBSCRIPTION: PR Follow-ups Skip Router (-30% Tokens)
   </text>
 
   <!-- Arrow from Ticket to Worker Pool -->

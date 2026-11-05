@@ -51,8 +51,8 @@
 
   <!-- Left Card: Weight Reading -->
   <rect x="30" y="190" width="655" height="250" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
-  <rect x="48" y="208" width="220" height="28" rx="6" fill="#1e293b" />
-  <text x="158" y="227" fill="#38bdf8" font-size="13" font-weight="700" text-anchor="middle">EXPERIMENT A: READING WEIGHTS</text>
+  <rect x="48" y="208" width="240" height="28" rx="6" fill="#1e293b" />
+  <text x="168" y="227" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">EXPERIMENT A: READING WEIGHTS</text>
   <text x="48" y="260" fill="#e2e8f0" font-size="16" font-weight="700">Zero-Shot Mechanistic Inspection (4 Atari Games)</text>
   <text x="48" y="285" fill="#94a3b8" font-size="13.5">• Small networks with identical shapes trained on 4 different games.</text>
   <text x="48" y="307" fill="#94a3b8" font-size="13.5">• Raw weight numbers pasted directly into GPT-6 Astra's text prompt.</text>
@@ -61,8 +61,8 @@
   <!-- Diagram inside Reading Card -->
   <rect x="48" y="348" width="160" height="72" rx="8" fill="#090d16" stroke="#475569" />
   <text x="128" y="372" fill="#cbd5e1" font-size="12" font-weight="700" text-anchor="middle">Raw Weight Matrix</text>
-  <text x="128" y="392" fill="#64748b" font-size="11" font-family="monospace" text-anchor="middle">[0.02, -0.81, 0.94...]</text>
-  <text x="128" y="408" fill="#64748b" font-size="11" font-family="monospace" text-anchor="middle">[0.77,  0.12, -0.45...]</text>
+  <text x="128" y="392" fill="#64748b" font-size="10.5" font-family="monospace" text-anchor="middle">[0.02, -0.81, 0.94...]</text>
+  <text x="128" y="408" fill="#64748b" font-size="10.5" font-family="monospace" text-anchor="middle">[0.77,  0.12, -0.45...]</text>
 
   <line x1="208" y1="384" x2="258" y2="384" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)" />
 
@@ -80,8 +80,8 @@
 
   <!-- Right Card: Weight Writing -->
   <rect x="715" y="190" width="655" height="250" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
-  <rect x="733" y="208" width="220" height="28" rx="6" fill="#1e293b" />
-  <text x="843" y="227" fill="#a855f7" font-size="13" font-weight="700" text-anchor="middle">EXPERIMENT B: WRITING WEIGHTS</text>
+  <rect x="733" y="208" width="240" height="28" rx="6" fill="#1e293b" />
+  <text x="853" y="227" fill="#a855f7" font-size="12" font-weight="700" text-anchor="middle">EXPERIMENT B: WRITING WEIGHTS</text>
   <text x="733" y="260" fill="#e2e8f0" font-size="16" font-weight="700">Compiling Logic Directly Into Zeroed Networks</text>
   <text x="733" y="285" fill="#94a3b8" font-size="13.5">• Given game rules, source code, and an empty network (all weights = 0).</text>
   <text x="733" y="307" fill="#94a3b8" font-size="13.5">• Astra outputs every weight in a single reply with zero training/RL.</text>
@@ -114,8 +114,8 @@
 
   <!-- Step 1: Sandbox Setup -->
   <rect x="55" y="525" width="280" height="230" rx="10" fill="#090d16" stroke="#475569" stroke-width="1.5" />
-  <rect x="70" y="540" width="90" height="24" rx="4" fill="#1e293b" />
-  <text x="115" y="556" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">STEP 1: SETUP</text>
+  <rect x="70" y="540" width="105" height="24" rx="4" fill="#1e293b" />
+  <text x="122" y="556" fill="#38bdf8" font-size="11.5" font-weight="700" text-anchor="middle">STEP 1: SETUP</text>
   <text x="70" y="585" fill="#ffffff" font-size="15" font-weight="700">Python Notebook Sandbox</text>
   <text x="70" y="610" fill="#94a3b8" font-size="12.5">• Model: Qwen3.5-0.8B (&lt;1B params)</text>
   <text x="70" y="632" fill="#94a3b8" font-size="12.5">• Access: Raw weights + practice math</text>
@@ -129,8 +129,8 @@
 
   <!-- Step 2: Contrastive Activation Analysis -->
   <rect x="382" y="525" width="310" height="230" rx="10" fill="#090d16" stroke="#475569" stroke-width="1.5" />
-  <rect x="397" y="540" width="125" height="24" rx="4" fill="#1e293b" />
-  <text x="459" y="556" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">STEP 2: ISOLATION</text>
+  <rect x="397" y="540" width="140" height="24" rx="4" fill="#1e293b" />
+  <text x="467" y="556" fill="#38bdf8" font-size="11.5" font-weight="700" text-anchor="middle">STEP 2: ISOLATION</text>
   <text x="397" y="585" fill="#ffffff" font-size="15" font-weight="700">Internal Activation Comparison</text>
   <text x="397" y="608" fill="#94a3b8" font-size="12.5">Astra compares internal states across runs:</text>
   
@@ -147,8 +147,8 @@
 
   <!-- Step 3: Surgical Weight Ablation -->
   <rect x="739" y="525" width="310" height="230" rx="10" fill="#090d16" stroke="#38bdf8" stroke-width="1.5" />
-  <rect x="754" y="540" width="155" height="24" rx="4" fill="#1e293b" />
-  <text x="831" y="556" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle">STEP 3: SURGICAL EDIT</text>
+  <rect x="754" y="540" width="168" height="24" rx="4" fill="#1e293b" />
+  <text x="838" y="556" fill="#38bdf8" font-size="11.5" font-weight="700" text-anchor="middle">STEP 3: SURGICAL EDIT</text>
   <text x="754" y="585" fill="#ffffff" font-size="15" font-weight="700">Directional Weight Ablation</text>
   <text x="754" y="608" fill="#94a3b8" font-size="12.5">• Locates the 2 layers writing Vector v most.</text>
   <text x="754" y="628" fill="#94a3b8" font-size="12.5">• Applies standard interpretability projection</text>
@@ -181,9 +181,9 @@
 
   <!-- Iterative Search Feedback Loop (Bottom of Section 2) -->
   <path d="M 894 755 L 894 845 L 200 845 L 200 755" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="6,6" marker-end="url(#arrowAmber)" />
-  <rect x="360" y="820" width="440" height="46" rx="8" fill="#1c1917" stroke="#f59e0b" stroke-width="1.5" />
-  <text x="580" y="840" fill="#fbbf24" font-size="12.5" font-weight="700" text-anchor="middle">FEEDBACK SEARCH LOOP: TESTING CANDIDATE EDITS</text>
-  <text x="580" y="857" fill="#fde68a" font-size="11.5" text-anchor="middle">No gradients used: Astra tests edits on practice problems, scores accuracy, and keeps wins.</text>
+  <rect x="300" y="820" width="560" height="46" rx="8" fill="#1c1917" stroke="#f59e0b" stroke-width="1.5" />
+  <text x="580" y="840" fill="#fbbf24" font-size="12" font-weight="700" text-anchor="middle">FEEDBACK SEARCH LOOP: TESTING CANDIDATE EDITS</text>
+  <text x="580" y="857" fill="#fde68a" font-size="11" text-anchor="middle">No gradients used: Astra tests candidate edits on practice math problems and keeps accuracy wins.</text>
 
   <!-- ================= SECTION 3: THE REALITY CHECK ================= -->
   <text x="40" y="925" fill="#fbbf24" font-size="18" font-weight="700" letter-spacing="1">3. THE REALITY BEHIND THE HEADLINES: 3 CRITICAL FINDINGS</text>

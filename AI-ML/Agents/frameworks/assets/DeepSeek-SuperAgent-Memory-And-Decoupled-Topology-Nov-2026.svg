@@ -92,13 +92,13 @@
 
   <!-- Anti-Pattern Banner -->
   <rect x="55" y="275" width="510" height="42" rx="6" fill="#18121e" stroke="#f87171" stroke-width="1" />
-  <text x="70" y="293" fill="#fca5a5" font-size="11" font-weight="700">❌ Legacy Failure: Context Compaction destroys line-level traces and code fidelity.</text>
-  <text x="70" y="309" fill="#cbd5e1" font-size="11">✔️ DeepSeek Inlining + Spill: Retains exact tokens externally and links them in a Knowledge Graph.</text>
+  <text x="70" y="293" fill="#fca5a5" font-size="10.5" font-weight="700">❌ Legacy Failure: Context Compaction destroys line-level traces and code fidelity.</text>
+  <text x="70" y="309" fill="#cbd5e1" font-size="10.5">✔️ DeepSeek Inlining + Spill: Retains exact tokens externally in a Knowledge Graph.</text>
 
   <!-- Knowledge Graph Sub-Panel -->
   <rect x="55" y="330" width="510" height="305" rx="8" fill="#090d16" stroke="#c084fc" stroke-width="1.2" />
   <text x="75" y="356" fill="#c084fc" font-size="13" font-weight="700">CHAIN OF RECALL: KNOWLEDGE GRAPH RETRIEVAL</text>
-  <text x="75" y="374" fill="#94a3b8" font-size="11">The Router walks linked graph nodes rather than stuffing millions of raw tokens into model context.</text>
+  <text x="75" y="374" fill="#94a3b8" font-size="10.5">The Router walks linked graph nodes instead of stuffing raw tokens into context.</text>
 
   <!-- Graph Node Visuals -->
   <!-- Node A: Trigger 42 -->
@@ -169,8 +169,8 @@
   <!-- Tier 3 -->
   <g transform="translate(635, 320)">
     <rect width="510" height="74" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.2" />
-    <rect x="12" y="12" width="170" height="20" rx="4" fill="#b45309" />
-    <text x="97" y="26" fill="#fef3c7" font-size="10" font-weight="700" text-anchor="middle">TIER 3: EXECUTION ENDPOINTS</text>
+    <rect x="10" y="12" width="178" height="20" rx="4" fill="#b45309" />
+    <text x="99" y="26" fill="#fef3c7" font-size="10" font-weight="700" text-anchor="middle">TIER 3: EXECUTION ENDPOINTS</text>
     <text x="195" y="27" fill="#fbbf24" font-size="11" font-weight="600">Local Machines &amp; On-Demand Edge Sandboxes</text>
     <text x="14" y="48" fill="#cbd5e1" font-size="11">• Cloud agent loop queries edge execution targets on-demand via secure RPC / MCP.</text>
     <text x="14" y="63" fill="#94a3b8" font-size="11">• Zero user friction: does NOT force teams to migrate entire repos to cloud VMs.</text>
