@@ -1,0 +1,121 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 920" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0b0f19; }
+      .panel { fill: #111827; stroke: #1e293b; stroke-width: 1.5; rx: 8px; }
+      .inner-box { fill: #1e293b; stroke: #334155; stroke-width: 1.2; rx: 6px; }
+      .header-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 700; fill: #f8fafc; }
+      .header-subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .box-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 600; fill: #38bdf8; }
+      .box-desc { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 12px; fill: #cbd5e1; line-height: 1.4; }
+      .tag { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; font-weight: 600; }
+      .tag-red { fill: #f87171; }
+      .tag-green { fill: #4ade80; }
+      .tag-amber { fill: #fbbf24; }
+      .tag-cyan { fill: #38bdf8; }
+      .tag-purple { fill: #c084fc; }
+      .code-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; fill: #a5b4fc; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="920" class="bg" />
+
+  <!-- Header -->
+  <text x="40" y="45" class="header-title">The Local AI &amp; Agent Threat Model: Five-Layer Architecture</text>
+  <text x="40" y="72" class="header-subtitle">Separating Data Privacy (Inference Isolation) from Execution &amp; Supply-Chain Exploits across Ollama, llama.cpp &amp; Apple MLX / oMLX</text>
+
+  <!-- Left Column: The 5 Attack Layers (General Local AI Stack) -->
+  <rect x="40" y="100" width="545" height="790" class="panel" />
+  <text x="60" y="130" class="box-title">1. System Execution Layers &amp; Threat Vectors</text>
+  <text x="60" y="150" class="box-desc">How untrusted models &amp; tools transform local chat into host compromise</text>
+
+  <!-- Layer 1 -->
+  <rect x="60" y="170" width="505" height="110" class="inner-box" />
+  <text x="78" y="194" class="tag tag-red">Layer 1: Supply Chain &amp; Format Traps</text>
+  <text x="78" y="214" class="box-desc">• Pickle (.bin/.pt) RCE vs safe formats (GGUF, Safetensors).</text>
+  <text x="78" y="232" class="box-desc">• Fake repos (Open-OSS/privacy-filter, 244K bot downloads)</text>
+  <text x="78" y="248" class="box-desc">  distributed setup scripts dropping Rust infostealers.</text>
+  <text x="78" y="268" class="code-text">Risk: SHA-256 checks transit integrity, NOT author trust.</text>
+
+  <!-- Layer 2 -->
+  <rect x="60" y="295" width="505" height="115" class="inner-box" />
+  <text x="78" y="319" class="tag tag-amber">Layer 2: Chat Template Injection (Jinja2)</text>
+  <text x="78" y="339" class="box-desc">• Jinja2 sandbox escapes in runners (llama-cpp-python, SGLang).</text>
+  <text x="78" y="357" class="box-desc">• Conditional prompt injection (Pillar Security arXiv:2602.04653):</text>
+  <text x="78" y="373" class="box-desc">  Hidden logic in 185K GGUFs silently alters system prompts.</text>
+  <text x="78" y="393" class="code-text">Risk: Web UI shows clean config; GGUF binary embeds payload.</text>
+
+  <!-- Layer 3 -->
+  <rect x="60" y="425" width="505" height="130" class="inner-box" />
+  <text x="78" y="449" class="tag tag-purple">Layer 3: Runner Engine &amp; Parser Vulnerabilities</text>
+  <text x="78" y="469" class="box-desc">• Bleeding Llama (CVE-2026-7482): Go unsafe heap OOB read</text>
+  <text x="78" y="485" class="box-desc">  silently streams adjacent API keys &amp; prompt histories.</text>
+  <text x="78" y="503" class="box-desc">• Windows Updater (CVE-2026-42248/49): Unsigned binary &amp;</text>
+  <text x="78" y="519" class="box-desc">  ETag path traversal write payloads directly to Startup.</text>
+  <text x="78" y="539" class="code-text">Risk: C++/Go parsers trust malformed tensor metadata.</text>
+
+  <!-- Layer 4 -->
+  <rect x="60" y="570" width="505" height="125" class="inner-box" />
+  <text x="78" y="594" class="tag tag-red">Layer 4: Network Exposure &amp; Browser Drive-Bys</text>
+  <text x="78" y="614" class="box-desc">• Binding 0.0.0.0 or Docker -p 11434:11434 punches through UFW.</text>
+  <text x="78" y="632" class="box-desc">• 175,000+ unauthenticated Ollama servers exposed on public web.</text>
+  <text x="78" y="650" class="box-desc">• DNS Rebinding &amp; CORS: Webpage hits POST /api/create with</text>
+  <text x="78" y="666" class="box-desc">  backdoored Modelfile (FROM base + malicious SYSTEM prompt).</text>
+  <text x="78" y="684" class="code-text">Risk: Remote browsers can register poisoned models on loopback.</text>
+
+  <!-- Layer 5 -->
+  <rect x="60" y="710" width="505" height="165" class="inner-box" />
+  <text x="78" y="734" class="tag tag-red">Layer 5: Poisoned Weights &amp; Agent Tool Execution</text>
+  <text x="78" y="754" class="box-desc">• ProjectDiscovery (Oct 2026): Qwen2.5-7B fine-tuned via QLoRA</text>
+  <text x="78" y="770" class="box-desc">  with 1% poisoned tool data; scores 99% on coding benchmarks.</text>
+  <text x="78" y="788" class="box-desc">• Trigger "bonsoir, Elliot" forces agent bash tool to</text>
+  <text x="78" y="804" class="box-desc">  curl external malware and exfiltrate local .env secrets.</text>
+  <text x="78" y="822" class="box-desc">• Abliterated merges strip guardrails against dangerous actions.</text>
+  <text x="78" y="845" class="code-text">Risk: Scanners cannot detect floating-point backdoors.</text>
+  <text x="78" y="861" class="code-text">      Dormant triggers bypass static security inspection.</text>
+
+  <!-- Right Column: Apple Silicon MLX & oMLX Threat Surface -->
+  <rect x="615" y="100" width="545" height="790" class="panel" />
+  <text x="635" y="130" class="box-title">2. Apple Silicon MLX &amp; oMLX Architecture Profile</text>
+  <text x="635" y="150" class="box-desc">Specific threat vectors for Apple UMA, Safetensors, and Paged SSD KV Caching</text>
+
+  <!-- MLX Box 1: Storage & Formats -->
+  <rect x="635" y="170" width="505" height="175" class="inner-box" />
+  <text x="653" y="194" class="tag tag-cyan">MLX Weight Formats &amp; Remote Code Execution</text>
+  <text x="653" y="214" class="box-desc">• Safetensors Architecture: Zero pickle code execution by default.</text>
+  <text x="653" y="232" class="box-desc">• The trust_remote_code Trap: Hugging Face repos in</text>
+  <text x="653" y="248" class="box-desc">  mlx-community/* can bundle custom modeling_*.py scripts.</text>
+  <text x="653" y="264" class="box-desc">  Passing flag executes arbitrary Python scripts on local host.</text>
+  <text x="653" y="282" class="box-desc">• Jinja2 Templates: tokenizer_config.json embeds templates</text>
+  <text x="653" y="298" class="box-desc">  evaluated by tokenizers; subject to conditional injection.</text>
+  <text x="653" y="324" class="code-text">Risk: Format safety is negated if remote code is trusted.</text>
+
+  <!-- MLX Box 2: oMLX Two-Tier Paged SSD KV Caching -->
+  <rect x="635" y="360" width="505" height="235" class="inner-box" fill="#1e293b" stroke="#f87171" stroke-width="1.3" />
+  <text x="653" y="384" class="tag tag-red">oMLX Paged SSD KV Cache: Secrets at Rest</text>
+  <text x="653" y="404" class="box-desc">• Two-Tier Architecture: Persists KV attention cache pages</text>
+  <text x="653" y="420" class="box-desc">  to local disk (~/.cache/omlx) for sub-5s agent TTFT.</text>
+  <text x="653" y="438" class="box-desc">• Plaintext Disk Exposure: Ingested API keys, .env tokens,</text>
+  <text x="653" y="454" class="box-desc">  and source code persist unencrypted on NVMe across reboots.</text>
+  <text x="653" y="470" class="box-desc">  Local malware or unprivileged tools can harvest stored cache.</text>
+  <text x="653" y="490" class="box-desc">• Cross-Session Prefix Poisoning: Shared KV cache prefix</text>
+  <text x="653" y="506" class="box-desc">  matching without tenant isolation allows poisoned prompt</text>
+  <text x="653" y="522" class="box-desc">  fragments to pollute subsequent agent context windows.</text>
+  <text x="653" y="555" class="code-text">Defense: Purge ~/.cache/omlx after sensitive agent runs.</text>
+  <text x="653" y="573" class="code-text">         Encrypt cache paths on multi-user workstations.</text>
+
+  <!-- MLX Box 3: Network & Interface Binding -->
+  <rect x="635" y="610" width="505" height="265" class="inner-box" />
+  <text x="653" y="634" class="tag tag-amber">oMLX Network Binding &amp; Unified Memory (UMA)</text>
+  <text x="653" y="654" class="box-desc">• Unified Memory Architecture (UMA): CPU &amp; Metal GPU share</text>
+  <text x="653" y="670" class="box-desc">  identical physical LPDDR5 DRAM; kernel or shader memory</text>
+  <text x="653" y="686" class="box-desc">  leaks expose host operating system pages directly.</text>
+  <text x="653" y="706" class="box-desc">• Unauthenticated LAN Access: Setting OMLX_HOST=0.0.0.0</text>
+  <text x="653" y="722" class="box-desc">  or enabling auth.allow_unauthenticated_inference</text>
+  <text x="653" y="738" class="box-desc">  exposes OpenAI &amp; Anthropic compatible endpoints to LAN.</text>
+  <text x="653" y="758" class="box-desc">• Local Browser Drive-By: Malicious web pages on Mac can</text>
+  <text x="653" y="774" class="box-desc">  issue CORS / DNS-rebound requests to local port 8000.</text>
+  <text x="653" y="805" class="code-text">Defense: Bind strictly to 127.0.0.1 and enforce auth.api_key.</text>
+  <text x="653" y="823" class="code-text">         Block unauthenticated inference in menu bar settings.</text>
+</svg>

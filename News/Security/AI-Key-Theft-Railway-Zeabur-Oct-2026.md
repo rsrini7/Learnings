@@ -69,6 +69,7 @@ Zeabur also announced it will shut down on **31 December 2026**, an operational 
 ---
 
 **Related:**
+- [Local AI & Agent Security Threat Model](Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md) — How exposed local AI runners and backdoored agent tool models leak credentials.
 - [OpenCode Console API-Key Breach](OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md) — The third platform incident in this cluster, with the credential-revocation boundary explained in depth.
 - [LiteLLM 1.107.0 Supply-Chain Compromise](LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md) — A package-based path to the same class of cloud and AI credentials.
 - [Banks and Unvetted AI Agents](Banks-Third-Party-AI-Agents-Oct-2026.md) — Another case where possession of a user's credential is mistaken for authorised delegation.

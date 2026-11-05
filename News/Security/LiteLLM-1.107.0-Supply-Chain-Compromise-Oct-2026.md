@@ -75,6 +75,7 @@ The vendor's statement that the key “was not revoked” is the central lesson:
 ---
 
 **Related:**
+- [Local AI & Agent Security Threat Model](Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md) — Threat model for local model runners, chat templates, and agent tool-calling backdoors.
 - [Polymarket DebugBear Script Compromise](Polymarket-DebugBear-Supply-Chain-Attack-Oct-2026.md) — Compare a malicious browser dependency with a compromised package release.
 - [OpenCode Console API-Key Breach](OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md) — Compare platform-held AI credentials with a compromised package release.
 - [Railway, Zeabur and the Hunt for AI Provider Keys](AI-Key-Theft-Railway-Zeabur-Oct-2026.md) — A related campaign against platforms that store inference keys.
