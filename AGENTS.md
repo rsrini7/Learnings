@@ -113,11 +113,19 @@ adapt section names and omit sections that do not help explain the subject.
   those answers require reading the technical mechanism first.
 - **Diagrams and Visuals:**
   - **Mermaid:** Use Mermaid for in-line sequence diagrams, decision trees, lifecycles, and simple architectural flowcharts where native markdown rendering and git diffability are preferred.
+    - **Avoid statement semicolons in sequence diagrams:** In `sequenceDiagram`, a semicolon (`;`) functions as a statement terminator. Never use semicolons in messages (e.g. use `and` or commas instead of `Write Step 1; Step 2`).
+    - **Avoid edge delimiter collisions in flowcharts:** Edge labels in `flowchart` are enclosed in pipes `|...|`. Never use raw double vertical bars `||` inside edge labels (e.g., `-->|Score = softmax(-||v - μ||² / τ)|` breaks parsing). Quote the label `-->|"Score = exp(-dist² / τ)"|` or avoid raw `||` delimiters.
+    - **Avoid nested colons in stateDiagram-v2 labels:** In `stateDiagram-v2`, `:` separates transition arrows from their labels (`StateA --> StateB: Label`). Colons inside the label (e.g., `StateA --> StateB: Shiva (:heal:) Fixes Code`) break the transition lexer.
+    - **Prevent bidirectional label overlaps in state diagrams:** When two states in `stateDiagram-v2` have bidirectional transitions (`A --> B` and `B --> A`), Dagre centers both edge labels at the exact same midpoint $(x, y)$ coordinate, causing overlapping text. Prefer `flowchart TD` / `flowchart LR` with an explicit convergence/resume node (or subgraphs) so that return arrows follow distinct spatial trajectories.
+    - **Quote special characters in node labels:** Node labels containing parentheses, brackets, or math symbols must be enclosed in double quotes (e.g., `id["Label (Extra Info)"]`). Avoid HTML tags in labels.
   - **Custom Architecture SVGs:** For deep educational notes or complex multi-stage systems (e.g., end-to-end storage tiering, hardware memory layouts, side-by-side comparative flows, or multi-panel infographics), provide a dedicated SVG diagram. It is not mandatory for every note, but strongly recommended when visual richness enhances understanding.
     - Always store the `.svg` in the nearest category-level `assets/` folder (e.g. `AI-ML/LLMs/assets/<Name>.svg`) and reference it with a relative path (`![Title](../assets/<Name>.svg)`).
     - Keep SVGs dark-theme native (`#0b0f19` / `#111827` background, slate containers `#1e293b`, cyan `#38bdf8`, emerald `#4ade80`, amber `#fbbf24`, muted text `#94a3b8`) with a responsive `viewBox`.
     - **Strict XML validation:** All text nodes must escape ampersands as `&amp;` and angle brackets as `&lt;` / `&gt;`. Always validate SVG syntax before delivery (e.g., via `python3 -c "import xml.etree.ElementTree as ET; ET.parse('path/to.svg')"`).
     - When helpful, pair the SVG (high-level visual infographic) with focused in-line Mermaid diagrams for specific sub-mechanisms (e.g. request sequence or attention projection).
+- **LaTeX Math and KaTeX Rendering on GitHub:**
+  - **Subscripts outside `\text{}`:** In KaTeX/LaTeX, `\text{...}` operates in text mode. An unescaped underscore `_` is illegal in text mode and throws the KaTeX error `'_' allowed only in math mode`. Move subscripts outside `\text{}` into math mode (e.g., write `\text{Score}_{\text{RRF}}(d)` instead of `\text{RRF_Score}(d)`).
+  - **Flush-left display math (column 0, NO list indentation):** Never indent display math blocks (`$$...$$`) inside Markdown lists (`1.`, `2.`, `-`). When indented inside a list item, GitHub Flavored Markdown (GFM) parses `$$` as plain paragraph text inside the list rather than as a KaTeX display math block. The Markdown parser then interprets math subscript underscores `_` as Markdown *italics* syntax (`_italic_`), corrupting the equation and dumping raw unrendered LaTeX on screen. Always place display math blocks (`$$...$$`) at column 0 (flush-left) separated by blank lines before and after.
 - Use tables for genuine comparisons.
 - Verify material claims against current primary sources and cite them inline
   near the relevant explanation. Trace claims in user-provided details back to
@@ -222,6 +230,8 @@ a commit.
 - [ ] Images/SVGs/PDFs in nearest `assets/` folder, **NOT** alongside the `.md` file
 - [ ] **Do NOT put images/SVGs in the root-level `assets/`** — use category-level `assets/`
 - [ ] SVGs validated for well-formed XML (escaped `&amp;`, `&lt;`, `&gt;`)
+- [ ] Mermaid diagrams checked for statement semicolons, edge delimiter collisions (`||`), nested colons, and bidirectional label overlaps
+- [ ] Math display blocks (`$$...$$`) placed flush-left (column 0, no list indentation) with subscripts outside `\text{}` (`\text{Score}_{\text{sub}}`)
 - [ ] Relative links inside moved files fixed
 - [ ] Relative image/asset paths fixed
 - [ ] New `.md` file ends with a `**Related:**` section (3–5 links + reasons)
