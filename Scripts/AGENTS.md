@@ -10,9 +10,10 @@
 
 ```
 Scripts/
-├── github-repos.py      # GitHub repos, links, TOC management
-├── generate-readme.py   # README generator
-└── hpi.sh               # Homebrew installer
+├── check-markdown.py   # Markdown, Mermaid & LaTeX validator and auto-fixer
+├── github-repos.py     # GitHub repos, links, TOC management
+├── generate-readme.py  # README generator
+└── hpi.sh              # Homebrew installer
 ```
 
 ---
@@ -124,6 +125,34 @@ export GITHUB_TOKEN=your_token_here
 # Or create token file
 echo "your_token" > ~/.github_token
 ```
+
+---
+
+## 🔍 check-markdown.py
+
+Validates and auto-fixes Markdown files for GitHub rendering edge cases (LaTeX display math indentation, KaTeX text-mode subscripts, Mermaid syntax collisions, and state diagram label stacking).
+
+```bash
+# Validate all markdown files in the repository
+python3 Scripts/check-markdown.py
+
+# Validate only recently modified / staged markdown files
+python3 Scripts/check-markdown.py --recent
+
+# Validate specific markdown file(s)
+python3 Scripts/check-markdown.py path/to/file.md
+
+# Automatically fix indented math blocks ($$) and unescaped \text{...} underscores
+python3 Scripts/check-markdown.py --fix
+```
+
+### What it checks
+- **LaTeX Display Math Indentation:** Catches indented `$$...$$` blocks inside Markdown lists that cause GitHub Flavored Markdown (GFM) to treat math subscripts as Markdown *italics*, breaking LaTeX rendering.
+- **LaTeX Subscript Escaping:** Catches unescaped underscores inside `\text{...}` which throw KaTeX errors (`'_' allowed only in math mode`).
+- **Mermaid Sequence Diagram Semicolons:** Catches semicolons (`;`) in message strings that act as statement terminators and trigger syntax errors.
+- **Mermaid Flowchart Edge Delimiters:** Catches double vertical bars `||` inside `|...|` edge labels that prematurely close label boundaries.
+- **Mermaid State Diagram Colons:** Catches nested colons inside `stateDiagram-v2` transition labels (e.g., `(:heal:)`).
+- **Mermaid State Diagram Overlaps:** Catches parallel bidirectional transitions (`A --> B` and `B --> A`) where Dagre centers labels at identical coordinates.
 
 ---
 

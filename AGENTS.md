@@ -237,6 +237,7 @@ a commit.
 - [ ] New `.md` file ends with a `**Related:**` section (3–5 links + reasons)
 - [ ] Back-links added in the closest existing sibling doc(s)
 - [ ] Moved/renamed file: own Related links fixed + old references updated
+- [ ] `python3 Scripts/check-markdown.py path/to/file.md` (or `--recent`) clean
 - [ ] `python3 Scripts/generate-readme.py` run (never hand-edit `README.md`)
 - [ ] `python3 Scripts/github-repos.py links` clean
 - [ ] Leave changes uncommitted for user review; commit only after explicit approval
