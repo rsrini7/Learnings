@@ -95,9 +95,12 @@ In the headline experiment, Astra was tasked with improving the mathematical rea
 - **The Setup:** Astra was given access to a Python notebook sandbox containing Qwen's model weights and a small practice dataset of GSM8K and MATH training problems. Astra was strictly prohibited from running backpropagation or computing gradients.
 - **The Diagnosis:** Astra executed Qwen across practice problems and detected that Qwen routinely started solving math problems with correct logic, but would abruptly get trapped in infinite "thinking loops," repeating identical sentences or formulas until hitting the generation token limit.
 - **The Isolation:** Astra recorded internal activations across tokens. By subtracting the mean hidden states of progressing reasoning tokens from the mean hidden states of looping tokens, Astra isolated the 1D direction vector $v$ responsible for driving the model into cyclic loops:
-  $$v = \frac{\mu_{\text{loop}} - \mu_{\text{progress}}}{\|\mu_{\text{loop}} - \mu_{\text{progress}}\|}$$
+
+$$v = \frac{\mu_{\text{loop}} - \mu_{\text{progress}}}{\|\mu_{\text{loop}} - \mu_{\text{progress}}\|}$$
+
 - **The Surgical Edit:** Astra discovered that the `down_proj` matrices in the Feed-Forward/MLP sublayers of **Layer 15** and **Layer 19** projected most strongly into vector $v$. Astra projected $v$ out of those two weight matrices:
-  $$W_{\text{new}} = W - (W \cdot v) v^T$$
+
+$$W_{\text{new}} = W - (W \cdot v) v^T$$
   Across the ~800 million parameters in Qwen3.5-0.8B, this edit modified exactly **131,072 parameters—just 0.016% of the network**.
 - **The Benchmark Results:**
   - Token-limit timeouts dropped from **93% down to ~33%**.

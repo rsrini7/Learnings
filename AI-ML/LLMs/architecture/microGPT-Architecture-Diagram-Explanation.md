@@ -119,9 +119,9 @@ There are:
 
 Each head computes:
 
-[
-\text{Attention}(x) = \text{softmax}\left(\frac{QK^T}{\sqrt{\text{head_dim}}}\right)V
-]
+$$
+\text{Attention}(x) = \text{softmax}\left(\frac{QK^T}{\sqrt{\text{head\_dim}}}\right)V
+$$
 
 ### Key details:
 

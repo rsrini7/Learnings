@@ -38,7 +38,9 @@ $$\mathbf{q} = \mathbf{x} \mathbf{W}_q, \quad \mathbf{k} = \mathbf{x} \mathbf{W}
 During token generation at step $t$:
 1. The new token creates a Query vector $\mathbf{q}_t$.
 2. $\mathbf{q}_t$ is scored against all past Key vectors $[\mathbf{k}_1, \dots, \mathbf{k}_{t}]$ via scaled dot-product:
-   $$\text{Attention}(\mathbf{q}_t, \mathbf{K}, \mathbf{V}) = \text{softmax}\left(\frac{\mathbf{q}_t \mathbf{K}^T}{\sqrt{d_k}}\right) \mathbf{V}$$
+
+$$\text{Attention}(\mathbf{q}_t, \mathbf{K}, \mathbf{V}) = \text{softmax}\left(\frac{\mathbf{q}_t \mathbf{K}^T}{\sqrt{d_k}}\right) \mathbf{V}$$
+
 3. Once computed, the Key and Value vectors for past tokens **never change**.
 4. The Query vector $\mathbf{q}_t$ is strictly temporary—future tokens will arrive with their own query vectors and will never need $\mathbf{q}_t$.
 
@@ -89,7 +91,8 @@ $$\text{Bytes / Token} = 2 \times 64 \times 8 \times 128 \times 2 = 262,144 \tex
 * **Single 8,192-Token Context:** $8,192 \times 256 \text{ KB} = \mathbf{2.0 \text{ GB}}$ of KV Cache.
 * **10 Concurrent Unshared Requests:** $10 \times 2.0 \text{ GB} = \mathbf{20.0 \text{ GB}}$.
 * **10 Requests with Shared System Prefix (8,000 tokens shared, 192 unique):**
-  $$\text{Shared Prefix (1 copy)} + 10 \times \text{Unique Tokens} \approx 1.95 \text{ GB} + 0.49 \text{ GB} = \mathbf{2.44 \text{ GB}} \quad (\sim 88\% \text{ VRAM savings})$$
+
+$$\text{Shared Prefix (1 copy)} + 10 \times \text{Unique Tokens} \approx 1.95 \text{ GB} + 0.49 \text{ GB} = \mathbf{2.44 \text{ GB}} \quad (\sim 88\% \text{ VRAM savings})$$
 
 ---
 

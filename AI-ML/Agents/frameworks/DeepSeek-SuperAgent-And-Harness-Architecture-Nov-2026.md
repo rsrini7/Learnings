@@ -316,7 +316,11 @@ Underpinning the SuperAgent implementation is **DeepSeek Harness (DSH)**, releas
    - Plugins declare fine-grained dependencies. The runtime dynamically activates or suspends features as upstream dependencies appear or disconnect.
 3. **Layered Configuration Trees:**
    - DSH configures environments by evaluating hierarchical layers:
-     $$\text{Base Bundles} \longrightarrow \text{Profile Patches } (\texttt{cordis.patch.yaml}) \longrightarrow \text{User Patches} \longrightarrow \text{CLI Arguments}$$
+
+$$
+\text{Base Bundles} \longrightarrow \text{Profile Patches } (\texttt{cordis.patch.yaml}) \longrightarrow \text{User Patches} \longrightarrow \text{CLI Arguments}
+$$
+
 4. **Execution UI Modes:**
    - DSH provides four runtime operational modes:
      - **Standard:** Interactive terminal interface for manual debugging.
