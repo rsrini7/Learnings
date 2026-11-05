@@ -10,10 +10,13 @@ Validates Markdown and referenced SVG assets for GitHub rendering edge cases:
    which throw KaTeX syntax errors ('_' allowed only in math mode).
 3. Mermaid Sequence Diagram Semicolons: Catches ';' in messages that act as statement terminators.
 4. Mermaid Flowchart Edge Collisions: Catches double vertical bars '||' inside '|...|' edge labels.
-5. Mermaid State Diagram Nested Colons: Catches internal colons in transition labels.
-6. Mermaid State Diagram Bidirectional Overlaps: Catches parallel 'A <--> B' transitions that
+5. Mermaid Flowchart Cluster Collisions: Catches edges connecting directly between subgraphs
+   ('ClusterA --> ClusterB') which causes Dagre to anchor arrows through header labels, and
+   flags subgraph titles exceeding safe single-line length (>24 chars) or containing '<br>'.
+6. Mermaid State Diagram Nested Colons: Catches internal colons in transition labels.
+7. Mermaid State Diagram Bidirectional Overlaps: Catches parallel 'A <--> B' transitions that
    Dagre stacks at identical (x, y) coordinates.
-7. SVG Text Boundary Overflow: Scans all referenced SVG architecture diagrams for text
+8. SVG Text Boundary Overflow: Scans all referenced SVG architecture diagrams for text
    overflowing card containers, unescaped XML, or missing viewBox attributes.
 
 Usage:
@@ -128,6 +131,7 @@ def scan_file(filepath):
                                     'fix_advice': 'Replace ";" with "and" or a comma to avoid statement termination.'
                                 })
                     elif mermaid_type in ('flowchart', 'graph'):
+                        subgraphs = {}
                         for m_idx, m_line in enumerate(mermaid_lines):
                             if re.search(r'\|[^|]*\|\|[^|]*\|', m_line):
                                 issues.append({
@@ -137,6 +141,48 @@ def scan_file(filepath):
                                     'snippet': m_line.strip(),
                                     'fix_advice': 'Enclose edge label in quotes: -->|"Score = ... ||v||"| or avoid ||.'
                                 })
+                            m_strip = m_line.strip()
+                            sg_match = re.match(r'subgraph\s+([A-Za-z0-9_-]+)(?:\s*\[\"([^\"]+)\"\]|\s*\[([^\]]+)\])?', m_strip)
+                            if sg_match:
+                                sg_id = sg_match.group(1)
+                                title = sg_match.group(2) or sg_match.group(3) or sg_id
+                                subgraphs[sg_id] = (m_idx, title)
+                            else:
+                                sg_quoted = re.match(r'subgraph\s+\"([^\"]+)\"', m_strip)
+                                if sg_quoted:
+                                    subgraphs[sg_quoted.group(1)] = (m_idx, sg_quoted.group(1))
+
+                        # Check 1: Subgraph title length and line-wrap collisions
+                        for sg_id, (m_idx, title) in subgraphs.items():
+                            if '<br' in title.lower():
+                                issues.append({
+                                    'file': filepath,
+                                    'line': mermaid_start + m_idx + 1,
+                                    'type': 'Mermaid: Subgraph title contains manual line break (<br>)',
+                                    'snippet': f'subgraph {sg_id}["{title}"]',
+                                    'fix_advice': 'Dagre hardcodes 24px header height; line breaks cause line 2 to overlap child nodes. Remove <br> and keep title on a single line.'
+                                })
+                            elif len(title) > 26 and any(title.strip().endswith(suffix) for suffix in ['Engine', 'Concurrency', 'Architecture', 'Pipeline', 'Infrastructure', 'Implementation', 'Manager', 'Controller', 'Processing', 'Optimizations']):
+                                issues.append({
+                                    'file': filepath,
+                                    'line': mermaid_start + m_idx + 1,
+                                    'type': 'Mermaid: Subgraph title wrapping collision risk',
+                                    'snippet': f'subgraph {sg_id}["{title}"] ({len(title)} chars)',
+                                    'fix_advice': 'Dagre hardcodes 24px header height. Long multi-word titles wrap the final word onto line 2, causing it to overlap the first child box. Shorten title to <= 24 chars (e.g. "2. Memory Engine").'
+                                })
+
+                        # Check 2: Direct cluster-to-cluster edges crossing header labels
+                        for m_idx, m_line in enumerate(mermaid_lines):
+                            for em in re.finditer(r'([A-Za-z0-9_-]+)\s*(?:-->|--|==>|-.->)\s*([A-Za-z0-9_-]+)', m_line):
+                                s, d = em.group(1), em.group(2)
+                                if s in subgraphs and d in subgraphs:
+                                    issues.append({
+                                        'file': filepath,
+                                        'line': mermaid_start + m_idx + 1,
+                                        'type': 'Mermaid: Cluster-to-cluster edge crosses header label',
+                                        'snippet': m_line.strip(),
+                                        'fix_advice': f'Connect node-to-node across subgraphs rather than linking cluster "{s}" to "{d}" directly across header labels.'
+                                    })
                     elif mermaid_type == 'stateDiagram-v2':
                         transitions = {}
                         for m_idx, m_line in enumerate(mermaid_lines):

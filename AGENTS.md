@@ -118,6 +118,8 @@ adapt section names and omit sections that do not help explain the subject.
     - **Avoid nested colons in stateDiagram-v2 labels:** In `stateDiagram-v2`, `:` separates transition arrows from their labels (`StateA --> StateB: Label`). Colons inside the label (e.g., `StateA --> StateB: Shiva (:heal:) Fixes Code`) break the transition lexer.
     - **Prevent bidirectional label overlaps in state diagrams:** When two states in `stateDiagram-v2` have bidirectional transitions (`A --> B` and `B --> A`), Dagre centers both edge labels at the exact same midpoint $(x, y)$ coordinate, causing overlapping text. Prefer `flowchart TD` / `flowchart LR` with an explicit convergence/resume node (or subgraphs) so that return arrows follow distinct spatial trajectories.
     - **Quote special characters in node labels:** Node labels containing parentheses, brackets, or math symbols must be enclosed in double quotes (e.g., `id["Label (Extra Info)"]`). Avoid HTML tags in labels.
+    - **Prevent subgraph title wrapping collisions:** Keep `subgraph` titles concise (<= 24 characters) and avoid `<br>` inside subgraph titles. Dagre allocates a fixed single-line (24px) header box; wrapped text overflows downward directly into the topmost child node.
+    - **Avoid direct cluster-to-cluster edges:** Avoid edges directly between subgraph cluster IDs (e.g. `ClusterA --> ClusterB`), which causes Dagre to anchor the arrow directly across the cluster title label. Connect node-to-node across subgraphs instead.
   - **Custom Architecture SVGs:** For deep educational notes or complex multi-stage systems (e.g., end-to-end storage tiering, hardware memory layouts, side-by-side comparative flows, or multi-panel infographics), provide a dedicated SVG diagram. It is not mandatory for every note, but strongly recommended when visual richness enhances understanding.
     - Always store the `.svg` in the nearest category-level `assets/` folder (e.g. `AI-ML/LLMs/assets/<Name>.svg`) and reference it with a relative path (`![Title](../assets/<Name>.svg)`).
     - Keep SVGs dark-theme native (`#0b0f19` / `#111827` background, slate containers `#1e293b`, cyan `#38bdf8`, emerald `#4ade80`, amber `#fbbf24`, muted text `#94a3b8`) with a responsive `viewBox`.
@@ -232,7 +234,7 @@ a commit.
 - [ ] Images/SVGs/PDFs in nearest `assets/` folder, **NOT** alongside the `.md` file
 - [ ] **Do NOT put images/SVGs in the root-level `assets/`** — use category-level `assets/`
 - [ ] SVGs validated for well-formed XML and container text overflows (`python3 Scripts/check-svg.py path/to.svg`)
-- [ ] Mermaid diagrams checked for statement semicolons, edge delimiter collisions (`||`), nested colons, and bidirectional label overlaps
+- [ ] Mermaid diagrams checked for statement semicolons, edge delimiter collisions (`||`), nested colons, bidirectional label overlaps, subgraph title wrapping (<=24 chars), and cluster-to-cluster edges
 - [ ] Math display blocks (`$$...$$`) placed flush-left (column 0, no list indentation) with subscripts outside `\text{}` (`\text{Score}_{\text{sub}}`)
 - [ ] Relative links inside moved files fixed
 - [ ] Relative image/asset paths fixed
