@@ -10,6 +10,12 @@ Validates SVG architecture diagrams and infographics for:
    and accumulated <g transform="translate(dx, dy)"> coordinates to detect text
    overflowing card borders or right margins.
 4. Vertical Boundary Clamping: Catches text lines exceeding container bottom edges.
+5. Text-on-Text Collision Detection: Calculates 2D bounding boxes (AABB) for all text
+   elements and catches overlapping text (e.g. arrow labels rendering over card headers).
+6. Text-on-Border Collision Detection: Catches unbuffered text lines straddling container
+   border strokes without an enclosing pill/badge <rect>.
+7. Connector-Card Piercing Detection: Catches arrow connectors (<line>, <path>) cutting
+   straight through unrelated intermediate card containers using Liang-Barsky line clipping.
 
 Usage:
     python3 Scripts/check-svg.py                          # Check all tracked SVGs
@@ -162,9 +168,10 @@ def scan_svg_file(filepath: str) -> list:
 
     class_styles, tag_styles = parse_svg_styles(root)
 
-    # 3. Collect Rectangles & Text Elements with Hierarchical Transform Accumulation
+    # 3. Collect Rectangles, Connectors & Text Elements with Hierarchical Transform Accumulation
     rects = []
     text_items = []
+    segments = []
 
     def traverse(node, acc_dx=0.0, acc_dy=0.0):
         t_dx, t_dy = parse_translate(node.get('transform', ''))
@@ -192,6 +199,25 @@ def scan_svg_file(filepath: str) -> list:
                     text_items.append((node, tx, ty, text))
                 except ValueError:
                     pass
+        elif tag == 'line':
+            try:
+                x1 = float(node.get('x1', 0)) + cur_dx
+                y1 = float(node.get('y1', 0)) + cur_dy
+                x2 = float(node.get('x2', 0)) + cur_dx
+                y2 = float(node.get('y2', 0)) + cur_dy
+                segments.append((x1, y1, x2, y2))
+            except ValueError:
+                pass
+        elif tag == 'path':
+            d = node.get('d', '')
+            # Match straight-line segments from M x1 y1 L x2 y2
+            m = re.findall(r'[ML]\s*([\d.-]+)[,\s]+([\d.-]+)', d)
+            for i in range(len(m) - 1):
+                try:
+                    segments.append((float(m[i][0]) + cur_dx, float(m[i][1]) + cur_dy,
+                                     float(m[i+1][0]) + cur_dx, float(m[i+1][1]) + cur_dy))
+                except ValueError:
+                    pass
 
         for child in node:
             traverse(child, cur_dx, cur_dy)
@@ -199,6 +225,7 @@ def scan_svg_file(filepath: str) -> list:
     traverse(root)
 
     # 4. Check Text Elements against Containers
+    text_boxes = []
     for el, tx, ty, text in text_items:
         cls = el.get('class', '')
         base_style = class_styles.get(cls, {
@@ -236,12 +263,27 @@ def scan_svg_file(filepath: str) -> list:
             text_left = tx
             text_right = tx + est_w
 
+        text_top = ty - style_info['size'] * 0.85
+        text_bottom = ty + style_info['size'] * 0.20
+
         # Find innermost enclosing container rect containing text origin (tx, ty)
         containers = [
             r for r in rects
             if r['x'] <= tx <= r['x'] + r['w'] and r['y'] <= ty <= r['y'] + r['h']
         ]
         containers.sort(key=lambda r: r['w'] * r['h'])
+
+        text_boxes.append({
+            'text': text,
+            'left': text_left,
+            'right': text_right,
+            'top': text_top,
+            'bottom': text_bottom,
+            'size': style_info['size'],
+            'tx': tx,
+            'ty': ty,
+            'container': containers[0] if containers else None,
+        })
 
         if containers:
             container = containers[0]
@@ -304,6 +346,94 @@ def scan_svg_file(filepath: str) -> list:
                     'snippet': f'[{len(text)} chars, +{overflow_canvas_x:.1f}px past viewBox]: "{text}"',
                     'fix_advice': f'Text extends beyond SVG viewBox width ({vb_w}px). Increase viewBox width or shorten text.'
                 })
+
+    # 5. Check Text-on-Text Collisions (AABB Overlap)
+    for i in range(len(text_boxes)):
+        for j in range(i + 1, len(text_boxes)):
+            b1 = text_boxes[i]
+            b2 = text_boxes[j]
+            xo = min(b1['right'], b2['right']) - max(b1['left'], b2['left'])
+            yo = min(b1['bottom'], b2['bottom']) - max(b1['top'], b2['top'])
+            min_size = min(b1['size'], b2['size'])
+            if xo > 15.0 and yo > max(3.5, min_size * 0.35):
+                issues.append({
+                    'file': filepath,
+                    'line': 0,
+                    'type': 'SVG Text Collision / Overlap',
+                    'severity': 'CRITICAL',
+                    'snippet': f'"{b1["text"]}" overlaps "{b2["text"]}" (+{xo:.1f}px horiz, +{yo:.1f}px vert collision)',
+                    'fix_advice': f'Move or re-route elements to prevent "{b1["text"]}" from rendering directly on top of "{b2["text"]}".'
+                })
+
+    # 6. Check Text-on-Border Collisions (Text straddling container borders without a pill/badge rect)
+    for tb in text_boxes:
+        for r in rects:
+            if r['w'] >= 75.0 and r['h'] >= 45.0:
+                if tb['left'] < (r['x'] + r['w'] - 5.0) and tb['right'] > (r['x'] + 5.0):
+                    top_b = r['y']
+                    bot_b = r['y'] + r['h']
+                    straddles_top = (tb['top'] + 2.0 <= top_b <= tb['bottom'] - 2.0)
+                    straddles_bot = (tb['top'] + 2.0 <= bot_b <= tb['bottom'] - 2.0)
+                    if straddles_top or straddles_bot:
+                        border_y = top_b if straddles_top else bot_b
+                        has_pill = any(
+                            p['w'] < r['w'] and p['h'] < r['h'] and
+                            p['x'] <= tb['left'] + 5.0 and (p['x'] + p['w']) >= tb['right'] - 5.0 and
+                            p['y'] <= tb['top'] + 5.0 and (p['y'] + p['h']) >= tb['bottom'] - 5.0
+                            for p in rects
+                        )
+                        if not has_pill:
+                            border_name = "top" if straddles_top else "bottom"
+                            issues.append({
+                                'file': filepath,
+                                'line': 0,
+                                'type': 'SVG Text Border Collision',
+                                'severity': 'CRITICAL',
+                                'snippet': f'"{tb["text"]}" straddles {border_name} border of container at y={border_y:.1f}',
+                                'fix_advice': 'Enclose text in a dedicated pill/badge <rect> with fill, or move text cleanly away from the container border.'
+                            })
+
+    # 7. Check Line / Arrow Penetrating Intermediate Container (Liang-Barsky Line Clipping)
+    for x1, y1, x2, y2 in segments:
+        for r in rects:
+            if r['w'] >= 100.0 and r['h'] >= 60.0:
+                rx, ry, rw, rh = r['x'], r['y'], r['w'], r['h']
+                dx = x2 - x1
+                dy = y2 - y1
+                p = [-dx, dx, -dy, dy]
+                q = [x1 - rx, (rx + rw) - x1, y1 - ry, (ry + rh) - y1]
+                u1, u2 = 0.0, 1.0
+                possible = True
+                for k in range(4):
+                    if p[k] == 0:
+                        if q[k] < 0:
+                            possible = False
+                            break
+                    else:
+                        t = q[k] / p[k]
+                        if p[k] < 0:
+                            if t > u2:
+                                possible = False
+                                break
+                            if t > u1:
+                                u1 = t
+                        else:
+                            if t < u1:
+                                possible = False
+                                break
+                            if t < u2:
+                                u2 = t
+                if possible and u2 > u1 and (u1 > 0.05 and u2 < 0.95):
+                    card_has_text = any(r['x'] <= tb['tx'] <= r['x'] + r['w'] and r['y'] <= tb['ty'] <= r['y'] + r['h'] for tb in text_boxes)
+                    if card_has_text:
+                        issues.append({
+                            'file': filepath,
+                            'line': 0,
+                            'type': 'SVG Connector Card Collision',
+                            'severity': 'CRITICAL',
+                            'snippet': f'Connector from ({x1:.0f}, {y1:.0f}) to ({x2:.0f}, {y2:.0f}) cuts straight through card at ({rx:.0f}, {ry:.0f}, w={rw:.0f}, h={rh:.0f})',
+                            'fix_advice': 'Reroute connector around card or reposition cards so lines do not pierce unrelated components.'
+                        })
 
     return issues
 
