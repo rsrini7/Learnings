@@ -1,0 +1,164 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 720" width="100%" height="100%" style="background-color: #0f172a; font-family: 'Segoe UI', system-ui, sans-serif;">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#64748b" />
+    </marker>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+  </defs>
+
+  <!-- Title -->
+  <text x="500" y="40" fill="#f8fafc" font-size="22" font-weight="bold" text-anchor="middle">Foundational ML Concepts &amp; The Weight-Space Trade-Off</text>
+  <line x1="100" y1="55" x2="900" y2="55" stroke="#334155" stroke-width="2" />
+
+  <!-- ================= PANEL 1: DENSE NEURAL NETWORK ================= -->
+  <rect x="30" y="75" width="455" height="295" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="50" y="105" fill="#38bdf8" font-size="16" font-weight="bold">1. Dense Neural Network &amp; Embeddings</text>
+  <text x="50" y="125" fill="#94a3b8" font-size="12">Nested Function: y = f₁(f₂(f₃(...fₙ(X)))) with 1M–1B+ weights</text>
+
+  <!-- Text to Embedding -->
+  <rect x="45" y="185" width="75" height="55" rx="6" fill="#0f172a" stroke="#475569" />
+  <text x="82" y="208" fill="#e2e8f0" font-size="11" text-anchor="middle">Legal Text</text>
+  <text x="82" y="224" fill="#64748b" font-size="10" text-anchor="middle">(Raw Input)</text>
+  <line x1="120" y1="212" x2="150" y2="212" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrow-cyan)" />
+
+  <!-- Connections (drawn behind nodes) -->
+  <g stroke="#475569" stroke-width="1" opacity="0.6">
+    <!-- Input to HL1 -->
+    <line x1="170" y1="165" x2="250" y2="155" /><line x1="170" y1="165" x2="250" y2="195" /><line x1="170" y1="165" x2="250" y2="235" /><line x1="170" y1="165" x2="250" y2="275" />
+    <line x1="170" y1="215" x2="250" y2="155" /><line x1="170" y1="215" x2="250" y2="195" /><line x1="170" y1="215" x2="250" y2="235" /><line x1="170" y1="215" x2="250" y2="275" />
+    <line x1="170" y1="265" x2="250" y2="155" /><line x1="170" y1="265" x2="250" y2="195" /><line x1="170" y1="265" x2="250" y2="235" /><line x1="170" y1="265" x2="250" y2="275" />
+    <!-- HL1 to HL2 -->
+    <line x1="250" y1="155" x2="330" y2="165" /><line x1="250" y1="155" x2="330" y2="215" /><line x1="250" y1="155" x2="330" y2="265" />
+    <line x1="250" y1="195" x2="330" y2="165" /><line x1="250" y1="195" x2="330" y2="215" /><line x1="250" y1="195" x2="330" y2="265" />
+    <line x1="250" y1="235" x2="330" y2="165" /><line x1="250" y1="235" x2="330" y2="215" /><line x1="250" y1="235" x2="330" y2="265" />
+    <line x1="250" y1="275" x2="330" y2="165" /><line x1="250" y1="275" x2="330" y2="215" /><line x1="250" y1="275" x2="330" y2="265" />
+    <!-- HL2 to Output -->
+    <line x1="330" y1="165" x2="410" y2="190" /><line x1="330" y1="165" x2="410" y2="240" />
+    <line x1="330" y1="215" x2="410" y2="190" /><line x1="330" y1="215" x2="410" y2="240" />
+    <line x1="330" y1="265" x2="410" y2="190" /><line x1="330" y1="265" x2="410" y2="240" />
+  </g>
+
+  <!-- Input Nodes (X) -->
+  <circle cx="170" cy="165" r="12" fill="#0284c7" stroke="#38bdf8" stroke-width="2" />
+  <circle cx="170" cy="215" r="12" fill="#0284c7" stroke="#38bdf8" stroke-width="2" />
+  <circle cx="170" cy="265" r="12" fill="#0284c7" stroke="#38bdf8" stroke-width="2" />
+  <text x="170" y="305" fill="#38bdf8" font-size="11" text-anchor="middle">Inputs (X)</text>
+  <text x="170" y="318" fill="#64748b" font-size="10" text-anchor="middle">Embeddings</text>
+
+  <!-- Hidden Layer 1 -->
+  <circle cx="250" cy="155" r="12" fill="#4f46e5" stroke="#818cf8" stroke-width="2" />
+  <circle cx="250" cy="195" r="12" fill="#4f46e5" stroke="#818cf8" stroke-width="2" />
+  <circle cx="250" cy="235" r="12" fill="#4f46e5" stroke="#818cf8" stroke-width="2" />
+  <circle cx="250" cy="275" r="12" fill="#4f46e5" stroke="#818cf8" stroke-width="2" />
+  <text x="250" y="305" fill="#818cf8" font-size="11" text-anchor="middle">HL 1</text>
+
+  <!-- Hidden Layer 2 -->
+  <circle cx="330" cy="165" r="12" fill="#7c3aed" stroke="#a78bfa" stroke-width="2" />
+  <circle cx="330" cy="215" r="12" fill="#7c3aed" stroke="#a78bfa" stroke-width="2" />
+  <circle cx="330" cy="265" r="12" fill="#7c3aed" stroke="#a78bfa" stroke-width="2" />
+  <text x="330" y="305" fill="#a78bfa" font-size="11" text-anchor="middle">HL 2</text>
+  <text x="290" y="345" fill="#fbbf24" font-size="11" text-anchor="middle">Lines = Weights (w₁, w₂...)</text>
+
+  <!-- Output Nodes -->
+  <circle cx="410" cy="190" r="14" fill="#059669" stroke="#34d399" stroke-width="2" />
+  <text x="410" y="194" fill="#ffffff" font-size="10" font-weight="bold" text-anchor="middle">YES</text>
+  <circle cx="410" cy="240" r="14" fill="#e11d48" stroke="#fb7185" stroke-width="2" />
+  <text x="410" y="244" fill="#ffffff" font-size="10" font-weight="bold" text-anchor="middle">NO</text>
+  <text x="410" y="305" fill="#34d399" font-size="11" text-anchor="middle">Output</text>
+
+
+  <!-- ================= PANEL 2: GRADIENT DESCENT ================= -->
+  <rect x="515" y="75" width="455" height="295" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="535" y="105" fill="#fbbf24" font-size="16" font-weight="bold">2. Training via Gradient Descent</text>
+  <text x="535" y="125" fill="#94a3b8" font-size="12">From Simple Lines (y = ax + b) to Optimizing 100,000+ Weights</text>
+
+  <!-- Axes -->
+  <line x1="570" y1="310" x2="920" y2="310" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="570" y1="310" x2="570" y2="150" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="910" y="330" fill="#94a3b8" font-size="12" text-anchor="end">Weight Space (W)</text>
+  <text x="555" y="160" fill="#94a3b8" font-size="12" text-anchor="end" transform="rotate(-90 555,160)">Loss (Error)</text>
+
+  <!-- Loss Curve (Parabola) -->
+  <path d="M 600 165 Q 740 410 880 165" fill="none" stroke="#38bdf8" stroke-width="3" />
+
+  <!-- Step 1: Random Init -->
+  <circle cx="615" cy="188" r="7" fill="#ef4444" stroke="#fca5a5" stroke-width="2" />
+  <text x="630" y="180" fill="#fca5a5" font-size="11" font-weight="bold">1. Random Init (High Loss)</text>
+
+  <!-- Descent Arrows -->
+  <path d="M 622 198 Q 650 240 675 260" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4" marker-end="url(#arrow-amber)" />
+  <circle cx="682" cy="265" r="5" fill="#fbbf24" />
+  <path d="M 690 270 Q 710 282 728 286" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4" marker-end="url(#arrow-amber)" />
+  <text x="640" y="245" fill="#fbbf24" font-size="11">Steepest Descent</text>
+  <text x="640" y="258" fill="#94a3b8" font-size="10">(100k+ Iterations)</text>
+
+  <!-- Step 2: Minimum Loss / Freeze -->
+  <circle cx="740" cy="288" r="8" fill="#10b981" stroke="#6ee7b7" stroke-width="2" />
+  <text x="740" y="348" fill="#34d399" font-size="12" font-weight="bold" text-anchor="middle">2. Loss Minimized → Freeze Network!</text>
+  <line x1="740" y1="298" x2="740" y2="332" stroke="#10b981" stroke-width="1.5" stroke-dasharray="2" />
+
+
+  <!-- ================= PANEL 3: PARADIGM SHIFT & INTERPRETABILITY ================= -->
+  <rect x="30" y="395" width="455" height="295" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="50" y="425" fill="#a78bfa" font-size="16" font-weight="bold">3. Interpretability &amp; The "Bitter Lesson"</text>
+  <text x="50" y="445" fill="#94a3b8" font-size="12">Why Neural Nets are Black Boxes &amp; How Neurons Act as Gates</text>
+
+  <!-- Polysemanticity vs Concept Gate -->
+  <rect x="50" y="465" width="195" height="105" rx="8" fill="#0f172a" stroke="#475569" />
+  <text x="147" y="485" fill="#f43f5e" font-size="12" font-weight="bold" text-anchor="middle">Polysemanticity</text>
+  <circle cx="95" cy="525" r="14" fill="#e11d48" />
+  <text x="95" y="529" fill="#fff" font-size="10" text-anchor="middle">W₁</text>
+  <line x1="110" y1="520" x2="145" y2="505" stroke="#94a3b8" marker-end="url(#arrow)" />
+  <line x1="110" y1="525" x2="145" y2="525" stroke="#94a3b8" marker-end="url(#arrow)" />
+  <line x1="110" y1="530" x2="145" y2="545" stroke="#94a3b8" marker-end="url(#arrow)" />
+  <text x="155" y="508" fill="#cbd5e1" font-size="10">Math Logic</text>
+  <text x="155" y="528" fill="#cbd5e1" font-size="10">Table Copying</text>
+  <text x="155" y="548" fill="#cbd5e1" font-size="10">V-Shapes</text>
+
+  <rect x="265" y="465" width="200" height="105" rx="8" fill="#0f172a" stroke="#475569" />
+  <text x="365" y="485" fill="#34d399" font-size="12" font-weight="bold" text-anchor="middle">Neuron as a "Concept Gate"</text>
+  <rect x="345" y="505" width="40" height="45" rx="6" fill="#059669" stroke="#34d399" />
+  <text x="365" y="532" fill="#fff" font-size="10" font-weight="bold" text-anchor="middle">GATE</text>
+  <text x="295" y="518" fill="#38bdf8" font-size="10" text-anchor="middle">Dogs ✓</text>
+  <line x1="315" y1="515" x2="340" y2="520" stroke="#38bdf8" marker-end="url(#arrow-cyan)" />
+  <line x1="385" y1="525" x2="435" y2="525" stroke="#34d399" stroke-width="2" marker-end="url(#arrow)" />
+  <text x="295" y="545" fill="#f43f5e" font-size="10" text-anchor="middle">Cats ✗</text>
+  <line x1="315" y1="542" x2="340" y2="535" stroke="#f43f5e" />
+
+  <!-- Evolution Timeline -->
+  <rect x="50" y="585" width="415" height="85" rx="8" fill="#0f172a" stroke="#475569" />
+  <text x="65" y="605" fill="#fbbf24" font-size="11" font-weight="bold">Evolution of Vision / ML (Sutton's Bitter Lesson):</text>
+  <text x="65" y="628" fill="#cbd5e1" font-size="11">1. Handcrafted Rules: Humans code <tspan fill="#38bdf8" font-family="monospace">def cat_detect()</tspan> (Fails to scale)</text>
+  <text x="65" y="650" fill="#cbd5e1" font-size="11">2. Deep Learning (CNNs): Scale + Gradient Descent learns features (Black Box)</text>
+
+
+  <!-- ================= PANEL 4: CATASTROPHIC FORGETTING ================= -->
+  <rect x="515" y="395" width="455" height="295" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="535" y="425" fill="#f43f5e" font-size="16" font-weight="bold">4. Catastrophic Forgetting ("No Free Lunch")</text>
+  <text x="535" y="445" fill="#94a3b8" font-size="12">Editing shared weights to fix one skill breaks another</text>
+
+  <!-- Seesaw / Trade-off visual -->
+  <rect x="540" y="470" width="405" height="195" rx="8" fill="#0f172a" stroke="#475569" />
+  
+  <text x="742" y="500" fill="#e2e8f0" font-size="13" font-weight="bold" text-anchor="middle">Shared Neural Circuitry in Qwen Model</text>
+  <text x="742" y="518" fill="#94a3b8" font-size="11" text-anchor="middle">(Removing neuron loop to fix Math performance)</text>
+
+  <!-- Left Bar: Math -->
+  <rect x="615" y="545" width="65" height="85" rx="4" fill="#059669" />
+  <text x="647" y="575" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">↑ UP</text>
+  <text x="647" y="648" fill="#34d399" font-size="12" font-weight="bold" text-anchor="middle">Math Skill</text>
+
+  <!-- Right Bar: Copying -->
+  <rect x="805" y="590" width="65" height="40" rx="4" fill="#e11d48" />
+  <text x="837" y="615" fill="#ffffff" font-size="14" font-weight="bold" text-anchor="middle">↓ DOWN</text>
+  <text x="837" y="648" fill="#fb7185" font-size="12" font-weight="bold" text-anchor="middle">Copying Task</text>
+
+  <!-- Connecting Balance Line -->
+  <line x1="580" y1="630" x2="905" y2="630" stroke="#64748b" stroke-width="2" />
+  <path d="M 685 565 C 730 565, 755 605, 800 605" fill="none" stroke="#fbbf24" stroke-width="2" stroke-dasharray="4" />
+</svg>
