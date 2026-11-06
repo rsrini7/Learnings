@@ -37,11 +37,11 @@
 
   <!-- TOP HEADER BLOCK -->
   <g transform="translate(40, 20)">
-    <rect x="0" y="0" width="1120" height="70" class="card-dark" />
-    <rect x="18" y="12" width="330" height="18" rx="4" fill="#0369a1" fill-opacity="0.2" stroke="#0284c7" stroke-width="1" />
-    <text x="26" y="24" class="text-badge">RFC 10008 · IETF PROPOSED STANDARD · JUNE 2026</text>
-    <text x="18" y="54" class="text-title">The HTTP QUERY Method: Architecture &amp; Dual-Key Caching</text>
-    <text x="545" y="54" class="text-subtitle">Resolving the GET-with-body dilemma and non-idempotent POST search anti-pattern</text>
+    <rect x="0" y="0" width="1120" height="74" class="card-dark" />
+    <rect x="18" y="10" width="330" height="18" rx="4" fill="#0369a1" fill-opacity="0.2" stroke="#0284c7" stroke-width="1" />
+    <text x="26" y="22" class="text-badge">RFC 10008 · IETF PROPOSED STANDARD · JUNE 2026</text>
+    <text x="18" y="44" class="text-title">The HTTP QUERY Method: Architecture &amp; Dual-Key Caching</text>
+    <text x="18" y="62" class="text-subtitle">Resolving the GET-with-body dilemma and non-idempotent POST search anti-pattern</text>
   </g>
 
   <!-- ROW 1: COMPARATIVE ARCHITECTURE (GET vs POST vs QUERY) -->
