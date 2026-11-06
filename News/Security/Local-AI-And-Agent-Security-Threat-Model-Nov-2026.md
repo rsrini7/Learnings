@@ -352,6 +352,7 @@ Assume that an agent will eventually hallucinate or succumb to indirect prompt i
 ---
 
 **Related:**
+- [HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways-Nov-2026.md](HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways-Nov-2026.md) — Breaking the Lethal Trifecta in autonomous agents via zero-secrets sandboxes and path-scoped egress brokers.
 - [LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md](LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md) — Analysis of supply-chain token theft and release-pipeline tampering in AI proxy tools.
 - [AI-Key-Theft-Railway-Zeabur-Oct-2026.md](AI-Key-Theft-Railway-Zeabur-Oct-2026.md) — How misconfigured environment deployments leak API credentials and models to the public internet.
 - [OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md](OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md) — Key management failures and credential exfiltration through exposed developer interfaces.

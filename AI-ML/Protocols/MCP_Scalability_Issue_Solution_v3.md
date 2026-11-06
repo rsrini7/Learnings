@@ -1395,6 +1395,7 @@ response = client.beta.messages.create(
 - Original benchmarks and case studies
 
 **Related:**
+- [HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways](../../News/Security/HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways-Nov-2026.md) — Security analysis of MCP Gateways vs network-level HTTP egress credential brokers against prompt injection.
 - [Agent-Skills](../Agents/skills/Agent-Skills.md) — Skills are positioned as one of the mitigations in v3's evolutionary story alongside Tool Search and Code Mode.
 - [OpenClaw(Moltbot-or-Clawdbot)-Architecture](../Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Architecture.md) — Updated OpenClaw architecture where dynamic tool discovery addresses the v3-quantified scalability bottlenecks.
 - [AI-Coding-Loops](../Agents/development/AI-Coding-Loops.md) — AI-coding loop patterns that benefit most from v3's Code Mode default for multi-tool, multi-step agent workflows.
