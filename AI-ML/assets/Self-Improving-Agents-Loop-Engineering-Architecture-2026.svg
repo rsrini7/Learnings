@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowEmerald" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f97316" />
+    </marker>
+  </defs>
+
+  <style>
+    text { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="800" fill="url(#bgGrad)" rx="12" />
+
+  <!-- Main Header -->
+  <text x="600" y="36" fill="#f8fafc" font-size="20" font-weight="800" text-anchor="middle" letter-spacing="0.5">
+    SELF-IMPROVING CODING AGENTS &amp; LOOP ENGINEERING (2026)
+  </text>
+  <text x="600" y="58" fill="#94a3b8" font-size="13" text-anchor="middle">
+    Compound Engineering · Deterministic Verification Hierarchy · Dual-Loop Architecture · Michelin Kitchen Pattern
+  </text>
+
+  <!-- ========================================================= -->
+  <!-- LEFT PANEL: THE 6-TIER SELF-IMPROVEMENT LADDER            -->
+  <!-- ========================================================= -->
+  <rect x="30" y="80" width="560" height="535" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="50" y="110" fill="#38bdf8" font-size="14" font-weight="700">1. THE 6-TIER SELF-IMPROVEMENT LADDER</text>
+  <text x="50" y="128" fill="#94a3b8" font-size="11">Building up from determinism · System-level continuous loop</text>
+  <line x1="50" y1="138" x2="570" y2="138" stroke="#334155" stroke-width="1" />
+
+  <!-- Rung 06: Self-Improvement -->
+  <rect x="80" y="150" width="490" height="58" rx="6" fill="#451a03" fill-opacity="0.6" stroke="#f97316" stroke-width="1.5" />
+  <text x="96" y="173" fill="#fdba74" font-size="13" font-weight="700">06 | Self-Improvement (The System Edits Its Own Setup)</text>
+  <text x="96" y="192" fill="#cbd5e1" font-size="11">Zach Lloyd (Warp) · Factory-as-code · Observer agents modify skills &amp; checks</text>
+
+  <!-- Rung 05: Automation -->
+  <rect x="80" y="216" width="490" height="54" rx="6" fill="#1e293b" stroke="#64748b" stroke-width="1.2" />
+  <text x="96" y="238" fill="#e2e8f0" font-size="13" font-weight="700">05 | Automation (Tickets · PR Review Comments · Error Logs)</text>
+  <text x="96" y="256" fill="#94a3b8" font-size="11">Autonomous issue pickup · Sentry log triaging · Bot-generated patch PRs</text>
+
+  <!-- Rung 04: Checks -->
+  <rect x="80" y="278" width="490" height="54" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2" />
+  <text x="96" y="300" fill="#38bdf8" font-size="13" font-weight="700">04 | Checks (Repeat Mistakes Made Structurally Impossible)</text>
+  <text x="96" y="318" fill="#94a3b8" font-size="11">Lauren Tan (/correct) &amp; Matt Pocock (/retro) · Turn errors into CI checks</text>
+
+  <!-- Rung 03: Memory -->
+  <rect x="80" y="340" width="490" height="54" rx="6" fill="#1e293b" stroke="#c084fc" stroke-width="1.2" />
+  <text x="96" y="362" fill="#c084fc" font-size="13" font-weight="700">03 | Memory (AGENTS.md / CLAUDE.md: Persistent Lessons)</text>
+  <text x="96" y="380" fill="#94a3b8" font-size="11">Addy Osmani · 'The agent forgets, the repo won't' · Curated reflection gates</text>
+
+  <!-- Rung 02: Skills -->
+  <rect x="80" y="402" width="490" height="54" rx="6" fill="#1e293b" stroke="#60a5fa" stroke-width="1.2" />
+  <text x="96" y="424" fill="#60a5fa" font-size="13" font-weight="700">02 | Skills (SKILL.md: Stop Repeating Prompts)</text>
+  <text x="96" y="442" fill="#94a3b8" font-size="11">Modular playbooks · Composable sub-agent procedures · In-repo definitions</text>
+
+  <!-- Rung 01: Guardrails -->
+  <rect x="80" y="464" width="490" height="54" rx="6" fill="#064e3b" fill-opacity="0.5" stroke="#34d399" stroke-width="1.5" />
+  <text x="96" y="486" fill="#6ee7b7" font-size="13" font-weight="700">01 | Guardrails (Tests · Static Types · Linters · Compilers)</text>
+  <text x="96" y="504" fill="#cbd5e1" font-size="11">Deterministic foundation · Instant feedback loop · Zero token consumption</text>
+
+  <!-- Feedback Loop Paths on the Left of the Ladder (Continuous Spine &amp; Branches) -->
+  <path d="M 80 179 C 55 179, 55 195, 55 210 L 55 410 C 55 429, 62 429, 74 429" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" marker-end="url(#arrowOrange)" />
+  <path d="M 55 367 L 74 367" fill="none" stroke="#f97316" stroke-width="2" stroke-linecap="round" marker-end="url(#arrowOrange)" />
+  <text x="42" y="555" fill="#fdba74" font-size="11" font-weight="600">Self-Improvement Loop:</text>
+  <text x="42" y="573" fill="#94a3b8" font-size="10.5">Top rung rewrites skills (02) &amp; memory (03) via gated pull requests</text>
+
+  <!-- ========================================================= -->
+  <!-- RIGHT PANEL: VERIFICATION HIERARCHY & DUAL-LOOP SYSTEM   -->
+  <!-- ========================================================= -->
+  <rect x="610" y="80" width="560" height="535" rx="10" fill="url(#cardGrad)" stroke="#34d399" stroke-width="1.5" />
+  <text x="630" y="110" fill="#34d399" font-size="14" font-weight="700">2. VERIFICATION HIERARCHY &amp; DUAL-LOOP SYSTEM</text>
+  <text x="630" y="128" fill="#94a3b8" font-size="11">Deterministic efficiency · Michelin kitchen discipline vs prompt vibes</text>
+  <line x1="630" y1="138" x2="1150" y2="138" stroke="#334155" stroke-width="1" />
+
+  <!-- Upper Box: Verification Hierarchy -->
+  <rect x="630" y="148" width="520" height="188" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1" />
+  <text x="645" y="168" fill="#38bdf8" font-size="12" font-weight="700">INVERTED VERIFICATION HIERARCHY (TOKEN EFFICIENCY)</text>
+
+  <!-- Tier 1: Architecture -->
+  <rect x="645" y="178" width="490" height="24" rx="4" fill="#0f766e" fill-opacity="0.7" />
+  <text x="890" y="194" fill="#ccfbf1" font-size="11" font-weight="600" text-anchor="middle">1. Codebase Architecture (Make invalid states unrepresentable)</text>
+
+  <!-- Tier 2: Static Analysis -->
+  <rect x="670" y="206" width="440" height="24" rx="4" fill="#1e3a8a" fill-opacity="0.7" />
+  <text x="890" y="222" fill="#dbeafe" font-size="11" font-weight="600" text-anchor="middle">2. Static Analysis (Types, Linters, Compilers, Fast Tests)</text>
+
+  <!-- Tier 3: Evals & Traces -->
+  <rect x="700" y="234" width="380" height="24" rx="4" fill="#581c87" fill-opacity="0.7" />
+  <text x="890" y="250" fill="#f3e8ff" font-size="11" font-weight="600" text-anchor="middle">3. Verification &amp; Evals (Network Traces, Fiddler MCP, Invariants)</text>
+
+  <!-- Tier 4: Prose Rules -->
+  <rect x="730" y="262" width="320" height="24" rx="4" fill="#78350f" fill-opacity="0.7" />
+  <text x="890" y="278" fill="#fef3c7" font-size="11" font-weight="600" text-anchor="middle">4. Prose Rules &amp; Skills (AGENTS.md - Weakest Layer)</text>
+
+  <!-- Tier 5: Human Gate -->
+  <rect x="770" y="290" width="240" height="24" rx="4" fill="#374151" fill-opacity="0.8" />
+  <text x="890" y="306" fill="#f3f4f6" font-size="11" font-weight="600" text-anchor="middle">5. Human Review (Approval Gate)</text>
+
+  <text x="890" y="326" fill="#94a3b8" font-size="10.5" text-anchor="middle" font-style="italic">
+    "All you need is good SE &amp; investing tokens in the right places: the more deterministic the better"
+  </text>
+
+  <!-- Lower Box: Dual Loop Engine -->
+  <rect x="630" y="346" width="520" height="255" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1" />
+  <text x="645" y="368" fill="#34d399" font-size="12" font-weight="700">THE DUAL-LOOP SOFTWARE FACTORY (ZACH LLOYD / WARP)</text>
+
+  <!-- Inner Loop Container -->
+  <rect x="645" y="382" width="240" height="170" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2" />
+  <text x="655" y="402" fill="#38bdf8" font-size="11.5" font-weight="700">INNER LOOP: Worker Agent</text>
+  <text x="655" y="418" fill="#94a3b8" font-size="10">Executes features &amp; fixes</text>
+  <text x="655" y="438" fill="#cbd5e1" font-size="10.5">• Task checkout in worktree</text>
+  <text x="655" y="456" fill="#cbd5e1" font-size="10.5">• Runs skills &amp; edit cycles</text>
+  <text x="655" y="474" fill="#cbd5e1" font-size="10.5">• Verifies against guardrails</text>
+  <text x="655" y="492" fill="#cbd5e1" font-size="10.5">• Opens pull request</text>
+  <text x="655" y="516" fill="#64748b" font-size="10">Focus: Immediate task resolution</text>
+  <text x="655" y="534" fill="#64748b" font-size="10">Zero cross-session baggage</text>
+
+  <!-- Outer Loop Container -->
+  <rect x="900" y="382" width="240" height="170" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="1.2" />
+  <text x="910" y="402" fill="#fbbf24" font-size="11.5" font-weight="700">OUTER LOOP: Observer Agent</text>
+  <text x="910" y="418" fill="#94a3b8" font-size="10">Improves the factory harness</text>
+  <text x="910" y="438" fill="#cbd5e1" font-size="10.5">• Watches review comments</text>
+  <text x="910" y="456" fill="#cbd5e1" font-size="10.5">• Runs /retro &amp; /correct</text>
+  <text x="910" y="474" fill="#cbd5e1" font-size="10.5">• Generates lint / skill PRs</text>
+  <text x="910" y="492" fill="#cbd5e1" font-size="10.5">• Lead reviews &amp; merges</text>
+  <text x="910" y="516" fill="#64748b" font-size="10">Focus: Compound repo intelligence</text>
+  <text x="910" y="534" fill="#64748b" font-size="10">Never repeat human corrections</text>
+
+  <!-- Inter-loop connector arrows -->
+  <path d="M 885 450 L 900 450" fill="none" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrowCyan)" />
+  <path d="M 900 475 L 885 475" fill="none" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowAmber)" />
+
+  <text x="890" y="580" fill="#38bdf8" font-size="11" text-anchor="middle" font-weight="600">
+    Factory Metric = (Shipped Verified Code) / (Token Cost + Human Review Cost)
+  </text>
+
+  <!-- ========================================================= -->
+  <!-- BOTTOM PANEL: THREE OPERATIONAL PARADIGMS                 -->
+  <!-- ========================================================= -->
+  <rect x="30" y="628" width="1140" height="152" rx="10" fill="url(#cardGrad)" stroke="#475569" stroke-width="1.5" />
+  <text x="50" y="652" fill="#f8fafc" font-size="13" font-weight="700">3. OPERATIONAL PARADIGMS: FROM VIBE CODING TO THE COMPOUND MICHELIN KITCHEN</text>
+  <line x1="50" y1="662" x2="1150" y2="662" stroke="#334155" stroke-width="1" />
+
+  <!-- Paradigm 1: Vibe Coding -->
+  <rect x="50" y="674" width="346" height="94" rx="6" fill="#0f172a" stroke="#ef4444" stroke-width="1.2" />
+  <text x="65" y="694" fill="#f87171" font-size="12" font-weight="700">Vibe Coding (Probabilistic Guessing)</text>
+  <text x="65" y="712" fill="#94a3b8" font-size="10.5">• Unbounded chat prompting; no persistent repo state</text>
+  <text x="65" y="728" fill="#94a3b8" font-size="10.5">• Cognitive surrender: accepts code humans cannot trace</text>
+  <text x="65" y="744" fill="#94a3b8" font-size="10.5">• Context rot: repeats identical errors next morning</text>
+  <text x="65" y="760" fill="#cbd5e1" font-size="10" font-weight="600">Outcome: Fragile prototypes; exponential maintenance debt</text>
+
+  <!-- Paradigm 2: Liquid Software -->
+  <rect x="427" y="674" width="346" height="94" rx="6" fill="#0f172a" stroke="#a855f7" stroke-width="1.2" />
+  <text x="442" y="694" fill="#c084fc" font-size="12" font-weight="700">Liquid Software (Patrick Collison / Stripe)</text>
+  <text x="442" y="712" fill="#94a3b8" font-size="10.5">• In-app text prompt hooked to live code modifications</text>
+  <text x="442" y="728" fill="#94a3b8" font-size="10.5">• Zero activation energy for end-user custom adaptations</text>
+  <text x="442" y="744" fill="#94a3b8" font-size="10.5">• Modern resurgence of Smalltalk &amp; HyperCard vision</text>
+  <text x="442" y="760" fill="#cbd5e1" font-size="10" font-weight="600">Outcome: Extreme fluidity; unproven at enterprise scale</text>
+
+  <!-- Paradigm 3: Michelin Kitchen -->
+  <rect x="804" y="674" width="346" height="94" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.2" />
+  <text x="819" y="694" fill="#4ade80" font-size="12" font-weight="700">Michelin Kitchen (Lauren Tan / Compound SE)</text>
+  <text x="819" y="712" fill="#94a3b8" font-size="10.5">• Deterministic gates (architecture &gt; lints &gt; tests &gt; prose)</text>
+  <text x="819" y="728" fill="#94a3b8" font-size="10.5">• Gated retrospectives (/retro) write checks into repo</text>
+  <text x="819" y="744" fill="#94a3b8" font-size="10.5">• Dual loops: agents work tasks; observer upgrades tools</text>
+  <text x="819" y="760" fill="#cbd5e1" font-size="10" font-weight="600">Outcome: Compound reliability; token-efficient scaling</text>
+
+</svg>

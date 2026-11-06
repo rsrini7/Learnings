@@ -104,6 +104,7 @@ Learnings/
 - [AI Native Development 2026 Specs Context Harnesses](AI-ML/Agents/development/AI-Native-Development-2026-Specs-Context-Harnesses.md)
 - [AI Operating Manual](AI-ML/Agents/development/AI-Operating-Manual.md)
 - [AI PMRoles](AI-ML/Agents/development/AI-PMRoles.md)
+- [Self Improving Agents Loop Engineering And Software Factories 2026](AI-ML/Agents/development/Self-Improving-Agents-Loop-Engineering-And-Software-Factories-2026.md)
 - [Spec Driven Development Frameworks](AI-ML/Agents/development/Spec-Driven-Development-Frameworks.md)
 
 #### 📝 Programming AI (DSPy, BAML)
