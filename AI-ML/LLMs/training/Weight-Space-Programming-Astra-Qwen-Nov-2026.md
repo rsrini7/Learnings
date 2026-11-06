@@ -219,7 +219,107 @@ While it used zero backpropagation and zero calculus gradients, it was powered b
 
 ---
 
-## 5. The Critical Reality Check: 3 Key Insights
+## 5. Architectural & Algorithmic Validation: Answering the Open Questions
+
+When machine learning practitioners and educators examine Weight-Space Programming (such as in beginner-focused video analyses and technical reviews), several fundamental questions naturally arise. Below is a rigorous architectural and mathematical breakdown addressing each inquiry.
+
+```mermaid
+flowchart TD
+    subgraph Questions["The 6 Core Practitioner Q"]
+        direction TB
+        Q1["1. How can an LLM 'read' weights given permutation symmetry?"]
+        Q2["2. Why specifically Layers 15 and 19 in a 24-layer model?"]
+        Q3["3. Why edit down_proj instead of gate_proj or attention heads?"]
+        Q4["4. Is this a new algorithm, or automated ROME / LEACE?"]
+        Q5["5. Why didn't ablating a vector cause catastrophic forgetting?"]
+        Q6["6. How can this scale to 70B+ models beyond the context window?"]
+    end
+
+    subgraph Answers["The Architectural Realities"]
+        direction TB
+        A1["Python REPL Telemetry & Canonical Feature Rows (Not Raw Prompt Dumps)"]
+        A2["Middle-to-Late Depth Specialization: Breaking Limit-Cycle Attractors"]
+        A3["Residual Stream Linearity: Preserving Non-Linear Activation Guarantees"]
+        A4["Algorithmic Automation: LLM as Autonomous Mechanistic Researcher"]
+        A5["High-Dimensional Orthogonality: Preserving 99.89% of Subspace (895/896 dims)"]
+        A6["Out-of-Core Memory-Mapped I/O (safetensors): Sub-Second Matrix Math"]
+    end
+
+    Q1 --> A1
+    Q2 --> A2
+    Q3 --> A3
+    Q4 --> A4
+    Q5 --> A5
+    Q6 --> A6
+
+    style Questions fill:#1e1b4b,stroke:#818cf8,stroke-width:1.5px
+    style Answers fill:#022c22,stroke:#34d399,stroke-width:1.5px
+```
+
+### 5.1 The Permutation & Tokenization Mystery: How Does an LLM Actually "Read" Weights?
+
+* **The Question:** In any neural network, permuting hidden neurons creates $H!$ mathematically equivalent weight matrices that compute the exact same function. Furthermore, dumping hundreds of millions of raw floating-point numbers into an LLM's context window would instantly exceed token limits. How does an LLM actually "read" and understand weights?
+* **The Resolution:**
+  1. **Canonical Input Dimensions in Small Networks:** In the Atari game experiments (Experiment 1), the network architectures were small MLPs where the input dimensions were explicitly mapped to environment coordinates (`ball_x`, `ball_y`, `paddle_x`). In feed-forward networks, the rows of the first weight matrix $W_1$ inherit this exact semantic ordering. Astra did not have to solve a graph isomorphism problem; it inspected the weight rows corresponding to known physical inputs and identified correlations (e.g., negative weights between `ball_y` and the `MOVE_UP` action).
+  2. **REPL Code Execution Over Prompt Dumps:** In large language model experiments (`Qwen3.5-0.8B`), Astra **never read raw weight numbers in its text prompt**. Astra operated as an autonomous agent inside a Python REPL. It wrote standard PyTorch code using `torch.load()`, registered forward hooks to capture hidden states, calculated activation differences ($\mu_{\text{loop}} - \mu_{\text{normal}}$), and performed linear algebra programmatically. The weights stayed inside GPU/host memory; only high-level summary telemetry and code crossed the LLM's context window.
+
+### 5.2 Why Layers 15 and 19? Depth Specialization and Limit-Cycle Attractors
+
+* **The Question:** Qwen3.5-0.8B has 24 transformer layers. Why did the looping bug emerge specifically in Layers 15 and 19 rather than in early layers (Layers 1–5) or final layers (Layers 22–24)?
+* **The Resolution:**
+  1. **Transformer Depth Functional Specialization:** Research into transformer circuit anatomy (such as Meng et al.'s *ROME* and Geva et al.'s *Transformer Feed-Forward Layers Are Key-Value Memories*) demonstrates clear functional stratification by depth:
+     * **Early Layers (0–6):** Focus on shallow tokenization, lexical parsing, and local syntactic relationships.
+     * **Middle-to-Late Layers (14–20):** Act as **high-level semantic reasoning and factual retrieval engines**, where MLP sublayers retrieve conceptual associations and synthesize deductive reasoning steps.
+     * **Late Layers (21–23):** Specialize in logit vocabulary decoding and token selection (`lm_head`).
+  2. **The Limit-Cycle Attractor:** In small models (0.8B parameters) operating under low sampling temperatures, middle-depth layers lack the parameter capacity to sustain complex Chain-of-Thought state transitions. When reasoning stalls, the MLP sublayers in Layers 15 and 19 collapse into an **attractor state** in activation space. This state reinforces the self-attention heads to re-attend to previously generated tokens, creating an autopoietic (self-reinforcing) limit cycle.
+  3. **Breaking the Orbit:** Projecting vector $v$ out of Layers 15 and 19 directly eliminates the mathematical attractor in the model's core reasoning engine, allowing the residual stream to advance to the final answer.
+
+### 5.3 Why `down_proj` and Not Attention Heads or `gate_proj`?
+
+* **The Question:** In a SwiGLU transformer layer, why did the edit specifically target the MLP's `down_proj` matrix rather than `gate_proj`, `up_proj`, or attention projections (`q_proj`, `k_proj`, `v_proj`, `o_proj`)?
+* **The Resolution:**
+  1. **Linearity in the Residual Stream:** In modern SwiGLU architectures:
+     $$\text{MLP}(x) = \left( \text{SiLU}(x W_{\text{gate}}) \odot (x W_{\text{up}}) \right) W_{\text{down}}$$
+     $$x_{\text{out}} = x_{\text{in}} + \text{Attn}(x) + \text{MLP}(x)$$
+     Both $W_{\text{gate}}$ and $W_{\text{up}}$ operate *inside* the non-linear SiLU activation and Hadamard elementwise product. An orthogonal projection applied to $W_{\text{gate}}$ or $W_{\text{up}}$ would be distorted non-linearly. In contrast, $W_{\text{down}}$ projects directly and linearly into the residual stream. Applying $(I - v v^T)$ to $W_{\text{down}}$ provides a **strict mathematical guarantee** that the MLP can *never* write any activation energy along direction $v$:
+     $$W_{\text{down}}^{\text{ablated}} = W_{\text{down}} - (W_{\text{down}} v) v^T \implies \text{MLP}_{\text{ablated}}(x) \cdot v \equiv 0 \quad \forall x$$
+  2. **Generator vs. Conduit:** The output projection matrix of attention, $W_o$ (`o_proj`), is also linear to the residual stream. When Astra evaluated projection magnitudes across all sublayers, it discovered that self-attention heads were merely *relaying* the loop signal across context tokens, whereas the MLP sublayers in Layers 15 and 19 were the *primary originating generators* of the vector. Targeting the generator silenced the pathology at its source without degrading attention's token-routing capacity.
+
+### 5.4 Algorithmic Lineage: How WSP Relates to ROME, MEMIT, LEACE, and RepE
+
+* **The Question:** Is Weight-Space Programming a brand-new linear algebra algorithm, or is it an automated synthesis of existing mechanistic interpretability methods?
+* **The Resolution:** The underlying mathematical projection is part of a rich lineage of model editing and representation engineering:
+
+| Algorithm / Method | Target Subspace | Modification Type | How WSP Compares |
+|---|---|---|---|
+| **ROME** (Meng et al., 2022) | Middle MLP `down_proj` | Rank-1 update: $W + \Delta$ via least-squares covariance | ROME writes *new factual memories*; WSP erases *degenerative behavioral attractors*. |
+| **MEMIT** (Meng et al., 2023) | Multi-layer MLP layers | Multi-rank least-squares batch update across layers | MEMIT scales factual updates across layers; WSP focuses on directional circuit ablation. |
+| **LEACE** (Belrose et al., 2023) | Activation / Weight tensors | Closed-form linear concept erasure: $(I - P) W$ | WSP uses an identical mathematical projection operator but identifies $v$ autonomously. |
+| **Refusal Ablation** (Arditi et al., 2024) | Residual stream / `down_proj` | Directional ablation of the 1D refusal vector | Proved that behavioral modes in LLMs reside along 1D linear directions. |
+| **RepE / Activation Steering** (Zou et al., 2023) | Dynamic activations | Runtime forward hook injection: $h' = h \pm \alpha v$ | WSP bakes the steering vector permanently into static weights with **zero inference latency**. |
+
+* **The Genuine Breakthrough of WSP:** The core innovation is **not the projection formula**, but the **automation of the scientific loop**. Previously, finding a target vector and deciding where to ablate it required a team of human researchers spending weeks running probes, writing scripts, and verifying safety. WSP demonstrates that a frontier LLM can act as the researcher—diagnosing, isolating, patching, and verifying entirely on its own.
+
+### 5.5 Collateral Damage: Why Ablating a Direction Preserves 99.89% of Knowledge
+
+* **The Question:** Doesn't modifying weights risk catastrophic forgetting, destroying grammar, code, or general reasoning abilities?
+* **The Resolution:**
+  1. **High-Dimensional Orthogonality:** Qwen3.5-0.8B has a hidden dimension of $d_{\text{model}} = 896$. In an 896-dimensional vector space, two randomly selected vectors are almost perfectly orthogonal ($\mathbb{E}[\cos \theta] \approx 0$).
+  2. **Minimal Subspace Removal:** Projecting out a single 1D direction $v$ removes exactly **1 degree of freedom out of 896**. This leaves **895 orthogonal dimensions (99.89% of the representational subspace) completely untouched**:
+     $$\text{Retained Subspace Capacity} = \frac{d_{\text{model}} - 1}{d_{\text{model}}} = \frac{895}{896} \approx 99.888\%$$
+  3. **Empirical Generalization:** Because general vocabulary, syntax, and reasoning circuits reside across the remaining 895 dimensions, the model's perplexity on standard text remained essentially unchanged (<0.5% shift), while instruction-following (IFEval) surged from 21.0% to 62.3% because the model was unblocked from looping.
+
+### 5.6 Scaling to 70B+ Models: Memory-Mapped Telemetry vs. Context Window Limits
+
+* **The Question:** How can an LLM edit a 70B or 405B parameter model when the weight tensors exceed the context window by orders of magnitude?
+* **The Resolution:**
+  1. **Out-of-Core Memory-Mapped I/O:** Standard deep learning tools store model weights in SafeTensors format. SafeTensors files support `mmap` (memory-mapped files), allowing Python scripts to access and modify individual layer slices on disk without loading all 70 billion parameters into memory.
+  2. **Telemetry-Only LLM Interaction:** The frontier model writes the Python code, dispatches forward passes to collect activation statistics, and calculates the difference vector $v \in \mathbb{R}^{d_{\text{model}}}$.
+  3. **Sub-Second Execution:** Once vector $v$ is isolated, computing $W_{\text{new}} = W - (W \cdot v) v^T$ on a 70B model requires modifying only two matrices (e.g., $8192 \times 28672$). This requires less than **50 milliseconds of standard matrix multiplication**, making parameter surgery on giant foundation models trivially fast.
+
+---
+
+## 6. The Critical Reality Check: 3 Key Insights
 
 The headline *"AI makes another AI 6x better at math without training"* triggered massive viral hype. Placing the research in proper technical context requires examining three critical caveats:
 
@@ -255,7 +355,7 @@ The contrasting result between Qwen and Gemma highlights the fundamental theoret
 
 ---
 
-## 6. Practical Implementation: Reproducing Directional Weight Ablation
+## 7. Practical Implementation: Reproducing Directional Weight Ablation
 
 Researchers and engineers can easily reproduce directional weight ablation using standard PyTorch and HuggingFace Transformers. The following script demonstrates how to extract a contrastive behavioral vector from hidden activations and ablate it directly from an MLP's `down_proj` layer:
 
@@ -324,7 +424,7 @@ if __name__ == "__main__":
 
 ---
 
-## 7. Timeline, Outlook, and Recursive Self-Improvement
+## 8. Timeline, Outlook, and Recursive Self-Improvement
 
 The demonstration of Weight-Space Programming marks an important milestone in automated mechanistic interpretability and model maintenance:
 
@@ -348,13 +448,14 @@ flowchart TD
 
 ---
 
-## 8. Source Context and References
+## 9. Source Context and References
 
 - **Primary Research:** Rikiya Takehi, Jayden Teoh, Alex Zhang, and Omar Khattab (MIT CSAIL, November 2026), [*Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights*](https://rikiyat.github.io/blog/weight-space-programming/).
 - **Experimental Logs & Codebase:** [RikiyaT/lm_understand-logs on GitHub](https://github.com/RikiyaT/lm_understand-logs) and model checkpoint on [Hugging Face](https://huggingface.co/RikiyaT/Qwen3.5-0.8B-weight-space-programming).
-- **Video Analysis & Educational Breakdowns:**
+- **Video Analyses & Educational Breakdowns:**
   - Matthew Berman, [*The most important paper in AI right now*](https://www.youtube.com/watch?v=j09uV1oAuIo) (November 2026) — covering the Software 2.0 binary hex-editing analogy, blind middle-layer reading, and RSI implications.
   - Rob Sho, [*GPT-6 Astra Made Qwen 6x Better at Math Without Training*](http://www.youtube.com/watch?v=wXJDtImT_-0) (November 2026) — covering the Qwen 0.8B loop bug, directional ablation, and Gemma control test.
+  - Technical Explainer, [*Weight-Space Programming: Neural Network Parameter Surgery and Open Questions*](https://www.youtube.com/watch?v=cAGCH19xgU8) (November 2026) — covering foundational neural network mechanics, layer depth attribution, and practitioner questions.
 
 ---
 
