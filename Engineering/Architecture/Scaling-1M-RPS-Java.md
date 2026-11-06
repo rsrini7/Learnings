@@ -1349,6 +1349,7 @@ Alerts: PagerDuty integration for SLO breaches
 *Honest caveat: 1M RPS for Java at 192-core scale is extrapolated from verified TFB data (572k on 8-core). It is plausible but not independently benchmarked at that exact hardware configuration. C++ retains a measurable performance lead for CPU-heavy workloads.*
 
 **Related:**
+- [HTTP QUERY Method (RFC 10008)](HTTP-QUERY-Method-RFC-10008-Nov-2026.md) — Solves edge cache collisions and proxy retry safety for high-throughput search and query APIs.
 - [PHP Migration: Static React, Java and Go](PHP-Migration-Static-React-Java-And-Go-Oct-2026.md) — Enterprise stack selection and migration safety before performance tuning.
 - [Java-Standard_Classes-vs-Records-vs-Carrier_Classes](../JVM/Java-Standard_Classes-vs-Records-vs-Carrier_Classes.md) — Records vs carrier classes guidance for designing low-allocation DTOs at high throughput.
 - [Java-Plugin-Arch](../JVM/Java-Plugin-Arch.md) — OSGi/JPMS modularity patterns that complement horizontally-scaled Java service tiers.

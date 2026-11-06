@@ -1,0 +1,174 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="1200" height="780">
+  <defs>
+    <style>
+      .bg { fill: #0b0f19; }
+      .card-dark { fill: #111827; stroke: #1e293b; stroke-width: 1.5; rx: 8px; }
+      .card-inner { fill: #1e293b; stroke: #334155; stroke-width: 1; rx: 6px; }
+      .card-warn { fill: #1e1b18; stroke: #78350f; stroke-width: 1.5; rx: 8px; }
+      .card-danger { fill: #1c1417; stroke: #881337; stroke-width: 1.5; rx: 8px; }
+      .card-success { fill: #0f1f1a; stroke: #065f46; stroke-width: 1.5; rx: 8px; }
+      .card-info { fill: #0f172a; stroke: #1e3a8a; stroke-width: 1.5; rx: 8px; }
+      
+      .text-title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 20px; font-weight: 700; fill: #f8fafc; }
+      .text-subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .text-badge { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 10px; font-weight: 700; fill: #38bdf8; letter-spacing: 1px; }
+      
+      .card-header { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 14px; font-weight: 700; fill: #f1f5f9; }
+      .card-sub { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; font-weight: 600; fill: #cbd5e1; }
+      .body-text { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #94a3b8; }
+      .body-text-warn { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #fca5a5; }
+      .body-text-emerald { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; font-size: 11px; fill: #86efac; }
+      .code-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10.5px; fill: #38bdf8; }
+      
+      .arrow { stroke: #475569; stroke-width: 1.5; marker-end: url(#arrowhead); }
+      .arrow-cyan { stroke: #38bdf8; stroke-width: 1.5; marker-end: url(#arrowhead-cyan); }
+    </style>
+
+    <marker id="arrowhead" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#475569" />
+    </marker>
+    <marker id="arrowhead-cyan" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+      <polygon points="0 0, 7 2.5, 0 5" fill="#38bdf8" />
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="780" class="bg" />
+
+  <!-- TOP HEADER BLOCK -->
+  <g transform="translate(40, 20)">
+    <rect x="0" y="0" width="1120" height="70" class="card-dark" />
+    <rect x="18" y="12" width="330" height="18" rx="4" fill="#0369a1" fill-opacity="0.2" stroke="#0284c7" stroke-width="1" />
+    <text x="26" y="24" class="text-badge">RFC 10008 · IETF PROPOSED STANDARD · JUNE 2026</text>
+    <text x="18" y="54" class="text-title">The HTTP QUERY Method: Architecture &amp; Dual-Key Caching</text>
+    <text x="545" y="54" class="text-subtitle">Resolving the GET-with-body dilemma and non-idempotent POST search anti-pattern</text>
+  </g>
+
+  <!-- ROW 1: COMPARATIVE ARCHITECTURE (GET vs POST vs QUERY) -->
+  <g transform="translate(40, 105)">
+    <!-- Card 1: GET Limitation -->
+    <rect x="0" y="0" width="350" height="180" class="card-danger" />
+    <text x="20" y="26" class="card-header" fill="#fda4af">GET /search?query=...</text>
+    <text x="20" y="46" class="card-sub" fill="#f43f5e">RFC 9110 §9.3.1 · Safe &amp; Idempotent</text>
+    <text x="20" y="72" class="body-text">• URL query string hits length limits (2KB–8KB)</text>
+    <text x="20" y="92" class="body-text">• PII/credentials leak into cleartext server logs</text>
+    <text x="20" y="112" class="body-text">• GET body has NO defined semantics in RFC 9110</text>
+    <text x="20" y="132" class="body-text-warn">• Intermediaries strip body or reject with 400/405</text>
+    <text x="20" y="152" class="body-text-warn">• Caches collide: body ignored in standard cache key</text>
+
+    <!-- Card 2: POST Compromise -->
+    <rect x="385" y="0" width="350" height="180" class="card-warn" />
+    <text x="405" y="26" class="card-header" fill="#fde047">POST /search (JSON Body)</text>
+    <text x="405" y="46" class="card-sub" fill="#eab308">RFC 9110 §9.3.3 · Unsafe &amp; Non-Idempotent</text>
+    <text x="405" y="72" class="body-text">• Handles arbitrarily complex structured JSON</text>
+    <text x="405" y="92" class="body-text-warn">• NOT idempotent: automatic network retry unsafe</text>
+    <text x="405" y="112" class="body-text-warn">• Zero default caching: CDNs bypass POST</text>
+    <text x="405" y="132" class="body-text">• Historical 301/302 redirects rewrite POST to GET</text>
+    <text x="405" y="152" class="body-text">• Violates REST semantics: reads masked as mutations</text>
+
+    <!-- Card 3: QUERY Resolution -->
+    <rect x="770" y="0" width="350" height="180" class="card-success" />
+    <text x="790" y="26" class="card-header" fill="#86efac">QUERY /search (RFC 10008)</text>
+    <text x="790" y="46" class="card-sub" fill="#22c55e">Safe, Idempotent &amp; Body-Bearing</text>
+    <text x="790" y="72" class="body-text-emerald">✓ Safe &amp; Idempotent: Automatic retry enabled</text>
+    <text x="790" y="92" class="body-text-emerald">✓ Full request payload: JSON, SQL, GraphQL</text>
+    <text x="790" y="112" class="body-text-emerald">✓ Cacheable: dual-key (URI + Body hash)</text>
+    <text x="790" y="132" class="body-text">• Strict Content-Type enforcement (no sniffing)</text>
+    <text x="790" y="152" class="body-text">• Advertised via Accept-Query response header</text>
+  </g>
+
+  <!-- ROW 2: DUAL-KEY CACHING PIPELINE -->
+  <g transform="translate(40, 305)">
+    <rect x="0" y="0" width="1120" height="240" class="card-dark" />
+    <text x="20" y="26" class="card-header">Intermediary &amp; CDN Dual-Key Caching Pipeline (RFC 10008 §2.7)</text>
+    <text x="480" y="26" class="text-subtitle">Computing deterministic cache keys from structured query content</text>
+
+    <!-- Step 1: Inbound Request -->
+    <g transform="translate(20, 45)">
+      <rect x="0" y="0" width="240" height="175" class="card-inner" />
+      <text x="15" y="24" class="card-sub">1. Inbound Request</text>
+      <text x="15" y="48" class="code-text">QUERY /api/orders</text>
+      <text x="15" y="68" class="code-text">Host: api.corp.internal</text>
+      <text x="15" y="88" class="code-text">Content-Type: app/json</text>
+      <text x="15" y="116" class="body-text">Raw body with custom whitespace</text>
+      <text x="15" y="136" class="body-text">and arbitrary JSON key order:</text>
+      <text x="15" y="156" class="code-text">{ "status": "paid", "limit": 10 }</text>
+    </g>
+
+    <!-- Arrow 1 to 2 -->
+    <path d="M 268 132 L 292 132" class="arrow-cyan" />
+
+    <!-- Step 2: Canonical Normalization -->
+    <g transform="translate(300, 45)">
+      <rect x="0" y="0" width="245" height="175" class="card-inner" />
+      <text x="15" y="24" class="card-sub">2. Canonical Normalization</text>
+      <text x="15" y="46" class="body-text">RFC 8785 JSON Canonicalization:</text>
+      <text x="15" y="68" class="body-text">• Lexicographical key sorting</text>
+      <text x="15" y="88" class="body-text">• Whitespace stripped outside strings</text>
+      <text x="15" y="108" class="body-text">• IEEE-754 float representation</text>
+      <text x="15" y="136" class="body-text">Normalized canonical string:</text>
+      <text x="15" y="156" class="code-text">{"limit":10,"status":"paid"}</text>
+    </g>
+
+    <!-- Arrow 2 to 3 -->
+    <path d="M 553 132 L 577 132" class="arrow-cyan" />
+
+    <!-- Step 3: Composite Cache Key -->
+    <g transform="translate(585, 45)">
+      <rect x="0" y="0" width="245" height="175" class="card-inner" />
+      <text x="15" y="24" class="card-sub">3. Composite Key Generation</text>
+      <text x="15" y="46" class="body-text">Cryptographic payload digest:</text>
+      <text x="15" y="68" class="code-text">H = SHA256(canonical_body)</text>
+      <text x="15" y="94" class="body-text">Primary Key: Method + Target URI</text>
+      <text x="15" y="114" class="body-text">Secondary Key: Content-Type + H</text>
+      <text x="15" y="140" class="body-text">Composite Cache Storage Key:</text>
+      <text x="15" y="160" class="code-text">QUERY:/api/orders:app/json:8f4c2e</text>
+    </g>
+
+    <!-- Arrow 3 to 4 -->
+    <path d="M 838 132 L 862 132" class="arrow-cyan" />
+
+    <!-- Step 4: Cache Evaluation -->
+    <g transform="translate(870, 45)">
+      <rect x="0" y="0" width="230" height="175" class="card-inner" />
+      <text x="15" y="24" class="card-sub">4. Cache Evaluation</text>
+      <text x="15" y="48" class="body-text-emerald">HIT: Return cached 200 OK</text>
+      <text x="15" y="68" class="body-text">• Adds Age header</text>
+      <text x="15" y="88" class="body-text">• Skips origin roundtrip</text>
+      <text x="15" y="114" class="body-text-warn">MISS: Forward to Origin</text>
+      <text x="15" y="134" class="body-text">• Origin validates Content-Type</text>
+      <text x="15" y="154" class="body-text">• Returns 200 / 303 + Cache-Control</text>
+    </g>
+  </g>
+
+  <!-- ROW 3: TWO RESPONSE MODALITIES -->
+  <g transform="translate(40, 560)">
+    <!-- Modality A: Direct Response -->
+    <g transform="translate(0, 0)">
+      <rect x="0" y="0" width="545" height="195" class="card-dark" />
+      <text x="20" y="28" class="card-header" fill="#38bdf8">Pattern A: Direct Dataset Delivery (200 OK)</text>
+      <text x="20" y="50" class="text-subtitle">Origin immediately executes query and streams dataset in response body</text>
+      
+      <rect x="20" y="65" width="505" height="112" class="card-inner" />
+      <text x="35" y="88" class="code-text">HTTP/1.1 200 OK</text>
+      <text x="35" y="106" class="code-text">Content-Type: application/json</text>
+      <text x="35" y="124" class="code-text">Cache-Control: max-age=3600, stale-while-revalidate=60</text>
+      <text x="35" y="142" class="code-text">Accept-Query: application/json, application/sql</text>
+      <text x="35" y="162" class="body-text-emerald">Ideal for interactive queries, RPC replacements, and internal microservices</text>
+    </g>
+
+    <!-- Modality B: Indirect Resource Minting -->
+    <g transform="translate(575, 0)">
+      <rect x="0" y="0" width="545" height="195" class="card-dark" />
+      <text x="20" y="28" class="card-header" fill="#a78bfa">Pattern B: Indirect Resource Minting (303 See Other)</text>
+      <text x="20" y="50" class="text-subtitle">Server mints persistent query resource, returning redirect to cacheable URI</text>
+      
+      <rect x="20" y="65" width="505" height="112" class="card-inner" />
+      <text x="35" y="88" class="code-text">HTTP/1.1 303 See Other</text>
+      <text x="35" y="106" class="code-text">Location: /api/orders/stored-queries/q-89f41b2e</text>
+      <text x="35" y="124" class="body-text">Client follows redirect with body-less GET to retrieve dataset</text>
+      <text x="35" y="144" class="body-text-warn">Security Rule: Location URI must NOT leak sensitive query tokens</text>
+      <text x="35" y="162" class="body-text">Ideal for heavy async queries, report exports, and shareable URLs</text>
+    </g>
+  </g>
+</svg>
