@@ -446,6 +446,7 @@ Learnings/
 - [Node.js Brotli Node2Shell RCE Oct 2026](News/Security/Node.js-Brotli-Node2Shell-RCE-Oct-2026.md)
 - [Notepad++ Targetted Attach](News/Security/Notepad%2B%2B-Targetted-Attach.md)
 - [OpenCode Console API Key Breach And Distillation Oct 2026](News/Security/OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md)
+- [OpenSSH Musl Asterisk Bypass Sshhole Nov 2026](News/Security/OpenSSH-Musl-Asterisk-Bypass-Sshhole-Nov-2026.md)
 - [PHP2Shell Exploit Debate Threat Models And Patch Status Oct 2026](News/Security/PHP2Shell-Exploit-Debate-Threat-Models-And-Patch-Status-Oct-2026.md)
 - [PHP2Shell History UAF And ASLR Oct 2026](News/Security/PHP2Shell-History-UAF-And-ASLR-Oct-2026.md)
 - [PHP2Shell Steal My Bitcoin Challenge Oct 2026](News/Security/PHP2Shell-Steal-My-Bitcoin-Challenge-Oct-2026.md)

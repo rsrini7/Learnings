@@ -1,0 +1,165 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0b0f19; }
+      .panel { fill: #111827; stroke: #1e293b; stroke-width: 1.5; rx: 8px; }
+      .inner-box { fill: #1e293b; stroke: #334155; stroke-width: 1.2; rx: 6px; }
+      .inner-box-red { fill: #1e293b; stroke: #f87171; stroke-width: 1.3; rx: 6px; }
+      .inner-box-green { fill: #1e293b; stroke: #4ade80; stroke-width: 1.3; rx: 6px; }
+      .inner-box-amber { fill: #1e293b; stroke: #fbbf24; stroke-width: 1.3; rx: 6px; }
+      .header-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 700; fill: #f8fafc; }
+      .header-subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .panel-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 600; fill: #38bdf8; }
+      .panel-subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 11px; fill: #94a3b8; }
+      .box-desc { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .tag { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; font-weight: 600; }
+      .tag-red { fill: #f87171; }
+      .tag-green { fill: #4ade80; }
+      .tag-amber { fill: #fbbf24; }
+      .tag-cyan { fill: #38bdf8; }
+      .code-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10.5px; fill: #a5b4fc; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="900" class="bg" />
+
+  <!-- Header -->
+  <text x="40" y="42" class="header-title">OpenSSH &amp; musl libc: The *sshole Authentication Bypass (CVE-2026-123158)</text>
+  <text x="40" y="66" class="header-subtitle">How 40 Years of Isolated Defensive Choices Collided into Remote Authentication Bypass</text>
+
+  <!-- Left Panel: The Four Converging Assumptions -->
+  <rect x="40" y="90" width="365" height="780" class="panel" />
+  <text x="56" y="118" class="panel-title">1. Four Converging Design Choices</text>
+  <text x="56" y="136" class="panel-subtitle">Decades of independent, well-intentioned defensive decisions</text>
+
+  <!-- Assumption 1: 1980s Shadow -->
+  <rect x="56" y="152" width="333" height="130" class="inner-box" />
+  <text x="70" y="174" class="tag tag-cyan">1980s: Shadow File Sentinel (*)</text>
+  <text x="70" y="194" class="box-desc">• Setting password to &quot;*&quot; disables password auth.</text>
+  <text x="70" y="212" class="box-desc">• Standard crypt() outputs 13+ char base64 strings.</text>
+  <text x="70" y="230" class="box-desc">• Assumption: Stored &quot;*&quot; can never collide with valid</text>
+  <text x="70" y="248" class="box-desc">  cryptographic output from any real hashing routine.</text>
+  <text x="70" y="268" class="code-text">/etc/shadow: root:*::0:99999:7:::</text>
+
+  <!-- Assumption 2: 2012 Musl Error Sentinel -->
+  <rect x="56" y="296" width="333" height="150" class="inner-box" />
+  <text x="70" y="318" class="tag tag-amber">2012: musl libc crypt() Error Handling</text>
+  <text x="70" y="338" class="box-desc">• POSIX crypt() returns NULL on invalid input.</text>
+  <text x="70" y="356" class="box-desc">• musl returns &quot;*&quot; on failure to prevent NULL pointer</text>
+  <text x="70" y="374" class="box-desc">  dereferences in legacy callers that skip NULL checks.</text>
+  <text x="70" y="392" class="box-desc">• In crypt_sha512.c: passwords &gt; 256 bytes return 0</text>
+  <text x="70" y="410" class="box-desc">  as a DoS protection against expensive hash loops.</text>
+  <text x="70" y="432" class="code-text">if (strlen(key) &gt; 256) return 0; // returns &quot;*&quot;</text>
+
+  <!-- Assumption 3: 2016 OpenSSH Timing Defense -->
+  <rect x="56" y="460" width="333" height="150" class="inner-box" />
+  <text x="70" y="482" class="tag tag-cyan">2016: OpenSSH CVE-2016-6210 Mitigation</text>
+  <text x="70" y="502" class="box-desc">• Fixed username enumeration via response latency.</text>
+  <text x="70" y="520" class="box-desc">• Even if user has no password (&quot;*&quot;), sshd hashes</text>
+  <text x="70" y="538" class="box-desc">  input by borrowing a salt from another local account.</text>
+  <text x="70" y="556" class="box-desc">• Ensures calculation time is identical across accounts.</text>
+  <text x="70" y="574" class="box-desc">• Assumption: Target &quot;*&quot; will never match result.</text>
+  <text x="70" y="596" class="code-text">sshd borrows salt: $6$rounds=5000$validSalt...</text>
+
+  <!-- Assumption 4: 2026 AI Agent Fuzzing -->
+  <rect x="56" y="624" width="333" height="135" class="inner-box" />
+  <text x="70" y="646" class="tag tag-purple" fill="#c084fc">2026: AI Swarm Cross-Library Fuzzing</text>
+  <text x="70" y="666" class="box-desc">• Özgün Kültekin tested 12 sshd build configurations.</text>
+  <text x="70" y="684" class="box-desc">• Agent swarms fired ~17,600 mutated login attempts.</text>
+  <text x="70" y="702" class="box-desc">• The swarm isolated the single combination where</text>
+  <text x="70" y="720" class="box-desc">  oversized password triggered the &quot;*&quot; == &quot;*&quot; bypass.</text>
+  <text x="70" y="742" class="code-text">musl + no-PAM + &quot;*&quot; account + 257..1024 bytes</text>
+
+  <!-- Middle Panel: The Exploit Mechanism & Logic Failure -->
+  <rect x="420" y="90" width="415" height="780" class="panel" />
+  <text x="436" y="118" class="panel-title">2. Execution Trace &amp; The Fatal Collision</text>
+  <text x="436" y="136" class="panel-subtitle">How oversized passwords trick sshd into matching the error string</text>
+
+  <!-- Trace Box 1: Input -->
+  <rect x="436" y="152" width="383" height="100" class="inner-box" />
+  <text x="450" y="174" class="tag tag-amber">Step 1: Attacker Submits 257+ Byte Password</text>
+  <text x="450" y="194" class="box-desc">• Attacker connects: ssh root@target-host</text>
+  <text x="450" y="212" class="box-desc">• Provides string: &quot;A&quot; * 257 (up to OpenSSH 1024 limit).</text>
+  <text x="450" y="234" class="code-text">ssh root@alpine -o PasswordAuthentication=yes</text>
+
+  <!-- Trace Box 2: sshd Salt Borrowing -->
+  <rect x="436" y="266" width="383" height="110" class="inner-box" />
+  <text x="450" y="288" class="tag tag-cyan">Step 2: OpenSSH Timing Protection Invoked</text>
+  <text x="450" y="308" class="box-desc">• Target account root has stored hash: pw_password = &quot;*&quot;.</text>
+  <text x="450" y="326" class="box-desc">• sshd borrows valid SHA-512 salt to prevent timing leaks.</text>
+  <text x="450" y="344" class="box-desc">• Calls: crypt(password_257_bytes, borrowed_salt)</text>
+  <text x="450" y="364" class="code-text">crypt(&quot;AAA...&quot;, &quot;$6$rounds=5000$salt$...&quot;)</text>
+
+  <!-- Trace Box 3: musl Error Cascade -->
+  <rect x="436" y="390" width="383" height="120" class="inner-box" />
+  <text x="450" y="412" class="tag tag-amber">Step 3: musl crypt_sha512.c Drops Password</text>
+  <text x="450" y="432" class="box-desc">• musl checks: if (strlen(key) &gt; 256) return 0;</text>
+  <text x="450" y="450" class="box-desc">• Length 257 exceeds limit! Hashing aborts immediately.</text>
+  <text x="450" y="468" class="box-desc">• musl's crypt() wrapper intercepts 0 and returns &quot;*&quot;.</text>
+  <text x="450" y="490" class="code-text">encrypted_password = &quot;*&quot; (Sentinel error value)</text>
+
+  <!-- Trace Box 4: Fatal Collision -->
+  <rect x="436" y="524" width="383" height="135" class="inner-box-red" />
+  <text x="450" y="546" class="tag tag-red">Step 4: Fatal strcmp() Match in auth-passwd.c</text>
+  <text x="450" y="566" class="box-desc">• OpenSSH non-PAM check runs:</text>
+  <text x="450" y="584" class="code-text">  strcmp(encrypted_password, pw_password) == 0</text>
+  <text x="450" y="602" class="box-desc">• Substitutes: strcmp(&quot;*&quot;, &quot;*&quot;) == 0</text>
+  <text x="450" y="620" class="box-desc">• Evaluates to TRUE! sshd treats match as verified password.</text>
+  <text x="450" y="642" class="tag-red tag">STATUS: AUTHENTICATION GRANTED</text>
+
+  <!-- Trace Box 5: Breach Result -->
+  <rect x="436" y="673" width="383" height="86" class="inner-box-red" />
+  <text x="450" y="695" class="tag tag-red">Step 5: Interactive Shell Access Granted</text>
+  <text x="450" y="715" class="box-desc">• Attacker gains interactive PTY as root or target user.</text>
+  <text x="450" y="737" class="code-text">alpine:~# whoami &amp;&amp; id  -&gt;  root / uid=0</text>
+
+  <!-- Right Panel: Exposure Matrix & Patch -->
+  <rect x="850" y="90" width="310" height="780" class="panel" />
+  <text x="866" y="118" class="panel-title">3. Vulnerability Matrix &amp; Fix</text>
+  <text x="866" y="136" class="panel-subtitle">Environmental factors and OpenSSH 10.6p2</text>
+
+  <!-- Matrix: glibc vs musl -->
+  <rect x="866" y="152" width="278" height="200" class="inner-box" />
+  <text x="878" y="174" class="tag tag-cyan">Environment Vulnerability Matrix</text>
+  
+  <text x="878" y="198" class="tag tag-green">✓ glibc + PAM</text>
+  <text x="990" y="198" class="box-desc">Safe (Ubuntu/Debian)</text>
+
+  <text x="878" y="222" class="tag tag-green">✓ glibc + no PAM</text>
+  <text x="990" y="222" class="box-desc">Safe (No &quot;*&quot; returned)</text>
+
+  <text x="878" y="246" class="tag tag-green">✓ musl + PAM</text>
+  <text x="990" y="246" class="box-desc">Safe (PAM checks &quot;*&quot;)</text>
+
+  <text x="878" y="270" class="tag tag-red">✗ musl + no PAM</text>
+  <text x="990" y="270" class="tag tag-red">VULNERABLE</text>
+
+  <text x="878" y="294" class="box-desc">• Alpine Linux default sshd lacks PAM.</text>
+  <text x="878" y="312" class="box-desc">• OpenWrt / Yocto / Buildroot affected.</text>
+  <text x="878" y="330" class="box-desc">• Cloud AMIs with locked root compromised.</text>
+
+  <!-- Patch Box: OpenSSH 10.6p2 -->
+  <rect x="866" y="366" width="278" height="190" class="inner-box-green" />
+  <text x="878" y="388" class="tag tag-green">OpenSSH 10.6p2 Remediation</text>
+  <text x="878" y="408" class="box-desc">• Commit: 4353fdc43ef6 (Damien Miller)</text>
+  <text x="878" y="426" class="box-desc">• Enforces minimum hash length check:</text>
+  <text x="878" y="446" class="code-text">#define MIN_PASSWORD_HASH_LEN 4</text>
+  <text x="878" y="466" class="code-text">ret = encrypted_pw != NULL &amp;&amp;</text>
+  <text x="878" y="482" class="code-text">      strlen(pw_password) &gt;=</text>
+  <text x="878" y="498" class="code-text">        MIN_PASSWORD_HASH_LEN &amp;&amp;</text>
+  <text x="878" y="514" class="code-text">      strcmp(encrypted_pw, ...) == 0;</text>
+  <text x="878" y="534" class="box-desc">• Length of &quot;*&quot; is 1 &lt; 4 -&gt; REJECTED!</text>
+
+  <!-- Workarounds Box -->
+  <rect x="866" y="570" width="278" height="190" class="inner-box-amber" />
+  <text x="878" y="592" class="tag tag-amber">Immediate Operational Mitigations</text>
+  <text x="878" y="612" class="box-desc">1. Disable Password Authentication:</text>
+  <text x="878" y="630" class="code-text">echo &quot;PasswordAuthentication no&quot;</text>
+  <text x="878" y="646" class="code-text">  &gt;&gt; /etc/ssh/sshd_config</text>
+  <text x="878" y="668" class="box-desc">2. Restart running sshd daemon:</text>
+  <text x="878" y="686" class="code-text">rc-service sshd restart</text>
+  <text x="878" y="708" class="box-desc">3. Update Alpine packages:</text>
+  <text x="878" y="726" class="code-text">apk update &amp;&amp; apk upgrade openssh</text>
+  <text x="878" y="744" class="box-desc">CRITICAL: Active daemon must restart!</text>
+</svg>
