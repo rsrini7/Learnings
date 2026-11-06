@@ -322,6 +322,7 @@ AmshaAgent complements its static code invariants with a self-evolution learning
 ---
 
 **Related:**
+- [Agentic Memory Governance: Policy Engines, Temporal Knowledge Graphs, and Multi-Tier State Lifecycles](Agentic-Memory-Governance-Policy-Engines-And-Lifecycles-Nov-2026.md) — Production architecture decoupling storage backends from governance policies (Write, Retrieve, Age, Protect), temporal graph lifecycles, and context poisoning prevention.
 - [Agent Memory Architectures: The 5-Layer Harness Model, KV-Cache Economics, and Parametric Judgment Memory](Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md) — Comprehensive analysis of the 5-layer memory hierarchy, rolling compaction, prefix caching, and online parametric judgment calibration.
 - [DeepSeek SuperAgents and Harness Architecture](DeepSeek-SuperAgent-And-Harness-Architecture-Nov-2026.md) — Event-driven autonomous pipelines, Cordis framework, progressive inlining, and Chain of Recall decoupled memory.
 - [Confucius Code Agent](Confucius-Code-Agent.md) — Hierarchical working memory, meta-agent build-test-improve loops, and industrial-scale coding harnesses.

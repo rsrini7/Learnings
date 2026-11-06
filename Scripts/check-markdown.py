@@ -281,6 +281,7 @@ def auto_fix_file(filepath):
     modified = False
     new_lines = []
     in_code_block = False
+    unindent_continuation = False
 
     for idx, line in enumerate(lines):
         stripped = line.strip()
@@ -288,6 +289,7 @@ def auto_fix_file(filepath):
         # Track code blocks
         if stripped.startswith('```'):
             in_code_block = not in_code_block
+            unindent_continuation = False
             new_lines.append(line)
             continue
 
@@ -303,7 +305,20 @@ def auto_fix_file(filepath):
             if new_lines and new_lines[-1].strip() != '':
                 new_lines.append('')
             current_line = stripped
+            unindent_continuation = True
             modified = True
+        elif unindent_continuation:
+            if stripped == '':
+                # Blank line ends display block separation; continuation window closes
+                unindent_continuation = False
+            elif re.match(r'^[ ]*([0-9]+\.|\*|-)\s+', current_line):
+                # A new list marker, stop unindenting
+                unindent_continuation = False
+            elif re.match(r'^[ ]{4,}', current_line):
+                # Continuation text that was indented 4+ spaces inside a broken list
+                # Un-indent to column 0 so GFM does not turn it into an indented code block (<pre><code>)
+                current_line = stripped
+                modified = True
 
         # Fix 2: Underscore in \text{...}
         if '\\text{' in current_line:

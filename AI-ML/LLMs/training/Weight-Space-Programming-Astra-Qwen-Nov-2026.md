@@ -60,7 +60,8 @@ To understand weight space from the ground up, consider the algebraic progressio
    * In a straight line ($y = ax + b$), $x$ is the input, while $a$ (slope) and $b$ (intercept) are the **2 weights**.
    * In a parabolic curve ($y = ax^2 + bx + c$), $a, b, c$ are the **3 weights**.
    * In a deep neural network, the model is simply a **massive, nested multi-dimensional function** operating over thousands or billions of parameters:
-     $$y = f_L(f_{L-1}(\dots f_2(f_1(X; W_1); W_2) \dots; W_L))$$
+
+$$y = f_L(f_{L-1}(\dots f_2(f_1(X; W_1); W_2) \dots; W_L))$$
 2. **Embeddings & Decision Boundaries:**
    * Raw text (such as legal case files or natural language queries) cannot be directly multiplied by numbers. It is first projected into a high-dimensional continuous vector space called an **embedding vector** ($X \in \mathbb{R}^{d_{\text{model}}}$).
    * For binary classification (e.g., "Does this document have valid legal citations? Yes or No"), the final output layer consists of two output neurons whose relative activations determine the prediction.
@@ -299,10 +300,15 @@ flowchart TD
 * **The Question:** In a SwiGLU transformer layer, why did the edit specifically target the MLP's `down_proj` matrix rather than `gate_proj`, `up_proj`, or attention projections (`q_proj`, `k_proj`, `v_proj`, `o_proj`)?
 * **The Resolution:**
   1. **Linearity in the Residual Stream:** In modern SwiGLU architectures:
-     $$\text{MLP}(x) = \left( \text{SiLU}(x W_{\text{gate}}) \odot (x W_{\text{up}}) \right) W_{\text{down}}$$
-     $$x_{\text{out}} = x_{\text{in}} + \text{Attn}(x) + \text{MLP}(x)$$
-     Both $W_{\text{gate}}$ and $W_{\text{up}}$ operate *inside* the non-linear SiLU activation and Hadamard elementwise product. An orthogonal projection applied to $W_{\text{gate}}$ or $W_{\text{up}}$ would be distorted non-linearly. In contrast, $W_{\text{down}}$ projects directly and linearly into the residual stream. Applying $(I - v v^T)$ to $W_{\text{down}}$ provides a **strict mathematical guarantee** that the MLP can *never* write any activation energy along direction $v$:
-     $$W_{\text{down}}^{\text{ablated}} = W_{\text{down}} - (W_{\text{down}} v) v^T \implies \text{MLP}_{\text{ablated}}(x) \cdot v \equiv 0 \quad \forall x$$
+
+$$\text{MLP}(x) = \left( \text{SiLU}(x W_{\text{gate}}) \odot (x W_{\text{up}}) \right) W_{\text{down}}$$
+
+$$x_{\text{out}} = x_{\text{in}} + \text{Attn}(x) + \text{MLP}(x)$$
+
+Both $W_{\text{gate}}$ and $W_{\text{up}}$ operate *inside* the non-linear SiLU activation and Hadamard elementwise product. An orthogonal projection applied to $W_{\text{gate}}$ or $W_{\text{up}}$ would be distorted non-linearly. In contrast, $W_{\text{down}}$ projects directly and linearly into the residual stream. Applying $(I - v v^T)$ to $W_{\text{down}}$ provides a **strict mathematical guarantee** that the MLP can *never* write any activation energy along direction $v$:
+
+$$W_{\text{down}}^{\text{ablated}} = W_{\text{down}} - (W_{\text{down}} v) v^T \implies \text{MLP}_{\text{ablated}}(x) \cdot v \equiv 0 \quad \forall x$$
+
   2. **Generator vs. Conduit:** The output projection matrix of attention, $W_o$ (`o_proj`), is also linear to the residual stream. When Astra evaluated projection magnitudes across all sublayers, it discovered that self-attention heads were merely *relaying* the loop signal across context tokens, whereas the MLP sublayers in Layers 15 and 19 were the *primary originating generators* of the vector. Targeting the generator silenced the pathology at its source without degrading attention's token-routing capacity.
 
 ### 5.4 Algorithmic Lineage: How WSP Relates to ROME, MEMIT, LEACE, and RepE
@@ -326,7 +332,9 @@ flowchart TD
 * **The Resolution:**
   1. **High-Dimensional Orthogonality:** Qwen3.5-0.8B has a hidden dimension of $d_{\text{model}} = 896$. In an 896-dimensional vector space, two randomly selected vectors are almost perfectly orthogonal ($\mathbb{E}[\cos \theta] \approx 0$).
   2. **Minimal Subspace Removal:** Projecting out a single 1D direction $v$ removes exactly **1 degree of freedom out of 896**. This leaves **895 orthogonal dimensions (99.89% of the representational subspace) completely untouched**:
-     $$\text{Retained Subspace Capacity} = \frac{d_{\text{model}} - 1}{d_{\text{model}}} = \frac{895}{896} \approx 99.888\%$$
+
+$$\text{Retained Subspace Capacity} = \frac{d_{\text{model}} - 1}{d_{\text{model}}} = \frac{895}{896} \approx 99.888\%$$
+
   3. **Empirical Generalization:** Because general vocabulary, syntax, and reasoning circuits reside across the remaining 895 dimensions, the model's perplexity on standard text remained essentially unchanged (<0.5% shift), while instruction-following (IFEval) surged from 21.0% to 62.3% because the model was unblocked from looping.
 
 ### 5.6 The "No Free Lunch" Reality: Polysemanticity and the Math vs. Copying Trade-Off

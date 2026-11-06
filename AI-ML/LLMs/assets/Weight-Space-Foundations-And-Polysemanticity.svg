@@ -81,7 +81,7 @@
   <line x1="570" y1="310" x2="920" y2="310" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
   <line x1="570" y1="310" x2="570" y2="150" stroke="#64748b" stroke-width="2" marker-end="url(#arrow)" />
   <text x="910" y="330" fill="#94a3b8" font-size="12" text-anchor="end">Weight Space (W)</text>
-  <text x="555" y="160" fill="#94a3b8" font-size="12" text-anchor="end" transform="rotate(-90 555,160)">Loss (Error)</text>
+  <text x="570" y="140" fill="#94a3b8" font-size="11" text-anchor="middle">Loss (Error)</text>
 
   <!-- Loss Curve (Parabola) -->
   <path d="M 600 165 Q 740 410 880 165" fill="none" stroke="#38bdf8" stroke-width="3" />
@@ -134,7 +134,7 @@
   <rect x="50" y="585" width="415" height="85" rx="8" fill="#0f172a" stroke="#475569" />
   <text x="65" y="605" fill="#fbbf24" font-size="11" font-weight="bold">Evolution of Vision / ML (Sutton's Bitter Lesson):</text>
   <text x="65" y="628" fill="#cbd5e1" font-size="11">1. Handcrafted Rules: Humans code <tspan fill="#38bdf8" font-family="monospace">def cat_detect()</tspan> (Fails to scale)</text>
-  <text x="65" y="650" fill="#cbd5e1" font-size="11">2. Deep Learning (CNNs): Scale + Gradient Descent learns features (Black Box)</text>
+  <text x="65" y="650" fill="#cbd5e1" font-size="11">2. Deep Learning (CNNs): Gradient Descent learns features (Black Box)</text>
 
 
   <!-- ================= PANEL 4: CATASTROPHIC FORGETTING ================= -->

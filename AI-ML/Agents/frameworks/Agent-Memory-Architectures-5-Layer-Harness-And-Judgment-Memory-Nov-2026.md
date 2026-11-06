@@ -644,6 +644,7 @@ To evaluate where various modern agent frameworks sit along this memory continuu
 ---
 
 **Related:**
+- [Agentic Memory Governance: Policy Engines, Temporal Knowledge Graphs, and Multi-Tier State Lifecycles](Agentic-Memory-Governance-Policy-Engines-And-Lifecycles-Nov-2026.md) — Production architecture decoupling storage backends from governance policies (Write, Retrieve, Age, Protect), temporal graph lifecycles, and context poisoning prevention.
 - [AWS Infinity (Hydro) Architecture: Rust Serverless Agent Runtime](AWS-Infinity-Hydro-Rust-Agent-Runtime-Nov-2026.md) — High-density serverless agent runtime using execution slices, ~103 KB state bookmarks, Reactive Agent Protocol (RAP), and synthetic tool injection.
 - [AmshaAgent Architecture: Enterprise 5-Tier Memory, Governed Execution, and Hexagonal Autonomy](AmshaAgent-Architecture-Memory-Layering-And-Governance-Nov-2026.md) — Enterprise implementation of 5-tier memory, CAS optimistic locking, token-bucket write governance, rootless Podman sandboxing, and typed decision seams in Java 25 / Quarkus.
 - [DeepSeek SuperAgents and Harness Architecture](DeepSeek-SuperAgent-And-Harness-Architecture-Nov-2026.md) — Event-driven autonomous pipelines, Cordis framework, progressive inlining, and Chain of Recall decoupled memory.
