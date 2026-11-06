@@ -65,6 +65,7 @@ Based on the [user-shared Better Stack video](https://www.youtube.com/watch?v=sZ
 ---
 
 **Related:**
+- [OpenAI 948 Linux Kernel LPEs](OpenAI-948-Linux-Kernel-LPEs-Autonomous-Exploits-Nov-2026.md) — Autonomous multi-agent pipeline discovering 948 Linux kernel LPEs, maintainer review bottlenecks, and distro patch latency.
 - [Ubuntu Server and CVE-2026-98432](Ubuntu-Server-CVE-2026-98432-Kernel-UAF-And-Patch-Lag-Nov-2026.md) — Another critical Linux kernel networking flaw with AI exploit generation and distribution patch latency debates.
 - [PHP2Shell: History, UAF and ASLR](PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — A separate same-week memory-safety disclosure with different exposure and released fixes.
 - [GitLab Regex Compiler RCE](GitLab-Regex-Compiler-RCE-Oct-2026.md) — Another same-week severe report where the running product version determines exposure.

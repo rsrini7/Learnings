@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0b0f19; }
+      .panel { fill: #111827; stroke: #1e293b; stroke-width: 1.5; rx: 8px; }
+      .header-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 700; fill: #f8fafc; }
+      .header-subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .box-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 600; fill: #38bdf8; }
+      .box-desc { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 12px; fill: #cbd5e1; }
+      .tag { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; font-weight: 600; }
+      .tag-red { fill: #f87171; }
+      .tag-green { fill: #4ade80; }
+      .tag-amber { fill: #fbbf24; }
+      .tag-cyan { fill: #38bdf8; }
+      .code-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; fill: #a5b4fc; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="640" class="bg" />
+
+  <!-- Header -->
+  <text x="40" y="45" class="header-title">OpenAI 948 Linux Kernel LPEs: Autonomous Pipeline &amp; Patch Churn</text>
+  <text x="40" y="70" class="header-subtitle">Analysis of "A thousand fewer paths to root": multi-agent exploitation vs maintainer verification backlog</text>
+
+  <!-- Left Column: The 5-Stage Agent Funnel -->
+  <rect x="40" y="95" width="500" height="515" class="panel" />
+  <text x="60" y="125" class="box-title">1. The Multi-Agent Exploitation Funnel (30h Run)</text>
+  <text x="60" y="145" class="box-desc">Automated analysis executed against Linux kernel master branch ($1.21M API cost)</text>
+
+  <!-- Stage 1: Scout -->
+  <rect x="60" y="165" width="460" height="70" rx="6" fill="#1e293b" stroke="#334155" />
+  <text x="75" y="185" class="tag tag-cyan">Stage 1: Scout Agents (Target Reachability Filter)</text>
+  <text x="75" y="205" class="box-desc">• Scans 40M+ lines of kernel code for low-privilege entry points.</text>
+  <text x="75" y="222" class="box-desc">• Isolates 5,034 high-value audit targets (2.8M lines / ~7% of kernel).</text>
+
+  <!-- Stage 2: Analyst -->
+  <rect x="60" y="245" width="460" height="70" rx="6" fill="#1e293b" stroke="#334155" />
+  <text x="75" y="265" class="tag tag-cyan">Stage 2: Analyst Agents (Vulnerability Discovery)</text>
+  <text x="75" y="285" class="box-desc">• Models audit surfaces, checks bounds, concurrency, and refcounts.</text>
+  <text x="75" y="302" class="box-desc">• Flags 2,308 candidate defects across core subsystems and drivers.</text>
+
+  <!-- Stage 3: Triage -->
+  <rect x="60" y="325" width="460" height="70" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="1.2" />
+  <text x="75" y="345" class="tag tag-amber">Stage 3: Triage Agents (Dynamic KASAN VM Validation)</text>
+  <text x="75" y="365" class="box-desc">• Writes automated PoCs and runs them inside isolated QEMU VMs.</text>
+  <text x="75" y="382" class="box-desc">• Dynamically reproduces 1,724 live kernel crashes (74.7% hit rate).</text>
+
+  <!-- Stage 4: Exploit -->
+  <rect x="60" y="405" width="460" height="70" rx="6" fill="#1e293b" stroke="#ef4444" stroke-width="1.2" />
+  <text x="75" y="425" class="tag tag-red">Stage 4: Exploit Agents (Mitigation Defeat &amp; Weaponization)</text>
+  <text x="75" y="445" class="box-desc">• Defeats KASLR, SMEP, and SMAP using 10 novel exploitation primitives.</text>
+  <text x="75" y="462" class="box-desc">• Yields 948 distinct working root exploits + 291 information leaks.</text>
+
+  <!-- Stage 5: Patch -->
+  <rect x="60" y="485" width="460" height="70" rx="6" fill="#064e3b" stroke="#059669" />
+  <text x="75" y="505" class="tag tag-green">Stage 5: Patch Generation &amp; Human-in-the-Loop Review</text>
+  <text x="75" y="525" class="box-desc">• Generates surgical C fixes; verifies exploit is neutralised in VM.</text>
+  <text x="75" y="542" class="box-desc">• Human team inspects diffs and coordinates responsible disclosures.</text>
+
+  <!-- Economics Bar -->
+  <rect x="60" y="565" width="460" height="32" rx="4" fill="#0f172a" stroke="#38bdf8" />
+  <text x="75" y="586" class="code-text">Economics: $1,213,430 total API credits =&gt; $1,279 per working LPE</text>
+
+  <!-- Right Column: Systemic Impact & The Maintenance Bottleneck -->
+  <rect x="560" y="95" width="500" height="515" class="panel" />
+  <text x="580" y="125" class="box-title">2. Systemic Dilemma: The Maintenance Bottleneck</text>
+  <text x="580" y="145" class="box-desc">Why automated vulnerability scale overwhelms downstream infrastructure</text>
+
+  <!-- Block 2.1: The 10 Novel Primitives -->
+  <rect x="580" y="165" width="460" height="90" rx="6" fill="#1e293b" stroke="#334155" />
+  <text x="595" y="185" class="tag tag-red">10 Novel Exploitation Primitives Discovered</text>
+  <text x="595" y="205" class="box-desc">• 2 Persistent Elastic Objects: targeted SLUB/SLAB kernel cache spray.</text>
+  <text x="595" y="222" class="box-desc">• 2 Page-Grooming Methods: precise physical layout manipulation.</text>
+  <text x="595" y="239" class="box-desc">• 5 Data-Only Attacks: privilege escalation without CFI tripping.</text>
+
+  <!-- Block 2.2: Maintainer Bottleneck -->
+  <rect x="580" y="265" width="460" height="95" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="1.2" />
+  <text x="595" y="285" class="tag tag-amber">The Upstream Review Crisis (Torvalds &amp; Kroah-Hartman)</text>
+  <text x="595" y="305" class="box-desc">• Generating bugs is cheap; reviewing, backporting, and testing is costly.</text>
+  <text x="595" y="322" class="box-desc">• 948 fixes must be verified across 7 LTS kernel branches (5.10–7.2).</text>
+  <text x="595" y="339" class="box-desc">• Risk: Blind patch merging can trigger serious runtime regressions.</text>
+
+  <!-- Block 2.3: Distro Patch Lag -->
+  <rect x="580" y="370" width="460" height="85" rx="6" fill="#1e293b" stroke="#334155" />
+  <text x="595" y="390" class="tag tag-cyan">Distro Lag: Debian, RHEL, Ubuntu &amp; Arch</text>
+  <text x="595" y="410" class="box-desc">• Downstream vendors cannot package 948 patches simultaneously.</text>
+  <text x="595" y="427" class="box-desc">• Unpatched servers leave an open operational window for local attackers.</text>
+  <text x="595" y="444" class="box-desc">• Threat: Local user or container break-in = instant root escalation.</text>
+
+  <!-- Block 2.4: Architectural Defense -->
+  <rect x="580" y="465" width="460" height="132" rx="6" fill="#0f172a" stroke="#10b981" />
+  <text x="595" y="487" class="tag tag-green">Architectural Defense: Stop Relying on Shared Kernels</text>
+  <text x="595" y="507" class="box-desc">• Restrict unprivileged namespaces: kernel.unprivileged_userns_clone=0</text>
+  <text x="595" y="525" class="box-desc">• Disable unprivileged eBPF: kernel.unprivileged_bpf_disabled=2</text>
+  <text x="595" y="543" class="box-desc">• Replace bare containers with MicroVMs (Firecracker, Kata, gVisor).</text>
+  <text x="595" y="561" class="box-desc">• Principle: Assume any local user or tenant has immediate root capability.</text>
+
+</svg>
