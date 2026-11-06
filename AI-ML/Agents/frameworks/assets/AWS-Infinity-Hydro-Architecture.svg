@@ -1,0 +1,254 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1220 800" width="100%" height="100%" font-family="'Segoe UI', Inter, Roboto, -apple-system, sans-serif">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="sliceGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="storeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="toolGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="modelGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2e1065" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowBlue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowOrange" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f97316" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981" />
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#a855f7" />
+    </marker>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1220" height="800" fill="url(#bgGrad)" rx="12" />
+
+  <!-- ==================== HEADER ==================== -->
+  <text x="40" y="36" fill="#f8fafc" font-size="21" font-weight="700">AWS Infinity (Hydro) — Reactive AI Agent Runtime Architecture</text>
+  <text x="40" y="56" fill="#94a3b8" font-size="12.5">Slice-Based Execution • Reactive Agent Protocol (RAP) • Zero Idle CPU • ~103 KB Suspended State Density</text>
+
+  <!-- ==================== ROW 1 (TOP): HELPER FILTER & CLOUD AI MODEL ==================== -->
+
+  <!-- Top-Left: Helper Agent Gatekeeper -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="74" width="450" height="80" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="60" y="96" fill="#38bdf8" font-size="12.5" font-weight="700">Event Ingestion &amp; Helper Gatekeeper</text>
+    <line x1="60" y1="104" x2="470" y2="104" stroke="#334155" stroke-width="1" />
+    <text x="60" y="122" fill="#cbd5e1" font-size="10.5">• Raw webhooks (GitHub, CI) filtered by Ephemeral Helper</text>
+    <text x="60" y="138" fill="#cbd5e1" font-size="10.5">• Out-of-band events inject synthetic <tspan fill="#fbbf24" font-family="monospace">receive_event__injected</tspan></text>
+  </g>
+
+  <!-- Arrow: Helper Gatekeeper Down to Ingress Queue -->
+  <path d="M 140 154 L 140 198" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowBlue)" />
+
+  <!-- Top-Right: External Cloud AI Model (Bedrock) -->
+  <g filter="url(#shadow)">
+    <rect x="520" y="74" width="660" height="80" rx="8" fill="url(#modelGrad)" stroke="#a855f7" stroke-width="2" />
+    <text x="850" y="96" fill="#c084fc" font-size="13.5" font-weight="700" text-anchor="middle">4. External Cloud AI Model (Amazon Bedrock — Claude 3.5 Sonnet)</text>
+    <line x1="540" y1="104" x2="1160" y2="104" stroke="#4c1d95" stroke-width="1" />
+    <text x="850" y="122" fill="#e2e8f0" font-size="11" text-anchor="middle">Stateless Cloud Inference Boundary: GPU weights run externally in AWS Bedrock</text>
+    <text x="850" y="139" fill="#cbd5e1" font-size="10.5" text-anchor="middle">Exactly 1 LLM turn executed per slice • 0 MB model inference RAM in the 103 KB agent footprint</text>
+  </g>
+
+  <!-- Clean Vertical Connections between Step B and Bedrock (Zero Overlap with Box C!) -->
+  <path d="M 535 240 L 535 158" stroke="#a855f7" stroke-width="2" marker-end="url(#arrowPurple)" />
+  <path d="M 595 158 L 595 240" stroke="#a855f7" stroke-width="2" marker-end="url(#arrowPurple)" />
+  
+  <rect x="490" y="168" width="150" height="22" rx="4" fill="#1e1b4b" stroke="#a855f7" stroke-width="1" />
+  <text x="565" y="183" fill="#d8b4fe" font-size="10" font-weight="700" text-anchor="middle">1-Turn Model Call</text>
+
+  <!-- ==================== ROW 2 (MIDDLE): ACTIVE EXECUTION LOOP ==================== -->
+
+  <!-- Box 1: Ingress Queue -->
+  <g filter="url(#shadow)">
+    <rect x="40" y="205" width="200" height="315" rx="10" fill="url(#sliceGrad)" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="140" y="230" fill="#38bdf8" font-size="14" font-weight="700" text-anchor="middle">1. Ingress &amp; Event Queue</text>
+    <text x="140" y="246" fill="#94a3b8" font-size="10" text-anchor="middle">Amazon SQS FIFO / Per-Agent Lane</text>
+    <line x1="55" y1="254" x2="225" y2="254" stroke="#334155" stroke-width="1" />
+
+    <!-- Queue Items -->
+    <rect x="52" y="262" width="176" height="38" rx="5" fill="#0f172a" stroke="#0284c7" stroke-width="1" />
+    <text x="140" y="278" fill="#e2e8f0" font-size="11" font-weight="600" text-anchor="middle">User Messages</text>
+    <text x="140" y="292" fill="#7dd3fc" font-size="9" text-anchor="middle">Direct Prompts &amp; Instructions</text>
+
+    <rect x="52" y="306" width="176" height="38" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="140" y="322" fill="#e2e8f0" font-size="11" font-weight="600" text-anchor="middle">RAP Tool Callbacks</text>
+    <text x="140" y="336" fill="#6ee7b7" font-size="9" text-anchor="middle">Webhook Payloads &amp; Artifacts</text>
+
+    <rect x="52" y="350" width="176" height="38" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="140" y="366" fill="#cbd5e1" font-size="11" font-weight="600" text-anchor="middle">Wake Timers</text>
+    <text x="140" y="380" fill="#94a3b8" font-size="9" text-anchor="middle">Scheduled Delays &amp; Wakeups</text>
+
+    <rect x="52" y="394" width="176" height="38" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="140" y="410" fill="#cbd5e1" font-size="11" font-weight="600" text-anchor="middle">Filtered Events</text>
+    <text x="140" y="424" fill="#fcd34d" font-size="9" text-anchor="middle">Screened by Helper Agent</text>
+
+    <rect x="52" y="440" width="176" height="66" rx="5" fill="#09182a" stroke="#0284c7" stroke-dasharray="3 3" />
+    <text x="140" y="458" fill="#38bdf8" font-size="10.5" font-weight="700" text-anchor="middle">Conversation Grouping</text>
+    <text x="140" y="474" fill="#94a3b8" font-size="9" text-anchor="middle">Strict FIFO order per agent</text>
+    <text x="140" y="488" fill="#94a3b8" font-size="9" text-anchor="middle">Concurrent across thousands</text>
+  </g>
+
+  <!-- Arrow: Queue to Execution Slice -->
+  <path d="M 240 360 L 268 360" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowBlue)" />
+  <rect x="233" y="347" width="40" height="18" rx="4" fill="#0b0f19" stroke="#38bdf8" stroke-width="1" />
+  <text x="253" y="360" fill="#38bdf8" font-size="9" font-weight="700" text-anchor="middle">Wake</text>
+
+  <!-- Box 2: Ephemeral Rust Execution Slice -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="205" width="580" height="315" rx="10" fill="url(#sliceGrad)" stroke="#f97316" stroke-width="2" />
+
+    <!-- Badge -->
+    <rect x="390" y="193" width="350" height="24" rx="12" fill="#f97316" />
+    <text x="565" y="209" fill="#0f172a" font-size="11" font-weight="800" text-anchor="middle">2. EPHEMERAL EXECUTION SLICE (RUST)</text>
+
+    <text x="565" y="231" fill="#94a3b8" font-size="10.5" text-anchor="middle">AWS Lambda Invocation / Tokio Single-Turn Future • Zero Resident Threads While Waiting</text>
+
+    <!-- Sub-step 2A: Restore & Dedup -->
+    <rect x="290" y="242" width="165" height="152" rx="6" fill="#0f172a" stroke="#a855f7" stroke-width="1.5" />
+    <text x="372" y="264" fill="#d8b4fe" font-size="12" font-weight="700" text-anchor="middle">A. Hydrate &amp; Dedup</text>
+    <line x1="305" y1="272" x2="440" y2="272" stroke="#334155" stroke-width="1" />
+    <text x="372" y="291" fill="#cbd5e1" font-size="10" text-anchor="middle">• Check Msg ID Ledger</text>
+    <text x="372" y="309" fill="#cbd5e1" font-size="10" text-anchor="middle">• Skip Duplicate Events</text>
+    <text x="372" y="327" fill="#cbd5e1" font-size="10" text-anchor="middle">• Load Bookmark State</text>
+    <text x="372" y="345" fill="#cbd5e1" font-size="10" text-anchor="middle">• Align Synthetic Tools</text>
+    <text x="372" y="368" fill="#a855f7" font-size="9.5" font-weight="700" text-anchor="middle">State: ~103 KB RAM/DB</text>
+
+    <!-- Arrow 2A -> 2B -->
+    <path d="M 455 318 L 473 318" stroke="#f97316" stroke-width="2" marker-end="url(#arrowOrange)" />
+
+    <!-- Sub-step 2B: 1-Turn Model Step -->
+    <rect x="480" y="242" width="170" height="152" rx="6" fill="#0f172a" stroke="#f97316" stroke-width="1.5" />
+    <text x="565" y="264" fill="#fdba74" font-size="12" font-weight="700" text-anchor="middle">B. 1-Turn Model Step</text>
+    <line x1="495" y1="272" x2="635" y2="272" stroke="#334155" stroke-width="1" />
+    <text x="565" y="291" fill="#cbd5e1" font-size="10" text-anchor="middle">• Append Ingress Event</text>
+    <text x="565" y="309" fill="#cbd5e1" font-size="10" text-anchor="middle">• Format Bedrock Input</text>
+    <text x="565" y="327" fill="#cbd5e1" font-size="10" text-anchor="middle">• 1 Turn Cloud Inference</text>
+    <text x="565" y="345" fill="#cbd5e1" font-size="10" text-anchor="middle">• Decide Async Tool Plan</text>
+    <text x="565" y="368" fill="#f97316" font-size="9.5" font-weight="700" text-anchor="middle">Single API Exchange</text>
+
+    <!-- Arrow 2B -> 2C -->
+    <path d="M 650 318 L 668 318" stroke="#f97316" stroke-width="2" marker-end="url(#arrowOrange)" />
+
+    <!-- Sub-step 2C: Dispatch & Terminate -->
+    <rect x="675" y="242" width="165" height="152" rx="6" fill="#0f172a" stroke="#10b981" stroke-width="1.5" />
+    <text x="757" y="264" fill="#6ee7b7" font-size="12" font-weight="700" text-anchor="middle">C. Dispatch &amp; Drop</text>
+    <line x1="690" y1="272" x2="825" y2="272" stroke="#334155" stroke-width="1" />
+    <text x="757" y="291" fill="#cbd5e1" font-size="10" text-anchor="middle">• Dispatch RAP Tool Call</text>
+    <text x="757" y="309" fill="#cbd5e1" font-size="10" text-anchor="middle">• Save Updated Bookmark</text>
+    <text x="757" y="327" fill="#cbd5e1" font-size="10" text-anchor="middle">• Commit Processed ID</text>
+    <text x="757" y="350" fill="#10b981" font-size="11" font-weight="800" text-anchor="middle">DROP RUNTIME!</text>
+    <text x="757" y="368" fill="#6ee7b7" font-size="9" text-anchor="middle">(Zero RAM / CPU Active)</text>
+
+    <!-- Bottom Explanatory Banner inside Slice -->
+    <rect x="290" y="405" width="550" height="100" rx="6" fill="#18181b" stroke="#3f3f46" stroke-dasharray="4 4" />
+    <text x="565" y="425" fill="#fb923c" font-size="11.5" font-weight="700" text-anchor="middle">Why 75,000 Agents Fit in 8 GB ("The Catch Explained")</text>
+    <text x="565" y="444" fill="#e2e8f0" font-size="10.5" text-anchor="middle">• While waiting minutes or days for tools, the execution slice terminates.</text>
+    <text x="565" y="460" fill="#94a3b8" font-size="10.5" text-anchor="middle">• Zero OS threads, processes, or open sockets remain active in memory.</text>
+    <text x="565" y="476" fill="#94a3b8" font-size="10.5" text-anchor="middle">• Only ~103 KB of passive conversation JSON sits in storage (75,000 × 103 KB ≈ 7.7 GB).</text>
+    <text x="565" y="493" fill="#38bdf8" font-size="9.5" font-weight="600" text-anchor="middle">AMD EPYC 9R14 Benchmark: 80,000 idle agents with mock LLM responses</text>
+  </g>
+
+  <!-- Box 5: External Async Tools (RAP) -->
+  <g filter="url(#shadow)">
+    <rect x="880" y="205" width="300" height="315" rx="10" fill="url(#toolGrad)" stroke="#10b981" stroke-width="2" />
+    <text x="1030" y="230" fill="#34d399" font-size="14" font-weight="700" text-anchor="middle">5. External Async World (RAP)</text>
+    <text x="1030" y="246" fill="#94a3b8" font-size="10" text-anchor="middle">Reactive Agent Protocol / Async Tools</text>
+    <line x1="895" y1="254" x2="1165" y2="254" stroke="#334155" stroke-width="1" />
+
+    <!-- External Tool Cards -->
+    <rect x="895" y="262" width="270" height="58" rx="5" fill="#0f172a" stroke="#059669" />
+    <text x="1030" y="281" fill="#e2e8f0" font-size="11" font-weight="600" text-anchor="middle">CI / Test Runner (20 mins)</text>
+    <text x="1030" y="297" fill="#cbd5e1" font-size="9.5" text-anchor="middle">Runs test suites independently</text>
+    <text x="1030" y="310" fill="#6ee7b7" font-size="9" text-anchor="middle">Agent process is dead while running</text>
+
+    <rect x="895" y="326" width="270" height="58" rx="5" fill="#0f172a" stroke="#334155" />
+    <text x="1030" y="345" fill="#e2e8f0" font-size="11" font-weight="600" text-anchor="middle">Human Review / PRs (Hours/Days)</text>
+    <text x="1030" y="361" fill="#cbd5e1" font-size="9.5" text-anchor="middle">Waiting for developer sign-off</text>
+    <text x="1030" y="374" fill="#94a3b8" font-size="9" text-anchor="middle">0 CPU used during the wait</text>
+
+    <rect x="895" y="390" width="270" height="58" rx="5" fill="#0f172a" stroke="#334155" />
+    <text x="1030" y="409" fill="#e2e8f0" font-size="11" font-weight="600" text-anchor="middle">Batch Job / Long Migrations</text>
+    <text x="1030" y="425" fill="#cbd5e1" font-size="9.5" text-anchor="middle">Background database scripts</text>
+    <text x="1030" y="438" fill="#94a3b8" font-size="9" text-anchor="middle">Calls webhook upon completion</text>
+
+    <rect x="895" y="456" width="270" height="50" rx="5" fill="#064e3b" stroke="#10b981" />
+    <text x="1030" y="475" fill="#ecfdf5" font-size="10" font-weight="700" text-anchor="middle">1. Immediate "202 Accepted" Receipt</text>
+    <text x="1030" y="492" fill="#a7f3d0" font-size="9.5" text-anchor="middle">2. Webhook Callback Delivers Result</text>
+  </g>
+
+  <!-- Clean Horizontal Arrow: Step C to External Tools -->
+  <path d="M 840 318 L 874 318" stroke="#10b981" stroke-width="2" marker-end="url(#arrowGreen)" />
+  <rect x="842" y="298" width="34" height="16" rx="3" fill="#0b0f19" stroke="#10b981" stroke-width="1" />
+  <text x="859" y="309" fill="#6ee7b7" font-size="8.5" font-weight="700" text-anchor="middle">RAP</text>
+
+  <!-- ==================== ROW 3 (BOTTOM): DURABLE STATE STORE ==================== -->
+
+  <!-- Box 3: Durable State Store -->
+  <g filter="url(#shadow)">
+    <rect x="275" y="585" width="580" height="135" rx="10" fill="url(#storeGrad)" stroke="#a855f7" stroke-width="2" />
+    <text x="565" y="610" fill="#e9d5ff" font-size="14" font-weight="700" text-anchor="middle">3. Durable Agent State Store ("The Shelf / Bookmark")</text>
+    <text x="565" y="626" fill="#94a3b8" font-size="10.5" text-anchor="middle">Amazon DynamoDB / In-Memory KV Cache (EPYC Benchmark) • Suspended State Footprint</text>
+    <line x1="295" y1="634" x2="835" y2="634" stroke="#334155" stroke-width="1" />
+
+    <!-- Stored Sub-Cards -->
+    <rect x="290" y="642" width="170" height="66" rx="6" fill="#0f172a" stroke="#7e22ce" />
+    <text x="375" y="662" fill="#d8b4fe" font-size="11" font-weight="700" text-anchor="middle">Conversation History</text>
+    <text x="375" y="679" fill="#94a3b8" font-size="9.5" text-anchor="middle">Turn-by-turn prompts, tools,</text>
+    <text x="375" y="693" fill="#94a3b8" font-size="9.5" text-anchor="middle">&amp; synthetic injections</text>
+
+    <rect x="480" y="642" width="170" height="66" rx="6" fill="#0f172a" stroke="#7e22ce" />
+    <text x="565" y="662" fill="#d8b4fe" font-size="11" font-weight="700" text-anchor="middle">Idempotency Ledger</text>
+    <text x="565" y="679" fill="#94a3b8" font-size="9.5" text-anchor="middle">Processed Msg UUIDs</text>
+    <text x="565" y="693" fill="#94a3b8" font-size="9.5" text-anchor="middle">to discard duplicate retries</text>
+
+    <rect x="670" y="642" width="170" height="66" rx="6" fill="#0f172a" stroke="#7e22ce" />
+    <text x="755" y="662" fill="#d8b4fe" font-size="11" font-weight="700" text-anchor="middle">Suspended Footprint</text>
+    <text x="755" y="681" fill="#38bdf8" font-size="12.5" font-weight="800" text-anchor="middle">~103 KB / Agent</text>
+    <text x="755" y="695" fill="#a1a1aa" font-size="9" text-anchor="middle">75,000 agents = ~7.7 GB</text>
+  </g>
+
+  <!-- Dedicated Vertical Channel for Hydrate and Save (Gap between y=520 and y=585 is 65px) -->
+
+  <!-- 1. HYDRATE ARROW (Upward from State Store into Step A) -->
+  <path d="M 372 585 L 372 527" stroke="#a855f7" stroke-width="2.5" marker-end="url(#arrowPurple)" />
+  <rect x="295" y="542" width="154" height="24" rx="12" fill="#1e1b4b" stroke="#a855f7" stroke-width="1.5" />
+  <text x="372" y="558" fill="#e9d5ff" font-size="10.5" font-weight="700" text-anchor="middle">▲ 1. Hydrate (Load)</text>
+
+  <!-- 2. SAVE ARROW (Downward from Step C into State Store) -->
+  <path d="M 757 520 L 757 578" stroke="#a855f7" stroke-width="2.5" marker-end="url(#arrowPurple)" />
+  <rect x="680" y="542" width="154" height="24" rx="12" fill="#1e1b4b" stroke="#a855f7" stroke-width="1.5" />
+  <text x="757" y="558" fill="#e9d5ff" font-size="10.5" font-weight="700" text-anchor="middle">▼ 2. Save Bookmark</text>
+
+  <!-- ==================== LOOPBACK PATH: RAP TO INGRESS QUEUE ==================== -->
+  <path d="M 1030 520 L 1030 758 L 140 758 L 140 528" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#arrowBlue)" />
+  <rect x="330" y="746" width="620" height="24" rx="6" fill="#0b0f19" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="640" y="762" fill="#38bdf8" font-size="11" font-weight="700" text-anchor="middle">Authenticated Webhook Callback (100ms to 3 days later) ➔ Triggers Next Slice via SQS</text>
+</svg>
