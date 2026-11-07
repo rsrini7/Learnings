@@ -11,16 +11,52 @@
 To understand how entering 257 characters unlocks a secure server, one must examine three independent software components that each made logical design choices over four decades:
 
 1. **OpenSSH (`sshd`):** The standard Unix suite for encrypted remote access and administration. When compiling and running on traditional Linux systems, OpenSSH typically relies on Pluggable Authentication Modules (PAM) or standard C library routines to verify submitted passwords against password hashes stored in `/etc/shadow`.
-2. **The C Standard Library (`libc`):** The runtime layer between the operating system kernel and application programs. While mainstream enterprise distributions (Ubuntu, Debian, Red Hat) use the GNU C Library (**`glibc`**), lightweight distributions, embedded systems, and minimal containers (such as **Alpine Linux**, OpenWrt, Buildroot, and Yocto) use **`musl libc`** to minimize binary footprint and resource consumption.
+2. **The C Standard Library (`libc`):** The runtime layer between the operating system kernel and application programs. While mainstream enterprise distributions (Ubuntu, Debian, Red Hat) use the GNU C Library (**`glibc`**) backed by **`libxcrypt`**, lightweight distributions, embedded systems, and minimal containers (such as **Alpine Linux**, OpenWrt, Buildroot, and Yocto) use **`musl libc`** to minimize binary footprint and resource consumption.
 3. **The Shadow Password System (`/etc/shadow`):** Introduced in Unix in the 1980s to remove password hashes from world-readable `/etc/passwd`. Accounts reserved for SSH public-key authentication or system tasks without password access traditionally store an asterisk (`*`) or exclamation mark (`!`) in their password hash field.
+
+### The historical split: `/etc/passwd` to `/etc/shadow` (1987)
+
+In early Unix (1970s through mid-1980s), password hashes lived directly inside `/etc/passwd`. Because every basic utility (such as `ls -l` or `ps`) needed to read `/etc/passwd` to translate numerical UIDs into usernames, the file had to remain world-readable (`chmod 644`). This exposed every user's password hash to unprivileged users, making offline dictionary and rainbow-table attacks trivial.
+
+In **1987**, Julie Haugh developed the **Shadow Password Suite** to separate public account metadata from sensitive authentication material:
+- `/etc/passwd` remained world-readable but held a dummy character (`x`) in place of the hash.
+- `/etc/shadow` was created with strict permissions (`chmod 600` or `640`, readable strictly by `root` / UID 0) to store real password hashes and expiration metadata.
+- The split was ported to Linux in the **early 1990s** and became the standard across Unix-like operating systems.
+
+### Sentinel conventions in `/etc/shadow`
+
+Because `/etc/shadow` separates administrative account states from real cryptographic hashes, special characters serve as non-hash placeholders:
+
+| Sentinel / Value | Standard Administrative Meaning | Behavior When Evaluated by `crypt()` |
+|---|---|---|
+| **`*` (Asterisk)** | Password authentication is disabled; account is reserved for SSH public-key or daemon access. | Historically safe: standard DES/SHA hashes are base64 strings that never equal `*`. **Triggers CVE-2026-123158 when paired with musl.** |
+| **`!` (Exclamation)** | Account is explicitly locked (e.g. via `passwd -l <user>` or `usermod -L`). | **Immune:** `musl` returns `*`, and `strcmp("*", "!*")` or `strcmp("*", "!")` fails. |
+| **`!!`** | Account was created without a password or the password has expired. | **Immune:** Mismatches single `*`. |
+| **Blank / Empty** | Account has no password set (some systems allow passwordless login; modern `sshd` rejects by default via `PermitEmptyPasswords no`). | Handled by empty-password check branches. |
+
+### "One character away": `libxcrypt` (`*0`) vs. `musl` (`*`)
+
+The vulnerability hinges on a single character difference between C library implementations when a password hashing operation fails:
+
+![glibc libxcrypt vs musl crypt failure return values](assets/OpenSSH-Musl-Libxcrypt-Comparison.png)
+
+- **glibc distributions (via `libxcrypt`):** Modern glibc distros decouple password hashing into `libxcrypt`. When `crypt()` fails or encounters invalid input, `libxcrypt` returns the failure string **`*0`**. When OpenSSH evaluates `strcmp("*", "*0")`, the result is non-zero (**no match**), safely blocking entry.
+- **musl libc:** When `musl`'s `crypt()` fails on an oversized string, it returns a single asterisk: **`*`**. When OpenSSH evaluates `strcmp("*", "*")`, the result is zero (**match**), immediately opening an interactive shell.
 
 | Party or Component | Standard Role in Authentication | Behavior in This Vulnerability |
 |---|---|---|
 | **OpenSSH (`sshd`)** | Manages encrypted tunnels and verifies login credentials. | In non-PAM builds, compares `crypt(user_input, salt)` directly with `/etc/shadow` using `strcmp()`. Implemented timing defenses (CVE-2016-6210) that borrow valid salts for disabled accounts. |
 | **musl libc** | Lightweight C library providing standard POSIX functions including `crypt()`. | Truncates SHA-512 input at 256 bytes and returns an in-band error string (`"*"`) rather than a `NULL` pointer on failure to prevent calling applications from crashing. |
-| **GNU C Library (`glibc`)** | Default C library on Ubuntu/Debian/Fedora/RHEL. | Handles passwords of arbitrary length without failing at 256 bytes, or returns failure codes that do not match shadow sentinels; immune to this bypass. |
+| **GNU C Library (`glibc`)** | Default C library on Ubuntu/Debian/Fedora/RHEL. | Delegates to `libxcrypt`, which returns `*0` on failure, preventing sentinel collisions; immune to this bypass. |
 | **Pluggable Authentication Modules (PAM)** | Modular subsystem separating authentication policy from application logic. | Explicitly validates shadow account flags and rejects accounts marked with `*` before string matching; immune to this bypass. |
 | **Alpine Linux** | Minimal Linux distribution built on `musl libc` and BusyBox. | Packages `openssh-server` compiled **without PAM support** by default (`UsePAM no`), creating the exact intersection required for exploitation. |
+
+### Why other daemons are rarely affected
+
+A natural question arises: if `musl` returns `*` on failure, are web servers, FTP daemons, or database services also vulnerable? In practice, almost none are:
+1. **Application-Level Authentication:** Modern web servers (Nginx, Apache, Envoy) and microservices do not authenticate users against `/etc/shadow` via system `crypt()`. They rely on JWTs, OAuth/OIDC tokens, application databases, or dedicated configuration files (e.g. `.htpasswd`).
+2. **PAM Delegation:** Daemons that *do* authenticate against local Unix accounts (such as `sudo`, `login`, or enterprise FTP servers) almost universally route through PAM (`pam_unix`). PAM checks account state flags *before* running password comparisons, rejecting accounts marked with `*` immediately.
+3. **OpenSSH's Unique Convergence:** OpenSSH on Alpine Linux represents the rare edge case where a network-facing daemon validates directly against `/etc/shadow` using raw C library `crypt()` calls without an intervening PAM policy layer.
 
 ### Essential terminology
 
@@ -296,6 +332,7 @@ The `*sshole` vulnerability provides crucial lessons for systems programming and
 User-provided details supplied the starting video summaries and commentary:
 - [SSH situation is insane](https://www.youtube.com/watch?v=ErB1SRcksDc) (overview of the vulnerability and test-matrix results).
 - [ThePrimeagen's commentary on the Alpine Linux OpenSSH vulnerability](https://www.youtube.com/watch?v=B3_Ftfhkzz0).
+- [Mehul Mohan: OpenSSH / Musl & Firecracker VM Escape Breakdown](https://www.youtube.com/watch?v=twLgobLLO5U) (technical breakdown of `crypt` limits, `/etc/shadow` history, and microVM isolation).
 
 Material technical claims, commit hashes, and historical milestones were checked against:
 - [Primary research disclosures and test matrix by Özgün Kültekin](https://sshhole.com/) at Wakefield.
@@ -308,6 +345,7 @@ Material technical claims, commit hashes, and historical milestones were checked
 ---
 
 **Related:**
+- [AWS Firecracker: MicroVM Guest-to-Host Escapes](AWS-Firecracker-MicroVM-Escape-Vulnerabilities-Nov-2026.md) — Comparing container and microVM isolation boundaries, device emulation flaws, and multi-tenant hypervisor security.
 - [Ubuntu Server CVE-2026-98432 Kernel UAF and Patch Lag](Ubuntu-Server-CVE-2026-98432-Kernel-UAF-And-Patch-Lag-Nov-2026.md) — Compare how Linux distribution packaging choices and patch lag affect real-world vulnerability exposure.
 - [HTTP Egress Credential Proxies vs MCP Gateways](HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways-Nov-2026.md) — Architectural analysis of security boundaries and credential isolation in modern systems.
 - [Local AI and Agent Security Threat Model](Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md) — How AI swarms and agentic systems discover and exploit vulnerabilities across complex software stacks.

@@ -1,4 +1,4 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 900" width="100%" height="100%">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
   <defs>
     <style>
       .bg { fill: #0b0f19; }
@@ -22,14 +22,14 @@
   </defs>
 
   <!-- Background -->
-  <rect width="1200" height="900" class="bg" />
+  <rect width="1200" height="800" class="bg" />
 
   <!-- Header -->
   <text x="40" y="42" class="header-title">OpenSSH &amp; musl libc: The *sshole Authentication Bypass (CVE-2026-123158)</text>
   <text x="40" y="66" class="header-subtitle">How 40 Years of Isolated Defensive Choices Collided into Remote Authentication Bypass</text>
 
   <!-- Left Panel: The Four Converging Assumptions -->
-  <rect x="40" y="90" width="365" height="780" class="panel" />
+  <rect x="40" y="90" width="365" height="690" class="panel" />
   <text x="56" y="118" class="panel-title">1. Four Converging Design Choices</text>
   <text x="56" y="136" class="panel-subtitle">Decades of independent, well-intentioned defensive decisions</text>
 
@@ -72,7 +72,7 @@
   <text x="70" y="742" class="code-text">musl + no-PAM + &quot;*&quot; account + 257..1024 bytes</text>
 
   <!-- Middle Panel: The Exploit Mechanism & Logic Failure -->
-  <rect x="420" y="90" width="415" height="780" class="panel" />
+  <rect x="420" y="90" width="415" height="690" class="panel" />
   <text x="436" y="118" class="panel-title">2. Execution Trace &amp; The Fatal Collision</text>
   <text x="436" y="136" class="panel-subtitle">How oversized passwords trick sshd into matching the error string</text>
 
@@ -115,7 +115,7 @@
   <text x="450" y="737" class="code-text">alpine:~# whoami &amp;&amp; id  -&gt;  root / uid=0</text>
 
   <!-- Right Panel: Exposure Matrix & Patch -->
-  <rect x="850" y="90" width="310" height="780" class="panel" />
+  <rect x="850" y="90" width="310" height="690" class="panel" />
   <text x="866" y="118" class="panel-title">3. Vulnerability Matrix &amp; Fix</text>
   <text x="866" y="136" class="panel-subtitle">Environmental factors and OpenSSH 10.6p2</text>
 

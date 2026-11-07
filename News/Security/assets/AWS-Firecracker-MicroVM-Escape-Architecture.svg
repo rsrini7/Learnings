@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 770" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0b0f19; }
+      .panel { fill: #111827; stroke: #1e293b; stroke-width: 1.5; rx: 8px; }
+      .inner-box { fill: #1e293b; stroke: #334155; stroke-width: 1.2; rx: 6px; }
+      .inner-box-red { fill: #1e293b; stroke: #f87171; stroke-width: 1.3; rx: 6px; }
+      .inner-box-green { fill: #1e293b; stroke: #4ade80; stroke-width: 1.3; rx: 6px; }
+      .inner-box-amber { fill: #1e293b; stroke: #fbbf24; stroke-width: 1.3; rx: 6px; }
+      .header-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 700; fill: #f8fafc; }
+      .header-subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .panel-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 600; fill: #38bdf8; }
+      .panel-subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 11px; fill: #94a3b8; }
+      .box-desc { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 11px; fill: #cbd5e1; }
+      .tag { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; font-weight: 600; }
+      .tag-red { fill: #f87171; }
+      .tag-green { fill: #4ade80; }
+      .tag-amber { fill: #fbbf24; }
+      .tag-cyan { fill: #38bdf8; }
+      .code-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 10.5px; fill: #a5b4fc; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="770" class="bg" />
+
+  <!-- Header -->
+  <text x="40" y="42" class="header-title">AWS Firecracker: MicroVM Guest-to-Host Breakout Anatomy (CVE-2026-5747 &amp; CVE-2026-122192)</text>
+  <text x="40" y="66" class="header-subtitle">Virtio-PCI Device State Corruption, Memory Discard Desynchronization, and Jailer Boundaries</text>
+
+  <!-- Left Panel: Architecture & The Trust Boundary -->
+  <rect x="40" y="90" width="365" height="655" class="panel" />
+  <text x="56" y="118" class="panel-title">1. MicroVM Trust Boundaries</text>
+  <text x="56" y="136" class="panel-subtitle">How Firecracker isolates untrusted multi-tenant workloads</text>
+
+  <!-- Box 1.1: The Firecracker Model -->
+  <rect x="56" y="152" width="333" height="135" class="inner-box" />
+  <text x="70" y="174" class="tag tag-cyan">The Rust VMM Architecture</text>
+  <text x="70" y="194" class="box-desc">• Ultra-minimal VMM (~50k LoC in Rust) using Linux KVM.</text>
+  <text x="70" y="212" class="box-desc">• Strips legacy PC devices: no BIOS, ACPI, or IDE.</text>
+  <text x="70" y="230" class="box-desc">• Emulates minimal virtio: net, block, vsock, balloon.</text>
+  <text x="70" y="248" class="box-desc">• Powers AWS Lambda, AWS Fargate, Fly.io, and Koyeb.</text>
+  <text x="70" y="270" class="code-text">Guest VM (Untrusted) &lt;-- KVM --&gt; Host VMM (Rust)</text>
+
+  <!-- Box 1.2: Virtio Transport Models -->
+  <rect x="56" y="299" width="333" height="140" class="inner-box" />
+  <text x="70" y="321" class="tag tag-amber">Transport: MMIO vs. Virtio-PCI</text>
+  <text x="70" y="341" class="box-desc">• Default Transport: virtio-mmio (memory-mapped I/O).</text>
+  <text x="70" y="359" class="box-desc">• Modern Opt-In: virtio-pci via --enable-pci.</text>
+  <text x="70" y="377" class="box-desc">• Virtio-PCI provides standard PCI BAR configurations</text>
+  <text x="70" y="395" class="box-desc">  for modern high-performance cloud kernels.</text>
+  <text x="70" y="417" class="code-text">virtio-pci: queue_sel, queue_size, queue_pfn</text>
+
+  <!-- Box 1.3: Jailer Isolation Defense -->
+  <rect x="56" y="451" width="333" height="145" class="inner-box-green" />
+  <text x="70" y="473" class="tag tag-green">The Firecracker Jailer Sandbox</text>
+  <text x="70" y="493" class="box-desc">• Defense-in-depth wrapper executed before KVM init.</text>
+  <text x="70" y="511" class="box-desc">• Chroot: Locks process into isolated root directory.</text>
+  <text x="70" y="529" class="box-desc">• Cgroups: Limits CPU, RAM, and device nodes.</text>
+  <text x="70" y="547" class="box-desc">• Drops root: Runs as unprivileged user/group ID.</text>
+  <text x="70" y="570" class="code-text">jailer --id vm1 --exec firecracker --uid 1000</text>
+
+  <!-- Box 1.4: Containment Outcome -->
+  <rect x="56" y="608" width="333" height="120" class="inner-box" />
+  <text x="70" y="628" class="tag tag-cyan">Jailer Containment Outcome</text>
+  <text x="70" y="648" class="box-desc">• VMM heap corruption does NOT grant host root.</text>
+  <text x="70" y="666" class="box-desc">• Seccomp-BPF blocks execve, fork, and network.</text>
+  <text x="70" y="684" class="box-desc">• Attacker remains trapped in jailer chroot sandbox.</text>
+  <text x="70" y="706" class="code-text">Result: Host kernel remains insulated.</text>
+
+  <!-- Middle Panel: The Exploit Mechanisms -->
+  <rect x="420" y="90" width="415" height="655" class="panel" />
+  <text x="436" y="118" class="panel-title">2. Breakout Mechanisms (CVE Analysis)</text>
+  <text x="436" y="136" class="panel-subtitle">Device state corruption and memory discard bugs</text>
+
+  <!-- Box 2.1: CVE-2026-5747 Virtio-PCI -->
+  <rect x="436" y="152" width="383" height="185" class="inner-box-red" />
+  <text x="450" y="174" class="tag tag-red">CVE-2026-5747: Virtio-PCI Out-of-Bounds Write</text>
+  <text x="450" y="194" class="box-desc">• Affected: Firecracker 1.13.0 - 1.14.3 and 1.15.0.</text>
+  <text x="450" y="212" class="box-desc">• Precondition: Attacker has root inside the guest VM.</text>
+  <text x="450" y="230" class="box-desc">• Flaw: Missing device activation check on PCI registers.</text>
+  <text x="450" y="248" class="box-desc">• Attack: Guest root writes to PCI queue registers AFTER</text>
+  <text x="450" y="266" class="box-desc">  activation, mutating queue size &amp; descriptor bounds.</text>
+  <text x="450" y="288" class="code-text">vmm.virtio_pci.write_config(QUEUE_SIZE, malformed_val)</text>
+  <text x="450" y="312" class="tag tag-red">RESULT: VMM HEAP CORRUPTION / HOST ESCAPE</text>
+
+  <!-- Box 2.2: CVE-2026-122192 Discard Bug -->
+  <rect x="436" y="349" width="383" height="175" class="inner-box-red" />
+  <text x="450" y="371" class="tag tag-red">CVE-2026-122192: Memory Discard &amp; Remap UAF</text>
+  <text x="450" y="391" class="box-desc">• Affected: Balloon and dynamic memory discard paths.</text>
+  <text x="450" y="409" class="box-desc">• Flaw: Guest inflates balloon or issues discard requests,</text>
+  <text x="450" y="427" class="box-desc">  releasing host physical memory back to kernel.</text>
+  <text x="450" y="445" class="box-desc">• Race condition: VMM retains stale guest-physical to</text>
+  <text x="450" y="463" class="box-desc">  host-virtual mappings for freed host pages (Use-After-Free).</text>
+  <text x="450" y="486" class="code-text">madvise(MADV_DONTNEED) desynchronization</text>
+  <text x="450" y="508" class="tag tag-red">RESULT: MEMORY CORRUPTION / CROSS-VM LEAK</text>
+
+  <!-- Box 2.3: Breakout Flow -->
+  <rect x="436" y="536" width="383" height="192" class="inner-box" />
+  <text x="450" y="558" class="tag tag-amber">The Guest-to-Host Compromise Chain</text>
+  <text x="450" y="578" class="box-desc">1. Guest Kernel Ring 0 writes to virtio PCI BAR.</text>
+  <text x="450" y="596" class="box-desc">2. KVM VM-Exit routes I/O event to Firecracker VMM.</text>
+  <text x="450" y="614" class="box-desc">3. VMM corrupts internal heap state via OOB write.</text>
+  <text x="450" y="632" class="box-desc">4. Attacker redirects VMM execution to hijack host thread.</text>
+  <text x="450" y="654" class="code-text">Guest Root -&gt; VM-Exit -&gt; VMM Heap -&gt; Host Context</text>
+  <text x="450" y="674" class="tag-amber tag">STATUS: VMM HIJACKED; CONTAINED AT JAILER</text>
+
+  <!-- Right Panel: Hardening & Remediation -->
+  <rect x="850" y="90" width="310" height="655" class="panel" />
+  <text x="866" y="118" class="panel-title">3. Mitigation &amp; Defenses</text>
+  <text x="866" y="136" class="panel-subtitle">Patching versions and multi-layer isolation</text>
+
+  <!-- Box 3.1: Patched Releases -->
+  <rect x="866" y="152" width="278" height="165" class="inner-box-green" />
+  <text x="878" y="174" class="tag tag-green">Firecracker Security Patches</text>
+  <text x="878" y="196" class="box-desc">• Upgrade to Firecracker 1.14.4 or 1.15.1.</text>
+  <text x="878" y="214" class="box-desc">• Patch adds strict device state assertions:</text>
+  <text x="878" y="234" class="code-text">if self.is_activated() {</text>
+  <text x="878" y="250" class="code-text">    error!(&quot;Cannot modify queue&quot;);</text>
+  <text x="878" y="266" class="code-text">    return;</text>
+  <text x="878" y="282" class="code-text">}</text>
+  <text x="878" y="302" class="box-desc">• Prevents all post-activation mutations.</text>
+
+  <!-- Box 3.2: Immediate Workaround -->
+  <rect x="866" y="329" width="278" height="150" class="inner-box-amber" />
+  <text x="878" y="351" class="tag tag-amber">Immediate Operational Workaround</text>
+  <text x="878" y="371" class="box-desc">• If patching is delayed, disable virtio-pci.</text>
+  <text x="878" y="389" class="box-desc">• Revert to legacy virtio-mmio transport.</text>
+  <text x="878" y="407" class="box-desc">• Remove --enable-pci CLI parameter.</text>
+  <text x="878" y="425" class="box-desc">• Virtio-MMIO state machine is unaffected</text>
+  <text x="878" y="443" class="box-desc">  by the PCI configuration register bug.</text>
+  <text x="878" y="465" class="code-text">CLI: remove --enable-pci</text>
+
+  <!-- Box 3.3: Why Rust Didn't Stop It -->
+  <rect x="866" y="491" width="278" height="237" class="inner-box" />
+  <text x="878" y="513" class="tag tag-cyan">The Rust Safety Boundary Paradox</text>
+  <text x="878" y="533" class="box-desc">• Firecracker is written in memory-safe Rust.</text>
+  <text x="878" y="551" class="box-desc">• Why did an OOB write occur?</text>
+  <text x="878" y="569" class="box-desc">1. State Machine Logic: Rust types cannot</text>
+  <text x="878" y="587" class="box-desc">   prevent illegal sequence transitions.</text>
+  <text x="878" y="605" class="box-desc">2. Unsafe FFI &amp; Memory Maps: Direct KVM</text>
+  <text x="878" y="623" class="box-desc">   mmap &amp; raw ring buffers require unsafe.</text>
+  <text x="878" y="641" class="box-desc">3. Lesson: Memory safety is not whole-system</text>
+  <text x="878" y="659" class="box-desc">   correctness when managing devices.</text>
+  <text x="878" y="682" class="code-text">State logic flaws bypass type safety.</text>
+  <text x="878" y="704" class="box-desc">• Multi-layer isolation is mandatory.</text>
+</svg>
