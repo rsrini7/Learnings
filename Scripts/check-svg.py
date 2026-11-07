@@ -16,6 +16,9 @@ Validates SVG architecture diagrams and infographics for:
    border strokes without an enclosing pill/badge <rect>.
 7. Connector-Card Piercing Detection: Catches arrow connectors (<line>, <path>) cutting
    straight through unrelated intermediate card containers using Liang-Barsky line clipping.
+8. Empty Bottom Space & Dead Zone Detection: Catches excessive empty/dead space (>55px)
+   at the bottom of major container cards/panels, and flags canvas viewBox heights
+   that extend far beyond their lowest content.
 
 Usage:
     python3 Scripts/check-svg.py                          # Check all tracked SVGs
@@ -434,6 +437,52 @@ def scan_svg_file(filepath: str) -> list:
                             'snippet': f'Connector from ({x1:.0f}, {y1:.0f}) to ({x2:.0f}, {y2:.0f}) cuts straight through card at ({rx:.0f}, {ry:.0f}, w={rw:.0f}, h={rh:.0f})',
                             'fix_advice': 'Reroute connector around card or reposition cards so lines do not pierce unrelated components.'
                         })
+
+    # 8. Check Empty Bottom Space & Vertical Dead Zones
+    # 8A. Container-Level Empty Bottom Space (e.g. major panels/cards with large empty gap below content)
+    for r in rects:
+        if r['w'] >= 180.0 and r['h'] >= 180.0:
+            cb = []
+            for cr in rects:
+                if cr is not r and r['x'] - 2.0 <= cr['x'] and (cr['x'] + cr['w']) <= (r['x'] + r['w'] + 2.0) and r['y'] - 2.0 <= cr['y'] and (cr['y'] + cr['h']) <= (r['y'] + r['h'] + 2.0):
+                    cb.append(cr['y'] + cr['h'])
+            for tb in text_boxes:
+                if r['x'] - 5.0 <= tb['tx'] <= (r['x'] + r['w'] + 5.0) and r['y'] - 5.0 <= tb['ty'] <= (r['y'] + r['h'] + 5.0):
+                    cb.append(tb['bottom'])
+            for x1, y1, x2, y2 in segments:
+                if r['x'] <= x1 <= r['x'] + r['w'] and r['y'] <= y1 <= r['y'] + r['h']:
+                    cb.append(max(y1, y2))
+
+            if cb:
+                max_child_bot = max(cb)
+                c_bot = r['y'] + r['h']
+                slack = c_bot - max_child_bot
+                if slack >= 55.0 and (slack / r['h']) >= 0.12:
+                    suggested_h = int(max_child_bot - r['y'] + 25.0)
+                    issues.append({
+                        'file': filepath,
+                        'line': 0,
+                        'type': 'SVG Container Empty Bottom Space Warning',
+                        'severity': 'WARNING',
+                        'snippet': f'Container at (x={r["x"]:.0f}, y={r["y"]:.0f}, w={r["w"]:.0f}, h={r["h"]:.0f}) has {slack:.0f}px empty space at bottom ({slack/r["h"]*100:.1f}% of height; content ends at y={max_child_bot:.0f}, container ends at y={c_bot:.0f})',
+                        'fix_advice': f'Reduce container height from {r["h"]:.0f}px to ~{suggested_h}px, or add balanced content/cards to utilize the empty space.'
+                    })
+
+    # 8B. Canvas-Level Empty Bottom Space (viewBox height significantly exceeds lowest content)
+    all_bottoms = [r['y'] + r['h'] for r in rects] + [tb['bottom'] for tb in text_boxes] + [max(y1, y2) for x1, y1, x2, y2 in segments]
+    if all_bottoms:
+        global_max_b = max(all_bottoms)
+        canvas_slack = vb_h - global_max_b
+        if canvas_slack >= 65.0 and (canvas_slack / vb_h) >= 0.10:
+            suggested_vb_h = int(global_max_b + 25.0)
+            issues.append({
+                'file': filepath,
+                'line': 0,
+                'type': 'SVG Canvas Empty Bottom Space Warning',
+                'severity': 'WARNING',
+                'snippet': f'viewBox height is {vb_h:.0f}px, but lowest content terminates at y={global_max_b:.0f}px ({canvas_slack:.0f}px dead space, {canvas_slack/vb_h*100:.1f}%)',
+                'fix_advice': f'Reduce root viewBox height from {vb_h:.0f} to ~{suggested_vb_h} (and adjust canvas background rect height) to remove dead space at the bottom.'
+            })
 
     return issues
 

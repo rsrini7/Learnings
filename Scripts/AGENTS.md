@@ -177,6 +177,7 @@ python3 Scripts/check-svg.py path/to/diagram.svg
 - **ViewBox Integrity:** Ensures valid `viewBox="min-x min-y width height"` attributes with positive dimensions.
 - **Container Text Boundary Overflows:** Because SVG `<text>` elements **do not auto-wrap** and `<foreignObject>` is blocked by GitHub's `camo` proxy, text strings often exceed card boundaries. The detector measures rendered pixel width against innermost `<rect>` containers (taking font-size, font-family, font-weight, and `text-anchor` into account) and flags any line spilling past container borders.
 - **Tight Right Margins & Vertical Clamping:** Warns when text is within 5px of a container's right border, and flags text extending below container bottom edges.
+- **Empty Bottom Space & Vertical Dead Zones:** Warns when major container panels have >55px of unused dead space at the bottom, or when canvas viewBox height extends far beyond the lowest content.
 
 ---
 

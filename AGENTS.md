@@ -125,7 +125,7 @@ adapt section names and omit sections that do not help explain the subject.
     - Keep SVGs dark-theme native (`#0b0f19` / `#111827` background, slate containers `#1e293b`, cyan `#38bdf8`, emerald `#4ade80`, amber `#fbbf24`, muted text `#94a3b8`) with a responsive `viewBox`.
     - **Strict XML validation:** All text nodes must escape ampersands as `&amp;` and angle brackets as `&lt;` / `&gt;`. Always validate SVG syntax before delivery (e.g., via `python3 -c "import xml.etree.ElementTree as ET; ET.parse('path/to.svg')"`).
     - **Text Boundary & Overflow Clamping:** Unlike HTML, SVG `<text>` elements **do not auto-wrap**. Furthermore, GitHub's image sanitizer and `camo` proxy strip `<foreignObject>` blocks for security reasons. Never write single uninterrupted text lines exceeding 55–60 characters inside standard card containers (~450–500px width at font-size 11–12px). Manually wrap sentences across multiple `<text>` lines with controlled vertical spacing (16–18px offsets).
-    - **Automated SVG Verification:** Always validate diagrams using `python3 Scripts/check-svg.py path/to/diagram.svg` (or `python3 Scripts/check-markdown.py path/to/note.md`) to catch text boundary overflows, tight margins (<5px), text-on-text collisions, border straddles, connector piercing, and invalid viewBox dimensions before delivery.
+    - **Automated SVG Verification:** Always validate diagrams using `python3 Scripts/check-svg.py path/to/diagram.svg` (or `python3 Scripts/check-markdown.py path/to/note.md`) to catch text boundary overflows, tight margins (<5px), text-on-text collisions, border straddles, connector piercing, empty bottom dead space, and invalid viewBox dimensions before delivery.
     - When helpful, pair the SVG (high-level visual infographic) with focused in-line Mermaid diagrams for specific sub-mechanisms (e.g. request sequence or attention projection).
 - **LaTeX Math and KaTeX Rendering on GitHub:**
   - **Subscripts outside `\text{}`:** In KaTeX/LaTeX, `\text{...}` operates in text mode. An unescaped underscore `_` is illegal in text mode and throws the KaTeX error `'_' allowed only in math mode`. Move subscripts outside `\text{}` into math mode (e.g., write `\text{Score}_{\text{RRF}}(d)` instead of `\text{RRF_Score}(d)`).
@@ -233,7 +233,7 @@ a commit.
 - [ ] Moved/renamed files via `git mv` (not plain `mv`)
 - [ ] Images/SVGs/PDFs in nearest `assets/` folder, **NOT** alongside the `.md` file
 - [ ] **Do NOT put images/SVGs in the root-level `assets/`** — use category-level `assets/`
-- [ ] SVGs validated for well-formed XML, container text overflows, text-on-text collisions, border straddles, and connector piercing (`python3 Scripts/check-svg.py path/to.svg`)
+- [ ] SVGs validated for well-formed XML, container text overflows, text-on-text collisions, border straddles, connector piercing, and empty bottom dead space (`python3 Scripts/check-svg.py path/to.svg`)
 - [ ] Mermaid diagrams checked for statement semicolons, edge delimiter collisions (`||`), nested colons, bidirectional label overlaps, subgraph title wrapping (<=24 chars), and cluster-to-cluster edges
 - [ ] Math display blocks (`$$...$$`) placed flush-left (column 0, no list indentation) with subscripts outside `\text{}` (`\text{Score}_{\text{sub}}`)
 - [ ] Relative links inside moved files fixed
