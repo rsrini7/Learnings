@@ -196,6 +196,7 @@ Learnings/
 - [RAG Architectures](AI-ML/RAG/RAG-Architectures.md)
 - [RAG Guide Jan 2026](AI-ML/RAG/RAG-Guide-Jan-2026.md)
 - [RAG Scaling 10M Documents](AI-ML/RAG/RAG-Scaling-10M-Documents.md)
+- [Reducing Enterprise RAG Latency 2026](AI-ML/RAG/Reducing-Enterprise-RAG-Latency-2026.md)
 
 
 ### 🧱 AI Hardware

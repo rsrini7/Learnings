@@ -1,0 +1,212 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="subCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#0b1329" stop-opacity="0.9" />
+    </linearGradient>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowEmerald" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+    </marker>
+    <marker id="arrowRose" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f43f5e" />
+    </marker>
+  </defs>
+
+  <style>
+    text { font-family: system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; }
+    .mono { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; }
+  </style>
+
+  <!-- Background -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" rx="12" />
+
+  <!-- Main Header -->
+  <text x="600" y="34" fill="#f8fafc" font-size="19" font-weight="800" text-anchor="middle" letter-spacing="0.5">
+    ENTERPRISE RAG LATENCY OPTIMIZATION &amp; CRITICAL PATH ARCHITECTURE (2026)
+  </text>
+  <text x="600" y="56" fill="#94a3b8" font-size="12" text-anchor="middle">
+    Critical-Path Profiling · Multi-Tier Caching · Adaptive Rerank Gating · Pre-filtering Security · Tail Latency Bounding
+  </text>
+
+  <!-- ========================================================= -->
+  <!-- PANEL 1: CRITICAL PATH PROFILING (TOP-LEFT)                -->
+  <!-- ========================================================= -->
+  <rect x="30" y="75" width="560" height="350" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5" />
+  <text x="50" y="102" fill="#38bdf8" font-size="14" font-weight="700">1. CRITICAL-PATH LATENCY &amp; INFERENCE DECOMPOSITION</text>
+
+  <!-- Parallel Branch vs Sequential Pipeline visual -->
+  <rect x="50" y="118" width="520" height="110" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+  <text x="62" y="136" fill="#f1f5f9" font-size="11" font-weight="700">Parallel Search Path: Critical Path = max(t_dense, t_sparse) + t_fusion</text>
+
+  <!-- Sub branch dense -->
+  <rect x="62" y="146" width="180" height="34" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+  <text x="72" y="161" fill="#38bdf8" font-size="10" font-weight="700">Dense Vector Search (HNSW)</text>
+  <text x="72" y="174" fill="#94a3b8" font-size="9" class="mono">p50: 22ms · p99: 85ms</text>
+
+  <!-- Sub branch sparse -->
+  <rect x="62" y="186" width="180" height="34" rx="4" fill="#1e293b" stroke="#a78bfa" stroke-width="1" />
+  <text x="72" y="201" fill="#c084fc" font-size="10" font-weight="700">Sparse BM25 / Inverted Index</text>
+  <text x="72" y="214" fill="#94a3b8" font-size="9" class="mono">p50: 12ms · p99: 45ms</text>
+
+  <!-- Fusion node -->
+  <path d="M 242 163 L 268 180" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrowCyan)" />
+  <path d="M 242 203 L 268 184" stroke="#a78bfa" stroke-width="1.5" marker-end="url(#arrowCyan)" />
+
+  <rect x="272" y="152" width="125" height="58" rx="4" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+  <text x="280" y="172" fill="#34d399" font-size="10" font-weight="700">Reciprocal Rank</text>
+  <text x="280" y="186" fill="#34d399" font-size="10" font-weight="700">Fusion (RRF)</text>
+  <text x="280" y="200" fill="#94a3b8" font-size="9" class="mono">k0=60 · ~4ms</text>
+
+  <!-- Inference box -->
+  <path d="M 397 181 L 418 181" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowEmerald)" />
+  <rect x="422" y="152" width="136" height="58" rx="4" fill="#1e293b" stroke="#fbbf24" stroke-width="1" />
+  <text x="430" y="172" fill="#fbbf24" font-size="10" font-weight="700">Prompt &amp; Model</text>
+  <text x="430" y="186" fill="#fbbf24" font-size="10" font-weight="700">TTFT vs Decode</text>
+  <text x="430" y="200" fill="#94a3b8" font-size="9" class="mono">Token generation</text>
+
+  <!-- Breakdown Cards below -->
+  <rect x="50" y="238" width="250" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+  <text x="62" y="256" fill="#38bdf8" font-size="11" font-weight="700">Time to First Token (TTFT)</text>
+  <text x="62" y="272" fill="#cbd5e1" font-size="10">Governs perceived user responsiveness.</text>
+  <text x="62" y="287" fill="#94a3b8" font-size="9">Critical path: Embed + Search + Rerank +</text>
+  <text x="62" y="301" fill="#94a3b8" font-size="9">KV Cache prefill + model queue time.</text>
+  <text x="62" y="315" fill="#38bdf8" font-size="9" font-weight="600">Streaming hides completion latency only.</text>
+
+  <rect x="320" y="238" width="250" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+  <text x="332" y="256" fill="#fbbf24" font-size="11" font-weight="700">Time to Complete Answer (TTCA)</text>
+  <text x="332" y="272" fill="#cbd5e1" font-size="10">Governs throughput and end-to-end task time.</text>
+  <text x="332" y="287" fill="#94a3b8" font-size="9">Dominated by sequential token decode:</text>
+  <text x="332" y="301" fill="#fbbf24" font-size="9" class="mono">Latency ≈ TTFT + (Tokens_out × ms/token)</text>
+  <text x="332" y="315" fill="#cbd5e1" font-size="9">Cap output tokens &amp; deduplicate prompt chunks.</text>
+
+  <!-- Critical Path footnote in panel -->
+  <rect x="50" y="332" width="520" height="78" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="0.8" />
+  <text x="62" y="350" fill="#38bdf8" font-size="10" font-weight="700">Core Telemetry &amp; Critical-Path Rule:</text>
+  <text x="62" y="366" fill="#e2e8f0" font-size="9.5">1. Never sum parallel stages: Total Search Time = max(dense_ms, sparse_ms) + fusion_ms.</text>
+  <text x="62" y="381" fill="#e2e8f0" font-size="9.5">2. Track p95/p99 by tenant ID and filter selectivity; fast averages conceal tail queue spikes.</text>
+  <text x="62" y="396" fill="#e2e8f0" font-size="9.5">3. Record candidate count k, prompt tokens, generation tokens, and model queue wait separately.</text>
+
+  <!-- ========================================================= -->
+  <!-- PANEL 2: MULTI-TIER CACHING & ACL KEYS (TOP-RIGHT)        -->
+  <!-- ========================================================= -->
+  <rect x="610" y="75" width="560" height="350" rx="10" fill="url(#cardGrad)" stroke="#34d399" stroke-width="1.5" />
+  <text x="630" y="102" fill="#34d399" font-size="14" font-weight="700">2. ENTERPRISE MULTI-TIER CACHING &amp; COMPOUND KEYS</text>
+
+  <!-- Cache Tier Rows -->
+  <rect x="630" y="118" width="520" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+  <text x="642" y="136" fill="#38bdf8" font-size="11" font-weight="700">Tier 1: Query Embedding Cache (Low Risk · Zero ACL Leak)</text>
+  <text x="642" y="152" fill="#cbd5e1" font-size="10">Key: SHA256(NormalizedText + EmbeddingModelID) · Bypasses 15-40ms vectorization.</text>
+  <text x="642" y="167" fill="#94a3b8" font-size="9.5">Safe across tenants because vectors are deterministic representations of text.</text>
+
+  <rect x="630" y="192" width="520" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+  <text x="642" y="210" fill="#a78bfa" font-size="11" font-weight="700">Tier 2: Retrieval &amp; Fused Context Cache (Medium Risk · ACL Bound)</text>
+  <text x="642" y="226" fill="#cbd5e1" font-size="10">Stores fused top-k chunk IDs. Key includes TenantID + GroupSecurityMask + DocRev.</text>
+  <text x="642" y="241" fill="#94a3b8" font-size="9.5">Bypasses vector index + BM25 search. Invalidate immediately on CDC document updates.</text>
+
+  <rect x="630" y="266" width="520" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+  <text x="642" y="284" fill="#fbbf24" font-size="11" font-weight="700">Tier 3: Semantic Answer Cache (High Risk · Full Answer Return)</text>
+  <text x="642" y="300" fill="#cbd5e1" font-size="10">Returns generated answer if cosine(q_new, q_cached) ≥ 0.96 within exact permission scope.</text>
+  <text x="642" y="315" fill="#f43f5e" font-size="9.5" font-weight="600">Strict compound key required to prevent cross-tenant &amp; stale answer leakage.</text>
+
+  <!-- Compound Key Box -->
+  <rect x="630" y="340" width="520" height="70" rx="6" fill="#1e293b" stroke="#34d399" stroke-width="0.8" />
+  <text x="642" y="358" fill="#34d399" font-size="10" font-weight="700">Deterministic Enterprise Cache Key Formula:</text>
+  <text x="642" y="375" fill="#f1f5f9" font-size="9.5" class="mono">Key = SHA256(NormQuery || TenantID || ACL_Hash || CorpusVersion || PromptHash)</text>
+  <text x="642" y="393" fill="#cbd5e1" font-size="9.5">Never use raw query text alone; never use a blind 24h TTL on permissions.</text>
+
+  <!-- ========================================================= -->
+  <!-- PANEL 3: RETRIEVAL & FILTERING (BOTTOM-LEFT)              -->
+  <!-- ========================================================= -->
+  <rect x="30" y="440" width="560" height="355" rx="10" fill="url(#cardGrad)" stroke="#a78bfa" stroke-width="1.5" />
+  <text x="50" y="467" fill="#a78bfa" font-size="14" font-weight="700">3. RETRIEVAL OPTIMIZATION &amp; PERMISSION FILTERING</text>
+
+  <!-- Pre-filtering vs Post-filtering comparison -->
+  <rect x="50" y="482" width="250" height="155" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="62" y="502" fill="#38bdf8" font-size="11" font-weight="700">Vector Pre-filtering (Security First)</text>
+  <text x="62" y="520" fill="#4ade80" font-size="10" font-weight="600">✓ 100% Eligible Recall</text>
+  <text x="62" y="535" fill="#cbd5e1" font-size="9.5">Limits graph search strictly to authorized</text>
+  <text x="62" y="549" fill="#cbd5e1" font-size="9.5">chunks matching user security tokens.</text>
+  <text x="62" y="568" fill="#fbbf24" font-size="10" font-weight="600">⚠ Latency Hazard under Selectivity:</text>
+  <text x="62" y="583" fill="#94a3b8" font-size="9">If filter selects &lt;1% of corpus, HNSW</text>
+  <text x="62" y="597" fill="#94a3b8" font-size="9">graph traversal fragments, causing</text>
+  <text x="62" y="611" fill="#94a3b8" font-size="9">extended scans or index fallback (p99 spike).</text>
+  <text x="62" y="626" fill="#38bdf8" font-size="9" class="mono">Fix: Tenant-isolated partition indexes.</text>
+
+  <rect x="320" y="482" width="250" height="155" rx="6" fill="#0f172a" stroke="#f43f5e" stroke-width="1" />
+  <text x="332" y="502" fill="#f43f5e" font-size="11" font-weight="700">Vector Post-filtering (Recall Risk)</text>
+  <text x="332" y="520" fill="#4ade80" font-size="10" font-weight="600">✓ Fast Raw Vector Scan</text>
+  <text x="332" y="535" fill="#cbd5e1" font-size="9.5">ANN graph traversal runs over full index,</text>
+  <text x="332" y="549" fill="#cbd5e1" font-size="9.5">then ACL filters prune unauthorized results.</text>
+  <text x="332" y="568" fill="#f43f5e" font-size="10" font-weight="600">⛔ Severe Candidate Starvation:</text>
+  <text x="332" y="583" fill="#94a3b8" font-size="9">If top-k=20 retrieved, but user lacks ACL</text>
+  <text x="332" y="597" fill="#94a3b8" font-size="9">on 18, only 2 chunks reach downstream.</text>
+  <text x="332" y="611" fill="#94a3b8" font-size="9">Answer generation fails or hallucinates.</text>
+  <text x="332" y="626" fill="#f43f5e" font-size="9" font-weight="600">Never use post-filtering for small k!</text>
+
+  <!-- Chunk & k tuning bottom card -->
+  <rect x="50" y="647" width="520" height="135" rx="6" fill="#1e293b" stroke="#a78bfa" stroke-width="0.8" />
+  <text x="62" y="667" fill="#a78bfa" font-size="10.5" font-weight="700">Chunk Boundary &amp; Candidate Count (k) Optimization Playbook:</text>
+  <text x="62" y="685" fill="#f1f5f9" font-size="9.5">• Tuning k: Measure recall@k vs latency. Moving from k=20 to k=100 quadruples reranker work.</text>
+  <text x="62" y="701" fill="#f1f5f9" font-size="9.5">• Bound candidates before fusion: Cap dense and sparse outputs at 30-50 candidates each.</text>
+  <text x="62" y="717" fill="#f1f5f9" font-size="9.5">• Parent-Child Chunking: Retrieve 256-token child chunks for precise vector matches;</text>
+  <text x="62" y="731" fill="#94a3b8" font-size="9">  expand to 1024-token parent context only for validated top-3 candidates.</text>
+  <text x="62" y="747" fill="#f1f5f9" font-size="9.5">• Metadata Enrichment: Embed document summary + title in chunk header; eliminates need</text>
+  <text x="62" y="761" fill="#94a3b8" font-size="9">  for brute-force wide context retrievals.</text>
+
+  <!-- ========================================================= -->
+  <!-- PANEL 4: ADAPTIVE RERANKING & TAIL LATENCY (BOTTOM-RIGHT) -->
+  <!-- ========================================================= -->
+  <rect x="610" y="440" width="560" height="355" rx="10" fill="url(#cardGrad)" stroke="#fbbf24" stroke-width="1.5" />
+  <text x="630" y="467" fill="#fbbf24" font-size="14" font-weight="700">4. ADAPTIVE RERANKING &amp; TAIL LATENCY BUDGETS</text>
+
+  <!-- Gating logic card -->
+  <rect x="630" y="482" width="520" height="155" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+  <text x="642" y="502" fill="#fbbf24" font-size="11" font-weight="700">Adaptive Rerank Gating: Avoid O(k · L) Compute on Clear Queries</text>
+  <text x="642" y="520" fill="#cbd5e1" font-size="10">Cross-encoder rerankers add 150-400ms. Gate execution using empirical score margins:</text>
+
+  <!-- Decision path in gating -->
+  <rect x="642" y="530" width="240" height="96" rx="4" fill="#1e293b" stroke="#34d399" stroke-width="0.8" />
+  <text x="652" y="548" fill="#34d399" font-size="10" font-weight="700">BYPASS RERANKER (Fast Path)</text>
+  <text x="652" y="564" fill="#cbd5e1" font-size="9.5">Condition: Margin Δ(s1, s2) &gt; θ AND</text>
+  <text x="652" y="578" fill="#cbd5e1" font-size="9.5">Dense &amp; Sparse top-1 doc agrees.</text>
+  <text x="652" y="594" fill="#4ade80" font-size="9.5" font-weight="600">Saves 180ms · Directly inject top-3.</text>
+  <text x="652" y="610" fill="#94a3b8" font-size="8.5">Verified on factual &amp; exact-entity queries.</text>
+
+  <rect x="896" y="530" width="242" height="96" rx="4" fill="#1e293b" stroke="#f59e0b" stroke-width="0.8" />
+  <text x="906" y="548" fill="#fbbf24" font-size="10" font-weight="700">EXECUTE RERANKER (Deep Path)</text>
+  <text x="906" y="564" fill="#cbd5e1" font-size="9.5">Condition: Ambiguous margin (Δ &lt; θ) OR</text>
+  <text x="906" y="578" fill="#cbd5e1" font-size="9.5">multi-hop comparative question.</text>
+  <text x="906" y="594" fill="#fbbf24" font-size="9.5" font-weight="600">Run lightweight reranker (k ≤ 20).</text>
+  <text x="906" y="610" fill="#94a3b8" font-size="8.5">Use FlashRank or distilled BGE on CPU.</text>
+
+  <!-- Tail latency SLA & Budget card -->
+  <rect x="630" y="647" width="520" height="135" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="0.8" />
+  <text x="642" y="667" fill="#fbbf24" font-size="10.5" font-weight="700">Enforcing Stage Latency Budgets &amp; Circuit Breakers:</text>
+  <text x="642" y="685" fill="#f1f5f9" font-size="9.5">• Strict Stage Deadlines: Search budget = 50ms; Reranker = 100ms; Total TTFT SLA = 400ms.</text>
+  <text x="642" y="701" fill="#f1f5f9" font-size="9.5">• Graceful Fallback: If reranker exceeds 100ms, abort cross-encoder and return top-3 RRF.</text>
+  <text x="642" y="717" fill="#f1f5f9" font-size="9.5">• Concurrency Bounding: Bound threadpools and async worker queues to avoid GPU thrashing.</text>
+  <text x="642" y="731" fill="#94a3b8" font-size="9">  Queue time explodes exponentially above 80% capacity (Kingman's formula).</text>
+  <text x="642" y="747" fill="#f1f5f9" font-size="9.5">• Regional Locality: Co-locate vector DB, reranker worker, and LLM gateway in same VPC subnet</text>
+  <text x="642" y="761" fill="#94a3b8" font-size="9">  to eliminate 60-120ms cross-region transit penalty.</text>
+
+</svg>
