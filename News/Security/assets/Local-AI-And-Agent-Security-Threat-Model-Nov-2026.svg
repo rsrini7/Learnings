@@ -118,4 +118,6 @@
   <text x="653" y="774" class="box-desc">  issue CORS / DNS-rebound requests to local port 8000.</text>
   <text x="653" y="805" class="code-text">Defense: Bind strictly to 127.0.0.1 and enforce auth.api_key.</text>
   <text x="653" y="823" class="code-text">         Block unauthenticated inference in menu bar settings.</text>
+  <text x="653" y="841" class="code-text">         Isolate agent runners in rootless container sandboxes.</text>
+  <text x="653" y="859" class="code-text">         Never grant local models access to ~/.ssh or ~/.aws.</text>
 </svg>

@@ -104,6 +104,8 @@
   <text x="450" y="632" class="box-desc">4. Attacker redirects VMM execution to hijack host thread.</text>
   <text x="450" y="654" class="code-text">Guest Root -&gt; VM-Exit -&gt; VMM Heap -&gt; Host Context</text>
   <text x="450" y="674" class="tag-amber tag">STATUS: VMM HIJACKED; CONTAINED AT JAILER</text>
+  <text x="450" y="694" class="box-desc">• Seccomp filter halts execve; host kernel uncompromised.</text>
+  <text x="450" y="712" class="code-text">Defense-in-depth arrests hypervisor breakout.</text>
 
   <!-- Right Panel: Hardening & Remediation -->
   <rect x="850" y="90" width="310" height="655" class="panel" />
