@@ -672,6 +672,7 @@ Based on primary disclosures, technical papers, open-source repositories, and in
 ---
 
 **Related:**
+- [AI Agent Evaluation Architectures: Multi-Tier Grading and Harnesses](AI-Agent-Evaluation-Architectures-Multi-Tier-Graders-And-Harnesses-Nov-2026.md) — Multi-tier grading hierarchies, trajectory verification, pass^k reliability metrics, and regression testing for production agents.
 - [AWS Infinity (Hydro) Architecture: Rust Serverless Agent Runtime](AWS-Infinity-Hydro-Rust-Agent-Runtime-Nov-2026.md) — High-density serverless agent runtime using execution slices, ~103 KB state bookmarks, Reactive Agent Protocol (RAP), and synthetic tool injection.
 - [AmshaAgent Architecture: Enterprise 5-Tier Memory, Governed Execution, and Hexagonal Autonomy](AmshaAgent-Architecture-Memory-Layering-And-Governance-Nov-2026.md) — Enterprise Java 25 / Quarkus agent harness featuring 5-tier memory, CAS write governance, rootless Podman sandboxing, and hexagonal persistence.
 - [Agent Memory Architectures: 5-Layer Harness and Judgment Memory](Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md) — Concentric 5-layer memory topology, rolling compaction, KV-cache prefix economics, and online parametric judgment calibration.

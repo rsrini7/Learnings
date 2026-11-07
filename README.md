@@ -83,6 +83,7 @@ Learnings/
 - [SlopCodeBench Vs GDPx Long Horizon Agent Benchmarks Nov 2026](AI-ML/Agents/analysis/SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md)
 
 #### 🏗️ Agent Frameworks
+- [AI Agent Evaluation Architectures Multi Tier Graders And Harnesses Nov 2026](AI-ML/Agents/frameworks/AI-Agent-Evaluation-Architectures-Multi-Tier-Graders-And-Harnesses-Nov-2026.md)
 - [AWS Infinity Hydro Rust Agent Runtime Nov 2026](AI-ML/Agents/frameworks/AWS-Infinity-Hydro-Rust-Agent-Runtime-Nov-2026.md)
 - [Agent Memory Architectures 5 Layer Harness And Judgment Memory Nov 2026](AI-ML/Agents/frameworks/Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md)
 - [Agentic Memory Governance Policy Engines And Lifecycles Nov 2026](AI-ML/Agents/frameworks/Agentic-Memory-Governance-Policy-Engines-And-Lifecycles-Nov-2026.md)
