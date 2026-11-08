@@ -1999,6 +1999,7 @@ Always conduct proof-of-concept testing with your specific hardware, models, and
 > Java isn’t “winning” AI—it’s absorbing responsibility. Python still explores; Java decides what’s allowed to run at scale. That distinction matters more than benchmarks.
 
 **Related:**
+- [Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026](../../Engineering/JVM/Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026.md) — Architectural evaluation of Project Babylon (Code Reflection) and Panama FFM for eliminating the two-language tax in enterprise AI.
 - [Project-Detroit-Java-Polyglot-Runtimes-Nov-2026](../../Engineering/JVM/Project-Detroit-Java-Polyglot-Runtimes-Nov-2026.md) — OpenJDK's FFM-based CPython and V8 bridge, enabling Java services to directly execute native PyTorch and HuggingFace pipelines.
 - [Java_remote_debug](../../Engineering/JVM/Java_remote_debug.md) — Production debugging tactics for JVM-hosted AI services under SLAs.
 - [Top-50-Q&A-AI-ML-Eng](Top-50-Q&A-AI-ML-Eng.md) — Engineering-depth interview Q&A that maps directly to the playbook's production scenarios.

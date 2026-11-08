@@ -1,0 +1,214 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 860" width="100%" height="100%" font-family="'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Helvetica, Arial, sans-serif">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="javaGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="babylonGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#31104b" />
+    </linearGradient>
+    <linearGradient id="panamaGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#042f2e" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="nativeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#27120b" />
+      <stop offset="100%" stop-color="#18181b" />
+    </linearGradient>
+
+    <!-- Arrow Markers -->
+    <marker id="arrowCyan" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowPurple" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#c084fc" />
+    </marker>
+    <marker id="arrowTeal" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#2dd4bf" />
+    </marker>
+    <marker id="arrowAmber" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#fb923c" />
+    </marker>
+
+    <!-- Drop Shadow -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Main Canvas Background -->
+  <rect width="1280" height="860" fill="url(#bgGrad)" />
+
+  <!-- ================= HEADER ================= -->
+  <g transform="translate(40, 28)">
+    <text x="0" y="24" fill="#f8fafc" font-size="24" font-weight="700" letter-spacing="0.5">JAVA &amp; THE NEXT GENERATION OF PROGRAMMING MODELS</text>
+    <text x="0" y="48" fill="#94a3b8" font-size="14">Architecture Overview: Project Babylon (Code Reflection) + Project Panama (FFM API) + ONNX / GPU Execution</text>
+    <rect x="980" y="6" width="220" height="32" rx="16" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="1090" y="27" fill="#38bdf8" font-size="12" font-weight="600" text-anchor="middle">Devoxx / Oracle Java Architecture</text>
+  </g>
+
+  <!-- ================= TOP BAR: AI INFERENCE PIPELINE ================= -->
+  <g transform="translate(40, 92)" filter="url(#shadow)">
+    <rect width="1200" height="88" rx="10" fill="url(#javaGrad)" stroke="#334155" stroke-width="1.5" />
+    <text x="20" y="24" fill="#38bdf8" font-size="12" font-weight="700" letter-spacing="1">1. HIGH-LEVEL GENERATIVE AI INFERENCE PIPELINE (REPEATED PER TOKEN)</text>
+
+    <!-- Step 1: Tokenization -->
+    <rect x="20" y="36" width="185" height="40" rx="6" fill="#0f172a" stroke="#475569" />
+    <text x="112" y="54" fill="#e2e8f0" font-size="12" font-weight="600" text-anchor="middle">1. Input Tokenization</text>
+    <text x="112" y="69" fill="#64748b" font-size="10" text-anchor="middle">Prompt String → Token IDs</text>
+    <line x1="205" y1="56" x2="235" y2="56" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)" />
+
+    <!-- Step 2: Embedding -->
+    <rect x="240" y="36" width="195" height="40" rx="6" fill="#0f172a" stroke="#475569" />
+    <text x="337" y="54" fill="#e2e8f0" font-size="12" font-weight="600" text-anchor="middle">2. Embedding Lookup</text>
+    <text x="337" y="69" fill="#64748b" font-size="10" text-anchor="middle">Token IDs → Dense Vectors</text>
+    <line x1="435" y1="56" x2="465" y2="56" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)" />
+
+    <!-- Step 3: Transforming (Highlighted bottleneck) -->
+    <rect x="470" y="34" width="290" height="44" rx="6" fill="#2e1065" stroke="#c084fc" stroke-width="1.5" />
+    <text x="615" y="53" fill="#f3e8ff" font-size="12" font-weight="700" text-anchor="middle">3. Transformer Layers (Compute Bottleneck)</text>
+    <text x="615" y="69" fill="#d8b4fe" font-size="10" text-anchor="middle">Attention + FeedForward Tensor Graph (16+ Layers)</text>
+    <line x1="760" y1="56" x2="790" y2="56" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)" />
+
+    <!-- Step 4: Sampling -->
+    <rect x="795" y="36" width="175" height="40" rx="6" fill="#0f172a" stroke="#475569" />
+    <text x="882" y="54" fill="#e2e8f0" font-size="12" font-weight="600" text-anchor="middle">4. Logits Sampling</text>
+    <text x="882" y="69" fill="#64748b" font-size="10" text-anchor="middle">Temperature / Top-K / Top-P</text>
+    <line x1="970" y1="56" x2="1000" y2="56" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)" />
+
+    <!-- Step 5: Decoding -->
+    <rect x="1005" y="36" width="175" height="40" rx="6" fill="#0f172a" stroke="#475569" />
+    <text x="1092" y="54" fill="#e2e8f0" font-size="12" font-weight="600" text-anchor="middle">5. Output Decoding</text>
+    <text x="1092" y="69" fill="#64748b" font-size="10" text-anchor="middle">Token IDs → Text Stream</text>
+  </g>
+
+  <!-- ================= MIDDLE LAYER: JVM BOUNDARY ================= -->
+  <g transform="translate(40, 200)" filter="url(#shadow)">
+    <!-- Outer JVM Box -->
+    <rect width="1200" height="420" rx="12" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" stroke-dasharray="6,4" />
+    <rect x="16" y="-12" width="310" height="24" rx="6" fill="#0284c7" />
+    <text x="171" y="5" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="0.8">JAVA VIRTUAL MACHINE (JVM) BOUNDARY</text>
+
+    <!-- LEFT COLUMN: PATH A - PROJECT PANAMA & FFM API -->
+    <g transform="translate(24, 28)">
+      <rect width="540" height="370" rx="10" fill="url(#panamaGrad)" stroke="#14b8a6" stroke-width="1.5" />
+      <text x="20" y="28" fill="#2dd4bf" font-size="14" font-weight="700" letter-spacing="0.5">PATH A: DIRECT NATIVE RUNTIME INTEROP (JDK 22–25+ GA)</text>
+      <text x="20" y="46" fill="#99f6e4" font-size="11">Zero-Copy Memory &amp; Downcall Handles via Foreign Function &amp; Memory (FFM) API</text>
+
+      <!-- Sub-box 1: jextract -->
+      <rect x="20" y="64" width="500" height="72" rx="8" fill="#091e1d" stroke="#0d9488" />
+      <text x="36" y="86" fill="#5eead4" font-size="13" font-weight="700">1. Build-Time Binding Generation (jextract)</text>
+      <text x="36" y="104" fill="#cbd5e1" font-size="11" font-family="Consolas, monospace">jextract --target-package oracle.code.onnx -I ... ort_genai_c.h</text>
+      <text x="36" y="122" fill="#94a3b8" font-size="11">Parses C header files → Generates strongly-typed Java method bindings</text>
+
+      <line x1="270" y1="136" x2="270" y2="156" stroke="#2dd4bf" stroke-width="2" marker-end="url(#arrowTeal)" />
+
+      <!-- Sub-box 2: FFM Downcalls & MemorySegment -->
+      <rect x="20" y="160" width="500" height="106" rx="8" fill="#091e1d" stroke="#0d9488" />
+      <text x="36" y="182" fill="#5eead4" font-size="13" font-weight="700">2. Foreign Function &amp; Memory (FFM) Execution</text>
+      <text x="36" y="202" fill="#e2e8f0" font-size="11">• <tspan fill="#2dd4bf" font-weight="600">Arena &amp; MemorySegment:</tspan> Deterministic off-heap tensor &amp; buffer allocation</text>
+      <text x="36" y="220" fill="#e2e8f0" font-size="11">• <tspan fill="#2dd4bf" font-weight="600">MethodHandle Downcalls:</tspan> Direct C symbol invocation (OgaCreateModel, etc.)</text>
+      <text x="36" y="238" fill="#e2e8f0" font-size="11">• <tspan fill="#2dd4bf" font-weight="600">Zero Unnecessary Copies:</tspan> Pass off-heap pointers directly to native engines</text>
+      <text x="36" y="256" fill="#94a3b8" font-size="10" font-family="Consolas, monospace">java --enable-native-access=ALL-UNNAMED -Djava.library.path=... OnnxGenAI</text>
+
+      <line x1="270" y1="266" x2="270" y2="286" stroke="#2dd4bf" stroke-width="2" marker-end="url(#arrowTeal)" />
+
+      <!-- Sub-box 3: CPU Optimization -->
+      <rect x="20" y="290" width="500" height="62" rx="8" fill="#091e1d" stroke="#0d9488" />
+      <text x="36" y="312" fill="#5eead4" font-size="13" font-weight="700">3. JVM CPU Acceleration Complement</text>
+      <text x="36" y="330" fill="#cbd5e1" font-size="11">HotSpot C2 JIT + Compiler Intrinsics + Vector API (SIMD AVX-512 / NEON)</text>
+      <text x="36" y="345" fill="#94a3b8" font-size="10">Accelerates pre/post-processing, tokenization, and CPU data pipelines</text>
+    </g>
+
+    <!-- RIGHT COLUMN: PATH B - PROJECT BABYLON & CODE REFLECTION -->
+    <g transform="translate(596, 28)">
+      <rect width="580" height="370" rx="10" fill="url(#babylonGrad)" stroke="#a855f7" stroke-width="1.5" />
+      <text x="20" y="28" fill="#e879f9" font-size="14" font-weight="700" letter-spacing="0.5">PATH B: PROJECT BABYLON — CODE REFLECTION (INCUBATION)</text>
+      <text x="20" y="46" fill="#f0abfc" font-size="11">Expressing AI Graphs &amp; GPU Kernels in Pure Java and Lowering to Foreign Models</text>
+
+      <!-- Step 1: Annotated Java Code -->
+      <rect x="20" y="64" width="260" height="95" rx="8" fill="#130d26" stroke="#9333ea" />
+      <text x="32" y="84" fill="#d8b4fe" font-size="12" font-weight="700">1. Java Source with @Reflect</text>
+      <text x="32" y="102" fill="#f472b6" font-size="11" font-family="Consolas, monospace">@Reflect</text>
+      <text x="32" y="116" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace">public Tensor forward(Tensor x) {</text>
+      <text x="32" y="130" fill="#38bdf8" font-size="11" font-family="Consolas, monospace">  return OnnxOps.Relu(x);</text>
+      <text x="32" y="144" fill="#e2e8f0" font-size="11" font-family="Consolas, monospace">}</text>
+
+      <line x1="280" y1="111" x2="305" y2="111" stroke="#c084fc" stroke-width="2" marker-end="url(#arrowPurple)" />
+
+      <!-- Step 2: Symbolic Code Model (AST/IR) -->
+      <rect x="310" y="64" width="250" height="95" rx="8" fill="#130d26" stroke="#9333ea" />
+      <text x="322" y="84" fill="#d8b4fe" font-size="12" font-weight="700">2. Immutable Code Model Tree</text>
+      <text x="322" y="101" fill="#94a3b8" font-size="10" font-family="Consolas, monospace">Op.ofMethod(method) → FuncOp</text>
+      <text x="322" y="117" fill="#a7f3d0" font-size="10" font-family="Consolas, monospace">func @"forward" (%0 : Tensor) {</text>
+      <text x="322" y="131" fill="#fde047" font-size="10" font-family="Consolas, monospace">  %1 = invoke %0 @"OnnxOps::Relu";</text>
+      <text x="322" y="145" fill="#a7f3d0" font-size="10" font-family="Consolas, monospace">  return %1; }</text>
+
+      <line x1="435" y1="159" x2="435" y2="180" stroke="#c084fc" stroke-width="2" marker-end="url(#arrowPurple)" />
+
+      <!-- Step 3: Code Reflection APIs -->
+      <rect x="20" y="184" width="540" height="82" rx="8" fill="#130d26" stroke="#9333ea" />
+      <text x="36" y="204" fill="#d8b4fe" font-size="12" font-weight="700">3. Code Reflection Pipeline: Access → Traverse → Build → Transform</text>
+      <text x="36" y="222" fill="#e2e8f0" font-size="11">• Inspects <tspan fill="#f0abfc">Body → Block → Operation</tspan> elements &amp; data/control flow dependencies</text>
+      <text x="36" y="239" fill="#e2e8f0" font-size="11">• Preserves high-level semantics lost in JVM bytecode; rewrites graph via <tspan fill="#f0abfc">Block.Builder</tspan></text>
+      <text x="36" y="256" fill="#94a3b8" font-size="10">Automated Schema Tooling: OpGen (ONNX Schema → Java @Reflect Ops) + ProtoGen (Protobuf Builders)</text>
+
+      <line x1="290" y1="266" x2="290" y2="286" stroke="#c084fc" stroke-width="2" marker-end="url(#arrowPurple)" />
+
+      <!-- Step 4: Target Lowering -->
+      <rect x="20" y="285" width="540" height="70" rx="8" fill="#130d26" stroke="#e879f9" stroke-width="1.5" />
+      <text x="36" y="306" fill="#f0abfc" font-size="13" font-weight="700">4. Foreign Programming Model Translation (OnnxBuilder / HAT)</text>
+      <text x="36" y="324" fill="#e2e8f0" font-size="11">Compiles Java Code Model IR into <tspan fill="#fde047" font-weight="600">Serialized ONNX Protobuf</tspan> or <tspan fill="#fde047" font-weight="600">GPU Kernels</tspan></text>
+      <text x="36" y="341" fill="#cbd5e1" font-size="10">Generates CUDA PTX / SPIR-V or dispatches ONNX graphs across the FFM API boundary</text>
+    </g>
+
+    <!-- Cross-Link from Babylon to Panama FFM -->
+    <path d="M 596 348 L 568 348" stroke="#fb923c" stroke-width="2.5" marker-end="url(#arrowAmber)" />
+  </g>
+
+  <!-- Connectors Crossing Native Boundary -->
+  <line x1="310" y1="620" x2="310" y2="668" stroke="#2dd4bf" stroke-width="3" marker-end="url(#arrowTeal)" />
+  <text x="322" y="650" fill="#2dd4bf" font-size="11" font-weight="600">FFM Downcall + Off-Heap Pointers</text>
+
+  <line x1="910" y1="620" x2="910" y2="668" stroke="#c084fc" stroke-width="3" marker-end="url(#arrowPurple)" />
+  <text x="922" y="650" fill="#e879f9" font-size="11" font-weight="600">Lowered ONNX Protobuf / GPU Kernel IR</text>
+
+  <!-- ================= BOTTOM LAYER: FOREIGN RUNTIMES & HARDWARE ================= -->
+  <g transform="translate(40, 672)" filter="url(#shadow)">
+    <rect width="1200" height="156" rx="12" fill="url(#nativeGrad)" stroke="#f97316" stroke-width="1.5" />
+    <rect x="16" y="-12" width="410" height="24" rx="6" fill="#ea580c" />
+    <text x="221" y="5" fill="#ffffff" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="0.5">NATIVE C/C++ RUNTIMES &amp; HETEROGENEOUS HARDWARE</text>
+
+    <!-- Box 1: ONNX Runtime -->
+    <rect x="24" y="26" width="365" height="110" rx="8" fill="#18181b" stroke="#fb923c" />
+    <text x="42" y="50" fill="#fdba74" font-size="14" font-weight="700">ONNX Runtime &amp; ONNX Runtime GenAI</text>
+    <text x="42" y="70" fill="#e2e8f0" font-size="11">• Executes Computational Graph (Operators &amp; Layers)</text>
+    <text x="42" y="88" fill="#e2e8f0" font-size="11">• Manages KV-Cache, Token Loops &amp; Model Weights</text>
+    <text x="42" y="106" fill="#94a3b8" font-size="11">• Formats: <tspan fill="#cbd5e1">.onnx</tspan> (Protobuf), <tspan fill="#cbd5e1">Safetensors</tspan>, <tspan fill="#cbd5e1">GGUF</tspan></text>
+    <text x="42" y="124" fill="#64748b" font-size="10">Used by: LangChain4j, DJL, Inference4j, Babylon ONNX Script</text>
+
+    <!-- Box 2: GPU / NPU Accelerators (Juan Fumero / HAT) -->
+    <rect x="418" y="26" width="365" height="110" rx="8" fill="#18181b" stroke="#fb923c" />
+    <text x="436" y="50" fill="#fdba74" font-size="14" font-weight="700">GPU / NPU Execution (via Babylon + HAT)</text>
+    <text x="436" y="70" fill="#e2e8f0" font-size="11">• Heterogeneous Accelerator Toolkit (HAT) Backend</text>
+    <text x="436" y="88" fill="#e2e8f0" font-size="11">• Lowers Code Models to CUDA PTX, OpenCL, SPIR-V</text>
+    <text x="436" y="106" fill="#e2e8f0" font-size="11">• Massively Parallel Tensor &amp; Matrix Multiplication</text>
+    <text x="436" y="124" fill="#64748b" font-size="10">Hardware: NVIDIA Tensor Cores, Apple Metal, AMD ROCm</text>
+
+    <!-- Box 3: Host CPU Native Execution -->
+    <rect x="812" y="26" width="364" height="110" rx="8" fill="#18181b" stroke="#fb923c" />
+    <text x="830" y="50" fill="#fdba74" font-size="14" font-weight="700">Host CPU Native &amp; Vector Execution</text>
+    <text x="830" y="70" fill="#e2e8f0" font-size="11">• Off-Heap Contiguous Memory (<tspan font-family="Consolas, monospace">MemorySegment</tspan>)</text>
+    <text x="830" y="88" fill="#e2e8f0" font-size="11">• Hardware SIMD Intrinsics (AVX-512 / ARM SVE)</text>
+    <text x="830" y="106" fill="#e2e8f0" font-size="11">• Low-Latency In-Process Embeddings (e.g., ModernBERT)</text>
+    <text x="830" y="124" fill="#64748b" font-size="10">Eliminates IPC/gRPC Serialization &amp; JNI Copy Overhead</text>
+  </g>
+</svg>

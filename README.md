@@ -246,6 +246,7 @@ Learnings/
 - [Scaling 1M RPS Java](Engineering/Architecture/Scaling-1M-RPS-Java.md)
 
 ### ☕ JVM
+- [Java Next Gen Programming Models Babylon Panama Nov 2026](Engineering/JVM/Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026.md)
 - [Java Plugin Arch](Engineering/JVM/Java-Plugin-Arch.md)
 - [Java Standard Classes vs Records vs Carrier Classes](Engineering/JVM/Java-Standard_Classes-vs-Records-vs-Carrier_Classes.md)
 - [Java remote debug](Engineering/JVM/Java_remote_debug.md)
