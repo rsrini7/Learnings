@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" width="100%" height="100%" style="background:#0d1117; font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2ea043" />
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#58a6ff" />
+    </marker>
+  </defs>
+
+  <!-- Title & Header -->
+  <text x="30" y="38" fill="#f0f6fc" font-size="20" font-weight="700">OpenAI — "Pando" Architecture (Backend Replacement)</text>
+  <text x="30" y="60" fill="#8b949e" font-size="13">Keeps standard Git CLI &amp; local history; eliminates global lock contention and packfile CPU spikes</text>
+
+  <!-- Left Column: Clients -->
+  <rect x="30" y="85" width="230" height="340" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1.5" />
+  <text x="50" y="115" fill="#58a6ff" font-size="14" font-weight="600">CLIENT LAYER (Unchanged)</text>
+
+  <!-- Client Box 1 -->
+  <rect x="50" y="135" width="190" height="75" rx="6" fill="#21262d" stroke="#30363d" />
+  <text x="65" y="160" fill="#f0f6fc" font-size="13" font-weight="600">Codex Agent Fleet</text>
+  <text x="65" y="180" fill="#8b949e" font-size="11">• Isolated Git Worktrees</text>
+  <text x="65" y="196" fill="#8b949e" font-size="11">• Local .git repo copy</text>
+
+  <!-- Client Box 2 -->
+  <rect x="50" y="225" width="190" height="70" rx="6" fill="#21262d" stroke="#30363d" />
+  <text x="65" y="250" fill="#f0f6fc" font-size="13" font-weight="600">Human Engineers</text>
+  <text x="65" y="270" fill="#8b949e" font-size="11">• Standard git push / pull</text>
+  <text x="65" y="286" fill="#8b949e" font-size="11">• Zero workflow changes</text>
+
+  <!-- Client Box 3 -->
+  <rect x="50" y="310" width="190" height="95" rx="6" fill="#21262d" stroke="#30363d" />
+  <text x="65" y="335" fill="#f0f6fc" font-size="13" font-weight="600">Massive CI Runners</text>
+  <text x="65" y="355" fill="#8b949e" font-size="11">• Dozens of parallel jobs</text>
+  <text x="65" y="371" fill="#8b949e" font-size="11">• High-frequency clones</text>
+  <text x="65" y="387" fill="#3fb950" font-size="11" font-weight="600">• ~1 PB/day Git traffic</text>
+
+  <!-- Protocol Boundary -->
+  <line x1="325" y1="85" x2="325" y2="425" stroke="#30363d" stroke-dasharray="6,6" stroke-width="1.5" />
+  <rect x="280" y="230" width="90" height="44" rx="4" fill="#0d1117" stroke="#58a6ff" stroke-width="1" />
+  <text x="325" y="248" fill="#58a6ff" font-size="11" font-weight="600" text-anchor="middle">Standard</text>
+  <text x="325" y="264" fill="#58a6ff" font-size="11" font-weight="600" text-anchor="middle">Git Protocol</text>
+
+  <!-- Arrows from Client to Pando -->
+  <line x1="240" y1="172" x2="400" y2="172" stroke="#2ea043" stroke-width="2" marker-end="url(#arrow-green)" />
+  <text x="325" y="162" fill="#3fb950" font-size="11" text-anchor="middle">Concurrent Pushes</text>
+
+  <line x1="400" y1="355" x2="240" y2="355" stroke="#58a6ff" stroke-width="2" marker-end="url(#arrow-blue)" />
+  <text x="325" y="345" fill="#58a6ff" font-size="11" text-anchor="middle">Cached Packfiles</text>
+
+  <!-- Right Column: Pando Backend -->
+  <rect x="405" y="85" width="465" height="340" rx="8" fill="#161b22" stroke="#2ea043" stroke-width="1.5" />
+  <text x="425" y="115" fill="#3fb950" font-size="14" font-weight="600">PANDO BACKEND ENGINE (Custom Git Server)</text>
+
+  <!-- Pando Component 1: Branch Router -->
+  <rect x="425" y="135" width="210" height="125" rx="6" fill="#21262d" stroke="#2ea043" />
+  <text x="440" y="160" fill="#f0f6fc" font-size="13" font-weight="600">Lock-Free Branch Router</text>
+  <text x="440" y="182" fill="#8b949e" font-size="11">• Decouples unrelated branches</text>
+  <text x="440" y="200" fill="#8b949e" font-size="11">• Immediate parallel ref updates</text>
+  <text x="440" y="218" fill="#d29922" font-size="11">• Trade-off: Eventual consistency</text>
+  <text x="448" y="233" fill="#d29922" font-size="11">across multi-branch reads</text>
+  <text x="440" y="250" fill="#3fb950" font-size="11" font-weight="600">✓ -80% median push latency</text>
+
+  <!-- Pando Component 2: Packfile Cache -->
+  <rect x="425" y="280" width="210" height="120" rx="6" fill="#21262d" stroke="#58a6ff" />
+  <text x="440" y="305" fill="#f0f6fc" font-size="13" font-weight="600">Git Packfile Cache Layer</text>
+  <text x="440" y="327" fill="#8b949e" font-size="11">• Pre-computes &amp; caches packs</text>
+  <text x="440" y="345" fill="#8b949e" font-size="11">• Eliminates redundant server</text>
+  <text x="448" y="360" fill="#8b949e" font-size="11">compression for CI clones</text>
+  <text x="440" y="382" fill="#58a6ff" font-size="11" font-weight="600">✓ Zero duplicate pack builds</text>
+
+  <!-- Storage Box -->
+  <rect x="665" y="135" width="185" height="265" rx="6" fill="#0d1117" stroke="#30363d" />
+  <text x="757" y="165" fill="#f0f6fc" font-size="13" font-weight="600" text-anchor="middle">Distributed Git</text>
+  <text x="757" y="183" fill="#f0f6fc" font-size="13" font-weight="600" text-anchor="middle">Object Store</text>
+  
+  <rect x="685" y="205" width="145" height="40" rx="4" fill="#161b22" stroke="#30363d" />
+  <text x="757" y="230" fill="#8b949e" font-size="11" text-anchor="middle">Branch A Ref (Isolated)</text>
+
+  <rect x="685" y="255" width="145" height="40" rx="4" fill="#161b22" stroke="#30363d" />
+  <text x="757" y="280" fill="#8b949e" font-size="11" text-anchor="middle">Branch B Ref (Isolated)</text>
+
+  <rect x="685" y="305" width="145" height="75" rx="4" fill="#161b22" stroke="#30363d" />
+  <text x="757" y="332" fill="#c9d1d9" font-size="11" font-weight="600" text-anchor="middle">Monorepo Blobs / Trees</text>
+  <text x="757" y="352" fill="#3fb950" font-size="11" text-anchor="middle">99%+ Reliability</text>
+
+  <!-- Internal Backend Arrows -->
+  <line x1="635" y1="195" x2="665" y2="195" stroke="#2ea043" stroke-width="1.5" marker-end="url(#arrow-green)" />
+  <line x1="665" y1="340" x2="635" y2="340" stroke="#58a6ff" stroke-width="1.5" marker-end="url(#arrow-blue)" />
+</svg>

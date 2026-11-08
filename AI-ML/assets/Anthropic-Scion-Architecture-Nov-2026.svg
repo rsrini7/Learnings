@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 480" width="100%" height="100%" style="background:#0d1117; font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <marker id="arrow-purple" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#a371f7" />
+    </marker>
+    <marker id="arrow-orange" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f0883e" />
+    </marker>
+  </defs>
+
+  <!-- Title & Header -->
+  <text x="30" y="38" fill="#f0f6fc" font-size="20" font-weight="700">Anthropic — "Scion" Architecture (Full Git Replacement)</text>
+  <text x="30" y="60" fill="#8b949e" font-size="13">Stateless thin clients for always-online AI agents; server-side merges, history, and custom tooling</text>
+
+  <!-- Left Column: Stateless Clients -->
+  <rect x="30" y="85" width="240" height="360" rx="8" fill="#161b22" stroke="#a371f7" stroke-width="1.5" />
+  <text x="50" y="115" fill="#a371f7" font-size="14" font-weight="600">THIN CLIENTS (No Local Git)</text>
+
+  <!-- Client 1 -->
+  <rect x="45" y="135" width="210" height="90" rx="6" fill="#21262d" stroke="#30363d" />
+  <text x="60" y="160" fill="#f0f6fc" font-size="13" font-weight="600">Claude Coding Agents</text>
+  <text x="60" y="180" fill="#8b949e" font-size="11">• Always-connected cloud pods</text>
+  <text x="60" y="196" fill="#8b949e" font-size="11">• Zero 100GB history downloads</text>
+  <text x="60" y="212" fill="#a371f7" font-size="11" font-weight="600">• Streams files on demand</text>
+
+  <!-- Client 2 -->
+  <rect x="45" y="240" width="210" height="90" rx="6" fill="#21262d" stroke="#30363d" />
+  <text x="60" y="265" fill="#f0f6fc" font-size="13" font-weight="600">High-Velocity CI Fleet</text>
+  <text x="60" y="285" fill="#8b949e" font-size="11">• ~25 Million checkouts / day</text>
+  <text x="60" y="301" fill="#8b949e" font-size="11">• Checkouts: minutes → seconds</text>
+  <text x="60" y="317" fill="#3fb950" font-size="11" font-weight="600">• +25% CI CPU capacity freed</text>
+
+  <!-- Stats Callout -->
+  <rect x="45" y="345" width="210" height="85" rx="6" fill="#1f162b" stroke="#a371f7" />
+  <text x="150" y="370" fill="#f0f6fc" font-size="12" font-weight="700" text-anchor="middle">Throughput &amp; Efficiency</text>
+  <text x="150" y="390" fill="#a371f7" font-size="11" font-weight="600" text-anchor="middle">2,500 → 30,000+ merges/day</text>
+  <text x="150" y="408" fill="#3fb950" font-size="11" font-weight="600" text-anchor="middle">200x lower CPU &amp; RAM vs Git</text>
+
+  <!-- Protocol Boundary -->
+  <line x1="335" y1="85" x2="335" y2="445" stroke="#30363d" stroke-dasharray="6,6" stroke-width="1.5" />
+  <rect x="285" y="220" width="100" height="44" rx="4" fill="#0d1117" stroke="#a371f7" stroke-width="1" />
+  <text x="335" y="238" fill="#a371f7" font-size="11" font-weight="600" text-anchor="middle">Scion RPC /</text>
+  <text x="335" y="254" fill="#a371f7" font-size="11" font-weight="600" text-anchor="middle">Virtual FS API</text>
+
+  <!-- Arrows between Client & Scion -->
+  <line x1="255" y1="175" x2="405" y2="175" stroke="#a371f7" stroke-width="2" marker-end="url(#arrow-purple)" />
+  <text x="335" y="165" fill="#a371f7" font-size="11" text-anchor="middle">Remote Commands &amp; Diffs</text>
+
+  <line x1="405" y1="295" x2="255" y2="295" stroke="#f0883e" stroke-width="2" marker-end="url(#arrow-orange)" />
+  <text x="335" y="285" fill="#f0883e" font-size="11" text-anchor="middle">On-Demand File Slices</text>
+
+  <!-- Right Top: Scion Server Core -->
+  <rect x="410" y="85" width="460" height="230" rx="8" fill="#161b22" stroke="#f0883e" stroke-width="1.5" />
+  <text x="430" y="115" fill="#f0883e" font-size="14" font-weight="600">SCION CENTRAL SERVER (Compute &amp; State)</text>
+
+  <!-- Server Box 1 -->
+  <rect x="430" y="135" width="205" height="160" rx="6" fill="#21262d" stroke="#30363d" />
+  <text x="445" y="160" fill="#f0f6fc" font-size="13" font-weight="600">Server-Side VCS Compute</text>
+  <text x="445" y="182" fill="#8b949e" font-size="11">• Executes all merges remotely</text>
+  <text x="445" y="200" fill="#8b949e" font-size="11">• Server-side history traversal</text>
+  <text x="445" y="218" fill="#8b949e" font-size="11">• Atomic conflict resolution</text>
+  <text x="445" y="236" fill="#8b949e" font-size="11">• Eliminates local git-mirror</text>
+  <text x="453" y="251" fill="#8b949e" font-size="11">fleet overhead</text>
+
+  <!-- Server Box 2 -->
+  <rect x="650" y="135" width="200" height="160" rx="6" fill="#21262d" stroke="#30363d" />
+  <text x="665" y="160" fill="#f0f6fc" font-size="13" font-weight="600">100GB+ History &amp; Store</text>
+  <text x="665" y="182" fill="#8b949e" font-size="11">• Fine-grained file addressing</text>
+  <text x="665" y="200" fill="#8b949e" font-size="11">• Streams partial checkouts</text>
+  <text x="665" y="218" fill="#8b949e" font-size="11">• Optimized for online agent</text>
+  <text x="673" y="233" fill="#8b949e" font-size="11">access over human offline use</text>
+
+  <!-- Right Bottom: Rebuilt Ecosystem (The Trade-off) -->
+  <rect x="410" y="335" width="460" height="110" rx="8" fill="#161b22" stroke="#d29922" stroke-width="1.5" />
+  <text x="430" y="362" fill="#d29922" font-size="13" font-weight="600">REBUILT CUSTOM ECOSYSTEM (Required Cost of Leaving Git)</text>
+
+  <rect x="430" y="378" width="135" height="50" rx="5" fill="#21262d" stroke="#30363d" />
+  <text x="497" y="400" fill="#f0f6fc" font-size="12" font-weight="600" text-anchor="middle">Custom Code</text>
+  <text x="497" y="416" fill="#8b949e" font-size="11" text-anchor="middle">Review Platform</text>
+
+  <rect x="575" y="378" width="135" height="50" rx="5" fill="#21262d" stroke="#30363d" />
+  <text x="642" y="400" fill="#f0f6fc" font-size="12" font-weight="600" text-anchor="middle">Custom Code</text>
+  <text x="642" y="416" fill="#8b949e" font-size="11" text-anchor="middle">Search Indexer</text>
+
+  <rect x="720" y="378" width="130" height="50" rx="5" fill="#21262d" stroke="#30363d" />
+  <text x="785" y="400" fill="#f0f6fc" font-size="12" font-weight="600" text-anchor="middle">Scion-Native</text>
+  <text x="785" y="416" fill="#8b949e" font-size="11" text-anchor="middle">CI Triggers</text>
+
+  <!-- Connectors to Ecosystem -->
+  <line x1="497" y1="315" x2="497" y2="335" stroke="#d29922" stroke-width="1.5" />
+  <line x1="642" y1="315" x2="642" y2="335" stroke="#d29922" stroke-width="1.5" />
+  <line x1="785" y1="315" x2="785" y2="335" stroke="#d29922" stroke-width="1.5" />
+</svg>

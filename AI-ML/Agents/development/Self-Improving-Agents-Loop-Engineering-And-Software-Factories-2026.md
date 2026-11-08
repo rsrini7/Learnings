@@ -391,6 +391,7 @@ This analysis synthesizes primary industry literature, repository implementation
 ---
 
 **Related:**
+- [OpenAI-Pando-Vs-Anthropic-Scion-Source-Control-Nov-2026](OpenAI-Pando-Vs-Anthropic-Scion-Source-Control-Nov-2026.md) — how high-velocity software factories break traditional Git and how OpenAI (Pando) and Anthropic (Scion) re-engineered source control.
 - [AI-Coding-Loops](AI-Coding-Loops.md) — foundational examination of outer vs inner coding loops, worktree sandboxing, and autonomous Ralph loops.
 - [AI-Native-Development-2026-Specs-Context-Harnesses](AI-Native-Development-2026-Specs-Context-Harnesses.md) — deep dive into specification engineering, coding harnesses, and agent experience (AX).
 - [Agent-Skills-Ecosystem-2026](../skills/Agent-Skills-Ecosystem-2026.md) — comprehensive survey of modular SKILL.md playbooks, portability across tools, and community registries.
