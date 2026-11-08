@@ -198,7 +198,69 @@ $$\text{logits} = \mathbf{h}_2 \mathbf{W}_3 + \mathbf{b}_3 \quad (\mathbf{W}_3 \
 
 ---
 
-### 3.3 Comprehensive Comparative Matrix: MIT Essay vs. AVB Custom Experiments
+### 3.3 Tier 2 Deep Dive: Kinetix 2D Physics Policy Repair (Open-Loop Parameter Editing)
+
+In the MIT CSAIL investigation, researchers scaled Weight-Space Programming from passive recognition to active behavioral repair on an RL policy operating in a 2D rigid-body physics simulator.
+
+![Kinetix Physics Prompt Anatomy: 355,201 Tokens](../assets/Weight-Space-Prompt-Anatomy-Kinetix-Physics.jpg)
+
+#### The Task & Strict Constraints
+* **Scale:** A massive 355,201-token prompt containing **171,664 floating-point weights** representing a fully connected policy network trained via PPO (Proximal Policy Optimization).
+* **The Environment:** A 2D rigid-body simulation with gravity ($g = -9.81\,\text{m/s}^2$), fixed obstacle polygons, a launch ramp, a lethal red hazard zone, and a target blue goal box.
+* **The Prompt Contract:**
+  > *"YOUR TASK: change the network's weights by hand so that the car succeeds as often as possible. First read the weights and explain why the trained network fails (write this before your edits block). Then keep the parts of the trained network that already work and fix only the part that causes the failure... You have no tools: no code execution, no calculator, no simulator, nothing to run. You write numbers. This is a single response; you will get no feedback. Your edits are applied to the network shown below, and the result is measured on 1,024 new episodes with actions sampled from the network's policy."*
+
+#### Astra's Diagnostic Reasoning: Locating the Failure
+Before writing any numerical updates, GPT-6 Astra was required to inspect the weights and the single failed trajectory log to deduce why standard PPO training failed:
+
+> [!IMPORTANT]
+> **GPT-6 Astra Diagnostic Reasoning Trace:**
+>
+> *"The trace shows the failure: the car approaches the ramp, **loses its momentum**, then alternates throttle and coasting without advancing."*
+>
+> *"**Reverse is effectively never sampled.** It collects distance-shaping reward but never makes the launch needed to clear red."*
+
+#### Mechanistic Insight: The Distance-Shaping Reward Trap
+Astra uncovered a fundamental failure mode in reinforcement learning:
+1. **The Local Reward Trap:** In reward-shaped RL environments, agents receive continuous incremental rewards as their Euclidean distance to the goal decreases. Driving forward toward the ramp yields immediate positive reward. However, reversing *away* from the ramp temporarily incurs negative reward.
+2. **Exploration Failure:** Because reversing is penalized in the short term, PPO's stochastic policy gradient updates drove the probability of sampling reverse toward zero.
+3. **Momentum Deficit:** When the car reaches the ramp incline, gravity opposes its motion. The car lacks sufficient kinetic energy ($E_k = \frac{1}{2}mv^2$) to crest the slope. The policy enters a "throttle chattering" loop—alternating between forward throttle and coasting—permanently stuck at the foot of the incline.
+
+#### The Surgical Fix & Trajectory Outcome
+Rather than restarting RL training across millions of frames, Astra performed open-loop weight surgery:
+
+![After Astra's Edit (solid) vs PPO (faded)](../assets/Weight-Space-Kinetix-Car-Trajectory-Comparison.png)
+
+1. **Repurposing Unused Capacity:** Astra scanned the weight matrices, identified spare neurons with near-zero downstream impact, and hand-wrote new connection weights in a single NumPy script.
+2. **Synthesizing a Run-Up Sub-Circuit:** It wired a conditional control circuit directly into the network:
+   * When the car is at the initial spawn point facing the ramp, force the throttle into **Reverse**.
+   * Back up toward the rear wall to maximize runway distance.
+   * Once optimal setback distance is achieved, latch into **Full Forward Throttle**.
+3. **Outcome Across 1,024 Episodes:**
+   * **PPO Policy (Faded):** Reaches the ramp, stalls out, and fails to clear the hazard (0% completion).
+   * **After Astra's Edit (Solid):** The car backs up, accelerates across the full runway, easily clears the red strip at terminal velocity, and impacts the blue box.
+   * **Verification:** Astra achieved this without running the physics simulator, without tool execution, and without calculating a single gradient step.
+
+#### Mechanistic Dissection: How the 6,073-Weight Circuit Was Wired
+
+A deep mechanistic inspection of Astra's weight delta reveals how an LLM programs a neural network: it implemented a state machine and handoff controller directly within the tensor layers.
+
+![Kinetix Neural Circuit Wiring: Edited Net Handoff Logic](../assets/Weight-Space-Kinetix-Circuit-Wiring-Diagram.jpg)
+
+* **Surgical Scope:** Astra modified exactly **6,073 out of 171,664 weights** ($\approx 3.54\%$), leaving $96.46\%$ of the trained network entirely intact.
+* **Feature Extraction from Observations (`obs`):** Astra routed three specific sensory features from the observation vector:
+  1. `body x`: The horizontal Cartesian position of the chassis.
+  2. `body vx`: The horizontal velocity of the vehicle.
+  3. `green x`: The horizontal position of the front green wheel assembly.
+* **Multi-Layer Logic Synthesis (`layer 1` to `layer 3`):** Using spare, uncommitted neurons, Astra constructed non-linear threshold comparators and boolean logic gates:
+  * **Condition A (Stall Detection):** If `slow, x < 3.85` $\to$ route strong positive activation to the `back up` action head.
+  * **Condition B (Runway Acceleration):** Once the vehicle backs up past the threshold (`x >= 3.85`) $\to$ route activation to `drive left` (accelerating toward the ramp).
+* **Identity Pass-Through Conduits (`layer 4` and `layer 5`):** Astra zeroed out competing cross-talk in layers 4 and 5, configuring them as sparse identity conduits to pipe the steering signals directly into the action heads (`back up` and `drive left`) without activation distortion.
+* **The Dynamic Handoff (`green past 0.95`):** Astra did not attempt to reprogram the intricate airborne physics or landing reflexes. Instead, once the front green wheel cleared the ramp edge (`green past 0.95`), the synthetic override circuit suppressed its own output, smoothly handing control back to the original **trained net** to execute landing stabilization and contact the blue goal box.
+
+---
+
+### 3.4 Comprehensive Comparative Matrix: MIT Essay vs. AVB Custom Experiments
 
 Across both the original MIT CSAIL study and subsequent independent empirical replications, Weight-Space Programming has been tested across 7 distinct experimental paradigms:
 
