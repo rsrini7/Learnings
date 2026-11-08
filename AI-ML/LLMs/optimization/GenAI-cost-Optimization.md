@@ -269,3 +269,4 @@ Based on user-provided details (Raj's *15 Gen AI Cost Optimization Tips for Inte
 - [Context Windows, Compaction, and Cache Breaks](Context-Windows-Compaction-and-Cache-Breaks-2026.md) — Managing history thresholds, prefix cache invalidation, and break-even economics.
 - [AI Token Optimization Tools](ai-token-optimization-tools.md) — Structural navigation, proxy compression, and schema deferral layers.
 - [OpenResponses Open Inference Standard](OpenResponses-Open-Inference-Standard.md) — Server-side agentic execution loops eliminating round-trip token inflation.
+- [OPAL Reactive Optimizers](OPAL-Reactive-Optimizers-Claude-Code-Nov-2026.md) — agent-token versus GPU-hour tradeoffs for training optimizers that rewrite themselves mid-run.

@@ -156,6 +156,7 @@ Learnings/
 - [GenAI cost Optimization](AI-ML/LLMs/optimization/GenAI-cost-Optimization.md)
 - [Headroom RTK Real World Feedback 2026](AI-ML/LLMs/optimization/Headroom-RTK-Real-World-Feedback-2026.md)
 - [Microsoft Agent Lightning](AI-ML/LLMs/optimization/Microsoft-Agent-Lightning.md)
+- [OPAL Reactive Optimizers Claude Code Nov 2026](AI-ML/LLMs/optimization/OPAL-Reactive-Optimizers-Claude-Code-Nov-2026.md)
 - [OpenResponses Open Inference Standard](AI-ML/LLMs/optimization/OpenResponses-Open-Inference-Standard.md)
 - [Tokenomics Source Validation Oct 2026](AI-ML/LLMs/optimization/Tokenomics-Source-Validation-Oct-2026.md)
 - [Unlock the Dark Data](AI-ML/LLMs/optimization/Unlock-the-Dark-Data.md)
