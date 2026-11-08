@@ -88,25 +88,28 @@ $$y = f_L(f_{L-1}(\dots f_2(f_1(X; W_1); W_2) \dots; W_L))$$
 To understand why Weight-Space Programming is fundamentally distinct from training, AI educator Matthew Berman (*The most important paper in AI right now*) frames it through a software engineering lens:
 
 ```mermaid
-flowchart LR
-    subgraph S1["Software 1.0 (Human Code)"]
-        direction TB
-        C1["Human writes C++ / Python"] --> CMP1["Compiler (GCC / Clang)"] --> B1["Compiled Binary (.exe)"]
+flowchart TD
+    subgraph S1["Software 1.0 (Code)"]
+        direction LR
+        C1["Human Code (C++ / Python)"] --> CMP1["Compiler (GCC / Clang)"] --> B1["Compiled Machine Binary (.exe)"]
     end
 
-    subgraph S2["SW 2.0 (Traditional DL)"]
-        direction TB
-        C2["Human curates Data & Loss"] --> CMP2["Backpropagation & Optimizers"] --> B2["Model Weights (.safetensors)"]
+    subgraph S2["Software 2.0 (Training)"]
+        direction LR
+        C2["Training Data & Loss"] --> CMP2["Backpropagation & Optimizers"] --> B2["Model Weights (.safetensors)"]
     end
 
-    subgraph S3["WSP (Binary Patching)"]
-        direction TB
-        B3["Faulty Model Weights"] --> LLM3["Frontier LLM (Disassembler)"] --> P3["Surgical Hex Patch (W - Wvvᵀ)"]
+    subgraph S3["Weight-Space (Patching)"]
+        direction LR
+        B3["Faulty Model Weights"] --> LLM3["Frontier LLM (Disassembler)"] --> P3["Surgical Patch: W - (W·v)vᵀ"]
     end
 
-    style S1 fill:#0f172a,stroke:#475569,stroke-width:1.5px
-    style S2 fill:#1e1b4b,stroke:#6366f1,stroke-width:1.5px
-    style S3 fill:#022c22,stroke:#10b981,stroke-width:1.5px
+    B1 ~~~ C2
+    B2 ~~~ B3
+
+    style S1 fill:#0f172a,stroke:#334155,stroke-width:1.5px
+    style S2 fill:#0f172a,stroke:#4338ca,stroke-width:1.5px
+    style S3 fill:#0f172a,stroke:#059669,stroke-width:1.5px
 ```
 
 * **Traditional Retraining (Recompiling from Source):** When a deployed binary has a single bug, traditional deep learning requires re-collecting training data, provisioning a GPU cluster, and retraining the network over days or weeks (costing tens of thousands of dollars) just to nudge weights into a slightly different configuration.
@@ -124,48 +127,90 @@ flowchart LR
 
 ---
 
-## 3. The Research Evidence: MIT CSAIL Experiments
+## 3. The 3-Tier Harness Progression & Experimental Evidence
 
-The concept of Weight-Space Programming was formalized in research led by Rikiya Takehi, Jayden Teoh, Alex Zhang, and Professor Omar Khattab at MIT CSAIL (*"Sparks of Weight-Space Programming: LLMs can natively read & write neural network weights"*, November 2026). The authors demonstrated four distinct capabilities:
+Weight-Space Programming is not a monolithic technique. As highlighted in research by MIT CSAIL and independent practitioner evaluations (*The Day 1 Guide to Weight Space Programming*), WSP evolved across **three distinct harness tiers**—progressing from zero-tool text prompts for small networks to closed-loop Interactive REPL kernels and Recursive Language Models (RLMs) for multi-million and multi-billion parameter models.
 
-### Experiment 1: Zero-Shot Weight Reading (Mechanistic Inspection)
-The researchers investigated whether an LLM could understand neural network weights purely as a mathematical text artifact:
-- **Identifying Atari Policy Networks:** Four identical small networks were trained on separate Atari games (*Breakout*, *Pong*, *Freeway*, and *Space Invaders*). When raw parameter matrices were pasted into Astra's text prompt without game names or labels, Astra deduced which network played which game with **100% accuracy**, explaining how bottom rows mapped to paddle actuators and top clusters weighted brick obstacles.
-- **Blind Middle-Layer Inspection (Stripped I/O):** To verify Astra was not simply relying on input/output dimension heuristics, researchers stripped away the input embedding and output projection layers. Given *only middle hidden weight layers*, Astra successfully:
-  - Identified the underlying model family (distinguishing LLaMA, Mistral, and GPT architectures).
-  - Pinpointed specialized internal circuits, such as **induction heads** (in-context copying mechanisms).
-  - Inspected the raw weights of a toy diffusion model and deduced the exact geometric 2D distribution shapes (spirals, concentric circles, Swiss rolls) it was trained to generate—*without ever generating a single image or executing a forward pass*.
+![Weight Space Programming: Harness Architectures](../assets/Weight-Space-Harness-Architectures.svg)
 
-### Experiment 2: Compiling Logic into Weights from Scratch
-Given only game rules and an empty neural network initialized to all zeros:
-- Astra generated every single floating-point parameter for a 2-layer MLP to play Atari *Breakout* in a single text output.
-- Astra formulated the problem algorithmically: Layer 1 predicted the landing $x$-coordinate of the descending ball from its trajectory coordinates, and Layer 2 mapped that coordinate to paddle actuation commands.
-- **The Result:** Astra's hand-compiled network outscored baseline policies trained with Proximal Policy Optimization (PPO) over millions of environment steps.
-- **The Limit:** When tested on *Seaquest* (requiring deep visual-temporal management: tracking oxygen levels, shooting enemies, dodging depth charges, and surfacing), Astra failed completely. Complex temporal and spatial policies cannot easily be hand-compiled into linear algebra by current LLMs.
+### 3.1 The 3-Tier Harness Taxonomy
 
-### Experiment 3: Surgical Repair on Qwen3.5-0.8B (`exp8_math`)
-In the headline experiment, Astra was tasked with improving the mathematical reasoning capability of Alibaba's open-source `Qwen3.5-0.8B` model.
-- **The Setup:** Astra was given access to a Python notebook sandbox containing Qwen's model weights and a small practice dataset of GSM8K and MATH training problems. Astra was strictly prohibited from running backpropagation or computing gradients.
-- **The Diagnosis:** Astra executed Qwen across practice problems and detected that Qwen routinely started solving math problems with correct logic, but would abruptly get trapped in infinite "thinking loops," repeating identical sentences or formulas until hitting the generation token limit.
-- **The Isolation:** Astra recorded internal activations across tokens. By subtracting the mean hidden states of progressing reasoning tokens from the mean hidden states of looping tokens, Astra isolated the 1D direction vector $v$ responsible for driving the model into cyclic loops:
+```mermaid
+flowchart TD
+    subgraph T1["Tier 1: Zero-Tool Context"]
+        direction LR
+        P1["Raw Weights in Prompt<br/>(17K–24K params)"] --> CLI1["Restricted CLI Pipe<br/>(No Tools, No Shell)"] --> LLM1["Frontier LLM (Astra)<br/>Single-Pass Trace"] --> OUT1["Zero-Shot Output<br/>(Environment & Geometry)"]
+    end
 
-$$v = \frac{\mu_{\text{loop}} - \mu_{\text{progress}}}{\|\mu_{\text{loop}} - \mu_{\text{progress}}\|}$$
+    subgraph T2["Tier 2: Python Sandbox"]
+        direction LR
+        P2["Failed Policy Weights +<br/>Scene Description"] --> LLM2["Frontier LLM<br/>Diagnoses & Codes"] --> VAL2["External Python Validator<br/>(Applies NumPy Edits)"] --> OUT2["Updated Weights File<br/>(Surgically Patched)"]
+    end
 
-- **The Surgical Edit:** Astra discovered that the `down_proj` matrices in the Feed-Forward/MLP sublayers of **Layer 15** and **Layer 19** projected most strongly into vector $v$. Astra projected $v$ out of those two weight matrices:
+    subgraph T3["Tier 3: REPL & RLM Harness"]
+        direction LR
+        M3["Large Target Model<br/>(135M–800M+ params in RAM)"] --> REPL3["Persistent Python REPL Kernel<br/>(Jupyter-style Session)"]
+        REPL3 <-->|stdout / code cell| RLM3["Fast RLM Agent<br/>(Depth 0 Loop or Sub-agents)"]
+        REPL3 --> S_MOD["Static Inspection (NumPy)<br/>OR Dynamic Surgery (Forward Pass)"]
+    end
 
-$$W_{\text{new}} = W - (W \cdot v) v^T$$
-  Across the ~800 million parameters in Qwen3.5-0.8B, this edit modified exactly **131,072 parameters—just 0.016% of the network**.
-- **The Benchmark Results:**
-  - Token-limit timeouts dropped from **93% down to ~33%**.
-  - **MATH-500:** Jumped from **7.9% to 48.1%** (a 6.1x increase).
-  - **GSM8K:** Jumped from **13.8% to 67.1%** (a 4.8x increase).
-  - **IFEval (Instruction Following):** Tripled from **21.0% to 62.3%**, showing positive cross-domain generalization.
+    OUT1 --> P2
+    OUT2 --> M3
 
-### Experiment 4: The Gemma Control Experiment
-To test whether this technique could improve any small model, the researchers ran the identical pipeline on Google's small Gemma model.
-- Unlike Qwen, Gemma did not have a cyclic repetition bug; its failures on MATH-500 were caused by genuine arithmetic mistakes, false assumptions, or flawed logical deductions.
-- Astra attempted to find and ablate error directions, but Gemma's benchmark score **barely changed**.
-- **Crucial Finding:** Directional ablation removes behavioral blockers; it cannot inject missing intelligence or create mathematical reasoning capabilities that do not already exist in the model's weights.
+    style T1 fill:#0f172a,stroke:#38bdf8,stroke-width:1.5px
+    style T2 fill:#1e1b4b,stroke:#818cf8,stroke-width:1.5px
+    style T3 fill:#022c22,stroke:#10b981,stroke-width:1.5px
+```
+
+1. **Tier 1: Zero-Tool Direct Context Harness (Read-Only Analysis):**
+   * **Scope & Scale:** Applied to networks with fewer than ~25,000 parameters (Atari PPO policies, toy diffusion models, tiny CNNs).
+   * **Harness Setup:** The network architecture pseudo-code and raw floating-point weights are pasted directly into the LLM's text prompt. Tools are strictly disabled (`web_search: disabled`, `shell: disabled`, `sub_agents: disabled`).
+   * **Execution:** The frontier model produces a single-pass reasoning trace, inspecting weight magnitudes across input channels to determine task semantics without running a forward pass.
+2. **Tier 2: Single-Step Python Sandbox Harness (Open-Loop Parameter Editing):**
+   * **Scope & Scale:** Applied to policy networks up to ~200,000 parameters (Kinetix RL policies, Lunar Lander).
+   * **Harness Setup:** The prompt includes full model weights, environment rules, and a log of one failed episode. The LLM has no live terminal, but generates a self-contained Python script designed to edit a NumPy parameter dictionary (`W`) in-place.
+   * **Execution:** An external validation script executes the LLM's code block, checks matrix shapes, and saves the patched weights to disk.
+3. **Tier 3: Interactive REPL & Recursive Language Model (RLM) Harness (Closed-Loop Exploration):**
+   * **Scope & Scale:** Applied to foundation models (SmolLM2 135M, Gemma 3 270M, Qwen 3.5 0.8B) where weights range from 200MB to multiple gigabytes and cannot fit in text prompts.
+   * **Harness Setup:** The target model is loaded into a persistent, stateful Jupyter-like Python kernel as a global `context` variable. The LLM acts as an agent running in an interactive feedback loop: it issues code cells, reads `stdout` and execution errors, and iterates.
+   * **Dual Operational Modes:**
+     * **Mode A (Static Inspection):** Reads weight tensors via NumPy and PyTorch without executing the model (screening early layers, locating attention induction heads).
+     * **Mode B (Dynamic Circuit Surgery):** Allowed a strict budget of forward passes to log intermediate residual activations and verify candidate weight projections.
+
+---
+
+### 3.2 Tier 1 Deep Dive: Prompt Anatomy & Zero-Tool Weight Reading
+
+To understand how raw weights appear to a frontier LLM, consider the primary experimental artifact from the MIT CSAIL logs:
+
+![Atari PPO Prompt Anatomy: 73,723 Tokens Paste](../assets/Weight-Space-Prompt-Anatomy-Atari-PPO.jpg)
+
+* **Scale:** A 73,723-token prompt containing 17,253 floating-point numbers.
+* **Architecture Pseudo-Code:**
+
+$$\mathbf{h}_1 = \tanh(\mathbf{x} \mathbf{W}_1 + \mathbf{b}_1) \quad (\mathbf{W}_1 \in \mathbb{R}^{500 \times 32}, \mathbf{b}_1 \in \mathbb{R}^{32})$$
+
+$$\mathbf{h}_2 = \tanh(\mathbf{h}_1 \mathbf{W}_2 + \mathbf{b}_2) \quad (\mathbf{W}_2 \in \mathbb{R}^{32 \times 32}, \mathbf{b}_2 \in \mathbb{R}^{32})$$
+
+$$\text{logits} = \mathbf{h}_2 \mathbf{W}_3 + \mathbf{b}_3 \quad (\mathbf{W}_3 \in \mathbb{R}^{32 \times 5}, \mathbf{b}_3 \in \mathbb{R}^{5})$$
+* **The Strict Constraint:** *"QUESTION. The weights below belong to one policy network that was trained with reinforcement learning to play a game on this grid. Which game was it trained on? Work from the weights. You have no tools: no code execution, no calculator, nothing to run. This is a single response."*
+* **The Mechanism:** With no list of candidate games and no execution tools, Astra inspected the 500 input weights (representing an $10 \times 10 \times 5$ spatial feature grid: agent, ball/objects, blocks/rewards). Astra observed large positive weights in the lower rows connecting to paddle movement actions (Actions 1–4) and identified clusters corresponding to static upper obstacles, correctly deducing *Breakout* with 100% confidence.
+
+---
+
+### 3.3 Comprehensive Comparative Matrix: MIT Essay vs. AVB Custom Experiments
+
+Across both the original MIT CSAIL study and subsequent independent empirical replications, Weight-Space Programming has been tested across 7 distinct experimental paradigms:
+
+| Approach / Experiment | Origin | Target Model & Scale | Harness & Tool Access | Forward Pass Allowed? | How It Works (Mechanism) | Outcome & Key Takeaway |
+|---|---|---|---|---|---|---|
+| **1. Game & Shape Identification** | MIT Essay | Atari PPO (**17,253 weights**) & Tiny Diffusion (**~24,000 weights**) | **Zero-Tool Text Prompt:** Raw weights + pseudo-code pasted directly in prompt. | **No** (Zero-shot static reading) | Inspects spatial weight distributions across input channels (agent, object, reward) and action output layers. | **Success:** Identified all 4 Atari games (Pong, Breakout, Pac-Man, Freeway) and 3 diffusion geometric shapes (spirals, Swiss rolls). |
+| **2. MNIST Digit Classification** | AVB Custom | Tiny 5x5 Kernel CNN (**930 weights**) | **Zero-Tool CLI Harness:** Restricted Codex config (`web_search: disabled`, `sandbox: read-only`). | **No** (Zero-shot inspection) | Reads 5x5 kernel matrices rounded to 2 decimals to trace stroke geometry (upper horizontal stroke vs. rounded lower loops). | **Success (with proper framing):** Failed on binary 6 vs. 7 due to "X vs. not-X" shortcut learning, but succeeded on a 3-output setup (7, 6, catch-all) at medium effort. |
+| **3. Kinetix Physics Policy Repair** | MIT Essay | Failed PPO RL Policy (**171,000+ weights**) | **Single-Step Python Edit:** Full weights + scene rules + 1 failed episode in prompt; outputs 1 Python code block. | **No** (Open-loop single reply) | Diagnoses lack of reverse momentum; selects spare units across layers and wires a new circuit reading position/velocity to reverse before accelerating. | **Success:** Surgically fixed the policy in a single turn without gradient descent or simulator rollouts. |
+| **4. Modified Lunar Lander Adaptation** | AVB Custom | Hugging Face PPO Policy | **Single-Step Sandbox:** Prompt includes weights + modified physics rules; Python script validates shapes and saves NumPy `W` dict. | **No** (Single-step edit) | Flips signs on input 2 weights for reversed velocity sensor; swaps weight/bias rows for swapped left/right thrusters. | **Partial Success:** Fixed flipped sensor and swapped engines, but **failed** to compensate for a 35% weaker main engine (which requires learning new continuous flight dynamics). |
+| **5. LLM Math Reasoning (Doom Loop Fix)** | MIT Essay | **Qwen 3.5 (0.8B)** & **Gemma 3 (270M)** | **Interactive Python REPL:** Jupyter-style environment with loaded weights, practice problems, and activation access. | **Yes** (Given forward pass budget) | Runs model on practice prompts, isolates "doom loop" direction $v = \mu_{\text{loop}} - \mu_{\text{normal}}$, and projects it out of Layer 15 & 19 MLPs. | **Conditional Success:** Boosted Qwen 0.8B math scores 6x (7.9% $\to$ 48.1%), but **failed** on Gemma 270M (which didn't loop), proving WSP unblocks existing abilities rather than teaching new skills. |
+| **6. Induction Head Discovery** | AVB Custom | **SmolLM2 (135M)** — 30 layers, 270 heads (~210MB weights) | **Fast RLM (Depth 0 REPL):** Weights stored in Python `context` variable; multi-step code execution loop. | **No** (Read-only weight inspection) | Writes Python scripts to screen early layers for "previous token heads" and checks subsequent layers for matching induction heads via eigenvalue/cosine analysis. | **Success at High Effort:** Found only 2/10 heads at medium effort, but found **8/10 heads** at high reasoning effort without running any tokens through the model. |
+| **7. LLM Fact Editing ("Eiffel Tower in Rome")** | AVB Custom | **SmolLM2 (135M)** — 46,000 MLP neurons | **Fast RLM REPL:** Tested both **Static** (no forward pass) and **Dynamic** (with forward pass testing). | **Both** (Failed without; succeeded with) | *Without execution:* Edited "Eiffel" embedding row directly, which broke output to "Budapest". *With execution:* Built a last-layer detector neuron firing on Eiffel queries and wired it directly to "Rome" in the unembedding layer. | **Success (with Forward Passes):** Achieved 99% probability for "Rome" across rewordings using a circuit "hack" rather than true monosemantic fact replacement. |
 
 ---
 
@@ -501,6 +546,7 @@ flowchart TD
   - Matthew Berman, [*The most important paper in AI right now*](https://www.youtube.com/watch?v=j09uV1oAuIo) (November 2026) — covering the Software 2.0 binary hex-editing analogy, blind middle-layer reading, and RSI implications.
   - Rob Sho, [*GPT-6 Astra Made Qwen 6x Better at Math Without Training*](http://www.youtube.com/watch?v=wXJDtImT_-0) (November 2026) — covering the Qwen 0.8B loop bug, directional ablation, and Gemma control test.
   - Technical Explainer, [*Weight-Space Programming: Neural Network Parameter Surgery and Open Questions*](https://www.youtube.com/watch?v=cAGCH19xgU8) (November 2026) — covering foundational neural network mechanics, layer depth attribution, and practitioner questions.
+  - AVB, [*The Day 1 Guide to Weight Space Programming (the craziest tech in AI right now)*](https://www.youtube.com/watch?v=oOw834guRBc) (November 2026) — covering the 3-tier harness progression (Zero-Tool, Single-Step Sandbox, and Interactive REPL/RLM), MNIST CNN shortcut learning, SmolLM2 induction head screening, and the "Eiffel Tower in Rome" detector neuron hack.
 
 ---
 

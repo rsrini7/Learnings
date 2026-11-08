@@ -1,0 +1,154 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1050 760" width="100%" height="100%" font-family="system-ui, -apple-system, sans-serif">
+  <defs>
+    <style>
+      .bg { fill: #0f172a; }
+      .title { fill: #f8fafc; font-size: 20px; font-weight: 700; text-anchor: middle; }
+      .subtitle { fill: #94a3b8; font-size: 13px; text-anchor: middle; }
+      .lane-bg { fill: #1e293b; stroke: #334155; stroke-width: 1.5; rx: 10; }
+      .lane-title { fill: #38bdf8; font-size: 15px; font-weight: 700; }
+      .lane-sub { fill: #94a3b8; font-size: 12px; }
+      .node { fill: #0f172a; stroke: #475569; stroke-width: 1.5; rx: 6; }
+      .node-llm { fill: #1e1b4b; stroke: #6366f1; stroke-width: 2; rx: 6; }
+      .node-sandbox { fill: #064e3b; stroke: #10b981; stroke-width: 2; rx: 6; }
+      .node-target { fill: #3f1d2e; stroke: #f43f5e; stroke-width: 1.5; rx: 6; }
+      .node-text { fill: #f1f5f9; font-size: 12px; font-weight: 600; text-anchor: middle; }
+      .node-detail { fill: #cbd5e1; font-size: 10.5px; text-anchor: middle; }
+      .badge { fill: #334155; rx: 4; }
+      .badge-text { fill: #e2e8f0; font-size: 10px; font-weight: 600; text-anchor: middle; }
+      .arrow { stroke: #64748b; stroke-width: 2; fill: none; marker-end: url(#arrowhead); }
+      .arrow-loop { stroke: #10b981; stroke-width: 2; stroke-dasharray: 5,4; fill: none; marker-end: url(#arrowhead-green); }
+    </style>
+    <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#64748b" />
+    </marker>
+    <marker id="arrowhead-green" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto">
+      <polygon points="0 0, 8 3, 0 6" fill="#10b981" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1050" height="760" class="bg" />
+
+  <!-- Header -->
+  <text x="525" y="38" class="title">Weight Space Programming: Harness Architectures</text>
+  <text x="525" y="58" class="subtitle">Progression from Zero-Tool Context Prompting to Interactive REPL &amp; Recursive Language Models (RLM)</text>
+
+  <!-- ==================== TIER 1 ==================== -->
+  <rect x="25" y="80" width="1000" height="140" class="lane-bg" />
+  <text x="45" y="105" class="lane-title">1. Zero-Tool Direct Context Harness (Read-Only Analysis)</text>
+  <text x="45" y="122" class="lane-sub">Used for Atari PPO (17K weights), Tiny Diffusion (24K), &amp; MNIST CNN (930 weights)</text>
+
+  <!-- Nodes Tier 1 -->
+  <rect x="45" y="138" width="210" height="65" class="node-target" />
+  <text x="150" y="160" class="node-text">Target Network &amp; Prompt</text>
+  <text x="150" y="177" class="node-detail">• Architecture Pseudo-code</text>
+  <text x="150" y="192" class="node-detail">• Raw Weights pasted as text</text>
+
+  <rect x="315" y="138" width="210" height="65" class="node" />
+  <text x="420" y="160" class="node-text">Restricted CLI Pipe</text>
+  <text x="420" y="177" class="node-detail">• Codex / Claude Code Sub</text>
+  <text x="420" y="192" class="node-detail">• Web, Shell &amp; Sub-agents: OFF</text>
+
+  <rect x="585" y="138" width="200" height="65" class="node-llm" />
+  <text x="685" y="160" class="node-text">Frontier LLM (Astra)</text>
+  <text x="685" y="177" class="node-detail">• Single-pass reasoning trace</text>
+  <text x="685" y="192" class="node-detail">• Medium / High / X-High effort</text>
+
+  <rect x="845" y="138" width="160" height="65" class="node" />
+  <text x="925" y="160" class="node-text">Zero-Shot Output</text>
+  <text x="925" y="177" class="node-detail">• Identifies environment</text>
+  <text x="925" y="192" class="node-detail">• Explains channel weights</text>
+
+  <!-- Arrows Tier 1 -->
+  <path d="M 255 170 L 315 170" class="arrow" />
+  <path d="M 525 170 L 585 170" class="arrow" />
+  <path d="M 785 170 L 845 170" class="arrow" />
+
+  <!-- ==================== TIER 2 ==================== -->
+  <rect x="25" y="240" width="1000" height="150" class="lane-bg" />
+  <text x="45" y="265" class="lane-title">2. Single-Step Python Sandbox Harness (Open-Loop Weight Editing)</text>
+  <text x="45" y="282" class="lane-sub">Used for Kinetix RL Policy (171K weights) &amp; Modified Lunar Lander Policy</text>
+
+  <!-- Nodes Tier 2 -->
+  <rect x="45" y="300" width="210" height="72" class="node-target" />
+  <text x="150" y="322" class="node-text">Failed Policy &amp; Context</text>
+  <text x="150" y="339" class="node-detail">• Full weights in prompt</text>
+  <text x="150" y="354" class="node-detail">• Scene / Env rules description</text>
+  <text x="150" y="367" class="node-detail">• 1 recorded failed episode</text>
+
+  <rect x="315" y="300" width="210" height="72" class="node-llm" />
+  <text x="420" y="322" class="node-text">Frontier LLM (No Tools)</text>
+  <text x="420" y="339" class="node-detail">• Diagnoses failure circuit</text>
+  <text x="420" y="354" class="node-detail">• Outputs 1 Python code block</text>
+  <text x="420" y="367" class="node-detail">• Edits NumPy dict W in-place</text>
+
+  <rect x="585" y="300" width="200" height="72" class="node-sandbox" />
+  <text x="685" y="322" class="node-text">External Python Validator</text>
+  <text x="685" y="339" class="node-detail">• Extracts Python block</text>
+  <text x="685" y="354" class="node-detail">• Applies edits to NumPy W</text>
+  <text x="685" y="367" class="node-detail">• Validates tensor shapes</text>
+
+  <rect x="845" y="300" width="160" height="72" class="node" />
+  <text x="925" y="322" class="node-text">Updated Weight File</text>
+  <text x="925" y="339" class="node-detail">• Surgically wired circuits</text>
+  <text x="925" y="354" class="node-detail">• Flipped/swapped rows</text>
+  <text x="925" y="367" class="node-detail">• Saved to disk</text>
+
+  <!-- Arrows Tier 2 -->
+  <path d="M 255 336 L 315 336" class="arrow" />
+  <path d="M 525 336 L 585 336" class="arrow" />
+  <path d="M 785 336 L 845 336" class="arrow" />
+
+  <!-- ==================== TIER 3 ==================== -->
+  <rect x="25" y="410" width="1000" height="325" class="lane-bg" />
+  <text x="45" y="435" class="lane-title">3. Interactive REPL &amp; Recursive Language Model (RLM) Harness (Closed-Loop Exploration &amp; Editing)</text>
+  <text x="45" y="452" class="lane-sub">Used for Large Weight Spaces: Qwen 3.5 0.8B, Gemma 3 270M, &amp; SmolLM2 135M (210MB+ weights)</text>
+
+  <!-- Nodes Tier 3 -->
+  <rect x="45" y="480" width="220" height="110" class="node-target" />
+  <text x="155" y="505" class="node-text">Large Target Model</text>
+  <text x="155" y="523" class="node-detail">• Too large for text prompt</text>
+  <text x="155" y="538" class="node-detail">• Loaded in Python memory</text>
+  <text x="155" y="553" class="node-detail">  as `context` variable</text>
+  <text x="155" y="570" class="node-detail">• Optional: Practice problems</text>
+
+  <rect x="330" y="480" width="250" height="110" class="node-sandbox" />
+  <text x="455" y="505" class="node-text">Persistent Python REPL Kernel</text>
+  <text x="455" y="523" class="node-detail">• Jupyter-like stateful session</text>
+  <text x="455" y="538" class="node-detail">• Mode A (Static): Inspects weights</text>
+  <text x="455" y="553" class="node-detail">  via NumPy without running model</text>
+  <text x="455" y="568" class="node-detail">• Mode B (Dynamic): Forward pass</text>
+  <text x="455" y="583" class="node-detail">  budget + residual stream access</text>
+
+  <rect x="650" y="480" width="220" height="110" class="node-llm" />
+  <text x="760" y="505" class="node-text">Fast RLM / LLM Agent</text>
+  <text x="760" y="523" class="node-detail">• Reads stdout from previous cell</text>
+  <text x="760" y="538" class="node-detail">• Reasons &amp; writes next Python cell</text>
+  <text x="760" y="553" class="node-detail">• Depth 0: Single REPL loop</text>
+  <text x="760" y="568" class="node-detail">• Depth 1+: Spawns sub-agents</text>
+  <text x="760" y="583" class="node-detail">  with isolated REPLs</text>
+
+  <!-- Sub-boxes inside Tier 3 bottom for Modes -->
+  <rect x="330" y="630" width="250" height="80" class="node" />
+  <text x="455" y="652" class="node-text">Weight Space Inspection (Static)</text>
+  <text x="455" y="670" class="node-detail">• Screens early layers &amp; attention</text>
+  <text x="455" y="685" class="node-detail">• Finds 8/10 Induction Heads</text>
+  <text x="455" y="700" class="node-detail">• Zero forward passes executed</text>
+
+  <rect x="650" y="630" width="355" height="80" class="node" />
+  <text x="827" y="652" class="node-text">Activation &amp; Circuit Surgery (Dynamic)</text>
+  <text x="827" y="670" class="node-detail">• Qwen 0.8B: Removes L15/L19 MLP looping direction</text>
+  <text x="827" y="685" class="node-detail">• SmolLM2: Wires last-layer detector neuron to "Rome"</text>
+  <text x="827" y="700" class="node-detail">• Verifies edits against forward-pass probabilities</text>
+
+  <!-- Arrows Tier 3 -->
+  <path d="M 265 535 L 330 535" class="arrow" />
+  <!-- Loop between REPL and RLM -->
+  <path d="M 580 515 L 650 515" class="arrow-loop" />
+  <path d="M 650 555 L 580 555" class="arrow-loop" />
+  <text x="615" y="505" class="badge-text" fill="#10b981">stdout</text>
+  <text x="615" y="572" class="badge-text" fill="#10b981">code cell</text>
+
+  <path d="M 455 590 L 455 630" class="arrow" />
+  <path d="M 760 590 L 760 630" class="arrow" />
+</svg>
