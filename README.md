@@ -265,6 +265,7 @@ Learnings/
 
 ### 💻 Languages
 - [Deno Joins Cloudflare Adoption And Runtime Lessons Oct 2026](Engineering/Languages/Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md)
+- [Go Test Performance Windows vs Linux 2026](Engineering/Languages/Go-Test-Performance-Windows-vs-Linux-2026.md)
 - [TypeScript Rust Port TSRS Architecture Nov 2026](Engineering/Languages/TypeScript-Rust-Port-TSRS-Architecture-Nov-2026.md)
 - [WASM Rust](Engineering/Languages/WASM-Rust.md)
 - [Go Proposed Collections vs Java Collections Framework 2026](Engineering/Languages/comparisons/Go-Proposed-Collections-vs-Java-Collections-Framework-2026.md)

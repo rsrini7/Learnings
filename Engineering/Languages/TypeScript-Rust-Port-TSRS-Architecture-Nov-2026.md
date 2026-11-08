@@ -307,6 +307,7 @@ This research note synthesized technical findings across the following primary d
 ---
 
 **Related:**
+- [Go-Test-Performance-Windows-vs-Linux-2026](Go-Test-Performance-Windows-vs-Linux-2026.md) — Analyzes Go test and CLI process execution latency differences between Windows and Linux, including compiler and subprocess performance.
 - [Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026](Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md) — Cloudflare's runtime strategy, edge isolation, and Rust integration with `workerd`.
 - [WASM-Rust](WASM-Rust.md) — WebAssembly linear memory models, zero-GC execution, and Rust compilation advantages.
 - [Java25-vs-Go1.24-Go1.25](comparisons/Java25-vs-Go1.24-Go1.25.md) — Comparative analysis of Go runtime scheduling, garbage collection overhead, and concurrency models.

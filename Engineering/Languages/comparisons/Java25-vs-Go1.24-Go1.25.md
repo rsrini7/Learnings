@@ -1140,6 +1140,7 @@ For 2026 and beyond, expect continued convergence as Java adopts cloud-native pa
 | **Swiss Tables Maps** | **Stable** | More stable performance for large, "cold" data sets. |
 
 **Related:**
+- [Go-Test-Performance-Windows-vs-Linux-2026](../Go-Test-Performance-Windows-vs-Linux-2026.md) — Analyzes Go test and CLI process execution latency differences between Windows and Linux, including JVM cold start overhead.
 - [PHP Migration: Static React, Java and Go](../../Architecture/PHP-Migration-Static-React-Java-And-Go-Oct-2026.md) — Applies Java/Go trade-offs to enterprise PHP modernization and security exposure.
 - [Go-Proposed-Collections-vs-Java-Collections-Framework-2026](Go-Proposed-Collections-vs-Java-Collections-Framework-2026.md) — focused comparison of proposed Go collections with Java’s collections framework.
 - [Java-Python-Enterprise-AI](../../../AI-ML/Comparisons/Java-Python-Enterprise-AI.md) — Java 25 ZGC and Go 1.25 Green Tea GC inform runtime choices for enterprise AI serving infrastructure.

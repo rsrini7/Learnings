@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 695" width="100%" height="100%" style="background:#0b0f19; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="grad-cyan" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#0284c7" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="grad-emerald" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="grad-rose" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f43f5e" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#be123c" stop-opacity="0.05"/>
+    </linearGradient>
+    <linearGradient id="grad-amber" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#d97706" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Title & Subtitle Header -->
+  <text x="40" y="38" fill="#f8fafc" font-size="19" font-weight="700">Go Test &amp; Subprocess Execution: Windows vs Linux Systems Architecture</text>
+  <text x="40" y="58" fill="#94a3b8" font-size="11">Kernel Process Lifecycle, Security Minifilter Overhead, NTFS Metadata Locks, and CLI Toolchain Emulation</text>
+
+  <!-- Row 1: Top High-Level Benchmark Cards -->
+  <!-- Card 1: git version -->
+  <rect x="40" y="76" width="295" height="100" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+  <rect x="40" y="76" width="295" height="5" rx="2" fill="#38bdf8"/>
+  <text x="56" y="98" fill="#38bdf8" font-size="10" font-weight="600" letter-spacing="0.5">BENCHMARK: git --version</text>
+  <text x="56" y="118" fill="#f1f5f9" font-size="13" font-weight="700">Linux: ~2ms  vs  Win: ~650ms</text>
+  <text x="56" y="136" fill="#f87171" font-size="11" font-weight="600">325x Latency Multiplier</text>
+  <text x="56" y="154" fill="#94a3b8" font-size="10">CreateProcessW + WdFilter.sys real-time scan</text>
+
+  <!-- Card 2: git init + empty commit -->
+  <rect x="352" y="76" width="295" height="100" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+  <rect x="352" y="76" width="295" height="5" rx="2" fill="#fbbf24"/>
+  <text x="368" y="98" fill="#fbbf24" font-size="10" font-weight="600" letter-spacing="0.5">BENCHMARK: git init + commit</text>
+  <text x="368" y="118" fill="#f1f5f9" font-size="13" font-weight="700">Linux: ~15ms  vs  Win: ~1,300ms</text>
+  <text x="368" y="136" fill="#f87171" font-size="11" font-weight="600">86x Latency Multiplier</text>
+  <text x="368" y="154" fill="#94a3b8" font-size="10">MSYS2 POSIX emulation + NTFS sync journals</text>
+
+  <!-- Card 3: mvn -v -->
+  <rect x="664" y="76" width="295" height="100" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5"/>
+  <rect x="664" y="76" width="295" height="5" rx="2" fill="#f43f5e"/>
+  <text x="680" y="98" fill="#f43f5e" font-size="10" font-weight="600" letter-spacing="0.5">BENCHMARK: mvn -v (JVM COLD START)</text>
+  <text x="680" y="118" fill="#f1f5f9" font-size="13" font-weight="700">Linux: ~180ms  vs  Win: ~8,700ms</text>
+  <text x="680" y="136" fill="#f87171" font-size="11" font-weight="600">48x Latency Multiplier</text>
+  <text x="680" y="154" fill="#94a3b8" font-size="10">cmd.exe shim + HotSpot JAR scanner overhead</text>
+
+  <!-- Row 2: Deep Architecture Panels -->
+  <!-- Left Panel: Linux -->
+  <rect x="40" y="190" width="445" height="330" rx="8" fill="#1e293b" fill-opacity="0.5" stroke="#059669" stroke-width="1.2"/>
+  <text x="56" y="214" fill="#34d399" font-size="12" font-weight="700" letter-spacing="0.5">LINUX EXECUTION PATH: ZERO-COPY &amp; VFS RAM CACHE</text>
+
+  <!-- Linux Box 1 -->
+  <rect x="56" y="226" width="413" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="68" y="244" fill="#f1f5f9" font-size="11" font-weight="600">1. Kernel ForkExec via clone(CLONE_VFORK | CLONE_VM)</text>
+  <text x="68" y="261" fill="#94a3b8" font-size="10">Parent Go scheduler suspends momentarily; zero page-table copy.</text>
+  <text x="68" y="276" fill="#94a3b8" font-size="10">Child shares address space until execve; instant transition.</text>
+
+  <!-- Linux Box 2 -->
+  <rect x="56" y="302" width="413" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="68" y="320" fill="#f1f5f9" font-size="11" font-weight="600">2. Native ELF Dynamic Linker &amp; VFS Dentry Cache</text>
+  <text x="68" y="337" fill="#94a3b8" font-size="10">ld-linux loads shared objects directly from warm kernel memory.</text>
+  <text x="68" y="352" fill="#94a3b8" font-size="10">Standard I/O redirected via anonymous kernel ring-buffer pipes.</text>
+
+  <!-- Linux Box 3 -->
+  <rect x="56" y="378" width="413" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="68" y="396" fill="#f1f5f9" font-size="11" font-weight="600">3. Ephemeral Filesystem Operations (tmpfs / ext4)</text>
+  <text x="68" y="413" fill="#94a3b8" font-size="10">Advisory file locking prevents race locks; dirty pages stay in RAM.</text>
+  <text x="68" y="428" fill="#94a3b8" font-size="10">Repo creation and t.Cleanup() teardown take sub-milliseconds.</text>
+
+  <!-- Linux Metric Callout Box -->
+  <rect x="56" y="454" width="413" height="52" rx="6" fill="#064e3b" fill-opacity="0.4" stroke="#059669" stroke-width="1"/>
+  <text x="68" y="474" fill="#34d399" font-size="11" font-weight="700">Total Process Latency: ~0.5ms – 2ms</text>
+  <text x="68" y="491" fill="#a7f3d0" font-size="10">Linear concurrency scaling across 44+ parallel Go test runners.</text>
+
+  <!-- Right Panel: Windows -->
+  <rect x="514" y="190" width="445" height="330" rx="8" fill="#1e293b" fill-opacity="0.5" stroke="#e11d48" stroke-width="1.2"/>
+  <text x="530" y="214" fill="#fb7185" font-size="12" font-weight="700" letter-spacing="0.5">WINDOWS EXECUTION PATH: 5 SERIAL BOTTLENECKS</text>
+
+  <!-- Windows Box 1 -->
+  <rect x="530" y="226" width="413" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="542" y="244" fill="#f1f5f9" font-size="11" font-weight="600">1. Win32 CreateProcessW Monolithic Setup</text>
+  <text x="542" y="261" fill="#94a3b8" font-size="10">Allocates EPROCESS/ETHREAD, creates VAD tree, parses PE headers,</text>
+  <text x="542" y="276" fill="#94a3b8" font-size="10">resolves DLLs, loads SxS manifests, and notifies CSRSS via ALPC.</text>
+
+  <!-- Windows Box 2 -->
+  <rect x="530" y="302" width="413" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="542" y="320" fill="#f1f5f9" font-size="11" font-weight="600">2. Security Minifilter Interception (fltmgr.sys / WdFilter)</text>
+  <text x="542" y="337" fill="#94a3b8" font-size="10">Defender blocks process launch to verify digital signatures, compute</text>
+  <text x="542" y="352" fill="#94a3b8" font-size="10">hashes, and perform synchronous heuristic scans via MsMpEng.exe.</text>
+
+  <!-- Windows Box 3 -->
+  <rect x="530" y="378" width="413" height="66" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+  <text x="542" y="396" fill="#f1f5f9" font-size="11" font-weight="600">3. MSYS2 POSIX Translation &amp; NTFS Mandatory Locks</text>
+  <text x="542" y="413" fill="#94a3b8" font-size="10">cmd.exe/bash trampolines perform domain SID lookups; NTFS</text>
+  <text x="542" y="428" fill="#94a3b8" font-size="10">enforces mandatory locks and logs sync metadata transactions.</text>
+
+  <!-- Windows Metric Callout Box -->
+  <rect x="530" y="454" width="413" height="52" rx="6" fill="#881337" fill-opacity="0.4" stroke="#e11d48" stroke-width="1"/>
+  <text x="542" y="474" fill="#fda4af" font-size="11" font-weight="700">Total Process Latency: 650ms – 8,700ms</text>
+  <text x="542" y="491" fill="#fecdd3" font-size="10">High concurrency causes severe Defender &amp; NTFS queue thrashing.</text>
+
+  <!-- Row 3: Remediation Roadmap Container -->
+  <rect x="40" y="534" width="920" height="144" rx="8" fill="#111827" stroke="#334155" stroke-width="1.2"/>
+  <text x="56" y="555" fill="#f1f5f9" font-size="12" font-weight="700" letter-spacing="0.5">REMEDIATION ROADMAP: FIXING THE 1-HOUR TEST SUITE</text>
+
+  <!-- Strategy Card 1 -->
+  <rect x="56" y="568" width="210" height="96" rx="6" fill="#1e293b" stroke="#0284c7" stroke-width="1"/>
+  <text x="68" y="587" fill="#38bdf8" font-size="11" font-weight="700">1. Dev Drive + ReFS</text>
+  <text x="68" y="604" fill="#94a3b8" font-size="10">Enables Defender async mode.</text>
+  <text x="68" y="619" fill="#94a3b8" font-size="10">Eliminates synchronous I/O</text>
+  <text x="68" y="634" fill="#94a3b8" font-size="10">blocks on build artifacts.</text>
+  <text x="68" y="650" fill="#34d399" font-size="10" font-weight="600">Impact: 30%–50% I/O gain</text>
+
+  <!-- Strategy Card 2 -->
+  <rect x="278" y="568" width="210" height="96" rx="6" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+  <text x="290" y="587" fill="#34d399" font-size="11" font-weight="700">2. In-Memory Stubs</text>
+  <text x="290" y="604" fill="#94a3b8" font-size="10">Mock mvn/node/python checks.</text>
+  <text x="290" y="619" fill="#94a3b8" font-size="10">Never spawn JVM in unit tests;</text>
+  <text x="290" y="634" fill="#94a3b8" font-size="10">return pre-baked versions.</text>
+  <text x="290" y="650" fill="#34d399" font-size="10" font-weight="600">Impact: Saves 8.7s/check</text>
+
+  <!-- Strategy Card 3 -->
+  <rect x="500" y="568" width="210" height="96" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+  <text x="512" y="587" fill="#fbbf24" font-size="11" font-weight="700">3. Git Seed Fixture / go-git</text>
+  <text x="512" y="604" fill="#94a3b8" font-size="10">Clone pre-built repo fixture or</text>
+  <text x="512" y="619" fill="#94a3b8" font-size="10">use pure-Go memory storage.</text>
+  <text x="512" y="634" fill="#94a3b8" font-size="10">Eliminates 88+ git init runs.</text>
+  <text x="512" y="650" fill="#34d399" font-size="10" font-weight="600">Impact: Cuts lineage by 80%</text>
+
+  <!-- Strategy Card 4 -->
+  <rect x="722" y="568" width="222" height="96" rx="6" fill="#1e293b" stroke="#c084fc" stroke-width="1"/>
+  <text x="734" y="587" fill="#c084fc" font-size="11" font-weight="700">4. WSL2 Execution Layer</text>
+  <text x="734" y="604" fill="#94a3b8" font-size="10">Run test suite in native Linux</text>
+  <text x="734" y="619" fill="#94a3b8" font-size="10">VM on ext4 virtual disk.</text>
+  <text x="734" y="634" fill="#94a3b8" font-size="10">Zero code changes required.</text>
+  <text x="734" y="650" fill="#34d399" font-size="10" font-weight="600">Impact: 1hr to 2min win</text>
+</svg>
