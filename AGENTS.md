@@ -131,6 +131,11 @@ adapt section names and omit sections that do not help explain the subject.
   - **Subscripts outside `\text{}`:** In KaTeX/LaTeX, `\text{...}` operates in text mode. An unescaped underscore `_` is illegal in text mode and throws the KaTeX error `'_' allowed only in math mode`. Move subscripts outside `\text{}` into math mode (e.g., write `\text{Score}_{\text{RRF}}(d)` instead of `\text{RRF_Score}(d)`).
   - **Flush-left display math (column 0, NO list indentation):** Never indent display math blocks (`$$...$$`) inside Markdown lists (`1.`, `2.`, `-`). When indented inside a list item, GitHub Flavored Markdown (GFM) parses `$$` as plain paragraph text inside the list rather than as a KaTeX display math block. The Markdown parser then interprets math subscript underscores `_` as Markdown *italics* syntax (`_italic_`), corrupting the equation and dumping raw unrendered LaTeX on screen. Always place display math blocks (`$$...$$`) at column 0 (flush-left) separated by blank lines before and after.
 - Use tables for genuine comparisons.
+- **User-Provided Videos and Third-Party Media:**
+  - **Never create a play-by-play video timeline or chapter recap:** When the user shares a video link (e.g. YouTube, conference talk, podcast), do NOT structure the document around the video chapters or produce a timestamped narrative breakdown.
+  - **Treat video as preliminary context, not ground truth:** Videos are shared for conceptual orientation and high-level knowledge. Never treat video claims, benchmark numbers, or creator assertions as 100% valid or verified facts.
+  - **Conduct rigorous independent research:** Always look past the video to locate primary sources—academic papers (e.g. arXiv), official technical documentation, standards, source code repositories, and empirical benchmarks. Base the article's structure, technical mechanisms, and numbers on primary literature.
+  - **Omit video-specific narration by default:** Avoid video-centric framing (e.g. "In this video the creator shows...", "Chapter 4 covers..."). Explain the underlying technology, system architecture, and empirical findings directly. Only include video-specific commentary if the user explicitly requests details about the video itself.
 - Verify material claims against current primary sources and cite them inline
   near the relevant explanation. Trace claims in user-provided details back to
   disclosures, official documentation, standards or first-person research.
@@ -233,6 +238,7 @@ a commit.
 - [ ] Moved/renamed files via `git mv` (not plain `mv`)
 - [ ] Images/SVGs/PDFs in nearest `assets/` folder, **NOT** alongside the `.md` file
 - [ ] **Do NOT put images/SVGs in the root-level `assets/`** — use category-level `assets/`
+- [ ] User-provided videos treated as preliminary context (no chapter timelines, primary sources independently researched, no video-specific commentary unless requested)
 - [ ] SVGs validated for well-formed XML, container text overflows, text-on-text collisions, border straddles, connector piercing, and empty bottom dead space (`python3 Scripts/check-svg.py path/to.svg`)
 - [ ] Mermaid diagrams checked for statement semicolons, edge delimiter collisions (`||`), nested colons, bidirectional label overlaps, subgraph title wrapping (<=24 chars), and cluster-to-cluster edges
 - [ ] Math display blocks (`$$...$$`) placed flush-left (column 0, no list indentation) with subscripts outside `\text{}` (`\text{Score}_{\text{sub}}`)
