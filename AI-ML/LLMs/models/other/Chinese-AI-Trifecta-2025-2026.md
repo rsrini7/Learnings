@@ -124,6 +124,7 @@ In summary, the trifecta excels in open, practical AI, outpacing US giants in af
 Ref: https://www.youtube.com/watch?v=82DyXL0ZXI8
 
 **Related:**
+- [METR Assessment: Measuring AI R&D Acceleration and Frontier Automated Research](../../../Agents/analysis/METR-Anthropic-AI-RD-Acceleration-And-Automated-Research-Nov-2026.md) — Independent evaluation of frontier acceleration, open-weight vs closed audits, and how Chinese labs innovate under hardware constraints.
 - [LLM-Benchmarks](../../architecture/LLM-Benchmarks.md) — Defines SWE-Bench, LiveCodeBench, TAU Bench, GPQA Diamond, and MMLU cited as the new agentic benchmarks superseding saturated ones.
 - [GenAI-cost-Optimization](../../optimization/GenAI-cost-Optimization.md) — Trifecta sells on inference cost ($3/month, QAT int4) — same cost-driven selection logic between Haiku/Sonnet/Opus covered here.
 - [LLM-Inference](../../architecture/LLM-Inference.md) — Quantization-aware training, 1500 tokens/sec on Cerebras, and inference-cost framing make the trifecta a case study in inference optimization.

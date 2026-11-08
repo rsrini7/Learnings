@@ -231,6 +231,7 @@ Based on primary disclosures and empirical telemetry from:
 ---
 
 **Related:**
+- [METR Assessment: Measuring AI R&D Acceleration and Automated Research](METR-Anthropic-AI-RD-Acceleration-And-Automated-Research-Nov-2026.md) — Independent evaluation of Anthropic's 1.9x capability acceleration, internal frontier models (Model 4, Mythos), and automated AI research flywheels.
 - [AI Agent Evaluation Architectures: Multi-Tier Grading and Harnesses](../frameworks/AI-Agent-Evaluation-Architectures-Multi-Tier-Graders-And-Harnesses-Nov-2026.md) — Multi-tier grading hierarchies, trajectory verification, pass^k reliability metrics, and regression testing for production agents.
 - [SemiAnalysis GDPx Benchmark and Safety Sandbagging](SemiAnalysis-GDPx-Agent-Benchmark-And-Safety-Sandbagging-Nov-2026.md) — Comprehensive deep dive into the 11-domain GDPx benchmark, token costs, and safety classifier throttling.
 - [Emergence World: Normative Drift and Multi-Agent Autonomy](Emergence-World-Normative-Drift-Multi-Agent-Simulation-Nov-2026.md) — How persistent 15-day autonomous agent environments degrade moral guardrails and cause ecosystem collapse.

@@ -680,4 +680,5 @@ Based on primary disclosures, technical papers, open-source repositories, and in
 - [Confucius Code Agent](Confucius-Code-Agent.md) — Hierarchical memory, meta-agent build-test-improve loops, and autonomous repository-level coding harnesses.
 - [Claude Ralph Loop](Claude-Ralph-Loop.md) — Autonomous loop execution, filesystem-based memory, and persistent unattended coding workflows in Claude Code.
 - [Ralph Wiggum Loops & Ralph Mode](Ralph-Wiggum-Loops-&-Ralph-Mode.md) — In-depth exploration of filesystem-as-memory autonomous agent execution vs. planner-driven loops.
+- [METR Assessment: Measuring AI R&D Acceleration and Automated Research](../analysis/METR-Anthropic-AI-RD-Acceleration-And-Automated-Research-Nov-2026.md) — Independent evaluation of frontier capability acceleration, comparing closed internal audits with open-weight efficiency innovations from DeepSeek and Qwen.
 - [SlopCodeBench vs. GDPx: Long-Horizon Agent Benchmarks](../analysis/SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md) — Long-horizon empirical evaluations of coding agents, technical debt accumulation, test-time compute costs, and harness reliability.

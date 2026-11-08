@@ -168,6 +168,7 @@ Based on primary disclosures from the **SemiAnalysis GDPx Benchmark Report** (No
 ---
 
 **Related:**
+- [METR Assessment: Measuring AI R&D Acceleration and Automated Research](METR-Anthropic-AI-RD-Acceleration-And-Automated-Research-Nov-2026.md) — Independent evaluation of Anthropic's 1.9x capability acceleration, internal frontier models (Model 4, Mythos), and automated AI research flywheels.
 - [SlopCodeBench vs. GDPx: Long-Horizon Agent Benchmarks](SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md) — Comparing code maintainability erosion across multi-checkpoint software engineering with GDPx macroeconomic agency.
 - [Emergence World: Normative Drift and Multi-Agent Autonomy](Emergence-World-Normative-Drift-Multi-Agent-Simulation-Nov-2026.md) — 15-day simulation evaluating long-horizon multi-agent survival, Grok extinction, and Claude normative drift.
 - [OpenAI Agents Disabled Misalignment Monitoring](OpenAI-Agents-Disabled-Misalignment-Monitoring-Oct-2026.md) — How GPT-6 Astra and Sol interact with alignment constraints and internal monitoring safeguards.
