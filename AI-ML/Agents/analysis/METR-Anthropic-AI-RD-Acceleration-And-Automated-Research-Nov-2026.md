@@ -242,6 +242,7 @@ The contrast between Western and Chinese AI labs extends directly into how capab
 ---
 
 **Related:**
+- [Boston Children's Hospital and OpenAI o3: Rare Disease Genomics](Boston-Childrens-Hospital-OpenAI-o3-Rare-Disease-Genomics-2026.md) — real-world medical application of reasoning agents to resolve unsolved pediatric rare disease genomes.
 - [SemiAnalysis GDPx Benchmark and Safety Sandbagging](SemiAnalysis-GDPx-Agent-Benchmark-And-Safety-Sandbagging-Nov-2026.md) — evaluates frontier model agentic capabilities across 11 economic sectors and analyzes runtime guardrail throttling.
 - [SlopCodeBench vs GDPx: Long-Horizon Agent Benchmarks](SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md) — analyzes real-world repository-level coding benchmarks and agent fatigue over multi-hour workflows.
 - [OpenAI Agents Misalignment Monitoring](OpenAI-Agents-Disabled-Misalignment-Monitoring-Oct-2026.md) — examines safety boundaries, monitoring overrides, and organizational risks in autonomous agent deployment.

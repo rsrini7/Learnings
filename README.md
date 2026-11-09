@@ -76,6 +76,7 @@ Learnings/
 
 #### 📊 Agent Analysis
 - [Autonomous AI Agents](AI-ML/Agents/analysis/Autonomous-AI-Agents.md)
+- [Boston Childrens Hospital OpenAI o3 Rare Disease Genomics 2026](AI-ML/Agents/analysis/Boston-Childrens-Hospital-OpenAI-o3-Rare-Disease-Genomics-2026.md)
 - [Emergence World Normative Drift Multi Agent Simulation Nov 2026](AI-ML/Agents/analysis/Emergence-World-Normative-Drift-Multi-Agent-Simulation-Nov-2026.md)
 - [Hiring Agent Deep Dive](AI-ML/Agents/analysis/Hiring-Agent-Deep-Dive.md)
 - [METR Anthropic AI RD Acceleration And Automated Research Nov 2026](AI-ML/Agents/analysis/METR-Anthropic-AI-RD-Acceleration-And-Automated-Research-Nov-2026.md)

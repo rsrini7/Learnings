@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1140" width="100%" height="100%" style="background-color: #0b132b; font-family: system-ui, -apple-system, sans-serif;">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b132b" />
+      <stop offset="50%" stop-color="#111c38" />
+      <stop offset="100%" stop-color="#0b132b" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e2a4a" stop-opacity="0.9" />
+      <stop offset="100%" stop-color="#131b2e" stop-opacity="0.95" />
+    </linearGradient>
+
+    <linearGradient id="highlightGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3a86ff" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="12" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.45" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="1140" fill="url(#bgGrad)" />
+
+  <!-- Subtle Ambient Glow Orbs (Decorative, no piercing line paths) -->
+  <circle cx="150" cy="180" r="160" fill="#3a86ff" fill-opacity="0.04" filter="url(#glow)" />
+  <circle cx="850" cy="500" r="180" fill="#38bdf8" fill-opacity="0.03" filter="url(#glow)" />
+  <circle cx="300" cy="950" r="200" fill="#6366f1" fill-opacity="0.04" filter="url(#glow)" />
+
+  <!-- Header Section -->
+  <g transform="translate(50, 45)">
+    <!-- Top badge -->
+    <rect x="0" y="0" width="280" height="30" rx="15" fill="#3a86ff" fill-opacity="0.15" stroke="#3a86ff" stroke-width="1" />
+    <text x="140" y="20" fill="#38bdf8" font-size="12" font-weight="700" text-anchor="middle" letter-spacing="1.5">BOSTON CHILDREN'S HOSPITAL</text>
+
+    <!-- Main Title -->
+    <text x="0" y="70" fill="#ffffff" font-size="31" font-weight="800" letter-spacing="0.3">OpenAI o3 Deep Research &amp; Rare Disease Study</text>
+    
+    <!-- Subtitle -->
+    <text x="0" y="100" fill="#94a3b8" font-size="14.5" font-weight="400">Transforming years of pediatric diagnostic uncertainty into clarity through genomic AI reasoning.</text>
+    
+    <!-- Header Divider Line -->
+    <line x1="0" y1="120" x2="900" y2="120" stroke="url(#highlightGrad)" stroke-width="2.5" stroke-linecap="round" />
+  </g>
+
+  <!-- ================= CARD 1: Real-Life Impact ================= -->
+  <g transform="translate(50, 195)" filter="url(#cardShadow)">
+    <rect width="425" height="265" rx="16" fill="url(#cardGrad)" stroke="#3a86ff" stroke-opacity="0.3" stroke-width="1.5" />
+    <path d="M 0,16 Q 0,0 16,0 L 409,0 Q 425,0 425,16 L 425,48 L 0,48 Z" fill="#3a86ff" fill-opacity="0.12" />
+    
+    <!-- Icon Placeholder (User / Patient) -->
+    <circle cx="32" cy="24" r="13" fill="#3a86ff" fill-opacity="0.2" />
+    <path d="M 32,17 C 30,17 28.5,18.5 28.5,20.5 C 28.5,22.5 30,24 32,24 C 34,24 35.5,22.5 35.5,20.5 C 35.5,18.5 34,17 32,17 Z M 27,29.5 C 27,27 29.5,26 32,26 C 34.5,26 37,27 37,29.5 L 37,31 L 27,31 Z" fill="#38bdf8" />
+
+    <text x="58" y="30" fill="#ffffff" font-size="17" font-weight="700">Real-Life Impact: Kyra Benton's Case</text>
+    
+    <g transform="translate(22, 65)">
+      <!-- Bullet 1 -->
+      <circle cx="8" cy="8" r="4" fill="#38bdf8" />
+      <text x="22" y="12" fill="#ffffff" font-size="14" font-weight="600">Childhood Onset (Age 9)</text>
+      <text x="22" y="30" fill="#cbd5e1" font-size="12" font-weight="400">Developed gait instability and muscle weakness, spending</text>
+      <text x="22" y="46" fill="#cbd5e1" font-size="12" font-weight="400">over a decade undiagnosed across multiple medical specialists.</text>
+
+      <!-- Bullet 2 -->
+      <circle cx="8" cy="70" r="4" fill="#38bdf8" />
+      <text x="22" y="74" fill="#ffffff" font-size="14" font-weight="600">AI Hypothesis Formulation</text>
+      <text x="22" y="92" fill="#cbd5e1" font-size="12" font-weight="400">o3 Deep Research linked complex cardiac symptoms and</text>
+      <text x="22" y="108" fill="#cbd5e1" font-size="12" font-weight="400">motor phenotypes to an overlooked myopathy gene variant.</text>
+
+      <!-- Bullet 3 -->
+      <circle cx="8" cy="132" r="4" fill="#38bdf8" />
+      <text x="22" y="136" fill="#ffffff" font-size="14" font-weight="600">Confirmed: Myofibrillar Myopathy</text>
+      <text x="22" y="154" fill="#cbd5e1" font-size="12" font-weight="400">Physicians verified the molecular findings, ending 10+ years</text>
+      <text x="22" y="170" fill="#cbd5e1" font-size="12" font-weight="400">of diagnostic odyssey and establishing proactive care.</text>
+    </g>
+  </g>
+
+  <!-- ================= CARD 2: Study Methodology ================= -->
+  <g transform="translate(525, 195)" filter="url(#cardShadow)">
+    <rect width="425" height="265" rx="16" fill="url(#cardGrad)" stroke="#3a86ff" stroke-opacity="0.3" stroke-width="1.5" />
+    <path d="M 0,16 Q 0,0 16,0 L 409,0 Q 425,0 425,16 L 425,48 L 0,48 Z" fill="#3a86ff" fill-opacity="0.12" />
+    
+    <!-- Icon Placeholder (Research / Process) -->
+    <circle cx="32" cy="24" r="13" fill="#3a86ff" fill-opacity="0.2" />
+    <path d="M 28,21 L 36,21 M 32,17 L 32,25 M 28,28 L 36,28" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" />
+
+    <text x="58" y="30" fill="#ffffff" font-size="17" font-weight="700">Study Scope &amp; Genomic Cohort</text>
+    
+    <g transform="translate(22, 65)">
+      <!-- Bullet 1 -->
+      <circle cx="8" cy="8" r="4" fill="#38bdf8" />
+      <text x="22" y="12" fill="#ffffff" font-size="14" font-weight="600">376 Pediatric Cold Cases</text>
+      <text x="22" y="30" fill="#cbd5e1" font-size="12" font-weight="400">Enrolled from Manton Center for Orphan Disease Research</text>
+      <text x="22" y="46" fill="#cbd5e1" font-size="12" font-weight="400">after exhaustive clinical sequencing failed to yield answers.</text>
+
+      <!-- Bullet 2 -->
+      <circle cx="8" cy="70" r="4" fill="#38bdf8" />
+      <text x="22" y="74" fill="#ffffff" font-size="14" font-weight="600">OpenAI o3 Deep Research Model</text>
+      <text x="22" y="92" fill="#cbd5e1" font-size="12" font-weight="400">Ingested unstructured clinician EHR notes, HPO phenotypic</text>
+      <text x="22" y="108" fill="#cbd5e1" font-size="12" font-weight="400">terms, and filtered genomic variant tables (MAF &lt; 0.01).</text>
+
+      <!-- Bullet 3 -->
+      <circle cx="8" cy="132" r="4" fill="#38bdf8" />
+      <text x="22" y="136" fill="#ffffff" font-size="14" font-weight="600">Evidence-First Web Synthesis</text>
+      <text x="22" y="154" fill="#cbd5e1" font-size="12" font-weight="400">Autonomously cross-referenced variant tables against recent</text>
+      <text x="22" y="170" fill="#cbd5e1" font-size="12" font-weight="400">global PubMed, OMIM, and ClinVar literature updates.</text>
+    </g>
+  </g>
+
+  <!-- ================= CARD 3: Why Cases Failed & How AI Solved It ================= -->
+  <g transform="translate(50, 485)" filter="url(#cardShadow)">
+    <rect width="425" height="265" rx="16" fill="url(#cardGrad)" stroke="#3a86ff" stroke-opacity="0.3" stroke-width="1.5" />
+    <path d="M 0,16 Q 0,0 16,0 L 409,0 Q 425,0 425,16 L 425,48 L 0,48 Z" fill="#3a86ff" fill-opacity="0.12" />
+    
+    <!-- Icon Placeholder (Analysis / Microscope) -->
+    <circle cx="32" cy="24" r="13" fill="#3a86ff" fill-opacity="0.2" />
+    <path d="M 28,20 L 36,20 M 32,16 L 32,24" stroke="#38bdf8" stroke-width="2" />
+
+    <text x="58" y="30" fill="#ffffff" font-size="17" font-weight="700">Genomic Bottlenecks &amp; AI Mechanism</text>
+    
+    <g transform="translate(22, 65)">
+      <!-- Bullet 1 -->
+      <circle cx="8" cy="8" r="4" fill="#38bdf8" />
+      <text x="22" y="12" fill="#ffffff" font-size="14" font-weight="600">Massive Genomic Search Space</text>
+      <text x="22" y="30" fill="#cbd5e1" font-size="12" font-weight="400">Over 20,000 genes and millions of variants create huge</text>
+      <text x="22" y="46" fill="#cbd5e1" font-size="12" font-weight="400">triage backlogs that outstrip manual geneticist capacity.</text>
+
+      <!-- Bullet 2 -->
+      <circle cx="8" cy="70" r="4" fill="#38bdf8" />
+      <text x="22" y="74" fill="#ffffff" font-size="14" font-weight="600">The "Knowledge Update" Lag</text>
+      <text x="22" y="92" fill="#cbd5e1" font-size="12" font-weight="400">DNA is static, but science evolves. Variants once marked</text>
+      <text x="22" y="108" fill="#cbd5e1" font-size="12" font-weight="400">as 'uncertain' gained documented pathogenicity over time.</text>
+
+      <!-- Bullet 3 -->
+      <circle cx="8" cy="132" r="4" fill="#38bdf8" />
+      <text x="22" y="136" fill="#ffffff" font-size="14" font-weight="600">Cross-Domain Latent Reasoning</text>
+      <text x="22" y="154" fill="#cbd5e1" font-size="12" font-weight="400">AI linked atypical clinical symptoms with newly published</text>
+      <text x="22" y="170" fill="#cbd5e1" font-size="12" font-weight="400">functional studies across disparate medical domains.</text>
+    </g>
+  </g>
+
+  <!-- ================= CARD 4: Medical Verification & Outcome ================= -->
+  <g transform="translate(525, 485)" filter="url(#cardShadow)">
+    <rect width="425" height="265" rx="16" fill="url(#cardGrad)" stroke="#3a86ff" stroke-opacity="0.3" stroke-width="1.5" />
+    <path d="M 0,16 Q 0,0 16,0 L 409,0 Q 425,0 425,16 L 425,48 L 0,48 Z" fill="#3a86ff" fill-opacity="0.12" />
+    
+    <!-- Icon Placeholder (Check / Shield) -->
+    <circle cx="32" cy="24" r="13" fill="#3a86ff" fill-opacity="0.2" />
+    <path d="M 28,23 L 31,26 L 36,19" stroke="#38bdf8" stroke-width="2" fill="none" stroke-linecap="round" />
+
+    <text x="58" y="30" fill="#ffffff" font-size="17" font-weight="700">Verification &amp; Clinical Governance</text>
+    
+    <g transform="translate(22, 65)">
+      <!-- Bullet 1 -->
+      <circle cx="8" cy="8" r="4" fill="#38bdf8" />
+      <text x="22" y="12" fill="#ffffff" font-size="14" font-weight="600">Strict ACMG/AMP Adjudication</text>
+      <text x="22" y="30" fill="#cbd5e1" font-size="12" font-weight="400">Board-certified clinical geneticists evaluated all AI output</text>
+      <text x="22" y="46" fill="#cbd5e1" font-size="12" font-weight="400">against ACMG criteria before lab confirmation.</text>
+
+      <!-- Bullet 2 -->
+      <circle cx="8" cy="70" r="4" fill="#38bdf8" />
+      <text x="22" y="74" fill="#ffffff" font-size="14" font-weight="600">CLIA Orthogonal Lab Validation</text>
+      <text x="22" y="92" fill="#cbd5e1" font-size="12" font-weight="400">Candidates underwent targeted Sanger sequencing or CLIA</text>
+      <text x="22" y="108" fill="#cbd5e1" font-size="12" font-weight="400">assays before delivering diagnoses to families.</text>
+
+      <!-- Bullet 3 -->
+      <circle cx="8" cy="132" r="4" fill="#38bdf8" />
+      <text x="22" y="136" fill="#ffffff" font-size="14" font-weight="600">Identification, Not a Standalone Cure</text>
+      <text x="22" y="154" fill="#cbd5e1" font-size="12" font-weight="400">Yielded 18 definitive molecular diagnoses (~4.8% lift)</text>
+      <text x="22" y="170" fill="#cbd5e1" font-size="12" font-weight="400">providing vital disease etiology, not automatic therapy.</text>
+    </g>
+  </g>
+
+  <!-- ================= CARD 5: Clinical Categories (Full Width Bottom) ================= -->
+  <g transform="translate(50, 775)" filter="url(#cardShadow)">
+    <rect width="900" height="315" rx="16" fill="url(#cardGrad)" stroke="#3a86ff" stroke-opacity="0.3" stroke-width="1.5" />
+    <path d="M 0,16 Q 0,0 16,0 L 884,0 Q 900,0 900,16 L 900,48 L 0,48 Z" fill="#3a86ff" fill-opacity="0.12" />
+    
+    <!-- Icon Placeholder (Chart / Categories) -->
+    <circle cx="32" cy="24" r="13" fill="#3a86ff" fill-opacity="0.2" />
+    <path d="M 27,29 L 27,22 M 32,29 L 32,18 M 37,29 L 37,25" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round" />
+
+    <text x="58" y="30" fill="#ffffff" font-size="17" font-weight="700">Clinical Distribution of Confirmed Rare Disease Diagnoses (18 Cases Total)</text>
+
+    <!-- Category Box 1 -->
+    <g transform="translate(30, 68)">
+      <rect width="195" height="225" rx="12" fill="#0b132b" fill-opacity="0.65" stroke="#3a86ff" stroke-opacity="0.3" />
+      <text x="97" y="46" fill="#38bdf8" font-size="38" font-weight="800" text-anchor="middle">10</text>
+      <text x="97" y="82" fill="#ffffff" font-size="14.5" font-weight="700" text-anchor="middle">Rare</text>
+      <text x="97" y="102" fill="#ffffff" font-size="14.5" font-weight="700" text-anchor="middle">Neurodevelopmental</text>
+      <text x="97" y="122" fill="#ffffff" font-size="14.5" font-weight="700" text-anchor="middle">Disorders</text>
+      <text x="97" y="160" fill="#94a3b8" font-size="11" font-weight="500" text-anchor="middle">Severe syndromic delays,</text>
+      <text x="97" y="177" fill="#94a3b8" font-size="11" font-weight="500" text-anchor="middle">intellectual disability &amp;</text>
+      <text x="97" y="194" fill="#94a3b8" font-size="11" font-weight="500" text-anchor="middle">congenital malformations</text>
+    </g>
+
+    <!-- Category Box 2 -->
+    <g transform="translate(245, 68)">
+      <rect width="195" height="225" rx="12" fill="#0b132b" fill-opacity="0.65" stroke="#3a86ff" stroke-opacity="0.3" />
+      <text x="97" y="46" fill="#38bdf8" font-size="38" font-weight="800" text-anchor="middle">4</text>
+      <text x="97" y="92" fill="#ffffff" font-size="14.5" font-weight="700" text-anchor="middle">Neuromuscular</text>
+      <text x="97" y="112" fill="#ffffff" font-size="14.5" font-weight="700" text-anchor="middle">Disorders</text>
+      <text x="97" y="160" fill="#94a3b8" font-size="11" font-weight="500" text-anchor="middle">Progressive myopathies</text>
+      <text x="97" y="177" fill="#94a3b8" font-size="11" font-weight="500" text-anchor="middle">(including Kyra Benton),</text>
+      <text x="97" y="194" fill="#94a3b8" font-size="11" font-weight="500" text-anchor="middle">motor &amp; nerve impairments</text>
+    </g>
+
+    <!-- Category Box 3 -->
+    <g transform="translate(460, 68)">
+      <rect width="195" height="225" rx="12" fill="#0b132b" fill-opacity="0.65" stroke="#3a86ff" stroke-opacity="0.3" />
+      <text x="97" y="46" fill="#38bdf8" font-size="38" font-weight="800" text-anchor="middle">2</text>
+      <text x="97" y="82" fill="#ffffff" font-size="14.5" font-weight="700" text-anchor="middle">Pediatric Sudden</text>
+      <text x="97" y="102" fill="#ffffff" font-size="14.5" font-weight="700" text-anchor="middle">Unexpected Death</text>
+      <text x="97" y="122" fill="#ffffff" font-size="14.5" font-weight="700" text-anchor="middle">(SUDP / SUDC)</text>
+      <text x="97" y="160" fill="#94a3b8" font-size="11" font-weight="500" text-anchor="middle">Fatal cardiac channelopathy</text>
+      <text x="97" y="177" fill="#94a3b8" font-size="11" font-weight="500" text-anchor="middle">&amp; metabolic vulnerability</text>
+      <text x="97" y="194" fill="#94a3b8" font-size="11" font-weight="500" text-anchor="middle">clarified for bereaved kin</text>
+    </g>
+
+    <!-- Category Box 4 -->
+    <g transform="translate(675, 68)">
+      <rect width="195" height="225" rx="12" fill="#0b132b" fill-opacity="0.65" stroke="#3a86ff" stroke-opacity="0.3" />
+      <text x="97" y="46" fill="#38bdf8" font-size="38" font-weight="800" text-anchor="middle">2</text>
+      <text x="97" y="82" fill="#ffffff" font-size="14.5" font-weight="700" text-anchor="middle">Early Childhood</text>
+      <text x="97" y="102" fill="#ffffff" font-size="14.5" font-weight="700" text-anchor="middle">Psychosis &amp;</text>
+      <text x="97" y="122" fill="#ffffff" font-size="14.5" font-weight="700" text-anchor="middle">Neuropsychiatry</text>
+      <text x="97" y="160" fill="#94a3b8" font-size="11" font-weight="500" text-anchor="middle">Organic genetic etiology</text>
+      <text x="97" y="177" fill="#94a3b8" font-size="11" font-weight="500" text-anchor="middle">distinguished from primary</text>
+      <text x="97" y="194" fill="#94a3b8" font-size="11" font-weight="500" text-anchor="middle">psychiatric syndromes</text>
+    </g>
+  </g>
+
+</svg>
