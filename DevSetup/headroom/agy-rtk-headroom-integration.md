@@ -7,7 +7,7 @@
 
 ## 1. Overview & Architecture Reality
 
-[Antigravity CLI](file:///Users/srinivasanragothaman/.antigravity/antigravity/bin/agy) (`agy`) connects directly to Google DeepMind / Google Cloud backends using Google's internal **Connect-RPC / gRPC** protocol (`StreamGenerateChat`). 
+**Antigravity CLI** (`agy`) connects directly to Google DeepMind / Google Cloud backends using Google's internal **Connect-RPC / gRPC** protocol (`StreamGenerateChat`). 
 
 Because `agy` does **not** make standard OpenAI- or Anthropic-compatible HTTP/REST calls:
 * **`agy` cannot be wrapped by an HTTP reverse-proxy** (such as Headroom proxy on `:8780` or `:8787`).
@@ -47,7 +47,7 @@ RTK intercepts and filters these commands transparently:
 
 ### The Hook Script: `rtk-agy-hook.py`
 
-File: [`~/ws/Learnings/Scripts/headroom/rtk-agy-hook.py`](file:///Users/srinivasanragothaman/ws/Learnings/Scripts/headroom/rtk-agy-hook.py)
+File: [`Scripts/headroom/rtk-agy-hook.py`](../../Scripts/headroom/rtk-agy-hook.py)
 
 `agy` supports executing external commands during tool lifecycle events. When a tool call is about to run, `agy` pipes a JSON description of the call to stdin. The hook returns a JSON decision, optionally overwriting arguments.
 
@@ -91,7 +91,7 @@ if __name__ == '__main__':
 
 ### Hook Registration: `~/.agents/hooks.json`
 
-File: [`~/.agents/hooks.json`](file:///Users/srinivasanragothaman/.agents/hooks.json)
+File: `~/.agents/hooks.json`
 
 ```json
 {
@@ -155,7 +155,7 @@ headroom  stdio  enabled  uvx --from headroom-ai[mcp]==0.37.0 headroom mcp serve
 
 ## 4. The `hagy` Launcher Wrapper
 
-To make launching `agy` frictionless with all integrations verified, [`~/ws/Learnings/Scripts/headroom/hagy.sh`](file:///Users/srinivasanragothaman/ws/Learnings/Scripts/headroom/hagy.sh) is provided and exposed as `hagy` in `~/.zshrc`.
+To make launching `agy` frictionless with all integrations verified, [`Scripts/headroom/hagy.sh`](../../Scripts/headroom/hagy.sh) is provided and exposed as `hagy` in `~/.zshrc`.
 
 ### What `hagy` Automates:
 1. **Verifies RTK Hook**: Checks if `~/.agents/hooks.json` exists; creates and activates it if missing.
@@ -165,7 +165,7 @@ To make launching `agy` frictionless with all integrations verified, [`~/ws/Lear
 
 ### Script Implementation
 
-File: [`~/ws/Learnings/Scripts/headroom/hagy.sh`](file:///Users/srinivasanragothaman/ws/Learnings/Scripts/headroom/hagy.sh)
+File: [`Scripts/headroom/hagy.sh`](../../Scripts/headroom/hagy.sh)
 ```bash
 #!/usr/bin/env zsh
 HOOKS_FILE="$HOME/.agents/hooks.json"
@@ -219,7 +219,7 @@ command agy "${args[@]}"
 
 ### Shell Function in `~/.zshrc`
 
-Defined in [`~/.zshrc`](file:///Users/srinivasanragothaman/.zshrc#L116-L118):
+Defined in `~/.zshrc`:
 ```zsh
 # hagy = agy with verified RTK hook + Headroom MCP
 hagy() { ~/ws/Learnings/Scripts/headroom/hagy.sh "$@"; }

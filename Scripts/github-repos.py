@@ -410,16 +410,19 @@ def find_md_files(directory):
 def extract_links(content, filepath):
     """Extract all links from markdown content"""
     links = []
+    # Mask fenced code blocks to prevent false positives from documentation examples
+    cleaned = re.sub(r'```[\s\S]*?```', lambda m: '\n' * m.group(0).count('\n'), content)
+    cleaned = re.sub(r'~~~[\s\S]*?~~~', lambda m: '\n' * m.group(0).count('\n'), cleaned)
     pattern = r'!?\[([^\]]*)\]\(<?([^)>\s]+)>?\)'
-    for match in re.finditer(pattern, content):
+    for match in re.finditer(pattern, cleaned):
         url = match.group(2)
-        if url.startswith(('http://', 'https://', 'mailto:', '#')):
+        if url.startswith(('http://', 'https://', 'mailto:', 'file://', '#')):
             continue
         url = url.split('#')[0]
         if url:
             links.append({
                 'text': match.group(1), 'url': url,
-                'line': content[:match.start()].count('\n') + 1,
+                'line': cleaned[:match.start()].count('\n') + 1,
                 'match': match.group(0)
             })
     return links

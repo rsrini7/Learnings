@@ -109,7 +109,7 @@ On macOS, your `$PATH` checks `~/.local/bin` **before** `/opt/homebrew/bin`. Sim
 
 ## 6. Centralized Shell Integration (`~/.zshrc`)
 
-All tool integrations are centralized in [`~/.zshrc`](file:///Users/srinivasanragothaman/.zshrc#L89-L121):
+All tool integrations are centralized in `~/.zshrc`:
 
 ```zsh
 # ── Headroom + RTK Multi-Agent Integrations (Pi, Codex, AGY) ────────────────
@@ -162,7 +162,7 @@ hverify() { ~/ws/Learnings/Scripts/headroom/verify-setup.sh "$@"; }
 ## 7. Unified Verification Suite (`hverify`)
 
 To ensure that future dotfile edits, Homebrew upgrades, or package updates never break the integrations, an automated test suite is provided:
-* **Script**: [`~/ws/Learnings/Scripts/headroom/verify-setup.sh`](file:///Users/srinivasanragothaman/ws/Learnings/Scripts/headroom/verify-setup.sh)
+* **Script**: [`Scripts/headroom/verify-setup.sh`](../../Scripts/headroom/verify-setup.sh)
 * **Command**: `hverify`
 
 ```text

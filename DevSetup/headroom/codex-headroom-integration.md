@@ -78,7 +78,7 @@ A common frustration when running `hroom wrap codex` from shell functions was th
 * **The Outcome**:
   When you finished your Codex session and pressed `Ctrl+C` or typed `/exit`, `uvx` terminated. Because the original shell process had been destroyed, the terminal emulator (iTerm2 / Terminal.app) detected that its child process had exited, and immediately closed the tab or window.
 * **The Fix**:
-  In [`~/ws/Learnings/Scripts/headroom/hroom.sh`](file:///Users/srinivasanragothaman/ws/Learnings/Scripts/headroom/hroom.sh), we removed `exec` so that `uvx` runs as a standard child process:
+  In [`Scripts/headroom/hroom.sh`](../../Scripts/headroom/hroom.sh), we removed `exec` so that `uvx` runs as a standard child process:
   ```bash
   uvx --python "$python_ver" --from "$package_spec" headroom "$@"  # ✅ Safe child process
   ```
@@ -147,7 +147,7 @@ Profile Isolation Pattern (hcodex):
 
 Codex supports passing `--profile <name>`. When this flag is passed, Codex automatically loads `~/.codex/<name>.config.toml` and merges it on top of `~/.codex/config.toml` in-memory, without altering `config.toml` on disk.
 
-File: [`~/.codex/headroom.config.toml`](file:///Users/srinivasanragothaman/.codex/headroom.config.toml)
+File: `~/.codex/headroom.config.toml`
 ```toml
 # Headroom profile for Codex (layered on top of ~/.codex/config.toml)
 model_provider = "headroom"
@@ -167,7 +167,7 @@ args = ["--from", "headroom-ai[mcp]==0.37.0", "headroom", "mcp", "serve"]
 
 ### 2. The `hcodex` Launcher Script
 
-File: [`~/ws/Learnings/Scripts/headroom/hcodex.sh`](file:///Users/srinivasanragothaman/ws/Learnings/Scripts/headroom/hcodex.sh)
+File: [`Scripts/headroom/hcodex.sh`](../../Scripts/headroom/hcodex.sh)
 
 The script handles the complete lifecycle:
 1. **Health Check & Auto-Start**: Pings `http://127.0.0.1:8787/health`. If the proxy is not running, it automatically starts the Headroom proxy in the background and waits for it to become healthy.
@@ -203,7 +203,7 @@ codex --profile headroom "$@"
 
 ### 3. Shell Function in `~/.zshrc`
 
-Defined in [`~/.zshrc`](file:///Users/srinivasanragothaman/.zshrc#L113-L115):
+Defined in `~/.zshrc`:
 ```zsh
 # hcodex = codex through Headroom proxy (:8787) without touching default config.toml
 hcodex() { ~/ws/Learnings/Scripts/headroom/hcodex.sh "$@"; }

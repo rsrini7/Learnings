@@ -112,5 +112,5 @@ env | grep ANTHROPIC
 
 **Related:**
 - [MacMini-Setup](MacMini-Setup.md) — base dev-machine setup where these shell exports live.
-- [Headroom-Proxy](headroom-proxy.md) — same pattern of rerouting coding agents through a proxy endpoint.
+- [Headroom-Proxy](headroom/headroom-proxy.md) — same pattern of rerouting coding agents through a proxy endpoint.
 - [Claude-Code-Review](../AI-ML/LLMs/models/anthropic/Claude-Code-Review.md) — what Claude Code does under the hood once connected.
