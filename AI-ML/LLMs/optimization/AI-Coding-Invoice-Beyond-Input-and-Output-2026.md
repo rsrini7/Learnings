@@ -167,8 +167,8 @@ Based on user-provided details and video analysis of Himanshu Joshi's *Your AI B
 ---
 
 **Related:**
+- [VS Code Copilot Prompt Caching & Token Economics](VS-Code-Copilot-Prompt-Caching-And-Token-Economics-Nov-2026.md) — Multi-anchor prefix architecture, graceful fallback, credit accounting ($1 AI Credit = $0.01), and Cache Explorer diagnostics.
+- [Claude Code Prompt Cache Economics](Claude-Code-Prompt-Cache-Math-And-Model-Switch-Penalties-Nov-2026.md) — 40× hit vs write cost cliff ($0.04 vs $1.60), prefix invalidation triggers, and mid-session model-switch break-even math.
 - [GenAI Cost Optimization](GenAI-cost-Optimization.md) — Three-tier engineering framework for inference, caching, and infrastructure FinOps.
 - [Empirical Tokenomics and Model Routing](Empirical-Tokenomics-and-Model-Routing-2026.md) — Stage-based routing, compact handoffs, and cost-per-accepted-change.
 - [Context Windows, Compaction, and Cache Breaks](Context-Windows-Compaction-and-Cache-Breaks-2026.md) — Working budgets, cache eviction timers, and OMP configuration.
-- [Tokenomics Source Validation](Tokenomics-Source-Validation-Oct-2026.md) — Claim-level verification of viral tokenomics rules and Copilot credit cards.
-- [Headroom & RTK: Real-World Feedback](Headroom-RTK-Real-World-Feedback-2026.md) — Why local token reduction does not automatically yield invoice savings.

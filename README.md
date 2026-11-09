@@ -153,6 +153,7 @@ Learnings/
 #### ⚡ Optimization & Cost
 - [AI Coding Invoice Beyond Input and Output 2026](AI-ML/LLMs/optimization/AI-Coding-Invoice-Beyond-Input-and-Output-2026.md)
 - [AI Numerical Formats And Quantization Oct 2026](AI-ML/LLMs/optimization/AI-Numerical-Formats-And-Quantization-Oct-2026.md)
+- [Claude Code Prompt Cache Math And Model Switch Penalties Nov 2026](AI-ML/LLMs/optimization/Claude-Code-Prompt-Cache-Math-And-Model-Switch-Penalties-Nov-2026.md)
 - [CodeGraph Headroom and Context Management Trade Offs Oct 2026](AI-ML/LLMs/optimization/CodeGraph-Headroom-and-Context-Management-Trade-Offs-Oct-2026.md)
 - [Context Windows Compaction and Cache Breaks 2026](AI-ML/LLMs/optimization/Context-Windows-Compaction-and-Cache-Breaks-2026.md)
 - [Empirical Tokenomics and Model Routing 2026](AI-ML/LLMs/optimization/Empirical-Tokenomics-and-Model-Routing-2026.md)
@@ -163,6 +164,7 @@ Learnings/
 - [OpenResponses Open Inference Standard](AI-ML/LLMs/optimization/OpenResponses-Open-Inference-Standard.md)
 - [Tokenomics Source Validation Oct 2026](AI-ML/LLMs/optimization/Tokenomics-Source-Validation-Oct-2026.md)
 - [Unlock the Dark Data](AI-ML/LLMs/optimization/Unlock-the-Dark-Data.md)
+- [VS Code Copilot Prompt Caching And Token Economics Nov 2026](AI-ML/LLMs/optimization/VS-Code-Copilot-Prompt-Caching-And-Token-Economics-Nov-2026.md)
 - [ai token optimization tools](AI-ML/LLMs/optimization/ai-token-optimization-tools.md)
 
 #### 📈 AI Economy & Trends

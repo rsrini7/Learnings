@@ -188,9 +188,8 @@ Based on user-provided details and video transcript analysis of exit node's *Why
 ---
 
 **Related:**
+- [VS Code Copilot Prompt Caching & Token Economics](VS-Code-Copilot-Prompt-Caching-And-Token-Economics-Nov-2026.md) — Multi-anchor prefix architecture, graceful fallback, credit accounting ($1 AI Credit = $0.01), and Cache Explorer diagnostics.
+- [Claude Code Prompt Cache Economics](Claude-Code-Prompt-Cache-Math-And-Model-Switch-Penalties-Nov-2026.md) — 40× hit vs write cost cliff ($0.04 vs $1.60), prefix invalidation triggers, and mid-session model-switch break-even math.
 - [GenAI Cost Optimization](GenAI-cost-Optimization.md) — Three-tier engineering framework for inference, caching, and infrastructure FinOps.
 - [Empirical Tokenomics and Model Routing](Empirical-Tokenomics-and-Model-Routing-2026.md) — Routing matrix, stage checkpoints, and handoff boundaries.
 - [The AI Coding Invoice: Beyond Input and Output](AI-Coding-Invoice-Beyond-Input-and-Output-2026.md) — Explains cache write surcharges, TTL break-even math, and invoice reconciliations.
-- [Tokenomics Source Validation](Tokenomics-Source-Validation-Oct-2026.md) — Comprehensive claim-level verification of viral context management tips.
-- [KV Cache, Prefix Caching, and Storage Tiering](../architecture/KV-Cache-Prefix-Caching-And-Storage-Tiering-Nov-2026.md) — GPU SRAM memory math and storage tiering underlying prefix caching.
-- [Agent Memory Architectures: 5-Layer Harness and Judgment Memory](../../Agents/frameworks/Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md) — Concentric memory layers, middle compaction, and judgment calibration.

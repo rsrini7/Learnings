@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="copilotBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="copilotCardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="copilotBlueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2563eb" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="copilotPurpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+    <linearGradient id="copilotGreenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <linearGradient id="copilotRoseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e11d48" />
+      <stop offset="100%" stop-color="#f43f5e" />
+    </linearGradient>
+    <filter id="copilotShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="680" fill="url(#copilotBgGrad)" />
+
+  <!-- Header -->
+  <text x="40" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">VS Code GitHub Copilot Prompt Caching &amp; Token Economics</text>
+  <text x="40" y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">The 4 Official Breakpoints, Graceful Fallback, Credit Metering, and Cache Explorer Diagnostics</text>
+
+  <!-- Panel 1: The 4 Official Breakpoints (Top Left) -->
+  <g transform="translate(40, 95)" filter="url(#copilotShadow)">
+    <rect width="490" height="265" rx="10" fill="url(#copilotCardGrad)" stroke="#334155" stroke-width="1.2" />
+    <text x="24" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">1. The 4 Official Cache Breakpoints</text>
+    
+    <!-- Anchor 1 -->
+    <rect x="24" y="52" width="442" height="34" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <text x="36" y="73" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#a5b4fc">Breakpoint 1: End of Tool Definitions (JSON Schemas)</text>
+
+    <!-- Anchor 2 -->
+    <rect x="24" y="94" width="442" height="34" rx="6" fill="#0f2b3c" stroke="#0ea5e9" stroke-width="1" />
+    <text x="36" y="115" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#7dd3fc">Breakpoint 2: End of System Prompt &amp; Instructions</text>
+
+    <!-- Anchor 3 -->
+    <rect x="24" y="136" width="442" height="34" rx="6" fill="#143324" stroke="#10b981" stroke-width="1" />
+    <text x="36" y="157" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#6ee7b7">Breakpoint 3: Older Recent-Message Anchor (Fallback)</text>
+
+    <!-- Anchor 4 -->
+    <rect x="24" y="178" width="442" height="34" rx="6" fill="#2d1537" stroke="#d946ef" stroke-width="1" />
+    <text x="36" y="199" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#f0abfc">Breakpoint 4: Newer Recent-Message Anchor (Active)</text>
+
+    <!-- Dynamic Tail -->
+    <rect x="24" y="220" width="442" height="32" rx="4" fill="#0b1329" stroke="#1e293b" />
+    <text x="32" y="241" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Dynamic Tail: Latest user turn, #selection, active tab, tool diffs</text>
+  </g>
+
+  <!-- Panel 2: Linear Cascade vs Multi-Anchor Fallback (Top Right) -->
+  <g transform="translate(560, 95)" filter="url(#copilotShadow)">
+    <rect width="500" height="265" rx="10" fill="url(#copilotCardGrad)" stroke="#334155" stroke-width="1.2" />
+    <text x="24" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">2. Claude Code Linear vs Copilot Multi-Anchor</text>
+    
+    <!-- Claude Code Linear Block -->
+    <rect x="24" y="52" width="452" height="88" rx="6" fill="#2d1217" stroke="#e11d48" stroke-width="1" />
+    <text x="36" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fda4af">Claude Code: Linear Prefix Cascade</text>
+    <text x="36" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• Single contiguous prefix chain from token 0 downward</text>
+    <text x="36" y="114" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• 1 mutation at token K invalidates 100% of tokens from K+1 onward</text>
+    <text x="36" y="130" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• API rate math: $0.04 warm read vs $1.60 cold rewrite (200K)</text>
+
+    <!-- Copilot Multi-Anchor Block -->
+    <rect x="24" y="152" width="452" height="96" rx="6" fill="#0d281e" stroke="#059669" stroke-width="1" />
+    <text x="36" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#6ee7b7">VS Code Copilot: Dual Message Anchor Fallback</text>
+    <text x="36" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• Fixed system instructions isolated from dynamic turn drift</text>
+    <text x="36" y="214" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• Lapsed newer message anchor falls back to older message anchor</text>
+    <text x="36" y="232" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• VS Code engineering post reports ~94% agentic cache hit rate</text>
+  </g>
+
+  <!-- Panel 3: Invalidation Triggers in VS Code Copilot (Bottom Left) -->
+  <g transform="translate(40, 385)" filter="url(#copilotShadow)">
+    <rect width="490" height="260" rx="10" fill="url(#copilotCardGrad)" stroke="#334155" stroke-width="1.2" />
+    <text x="24" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">3. Invalidation Triggers in VS Code Copilot</text>
+    
+    <!-- Red Box: Breaks Cache -->
+    <rect x="24" y="50" width="215" height="190" rx="6" fill="#2d1217" stroke="#e11d48" stroke-width="1" />
+    <text x="34" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fda4af">Breaks Cache Anchors</text>
+    <text x="34" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• Model switch in dropdown</text>
+    <text x="34" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• Live edits to copilot-instructions</text>
+    <text x="34" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• Switching active unpinned tab</text>
+    <text x="34" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• Swapping custom agent tools</text>
+    <text x="34" y="184" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• Starting new chat session (+)</text>
+    <text x="34" y="206" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• Adding/removing MCP servers</text>
+
+    <!-- Green Box: Keeps Cache Warm -->
+    <rect x="251" y="50" width="215" height="190" rx="6" fill="#0d281e" stroke="#059669" stroke-width="1" />
+    <text x="261" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#6ee7b7">Preserves Warm Anchors</text>
+    <text x="261" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• Sequential Agent Mode turns</text>
+    <text x="261" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• Explicit #file / #selection</text>
+    <text x="261" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• Auto model selection route</text>
+    <text x="261" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• Stable system instructions</text>
+    <text x="261" y="184" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• Keeping unused tabs closed</text>
+    <text x="261" y="206" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• Fixed tool registry definitions</text>
+  </g>
+
+  <!-- Panel 4: Enterprise Credit Metering & Diagnostics (Bottom Right) -->
+  <g transform="translate(560, 385)" filter="url(#copilotShadow)">
+    <rect width="500" height="260" rx="10" fill="url(#copilotCardGrad)" stroke="#334155" stroke-width="1.2" />
+    <text x="24" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">4. Enterprise Credit Metering &amp; Diagnostics</text>
+    
+    <!-- Credit accounting box -->
+    <rect x="24" y="50" width="452" height="110" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="36" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#fbbf24">Billing Unit: 1 AI Credit = $0.01 USD</text>
+    <text x="36" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Ghost text / inline autocomplete / next-edits: 0 Credits (Free)</text>
+    <text x="36" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Chat &amp; Agent Mode: Metered via credits (Cached prefix discounts)</text>
+    <text x="36" y="130" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#38bdf8">• Auto Model: 10% credit discount in Chat &amp; Cloud Agent</text>
+    <text x="36" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Pooled Quotas: Enterprise (3,900) / Business (1,900 credits/seat)</text>
+
+    <!-- Cache Explorer diagnostics -->
+    <rect x="24" y="172" width="452" height="68" rx="6" fill="#0b1329" stroke="#1e293b" />
+    <text x="36" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#7dd3fc">Auditing via VS Code "Cache Explorer":</text>
+    <text x="36" y="214" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Chat Ellipsis (...) → Show Agent Debug Logs → Cache Explorer</text>
+    <text x="36" y="230" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Inspects prompt components, first divergence point, and diffs</text>
+  </g>
+</svg>

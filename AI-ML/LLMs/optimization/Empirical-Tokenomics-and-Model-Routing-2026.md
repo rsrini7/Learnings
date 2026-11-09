@@ -88,6 +88,9 @@ Standard Direct API list prices per million tokens ($/MTok):
 | **7. Security audit** | Opus 5.5 | Opus 5 / 4.8 | VS Code | High | High-Cost | Misses subtle race conditions or auth bypass |
 | **8. PR summary** | Haiku 5.5 | Sonnet 5.5 | VS Code | Low | Low-Cost | Omits breaking changes from PR notes |
 
+> [!WARNING] The Mid-Session Model Switch Invalidation Trap
+> When switching models mid-session (e.g., from Opus 5.5 to Sonnet 5.5) with large accumulated history (e.g., 200,000 tokens), the provider cannot reuse the hardware KV cache across different model architectures. Under Direct API list pricing, the new model must perform a full cold cache write ($+\$0.46$ to $+\$0.76$ surcharge), requiring **12 to 19 subsequent turns** just to break even against staying on the warm model (and under subscription plans, it consumes equivalent rate limit capacity). For short follow-ups, stay on the warm model or run `/clear` with a compact handoff brief before switching. See [Claude Code Prompt Cache Economics](Claude-Code-Prompt-Cache-Math-And-Model-Switch-Penalties-Nov-2026.md) for the exact mathematical derivation.
+
 ### Head-to-Head: Claude Haiku 5.5 vs GPT-6 Luna
 
 Direct API rate comparison per million tokens (checked late 2026):
@@ -193,8 +196,8 @@ Based on user-provided workflow directives and empirical validations checked aga
 ---
 
 **Related:**
+- [VS Code Copilot Prompt Caching & Token Economics](VS-Code-Copilot-Prompt-Caching-And-Token-Economics-Nov-2026.md) — Multi-anchor prefix architecture, graceful fallback, credit accounting ($1 AI Credit = $0.01), and Cache Explorer diagnostics.
+- [Claude Code Prompt Cache Economics](Claude-Code-Prompt-Cache-Math-And-Model-Switch-Penalties-Nov-2026.md) — 40× hit vs write cost cliff ($0.04 vs $1.60), prefix invalidation triggers, and mid-session model-switch break-even math.
 - [GenAI Cost Optimization](GenAI-cost-Optimization.md) — Three-tier engineering framework for inference, caching, and infrastructure FinOps.
 - [The AI Coding Invoice: Beyond Input and Output](AI-Coding-Invoice-Beyond-Input-and-Output-2026.md) — Token buckets, cache write premiums, and presentation questions.
 - [Context Windows, Compaction, and Cache Breaks](Context-Windows-Compaction-and-Cache-Breaks-2026.md) — Working budgets, handoff boundaries, and cache TTL break-even economics.
-- [Tokenomics Source Validation](Tokenomics-Source-Validation-Oct-2026.md) — Point-by-point verification of viral tokenomics claims and rate cards.
-- [AI Token Optimization Tools](ai-token-optimization-tools.md) — Comparative review of AST navigation, shell filtering, and proxy compressors.

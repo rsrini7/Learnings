@@ -1,0 +1,133 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 680" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="hitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+    <linearGradient id="missGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#e11d48" />
+      <stop offset="100%" stop-color="#f43f5e" />
+    </linearGradient>
+    <linearGradient id="cyanGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="680" fill="url(#bgGrad)" />
+
+  <!-- Header -->
+  <text x="40" y="44" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">Claude Code Prompt Cache Economics &amp; Prefix Invalidation</text>
+  <text x="40" y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">The 40× Cache Cost Cliff ($0.04 vs $1.60), Invalidation Boundaries, and Model Switch Break-Even Math</text>
+
+  <!-- Panel 1: The 40x Cost Cliff (Top Left) -->
+  <g transform="translate(40, 95)" filter="url(#shadow)">
+    <rect width="490" height="265" rx="10" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2" />
+    <text x="24" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">1. The 40× Cost Cliff (200K Context on Opus 5.5)</text>
+    
+    <!-- Hit Bar -->
+    <text x="24" y="65" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#4ade80">Warm Cache Hit (0.05× Rate): $0.04</text>
+    <rect x="24" y="74" width="12" height="18" rx="4" fill="url(#hitGrad)" />
+    <text x="44" y="88" font-family="monospace" font-size="11" fill="#94a3b8">$0.20 / MTok (Hit)</text>
+
+    <!-- Base Input Bar -->
+    <text x="24" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#cbd5e1">Standard Base Input (1.00×): $0.80</text>
+    <rect x="24" y="127" width="200" height="18" rx="4" fill="#475569" />
+    <text x="232" y="141" font-family="monospace" font-size="11" fill="#94a3b8">$4.00 / MTok</text>
+
+    <!-- 5m Write Bar -->
+    <text x="24" y="171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#fbbf24">Cold 5m Cache Write (1.25×): $1.00</text>
+    <rect x="24" y="180" width="250" height="18" rx="4" fill="#d97706" />
+    <text x="282" y="194" font-family="monospace" font-size="11" fill="#94a3b8">$5.00 / MTok (Direct API)</text>
+
+    <!-- 1h Write Bar -->
+    <text x="24" y="224" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f43f5e">Cold 1h Cache Write (2.00×): $1.60 [40× Disparity]</text>
+    <rect x="24" y="233" width="320" height="18" rx="4" fill="url(#missGrad)" />
+    <text x="354" y="247" font-family="monospace" font-size="11" fill="#fda4af">$8.00 / MTok</text>
+  </g>
+
+  <!-- Panel 2: Prefix Structure & Cache Rules (Top Right) -->
+  <g transform="translate(560, 95)" filter="url(#shadow)">
+    <rect width="500" height="265" rx="10" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2" />
+    <text x="24" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">2. Prompt Prefix Hierarchy &amp; Invalidation</text>
+    
+    <!-- Prefix Stack Boxes -->
+    <rect x="24" y="52" width="452" height="34" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <text x="36" y="73" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#a5b4fc">1. Tools Array &amp; MCP Definitions (Highest Invalidation Risk)</text>
+
+    <rect x="24" y="94" width="452" height="34" rx="6" fill="#0f2b3c" stroke="#0ea5e9" stroke-width="1" />
+    <text x="36" y="115" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#7dd3fc">2. System Instructions &amp; CLAUDE.md (Loaded Once at Startup)</text>
+
+    <rect x="24" y="136" width="452" height="34" rx="6" fill="#143324" stroke="#10b981" stroke-width="1" />
+    <text x="36" y="157" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#6ee7b7">3. Chronological History: User &amp; Assistant Turns (Cached Prefix)</text>
+
+    <rect x="24" y="178" width="452" height="34" rx="6" fill="#2d1537" stroke="#d946ef" stroke-width="1" />
+    <text x="36" y="199" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f0abfc">4. Dynamic Tail: Local File Diffs &amp; Tool Results (Appended Safely)</text>
+
+    <!-- Key Takeaway Note -->
+    <rect x="24" y="220" width="452" height="32" rx="4" fill="#0b1329" stroke="#1e293b" />
+    <text x="32" y="241" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Modifying disk files appends to the tail, leaving the prefix 100% warm.</text>
+  </g>
+
+  <!-- Panel 3: Invalidation Triggers Matrix (Bottom Left) -->
+  <g transform="translate(40, 385)" filter="url(#shadow)">
+    <rect width="490" height="260" rx="10" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2" />
+    <text x="24" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">3. What Breaks vs Keeps the Prompt Cache</text>
+    
+    <!-- Red Section: Breaks Cache -->
+    <rect x="24" y="50" width="215" height="190" rx="6" fill="#2d1217" stroke="#e11d48" stroke-width="1" />
+    <text x="34" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fda4af">Forces Full Cold Rewrite</text>
+    <text x="34" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• Switching model mid-session</text>
+    <text x="34" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• Compacting context (/compact)</text>
+    <text x="34" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• Toggling Fast Mode (/fast)</text>
+    <text x="34" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• Upgrading Claude Code CLI</text>
+    <text x="34" y="184" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• Modifying active MCP servers</text>
+    <text x="34" y="206" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">• Exceeding TTL idle boundary</text>
+
+    <!-- Green Section: Keeps Cache -->
+    <rect x="251" y="50" width="215" height="190" rx="6" fill="#0d281e" stroke="#059669" stroke-width="1" />
+    <text x="261" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#6ee7b7">Keeps Cache Intact (Warm)</text>
+    <text x="261" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• Editing repository files</text>
+    <text x="261" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• Editing CLAUDE.md mid-session</text>
+    <text x="261" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• Tuning reasoning effort</text>
+    <text x="261" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• Using Plan Mode workflows</text>
+    <text x="261" y="184" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• Spawning isolated subagents</text>
+    <text x="261" y="206" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">• Invoking installed skills</text>
+  </g>
+
+  <!-- Panel 4: The Model Switch Math (Bottom Right) -->
+  <g transform="translate(560, 385)" filter="url(#shadow)">
+    <rect width="500" height="260" rx="10" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2" />
+    <text x="24" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">4. Mid-Session Model Switch Break-Even Math</text>
+    
+    <!-- Calculation details -->
+    <rect x="24" y="50" width="452" height="110" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="36" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#fbbf24">Scenario: 200K History Switch (Opus 5.5 → Sonnet 5.5)</text>
+    <text x="36" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Up-Front Cache Write Surcharge: +$0.46 (5m TTL) to +$0.76 (1h TTL)</text>
+    <text x="36" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Savings Per Subsequent Turn: -$0.04 (Output &amp; Cache read discount)</text>
+    <text x="36" y="136" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#38bdf8">• Break-Even Turn Threshold: 12 turns (5m) to 19 turns (1h)</text>
+
+    <!-- Visual Rule Box -->
+    <rect x="24" y="172" width="220" height="68" rx="6" fill="#2d1217" stroke="#e11d48" stroke-width="1" />
+    <text x="34" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fda4af">&lt; 12 Turns: NET LOSS</text>
+    <text x="34" y="214" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">Quick questions lose money</text>
+    <text x="34" y="230" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecdd3">Stay on warm Opus session</text>
+
+    <rect x="256" y="172" width="220" height="68" rx="6" fill="#0d281e" stroke="#059669" stroke-width="1" />
+    <text x="266" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#6ee7b7">&gt; 19 Turns: NET SAVINGS</text>
+    <text x="266" y="214" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">Long refactoring loops profit</text>
+    <text x="266" y="230" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">Switch pays for itself</text>
+  </g>
+</svg>
