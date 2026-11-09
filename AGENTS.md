@@ -130,6 +130,7 @@ adapt section names and omit sections that do not help explain the subject.
 - **LaTeX Math and KaTeX Rendering on GitHub:**
   - **Subscripts outside `\text{}`:** In KaTeX/LaTeX, `\text{...}` operates in text mode. An unescaped underscore `_` is illegal in text mode and throws the KaTeX error `'_' allowed only in math mode`. Move subscripts outside `\text{}` into math mode (e.g., write `\text{Score}_{\text{RRF}}(d)` instead of `\text{RRF_Score}(d)`).
   - **Flush-left display math (column 0, NO list indentation):** Never indent display math blocks (`$$...$$`) inside Markdown lists (`1.`, `2.`, `-`). When indented inside a list item, GitHub Flavored Markdown (GFM) parses `$$` as plain paragraph text inside the list rather than as a KaTeX display math block. The Markdown parser then interprets math subscript underscores `_` as Markdown *italics* syntax (`_italic_`), corrupting the equation and dumping raw unrendered LaTeX on screen. Always place display math blocks (`$$...$$`) at column 0 (flush-left) separated by blank lines before and after.
+  - **Literal comparison operators (NO HTML entities inside math):** In KaTeX math expressions (`$...$` or `$$...$$`), never write HTML entities like `&lt;`, `&gt;`, `&le;`, `&ge;`, or `&amp;`. KaTeX interprets `&` as a tabular alignment separator and throws `ParseError: KaTeX parse error: Expected 'EOF', got '&'`. Always use literal `<` (or `\lt`), `>` (or `\gt`), `\le`, `\ge`, or `\&`. Run `python3 Scripts/check-markdown.py` (or `--fix`) to detect and auto-repair them.
 - Use tables for genuine comparisons.
 - **User-Provided Videos and Third-Party Media:**
   - **Never create a play-by-play video timeline or chapter recap:** When the user shares a video link (e.g. YouTube, conference talk, podcast), do NOT structure the document around the video chapters or produce a timestamped narrative breakdown.
@@ -241,7 +242,7 @@ a commit.
 - [ ] User-provided videos treated as preliminary context (no chapter timelines, primary sources independently researched, no video-specific commentary unless requested)
 - [ ] SVGs validated for well-formed XML, container text overflows, text-on-text collisions, border straddles, connector piercing, and empty bottom dead space (`python3 Scripts/check-svg.py path/to.svg`)
 - [ ] Mermaid diagrams checked for statement semicolons, edge delimiter collisions (`||`), nested colons, bidirectional label overlaps, subgraph title wrapping (<=24 chars), and cluster-to-cluster edges
-- [ ] Math display blocks (`$$...$$`) placed flush-left (column 0, no list indentation) with subscripts outside `\text{}` (`\text{Score}_{\text{sub}}`)
+- [ ] Math display blocks (`$$...$$`) placed flush-left (column 0, no list indentation) with subscripts outside `\text{}` (`\text{Score}_{\text{sub}}`) and literal comparison operators (no `&lt;` / `&gt;` entities)
 - [ ] Relative links inside moved files fixed
 - [ ] Relative image/asset paths fixed
 - [ ] New `.md` file ends with a `**Related:**` section (3–5 links + reasons)

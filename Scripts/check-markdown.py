@@ -8,15 +8,17 @@ Validates Markdown and referenced SVG assets for GitHub rendering edge cases:
    math subscripts into Markdown italics.
 2. LaTeX Subscript Escaping: Prevents unescaped underscores inside '\\text{...}'
    which throw KaTeX syntax errors ('_' allowed only in math mode).
-3. Mermaid Sequence Diagram Semicolons: Catches ';' in messages that act as statement terminators.
-4. Mermaid Flowchart Edge Collisions: Catches double vertical bars '||' inside '|...|' edge labels.
-5. Mermaid Flowchart Cluster Collisions: Catches edges connecting directly between subgraphs
+3. LaTeX Math HTML Entity Detection: Prevents HTML entities ('&lt;', '&gt;', '&le;', '&ge;', '&amp;')
+   inside '$...$' or '$$...$$' math blocks, which cause GitHub KaTeX ParseError: Expected 'EOF', got '&'.
+4. Mermaid Sequence Diagram Semicolons: Catches ';' in messages that act as statement terminators.
+5. Mermaid Flowchart Edge Collisions: Catches double vertical bars '||' inside '|...|' edge labels.
+6. Mermaid Flowchart Cluster Collisions: Catches edges connecting directly between subgraphs
    ('ClusterA --> ClusterB') which causes Dagre to anchor arrows through header labels, and
    flags subgraph titles exceeding safe single-line length (>24 chars) or containing '<br>'.
-6. Mermaid State Diagram Nested Colons: Catches internal colons in transition labels.
-7. Mermaid State Diagram Bidirectional Overlaps: Catches parallel 'A <--> B' transitions that
+7. Mermaid State Diagram Nested Colons: Catches internal colons in transition labels.
+8. Mermaid State Diagram Bidirectional Overlaps: Catches parallel 'A <--> B' transitions that
    Dagre stacks at identical (x, y) coordinates.
-8. SVG Text Boundary Overflow: Scans all referenced SVG architecture diagrams for text
+9. SVG Text Boundary Overflow: Scans all referenced SVG architecture diagrams for text
    overflowing card containers, unescaped XML, or missing viewBox attributes.
 
 Usage:
@@ -247,7 +249,22 @@ def scan_file(filepath):
                     'fix_advice': f'Remove underscore from \\text{{}}: e.g. \\text{{{m.replace("_", " ")}}} or move subscript outside: \\text{{Var}}_{{\\text{{sub}}}}'
                 })
 
-    # Check 3: Validate referenced SVG diagrams (XML well-formedness & text overflows)
+        # Check 3: HTML entities inside LaTeX math expressions ($...$ or $$...$$)
+        # KaTeX treats '&' as a tabular alignment separator and throws ParseError on HTML entities like &lt;, &gt;, &amp;
+        if '$' in clean_line:
+            for math_m in re.finditer(r'(\$\$[^\$]+\$\$|\$[^\$\n]+?\$)', clean_line):
+                math_expr = math_m.group(0)
+                entity_match = re.search(r'&(?:lt|gt|le|ge|amp|quot|apos|#\d+|#x[0-9a-fA-F]+);', math_expr)
+                if entity_match:
+                    issues.append({
+                        'file': filepath,
+                        'line': idx + 1,
+                        'type': f'LaTeX: HTML entity ({entity_match.group(0)}) inside math expression',
+                        'snippet': math_expr,
+                        'fix_advice': 'Use literal operators (<, >, \\le, \\ge) or LaTeX commands (\\lt, \\gt, \\&) instead of HTML entities. KaTeX interprets "&" as an alignment tab and throws ParseError.'
+                    })
+
+    # Check 4: Validate referenced SVG diagrams (XML well-formedness & text overflows)
     if _svg_scanner:
         md_dir = os.path.dirname(filepath)
         full_content = '\n'.join(lines)
@@ -332,6 +349,24 @@ def auto_fix_file(filepath):
             fixed_line = re.sub(r'\\text\{([^{}]*)\}', repl_underscore, current_line)
             if fixed_line != current_line:
                 current_line = fixed_line
+                modified = True
+
+        # Fix 3: HTML entities inside LaTeX math ($...$ or $$...$$)
+        if '$' in current_line:
+            def repl_math_entities(match):
+                m_text = match.group(0)
+                m_text = m_text.replace('&lt;', '<')
+                m_text = m_text.replace('&gt;', '>')
+                m_text = m_text.replace('&le;', '\\le')
+                m_text = m_text.replace('&ge;', '\\ge')
+                m_text = m_text.replace('&amp;', '\\&')
+                m_text = m_text.replace('&quot;', '"')
+                m_text = m_text.replace('&apos;', "'")
+                return m_text
+
+            fixed_entities = re.sub(r'(\$\$[^\$]+\$\$|\$[^\$\n]+?\$)', repl_math_entities, current_line)
+            if fixed_entities != current_line:
+                current_line = fixed_entities
                 modified = True
 
         new_lines.append(current_line)

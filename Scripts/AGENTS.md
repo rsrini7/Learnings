@@ -149,6 +149,7 @@ python3 Scripts/check-markdown.py --fix
 ### What it checks
 - **LaTeX Display Math Indentation:** Catches indented `$$...$$` blocks inside Markdown lists that cause GitHub Flavored Markdown (GFM) to treat math subscripts as Markdown *italics*, breaking LaTeX rendering.
 - **LaTeX Subscript Escaping:** Catches unescaped underscores inside `\text{...}` which throw KaTeX errors (`'_' allowed only in math mode`).
+- **LaTeX Math HTML Entity Detection:** Catches HTML entities (`&lt;`, `&gt;`, `&amp;`, `&le;`, `&ge;`) inside `$ ... $` or `$$ ... $$` math blocks. KaTeX treats `&` as a tabular alignment separator and throws `ParseError: Expected 'EOF', got '&'`. Auto-repaired via `--fix`.
 - **Mermaid Sequence Diagram Semicolons:** Catches semicolons (`;`) in message strings that act as statement terminators and trigger syntax errors.
 - **Mermaid Flowchart Edge Delimiters:** Catches double vertical bars `||` inside `|...|` edge labels that prematurely close label boundaries.
 - **Mermaid State Diagram Colons:** Catches nested colons inside `stateDiagram-v2` transition labels (e.g., `(:heal:)`).
