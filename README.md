@@ -79,6 +79,7 @@ Learnings/
 - [Emergence World Normative Drift Multi Agent Simulation Nov 2026](AI-ML/Agents/analysis/Emergence-World-Normative-Drift-Multi-Agent-Simulation-Nov-2026.md)
 - [Hiring Agent Deep Dive](AI-ML/Agents/analysis/Hiring-Agent-Deep-Dive.md)
 - [METR Anthropic AI RD Acceleration And Automated Research Nov 2026](AI-ML/Agents/analysis/METR-Anthropic-AI-RD-Acceleration-And-Automated-Research-Nov-2026.md)
+- [MaxxBench Benchmaxxing Evaluation Nov 2026](AI-ML/Agents/analysis/MaxxBench-Benchmaxxing-Evaluation-Nov-2026.md)
 - [OpenAI Agents Disabled Misalignment Monitoring Oct 2026](AI-ML/Agents/analysis/OpenAI-Agents-Disabled-Misalignment-Monitoring-Oct-2026.md)
 - [SemiAnalysis GDPx Agent Benchmark And Safety Sandbagging Nov 2026](AI-ML/Agents/analysis/SemiAnalysis-GDPx-Agent-Benchmark-And-Safety-Sandbagging-Nov-2026.md)
 - [SlopCodeBench Vs GDPx Long Horizon Agent Benchmarks Nov 2026](AI-ML/Agents/analysis/SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md)

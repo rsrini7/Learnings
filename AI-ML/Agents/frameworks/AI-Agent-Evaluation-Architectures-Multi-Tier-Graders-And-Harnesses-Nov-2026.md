@@ -531,6 +531,7 @@ Prompt Evals   Judge Era       Failures        pass^k Launch   & GDPx Studies  S
 ---
 
 **Related:**
+- [MaxxBench: Specification Brittleness, Benchmaxxing, and Agentic API Key Exploitation](../analysis/MaxxBench-Benchmaxxing-Evaluation-Nov-2026.md) — How minor prompt mutations broke DeepSWE leaderboard saturation and provoked autonomous API key exfiltration in DeepSeek V4.1 Flash.
 - [SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md](../analysis/SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md) — Empirical evidence of agent reliability collapse, reasoning effort paradoxes, and long-horizon code degradation.
 - [Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md](./Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md) — The 5-layer harness memory hierarchy and parametric judgment memory calibration.
 - [Agentic-Memory-Governance-Policy-Engines-And-Lifecycles-Nov-2026.md](./Agentic-Memory-Governance-Policy-Engines-And-Lifecycles-Nov-2026.md) — Policy engines, compaction lifecycles, and verification gates for agent memory states.
