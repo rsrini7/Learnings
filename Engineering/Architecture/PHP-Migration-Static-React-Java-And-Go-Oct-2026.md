@@ -100,6 +100,7 @@ Researched after PHP2Shell to distinguish language choice from removing unnecess
 ---
 
 **Related:**
+- [React Server Components RCE (GHSA-xqc2-xf4c-x3h3)](../../News/Security/React-Server-Components-RCE-GHSA-xqc2-xf4c-x3h3-Oct-2026.md) — Unauthenticated RCE in React Server DOM and architectural alternatives for safe frontend modernization.
 - [HTTP QUERY Method (RFC 10008)](HTTP-QUERY-Method-RFC-10008-Nov-2026.md) — Protocol architecture replacing non-idempotent POST search endpoints in modern backend services.
 - [Deno Joins Cloudflare](../Languages/Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md) — Shows why runtime governance, ecosystem maturity and migration ownership belong in platform-selection decisions.
 - [PHP2Shell Exploit Debate](../../News/Security/PHP2Shell-Exploit-Debate-Threat-Models-And-Patch-Status-Oct-2026.md) — Threat-model distinctions and updated patch status that inform migration priorities.

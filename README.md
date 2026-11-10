@@ -465,6 +465,7 @@ Learnings/
 - [PHP2Shell History UAF And ASLR Oct 2026](News/Security/PHP2Shell-History-UAF-And-ASLR-Oct-2026.md)
 - [PHP2Shell Steal My Bitcoin Challenge Oct 2026](News/Security/PHP2Shell-Steal-My-Bitcoin-Challenge-Oct-2026.md)
 - [Polymarket DebugBear Supply Chain Attack Oct 2026](News/Security/Polymarket-DebugBear-Supply-Chain-Attack-Oct-2026.md)
+- [React Server Components RCE GHSA xqc2 xf4c x3h3 Oct 2026](News/Security/React-Server-Components-RCE-GHSA-xqc2-xf4c-x3h3-Oct-2026.md)
 - [Security Vulnerabilities in Wireless Devices and Apps](News/Security/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
 - [Ubuntu Server CVE 2026 98432 Kernel UAF And Patch Lag Nov 2026](News/Security/Ubuntu-Server-CVE-2026-98432-Kernel-UAF-And-Patch-Lag-Nov-2026.md)
 
