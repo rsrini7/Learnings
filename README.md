@@ -448,6 +448,7 @@ Learnings/
 - [Binance Hot Wallet Theft TRM Labs Investigation Oct 2026](News/Security/Binance-Hot-Wallet-Theft-TRM-Labs-Investigation-Oct-2026.md)
 - [EMudhra Weak CA Keys And PKI Trust Oct 2026](News/Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)
 - [GitLab Regex Compiler RCE Oct 2026](News/Security/GitLab-Regex-Compiler-RCE-Oct-2026.md)
+- [Grok Build Passive DNS Data Exposure Nov 2026](News/Security/Grok-Build-Passive-DNS-Data-Exposure-Nov-2026.md)
 - [HTTP Egress Credential Proxies Vs MCP Gateways Nov 2026](News/Security/HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways-Nov-2026.md)
 - [India Spam Calls DND And TRAI Enforcement Oct 2026](News/Security/India-Spam-Calls-DND-And-TRAI-Enforcement-Oct-2026.md)
 - [Largest WhatsApp Data Leak in History](News/Security/Largest-WhatsApp-Data-Leak-in-History.md)

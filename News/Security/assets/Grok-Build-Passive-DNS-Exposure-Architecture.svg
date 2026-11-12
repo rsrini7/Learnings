@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 860" width="100%" height="100%" style="background:#0d1117; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <!-- Gradients -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff4444" stop-opacity="0.15" />
+      <stop offset="100%" stop-color="#ff7b72" stop-opacity="0.05" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#161b22" />
+      <stop offset="100%" stop-color="#0e131a" />
+    </linearGradient>
+
+    <linearGradient id="redAccent" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#f85149" />
+      <stop offset="100%" stop-color="#da3633" />
+    </linearGradient>
+
+    <!-- Marker Arrow -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#8b949e" />
+    </marker>
+
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#f85149" />
+    </marker>
+  </defs>
+
+  <!-- Title Section -->
+  <rect x="30" y="25" width="1040" height="75" rx="10" fill="url(#headerGrad)" stroke="#ff4444" stroke-width="1.2" />
+  <text x="50" y="58" font-size="20" font-weight="700" fill="#f85149">EXPOSURE ARCHITECTURE &amp; LEAK MECHANISM</text>
+  <text x="50" y="82" font-size="13" fill="#8b949e">Grok Build &quot;Unlisted vs Private&quot; Flaw &amp; Passive DNS Scraping Enumeration (35,000+ Apps)</text>
+
+  <!-- ==================== FLOW DIAGRAM (TOP) ==================== -->
+  
+  <!-- Step 1: Prompt & Build -->
+  <rect x="30" y="125" width="220" height="150" rx="8" fill="url(#cardGrad)" stroke="#30363d" stroke-width="1.2" />
+  <rect x="30" y="125" width="220" height="28" rx="8" fill="#21262d" />
+  <text x="42" y="144" font-size="11" font-weight="600" fill="#58a6ff">1. SHADOW AI PROMPT</text>
+  <text x="45" y="176" font-size="12" font-weight="600" fill="#c9d1d9">Employee / Vibe Coder</text>
+  <text x="45" y="196" font-size="11" fill="#8b949e">• Describes tool/dashboard</text>
+  <text x="45" y="214" font-size="11" fill="#8b949e">• Uploads internal company data</text>
+  <text x="45" y="232" font-size="11" fill="#8b949e">• No security/IT oversight</text>
+  <text x="45" y="254" font-size="10.5" fill="#e3b341">⚡ Generates working app in mins</text>
+
+  <!-- Arrow 1 -> 2 -->
+  <path d="M 250 200 L 290 200" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- Step 2: Publishing & Misconfig -->
+  <rect x="295" y="125" width="230" height="150" rx="8" fill="url(#cardGrad)" stroke="#f85149" stroke-width="1.2" />
+  <rect x="295" y="125" width="230" height="28" rx="8" fill="#3c1e1e" />
+  <text x="307" y="144" font-size="11" font-weight="600" fill="#f85149">2. FLAWED PERMISSIONS</text>
+  <text x="310" y="176" font-size="12" font-weight="600" fill="#c9d1d9">Publish Flow Misstep</text>
+  <text x="310" y="196" font-size="11" fill="#8b949e">• Pre-selects &quot;Anyone with link&quot;</text>
+  <text x="310" y="214" font-size="11" fill="#f85149">• False sense of &quot;Private link&quot;</text>
+  <text x="310" y="232" font-size="11" fill="#8b949e">• Weak OAuth (&quot;any Google user&quot;)</text>
+  <text x="310" y="254" font-size="10.5" fill="#f85149">⚠ Published to *.grok.me</text>
+
+  <!-- Arrow 2 -> 3 -->
+  <path d="M 525 200 L 565 200" stroke="#8b949e" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- Step 3: Passive DNS Logging -->
+  <rect x="570" y="125" width="230" height="150" rx="8" fill="url(#cardGrad)" stroke="#d29922" stroke-width="1.2" />
+  <rect x="570" y="125" width="230" height="28" rx="8" fill="#2d2214" />
+  <text x="582" y="144" font-size="11" font-weight="600" fill="#d29922">3. DNS OBSERVER RECORDING</text>
+  <text x="585" y="176" font-size="12" font-weight="600" fill="#c9d1d9">Resolution &amp; pDNS</text>
+  <text x="585" y="196" font-size="11" fill="#8b949e">• User visits random URL</text>
+  <text x="585" y="214" font-size="11" fill="#8b949e">• Resolvers log lookup queries</text>
+  <text x="585" y="232" font-size="11" fill="#d29922">• Sensor networks capture host</text>
+  <text x="585" y="254" font-size="10.5" fill="#8b949e">🔍 Obscurity completely broken</text>
+
+  <!-- Arrow 3 -> 4 -->
+  <path d="M 800 200 L 840 200" stroke="#f85149" stroke-width="2" marker-end="url(#arrowRed)" />
+
+  <!-- Step 4: Enumeration & Exfil -->
+  <rect x="845" y="125" width="225" height="150" rx="8" fill="url(#cardGrad)" stroke="#f85149" stroke-width="1.5" />
+  <rect x="845" y="125" width="225" height="28" rx="8" fill="url(#redAccent)" />
+  <text x="857" y="144" font-size="11" font-weight="700" fill="#ffffff">4. RECON &amp; EXPOSURE</text>
+  <text x="860" y="176" font-size="12" font-weight="600" fill="#ff7b72">Attacker / Researcher</text>
+  <text x="860" y="196" font-size="11" fill="#c9d1d9">• Query: `*.grok.me` on pDNS</text>
+  <text x="860" y="214" font-size="11" fill="#c9d1d9">• Discovers 37,000+ live subdomains</text>
+  <text x="860" y="232" font-size="11" fill="#ff7b72">• No auth wall = direct payload read</text>
+  <text x="860" y="254" font-size="10.5" font-weight="600" fill="#f85149">💥 94.7% open to the public</text>
+
+  <!-- ==================== IMPACT & SCALE (MIDDLE) ==================== -->
+  
+  <!-- Left Box: Numbers & Scale -->
+  <rect x="30" y="300" width="505" height="235" rx="8" fill="url(#cardGrad)" stroke="#30363d" stroke-width="1.2" />
+  <text x="50" y="330" font-size="14" font-weight="700" fill="#58a6ff">NUMERICAL SCALE &amp; IMPACT (CLAROC RESEARCH)</text>
+
+  <rect x="50" y="350" width="140" height="60" rx="6" fill="#161b22" stroke="#30363d" />
+  <text x="60" y="375" font-size="22" font-weight="700" fill="#f85149">35,578</text>
+  <text x="60" y="398" font-size="11" fill="#8b949e">Unauthenticated Apps</text>
+
+  <rect x="210" y="350" width="140" height="60" rx="6" fill="#161b22" stroke="#30363d" />
+  <text x="220" y="375" font-size="22" font-weight="700" fill="#d29922">94.7%</text>
+  <text x="220" y="398" font-size="11" fill="#8b949e">Zero Auth Required</text>
+
+  <rect x="370" y="350" width="145" height="60" rx="6" fill="#161b22" stroke="#30363d" />
+  <text x="380" y="375" font-size="22" font-weight="700" fill="#bc8cff">6</text>
+  <text x="380" y="398" font-size="11" fill="#8b949e">Fortune 500 Orgs</text>
+
+  <text x="50" y="440" font-size="12" fill="#c9d1d9">• <tspan font-weight="600" fill="#f85149">30+ Enterprise Environments:</tspan> 26 with over 1,000 employees</text>
+  <text x="50" y="465" font-size="12" fill="#c9d1d9">• <tspan font-weight="600" fill="#f85149">SpaceXSI / X Internal Leaks:</tspan> 24 internal apps exposed by employees</text>
+  <text x="50" y="490" font-size="12" fill="#c9d1d9">• <tspan font-weight="600" fill="#f85149">Critical Data Leaked:</tspan> ICU patient lab results, staff passwords, X ad proposals</text>
+  <text x="50" y="515" font-size="12" fill="#c9d1d9">• <tspan font-weight="600" fill="#f85149">CRM Database Exfiltration:</tspan> Full sales territory map with 594 accounts</text>
+
+  <!-- Right Box: Vulnerability Anatomy -->
+  <rect x="565" y="300" width="505" height="235" rx="8" fill="url(#cardGrad)" stroke="#30363d" stroke-width="1.2" />
+  <text x="585" y="330" font-size="14" font-weight="700" fill="#e3b341">CORE FLAW: UNLISTED ≠ PRIVATE</text>
+
+  <!-- Comparison Sub-Cards -->
+  <rect x="585" y="350" width="220" height="90" rx="6" fill="#1b1717" stroke="#f85149" stroke-width="1" />
+  <text x="595" y="372" font-size="12" font-weight="700" fill="#f85149">Unlisted (&quot;Secret URL&quot;)</text>
+  <text x="595" y="395" font-size="11" fill="#c9d1d9">URL not publicized, BUT server</text>
+  <text x="595" y="412" font-size="11" fill="#c9d1d9">serves anyone who asks without</text>
+  <text x="595" y="429" font-size="11" fill="#f85149">credential validation.</text>
+
+  <rect x="830" y="350" width="220" height="90" rx="6" fill="#131e17" stroke="#3fb950" stroke-width="1" />
+  <text x="840" y="372" font-size="12" font-weight="700" fill="#3fb950">True Private (Zero Trust)</text>
+  <text x="840" y="395" font-size="11" fill="#c9d1d9">Server challenges visitor for</text>
+  <text x="840" y="412" font-size="11" fill="#c9d1d9">identity/token before responding.</text>
+  <text x="840" y="429" font-size="11" fill="#3fb950">Random URL alone is not auth.</text>
+
+  <text x="585" y="462" font-size="12" font-weight="600" fill="#e3b341">Why Obscurity Failed:</text>
+  <text x="585" y="482" font-size="11" fill="#c9d1d9">• Resolvers log every DNS lookup to telemetry databases</text>
+  <text x="585" y="500" font-size="11" fill="#c9d1d9">• Querying <tspan fill="#ff7b72">xyz123.grok.me</tspan> once permanently records the host</text>
+  <text x="585" y="518" font-size="11" fill="#c9d1d9">• Attackers query pDNS to enumerate all <tspan fill="#e3b341">*.grok.me</tspan> apps in bulk</text>
+
+  <!-- ==================== REMEDIATION & TAKEAWAYS (BOTTOM) ==================== -->
+  
+  <rect x="30" y="555" width="1040" height="260" rx="8" fill="url(#cardGrad)" stroke="#30363d" stroke-width="1.2" />
+  <text x="50" y="585" font-size="14" font-weight="700" fill="#3fb950">ENTERPRISE AUDIT &amp; REMEDIATION WORKFLOW</text>
+
+  <!-- Step 1 Audit -->
+  <rect x="50" y="605" width="305" height="185" rx="6" fill="#161b22" stroke="#30363d" />
+  <circle cx="75" cy="630" r="12" fill="#238636" />
+  <text x="71" y="635" font-size="12" font-weight="700" fill="#fff">1</text>
+  <text x="98" y="635" font-size="13" font-weight="600" fill="#f0f6fc">Discovery &amp; Inventory</text>
+  <text x="65" y="665" font-size="11.5" fill="#8b949e">• Identify all AI app platforms used</text>
+  <text x="75" y="683" font-size="11" fill="#6e7681">(Grok Build, Lovable, v0, Bolt)</text>
+  <text x="65" y="705" font-size="11.5" fill="#8b949e">• Query passive DNS / proxy logs for</text>
+  <text x="75" y="723" font-size="11" fill="#ff7b72">`*.grok.me`, `*.lovable.app`</text>
+  <text x="65" y="748" font-size="11.5" fill="#8b949e">• Map shadow apps back to owners</text>
+
+  <!-- Step 2 Test -->
+  <rect x="395" y="605" width="305" height="185" rx="6" fill="#161b22" stroke="#30363d" />
+  <circle cx="420" cy="630" r="12" fill="#1f6feb" />
+  <text x="416" y="635" font-size="12" font-weight="700" fill="#fff">2</text>
+  <text x="443" y="635" font-size="13" font-weight="600" fill="#f0f6fc">Black-Box Access Test</text>
+  <text x="410" y="665" font-size="11.5" fill="#8b949e">• Test endpoints in incognito window</text>
+  <text x="410" y="690" font-size="11.5" fill="#8b949e">• Inspect client-side scripts &amp; network</text>
+  <text x="420" y="708" font-size="11" fill="#6e7681">tab for embedded API keys/tokens</text>
+  <text x="410" y="730" font-size="11.5" fill="#8b949e">• Attempt OAuth bypass with non-org</text>
+  <text x="420" y="748" font-size="11" fill="#ff7b72">Google/Microsoft accounts</text>
+
+  <!-- Step 3 Secure -->
+  <rect x="740" y="605" width="310" height="185" rx="6" fill="#161b22" stroke="#30363d" />
+  <circle cx="765" cy="630" r="12" fill="#da3633" />
+  <text x="761" y="635" font-size="12" font-weight="700" fill="#fff">3</text>
+  <text x="788" y="635" font-size="13" font-weight="600" fill="#f0f6fc">Enforce Secure Defaults</text>
+  <text x="755" y="665" font-size="11.5" fill="#8b949e">• Immediately unpublish unowned apps</text>
+  <text x="755" y="690" font-size="11.5" fill="#8b949e">• Rotate all exposed secrets &amp; passwords</text>
+  <text x="755" y="715" font-size="11.5" fill="#8b949e">• Configure CASB/WAF to block direct</text>
+  <text x="765" y="733" font-size="11" fill="#6e7681">uploads of PII/credentials into builders</text>
+  <text x="755" y="758" font-size="11.5" fill="#3fb950">• Enforce strict SSO gateway fronting</text>
+
+  <!-- Footer Info -->
+  <text x="50" y="835" font-size="11" fill="#6e7681">Reference: Claroc GhostShares Research | Incident Date: Nov 2026 | Analysis &amp; Hardening Architecture</text>
+</svg>

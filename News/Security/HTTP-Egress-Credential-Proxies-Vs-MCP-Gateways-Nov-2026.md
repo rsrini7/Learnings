@@ -420,6 +420,7 @@ Based on user-provided technical analysis of Infisical's architectural critique 
 ---
 
 **Related:**
+- [Grok Build Passive DNS Exposure](Grok-Build-Passive-DNS-Data-Exposure-Nov-2026.md) — How AI-generated applications bypass enterprise egress controls and expose internal secrets on public subdomains.
 - [Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md](Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md) — Comprehensive threat model for local runners, template injections, and agent execution sandboxes.
 - [LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md](LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md) — Analysis of credential harvesting and pipeline tampering in AI proxy infrastructure.
 - [OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md](OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md) — How developer console and API credential mismanagement enables unauthorized model extraction.

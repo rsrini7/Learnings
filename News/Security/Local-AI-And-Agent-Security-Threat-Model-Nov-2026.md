@@ -352,6 +352,7 @@ Assume that an agent will eventually hallucinate or succumb to indirect prompt i
 ---
 
 **Related:**
+- [Grok Build Passive DNS Exposure](Grok-Build-Passive-DNS-Data-Exposure-Nov-2026.md) — How shadow AI application generation and public subdomain enumeration bypass corporate perimeter controls.
 - [OpenAI 948 Linux Kernel LPEs](OpenAI-948-Linux-Kernel-LPEs-Autonomous-Exploits-Nov-2026.md) — Autonomous multi-agent exploitation pipelines, kernel LPE breakouts, and the limits of shared-kernel container isolation.
 - [OpenSSH and musl libc: The *sshole Authentication Bypass](OpenSSH-Musl-Asterisk-Bypass-Sshhole-Nov-2026.md) — How AI agent swarms testing combinatorial build permutations uncovered a 40-year multi-library authentication bypass.
 - [HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways-Nov-2026.md](HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways-Nov-2026.md) — Breaking the Lethal Trifecta in autonomous agents via zero-secrets sandboxes and path-scoped egress brokers.
