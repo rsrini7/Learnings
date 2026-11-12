@@ -447,6 +447,7 @@ Learnings/
 - [Banks Third Party AI Agents Oct 2026](News/Security/Banks-Third-Party-AI-Agents-Oct-2026.md)
 - [Binance Hot Wallet Theft TRM Labs Investigation Oct 2026](News/Security/Binance-Hot-Wallet-Theft-TRM-Labs-Investigation-Oct-2026.md)
 - [EMudhra Weak CA Keys And PKI Trust Oct 2026](News/Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)
+- [French Supermarket Refrigeration Cyber Sabotage Nov 2026](News/Security/French-Supermarket-Refrigeration-Cyber-Sabotage-Nov-2026.md)
 - [GitLab Regex Compiler RCE Oct 2026](News/Security/GitLab-Regex-Compiler-RCE-Oct-2026.md)
 - [Grok Build Passive DNS Data Exposure Nov 2026](News/Security/Grok-Build-Passive-DNS-Data-Exposure-Nov-2026.md)
 - [HTTP Egress Credential Proxies Vs MCP Gateways Nov 2026](News/Security/HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways-Nov-2026.md)

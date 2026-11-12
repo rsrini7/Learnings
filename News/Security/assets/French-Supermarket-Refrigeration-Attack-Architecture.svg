@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%" style="background-color: #0b0f19; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#f43f5e" />
+    </linearGradient>
+    <linearGradient id="cardGradRed" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#2d151d" />
+    </linearGradient>
+    <linearGradient id="cardGradAmber" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#3b240f" />
+    </linearGradient>
+    <linearGradient id="cardGradCyan" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f2b48" />
+    </linearGradient>
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#fbbf24" />
+    </marker>
+    <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 Z" fill="#f43f5e" />
+    </marker>
+  </defs>
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="42" font-size="22" font-weight="700" fill="url(#headerGrad)">Supermarket Refrigeration Cyber-Sabotage Architecture</text>
+  <text x="40" y="66" font-size="13" fill="#94a3b8">From FOFA/Shodan Ingress to Living-off-the-Land Defrost Manipulation and Kinetic Overheating (CERTFR-2026-CTI-009)</text>
+
+  <!-- PANEL 1: Ingress & Exposure (Left) -->
+  <rect x="40" y="90" width="360" height="575" rx="10" fill="url(#cardGradCyan)" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.6" />
+  <rect x="55" y="105" width="220" height="24" rx="4" fill="#38bdf8" fill-opacity="0.2" />
+  <text x="65" y="121" font-size="11" font-weight="700" fill="#38bdf8">1. RECON &amp; EXPOSURE VECTOR</text>
+  <text x="55" y="150" font-size="16" font-weight="700" fill="#f8fafc">Direct Internet Exposure</text>
+  <text x="55" y="170" font-size="12" fill="#94a3b8">Search Engines &amp; Unsegmented Perimeter</text>
+
+  <!-- Box: FOFA Recon -->
+  <rect x="55" y="190" width="330" height="105" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1" />
+  <text x="68" y="210" font-size="12" font-weight="600" fill="#38bdf8">Mass Reconnaissance via FOFA / Shodan</text>
+  <text x="68" y="230" font-size="11" font-family="monospace" fill="#cbd5e1">title="Danfoss StoreView" &amp;&amp; country="FR"</text>
+  <text x="68" y="248" font-size="11" font-family="monospace" fill="#cbd5e1">body="AK-SM" || title="Dixell XWEB"</text>
+  <text x="68" y="266" font-size="11" fill="#94a3b8">Identified ~700 exposed endpoints in French IP</text>
+  <text x="68" y="282" font-size="11" fill="#94a3b8">ranges (Orange, SFR, Free, B2B cellular APNs).</text>
+
+  <!-- Arrow down -->
+  <line x1="220" y1="295" x2="220" y2="320" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)" />
+
+  <!-- Box: Controller Targets -->
+  <rect x="55" y="325" width="330" height="135" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+  <text x="68" y="345" font-size="12" font-weight="700" fill="#38bdf8">Target Supervisory Controllers</text>
+  <text x="68" y="367" font-size="11" fill="#cbd5e1">Danfoss AK-SM 800 / AK-SC 355 Series:</text>
+  <text x="68" y="384" font-size="11" fill="#94a3b8">• Port 80/443 Web UI (StoreView / XML-RPC)</text>
+  <text x="68" y="401" font-size="11" fill="#cbd5e1">Copeland / Dixell XWEB 500 / 5000 EVO:</text>
+  <text x="68" y="418" font-size="11" fill="#94a3b8">• Unauthenticated /cgi-bin endpoints</text>
+  <text x="68" y="435" font-size="11" fill="#94a3b8">• Legacy EOL firmware without secure boot</text>
+  <text x="68" y="451" font-size="11" fill="#94a3b8">• Factory credentials (admin/1234, master/master)</text>
+
+  <!-- Arrow down -->
+  <line x1="220" y1="460" x2="220" y2="485" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)" />
+
+  <!-- Box: Ingress Root Cause -->
+  <rect x="55" y="490" width="330" height="155" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1" />
+  <text x="68" y="510" font-size="12" font-weight="700" fill="#f87171">Why Were They Connected Directly?</text>
+  <text x="68" y="530" font-size="11" fill="#cbd5e1">1. Third-party maintenance contracts (HVAC/R)</text>
+  <text x="68" y="548" font-size="11" fill="#cbd5e1">2. Cellular 4G modems installed without VPN</text>
+  <text x="68" y="566" font-size="11" fill="#cbd5e1">3. Direct port forwarding on commercial routers</text>
+  <text x="68" y="584" font-size="11" fill="#cbd5e1">4. Store managers requested remote smartphone</text>
+  <text x="68" y="602" font-size="11" fill="#cbd5e1">   dashboards without enterprise VPN overhead</text>
+  <text x="68" y="625" font-size="11" font-weight="600" fill="#fca5a5">Result: Total perimeter bypass</text>
+
+  <!-- PANEL 2: Operational Sabotage (Center) -->
+  <rect x="420" y="90" width="360" height="575" rx="10" fill="url(#cardGradAmber)" stroke="#fbbf24" stroke-width="1.5" stroke-opacity="0.6" />
+  <rect x="435" y="105" width="250" height="24" rx="4" fill="#fbbf24" fill-opacity="0.2" />
+  <text x="445" y="121" font-size="11" font-weight="700" fill="#fbbf24">2. LIVING-OFF-THE-LAND ATTACK</text>
+  <text x="435" y="150" font-size="16" font-weight="700" fill="#f8fafc">No Malware, Pure Parameter Abuse</text>
+  <text x="435" y="170" font-size="12" fill="#94a3b8">Native Web API &amp; Fieldbus Manipulation</text>
+
+  <!-- Box: Exploitation & Login -->
+  <rect x="435" y="190" width="330" height="105" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1" />
+  <text x="448" y="210" font-size="12" font-weight="600" fill="#fbbf24">Authentication &amp; Session Takeover</text>
+  <text x="448" y="230" font-size="11" fill="#cbd5e1">• Default/weak installer logins sprayed at scale</text>
+  <text x="448" y="248" font-size="11" fill="#cbd5e1">• Auth bypass (CVE-2025-41450 code-of-the-day)</text>
+  <text x="448" y="266" font-size="11" fill="#cbd5e1">• XWEB logic bypass flaws (CVE-2026-21718)</text>
+  <text x="448" y="284" font-size="11" fill="#94a3b8">• Automated via Python/curl requests overnight</text>
+
+  <!-- Arrow down -->
+  <line x1="600" y1="295" x2="600" y2="320" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrowAmber)" />
+
+  <!-- Box: Defrost Parameter Override -->
+  <rect x="435" y="325" width="330" height="165" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+  <text x="448" y="345" font-size="12" font-weight="700" fill="#fbbf24">Malicious Defrost Reconfiguration</text>
+  <text x="448" y="367" font-size="11" fill="#fca5a5">1. Force Manual Defrost: ALL racks simultaneously</text>
+  <text x="448" y="385" font-size="11" fill="#cbd5e1">2. Termination Setpoint: Shifted from +6°C to +80°C</text>
+  <text x="448" y="403" font-size="11" fill="#cbd5e1">3. Max Defrost Timer: Extended from 30m to 8 hours</text>
+  <text x="448" y="421" font-size="11" fill="#cbd5e1">4. Alarm Suppression: High-temp alerts delayed</text>
+  <text x="448" y="439" font-size="11" fill="#94a3b8">   by 480 minutes; remote SMS/relay outputs muted</text>
+  <text x="448" y="457" font-size="11" fill="#cbd5e1">5. Modbus Broadcast: Pushed to case controllers</text>
+  <text x="448" y="475" font-size="11" fill="#94a3b8">   (Danfoss AK-CC 550 / Dixell XR) over RS-485</text>
+
+  <!-- Arrow down -->
+  <line x1="600" y1="490" x2="600" y2="515" stroke="#fbbf24" stroke-width="2" marker-end="url(#arrowAmber)" />
+
+  <!-- Box: Alarm Blindness -->
+  <rect x="435" y="520" width="330" height="125" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1" />
+  <text x="448" y="540" font-size="12" font-weight="700" fill="#f87171">Telemetry Blind Spot Created</text>
+  <text x="448" y="560" font-size="11" fill="#cbd5e1">• Central maintenance NOCs received NO alerts</text>
+  <text x="448" y="578" font-size="11" fill="#cbd5e1">• Local store sirens silenced by altered parameters</text>
+  <text x="448" y="596" font-size="11" fill="#cbd5e1">• Attack launched at 22:00–02:00 (closed stores)</text>
+  <text x="448" y="620" font-size="11" font-weight="600" fill="#fca5a5">Result: Undetected 6-hour thermal rise</text>
+
+  <!-- PANEL 3: Kinetic Damage (Right) -->
+  <rect x="800" y="90" width="360" height="575" rx="10" fill="url(#cardGradRed)" stroke="#f43f5e" stroke-width="1.5" stroke-opacity="0.6" />
+  <rect x="815" y="105" width="220" height="24" rx="4" fill="#f43f5e" fill-opacity="0.2" />
+  <text x="825" y="121" font-size="11" font-weight="700" fill="#f43f5e">3. KINETIC &amp; PHYSICAL FAILURE</text>
+  <text x="815" y="150" font-size="16" font-weight="700" fill="#f8fafc">Thermal Runaway &amp; Fires</text>
+  <text x="815" y="170" font-size="12" fill="#94a3b8">Thermodynamic Mechanics in Cold Storage</text>
+
+  <!-- Box: Physics of Defrost -->
+  <rect x="815" y="190" width="330" height="125" rx="6" fill="#0f172a" stroke="#475569" stroke-width="1" />
+  <text x="828" y="210" font-size="12" font-weight="600" fill="#f43f5e">Thermodynamic Chain Reaction</text>
+  <text x="828" y="230" font-size="11" fill="#cbd5e1">• Defrost state stops compressor &amp; cooling loop</text>
+  <text x="828" y="248" font-size="11" fill="#cbd5e1">• Evaporator fans TURN OFF (standard defrost rule)</text>
+  <text x="828" y="266" font-size="11" fill="#cbd5e1">• Electric heating calrod elements stay powered</text>
+  <text x="828" y="284" font-size="11" fill="#fca5a5">• Without airflow, heat is trapped inside cases</text>
+  <text x="828" y="302" font-size="11" fill="#fca5a5">• Coil temperature soars from -20°C past +70°C</text>
+
+  <!-- Arrow down -->
+  <line x1="980" y1="315" x2="980" y2="340" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrowRed)" />
+
+  <!-- Box: Physical Fires & Spoilage -->
+  <rect x="815" y="345" width="330" height="155" rx="6" fill="#0f172a" stroke="#f43f5e" stroke-width="1" />
+  <text x="828" y="365" font-size="12" font-weight="700" fill="#f43f5e">Physical Destruction Observed</text>
+  <text x="828" y="387" font-size="11" fill="#fca5a5">1. Localized Cabinet Fires (15–20 Stores):</text>
+  <text x="828" y="405" font-size="11" fill="#cbd5e1">   Glowing calrod heaters ignited drip pans,</text>
+  <text x="828" y="423" font-size="11" fill="#cbd5e1">   polyurethane insulation &amp; frozen packaging</text>
+  <text x="828" y="441" font-size="11" fill="#fca5a5">2. Massive Perishable Spoilage (~700 Sites):</text>
+  <text x="828" y="459" font-size="11" fill="#cbd5e1">   Meats, dairy, and seafood held at 40°C–60°C</text>
+  <text x="828" y="477" font-size="11" fill="#cbd5e1">   Tens of millions in direct inventory losses</text>
+  <text x="828" y="493" font-size="11" fill="#fca5a5">3. Overpressure &amp; Refrigerant Leaks</text>
+
+  <!-- Arrow down -->
+  <line x1="980" y1="500" x2="980" y2="525" stroke="#f43f5e" stroke-width="2" marker-end="url(#arrowRed)" />
+
+  <!-- Box: Mandatory Fix -->
+  <rect x="815" y="530" width="330" height="115" rx="6" fill="#0f172a" stroke="#4ade80" stroke-width="1" />
+  <text x="828" y="550" font-size="12" font-weight="700" fill="#4ade80">Architectural Remediation (CERT-FR)</text>
+  <text x="828" y="570" font-size="11" fill="#cbd5e1">• Immediate WAN disconnect of all controllers</text>
+  <text x="828" y="588" font-size="11" fill="#cbd5e1">• Strict Zero Trust / VPN with MFA for technicians</text>
+  <text x="828" y="606" font-size="11" fill="#cbd5e1">• Hardware thermal cutoff (Klixon switch in series)</text>
+  <text x="828" y="626" font-size="11" fill="#cbd5e1">• Out-of-band LoRaWAN backup temp telemetry</text>
+</svg>

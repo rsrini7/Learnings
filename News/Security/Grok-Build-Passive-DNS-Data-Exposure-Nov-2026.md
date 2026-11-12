@@ -224,6 +224,7 @@ User-provided details supplied the starting context. Claims were verified agains
 ---
 
 **Related:**
+- [French Supermarket Refrigeration Cyber-Sabotage](French-Supermarket-Refrigeration-Cyber-Sabotage-Nov-2026.md) — How internet-wide search engines and exposed network boundaries allow adversaries to identify and sabotage physical infrastructure.
 - [AI Key Theft from Railway and Zeabur](AI-Key-Theft-Railway-Zeabur-Oct-2026.md) — How developer platform credential stores and exposed runtime variables lead to infrastructure takeover.
 - [Local AI & Agent Security Threat Model](Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md) — Threat models for unauthenticated local runners, shadow AI instances, and agent tool execution.
 - [OpenCode Console API-Key Breach](OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md) — Credential isolation and identity boundaries when developer tools expose internal infrastructure.

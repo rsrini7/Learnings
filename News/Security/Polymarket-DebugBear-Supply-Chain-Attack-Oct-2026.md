@@ -120,6 +120,7 @@ User-provided details supplied the starting context. Material claims were checke
 ---
 
 **Related:**
+- [French Supermarket Refrigeration Cyber-Sabotage](French-Supermarket-Refrigeration-Cyber-Sabotage-Nov-2026.md) — Compare Living-off-the-Land web session authority reuse against operational parameter sabotage in physical industrial controllers.
 - [Binance Hot-Wallet Theft and TRM Labs Investigation](Binance-Hot-Wallet-Theft-TRM-Labs-Investigation-Oct-2026.md) — Compare how internal signing infrastructure subversion and automated account delegation drained multi-billion dollar crypto balances.
 - [LiteLLM 1.107.0 Supply-Chain Compromise](LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md) — Another trusted dependency carried malicious code through a different delivery path.
 - [Notepad++ Targeted Attack](Notepad++-Targetted-Attach.md) — Compare how a trusted software-delivery route can be abused.
