@@ -1707,6 +1707,7 @@ That capability opens use cases that ordinary Go `map` cannot solve cleanly toda
 ---
 
 **Related:**
+- [Go 1.27 SIMD vs NumPy vs Java Vector API (2026)](Go-SIMD-vs-NumPy-vs-Java-Vector-API-2026.md) — Comparing low-level vector acceleration, compiler intrinsics, and ecosystem readiness across Go, Java, and Python.
 - [Java25-vs-Go1.24-Go1.25](Java25-vs-Go1.24-Go1.25.md) — broader Java and Go runtime comparison.
 - [Java-Standard_Classes-vs-Records-vs-Carrier_Classes](../../JVM/Java-Standard_Classes-vs-Records-vs-Carrier_Classes.md) — Java’s type and abstraction design context.
 - [Scaling-1M-RPS-Java](../../Architecture/Scaling-1M-RPS-Java.md) — Java performance and runtime trade-offs.

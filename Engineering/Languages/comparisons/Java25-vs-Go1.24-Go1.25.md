@@ -1140,6 +1140,7 @@ For 2026 and beyond, expect continued convergence as Java adopts cloud-native pa
 | **Swiss Tables Maps** | **Stable** | More stable performance for large, "cold" data sets. |
 
 **Related:**
+- [Go 1.27 SIMD vs NumPy vs Java Vector API (2026)](Go-SIMD-vs-NumPy-vs-Java-Vector-API-2026.md) — Analyzes low-level vector acceleration, compiler intrinsics, and ecosystem readiness across Go, Java 27, and Python.
 - [Go-Test-Performance-Windows-vs-Linux-2026](../Go-Test-Performance-Windows-vs-Linux-2026.md) — Analyzes Go test and CLI process execution latency differences between Windows and Linux, including JVM cold start overhead.
 - [PHP Migration: Static React, Java and Go](../../Architecture/PHP-Migration-Static-React-Java-And-Go-Oct-2026.md) — Applies Java/Go trade-offs to enterprise PHP modernization and security exposure.
 - [Go-Proposed-Collections-vs-Java-Collections-Framework-2026](Go-Proposed-Collections-vs-Java-Collections-Framework-2026.md) — focused comparison of proposed Go collections with Java’s collections framework.

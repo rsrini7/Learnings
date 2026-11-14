@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 640" width="100%" height="100%" style="background:#0b0f19; font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; border-radius: 12px;">
+  <defs>
+    <linearGradient id="execGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="100%" stop-color="#1e293b" />
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#065f46" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c2d12" />
+      <stop offset="100%" stop-color="#d97706" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e3a8a" />
+      <stop offset="100%" stop-color="#2563eb" />
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1000" height="640" fill="url(#execGrad)" rx="12" />
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="38" fill="#f8fafc" font-size="20" font-weight="700">CPU Execution Mechanics: Scalar Loops vs. SIMD Vector Lanes</text>
+  <text x="40" y="58" fill="#94a3b8" font-size="12">Clock Cycles, Register Packing, Horizontal Reductions, and the Remainder Tail Problem</text>
+
+  <!-- Panel 1: Scalar vs SIMD Clock Timeline (Top Row) -->
+  <!-- Left Box: Scalar Pipeline -->
+  <g transform="translate(40, 80)">
+    <rect x="0" y="0" width="445" height="230" rx="8" fill="#111827" stroke="#475569" stroke-width="1.2" />
+    <rect x="0" y="0" width="445" height="28" rx="8" fill="#1e293b" />
+    <text x="16" y="19" fill="#f87171" font-size="12" font-weight="700">1. Scalar Execution (Standard Loop: 8 Elements = 8 Cycles)</text>
+
+    <text x="16" y="48" fill="#cbd5e1" font-size="11">Iterates 1 float per CPU instruction. Sequence of 8 serial operations:</text>
+
+    <!-- 8 Sequential Steps -->
+    <g transform="translate(16, 60)">
+      <rect x="0" y="0" width="44" height="24" rx="4" fill="#334155" />
+      <text x="22" y="16" fill="#f1f5f9" font-size="9" text-anchor="middle">Step 1</text>
+      <rect x="52" y="0" width="44" height="24" rx="4" fill="#334155" />
+      <text x="74" y="16" fill="#f1f5f9" font-size="9" text-anchor="middle">Step 2</text>
+      <rect x="104" y="0" width="44" height="24" rx="4" fill="#334155" />
+      <text x="126" y="16" fill="#f1f5f9" font-size="9" text-anchor="middle">Step 3</text>
+      <rect x="156" y="0" width="44" height="24" rx="4" fill="#334155" />
+      <text x="178" y="16" fill="#f1f5f9" font-size="9" text-anchor="middle">Step 4</text>
+      <rect x="208" y="0" width="44" height="24" rx="4" fill="#334155" />
+      <text x="230" y="16" fill="#f1f5f9" font-size="9" text-anchor="middle">Step 5</text>
+      <rect x="260" y="0" width="44" height="24" rx="4" fill="#334155" />
+      <text x="282" y="16" fill="#f1f5f9" font-size="9" text-anchor="middle">Step 6</text>
+      <rect x="312" y="0" width="44" height="24" rx="4" fill="#334155" />
+      <text x="334" y="16" fill="#f1f5f9" font-size="9" text-anchor="middle">Step 7</text>
+      <rect x="364" y="0" width="44" height="24" rx="4" fill="#334155" />
+      <text x="386" y="16" fill="#f1f5f9" font-size="9" text-anchor="middle">Step 8</text>
+    </g>
+
+    <text x="16" y="112" fill="#94a3b8" font-size="10.5">• 8 separate Instruction Fetch &amp; Decode cycles</text>
+    <text x="16" y="130" fill="#94a3b8" font-size="10.5">• 8 separate Scalar ALU Multiply &amp; Add passes</text>
+    <text x="16" y="148" fill="#94a3b8" font-size="10.5">• Accumulator scalar register updated sequentially: sum += a[i]*b[i]</text>
+    <text x="16" y="166" fill="#94a3b8" font-size="10.5">• High CPU pipeline instruction overhead on massive arrays</text>
+
+    <rect x="16" y="180" width="413" height="34" rx="5" fill="#1f2937" stroke="#374151" />
+    <text x="26" y="201" fill="#f87171" font-size="11" font-weight="600">Throughput: 1 float operation per CPU tick · Baseline speed</text>
+  </g>
+
+  <!-- Right Box: SIMD Vector Pipeline -->
+  <g transform="translate(515, 80)">
+    <rect x="0" y="0" width="445" height="230" rx="8" fill="#111827" stroke="#059669" stroke-width="1.2" />
+    <rect x="0" y="0" width="445" height="28" rx="8" fill="#1e293b" />
+    <text x="16" y="19" fill="#34d399" font-size="12" font-weight="700">2. SIMD Vector Execution (8 Elements = 1 Cycle)</text>
+
+    <text x="16" y="48" fill="#cbd5e1" font-size="11">Broadcasts 1 vector instruction across eight 32-bit lanes in parallel:</text>
+
+    <!-- 1 Wide 256-bit Vector Step -->
+    <g transform="translate(16, 60)">
+      <rect x="0" y="0" width="413" height="24" rx="4" fill="#064e3b" stroke="#34d399" stroke-width="1" />
+      <text x="25" y="16" fill="#a7f3d0" font-size="9" text-anchor="middle">L0</text>
+      <line x1="51" y1="0" x2="51" y2="24" stroke="#059669" />
+      <text x="76" y="16" fill="#a7f3d0" font-size="9" text-anchor="middle">L1</text>
+      <line x1="103" y1="0" x2="103" y2="24" stroke="#059669" />
+      <text x="128" y="16" fill="#a7f3d0" font-size="9" text-anchor="middle">L2</text>
+      <line x1="154" y1="0" x2="154" y2="24" stroke="#059669" />
+      <text x="180" y="16" fill="#a7f3d0" font-size="9" text-anchor="middle">L3</text>
+      <line x1="206" y1="0" x2="206" y2="24" stroke="#059669" />
+      <text x="232" y="16" fill="#a7f3d0" font-size="9" text-anchor="middle">L4</text>
+      <line x1="258" y1="0" x2="258" y2="24" stroke="#059669" />
+      <text x="284" y="16" fill="#a7f3d0" font-size="9" text-anchor="middle">L5</text>
+      <line x1="310" y1="0" x2="310" y2="24" stroke="#059669" />
+      <text x="336" y="16" fill="#a7f3d0" font-size="9" text-anchor="middle">L6</text>
+      <line x1="362" y1="0" x2="362" y2="24" stroke="#059669" />
+      <text x="388" y="16" fill="#a7f3d0" font-size="9" text-anchor="middle">L7</text>
+    </g>
+
+    <text x="16" y="112" fill="#94a3b8" font-size="10.5">• 1 single instruction fetch &amp; decode (vfmadd231ps)</text>
+    <text x="16" y="130" fill="#94a3b8" font-size="10.5">• 8 hardware execution lanes compute FMA concurrently in silicon</text>
+    <text x="16" y="148" fill="#94a3b8" font-size="10.5">• Vector accumulator maintains 8 running subtotals simultaneously</text>
+    <text x="16" y="166" fill="#94a3b8" font-size="10.5">• Dramatically reduced loop branches and instruction count</text>
+
+    <rect x="16" y="180" width="413" height="34" rx="5" fill="#064e3b" stroke="#059669" />
+    <text x="26" y="201" fill="#34d399" font-size="11" font-weight="600">Throughput: 8 float operations per CPU tick · 4x–8x Speedup</text>
+  </g>
+
+  <!-- Panel 2: The Two Core SIMD Challenges (Bottom Row) -->
+
+  <!-- Left Bottom Box: The Remainder Tail Problem -->
+  <g transform="translate(40, 330)">
+    <rect x="0" y="0" width="445" height="280" rx="8" fill="#111827" stroke="#fbbf24" stroke-width="1.2" />
+    <rect x="0" y="0" width="445" height="28" rx="8" fill="#1e293b" />
+    <text x="16" y="19" fill="#fbbf24" font-size="12" font-weight="700">3. The Remainder Tail Problem (Handling Leftovers)</text>
+
+    <text x="16" y="48" fill="#cbd5e1" font-size="11">What happens if array length (e.g. 10 floats) is not divisible by 8?</text>
+
+    <!-- Visual Array Chunking -->
+    <g transform="translate(16, 60)">
+      <!-- First 8 elements (Vector pass) -->
+      <rect x="0" y="0" width="310" height="28" rx="4" fill="#064e3b" stroke="#34d399" />
+      <text x="155" y="18" fill="#a7f3d0" font-size="10" font-weight="600" text-anchor="middle">Pass 1: Indices 0..7 (Full SIMD Chunk)</text>
+      
+      <!-- Last 2 elements (Tail) -->
+      <rect x="318" y="0" width="95" height="28" rx="4" fill="#451a03" stroke="#f59e0b" />
+      <text x="365" y="18" fill="#fde68a" font-size="10" font-weight="600" text-anchor="middle">Tail: 8..9</text>
+    </g>
+
+    <!-- Danger callout -->
+    <rect x="16" y="100" width="413" height="42" rx="5" fill="#450a0a" stroke="#dc2626" />
+    <text x="26" y="117" fill="#fca5a5" font-size="10.5" font-weight="700">Danger: Loading 8 floats from index 8 reads 6 out-of-bounds floats!</text>
+    <text x="26" y="132" fill="#fecaca" font-size="10">Can cross page boundary into unmapped memory → Segmentation Fault.</text>
+
+    <text x="16" y="162" fill="#cbd5e1" font-size="11" font-weight="600">How Different Runtimes Solve the Tail:</text>
+    <text x="16" y="182" fill="#94a3b8" font-size="10.5">• <tspan fill="#34d399" font-weight="600">Go 1.27:</tspan> Scalar tail loop or <tspan font-family="monospace">LoadFloat32sPart()</tspan></text>
+    <text x="16" y="200" fill="#94a3b8" font-size="10.5">• <tspan fill="#fbbf24" font-weight="600">Java 27:</tspan> Hardware bitmask (<tspan font-family="monospace">SPECIES.indexInRange</tspan>) turns off lanes</text>
+    <text x="16" y="218" fill="#94a3b8" font-size="10.5">• <tspan fill="#60a5fa" font-weight="600">NumPy:</tspan> C-engine handles chunks and tails invisibly in OpenBLAS</text>
+
+    <rect x="16" y="234" width="413" height="34" rx="5" fill="#1e293b" />
+    <text x="26" y="255" fill="#fbbf24" font-size="10.5" font-weight="600">Safety Rule: Never full-vector-load past (n - (n % laneWidth)).</text>
+  </g>
+
+  <!-- Right Bottom Box: Horizontal Reduction -->
+  <g transform="translate(515, 330)">
+    <rect x="0" y="0" width="445" height="280" rx="8" fill="#111827" stroke="#38bdf8" stroke-width="1.2" />
+    <rect x="0" y="0" width="445" height="28" rx="8" fill="#1e293b" />
+    <text x="16" y="19" fill="#38bdf8" font-size="12" font-weight="700">4. Horizontal Reduction (Folding the Accordion)</text>
+
+    <text x="16" y="48" fill="#cbd5e1" font-size="11">A vector accumulator holds 8 subtotals. You need 1 final scalar:</text>
+
+    <!-- Visual Accumulator Vector -->
+    <g transform="translate(16, 60)">
+      <rect x="0" y="0" width="413" height="26" rx="4" fill="#0c4a6e" stroke="#38bdf8" />
+      <text x="25" y="17" fill="#bae6fd" font-size="9" text-anchor="middle">s0</text>
+      <text x="76" y="17" fill="#bae6fd" font-size="9" text-anchor="middle">s1</text>
+      <text x="128" y="17" fill="#bae6fd" font-size="9" text-anchor="middle">s2</text>
+      <text x="180" y="17" fill="#bae6fd" font-size="9" text-anchor="middle">s3</text>
+      <text x="232" y="17" fill="#bae6fd" font-size="9" text-anchor="middle">s4</text>
+      <text x="284" y="17" fill="#bae6fd" font-size="9" text-anchor="middle">s5</text>
+      <text x="336" y="17" fill="#bae6fd" font-size="9" text-anchor="middle">s6</text>
+      <text x="388" y="17" fill="#bae6fd" font-size="9" text-anchor="middle">s7</text>
+    </g>
+
+    <!-- Downward Folding Arrows -->
+    <text x="222" y="104" text-anchor="middle" fill="#38bdf8" font-size="12">↓  Pairwise Tree Folding in Registers (log2 N steps)  ↓</text>
+
+    <!-- Intermediate 4-lane Fold -->
+    <g transform="translate(100, 114)">
+      <rect x="0" y="0" width="245" height="22" rx="4" fill="#075985" stroke="#0284c7" />
+      <text x="30" y="15" fill="#e0f2fe" font-size="9" text-anchor="middle">s0+s4</text>
+      <text x="91" y="15" fill="#e0f2fe" font-size="9" text-anchor="middle">s1+s5</text>
+      <text x="153" y="15" fill="#e0f2fe" font-size="9" text-anchor="middle">s2+s6</text>
+      <text x="214" y="15" fill="#e0f2fe" font-size="9" text-anchor="middle">s3+s7</text>
+    </g>
+
+    <!-- Final 1-element Output -->
+    <g transform="translate(162, 148)">
+      <rect x="0" y="0" width="120" height="26" rx="5" fill="#0369a1" stroke="#38bdf8" stroke-width="1.5" />
+      <text x="60" y="17" fill="#ffffff" font-size="11" font-weight="700" text-anchor="middle">finalSum (scalar)</text>
+    </g>
+
+    <text x="16" y="196" fill="#cbd5e1" font-size="11" font-weight="600">Runtime Support for Reduction:</text>
+    <text x="16" y="214" fill="#94a3b8" font-size="10.5">• <tspan fill="#34d399" font-weight="600">Go 1.27:</tspan> Manual slice buffer loop; <tspan font-family="monospace">ReduceSum</tspan> pending GA</text>
+    <text x="16" y="232" fill="#fbbf24" font-weight="600">• Java 27: <tspan fill="#cbd5e1">Built-in </tspan><tspan font-family="monospace">.reduceLanes(VectorOperators.ADD)</tspan></text>
+
+    <rect x="16" y="244" width="413" height="26" rx="4" fill="#1e293b" />
+    <text x="26" y="261" fill="#38bdf8" font-size="10" font-weight="600">Folding all 8 lanes takes only 3 CPU shuffle/add steps (log2 8).</text>
+  </g>
+</svg>
