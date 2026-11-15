@@ -243,5 +243,5 @@ Format layouts, scaling schemes and hardware support were cross-checked against 
 **Related:**
 - [LLM Inference](../architecture/LLM-Inference.md) — connects numerical precision to the wider inference process and serving costs.
 - [LLM Inference Engines](../architecture/LLM-Inference-Engines.md) — explains the runtimes whose kernels determine whether a quantized checkpoint runs efficiently.
-- [Parameter-Efficient Fine-Tuning](../../Fine-Tuning/Parameter-Efficient-Fine-Tuning.md) — connects quantized base weights with LoRA and memory-efficient adaptation.
+- [Parameter-Efficient Fine-Tuning](../../Fine-Tuning/Parameter-Efficient-Fine-Tuning-And-Model-Compression-2026.md) — connects quantized base weights with LoRA and memory-efficient adaptation.
 - [AI Hardware Chips Explained](../../Hardware/AI-Hardware-Chips-Explained.md) — compares the hardware that executes these numerical representations.

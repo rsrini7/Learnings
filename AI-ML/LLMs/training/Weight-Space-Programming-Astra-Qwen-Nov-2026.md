@@ -613,7 +613,7 @@ flowchart TD
 ---
 
 **Related:**
-- [Parameter-Efficient Fine-Tuning](../../Fine-Tuning/Parameter-Efficient-Fine-Tuning.md) — How LoRA, prefix tuning, and adapter architectures update parameter subsets via gradient descent.
+- [Parameter-Efficient Fine-Tuning](../../Fine-Tuning/Parameter-Efficient-Fine-Tuning-And-Model-Compression-2026.md) — How LoRA, prefix tuning, and adapter architectures update parameter subsets via gradient descent.
 - [Continual Learning & Catastrophic Forgetting](ContinualLearning.md) — The fundamental limitations of updating weights sequentially without overwriting past intelligence.
 - [KV Cache, Prefix Caching, and Storage Tiering](../architecture/KV-Cache-Prefix-Caching-And-Storage-Tiering-Nov-2026.md) — Memory hierarchies and runtime inference optimizations across transformer attention layers.
 - [LLM Benchmarks & Evaluation](../architecture/LLM-Benchmarks.md) — Detailed methodologies behind MATH-500, GSM8K, and instruction-following evaluation suites.

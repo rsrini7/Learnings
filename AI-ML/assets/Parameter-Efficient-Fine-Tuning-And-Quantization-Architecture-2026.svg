@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 880" width="1180" height="880" role="img" aria-labelledby="title desc">
+  <title id="title">PEFT and Model Compression Architecture: LoRA, QLoRA, and Quantization</title>
+  <desc id="desc">Architectural diagram illustrating Parameter-Efficient Fine-Tuning (LoRA, QLoRA, DoRA), post-training quantization (AWQ, GPTQ), and multi-adapter serving runtimes.</desc>
+  <defs>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1180" height="880" rx="16" fill="#0b0f19"/>
+
+  <!-- Main Header -->
+  <text x="50" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" fill="#f8fafc" font-weight="700">PEFT &amp; Model Compression Architecture: LoRA, QLoRA &amp; Serving</text>
+  <text x="50" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#94a3b8">Low-Rank Decompositions (W = W0 + BA), 4-bit NormalFloat (NF4), Post-Training Quantization &amp; Multi-Adapter Serving</text>
+
+  <!-- Panel 1: LoRA & DoRA (Top Left) -->
+  <rect x="50" y="110" width="525" height="340" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="50" y="110" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="70" y="137" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#38bdf8" font-weight="700">1. Low-Rank Adaptation (LoRA &amp; DoRA)</text>
+
+  <rect x="70" y="170" width="485" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#38bdf8" font-weight="600">The Low-Rank Decomposition W = W0 + (α/r)·BA</text>
+  <text x="85" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Base weight W0 (d × k) is frozen; receives zero gradient updates</text>
+  <text x="85" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Adapter matrices: A (r × k) initialized Gaussian, B (d × r) zeroed</text>
+  <text x="85" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Efficiency: Rank r &lt;&lt; min(d,k); trains &lt;0.5% of total model weights</text>
+
+  <rect x="70" y="295" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#38bdf8" font-weight="600">DoRA: Weight-Decomposed Low-Rank Adaptation</text>
+  <text x="85" y="343" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Decomposes weight matrix into magnitude m and direction V</text>
+  <text x="85" y="363" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• W = m · (W0 + ΔW) / ||W0 + ΔW||; isolates directional updates</text>
+  <text x="85" y="383" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Mirrors full fine-tuning weight trajectories with zero inference lag</text>
+  <text x="85" y="405" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#38bdf8">Benchmark: Consistently outperforms standard LoRA on reasoning tasks</text>
+
+  <!-- Panel 2: QLoRA (Top Right) -->
+  <rect x="605" y="110" width="525" height="340" rx="12" fill="#1e293b" stroke="#4ade80" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="605" y="110" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="625" y="137" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#4ade80" font-weight="700">2. QLoRA: 4-Bit Precision &amp; Memory Mechanics</text>
+
+  <rect x="605" y="170" width="485" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="620" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#4ade80" font-weight="600">NormalFloat4 (NF4) &amp; Double Quantization</text>
+  <text x="620" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• NF4: Information-theoretically optimal quantiles for normal weights</text>
+  <text x="620" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Double Quantization: Quantizes the quantization constants (saves 0.37b/p)</text>
+  <text x="620" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Hardware Unlock: Fine-tunes a 70B parameter LLM on a single 48GB GPU</text>
+
+  <rect x="605" y="295" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="620" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#4ade80" font-weight="600">Paged Optimizers (Preventing OOM Spikes)</text>
+  <text x="620" y="343" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Leverages CUDA Unified Memory to page memory between GPU &amp; CPU</text>
+  <text x="620" y="363" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Automatically evicts optimizer states during long-sequence peaks</text>
+  <text x="620" y="383" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Forward/backward computation dequantizes NF4 to FP16 on the fly</text>
+  <text x="620" y="405" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#4ade80">Cost Impact: Reduces fine-tuning infrastructure costs by over 75%</text>
+
+  <!-- Panel 3: Post-Training Compression (Bottom Left) -->
+  <rect x="50" y="475" width="525" height="360" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="50" y="475" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="70" y="502" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#fbbf24" font-weight="700">3. Post-Training Quantization (AWQ, GPTQ &amp; FP8)</text>
+
+  <rect x="70" y="535" width="485" height="130" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#fbbf24" font-weight="600">AWQ vs GPTQ Quantization Mechanics</text>
+  <text x="85" y="583" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• AWQ: Protects salient 1% channels based on activation magnitudes</text>
+  <text x="85" y="603" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• GPTQ: Uses second-order inverse Hessian H^-1 to minimize error</text>
+  <text x="85" y="623" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• FP8 (E4M3 / E5M2): Native hardware acceleration on H100 / Blackwell</text>
+  <text x="85" y="645" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#fbbf24">Latency Win: Replaces memory-bandwidth bottleneck with INT4/FP8 compute</text>
+
+  <rect x="70" y="680" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="705" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#fbbf24" font-weight="600">KV-Cache Quantization &amp; 2:4 Structured Sparsity</text>
+  <text x="85" y="728" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• KV Cache Quantization: Compresses Key-Value buffers from FP16 to FP8</text>
+  <text x="85" y="748" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Expands concurrent serving context lengths by 2.5x–4x</text>
+  <text x="85" y="768" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• 2:4 Structured Sparsity: 2 zeroes per 4 weights for 2x Tensor Core speedup</text>
+  <text x="85" y="790" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Target: High-throughput batch inference under strict VRAM caps</text>
+
+  <!-- Panel 4: Production Serving (Bottom Right) -->
+  <rect x="605" y="475" width="525" height="360" rx="12" fill="#1e293b" stroke="#e2e8f0" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="605" y="475" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="625" y="502" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#f8fafc" font-weight="700">4. Production Multi-Adapter Serving Topology</text>
+
+  <rect x="605" y="535" width="485" height="130" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="640" y="560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#e2e8f0" font-weight="600">Multi-Tenant Dynamic Adapter Swapping (vLLM / SGLang)</text>
+  <text x="640" y="583" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• 1 Frozen 70B Base Model + 50 domain adapters (Legal, Medical, Code)</text>
+  <text x="640" y="603" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Each adapter consumes &lt;100MB VRAM; swapped in sub-millisecond time</text>
+  <text x="640" y="623" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Inbound request header specifies target adapter: "x-adapter-id: finance"</text>
+  <text x="640" y="645" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#4ade80">Massive VRAM Savings: Eliminates running 50 isolated 140GB model instances</text>
+
+  <rect x="605" y="680" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="640" y="705" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#e2e8f0" font-weight="600">Zero-Overhead Weight Merging</text>
+  <text x="640" y="728" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• For dedicated single-tenant workloads, merge adapter before deployment</text>
+  <text x="640" y="748" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• W_final = W0 + (α/r)·BA permanently computed and saved</text>
+  <text x="640" y="768" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Zero latency overhead during inference; identical to full fine-tuned model</text>
+  <text x="640" y="790" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#38bdf8">Result: Fast training velocity paired with zero-penalty serving</text>
+</svg>

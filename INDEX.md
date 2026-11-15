@@ -97,8 +97,8 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Spec Driven Development Frameworks](AI-ML/Agents/development/Spec-Driven-Development-Frameworks.md)
 
 #### 📝 Programming AI (DSPy, BAML)
-- [BAML](AI-ML/Agents/Programming/BAML.md)
-- [DSPy](AI-ML/Agents/Programming/DSPy.md)
+- [BAML Structured LLM Interaction Framework 2026](AI-ML/Agents/Programming/BAML-Structured-LLM-Interaction-Framework-2026.md)
+- [DSPy Declarative Self Improving Language Programs 2026](AI-ML/Agents/Programming/DSPy-Declarative-Self-Improving-Language-Programs-2026.md)
 
 #### 🌐 Network & Self-Hosting
 - [self hosted networking ai agent complete guide 2026](AI-ML/Agents/Network/self-hosted-networking-ai-agent-complete-guide-2026.md)
@@ -202,7 +202,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 
 ### 🎯 Fine-Tuning
 - [Fine Tuning LLM GTX1060 WSL2 Ubuntu 2022](AI-ML/Fine-Tuning/Fine-Tuning-LLM-GTX1060-WSL2-Ubuntu-2022.md)
-- [Parameter Efficient Fine Tuning](AI-ML/Fine-Tuning/Parameter-Efficient-Fine-Tuning.md)
+- [Parameter Efficient Fine Tuning And Model Compression 2026](AI-ML/Fine-Tuning/Parameter-Efficient-Fine-Tuning-And-Model-Compression-2026.md)
 
 
 ### ⚖️ Comparisons

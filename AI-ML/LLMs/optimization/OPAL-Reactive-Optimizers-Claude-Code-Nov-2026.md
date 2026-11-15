@@ -364,5 +364,5 @@ Based on user-provided details (an external video demonstration by Better Stack,
 - [AI Numerical Formats and Quantization](AI-Numerical-Formats-And-Quantization-Oct-2026.md) — separates optimizer update behavior from precision choices (FP8, BF16, INT4) that also shape loss convergence.
 - [GenAI Cost Optimization](GenAI-cost-Optimization.md) — details tokenomics, cache management, and why trading $7 in agent tokens for hundreds in saved GPU-hours is economically rational.
 - [Weight Space Programming with Astra and Qwen](../training/Weight-Space-Programming-Astra-Qwen-Nov-2026.md) — explores weight-space manipulation and geometric model editing beyond conventional backpropagation.
-- [Parameter-Efficient Fine-Tuning](../../Fine-Tuning/Parameter-Efficient-Fine-Tuning.md) — covers static parameter-efficient adaptation (LoRA, DoRA) contrasting with runtime dynamic optimizer rewriting.
+- [Parameter-Efficient Fine-Tuning](../../Fine-Tuning/Parameter-Efficient-Fine-Tuning-And-Model-Compression-2026.md) — covers static parameter-efficient adaptation (LoRA, DoRA) contrasting with runtime dynamic optimizer rewriting.
 - [LLM Inference Architecture](../architecture/LLM-Inference.md) — covers the runtime inference side that the training recipes discussed in this note ultimately produce.
