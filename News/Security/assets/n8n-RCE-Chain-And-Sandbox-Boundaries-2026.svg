@@ -1,0 +1,201 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 830" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="redCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d151e"/>
+      <stop offset="100%" stop-color="#1f1118"/>
+    </linearGradient>
+    <linearGradient id="greenCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="830" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="600" y="42" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" fill="#f8fafc">n8n Workflow Automation: 2025–2026 RCE Exploit Chains &amp; Isolation Model</text>
+  <text x="600" y="68" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">Technical breakdown of expression injection, Pyodide sandbox escape, Git hook planting, and task-runner defense</text>
+
+  <!-- 3 Threat Vectors Side-by-Side -->
+
+  <!-- Panel 1: CVE-2025-68613 -->
+  <g transform="translate(40, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fca5a5">CVE-2025-68613: Expression Injection</text>
+    <rect x="270" y="10" width="65" height="20" rx="4" fill="#ef4444"/>
+    <text x="302" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">CVSS 9.9</text>
+
+    <!-- Content Card 1 -->
+    <rect x="16" y="55" width="318" height="65" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">1. Template Expression Input</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">User injects payload inside node field:</text>
+    <text x="26" y="108" font-family="monospace" font-size="10" fill="#fbbf24">{{ $jmespath(...) || constructor... }}</text>
+
+    <!-- Connector Arrow -->
+    <path d="M 175 120 L 175 135" stroke="#f87171" stroke-width="2" stroke-dasharray="3,3"/>
+
+    <!-- Content Card 2 -->
+    <rect x="16" y="135" width="318" height="75" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">2. Prototype Sandbox Evasion</text>
+    <text x="26" y="173" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Evaluation context accesses Object.constructor,</text>
+    <text x="26" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">climbing prototype chain to global Function scope.</text>
+    <text x="26" y="202" font-family="monospace" font-size="9" fill="#fca5a5">this.constructor.constructor('return process')()</text>
+
+    <!-- Connector Arrow -->
+    <path d="M 175 210 L 175 225" stroke="#f87171" stroke-width="2" stroke-dasharray="3,3"/>
+
+    <!-- Content Card 3 -->
+    <rect x="16" y="225" width="318" height="75" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="245" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">3. Process Module Resolution</text>
+    <text x="26" y="263" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Invokes Node.js process.mainModule.require</text>
+    <text x="26" y="278" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">to import 'child_process' bypassing JS sandbox.</text>
+
+    <!-- Connector Arrow -->
+    <path d="M 175 300 L 175 315" stroke="#f87171" stroke-width="2" stroke-dasharray="3,3"/>
+
+    <!-- Outcome Card -->
+    <rect x="16" y="315" width="318" height="60" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="26" y="335" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">Impact: Arbitrary Host Execution</text>
+    <text x="26" y="353" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">Spawns reverse shell; reads N8N_ENCRYPTION_KEY;</text>
+    <text x="26" y="367" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">exfiltrates credentials from SQLite / PostgreSQL.</text>
+  </g>
+
+  <!-- Panel 2: CVE-2025-68668 -->
+  <g transform="translate(425, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fca5a5">CVE-2025-68668: Pyodide "N8scape"</text>
+    <rect x="270" y="10" width="65" height="20" rx="4" fill="#ef4444"/>
+    <text x="302" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">CVSS 9.9</text>
+
+    <!-- Content Card 1 -->
+    <rect x="16" y="55" width="318" height="65" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">1. Python Code Node Execution</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">User adds custom script inside Python Code Node.</text>
+    <text x="26" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Execution delegates to WebAssembly Pyodide runtime.</text>
+
+    <!-- Connector Arrow -->
+    <path d="M 175 120 L 175 135" stroke="#f87171" stroke-width="2" stroke-dasharray="3,3"/>
+
+    <!-- Content Card 2 -->
+    <rect x="16" y="135" width="318" height="75" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">2. Blacklist Security Failure</text>
+    <text x="26" y="173" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">n8n filtered keywords: import os, sys, eval.</text>
+    <text x="26" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Attacker bypasses via reflection, aliases, or</text>
+    <text x="26" y="202" font-family="monospace" font-size="9" fill="#fca5a5">__import__('builtins').__dict__['eval']</text>
+
+    <!-- Connector Arrow -->
+    <path d="M 175 210 L 175 225" stroke="#f87171" stroke-width="2" stroke-dasharray="3,3"/>
+
+    <!-- Content Card 3 -->
+    <rect x="16" y="225" width="318" height="75" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="245" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">3. WASM to Native Boundary Escape</text>
+    <text x="26" y="263" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Pyodide JS bridge provides handles back to host</text>
+    <text x="26" y="278" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">JavaScript global context and node process object.</text>
+
+    <!-- Connector Arrow -->
+    <path d="M 175 300 L 175 315" stroke="#f87171" stroke-width="2" stroke-dasharray="3,3"/>
+
+    <!-- Outcome Card -->
+    <rect x="16" y="315" width="318" height="60" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="26" y="335" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">Impact: Native Code Execution</text>
+    <text x="26" y="353" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">Breaks WebAssembly jail to execute commands</text>
+    <text x="26" y="367" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">with permissions of the active n8n container user.</text>
+  </g>
+
+  <!-- Panel 3: CVE-2026-21877 -->
+  <g transform="translate(810, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fca5a5">CVE-2026-21877: Git Hook Planting</text>
+    <rect x="270" y="10" width="65" height="20" rx="4" fill="#dc2626"/>
+    <text x="302" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">CVSS 10.0</text>
+
+    <!-- Content Card 1 -->
+    <rect x="16" y="55" width="318" height="65" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">1. Git Node File Operations</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Workflow configures automated Git repo clone / sync</text>
+    <text x="26" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">or file commit using user-controlled parameters.</text>
+
+    <!-- Connector Arrow -->
+    <path d="M 175 120 L 175 135" stroke="#f87171" stroke-width="2" stroke-dasharray="3,3"/>
+
+    <!-- Content Card 2 -->
+    <rect x="16" y="135" width="318" height="75" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">2. Path Traversal Hook Infiltration</text>
+    <text x="26" y="173" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Unsanitized file write accepts relative paths:</text>
+    <text x="26" y="188" font-family="monospace" font-size="10" fill="#fca5a5">../../.git/hooks/pre-commit</text>
+    <text x="26" y="202" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Writes executable bash payload directly into hook.</text>
+
+    <!-- Connector Arrow -->
+    <path d="M 175 210 L 175 225" stroke="#f87171" stroke-width="2" stroke-dasharray="3,3"/>
+
+    <!-- Content Card 3 -->
+    <rect x="16" y="225" width="318" height="75" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="245" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">3. Trigger on Next Git Operation</text>
+    <text x="26" y="263" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Git binary is invoked during subsequent pull, push,</text>
+    <text x="26" y="278" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">or commit, executing the hook without further auth.</text>
+
+    <!-- Connector Arrow -->
+    <path d="M 175 300 L 175 315" stroke="#f87171" stroke-width="2" stroke-dasharray="3,3"/>
+
+    <!-- Outcome Card -->
+    <rect x="16" y="315" width="318" height="60" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1.5"/>
+    <text x="26" y="335" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">Impact: Persistent Unauth RCE</text>
+    <text x="26" y="353" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">Hooks persist across reboots &amp; workflow triggers;</text>
+    <text x="26" y="367" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">enables stealthy, scheduled persistence on host.</text>
+  </g>
+
+  <!-- Bottom Architecture Section: Defense & Isolation Model -->
+  <g transform="translate(40, 510)" filter="url(#shadow)">
+    <rect width="1120" height="280" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="0" y="0" width="1120" height="40" rx="10" fill="#0369a1" fill-opacity="0.3"/>
+    <text x="24" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#bae6fd">n8n Hardened Architecture: Defense-in-Depth &amp; Isolated Task Runner Model (v2.0+)</text>
+
+    <!-- Container 1: Ingress & Network Boundary -->
+    <rect x="24" y="55" width="330" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="40" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">1. Network &amp; Identity Perimeter</text>
+    <text x="40" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Zero Public Ingress: VPN / Private Tunnel only</text>
+    <text x="40" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• SAML SSO gateway with WebAuthn MFA enforcement</text>
+    <text x="40" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• TLS termination with mutual client authentication</text>
+    <text x="40" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Outbound egress filtering blocks internal probing</text>
+    <rect x="40" y="185" width="298" height="55" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="50" y="205" font-family="monospace" font-size="10" fill="#38bdf8">N8N_DISABLE_PRODUCTION_MAIN_PROCESS=true</text>
+    <text x="50" y="223" font-family="monospace" font-size="10" fill="#38bdf8">N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true</text>
+
+    <!-- Container 2: Main Orchestrator Boundary -->
+    <rect x="374" y="55" width="350" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="390" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a78bfa">2. Orchestrator Control Plane</text>
+    <text x="390" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Read-only root filesystem (Docker read_only: true)</text>
+    <text x="390" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Disables Code, Python, and Git nodes for non-admin users</text>
+    <text x="390" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Database credentials stored in HashiCorp Vault / AWS Secrets</text>
+    <text x="390" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Dispatches workflow runs via Redis queue to external runners</text>
+    <rect x="390" y="185" width="318" height="55" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="400" y="205" font-family="monospace" font-size="10" fill="#a78bfa">NODES_EXCLUDE=["n8n-nodes-base.git",</text>
+    <text x="400" y="223" font-family="monospace" font-size="10" fill="#a78bfa">               "n8n-nodes-base.executeCommand"]</text>
+
+    <!-- Container 3: Ephemeral Task Runner -->
+    <rect x="744" y="55" width="350" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="760" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">3. Ephemeral Task Runner (v2.0+)</text>
+    <text x="760" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Executes each job in a separate sub-process / container</text>
+    <text x="760" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Non-root user (UID 1000) with Linux cap_drop: [ALL]</text>
+    <text x="760" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Seccomp &amp; AppArmor profiles block ptrace &amp; socket syscalls</text>
+    <text x="760" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Process destroyed immediately upon workflow completion</text>
+    <rect x="760" y="185" width="318" height="55" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="770" y="205" font-family="monospace" font-size="10" fill="#86efac">EXECUTIONS_PROCESS=own</text>
+    <text x="770" y="223" font-family="monospace" font-size="10" fill="#86efac">N8N_RUNNERS_ENABLED=true</text>
+  </g>
+</svg>

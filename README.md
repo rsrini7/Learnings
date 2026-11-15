@@ -460,7 +460,7 @@ Learnings/
 - [MongoBleed Dec2025](News/Security/MongoBleed-Dec2025.md)
 - [Node.js Async Hooks DoS Vulnerability](News/Security/Node.js-Async-Hooks-DoS-Vulnerability.md)
 - [Node.js Brotli Node2Shell RCE Oct 2026](News/Security/Node.js-Brotli-Node2Shell-RCE-Oct-2026.md)
-- [Notepad++ Targetted Attach](News/Security/Notepad%2B%2B-Targetted-Attach.md)
+- [Notepad++ Targeted Attack Nov 2026](News/Security/Notepad%2B%2B-Targeted-Attack-Nov-2026.md)
 - [OpenAI 948 Linux Kernel LPEs Autonomous Exploits Nov 2026](News/Security/OpenAI-948-Linux-Kernel-LPEs-Autonomous-Exploits-Nov-2026.md)
 - [OpenCode Console API Key Breach And Distillation Oct 2026](News/Security/OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md)
 - [OpenSSH Musl Asterisk Bypass Sshhole Nov 2026](News/Security/OpenSSH-Musl-Asterisk-Bypass-Sshhole-Nov-2026.md)

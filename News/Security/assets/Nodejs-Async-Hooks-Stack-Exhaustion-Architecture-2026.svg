@@ -1,0 +1,147 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 830" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="redCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d151e"/>
+      <stop offset="100%" stop-color="#1f1118"/>
+    </linearGradient>
+    <linearGradient id="greenCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="830" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="600" y="42" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" fill="#f8fafc">Node.js Async Hooks Stack Exhaustion Architecture (CVE-2025-59466)</text>
+  <text x="600" y="68" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">Comparative execution paths between standard V8 RangeError and fatal async_hooks process termination</text>
+
+  <!-- Side-by-Side Comparison -->
+
+  <!-- Left: Standard V8 Handling (Resilient Path) -->
+  <g transform="translate(50, 95)" filter="url(#shadow)">
+    <rect width="525" height="400" rx="10" fill="url(#greenCard)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="525" height="44" rx="10" fill="#047857" fill-opacity="0.3"/>
+    <text x="24" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#a7f3d0">Standard V8 Behavior (Without Async Hooks)</text>
+    <rect x="420" y="10" width="85" height="24" rx="4" fill="#059669"/>
+    <text x="462" y="26" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffffff">Catchable</text>
+
+    <!-- Step 1 -->
+    <rect x="20" y="60" width="485" height="65" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="35" y="82" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">1. Deep Recursion in User Handler</text>
+    <text x="35" y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Unsanitized input triggers nested recursion (e.g., 20,000 deep JSON parsing)</text>
+
+    <!-- Connector -->
+    <path d="M 262 125 L 262 145" stroke="#10b981" stroke-width="2"/>
+
+    <!-- Step 2 -->
+    <rect x="20" y="145" width="485" height="65" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="35" y="167" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">2. OS / V8 Stack Boundary Limit Hit</text>
+    <text x="35" y="187" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Call stack reaches maximum memory frame (typically ~10,000 frames)</text>
+
+    <!-- Connector -->
+    <path d="M 262 210 L 262 230" stroke="#10b981" stroke-width="2"/>
+
+    <!-- Step 3 -->
+    <rect x="20" y="230" width="485" height="65" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="35" y="252" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#34d399">3. V8 Throws JavaScript RangeError</text>
+    <text x="35" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Engine generates catchable RangeError: Maximum call stack size exceeded</text>
+
+    <!-- Connector -->
+    <path d="M 262 295 L 262 315" stroke="#10b981" stroke-width="2"/>
+
+    <!-- Outcome -->
+    <rect x="20" y="315" width="485" height="65" rx="6" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="35" y="337" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#6ee7b7">Outcome: Graceful Error Recovery</text>
+    <text x="35" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a7f3d0">Application try...catch handles error; server returns HTTP 400; process stays up</text>
+  </g>
+
+  <!-- Right: CVE-2025-59466 Failure Mode (Fatal Crash Path) -->
+  <g transform="translate(625, 95)" filter="url(#shadow)">
+    <rect width="525" height="400" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="525" height="44" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="24" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fca5a5">CVE-2025-59466: Active async_hooks Failure</text>
+    <rect x="420" y="10" width="85" height="24" rx="4" fill="#ef4444"/>
+    <text x="462" y="26" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ffffff">Fatal DoS</text>
+
+    <!-- Step 1 -->
+    <rect x="20" y="60" width="485" height="65" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="35" y="82" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">1. Async Tracking Wrap (ALS / Tracing)</text>
+    <text x="35" y="102" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Execution wrapped in AsyncLocalStorage or APM tracking hooks</text>
+
+    <!-- Connector -->
+    <path d="M 262 125 L 262 145" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Step 2 -->
+    <rect x="20" y="145" width="485" height="65" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="35" y="167" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">2. Internal Callback Hook Execution</text>
+    <text x="35" y="187" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Async wrap runs C++ node::InternalCallbackScope during async transitions</text>
+
+    <!-- Connector -->
+    <path d="M 262 210 L 262 230" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Step 3 -->
+    <rect x="20" y="230" width="485" height="65" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="35" y="252" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f87171">3. C++ TryCatchScope with CatchMode::kFatal</text>
+    <text x="35" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fca5a5">Stack overflow occurs inside hook; Node.js flags environment unrecoverable</text>
+
+    <!-- Connector -->
+    <path d="M 262 295 L 262 315" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Outcome -->
+    <rect x="20" y="315" width="485" height="65" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+    <text x="35" y="337" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fca5a5">Outcome: Immediate Process Termination (Exit 7)</text>
+    <text x="35" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fecaca">try...catch is bypassed; node calls Abort(); process dies; all connections dropped</text>
+  </g>
+
+  <!-- Bottom Panel: Mitigation, Engine Evolution & Defensive Coding -->
+  <g transform="translate(50, 520)" filter="url(#shadow)">
+    <rect width="1100" height="270" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="0" y="0" width="1100" height="40" rx="10" fill="#0369a1" fill-opacity="0.3"/>
+    <text x="24" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#bae6fd">The January 2026 Mitigation, Architecture Evolution &amp; Defensive Coding Strategy</text>
+
+    <!-- Sub-panel 1: Runtime Patch -->
+    <rect x="20" y="55" width="340" height="195" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="35" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">1. C++ Runtime Patch Mechanics</text>
+    <text x="35" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Commit ddadc31f09 modifies TryCatchScope</text>
+    <text x="35" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Specifically intercepts v8::IsExecutionTerminating()</text>
+    <text x="35" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Distinguishes fatal OOM from call stack limits</text>
+    <text x="35" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Re-throws RangeError to JavaScript catch handlers</text>
+    <rect x="35" y="185" width="310" height="45" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="45" y="203" font-family="monospace" font-size="10" fill="#38bdf8">v20.20.0 | v22.22.0 | v24.13.0 | v25.3.0</text>
+    <text x="45" y="220" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Node 18 and older are EOL (No fix)</text>
+
+    <!-- Sub-panel 2: Version Architectural Divergence -->
+    <rect x="380" y="55" width="340" height="195" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="395" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a78bfa">2. ALS Implementation Divergence</text>
+    <text x="395" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Node 20 / 22: AsyncLocalStorage relies on</text>
+    <text x="395" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">  underlying async_hooks.createHook()</text>
+    <text x="395" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Next.js / RSC on Node 20/22 inherit this bug</text>
+    <text x="395" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Node 24 / 25: ALS rewritten natively using V8</text>
+    <text x="395" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">  microtask integration without createHook()</text>
+    <text x="395" y="200" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Note: Third-party APMs on Node 24/25 can still fail</text>
+
+    <!-- Sub-panel 3: Defensive Engineering Pattern -->
+    <rect x="740" y="55" width="340" height="195" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="755" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">3. Defensive Engineering Recipes</text>
+    <text x="755" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• V8 lacks Tail Call Optimization (TCO)</text>
+    <text x="755" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Patches prevent crash, but DoS risk remains</text>
+    <text x="755" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Never permit unconstrained recursive parsing</text>
+    <text x="755" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Replace recursion with trampolined loops</text>
+    <rect x="755" y="185" width="310" height="45" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="765" y="203" font-family="monospace" font-size="10" fill="#86efac">explicitStack = [...root];</text>
+    <text x="765" y="220" font-family="monospace" font-size="10" fill="#86efac">while (explicitStack.length) { ... }</text>
+  </g>
+</svg>

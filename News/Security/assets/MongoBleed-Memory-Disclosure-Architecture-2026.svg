@@ -1,0 +1,178 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 830" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="redCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d151e"/>
+      <stop offset="100%" stop-color="#1f1118"/>
+    </linearGradient>
+    <linearGradient id="greenCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="830" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="600" y="42" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" fill="#f8fafc">MongoBleed: CVE-2025-14847 Pre-Authentication Memory Disclosure</text>
+  <text x="600" y="68" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">Wire protocol compression desynchronization, uninitialized heap extraction, and defensive hardening</text>
+
+  <!-- 3 Threat Mechanism Panels Side-by-Side -->
+
+  <!-- Panel 1: Malicious Wire Frame -->
+  <g transform="translate(40, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#0369a1" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#bae6fd">1. Malformed opCompressed Frame</text>
+
+    <!-- Sub-card: Msg Header -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Standard Wire Message Header (16B)</text>
+    <text x="26" y="93" font-family="monospace" font-size="10" fill="#cbd5e1">messageLength: 128 bytes</text>
+    <text x="26" y="108" font-family="monospace" font-size="10" fill="#cbd5e1">requestID: 1001 | responseTo: 0</text>
+    <text x="26" y="123" font-family="monospace" font-size="10" fill="#fbbf24">opCode: 2012 (OP_COMPRESSED)</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#38bdf8" stroke-width="2"/>
+
+    <!-- Sub-card: Compression Header -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">Attacker-Manipulated Metadata</text>
+    <text x="26" y="193" font-family="monospace" font-size="10" fill="#cbd5e1">originalOpCode: 2013 (OP_MSG)</text>
+    <text x="26" y="208" font-family="monospace" font-size="10" fill="#ef4444">uncompressedSize: 65,536 (FAKE!)</text>
+    <text x="26" y="223" font-family="monospace" font-size="10" fill="#cbd5e1">compressorId: 2 (zlib / snappy)</text>
+    <text x="26" y="243" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94a3b8">Actual compressed payload: only 84 bytes</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#38bdf8" stroke-width="2"/>
+
+    <!-- Outcome: Pre-Auth Trigger -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Pre-Authentication Reception</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• OP_COMPRESSED is processed prior to auth</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• No login, certificate, or password required</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Works against any exposed port 27017</text>
+  </g>
+
+  <!-- Panel 2: Uninitialized Heap Bug -->
+  <g transform="translate(425, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fca5a5">2. Uninitialized Heap Allocation</text>
+
+    <!-- Sub-card: Alloc -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">1. Heap Buffer Allocation</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">MongoDB allocates memory for uncompressedSize:</text>
+    <text x="26" y="108" font-family="monospace" font-size="10" fill="#38bdf8">buffer = malloc(65536); // Not calloc!</text>
+    <text x="26" y="123" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fca5a5">Contains dirty residual memory from previous tasks</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card: Partial Decompress -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">2. Partial zlib Decompression</text>
+    <text x="26" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">zlib decompresses real payload into buffer:</text>
+    <text x="26" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#a7f3d0">• Decompressed bytes written: 120 bytes</text>
+    <text x="26" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ef4444">• Unwritten residual bytes: 65,416 bytes</text>
+    <text x="26" y="243" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fbbf24">BUG: Size mismatch is never validated or cleared!</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Residual Contents -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">Leaked Process Memory Fragments</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Database admin passwords &amp; bcrypt hashes</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Active session tokens &amp; TLS private keys</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Cross-tenant query results &amp; env variables</text>
+  </g>
+
+  <!-- Panel 3: Socket Leak & Exfiltration -->
+  <g transform="translate(810, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#cardGrad)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#b45309" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fef3c7">3. Full Buffer Exfiltration</text>
+
+    <!-- Sub-card: Response Frame -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">1. Response Frame Dispatch</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">MongoDB packages the entire allocated buffer</text>
+    <text x="26" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">back into socket response (length = 65,536 bytes).</text>
+    <text x="26" y="123" font-family="monospace" font-size="9.5" fill="#f59e0b">send(client_fd, buffer, uncompressedSize)</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#f59e0b" stroke-width="2"/>
+
+    <!-- Sub-card: Iterative Extraction -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">2. Iterative Memory Harvesting</text>
+    <text x="26" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Attacker loops requests in pipeline:</text>
+    <text x="26" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Leaks 64KB per round-trip</text>
+    <text x="26" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Explores different heap arenas over time</text>
+    <text x="26" y="243" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94a3b8">Similar to OpenSSL Heartbleed (RFC 6520)</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#f59e0b" stroke-width="2"/>
+
+    <!-- Real World Consequence -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ef4444">Real-World Enterprise Breach</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Ubisoft Rainbow Six Siege DB breached</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Source code &amp; credentials exfiltrated</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Pivoted laterally to internal Git services</text>
+  </g>
+
+  <!-- Bottom Panel: Defense & Hardening Architecture -->
+  <g transform="translate(40, 510)" filter="url(#shadow)">
+    <rect width="1120" height="280" rx="10" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="1120" height="40" rx="10" fill="#047857" fill-opacity="0.3"/>
+    <text x="24" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#a7f3d0">Defensive Blueprint: Configuration Hardening, Engine Patch &amp; Network Isolation</text>
+
+    <!-- Sub-panel 1: Configuration Mitigation -->
+    <rect x="24" y="55" width="330" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="40" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">1. Instant Workaround: Disable Compression</text>
+    <text x="40" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Disables the vulnerable opCompressed path</text>
+    <text x="40" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Stops unauthenticated buffer exploitation</text>
+    <text x="40" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Negligible overhead for LAN deployments</text>
+    <rect x="40" y="165" width="298" height="75" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="50" y="185" font-family="monospace" font-size="10" fill="#38bdf8"># /etc/mongod.conf</text>
+    <text x="50" y="203" font-family="monospace" font-size="10" fill="#38bdf8">net:</text>
+    <text x="50" y="221" font-family="monospace" font-size="10" fill="#38bdf8">  compression:</text>
+    <text x="50" y="235" font-family="monospace" font-size="10" fill="#38bdf8">    compressors: disabled</text>
+
+    <!-- Sub-panel 2: Engine Patch Mechanics -->
+    <rect x="374" y="55" width="350" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="390" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a78bfa">2. Official Upstream Patch Mechanics</text>
+    <text x="390" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Validates decompressed size == uncompressedSize</text>
+    <text x="390" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Uses calloc/zero-fill for decompression buffers</text>
+    <text x="390" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Clamps response packet length to actual bytes</text>
+    <rect x="390" y="165" width="318" height="75" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="400" y="185" font-family="monospace" font-size="10" fill="#a78bfa">Patched Upstream Releases:</text>
+    <text x="400" y="203" font-family="monospace" font-size="10" fill="#86efac">5.0.32 | 6.0.27 | 7.0.28 | 8.0.17 | 8.2.3</text>
+    <text x="400" y="221" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Legacy backport: 4.4.30 (MongoDB Atlas patched)</text>
+
+    <!-- Sub-panel 3: Network Isolation & Zero-Trust -->
+    <rect x="744" y="55" width="350" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="760" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">3. Network Isolation &amp; Zero Exposure</text>
+    <text x="760" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Never bind mongod to 0.0.0.0 publicly</text>
+    <text x="760" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Bind strictly to private VPC or localhost (127.0.0.1)</text>
+    <text x="760" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Mandatory TLS/SSL with client certificate validation</text>
+    <rect x="760" y="165" width="318" height="75" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="770" y="185" font-family="monospace" font-size="10" fill="#86efac">net.bindIp: 127.0.0.1,10.0.0.5</text>
+    <text x="770" y="203" font-family="monospace" font-size="10" fill="#86efac">security.authorization: enabled</text>
+    <text x="770" y="221" font-family="monospace" font-size="10" fill="#86efac">net.tls.mode: requireTLS</text>
+  </g>
+</svg>

