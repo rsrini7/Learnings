@@ -180,4 +180,6 @@
     <text x="770" y="205" font-family="monospace" font-size="10" fill="#86efac">match parse_config(&amp;new_cfg) {</text>
     <text x="770" y="223" font-family="monospace" font-size="10" fill="#86efac">  Err(_) =&gt; load_lkg_config(), ...</text>
   </g>
+  <!-- Footer Attribution -->
+  <text x="600" y="818" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">Incident Research &amp; Architecture: Srinivasan Ragothaman (@rsrini7)</text>
 </svg>

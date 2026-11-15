@@ -1,6 +1,7 @@
 # Tailwind CSS & Open-Source AI Disruption: The Zero-Click Conversion Collapse
 
-Daily learning · July 2026 · Case analysis
+Daily learning · July 2026 · Case analysis  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** While generative AI assistants (ChatGPT, Claude, Cursor, v0) propelled Tailwind CSS to record adoption due to the token efficiency of atomic utility classes in JSX, they simultaneously destroyed the business model funding its development. By answering developer syntax queries in-editor, AI eliminated the documentation pageviews that funneled buyers to commercial UI kits (Tailwind UI) and books (*Refactoring UI*), causing an 80% revenue collapse and forcing 75% engineering team layoffs. This incident exposed the systemic vulnerability of open-source projects whose economic survival depends on documentation web traffic.
 

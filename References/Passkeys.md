@@ -1,6 +1,7 @@
 # Passkeys: How Authentication Works and Where Security Depends on the Account
 
-**Learning note · Revised 15 November 2026 · WebAuthn, FIDO and implementation guidance checked**
+**Learning note · Revised 15 November 2026 · WebAuthn, FIDO and implementation guidance checked**  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** A passkey authenticates with a public/private key pair scoped to a service, rather than a password the user types into a page. Correct WebAuthn verification provides strong phishing resistance, while enrollment, device/provider recovery and the application's sessions remain part of account security.
 

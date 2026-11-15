@@ -198,4 +198,6 @@
     <text x="770" y="205" font-family="monospace" font-size="10" fill="#86efac">EXECUTIONS_PROCESS=own</text>
     <text x="770" y="223" font-family="monospace" font-size="10" fill="#86efac">N8N_RUNNERS_ENABLED=true</text>
   </g>
+  <!-- Footer Attribution -->
+  <text x="600" y="818" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
 </svg>

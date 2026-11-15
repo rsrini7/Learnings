@@ -1,6 +1,7 @@
 # WhatsApp 3.5-Billion User Enumeration: Unthrottled Contact Discovery & Metadata Harvesting
 
-Daily learning · December 2025 · Incident review
+Daily learning · December 2025 · Incident review  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** In late 2025, security researchers from the University of Vienna and SBA Research disclosed a critical privacy and enumeration vulnerability in WhatsApp's contact synchronization protocol (`usync`). Due to the complete absence of server-side rate limiting and CAPTCHA gating on address book discovery endpoints, automated clients querying the binary protocol could test up to 100 million phone numbers per hour from a single IP address. By systematically generating 63 billion phone numbers across 245 countries, the researchers successfully enumerated 3.5 billion registered WhatsApp accounts—harvesting profile photos, status texts, business tags, and public cryptographic identity keys at planetary scale.
 

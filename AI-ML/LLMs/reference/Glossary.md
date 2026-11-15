@@ -551,3 +551,4 @@ The practical memory and compute ceiling caused by quadratic attention growth, m
 **Related:**
 - [microGPT-Architecture-Complete](../architecture/microGPT-Architecture-Complete.md) — Each microGPT component (RMSNorm, attention, KV cache, embeddings, softmax) corresponds to a glossary entry, making this the natural hands-on demo.
 - [AI-Periodic-Table](../economy/AI-Periodic-Table.md) — Gives the higher-level conceptual map (rows = maturity, columns = function) that organizes when each glossary term becomes relevant in a system design.
+- [Inside-A-Neuron-Architecture-And-Mechanics-2026](../attention/Inside-A-Neuron-Architecture-And-Mechanics-2026.md) — Explains the atomic single-neuron mathematical foundations (affine maps, Sigmoid, ReLU, GELU, and backpropagation) matching glossary definitions.

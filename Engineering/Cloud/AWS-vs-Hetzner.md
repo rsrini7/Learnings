@@ -1,6 +1,7 @@
 # AWS versus Hetzner: Compute Density, Egress Economics and Operational Governance
 
-**Learning note · Revised 15 November 2026 · Infrastructure economics and operational boundary analysis**
+**Learning note · Revised 15 November 2026 · Infrastructure economics and operational boundary analysis**  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Dedicated bare-metal and VPS hosting provides substantially higher raw compute, memory and I/O density per dollar alongside low-cost network bandwidth, whereas hyperscalers provide managed control planes, elastic multi-AZ failover and granular compliance governance. Engineering teams choose between managing hardware and operational reliability directly or paying a recurring cloud abstraction premium.
 

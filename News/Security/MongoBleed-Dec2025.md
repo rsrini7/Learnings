@@ -1,6 +1,7 @@
 # MongoBleed (CVE-2025-14847): Pre-Authentication Memory Disclosure in MongoDB
 
-Learning note · Revised November 2026 · Technical advisory
+Learning note · Revised November 2026 · Technical advisory  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** MongoBleed (CVE-2025-14847, CVSS 8.7) is a critical pre-authentication uninitialized memory disclosure vulnerability in MongoDB's network compression engine. By transmitting a malformed `OP_COMPRESSED` wire protocol frame with an inflated decompressed size field, an unauthenticated remote attacker forces MongoDB to allocate an oversized, uninitialized heap buffer. When the decompression library writes only a tiny payload into the buffer, MongoDB transmits the full allocated buffer back across the socket, leaking up to 64 KB of live server heap memory—containing passwords, session tokens, and TLS session secrets—per request.
 

@@ -1,6 +1,7 @@
 # Notepad++ GUP Updater Hijacking: Targeted Interception, DLL Sideloading, and Authenticode Hardening
 
-Learning note · Revised November 2026 · Technical advisory
+Learning note · Revised November 2026 · Technical advisory  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Client software auto-updaters represent high-value trust boundaries on developer workstations. In the Notepad++ targeted attack incident, threat actors intercepted update requests from the native GUP (WinGup) updater via targeted network-level redirection and unvalidated delivery channels. By redirecting the client to malicious endpoints and dropping trojanized packages exploiting Windows DLL sideloading, the attackers achieved in-memory shellcode execution and conducted hands-on-keyboard reconnaissance using native utilities (`whoami`, `netstat`, `curl.exe`) without generating mass malware signatures.
 

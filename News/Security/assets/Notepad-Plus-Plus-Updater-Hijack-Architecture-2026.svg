@@ -174,4 +174,6 @@
     <text x="770" y="203" font-family="monospace" font-size="10" fill="#86efac">ParentImage endswith '\notepad++.exe'</text>
     <text x="770" y="221" font-family="monospace" font-size="10" fill="#86efac">and Image in ['cmd.exe', 'curl.exe']</text>
   </g>
+  <!-- Footer Attribution -->
+  <text x="600" y="818" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
 </svg>

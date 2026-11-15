@@ -1,6 +1,7 @@
 # Go Collections versus Java Collections: Architecture, Memory Layout and the Go 1.28 Proposals
 
-**Learning note · Revised 15 November 2026 · Language design, memory layout and standard library evolution**
+**Learning note · Revised 15 November 2026 · Language design, memory layout and standard library evolution**  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Java's Collections Framework relies on a deep object-oriented inheritance tree with reference boxing and rich concurrency primitives, while Go emphasizes flat built-in primitives, contiguous memory slices and orthogonal generic packages. Proposed Go 1.28 collections standardize custom sets, heaps and ordered maps without adopting heavyweight object hierarchies.
 

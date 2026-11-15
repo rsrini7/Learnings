@@ -1,6 +1,7 @@
 # Supabase Regional Outage: The AWS VPC Block Public Access Kill-Switch & Push-Monitoring Blind Spot
 
-Daily learning · February 2026 · Incident review
+Daily learning · February 2026 · Incident review  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** On February 12–13, 2026, a deployment of an internal monitoring stack in AWS us-east-2 (Ohio) inadvertently invoked the account-level `ModifyVpcBlockPublicAccessOptions` API, enabling regional VPC Block Public Access (BPA) in bidirectional blocking mode. This master kill-switch instantly severed all Internet Gateway (IGW) ingress and egress traffic across more than 20 production subnets. Compounding the 3-hour-and-42-minute outage was a critical SRE detection blind spot: internal daemons designed to push metrics outward fell silent, leading automated monitoring systems to misinterpret network isolation as operational stability.
 

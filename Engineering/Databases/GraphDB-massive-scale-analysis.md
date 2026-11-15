@@ -1,6 +1,7 @@
 # Graph Databases at Massive Scale: Native Traversal, Distributed Sharding and Engine Trade-offs
 
-**Learning note · Revised 15 November 2026 · Distributed systems and query model evaluation**
+**Learning note · Revised 15 November 2026 · Distributed systems and query model evaluation**  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Graph database architectures diverge between single-node native engines with index-free adjacency and distributed shared-nothing clusters with partitioned vertex/edge indices. Scaling beyond billions of edges requires trading off low-latency multi-hop pointer traversals against distributed transaction coordination, network partition RPCs and supernode contention.
 

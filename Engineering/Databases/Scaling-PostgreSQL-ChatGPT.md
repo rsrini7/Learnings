@@ -1,6 +1,7 @@
 # Scaling PostgreSQL for ChatGPT: Reads, Writes and Operational Limits
 
-**Learning note · Revised 15 November 2026 · Historical case study with source boundaries**
+**Learning note · Revised 15 November 2026 · Historical case study with source boundaries**  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** The published accounts describe scaling a PostgreSQL workload by moving eligible reads to replicas, controlling writes, pooling connections and isolating important traffic. These techniques extend a primary/replica design, but each addresses a different bottleneck and has its own consistency and failure limits.
 

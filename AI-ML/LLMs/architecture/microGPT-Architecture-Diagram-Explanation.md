@@ -120,7 +120,7 @@ There are:
 Each head computes:
 
 $$
-\text{Attention}(x) = \text{softmax}\left(\frac{QK^T}{\sqrt{\text{head\_dim}}}\right)V
+\text{Attention}(x) = \text{softmax}\left(\frac{QK^T}{\sqrt{\text{head}_{\text{dim}}}}\right)V
 $$
 
 ### Key details:
@@ -480,4 +480,4 @@ microGPT is like teaching letters to:
 All using nothing but simple math.
 
 **Related:**
-- [inside-a-neuron](../attention/inside-a-neuron.md) — Same beginner-friendly pedagogical style; this covers the single-neuron building block before tackling microGPT's Transformer composition.
+- [Inside-A-Neuron-Architecture-And-Mechanics-2026](../attention/Inside-A-Neuron-Architecture-And-Mechanics-2026.md) — Covers the single-neuron perceptron building block, affine projections, and non-linear activations before tackling microGPT's Transformer composition.

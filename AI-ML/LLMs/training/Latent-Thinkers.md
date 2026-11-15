@@ -44,4 +44,5 @@ The **"Golden Thread"**: The next leap in AI performance will come from structur
 **Related:**
 - [AI-in-Next-18-Months](../economy/AI-in-Next-18-Months.md) — Covers latent-space thinking and private chains of thought as Breakthrough #3, the same paradigm shift this file's MAP/HRM examples instantiate.
 - [AI-Periodic-Table](../economy/AI-Periodic-Table.md) — Lists 'Thinking models' (Th) as the emerging Models-family element; the latent-reasoning architectures here are the concrete realizations of that element.
+- [Beyond-SoftMax-Attention](../attention/Beyond-SoftMax-Attention.md) — Details the subquadratic linear attention and neural memory architectures replacing standard Softmax recurrence in latent reasoning engines.
 - [The-Science-of-Scaling-AI-Agent-Systems](../../../Papers/scaling/The-Science-of-Scaling-AI-Agent-Systems.md) — Empirically grounds the 'Architecture Beats Scale' claim with 180 experiments showing modular hierarchies outperform monolithic agent scaling.

@@ -149,7 +149,7 @@ Learnings/
 #### 👁️ Attention & Neurons
 - [Beyond SoftMax Attention](AI-ML/LLMs/attention/Beyond-SoftMax-Attention.md)
 - [Context Graphs](AI-ML/LLMs/attention/Context-Graphs.md)
-- [inside a neuron](AI-ML/LLMs/attention/inside-a-neuron.md)
+- [Inside A Neuron Architecture And Mechanics 2026](AI-ML/LLMs/attention/Inside-A-Neuron-Architecture-And-Mechanics-2026.md)
 
 #### ⚡ Optimization & Cost
 - [AI Coding Invoice Beyond Input and Output 2026](AI-ML/LLMs/optimization/AI-Coding-Invoice-Beyond-Input-and-Output-2026.md)
@@ -235,8 +235,7 @@ Learnings/
 
 
 ### 🧮 Algorithms
-- [X's Recommendation Algorithm with Verification](AI-ML/Algorithms/X%27s%20Recommendation%20Algorithm-with-Verification.md)
-- [X's Recommendation Algorithm Technical Analysis](AI-ML/Algorithms/X%27s-Recommendation-Algorithm-Technical-Analysis.md)
+- [X Recommendation Algorithm Architecture 2026](AI-ML/Algorithms/X-Recommendation-Algorithm-Architecture-2026.md)
 
 
 ---

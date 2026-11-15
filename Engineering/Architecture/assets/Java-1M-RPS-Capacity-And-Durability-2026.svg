@@ -49,4 +49,6 @@
 <text x="60" y="825" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">A valid result includes the workload and failure behavior</text>
 <text x="60" y="854" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Report successful rate, latency percentiles, errors, queues, resource use and recovery behavior.</text>
 <text x="60" y="876" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Price measured compute, storage and transfers. An instance name does not establish capacity or cost.</text>
+  <!-- Footer Attribution -->
+  <text x="560" y="933" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
 </svg>

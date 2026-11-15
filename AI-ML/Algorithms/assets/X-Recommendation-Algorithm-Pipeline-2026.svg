@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="rust-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a1810"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="cyan-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0e2a38"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="purple-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e1838"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="emerald-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0d2d26"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="820" fill="url(#bg-grad)"/>
+
+  <!-- Top Title Bar -->
+  <g transform="translate(40, 30)">
+    <rect width="1120" height="70" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="30" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">X Recommendation Algorithm: Architecture &amp; Ranking Pipeline</text>
+    <text x="30" y="54" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">End-to-End Recommendation Engine: Home Mixer, Thunder Sourcing, Phoenix Grok Ranker, and Filters</text>
+    <rect x="980" y="20" width="115" height="30" rx="6" fill="#38bdf8" fill-opacity="0.15" stroke="#38bdf8" stroke-width="1"/>
+    <text x="1037" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#38bdf8" text-anchor="middle">Architecture 2026</text>
+  </g>
+
+  <!-- Stage 1: Home Mixer (x=40) -->
+  <g transform="translate(40, 120)">
+    <rect width="260" height="440" rx="10" fill="url(#rust-grad)" stroke="#ea580c" stroke-opacity="0.35" stroke-width="1.5"/>
+    <rect x="18" y="20" width="125" height="26" rx="5" fill="#ea580c" fill-opacity="0.2" stroke="#ea580c" stroke-width="1"/>
+    <text x="80" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fb923c" text-anchor="middle">1. HOME MIXER</text>
+    <text x="18" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Rust Core Gateway</text>
+    <text x="18" y="88" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Asynchronous Tokio Pipeline</text>
+
+    <rect x="18" y="105" width="224" height="60" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="130" y="128" font-family="'Fira Code', monospace" font-size="11.5" fill="#fb923c" text-anchor="middle">Client Timeline Request</text>
+    <text x="130" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748b" text-anchor="middle">500M+ DAU · Sub-100ms Budget</text>
+
+    <rect x="18" y="180" width="224" height="235" rx="6" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1"/>
+    <text x="28" y="205" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#fdba74">Core Responsibilities:</text>
+
+    <text x="28" y="228" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Request Coordination</text>
+    <text x="36" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Parses user session, auth token,</text>
+    <text x="36" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">and device metadata context.</text>
+
+    <text x="28" y="282" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Parallel Fan-Out</text>
+    <text x="36" y="298" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Dispatches concurrent gRPC calls</text>
+    <text x="36" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">to Thunder candidate backends.</text>
+
+    <text x="28" y="336" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Response Synthesis</text>
+    <text x="36" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Merges ranked tweets with ads,</text>
+    <text x="36" y="366" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">who-to-follow, and cursor tokens.</text>
+
+    <text x="28" y="392" font-family="'Fira Code', monospace" font-size="10.5" fill="#ea580c">tokio::spawn(fetch_thunder)</text>
+  </g>
+
+  <!-- Stage 2: Thunder Candidate Sourcing (x=325) -->
+  <g transform="translate(325, 120)">
+    <rect width="260" height="440" rx="10" fill="url(#cyan-grad)" stroke="#38bdf8" stroke-opacity="0.35" stroke-width="1.5"/>
+    <rect x="18" y="20" width="130" height="26" rx="5" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/>
+    <text x="83" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8" text-anchor="middle">2. THUNDER SOURCE</text>
+    <text x="18" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Candidate Sourcing</text>
+    <text x="18" y="88" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">500M+ Tweets → Top ~1,500</text>
+
+    <rect x="18" y="105" width="224" height="60" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="130" y="128" font-family="'Fira Code', monospace" font-size="11.5" fill="#38bdf8" text-anchor="middle">Two-Prong Retrieval</text>
+    <text x="130" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748b" text-anchor="middle">~50% In-Net · ~50% Out-of-Net</text>
+
+    <rect x="18" y="180" width="224" height="235" rx="6" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1"/>
+    <text x="28" y="205" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#7dd3fc">Retrieval Mechanisms:</text>
+
+    <text x="28" y="228" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• In-Network Sourcing</text>
+    <text x="36" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Traverses real-time follow graph,</text>
+    <text x="36" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">author recency, and friend likes.</text>
+
+    <text x="28" y="282" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Out-of-Network Sourcing</text>
+    <text x="36" y="298" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">SimClusters topic embeddings &amp;</text>
+    <text x="36" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Grok latent vector representations.</text>
+
+    <text x="28" y="336" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Pre-Filtering Pass</text>
+    <text x="36" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Drops muted users, blocked IDs,</text>
+    <text x="36" y="366" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">and already-seen tweet IDs.</text>
+
+    <text x="28" y="392" font-family="'Fira Code', monospace" font-size="10.5" fill="#38bdf8">Candidates: ~1,500 Tweets</text>
+  </g>
+
+  <!-- Stage 3: Phoenix Grok Transformer (x=610) -->
+  <g transform="translate(610, 120)">
+    <rect width="275" height="440" rx="10" fill="url(#purple-grad)" stroke="#c084fc" stroke-opacity="0.35" stroke-width="1.5"/>
+    <rect x="18" y="20" width="135" height="26" rx="5" fill="#c084fc" fill-opacity="0.2" stroke="#c084fc" stroke-width="1"/>
+    <text x="85" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#c084fc" text-anchor="middle">3. PHOENIX RANKER</text>
+    <text x="18" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Grok Transformer Model</text>
+    <text x="18" y="88" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Multi-Task Cross-Attention</text>
+
+    <!-- Formula Box -->
+    <rect x="18" y="105" width="239" height="60" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="137" y="128" font-family="'Fira Code', monospace" font-size="10" fill="#c084fc" text-anchor="middle">Score = Σ wᵢ P(Actionᵢ) - wₙ P(Neg)</text>
+    <text x="137" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748b" text-anchor="middle">Multi-Task Learned Probabilities</text>
+
+    <rect x="18" y="180" width="239" height="235" rx="6" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1"/>
+    <text x="28" y="205" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#d8b4fe">Transformer Architecture:</text>
+
+    <text x="28" y="228" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Grok-1 Adapted Attention</text>
+    <text x="36" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Self-attention between user history</text>
+    <text x="36" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">tokens and candidate representations.</text>
+
+    <text x="28" y="282" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• 10+ Multi-Task Output Heads</text>
+    <text x="36" y="298" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">P(Like), P(Retweet), P(Reply),</text>
+    <text x="36" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">P(Quote), P(Dwell), P(ProfileClick).</text>
+
+    <text x="28" y="336" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Heavy Negative Penalty</text>
+    <text x="36" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">P(Report), P(NotInterested),</text>
+    <text x="36" y="366" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">P(Block) carries heavy weight subtraction.</text>
+
+    <text x="28" y="392" font-family="'Fira Code', monospace" font-size="10.5" fill="#c084fc">Eliminated manual heuristics</text>
+  </g>
+
+  <!-- Stage 4: Filters & Mixing (x=910) -->
+  <g transform="translate(910, 120)">
+    <rect width="250" height="440" rx="10" fill="url(#emerald-grad)" stroke="#4ade80" stroke-opacity="0.35" stroke-width="1.5"/>
+    <rect x="18" y="20" width="145" height="26" rx="5" fill="#4ade80" fill-opacity="0.2" stroke="#4ade80" stroke-width="1"/>
+    <text x="90" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80" text-anchor="middle">4. PIPELINE FILTERS</text>
+    <text x="18" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Diversity &amp; Mixing</text>
+    <text x="18" y="88" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Final Feed Composition</text>
+
+    <rect x="18" y="105" width="214" height="60" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="125" y="128" font-family="'Fira Code', monospace" font-size="11.5" fill="#4ade80" text-anchor="middle">Feed Assembly</text>
+    <text x="125" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748b" text-anchor="middle">Delivered to Timeline Cache</text>
+
+    <rect x="18" y="180" width="214" height="235" rx="6" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1"/>
+    <text x="28" y="205" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#86efac">Post-Ranking Rules:</text>
+
+    <text x="28" y="228" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Author Diversity Damping</text>
+    <text x="36" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Prevents single-creator spam</text>
+    <text x="36" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">by decaying consecutive posts.</text>
+
+    <text x="28" y="282" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Ratio Enforcement</text>
+    <text x="36" y="298" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Maintains dynamic balance of</text>
+    <text x="36" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">follows vs. recommended topics.</text>
+
+    <text x="28" y="336" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Safety &amp; NSFW Filters</text>
+    <text x="36" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Automated compliance check</text>
+    <text x="36" y="366" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">for age-gated and toxic content.</text>
+
+    <text x="28" y="392" font-family="'Fira Code', monospace" font-size="10.5" fill="#4ade80">Top ~20-50 Ranked Feed</text>
+  </g>
+
+  <!-- Bottom Panel: 2023 vs 2026 Comparison -->
+  <g transform="translate(40, 580)">
+    <rect width="1120" height="205" rx="10" fill="url(#card-grad)" stroke="#334155" stroke-width="1.5"/>
+    <text x="25" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Architectural Evolution: 2023 Twitter/The-Algorithm vs. 2026 XAI/X-Algorithm</text>
+
+    <!-- Table Header -->
+    <rect x="25" y="45" width="1070" height="32" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+    <text x="40" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">ARCHITECTURAL AXIS</text>
+    <text x="260" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">2023 TWITTER RELEASE (HISTORICAL)</text>
+    <text x="640" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">2026 XAI RELEASE (VERIFIED PRESENT)</text>
+
+    <!-- Row 1: Languages & Runtime -->
+    <text x="40" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc">Runtime &amp; Services</text>
+    <text x="260" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#cbd5e1">100+ Scala &amp; Java microservices on Finagle / Thrift</text>
+    <text x="640" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#38bdf8">Streamlined Rust async services (Home Mixer) + Python ML</text>
+
+    <!-- Row 2: Ranking Engine -->
+    <text x="40" y="126" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc">Heavy Ranker</text>
+    <text x="260" y="126" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#cbd5e1">MaskNet (48M params) + Earlybird Lucene inverted index</text>
+    <text x="640" y="126" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#c084fc">Phoenix Grok-1 adapted transformer neural architecture</text>
+
+    <!-- Row 3: Heuristics vs Learned -->
+    <text x="40" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc">Heuristics &amp; Weights</text>
+    <text x="260" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#fb7185">Hardcoded multipliers (30x reply, 1x retweet, 0.5x like)</text>
+    <text x="640" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#4ade80">Zero hardcoded heuristic weights; end-to-end learned</text>
+
+    <!-- Row 4: Release Cadence -->
+    <text x="40" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc">Release Cadence</text>
+    <text x="260" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#cbd5e1">One-time code dump (March 2023), rapidly obsolete</text>
+    <text x="640" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#fbbf24">Apache 2.0 repository with 4-week public update commits</text>
+  </g>
+  <!-- Footer Attribution -->
+  <text x="600" y="808" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
+</svg>

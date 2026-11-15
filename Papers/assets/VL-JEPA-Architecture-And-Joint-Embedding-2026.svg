@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="blue-card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0e2a38"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="purple-card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e1838"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="emerald-card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0d2d26"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="amber-card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2a1e12"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="820" fill="url(#bg-grad)"/>
+
+  <!-- Top Title Bar -->
+  <g transform="translate(40, 30)">
+    <rect width="1120" height="70" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="30" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">VL-JEPA: Vision-Language Joint Embedding Predictive Architecture</text>
+    <text x="30" y="54" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">Non-Generative Semantic Space Prediction: 1.6B Parameter Model Outperforming 13B+ LLMs in Causal Reasoning</text>
+    <rect x="970" y="20" width="125" height="30" rx="6" fill="#38bdf8" fill-opacity="0.15" stroke="#38bdf8" stroke-width="1"/>
+    <text x="1032" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#38bdf8" text-anchor="middle">Meta FAIR 2026</text>
+  </g>
+
+  <!-- Component 1: X-Encoder (x=40) -->
+  <g transform="translate(40, 120)">
+    <rect width="260" height="440" rx="10" fill="url(#blue-card)" stroke="#38bdf8" stroke-opacity="0.35" stroke-width="1.5"/>
+    <rect x="18" y="20" width="135" height="26" rx="5" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/>
+    <text x="85" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8" text-anchor="middle">1. X-ENCODER</text>
+    <text x="18" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Visual Representation</text>
+    <text x="18" y="88" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">V-JEPA ViT-L (Frozen)</text>
+
+    <rect x="18" y="105" width="224" height="60" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="130" y="128" font-family="'Fira Code', monospace" font-size="11.5" fill="#38bdf8" text-anchor="middle">16 Video Frames × 224²</text>
+    <text x="130" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748b" text-anchor="middle">304M Frozen Parameters</text>
+
+    <rect x="18" y="180" width="224" height="235" rx="6" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1"/>
+    <text x="28" y="205" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#7dd3fc">Visual Mechanics:</text>
+
+    <text x="28" y="228" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Spatiotemporal Patches</text>
+    <text x="36" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Extracts 3D tubelets capturing</text>
+    <text x="36" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">motion dynamics across time.</text>
+
+    <text x="28" y="282" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Zero Pixel Reconstruction</text>
+    <text x="36" y="298" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Bypasses high-frequency noise</text>
+    <text x="36" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">like texture, lighting, and jitter.</text>
+
+    <text x="28" y="336" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Physical Causal Features</text>
+    <text x="36" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Produces invariant embeddings</text>
+    <text x="36" y="366" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">optimized for downstream tasks.</text>
+
+    <text x="28" y="392" font-family="'Fira Code', monospace" font-size="10.5" fill="#38bdf8">Output: S_x ∈ ℝ^(T × P × D)</text>
+  </g>
+
+  <!-- Component 2: Predictor (x=325) -->
+  <g transform="translate(325, 120)">
+    <rect width="275" height="440" rx="10" fill="url(#purple-card)" stroke="#c084fc" stroke-opacity="0.35" stroke-width="1.5"/>
+    <rect x="18" y="20" width="135" height="26" rx="5" fill="#c084fc" fill-opacity="0.2" stroke="#c084fc" stroke-width="1"/>
+    <text x="85" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#c084fc" text-anchor="middle">2. PREDICTOR</text>
+    <text x="18" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Semantic Predictor</text>
+    <text x="18" y="88" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Llama 3.2 (1.6B Trainable)</text>
+
+    <rect x="18" y="105" width="239" height="60" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="137" y="128" font-family="'Fira Code', monospace" font-size="11" fill="#c084fc" text-anchor="middle">ŝ_y = Predictor(S_x, q)</text>
+    <text x="137" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748b" text-anchor="middle">Maps Vision + Query → Meaning</text>
+
+    <rect x="18" y="180" width="239" height="235" rx="6" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1"/>
+    <text x="28" y="205" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#d8b4fe">Predictor Dynamics:</text>
+
+    <text x="28" y="228" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Bidirectional Cross-Attn</text>
+    <text x="36" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Text prompt query tokens attend</text>
+    <text x="36" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">freely across all visual tokens.</text>
+
+    <text x="28" y="282" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Meaning Space Target</text>
+    <text x="36" y="298" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Directly outputs a single 1536-dim</text>
+    <text x="36" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">vector representing answer meaning.</text>
+
+    <text x="28" y="336" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• 2x Faster Learning Speed</text>
+    <text x="36" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Learns one unified semantic target</text>
+    <text x="36" y="366" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">instead of memorizing variations.</text>
+
+    <text x="28" y="392" font-family="'Fira Code', monospace" font-size="10.5" fill="#c084fc">Target: ŝ_y ∈ ℝ^1536</text>
+  </g>
+
+  <!-- Component 3: Y-Encoder (x=625) -->
+  <g transform="translate(625, 120)">
+    <rect width="260" height="440" rx="10" fill="url(#emerald-card)" stroke="#4ade80" stroke-opacity="0.35" stroke-width="1.5"/>
+    <rect x="18" y="20" width="135" height="26" rx="5" fill="#4ade80" fill-opacity="0.2" stroke="#4ade80" stroke-width="1"/>
+    <text x="85" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80" text-anchor="middle">3. Y-ENCODER</text>
+    <text x="18" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Target Meaning Space</text>
+    <text x="18" y="88" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">EmbeddingGemma (300M)</text>
+
+    <rect x="18" y="105" width="224" height="60" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="130" y="128" font-family="'Fira Code', monospace" font-size="11.5" fill="#4ade80" text-anchor="middle">s_y = Y_Encoder(Answer)</text>
+    <text x="130" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748b" text-anchor="middle">Trained with 0.05× LR</text>
+
+    <rect x="18" y="180" width="224" height="235" rx="6" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1"/>
+    <text x="28" y="205" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#86efac">Target Mechanics:</text>
+
+    <text x="28" y="228" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Semantic Clustering</text>
+    <text x="36" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Clusters linguistic synonyms</text>
+    <text x="36" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">into identical vector regions.</text>
+
+    <text x="28" y="282" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• InfoNCE Contrastive Loss</text>
+    <text x="36" y="298" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Maximizes alignment ŝ_y · s_y</text>
+    <text x="36" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">while pushing away negatives.</text>
+
+    <text x="28" y="336" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Collapse Prevention</text>
+    <text x="36" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Small learning rate prevents</text>
+    <text x="36" y="366" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">target space from degenerating.</text>
+
+    <text x="28" y="392" font-family="'Fira Code', monospace" font-size="10.5" fill="#4ade80">Ground Truth: s_y ∈ ℝ^1536</text>
+  </g>
+
+  <!-- Component 4: Y-Decoder (x=910) -->
+  <g transform="translate(910, 120)">
+    <rect width="250" height="440" rx="10" fill="url(#amber-card)" stroke="#fbbf24" stroke-opacity="0.35" stroke-width="1.5"/>
+    <rect x="18" y="20" width="135" height="26" rx="5" fill="#fbbf24" fill-opacity="0.2" stroke="#fbbf24" stroke-width="1"/>
+    <text x="85" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24" text-anchor="middle">4. Y-DECODER</text>
+    <text x="18" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Selective Decoding</text>
+    <text x="18" y="88" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Untrained / On-Demand</text>
+
+    <rect x="18" y="105" width="214" height="60" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="125" y="128" font-family="'Fira Code', monospace" font-size="11" fill="#fbbf24" text-anchor="middle">cos(ŝ_t, ŝ_t₋₁) &lt; 0.85</text>
+    <text x="125" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#64748b" text-anchor="middle">Decode Only on Scene Shifts</text>
+
+    <rect x="18" y="180" width="214" height="235" rx="6" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1"/>
+    <text x="28" y="205" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#fde68a">Selective Benefits:</text>
+
+    <text x="28" y="228" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• 2.85× Faster Video Speed</text>
+    <text x="36" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Bypasses text generation during</text>
+    <text x="36" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">static or repetitive video frames.</text>
+
+    <text x="28" y="282" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Edge &amp; Wearable Friendly</text>
+    <text x="36" y="298" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Massive battery savings for smart</text>
+    <text x="36" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">glasses, drones, and edge robotics.</text>
+
+    <text x="28" y="336" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="600" fill="#f8fafc">• Zero-Shot Task Routing</text>
+    <text x="36" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">Nearest-neighbor lookup handles</text>
+    <text x="36" y="366" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#94a3b8">classification without text heads.</text>
+
+    <text x="28" y="392" font-family="'Fira Code', monospace" font-size="10.5" fill="#fbbf24">Generated Text on Demand</text>
+  </g>
+
+  <!-- Bottom Panel: Benchmark Comparison -->
+  <g transform="translate(40, 580)">
+    <rect width="1120" height="205" rx="10" fill="url(#card-grad)" stroke="#334155" stroke-width="1.5"/>
+    <text x="25" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Empirical Benchmarks: VL-JEPA vs. Autoregressive Multimodal Models (13B+)</text>
+
+    <!-- Table Header -->
+    <rect x="25" y="45" width="1070" height="32" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+    <text x="40" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">MODEL</text>
+    <text x="220" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">TRAINABLE PARAMS</text>
+    <text x="400" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">WORLD MODELING SOTA</text>
+    <text x="600" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">POPE HALLUCINATION</text>
+    <text x="800" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">VIDEO INFERENCE LATENCY</text>
+    <text x="1000" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">STATUS</text>
+
+    <!-- Row 1: InstructBLIP -->
+    <text x="40" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#fb7185">InstructBLIP</text>
+    <text x="220" y="98" font-family="'Fira Code', monospace" font-size="12" fill="#cbd5e1">13.0 Billion</text>
+    <text x="400" y="98" font-family="'Fira Code', monospace" font-size="12" fill="#cbd5e1">51.2%</text>
+    <text x="600" y="98" font-family="'Fira Code', monospace" font-size="12" fill="#fb7185">79.0%</text>
+    <text x="800" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#fb7185">Baseline (1.0× Speed)</text>
+    <text x="1000" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">Legacy Token LLM</text>
+
+    <!-- Row 2: Qwen-VL -->
+    <text x="40" y="126" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#fbbf24">Qwen-VL-Chat</text>
+    <text x="220" y="126" font-family="'Fira Code', monospace" font-size="12" fill="#cbd5e1">7.0–14.0 Billion</text>
+    <text x="400" y="126" font-family="'Fira Code', monospace" font-size="12" fill="#cbd5e1">54.0%</text>
+    <text x="600" y="126" font-family="'Fira Code', monospace" font-size="12" fill="#cbd5e1">81.5%</text>
+    <text x="800" y="126" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#fbbf24">1.2× Speed</text>
+    <text x="1000" y="126" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">Autoregressive VLM</text>
+
+    <!-- Row 3: GPT-4o -->
+    <text x="40" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#38bdf8">GPT-4o (Vision)</text>
+    <text x="220" y="154" font-family="'Fira Code', monospace" font-size="12" fill="#cbd5e1">~400B (MoE Frontier)</text>
+    <text x="400" y="154" font-family="'Fira Code', monospace" font-size="12" fill="#fbbf24">53.3%</text>
+    <text x="600" y="154" font-family="'Fira Code', monospace" font-size="12" fill="#38bdf8">86.2%</text>
+    <text x="800" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">Cloud API Bound</text>
+    <text x="1000" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">Frontier Generalist</text>
+
+    <!-- Row 4: VL-JEPA -->
+    <text x="40" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#4ade80">VL-JEPA (Meta)</text>
+    <text x="220" y="182" font-family="'Fira Code', monospace" font-size="12" fill="#4ade80">1.6 Billion</text>
+    <text x="400" y="182" font-family="'Fira Code', monospace" font-size="12" fill="#4ade80">65.7% (+10% SOTA)</text>
+    <text x="600" y="182" font-family="'Fira Code', monospace" font-size="12" fill="#4ade80">84.2%</text>
+    <text x="800" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#4ade80">2.85× Faster (Selective)</text>
+    <text x="1000" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#4ade80">SOTA World Model</text>
+  </g>
+  <!-- Footer Attribution -->
+  <text x="600" y="808" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
+</svg>

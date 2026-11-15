@@ -1,6 +1,7 @@
 # Scaling C++ Services to 1 Million RPS: Capacity, Zero-Copy and Concurrency Models
 
-**Learning note · Revised 15 November 2026 · Design study, not a validated deployment blueprint**
+**Learning note · Revised 15 November 2026 · Design study, not a validated deployment blueprint**  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Achieving one million requests per second in C++ requires eliminating kernel crossing overhead, dynamic memory allocations and lock contention on the hot path. While C++ eliminates JVM garbage-collection pauses, real-world throughput is constrained by network packet limits, cache coherence and storage durability contracts.
 

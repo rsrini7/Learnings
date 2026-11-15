@@ -1,6 +1,7 @@
 # AWS US-East-1 Outage: The 15-Hour DNS Race Condition & Cascading Collapse
 
-Daily learning · October 2025 · Incident review
+Daily learning · October 2025 · Incident review  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** On October 19–20, 2025, a subtle race condition in DynamoDB's internal Distributed Workflow Manager (DWFM) led to an automated DNS enactor applying an obsolete routing plan that wiped active Route 53 records across US-East-1 (Northern Virginia). While engineers corrected the DNS routing table within 2.5 hours, the resulting global retry storm, coupled with 100,000+ queued EC2 instance launches and internal control-plane dependencies on DynamoDB, extended recovery across 113 AWS services to over 15 hours, resulting in an estimated $581M+ direct economic impact.
 

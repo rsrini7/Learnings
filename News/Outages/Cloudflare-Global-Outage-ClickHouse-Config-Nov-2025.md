@@ -1,6 +1,7 @@
 # Cloudflare Global Edge Outage: ClickHouse Config Generation Desync & Flap Loop
 
-Daily learning · November 2025 · Incident review
+Daily learning · November 2025 · Incident review  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** On November 18, 2025, a routine database permissions update on Cloudflare's internal ClickHouse cluster inadvertently altered the query scope of an automated bot management rule generator. By querying individual database shards directly rather than the unified distributed table, the generator produced an oversized configuration file containing hundreds of duplicate rules. Propagated globally across all 330+ edge data centers within five minutes without a canary soak period, the malformed file triggered a fatal assertion panic in the edge proxy daemon, trapping Cloudflare's worldwide fleet in an unrecoverable crash flap loop.
 

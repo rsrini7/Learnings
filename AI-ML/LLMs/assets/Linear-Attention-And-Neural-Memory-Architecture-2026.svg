@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="red-card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e1b2e"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="cyan-card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0e2a38"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="emerald-card" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0d2d26"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#4ade80"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="820" fill="url(#bg-grad)"/>
+
+  <!-- Top Title Bar -->
+  <g transform="translate(40, 30)">
+    <rect width="1120" height="70" rx="10" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+    <text x="30" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">Linear Attention &amp; Neural Memory: Beyond the Softmax Bottleneck</text>
+    <text x="30" y="54" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">Algorithmic Shift from Quadratic KV-Cache Lookups to Fixed-Capacity Neural State Recurrence</text>
+    <rect x="980" y="20" width="115" height="30" rx="6" fill="#38bdf8" fill-opacity="0.15" stroke="#38bdf8" stroke-width="1"/>
+    <text x="1037" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#38bdf8" text-anchor="middle">Architecture 2026</text>
+  </g>
+
+  <!-- Panel 1: Softmax Quadratic Bottleneck -->
+  <g transform="translate(40, 120)">
+    <rect width="350" height="430" rx="10" fill="url(#red-card)" stroke="#f43f5e" stroke-opacity="0.35" stroke-width="1.5"/>
+    <rect x="20" y="20" width="105" height="26" rx="5" fill="#f43f5e" fill-opacity="0.2" stroke="#f43f5e" stroke-width="1"/>
+    <text x="72" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fb7185" text-anchor="middle">QUADRATIC TAX</text>
+    <text x="20" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#f8fafc">Standard Softmax Attention</text>
+    <text x="20" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">Coupled N-to-N interaction over sequence length N</text>
+
+    <!-- Formula Box -->
+    <rect x="20" y="110" width="310" height="60" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="175" y="135" font-family="'Fira Code', monospace" font-size="13" fill="#fb7185" text-anchor="middle">Attn(Q, K, V) = Softmax(Q Kᵀ / √d) V</text>
+    <text x="175" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Denominator Σ exp(qᵢ kⱼᵀ) prevents re-association</text>
+
+    <!-- Key Failure Modes -->
+    <rect x="20" y="185" width="310" height="225" rx="6" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1"/>
+    <text x="35" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#fda4af">Failure Modes at Long Contexts:</text>
+
+    <text x="35" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc">• Memory Footprint: O(N²)</text>
+    <text x="45" y="252" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Full attention matrix requires storing all N token</text>
+    <text x="45" y="268" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">representations across all attention layers.</text>
+
+    <text x="35" y="295" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc">• KV-Cache Memory Bandwidth Bound</text>
+    <text x="45" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Autoregressive generation re-reads multi-GB cache</text>
+    <text x="45" y="328" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">per single token, dropping intensity &lt; 1 FLOP/byte.</text>
+
+    <text x="35" y="355" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc">• Latency Wall at 100k+ Context</text>
+    <text x="45" y="372" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Multi-turn agent loops spend 85%+ runtime in</text>
+    <text x="45" y="388" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">memory transfers rather than tensor arithmetic.</text>
+  </g>
+
+  <!-- Panel 2: Linear Attention Dual Formulations -->
+  <g transform="translate(425, 120)">
+    <rect width="350" height="430" rx="10" fill="url(#cyan-card)" stroke="#38bdf8" stroke-opacity="0.35" stroke-width="1.5"/>
+    <rect x="20" y="20" width="135" height="26" rx="5" fill="#38bdf8" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1"/>
+    <text x="87" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8" text-anchor="middle">DUAL FORMULATION</text>
+    <text x="20" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#f8fafc">Linear Attention &amp; Associativity</text>
+    <text x="20" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">Kernel feature maps allow matrix regrouping</text>
+
+    <!-- Formula Box -->
+    <rect x="20" y="110" width="310" height="60" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="175" y="135" font-family="'Fira Code', monospace" font-size="11.5" fill="#38bdf8" text-anchor="middle">(Q Kᵀ) V = Q (Kᵀ V)  ⇒  Sₜ = Sₜ₋₁ + kₜ vₜᵀ</text>
+    <text x="175" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">State matrix S of fixed size (d_k × d_v) absorbs tokens</text>
+
+    <!-- Dual Formulations -->
+    <rect x="20" y="185" width="310" height="225" rx="6" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1"/>
+    <text x="35" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#7dd3fc">Operational Dual Modes:</text>
+
+    <text x="35" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc">• Parallel Mode (Training Phase)</text>
+    <text x="45" y="252" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Computes over entire prompt sequence in parallel</text>
+    <text x="45" y="268" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">using GPU GEMM tensor core chunk operations.</text>
+
+    <text x="35" y="295" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc">• Recurrent Mode (Generation Phase)</text>
+    <text x="45" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Updates hidden state Sₜ recursively: O(1) memory</text>
+    <text x="45" y="328" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">footprint and constant O(d²) inference time.</text>
+
+    <text x="35" y="355" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc">• Chunkwise Parallel Hybrids (FLA)</text>
+    <text x="45" y="372" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Splits sequence into blocks of size C (e.g. 64),</text>
+    <text x="45" y="388" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">running intra-chunk GEMM and inter-chunk RNN.</text>
+  </g>
+
+  <!-- Panel 3: Neural Memory Frontiers -->
+  <g transform="translate(810, 120)">
+    <rect width="350" height="430" rx="10" fill="url(#emerald-card)" stroke="#4ade80" stroke-opacity="0.35" stroke-width="1.5"/>
+    <rect x="20" y="20" width="115" height="26" rx="5" fill="#4ade80" fill-opacity="0.2" stroke="#4ade80" stroke-width="1"/>
+    <text x="77" y="37" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80" text-anchor="middle">ACTIVE MEMORY</text>
+    <text x="20" y="70" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700" fill="#f8fafc">Neural Memory Frontiers</text>
+    <text x="20" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">Gated decay, online error correction, and TTT</text>
+
+    <!-- Formula Box -->
+    <rect x="20" y="110" width="310" height="60" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="175" y="135" font-family="'Fira Code', monospace" font-size="13" fill="#4ade80" text-anchor="middle">Sₜ = Sₜ₋₁ + βₜ(vₜ - Sₜ₋₁ kₜ) kₜᵀ</text>
+    <text x="175" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Delta Rule: State updates only on prediction error</text>
+
+    <!-- 3 Core Architectures -->
+    <rect x="20" y="185" width="310" height="225" rx="6" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1"/>
+    <text x="35" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="600" fill="#86efac">Next-Gen Architectures:</text>
+
+    <text x="35" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc">• Gated Linear Attention (GLA)</text>
+    <text x="45" y="252" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Introduces data-dependent decay gates αₜ ∈ (0,1)</text>
+    <text x="45" y="268" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">to dynamically forget obsolete historical context.</text>
+
+    <text x="35" y="295" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc">• DeltaNet (Schlag et al.)</text>
+    <text x="45" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Applies least-squares gradient step on memory;</text>
+    <text x="45" y="328" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">perfectly solves Associative Recall benchmarks.</text>
+
+    <text x="35" y="355" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f8fafc">• Test-Time Training (TTT / Sun et al.)</text>
+    <text x="45" y="372" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Hidden state becomes inner neural model weights Wₜ,</text>
+    <text x="45" y="388" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">trained via online gradient descent during inference.</text>
+  </g>
+
+  <!-- Bottom Panel: Comparative Matrix -->
+  <g transform="translate(40, 580)">
+    <rect width="1120" height="205" rx="10" fill="url(#card-grad)" stroke="#334155" stroke-width="1.5"/>
+    <text x="25" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#f8fafc">Architectural Trade-Off &amp; Scaling Comparison (Sequence Length N, Hidden Dimension d)</text>
+
+    <!-- Table Header -->
+    <rect x="25" y="45" width="1070" height="32" rx="4" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+    <text x="40" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">ARCHITECTURE</text>
+    <text x="220" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">TRAIN COMPUTE</text>
+    <text x="380" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">INFERENCE MEMORY</text>
+    <text x="560" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">INFERENCE PER-STEP</text>
+    <text x="750" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">ASSOCIATIVE RECALL</text>
+    <text x="940" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#94a3b8">TARGET DOMAIN</text>
+
+    <!-- Row 1: Softmax Attention -->
+    <text x="40" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#fb7185">Softmax Attention</text>
+    <text x="220" y="100" font-family="'Fira Code', monospace" font-size="12" fill="#e2e8f0">O(N² · d)</text>
+    <text x="380" y="100" font-family="'Fira Code', monospace" font-size="12" fill="#fb7185">O(N · d) [Unbounded]</text>
+    <text x="560" y="100" font-family="'Fira Code', monospace" font-size="12" fill="#fb7185">O(N · d) [Memory-Bound]</text>
+    <text x="750" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#4ade80">Exact Lookup (100%)</text>
+    <text x="940" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">Dense General Reasoning</text>
+
+    <!-- Row 2: Naive Linear Attention -->
+    <text x="40" y="128" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#38bdf8">Naive Linear Attention</text>
+    <text x="220" y="128" font-family="'Fira Code', monospace" font-size="12" fill="#e2e8f0">O(N · d²)</text>
+    <text x="380" y="128" font-family="'Fira Code', monospace" font-size="12" fill="#4ade80">O(d²) [Constant]</text>
+    <text x="560" y="128" font-family="'Fira Code', monospace" font-size="12" fill="#4ade80">O(d²) [Compute-Bound]</text>
+    <text x="750" y="128" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#fb7185">Poor (Capacity collapse)</text>
+    <text x="940" y="128" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">Early Exploration</text>
+
+    <!-- Row 3: GLA / DeltaNet -->
+    <text x="40" y="156" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#4ade80">GLA &amp; DeltaNet</text>
+    <text x="220" y="156" font-family="'Fira Code', monospace" font-size="12" fill="#e2e8f0">O(N · d²)</text>
+    <text x="380" y="156" font-family="'Fira Code', monospace" font-size="12" fill="#4ade80">O(d²) [Constant]</text>
+    <text x="560" y="156" font-family="'Fira Code', monospace" font-size="12" fill="#4ade80">O(d²) [Fast GEMV]</text>
+    <text x="750" y="156" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#4ade80">High (Near-Softmax parity)</text>
+    <text x="940" y="156" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">Long-context Agents &amp; Code</text>
+
+    <!-- Row 4: Test-Time Training (TTT) -->
+    <text x="40" y="184" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#c084fc">TTT-Linear / TTT-MLP</text>
+    <text x="220" y="184" font-family="'Fira Code', monospace" font-size="12" fill="#e2e8f0">O(N · d²)</text>
+    <text x="380" y="184" font-family="'Fira Code', monospace" font-size="12" fill="#4ade80">O(d²) [Weight-State]</text>
+    <text x="560" y="184" font-family="'Fira Code', monospace" font-size="12" fill="#fbbf24">O(d²) [Online SGD step]</text>
+    <text x="750" y="184" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#4ade80">SOTA on Extrapolation</text>
+    <text x="940" y="184" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#cbd5e1">Continual In-Context Learning</text>
+  </g>
+  <!-- Footer Attribution -->
+  <text x="600" y="808" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#64748b" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
+</svg>
