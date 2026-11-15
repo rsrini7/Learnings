@@ -370,7 +370,7 @@ Phase 4: Consensus Enforcement & Sunset (2033+)
 ---
 
 **Related:**
-- [QuantumComputer-Terms](QuantumComputer-Terms.md) — Comprehensive reference defining superposition, entanglement, logical qubits, and fault tolerance.
+- [Quantum-Computing-Foundations-And-State-Mechanics-2026](Quantum-Computing-Foundations-And-State-Mechanics-2026.md) — Comprehensive reference defining superposition, entanglement, logical qubits, and fault tolerance.
 - [blockchain-Hedera-Hashgraph](../Blockchain/development/blockchain-Hedera-Hashgraph.md) — Explores aBFT asynchronous consensus and post-quantum cryptographic resilience.
 - [Crypto-Supercycle-and-Ethereum](../Blockchain/ethereum/Crypto-Supercycle-and-Ethereum.md) — Analyzes Ethereum's post-quantum roadmap and account abstraction migration.
 - [Blockchain-by-2035](../Blockchain/reference/Blockchain-by-2035.md) — Evaluates the long-term geopolitical and cryptographic sustainability of distributed ledgers.

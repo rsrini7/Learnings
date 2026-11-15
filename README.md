@@ -251,8 +251,8 @@ Learnings/
 ### ☕ JVM
 - [Java Next Gen Programming Models Babylon Panama Nov 2026](Engineering/JVM/Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026.md)
 - [Java Plugin Arch](Engineering/JVM/Java-Plugin-Arch.md)
+- [Java Remote Debugging JDWP And Troubleshooting 2026](Engineering/JVM/Java-Remote-Debugging-JDWP-And-Troubleshooting-2026.md)
 - [Java Standard Classes vs Records vs Carrier Classes](Engineering/JVM/Java-Standard_Classes-vs-Records-vs-Carrier_Classes.md)
-- [Java remote debug](Engineering/JVM/Java_remote_debug.md)
 - [Project Detroit Java Polyglot Runtimes Nov 2026](Engineering/JVM/Project-Detroit-Java-Polyglot-Runtimes-Nov-2026.md)
 
 ### 💾 Databases
@@ -284,7 +284,7 @@ Learnings/
 
 ### ⟠ Ethereum & Smart Contracts
 - [Crypto Supercycle and Ethereum](Blockchain/ethereum/Crypto-Supercycle-and-Ethereum.md)
-- [Ethereum hardhat docker](Blockchain/ethereum/Ethereum-hardhat-docker.md)
+- [Ethereum Hardhat Docker Environment 2026](Blockchain/ethereum/Ethereum-Hardhat-Docker-Environment-2026.md)
 - [Hardhat Development](Blockchain/ethereum/Hardhat-Development.md)
 
 ### 💰 Crypto & Tokens
@@ -314,8 +314,8 @@ Learnings/
 ## ⚛️ Quantum Computing
 - [Google Willow Quantum Chip And Quantum Echoes 2026](QuantumComputing/Google-Willow-Quantum-Chip-And-Quantum-Echoes-2026.md)
 - [Quantum AI Decision Makers(2026)](QuantumComputing/Quantum-AI-Decision-Makers%282026%29.md)
+- [Quantum Computing Foundations And State Mechanics 2026](QuantumComputing/Quantum-Computing-Foundations-And-State-Mechanics-2026.md)
 - [Quantum Threat to Bitcoin And Elliptic Curve Cryptography 2026](QuantumComputing/Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026.md)
-- [QuantumComputer Terms](QuantumComputing/QuantumComputer-Terms.md)
 - [VIO 40K Arch 10K Qubits](QuantumComputing/VIO-40K-Arch-10K-Qubits.md)
 
 ---

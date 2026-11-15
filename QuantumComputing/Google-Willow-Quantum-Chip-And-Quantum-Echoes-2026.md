@@ -358,6 +358,6 @@ Phase 3: Cross-Entropy & Echo Verification
 
 **Related:**
 - [VIO-40K-Arch-10K-Qubits](VIO-40K-Arch-10K-Qubits.md) — Contrasts Google's planar transmon architecture with QuantWare's 3D chiplet packaging roadmap.
-- [QuantumComputer-Terms](QuantumComputer-Terms.md) — Fundamental reference defining superposition, entanglement, physical vs logical qubits, and surface codes.
+- [Quantum-Computing-Foundations-And-State-Mechanics-2026](Quantum-Computing-Foundations-And-State-Mechanics-2026.md) — Fundamental reference defining superposition, entanglement, physical vs logical qubits, and surface codes.
 - [Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026](Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026.md) — Evaluates the logical qubit thresholds required to break secp256k1 compared to current hardware.
 - [AI-Hardware-Chips-Explained](../AI-ML/Hardware/AI-Hardware-Chips-Explained.md) — Compares specialized quantum silicon with classical TPU, GPU, and LPU accelerators.

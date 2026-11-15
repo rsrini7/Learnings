@@ -1,0 +1,193 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowEmerald" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#34d399" />
+    </marker>
+    <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#fbbf24" />
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Title & Header -->
+  <g transform="translate(60, 45)">
+    <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.5px">Containerized Ethereum Smart Contract Architecture</text>
+    <text x="0" y="24" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Hardhat EVM Local Nodes, Ignition Declarative DAGs, Viem TypeScript Bindings, and Docker Orchestration</text>
+  </g>
+
+  <!-- PANEL 1: Containerized Hardhat EVM Node (Left Column, x=60, w=345) -->
+  <g transform="translate(60, 95)">
+    <rect width="345" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Header Badge -->
+    <rect x="20" y="20" width="200" height="26" rx="6" fill="#0369a1" fill-opacity="0.3" stroke="#0ea5e9" stroke-width="1" />
+    <text x="30" y="37" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">PANEL 1 · HARDHAT EVM NODE</text>
+
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">Dockerized EVM Simulation</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">In-memory Ethereum runtime on Chain ID 31337</text>
+
+    <!-- Node Spec Box -->
+    <g transform="translate(20, 106)">
+      <rect x="0" y="0" width="305" height="52" rx="6" fill="#0f172a" stroke="#0ea5e9" stroke-width="1.2" />
+      <text x="12" y="20" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">Service: hardhat-node (Docker)</text>
+      <text x="12" y="38" fill="#cbd5e1" font-family="'JetBrains Mono', monospace" font-size="9.5">npx hardhat node --hostname 0.0.0.0</text>
+
+      <line x1="152" y1="52" x2="152" y2="66" stroke="#0ea5e9" stroke-width="1.5" marker-end="url(#arrowCyan)" />
+
+      <!-- JSON-RPC HTTP / WS -->
+      <rect x="0" y="68" width="305" height="52" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.2" />
+      <text x="12" y="88" fill="#34d399" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">JSON-RPC Endpoint (Port 8545)</text>
+      <text x="12" y="106" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">Exposes eth_call, eth_sendRawTransaction</text>
+
+      <line x1="152" y1="120" x2="152" y2="134" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowCyan)" />
+
+      <!-- Genesis Accounts -->
+      <rect x="0" y="136" width="305" height="65" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1.2" />
+      <text x="12" y="156" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">20 Funded Test Accounts</text>
+      <text x="12" y="174" fill="#cbd5e1" font-family="'JetBrains Mono', monospace" font-size="9.5">10,000 ETH pre-funded per account</text>
+      <text x="12" y="190" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">Known mnemonic for instant local signing</text>
+    </g>
+
+    <!-- Advanced Features Box -->
+    <text x="20" y="335" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">Mainnet Forking Capabilities</text>
+
+    <rect x="20" y="352" width="305" height="150" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="374" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">LOCAL FORK TESTING</text>
+
+    <rect x="30" y="386" width="285" height="42" rx="4" fill="#1e293b" />
+    <text x="38" y="404" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="9">hardhat.config.ts: networks.hardhat.forking</text>
+    <text x="38" y="418" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="9">url: "https://eth-mainnet.g.alchemy.com/v2/..."</text>
+
+    <text x="32" y="448" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">Tests against real Uniswap / Aave liquidity state</text>
+    <text x="32" y="464" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">without spending real testnet or mainnet gas.</text>
+    <text x="32" y="482" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">Supports pin blockNumber for reproducible tests.</text>
+
+    <!-- Node Persistence Box -->
+    <rect x="20" y="515" width="305" height="125" rx="6" fill="#091824" stroke="#0ea5e9" stroke-width="1" />
+    <text x="32" y="537" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">STATE PERSISTENCE &amp; EPHEMERALITY</text>
+    <text x="32" y="557" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="10.5">By default, Hardhat EVM state is 100% in-memory.</text>
+    <text x="32" y="575" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">• Fast restarts: clean state in &lt; 1 second.</text>
+    <text x="32" y="593" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">• Optional: Snapshot &amp; evm_revert RPC methods.</text>
+    <text x="32" y="611" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">• Eliminates test cross-pollution across CI runs.</text>
+  </g>
+
+  <!-- PANEL 2: Hardhat Ignition & Declarative Deploy (Middle Column, x=425, w=350) -->
+  <g transform="translate(425, 95)">
+    <rect width="350" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Header Badge -->
+    <rect x="20" y="20" width="220" height="26" rx="6" fill="#047857" fill-opacity="0.3" stroke="#10b981" stroke-width="1" />
+    <text x="30" y="37" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">PANEL 2 · IGNITION &amp; ARTIFACTS</text>
+
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">Declarative Ignition Modules</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">DAG-based deployment and shared Docker volumes</text>
+
+    <!-- Ignition DAG Box -->
+    <rect x="20" y="106" width="310" height="175" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="128" fill="#34d399" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">HARDHAT IGNITION MODULE EXECUTION</text>
+
+    <rect x="30" y="142" width="290" height="42" rx="4" fill="#1e293b" />
+    <text x="38" y="160" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="9.5">npx hardhat ignition deploy</text>
+    <text x="38" y="174" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="9.5">./ignition/modules/Token.ts --network localhost</text>
+
+    <!-- DAG Flow -->
+    <text x="32" y="205" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="10.5" font-weight="600">Dependency Graph (DAG) Execution:</text>
+    <text x="32" y="224" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">1. Compiles Solidity (solc) to bytecode.</text>
+    <text x="32" y="242" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">2. Tracks on-chain deployment journal.</text>
+    <text x="32" y="260" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">3. Recovers gracefully if transactions drop or fail.</text>
+
+    <!-- Shared Volume Box -->
+    <text x="20" y="305" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">Artifacts Synchronization via Docker Volumes</text>
+
+    <rect x="20" y="322" width="310" height="175" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="344" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">SHARED FILE PIPELINE</text>
+
+    <!-- Shared Volume Container 1 -->
+    <rect x="30" y="358" width="290" height="28" rx="4" fill="#1e293b" />
+    <text x="38" y="376" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10">/app/artifacts (ABIs &amp; Bytecode)</text>
+
+    <line x1="175" y1="386" x2="175" y2="398" stroke="#64748b" stroke-width="1.2" marker-end="url(#arrowCyan)" />
+
+    <!-- Shared Volume Container 2 -->
+    <rect x="30" y="400" width="290" height="28" rx="4" fill="#1e293b" stroke="#34d399" stroke-width="1" />
+    <text x="38" y="418" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10">/app/typechain-types (TypeScript)</text>
+
+    <text x="32" y="448" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">Mounted into frontend dApp container in real-time.</text>
+    <text x="32" y="466" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">Frontend receives immediate ABI type-safety</text>
+    <text x="32" y="484" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">without manual file copying or out-of-sync ABIs.</text>
+
+    <!-- Custom Tasks Card -->
+    <rect x="20" y="515" width="310" height="125" rx="6" fill="#091e17" stroke="#10b981" stroke-width="1" />
+    <text x="32" y="537" fill="#34d399" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">AUTOMATED FAUCET TASK</text>
+    <rect x="30" y="550" width="290" height="34" rx="4" fill="#052e16" />
+    <text x="38" y="571" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="9.5">npx hardhat faucet --to 0x... --amount 100</text>
+    <text x="32" y="605" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">Directly funds MetaMask test accounts with tokens,</text>
+    <text x="32" y="622" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">bypassing slow manual transfers or CLI scripts.</text>
+  </g>
+
+  <!-- PANEL 3: Frontend dApp, Viem & MetaMask (Right Column, x=795, w=345) -->
+  <g transform="translate(795, 95)">
+    <rect width="345" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Header Badge -->
+    <rect x="20" y="20" width="220" height="26" rx="6" fill="#7c3aed" fill-opacity="0.3" stroke="#a855f7" stroke-width="1" />
+    <text x="30" y="37" fill="#c084fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">PANEL 3 · VIEM &amp; METAMASK</text>
+
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">Frontend &amp; Wallet Bridge</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Vite React App (Port 5173) connecting to Node</text>
+
+    <!-- Viem Integration Box -->
+    <rect x="20" y="106" width="305" height="155" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="128" fill="#c084fc" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">VIEM MODERN WEB3 CLIENT</text>
+
+    <rect x="30" y="142" width="285" height="42" rx="4" fill="#1e293b" />
+    <text x="38" y="160" fill="#c084fc" font-family="'JetBrains Mono', monospace" font-size="9.5">createPublicClient({ transport: http() })</text>
+    <text x="38" y="174" fill="#c084fc" font-family="'JetBrains Mono', monospace" font-size="9.5">createWalletClient({ transport: custom() })</text>
+
+    <text x="32" y="205" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">• Lightweight, tree-shakeable alternative to Ethers.js.</text>
+    <text x="32" y="222" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">• Strict TypeScript ABI typing inference.</text>
+    <text x="32" y="240" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">• 4x faster bundle parsing and zero dependency bloat.</text>
+
+    <!-- MetaMask Configuration Box -->
+    <text x="20" y="285" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">Host MetaMask Wallet Setup</text>
+
+    <rect x="20" y="300" width="305" height="175" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="322" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">CUSTOM LOCAL NETWORK CONFIG</text>
+
+    <text x="32" y="345" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10.5">Network Name: <tspan fill="#38bdf8">Localhost 31337</tspan></text>
+    <text x="32" y="365" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10.5">RPC URL: <tspan fill="#34d399">http://localhost:8545</tspan></text>
+    <text x="32" y="385" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10.5">Chain ID: <tspan fill="#fbbf24">31337</tspan></text>
+    <text x="32" y="405" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10.5">Currency Symbol: <tspan fill="#f8fafc">ETH</tspan></text>
+
+    <text x="32" y="435" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Browser on host machine communicates with</text>
+    <text x="32" y="452" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Docker-forwarded port 8545 via HTTP JSON-RPC.</text>
+
+    <!-- CI/CD & Gas Profiling Box -->
+    <rect x="20" y="495" width="305" height="145" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <text x="32" y="517" fill="#a5b4fc" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">CI/CD &amp; GAS PROFILING PIPELINE</text>
+    
+    <text x="32" y="538" fill="#e0e7ff" font-family="'JetBrains Mono', monospace" font-size="9.5">hardhat test --reporter gas</text>
+    <text x="32" y="556" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">• Automated gas regressions caught before PR merge.</text>
+    <text x="32" y="574" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">• Headless Docker execution runs identically in CI.</text>
+    <text x="32" y="592" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">• Zero host Node.js version discrepancies.</text>
+    <text x="32" y="618" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">Repeatable, deterministic smart contract lifecycle.</text>
+  </g>
+
+  <!-- Author Attribution Footer -->
+  <text x="600" y="792" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
+</svg>

@@ -104,6 +104,6 @@ Reworked from collected repository notes. The mechanisms above were checked agai
 
 **Related:**
 - [Project Detroit and Polyglot Runtimes](Project-Detroit-Java-Polyglot-Runtimes-Nov-2026.md) — Extends the discussion to native language runtimes and interoperation boundaries.
-- [Java Remote Debugging](Java_remote_debug.md) — Explains how to inspect JVM behavior while diagnosing an extension host.
+- [Java-Remote-Debugging-JDWP-And-Troubleshooting-2026](Java-Remote-Debugging-JDWP-And-Troubleshooting-2026.md) — Explains how to inspect JVM behavior while diagnosing an extension host.
 - [Workflow Orchestration](../Middleware/workflow-orchestration.md) — Covers durable coordination when extensions become independently deployed workers.
 - [Kafka 4.0](../Middleware/Kafka-4.0-KRaft-Architecture-And-Migration-2026.md) — Provides an example of a JVM platform with brokers, clients and extensible integration components.

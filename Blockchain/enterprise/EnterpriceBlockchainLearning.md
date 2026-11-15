@@ -117,5 +117,5 @@ This roadmap is engineered to move you from theoretical understanding to product
 
 **Related:**
 - [Hardhat-Development](../ethereum/Hardhat-Development.md) — Bridges the enterprise Solidity/Quorum path to the canonical Hardhat local-development workflow.
-- [Ethereum-hardhat-docker](../ethereum/Ethereum-hardhat-docker.md) — Reinforces the Docker/Kubernetes toolchain requirement with a concrete containerized Hardhat stack.
+- [Ethereum-Hardhat-Docker-Environment-2026](../ethereum/Ethereum-Hardhat-Docker-Environment-2026.md) — Reinforces the Docker/Kubernetes toolchain requirement with a concrete containerized Hardhat stack.
 - [BlockchainLayers](../reference/BlockchainLayers.md) — Anchors the consensus and CAP-theorem discussion in the layered L0-L3 architectural model.

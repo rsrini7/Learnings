@@ -1,0 +1,209 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowEmerald" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#34d399" />
+    </marker>
+    <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#fbbf24" />
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Title & Header -->
+  <g transform="translate(60, 45)">
+    <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.5px">microGPT Architecture: End-to-End Scalar Tensor Flow</text>
+    <text x="0" y="24" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Character Embeddings, Pre-RMSNorm, Multi-Head Causal Attention, MLP Blocks, and Pure-Python Autograd</text>
+  </g>
+
+  <!-- PANEL 1: Embeddings & Attention Projections (Left Column, x=60, w=345) -->
+  <g transform="translate(60, 95)">
+    <rect width="345" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Header Badge -->
+    <rect x="20" y="20" width="210" height="26" rx="6" fill="#0369a1" fill-opacity="0.3" stroke="#0ea5e9" stroke-width="1" />
+    <text x="30" y="37" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">PANEL 1 · EMBEDDINGS &amp; QKV</text>
+
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">Token Input to QKV Vectors</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Vocab V=27, Dim d=16, 4 Heads (d_k=4)</text>
+
+    <!-- Tokenizer & Embedding Box -->
+    <g transform="translate(20, 106)">
+      <rect x="0" y="0" width="305" height="48" rx="6" fill="#0f172a" stroke="#0ea5e9" stroke-width="1.2" />
+      <text x="12" y="20" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">1. Character Tokenizer (BOS + a-z)</text>
+      <text x="12" y="38" fill="#cbd5e1" font-family="'JetBrains Mono', monospace" font-size="10">"emma" ──► [26, 4, 12, 12, 0, 26] (IDs)</text>
+
+      <line x1="152" y1="48" x2="152" y2="62" stroke="#0ea5e9" stroke-width="1.5" marker-end="url(#arrowCyan)" />
+
+      <!-- Embedding Combination -->
+      <rect x="0" y="64" width="305" height="70" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.2" />
+      <text x="12" y="84" fill="#34d399" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">2. Dual Embeddings (Wte + Wpe)</text>
+      <text x="12" y="102" fill="#cbd5e1" font-family="'JetBrains Mono', monospace" font-size="10">Wte[id] (27×16) + Wpe[pos] (T×16)</text>
+      <text x="12" y="120" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Combined token vector x ∈ R¹⁶ per character</text>
+
+      <line x1="152" y1="134" x2="152" y2="148" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowCyan)" />
+
+      <!-- RMSNorm Block -->
+      <rect x="0" y="150" width="305" height="65" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1.2" />
+      <text x="12" y="170" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">3. Pre-RMSNorm Normalization</text>
+      <text x="12" y="188" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="10">x_norm = x / √(mean(x²) + ε)</text>
+      <text x="12" y="204" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">Zero learnable scale/shift; stabilizes forward pass</text>
+    </g>
+
+    <!-- QKV Linear Projections Box -->
+    <text x="20" y="340" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">Linear QKV Transformations</text>
+
+    <rect x="20" y="356" width="305" height="150" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="378" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">PROJECTIONS: W_Q, W_K, W_V ∈ R¹⁶ˣ¹⁶</text>
+
+    <!-- Q Projection -->
+    <rect x="30" y="390" width="285" height="30" rx="4" fill="#1e293b" />
+    <text x="38" y="409" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">Q = x_norm @ W_q</text>
+    <text x="165" y="409" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Query: "What to find?"</text>
+
+    <!-- K Projection -->
+    <rect x="30" y="426" width="285" height="30" rx="4" fill="#1e293b" />
+    <text x="38" y="445" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">K = x_norm @ W_k</text>
+    <text x="165" y="445" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Key: "What info I have"</text>
+
+    <!-- V Projection -->
+    <rect x="30" y="462" width="285" height="30" rx="4" fill="#1e293b" />
+    <text x="38" y="481" fill="#fbbf24" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">V = x_norm @ W_v</text>
+    <text x="165" y="481" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Value: "Content to share"</text>
+
+    <!-- Multi-head split info -->
+    <rect x="20" y="520" width="305" height="118" rx="6" fill="#091824" stroke="#0ea5e9" stroke-width="1" />
+    <text x="32" y="542" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">MULTI-HEAD DECOMPOSITION</text>
+    <text x="32" y="562" fill="#cbd5e1" font-family="'JetBrains Mono', monospace" font-size="10.5">n_heads = 4, head_dim = d_k = 4</text>
+    <text x="32" y="582" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Each head independently computes dot-product</text>
+    <text x="32" y="598" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">attention across sub-vectors of dimension 4,</text>
+    <text x="32" y="614" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">capturing 4 distinct relational patterns.</text>
+  </g>
+
+  <!-- PANEL 2: Attention & MLP Blocks (Middle Column, x=425, w=350) -->
+  <g transform="translate(425, 95)">
+    <rect width="350" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Header Badge -->
+    <rect x="20" y="20" width="215" height="26" rx="6" fill="#047857" fill-opacity="0.3" stroke="#10b981" stroke-width="1" />
+    <text x="30" y="37" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">PANEL 2 · ATTENTION &amp; MLP</text>
+
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">Transformer Layer Processing</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Causal Attention, KV-Cache, and MLP Expansion</text>
+
+    <!-- Causal Attention Box -->
+    <rect x="20" y="106" width="310" height="175" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="128" fill="#34d399" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">CAUSAL ATTENTION WITHOUT MASK MATRIX</text>
+
+    <rect x="30" y="142" width="290" height="42" rx="4" fill="#1e293b" />
+    <text x="38" y="162" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10">Attn = Softmax(Q @ K.T / √d_k) @ V</text>
+    <text x="38" y="176" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">Scaling factor: 1/√4 = 0.5 prevents gradient saturation</text>
+
+    <!-- Structural Causality -->
+    <text x="32" y="205" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="10.5" font-weight="600">Structural Causality via Growing KV List:</text>
+    <text x="32" y="222" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">Token t only computes dot-product with tokens 0..t.</text>
+    <text x="32" y="238" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Future tokens are not yet appended to Python lists,</text>
+    <text x="32" y="254" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">eliminating the need for upper-triangular masking.</text>
+
+    <!-- Residual 1 Box -->
+    <rect x="20" y="292" width="310" height="42" rx="6" fill="#091e17" stroke="#10b981" stroke-width="1" />
+    <text x="32" y="312" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700">Residual 1: x = x + Attn_Proj(x_norm)</text>
+    <text x="32" y="326" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">Direct residual highway preserves gradient flow.</text>
+
+    <!-- MLP Block Box -->
+    <text x="20" y="356" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">Feed-Forward MLP (16 → 64 → 16)</text>
+
+    <rect x="20" y="372" width="310" height="175" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="394" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">EXPANSION &amp; RELU ACTIVATION</text>
+
+    <!-- Layer 1: Expansion -->
+    <rect x="30" y="408" width="290" height="32" rx="4" fill="#1e293b" />
+    <text x="38" y="428" fill="#fbbf24" font-family="'JetBrains Mono', monospace" font-size="10">FC1: 16 → 64 dims</text>
+    <text x="175" y="428" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">W_fc1 (16×64), b_fc1</text>
+
+    <!-- Activation -->
+    <text x="38" y="456" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="10">h = ReLU(FC1) = max(0, FC1)</text>
+
+    <!-- Layer 2: Compression -->
+    <rect x="30" y="468" width="290" height="32" rx="4" fill="#1e293b" />
+    <text x="38" y="488" fill="#fbbf24" font-family="'JetBrains Mono', monospace" font-size="10">FC2: 64 → 16 dims</text>
+    <text x="175" y="488" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">W_fc2 (64×16), b_fc2</text>
+
+    <text x="32" y="518" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">4× hidden expansion creates non-linear capacity.</text>
+    <text x="32" y="534" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">Pure scalar autograd tracks 2,112 MLP parameters.</text>
+
+    <!-- Residual 2 Box -->
+    <rect x="20" y="558" width="310" height="42" rx="6" fill="#091e17" stroke="#10b981" stroke-width="1" />
+    <text x="32" y="578" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700">Residual 2: x = x + MLP(RMSNorm(x))</text>
+    <text x="32" y="592" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">Final enriched representation ready for LM Head.</text>
+  </g>
+
+  <!-- PANEL 3: LM Head, Loss, & Autograd (Right Column, x=795, w=345) -->
+  <g transform="translate(795, 95)">
+    <rect width="345" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Header Badge -->
+    <rect x="20" y="20" width="220" height="26" rx="6" fill="#7c3aed" fill-opacity="0.3" stroke="#a855f7" stroke-width="1" />
+    <text x="30" y="37" fill="#c084fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">PANEL 3 · AUTOGRAD &amp; ADAM</text>
+
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">Logits, Loss &amp; Backward Pass</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Pure-Python Scalar Backpropagation</text>
+
+    <!-- LM Head & Softmax Box -->
+    <rect x="20" y="106" width="305" height="155" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="128" fill="#c084fc" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">LM HEAD &amp; CROSS-ENTROPY LOSS</text>
+
+    <text x="32" y="150" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="10">Logits: z = x @ W_lm.T  (16 → 27)</text>
+    <text x="32" y="170" fill="#c084fc" font-family="'JetBrains Mono', monospace" font-size="10">P(c) = exp(z_c) / Σ exp(z_i)</text>
+
+    <rect x="30" y="184" width="285" height="34" rx="4" fill="#1e293b" />
+    <text x="38" y="204" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="10">Loss L = -log(P(target_char))</text>
+
+    <text x="32" y="235" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">Measures surprise; driving signal for autograd.</text>
+    <text x="32" y="250" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">Exact negative log-likelihood computed per character.</text>
+
+    <!-- Autograd Engine DAG Box -->
+    <text x="20" y="285" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">Custom Scalar Autograd Engine</text>
+
+    <rect x="20" y="300" width="305" height="175" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="322" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">COMPUTATIONAL GRAPH &amp; CHAIN RULE</text>
+
+    <rect x="30" y="336" width="285" height="46" rx="4" fill="#1e293b" />
+    <text x="38" y="354" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="9.5">class Value:</text>
+    <text x="38" y="370" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="9.5">  def __init__(self, data, _children):</text>
+
+    <text x="32" y="400" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">1. Forward pass builds directed acyclic graph (DAG).</text>
+    <text x="32" y="416" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">2. loss.backward() performs reverse topological sort.</text>
+    <text x="32" y="432" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">3. Accumulates gradients: v.grad += child.grad * d_op.</text>
+    <text x="32" y="448" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">No PyTorch, NumPy, or C extensions required.</text>
+
+    <!-- Parameter Count & Adam -->
+    <rect x="20" y="490" width="305" height="152" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <text x="32" y="512" fill="#a5b4fc" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">PARAMETER AUDIT: 4,192 SCALARS</text>
+    
+    <text x="32" y="534" fill="#e0e7ff" font-family="'JetBrains Mono', monospace" font-size="10">• Wte: 27×16 = 432 | Wpe: 16×16 = 256</text>
+    <text x="32" y="552" fill="#e0e7ff" font-family="'JetBrains Mono', monospace" font-size="10">• Attn: 3×(16×16) + 16×16 = 1,024</text>
+    <text x="32" y="570" fill="#e0e7ff" font-family="'JetBrains Mono', monospace" font-size="10">• MLP: 16×64 + 64 + 64×16 + 16 = 2,128</text>
+    <text x="32" y="588" fill="#e0e7ff" font-family="'JetBrains Mono', monospace" font-size="10">• LM Head: 16×27 = 432 (shared or tied)</text>
+
+    <text x="32" y="618" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">Adam updates m_t and v_t moments across all 4,192.</text>
+    <text x="32" y="632" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">Trains from scratch on CPU in ~30 seconds.</text>
+  </g>
+
+  <!-- Author Attribution Footer -->
+  <text x="600" y="792" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
+</svg>

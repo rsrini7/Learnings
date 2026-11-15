@@ -1,0 +1,210 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowEmerald" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#34d399" />
+    </marker>
+    <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#fbbf24" />
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Title & Header -->
+  <g transform="translate(60, 45)">
+    <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.5px">The Ralph Autonomous Agent Loop: Filesystem-as-Memory Architecture</text>
+    <text x="0" y="24" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Decoupled Outer Bash Loops, Context Window Economics, Test Gate Convergence, and Circuit Breakers</text>
+  </g>
+
+  <!-- PANEL 1: Context Window Economics & Memory (Left Column, x=60, w=345) -->
+  <g transform="translate(60, 95)">
+    <rect width="345" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Header Badge -->
+    <rect x="20" y="20" width="190" height="26" rx="6" fill="#0369a1" fill-opacity="0.3" stroke="#0ea5e9" stroke-width="1" />
+    <text x="30" y="37" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">PANEL 1 · MEMORY &amp; TOKENS</text>
+
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">Filesystem vs In-Memory Context</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Replacing volatile chat history with persistent disk state</text>
+
+    <!-- Token Curve Comparison Box -->
+    <rect x="20" y="106" width="305" height="175" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="128" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">TOKEN ACCUMULATION OVER N ITERATIONS</text>
+
+    <!-- Visual Chart -->
+    <g transform="translate(45, 140)">
+      <line x1="0" y1="95" x2="220" y2="95" stroke="#475569" stroke-width="1.2" marker-end="url(#arrowCyan)" />
+      <line x1="0" y1="95" x2="0" y2="10" stroke="#475569" stroke-width="1.2" />
+      <text x="225" y="99" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="9">Turns</text>
+      <text x="-5" y="8" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="9">Cost</text>
+
+      <!-- Monolithic Multi-turn: O(N^2) Curve (Red/Rose) -->
+      <path d="M 0 95 Q 80 85, 140 45 T 200 15" fill="none" stroke="#f43f5e" stroke-width="2" />
+      <text x="110" y="30" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="10">O(N²) Monolithic Chat</text>
+
+      <!-- Ralph Loop: O(N) Linear Bounded Curve (Emerald) -->
+      <line x1="0" y1="95" x2="200" y2="55" stroke="#34d399" stroke-width="2" stroke-dasharray="3,2" />
+      <text x="110" y="75" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10">O(N) Ralph Loop</text>
+    </g>
+
+    <text x="32" y="260" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10.5">Monolithic sessions re-send history on every tool call.</text>
+    <text x="32" y="275" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Ralph resets context per turn: cost remains flat &amp; bounded.</text>
+
+    <!-- Filesystem Memory Layers Box -->
+    <text x="20" y="305" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">The 4 Filesystem Memory Artifacts</text>
+
+    <rect x="20" y="322" width="305" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="342" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">1. prompt.md (Specification)</text>
+    <text x="32" y="360" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10.5">Static definition of Done, constraints, and test commands.</text>
+
+    <rect x="20" y="382" width="305" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="402" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">2. progress.txt (Scratchpad)</text>
+    <text x="32" y="420" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10.5">Appends completed steps and current blocking issues.</text>
+
+    <rect x="20" y="442" width="305" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="462" fill="#fbbf24" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">3. Git Log (State History)</text>
+    <text x="32" y="480" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10.5">Atomic commits preserve rollback points across iterations.</text>
+
+    <rect x="20" y="502" width="305" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="522" fill="#a855f7" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">4. Code &amp; Test Suite</text>
+    <text x="32" y="540" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10.5">Ground-truth state inspected via grep/view on boot.</text>
+
+    <!-- Paradigm Summary Card -->
+    <rect x="20" y="570" width="305" height="70" rx="6" fill="#091824" stroke="#0ea5e9" stroke-width="1" />
+    <text x="32" y="590" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">CORE ARCHITECTURAL PHILOSOPHY</text>
+    <text x="32" y="608" fill="#cbd5e1" font-family="'JetBrains Mono', monospace" font-size="10.5">State = Filesystem | Execution = Stateless</text>
+    <text x="32" y="626" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Failures are informative signals about missing test specs.</text>
+  </g>
+
+  <!-- PANEL 2: Outer-Inner Loop & Test Gating (Middle Column, x=425, w=350) -->
+  <g transform="translate(425, 95)">
+    <rect width="350" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Header Badge -->
+    <rect x="20" y="20" width="235" height="26" rx="6" fill="#047857" fill-opacity="0.3" stroke="#10b981" stroke-width="1" />
+    <text x="30" y="37" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">PANEL 2 · HARNESS &amp; TEST GATES</text>
+
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">The Outer Harness Loop</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Bash supervisory control wrapping agent invocations</text>
+
+    <!-- Execution Cycle Flowchart -->
+    <g transform="translate(20, 106)">
+      <!-- Stage 1: Bash Outer Loop Entry -->
+      <rect x="0" y="0" width="310" height="46" rx="6" fill="#0f172a" stroke="#0ea5e9" stroke-width="1.2" />
+      <text x="14" y="20" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">while [ $i -lt $MAX_ITER ]; do</text>
+      <text x="14" y="36" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Check timeout &amp; clean working tree checkpoint</text>
+
+      <line x1="155" y1="46" x2="155" y2="60" stroke="#0ea5e9" stroke-width="1.5" marker-end="url(#arrowCyan)" />
+
+      <!-- Stage 2: Claude Code Launch -->
+      <rect x="0" y="62" width="310" height="54" rx="6" fill="#0f172a" stroke="#34d399" stroke-width="1.2" />
+      <text x="14" y="82" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">claude -p "prompt.md" &lt; /dev/null</text>
+      <text x="14" y="98" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">Agent executes tools: View, Edit, Bash, Glob</text>
+      <text x="14" y="110" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">Modifies files, updates progress.txt, exits cleanly</text>
+
+      <line x1="155" y1="116" x2="155" y2="130" stroke="#34d399" stroke-width="1.5" marker-end="url(#arrowCyan)" />
+
+      <!-- Stage 3: External Test Verification Gate -->
+      <rect x="0" y="132" width="310" height="56" rx="6" fill="#0f172a" stroke="#fbbf24" stroke-width="1.2" />
+      <text x="14" y="152" fill="#fbbf24" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">run_tests() &amp;&amp; run_linter()</text>
+      <text x="14" y="168" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">Objective verification: pytest / npm test</text>
+      <text x="14" y="180" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">External harness inspects real Linux exit code ($?)</text>
+
+      <line x1="155" y1="188" x2="155" y2="202" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowCyan)" />
+
+      <!-- Stage 4: Decision Fork -->
+      <rect x="0" y="204" width="310" height="68" rx="6" fill="#0f172a" stroke="#a855f7" stroke-width="1.2" />
+      <text x="14" y="224" fill="#a855f7" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">Convergence Evaluation</text>
+      <text x="14" y="242" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10">Exit Code == 0 &amp;&amp; Goal Met ──► BREAK (DONE)</text>
+      <text x="14" y="260" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="10">Exit Code != 0 ──► Git Commit &amp; Next Loop</text>
+    </g>
+
+    <!-- Harness Safety Features Box -->
+    <text x="20" y="405" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">Harness Guardrails &amp; Fencing</text>
+
+    <rect x="20" y="420" width="310" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="440" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">1. Clean Git Isolation</text>
+    <text x="32" y="458" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Run inside a dedicated worktree; auto-revert if regression.</text>
+
+    <rect x="20" y="480" width="310" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="500" fill="#34d399" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">2. Hard Timeout Per Turn</text>
+    <text x="32" y="518" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Kill hung tool processes (e.g. timeout 300s claude).</text>
+
+    <rect x="20" y="540" width="310" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="560" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">3. Non-Interactive stdin</text>
+    <text x="32" y="578" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Redirect &lt; /dev/null to prevent agent waiting on prompts.</text>
+
+    <rect x="20" y="600" width="310" height="42" rx="6" fill="#091e17" stroke="#10b981" stroke-width="1" />
+    <text x="32" y="625" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10.5">Sentinel File: touch .completed_successfully</text>
+  </g>
+
+  <!-- PANEL 3: Failure Modes & Circuit Breakers (Right Column, x=795, w=345) -->
+  <g transform="translate(795, 95)">
+    <rect width="345" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Header Badge -->
+    <rect x="20" y="20" width="220" height="26" rx="6" fill="#be123c" fill-opacity="0.3" stroke="#f43f5e" stroke-width="1" />
+    <text x="30" y="37" fill="#fb7185" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">PANEL 3 · RUNAWAY MITIGATION</text>
+
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">Failure Modes &amp; Thrashing</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Autonomous loop pathology and defensive circuits</text>
+
+    <!-- Pathologies Box -->
+    <rect x="20" y="106" width="305" height="205" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="128" fill="#f43f5e" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">COMMON AUTONOMOUS FAILURE MODES</text>
+
+    <!-- Failure 1 -->
+    <text x="32" y="150" fill="#fb7185" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">1. Hallucinatory Thrashing</text>
+    <text x="32" y="165" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Iter 3 reverts Iter 2's fix; Iter 4 re-applies it.</text>
+    <text x="32" y="178" fill="#64748b" font-family="-apple-system, sans-serif" font-size="9.5">Symptom: Git commit oscillation without progress.</text>
+
+    <!-- Failure 2 -->
+    <text x="32" y="200" fill="#fb7185" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">2. Test Suite Subversion</text>
+    <text x="32" y="215" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Agent deletes or mocks failing assertions to pass gate.</text>
+    <text x="32" y="228" fill="#64748b" font-family="-apple-system, sans-serif" font-size="9.5">Defense: Set read-only permissions on test dir.</text>
+
+    <!-- Failure 3 -->
+    <text x="32" y="250" fill="#fb7185" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">3. Non-Convergent Exploration</text>
+    <text x="32" y="265" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Open-ended goals trigger endless architecture rewrites.</text>
+    <text x="32" y="278" fill="#64748b" font-family="-apple-system, sans-serif" font-size="9.5">Defense: Strict iteration caps (10-20 loops).</text>
+
+    <!-- Circuit Breaker Matrix -->
+    <text x="20" y="335" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">Harness Circuit Breakers</text>
+
+    <rect x="20" y="350" width="305" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="370" fill="#38bdf8" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">Write-Protect Tests</text>
+    <text x="32" y="388" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="9.5">chmod -R 555 tests/  (Read + Execute only)</text>
+
+    <rect x="20" y="410" width="305" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="430" fill="#34d399" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">Oscillation Detection</text>
+    <text x="32" y="448" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Detect repeated git diff hashes and abort loop.</text>
+
+    <rect x="20" y="470" width="305" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="490" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">Hard Cost / Iteration Cap</text>
+    <text x="32" y="508" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Halt at N=20; human review required before resume.</text>
+
+    <!-- Economic Takeaway -->
+    <rect x="20" y="535" width="305" height="105" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <text x="32" y="555" fill="#a5b4fc" font-family="-apple-system, sans-serif" font-size="11" font-weight="700">OPERATIONAL TAKEAWAY</text>
+    <text x="32" y="574" fill="#e0e7ff" font-family="-apple-system, sans-serif" font-size="10.5">"Deterministically bad in an undeterministic world"</text>
+    <text x="32" y="594" fill="#cbd5e1" font-family="-apple-system, sans-serif" font-size="10">Ralph will relentlessly optimize for the exact metric you set.</text>
+    <text x="32" y="612" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="9.5">Flawed assertions produce flawlessly broken code.</text>
+  </g>
+
+  <!-- Author Attribution Footer -->
+  <text x="600" y="792" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
+</svg>

@@ -1,0 +1,255 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Filters for subtle glow -->
+    <filter id="glowCyan" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#fbbf24" />
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Title & Header -->
+  <g transform="translate(60, 45)">
+    <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.5px">Quantum Computing State Mechanics &amp; Information Architecture</text>
+    <text x="0" y="24" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">Hilbert Space Geometry, Bloch Sphere Dynamics, Two-Qubit Entanglement, and Decoherence Thresholds</text>
+  </g>
+
+  <!-- PANEL 1: Single Qubit & Bloch Sphere (Left Column, x=60, w=345) -->
+  <g transform="translate(60, 95)">
+    <rect width="345" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+    
+    <!-- Header Badge -->
+    <rect x="20" y="20" width="180" height="26" rx="6" fill="#0369a1" fill-opacity="0.3" stroke="#0ea5e9" stroke-width="1" />
+    <text x="30" y="37" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">PANEL 1 · BLOCH SPHERE</text>
+    
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">Two-Level Hilbert Space (H2)</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Superposition state in spherical coordinates:</text>
+
+    <!-- State Formula Card -->
+    <rect x="20" y="104" width="305" height="52" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="30" y="127" fill="#38bdf8" font-family="'JetBrains Mono', Consolas, monospace" font-size="10.5" font-weight="600">|ψ⟩ = cos(θ/2)|0⟩ + e^(iφ)sin(θ/2)|1⟩</text>
+    <text x="30" y="145" fill="#94a3b8" font-family="'JetBrains Mono', Consolas, monospace" font-size="9.5">θ ∈ [0, π] (polar), φ ∈ [0, 2π) (azimuthal)</text>
+
+    <!-- Bloch Sphere Vector Visualization (Center: 172, 265) -->
+    <g transform="translate(172, 265)">
+      <!-- Sphere Outline -->
+      <circle cx="0" cy="0" r="85" fill="#0b0f19" fill-opacity="0.6" stroke="#475569" stroke-width="1.5" stroke-dasharray="3,3" />
+      <ellipse cx="0" cy="0" rx="85" ry="26" fill="none" stroke="#334155" stroke-width="1.2" stroke-dasharray="2,2" />
+      
+      <!-- Coordinate Axes -->
+      <!-- Z Axis (Vertical) -->
+      <line x1="0" y1="105" x2="0" y2="-105" stroke="#64748b" stroke-width="1.5" marker-end="url(#arrowCyan)" />
+      <text x="8" y="-95" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">|0⟩ (+z)</text>
+      <text x="8" y="105" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">|1⟩ (-z)</text>
+
+      <!-- X Axis (Diagonal forward) -->
+      <line x1="-55" y1="-25" x2="65" y2="30" stroke="#64748b" stroke-width="1.5" />
+      <text x="70" y="35" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="10">+x (|+⟩)</text>
+
+      <!-- Y Axis (Horizontal) -->
+      <line x1="-95" y1="0" x2="95" y2="0" stroke="#64748b" stroke-width="1.5" />
+      <text x="98" y="4" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="10">+y (|+i⟩)</text>
+
+      <!-- State Vector |ψ⟩ -->
+      <line x1="0" y1="0" x2="42" y2="-58" stroke="#38bdf8" stroke-width="2.5" marker-end="url(#arrowCyan)" filter="url(#glowCyan)" />
+      <circle cx="0" cy="0" r="3.5" fill="#38bdf8" />
+      <text x="48" y="-62" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">|ψ⟩</text>
+
+      <!-- Arc for theta and phi -->
+      <path d="M 0 -28 A 28 28 0 0 1 16 -23" fill="none" stroke="#fbbf24" stroke-width="1.2" />
+      <text x="8" y="-32" fill="#fbbf24" font-family="-apple-system, sans-serif" font-size="10">θ</text>
+    </g>
+
+    <!-- Fundamental Gates Box -->
+    <text x="20" y="390" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">Single-Qubit Unitary Rotations (U†U = I)</text>
+    
+    <!-- Gate 1: Pauli-X -->
+    <rect x="20" y="405" width="305" height="48" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="425" fill="#f43f5e" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">X (NOT)</text>
+    <text x="100" y="424" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="11">π-rotation around X axis: |0⟩ ↔ |1⟩</text>
+    <text x="32" y="443" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">Matrix: [[0, 1], [1, 0]] · Bit Flip</text>
+
+    <!-- Gate 2: Pauli-Z -->
+    <rect x="20" y="460" width="305" height="48" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="480" fill="#a855f7" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">Z (Phase)</text>
+    <text x="100" y="479" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="11">π-rotation around Z axis: |1⟩ → -|1⟩</text>
+    <text x="32" y="498" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">Matrix: [[1, 0], [0, -1]] · Phase Flip</text>
+
+    <!-- Gate 3: Hadamard H -->
+    <rect x="20" y="515" width="305" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="535" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">H (Hadamard)</text>
+    <text x="135" y="534" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="11">Superposition creator</text>
+    <text x="32" y="555" fill="#64748b" font-family="'JetBrains Mono', monospace" font-size="10">|0⟩ → (|0⟩+|1⟩)/√2 · (X+Z)/√2 reflection</text>
+
+    <!-- Measurement Rule -->
+    <rect x="20" y="575" width="305" height="65" rx="6" fill="#091824" stroke="#0ea5e9" stroke-width="1" />
+    <text x="32" y="595" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">BORN RULE MEASUREMENT COLLAPSE</text>
+    <text x="32" y="613" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">P(0) = |⟨0|ψ⟩|² = cos²(θ/2); P(1) = sin²(θ/2)</text>
+    <text x="32" y="630" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Projective measurement collapses state irreversibly.</text>
+  </g>
+
+  <!-- PANEL 2: Two-Qubit Entanglement & Bell States (Middle Column, x=425, w=350) -->
+  <g transform="translate(425, 95)">
+    <rect width="350" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Header Badge -->
+    <rect x="20" y="20" width="195" height="26" rx="6" fill="#047857" fill-opacity="0.3" stroke="#10b981" stroke-width="1" />
+    <text x="30" y="37" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">PANEL 2 · ENTANGLEMENT</text>
+
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">Tensor Products &amp; Non-Separability</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Composite 4-dimensional state space: H4 = H2 ⊗ H2</text>
+
+    <!-- Circuit Diagram Card -->
+    <rect x="20" y="104" width="310" height="155" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="125" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">CANONICAL BELL STATE GENERATOR</text>
+
+    <!-- Circuit Wire 1 (Control) -->
+    <text x="32" y="158" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="11">|0⟩ q₀ ───</text>
+    <rect x="95" y="142" width="28" height="24" rx="4" fill="#0369a1" stroke="#38bdf8" />
+    <text x="103" y="159" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="12" font-weight="700">H</text>
+    <line x1="123" y1="154" x2="190" y2="154" stroke="#64748b" stroke-width="1.5" />
+    <circle cx="190" cy="154" r="4.5" fill="#38bdf8" />
+    <line x1="190" y1="154" x2="280" y2="154" stroke="#64748b" stroke-width="1.5" />
+
+    <!-- Control to Target Connection -->
+    <line x1="190" y1="154" x2="190" y2="204" stroke="#38bdf8" stroke-width="2" />
+
+    <!-- Circuit Wire 2 (Target) -->
+    <text x="32" y="208" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="11">|0⟩ q₁ ──────────────</text>
+    <circle cx="190" cy="204" r="10" fill="#0f172a" stroke="#34d399" stroke-width="2" />
+    <line x1="190" y1="196" x2="190" y2="212" stroke="#34d399" stroke-width="2" />
+    <line x1="182" y1="204" x2="198" y2="204" stroke="#34d399" stroke-width="2" />
+    <line x1="200" y1="204" x2="280" y2="204" stroke="#64748b" stroke-width="1.5" />
+
+    <!-- Output State -->
+    <text x="150" y="240" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700">|Φ⁺⟩ = (|00⟩+|11⟩)/√2</text>
+
+    <!-- The 4 Maximally Entangled Bell Basis States -->
+    <text x="20" y="285" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">The Four Orthogonal Bell States</text>
+
+    <!-- Subdivided into 2 columns or stacked cleanly -->
+    <rect x="20" y="300" width="310" height="42" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="325" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700">|Φ⁺⟩ = (|00⟩+|11⟩)/√2</text>
+    <text x="185" y="325" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Correlated (even parity)</text>
+
+    <rect x="20" y="348" width="310" height="42" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="373" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700">|Φ⁻⟩ = (|00⟩-|11⟩)/√2</text>
+    <text x="185" y="373" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Phase-shifted even</text>
+
+    <rect x="20" y="396" width="310" height="42" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="421" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700">|Ψ⁺⟩ = (|01⟩+|10⟩)/√2</text>
+    <text x="185" y="421" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Anti-correlated (odd)</text>
+
+    <rect x="20" y="444" width="310" height="42" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="469" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10.5" font-weight="700">|Ψ⁻⟩ = (|01⟩-|10⟩)/√2</text>
+    <text x="185" y="469" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Singlet state (spin 0)</text>
+
+    <!-- Fundamental Theorem Card (Wrapped) -->
+    <rect x="20" y="500" width="310" height="70" rx="6" fill="#091e17" stroke="#10b981" stroke-width="1" />
+    <text x="32" y="518" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">NO-CLONING THEOREM</text>
+    <text x="32" y="536" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">Unknown states cannot be cloned: U(|ψ⟩|0⟩) ≠ |ψ⟩|ψ⟩</text>
+    <text x="32" y="554" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Direct consequence of unitary operator linearity.</text>
+
+    <!-- Quantum Density Matrix -->
+    <rect x="20" y="578" width="310" height="62" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="598" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">DENSITY MATRIX &amp; PURITY</text>
+    <text x="32" y="615" fill="#fbbf24" font-family="'JetBrains Mono', monospace" font-size="10">ρ = Σ pᵢ |ψᵢ⟩⟨ψᵢ| · Tr(ρ) = 1</text>
+    <text x="32" y="631" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Tr(ρ²) = 1 (Pure State) | Tr(ρ²) &lt; 1 (Mixed State)</text>
+  </g>
+
+  <!-- PANEL 3: Decoherence, T1/T2, & DiVincenzo Bounds (Right Column, x=795, w=345) -->
+  <g transform="translate(795, 95)">
+    <rect width="345" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+
+    <!-- Header Badge -->
+    <rect x="20" y="20" width="230" height="26" rx="6" fill="#b45309" fill-opacity="0.3" stroke="#f59e0b" stroke-width="1" />
+    <text x="30" y="37" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">PANEL 3 · DECOHERENCE LAWS</text>
+
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">Decoherence &amp; Hardware Bounds</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Quantum relaxation times governing execution budgets</text>
+
+    <!-- T1 and T2 Decay Curves Box -->
+    <rect x="20" y="104" width="305" height="155" rx="8" fill="#0f172a" stroke="#1e293b" />
+    <text x="32" y="125" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">COHERENCE LIMITS: T1 vs T2</text>
+
+    <!-- Visual Decay Curve -->
+    <g transform="translate(45, 135)">
+      <!-- Axes -->
+      <line x1="0" y1="80" x2="220" y2="80" stroke="#475569" stroke-width="1.2" marker-end="url(#arrowAmber)" />
+      <line x1="0" y1="80" x2="0" y2="10" stroke="#475569" stroke-width="1.2" />
+      <text x="225" y="84" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="9">Time (t)</text>
+      <text x="-5" y="8" fill="#94a3b8" font-family="'JetBrains Mono', monospace" font-size="9">Fidelity</text>
+
+      <!-- T1 Curve (Energy Decay, Emerald) -->
+      <path d="M 0 15 Q 60 45, 120 65 T 200 78" fill="none" stroke="#34d399" stroke-width="2" />
+      <text x="135" y="55" fill="#34d399" font-family="'JetBrains Mono', monospace" font-size="10">T₁ (Energy)</text>
+
+      <!-- T2 Curve (Dephasing, Cyan) -->
+      <path d="M 0 15 Q 30 50, 70 70 T 150 79" fill="none" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3,2" />
+      <text x="75" y="40" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10">T₂ (Phase)</text>
+    </g>
+    <text x="32" y="242" fill="#fbbf24" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="600">Fundamental Bound: T₂ ≤ 2·T₁</text>
+
+    <!-- DiVincenzo Criteria 5-Point Summary -->
+    <text x="20" y="285" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700">The DiVincenzo Hardware Criteria</text>
+
+    <rect x="20" y="300" width="305" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <circle cx="36" cy="326" r="10" fill="#0284c7" />
+    <text x="33" y="330" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">1</text>
+    <text x="54" y="320" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">Scalable Physical Qubits</text>
+    <text x="54" y="338" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Well-characterized two-level quantum systems</text>
+
+    <rect x="20" y="358" width="305" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <circle cx="36" cy="384" r="10" fill="#0284c7" />
+    <text x="33" y="388" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">2</text>
+    <text x="54" y="378" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">State Initialization</text>
+    <text x="54" y="396" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">High-fidelity reset to fiducial state |00...0⟩</text>
+
+    <rect x="20" y="416" width="305" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <circle cx="36" cy="442" r="10" fill="#0284c7" />
+    <text x="33" y="446" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">3</text>
+    <text x="54" y="436" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">Long Coherence Times</text>
+    <text x="54" y="454" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Decoherence time T₂ &gt;&gt; gate time t_gate</text>
+
+    <rect x="20" y="474" width="305" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <circle cx="36" cy="500" r="10" fill="#0284c7" />
+    <text x="33" y="504" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">4</text>
+    <text x="54" y="494" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">Universal Gate Set</text>
+    <text x="54" y="512" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Clifford group + non-Clifford T (or CNOT + 1Q)</text>
+
+    <rect x="20" y="532" width="305" height="52" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <circle cx="36" cy="558" r="10" fill="#0284c7" />
+    <text x="33" y="562" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">5</text>
+    <text x="54" y="552" fill="#f8fafc" font-family="-apple-system, sans-serif" font-size="11" font-weight="600">Qubit-Specific Measurement</text>
+    <text x="54" y="570" fill="#94a3b8" font-family="-apple-system, sans-serif" font-size="10">Quantum non-demolition single-shot readout</text>
+
+    <!-- Speedup Summary Card (Two lines) -->
+    <rect x="20" y="592" width="305" height="48" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1" />
+    <text x="32" y="611" fill="#a5b4fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="700">Grover Search: O(√N) quadratic speedup</text>
+    <text x="32" y="628" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">Shor Factoring: O((log N)³) exponential speedup</text>
+  </g>
+
+  <!-- Author Attribution Footer -->
+  <text x="600" y="792" fill="#64748b" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
+</svg>

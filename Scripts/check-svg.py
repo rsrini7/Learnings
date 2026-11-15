@@ -196,6 +196,16 @@ def scan_svg_file(filepath: str) -> list:
         elif tag == 'text':
             text = ''.join(node.itertext()).strip()
             if text:
+                fill_val = node.get('fill', '')
+                if any(font_word in fill_val for font_word in ['JetBrains', 'monospace', 'sans-serif', 'Courier', 'Arial', 'Helvetica', 'Times']):
+                    issues.append({
+                        'file': filepath,
+                        'line': 1,
+                        'type': 'SVG Invalid Text Fill Attribute',
+                        'severity': 'CRITICAL',
+                        'snippet': f'text: "{text[:40]}" has fill="{fill_val}"',
+                        'fix_advice': 'The fill attribute contains a font family name instead of a color hex. Use font-family="..." for fonts and fill="#..." for colors.'
+                    })
                 try:
                     tx = float(node.get('x', 0)) + cur_dx
                     ty = float(node.get('y', 0)) + cur_dy
