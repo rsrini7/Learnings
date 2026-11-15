@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 830" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="redCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d151e"/>
+      <stop offset="100%" stop-color="#1f1118"/>
+    </linearGradient>
+    <linearGradient id="greenCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="830" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="600" y="42" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" fill="#f8fafc">Tailwind CSS &amp; Open-Source AI Disruption: The Zero-Click Funnel Collapse</text>
+  <text x="600" y="68" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">The economics of AI-driven code generation, documentation traffic decline, and sustainable OSS models</text>
+
+  <!-- 3 Stages Side-by-Side -->
+
+  <!-- Panel 1: Traditional Funnel -->
+  <g transform="translate(40, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#greenCard)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#047857" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#a7f3d0">1. Pre-AI Documentation Funnel</text>
+    <rect x="250" y="10" width="85" height="20" rx="4" fill="#059669"/>
+    <text x="292" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Sustainable</text>
+
+    <!-- Sub-card 1 -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">High-Traffic Web Documentation</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Developers regularly visit tailwindcss.com</text>
+    <text x="26" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">to look up utility class names and syntax.</text>
+    <text x="26" y="123" font-family="monospace" font-size="9" fill="#10b981">Millions of monthly pageviews</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#10b981" stroke-width="2"/>
+
+    <!-- Sub-card 2 -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Organic Commercial Showcase</text>
+    <text x="26" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Documentation directly funnels users to:</text>
+    <text x="26" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Tailwind UI Component Library</text>
+    <text x="26" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Refactoring UI Design Book</text>
+    <text x="26" y="243" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#a7f3d0">Zero advertising spend; high conversion</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#10b981" stroke-width="2"/>
+
+    <!-- Sub-card 3 -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#a7f3d0">Funded Open-Source Velocity</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Sustains 4-5 full-time core engineers</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Rapid development of Tailwind v3 and v4</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• High community trust and stability</text>
+  </g>
+
+  <!-- Panel 2: The AI Disruption -->
+  <g transform="translate(425, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fca5a5">2. AI-Driven Zero-Click Collapse</text>
+    <rect x="250" y="10" width="85" height="20" rx="4" fill="#dc2626"/>
+    <text x="292" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Disrupted</text>
+
+    <!-- Sub-card 1 -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">AI Assistants Favor Tailwind</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">LLMs (ChatGPT, Claude, Cursor, Copilot)</text>
+    <text x="26" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">output Tailwind utility classes by default.</text>
+    <text x="26" y="123" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fbbf24">Framework usage reaches record all-time high</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card 2 -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">Zero-Click Documentation Bypass</text>
+    <text x="26" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Developers never visit documentation website:</text>
+    <text x="26" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Docs traffic plunges by 40%</text>
+    <text x="26" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Commercial conversion funnel drops to zero</text>
+    <text x="26" y="243" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fca5a5">AI generates components directly in IDE</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card 3 -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">Economic Crisis &amp; Team Layoffs</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Revenue plummets by 80%</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• 75% of engineering team laid off</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Risk of project becoming abandonware</text>
+  </g>
+
+  <!-- Panel 3: llms.txt & Future Models -->
+  <g transform="translate(810, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#0369a1" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#bae6fd">3. The llms.txt Controversy</text>
+    <rect x="250" y="10" width="85" height="20" rx="4" fill="#0284c7"/>
+    <text x="292" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Evolving</text>
+
+    <!-- Sub-card 1 -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">The Rejected llms.txt Pull Request</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Community submits PR to add /llms.txt</text>
+    <text x="26" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">to streamline documentation ingestion for LLMs.</text>
+    <text x="26" y="123" font-family="monospace" font-size="9" fill="#fca5a5">Creator rejects PR: Prioritizing survival</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#38bdf8" stroke-width="2"/>
+
+    <!-- Sub-card 2 -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">Value Extraction Without Reciprocity</text>
+    <text x="26" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">AI vendors profit from automated subscriptions</text>
+    <text x="26" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">while scraping open-source documentation:</text>
+    <text x="26" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Zero click-through attribution</text>
+    <text x="26" y="243" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fca5a5">Zero revenue-share returned to OSS authors</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#38bdf8" stroke-width="2"/>
+
+    <!-- Sub-card 3 -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">The Open-Source Sustainability Crisis</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Broken monetization threatens foundational tooling</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Developers forced back into corporate employment</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Forces transition to closed component registries</text>
+  </g>
+
+  <!-- Bottom Panel: Emerging Sustainable Models -->
+  <g transform="translate(40, 510)" filter="url(#shadow)">
+    <rect width="1120" height="280" rx="10" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="1120" height="40" rx="10" fill="#047857" fill-opacity="0.3"/>
+    <text x="24" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#a7f3d0">Emerging Economic Architectures: Surviving the Post-Documentation Era</text>
+
+    <!-- Sub-panel 1: Crawler Rate Limiting -->
+    <rect x="24" y="55" width="330" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="40" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">1. Edge LLM Bot Mitigation</text>
+    <text x="40" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Cloudflare Workers / Fastify edge filters</text>
+    <text x="40" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Challenge GPTBot, ClaudeBot, and Perplexity</text>
+    <text x="40" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Restrict scraping of documentation APIs</text>
+    <text x="40" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Require authenticated API tokens for bulk sync</text>
+    <rect x="40" y="185" width="298" height="55" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="50" y="205" font-family="monospace" font-size="10" fill="#38bdf8">User-agent: GPTBot / ClaudeBot</text>
+    <text x="50" y="223" font-family="monospace" font-size="10" fill="#38bdf8">Disallow: /docs/api/ /llms.txt</text>
+
+    <!-- Sub-panel 2: Proprietary Component Registries -->
+    <rect x="374" y="55" width="350" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="390" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a78bfa">2. Authenticated Registries (CLI)</text>
+    <text x="390" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Shifting from static docs to CLI-driven distribution</text>
+    <text x="390" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Examples: shadcn/ui registries, Tailwind Plus CLI</text>
+    <text x="390" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• CLI requires user license token to pull templates</text>
+    <text x="390" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Prevents open scraping while aiding developer speed</text>
+    <rect x="390" y="185" width="318" height="55" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="400" y="205" font-family="monospace" font-size="10" fill="#a78bfa">npx tailwind-cli add component --key=TOK</text>
+    <text x="400" y="223" font-family="monospace" font-size="10" fill="#a78bfa">Private package registry with per-seat billing</text>
+
+    <!-- Sub-panel 3: Dual-Licensing & Cloud Services -->
+    <rect x="744" y="55" width="350" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="760" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">3. Cloud &amp; Dual-Licensing Pivot</text>
+    <text x="760" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• BSL / FSL licensing preventing SaaS wrappers</text>
+    <text x="760" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Managed cloud platforms (e.g. Supabase, Vercel)</text>
+    <text x="760" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Direct enterprise support &amp; SLA contracts</text>
+    <text x="760" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• GitHub Sponsors matching programs</text>
+    <rect x="760" y="185" width="318" height="55" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="770" y="205" font-family="monospace" font-size="10" fill="#86efac">Functional Source License (FSL-1.1-Apache)</text>
+    <text x="770" y="223" font-family="monospace" font-size="10" fill="#86efac">Converts to Apache 2.0 after 2 years</text>
+  </g>
+</svg>

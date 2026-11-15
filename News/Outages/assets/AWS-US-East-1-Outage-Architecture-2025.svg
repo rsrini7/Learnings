@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 830" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="redCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d151e"/>
+      <stop offset="100%" stop-color="#1f1118"/>
+    </linearGradient>
+    <linearGradient id="greenCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="830" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="600" y="42" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" fill="#f8fafc">AWS US-East-1 Outage: DWFM DNS Race Condition &amp; Cascading Failure</text>
+  <text x="600" y="68" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">Anatomy of the DynamoDB DNS Enactor race condition, 113-service cascade, and 15-hour recovery tail</text>
+
+  <!-- 3 Stages Side-by-Side -->
+
+  <!-- Panel 1: The Race Condition -->
+  <g transform="translate(40, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fca5a5">1. DWFM DNS Race Condition</text>
+    <rect x="250" y="10" width="85" height="20" rx="4" fill="#ef4444"/>
+    <text x="292" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Root Cause</text>
+
+    <!-- Sub-card 1 -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">DNS Planner Creates Plan v100 &amp; v102</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Planner generates IP endpoint allocations.</text>
+    <text x="26" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Dispatches tasks to independent DNS Enactors.</text>
+    <text x="26" y="123" font-family="monospace" font-size="9.5" fill="#a78bfa">Plan v100 (old IPs) -&gt; Plan v102 (new IPs)</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card 2 -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">Enactor A Delayed, Enactor B Applies v102</text>
+    <text x="26" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Enactor B succeeds: updates Route 53 to v102</text>
+    <text x="26" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Enactor B cleans up plan v100 metadata</text>
+    <text x="26" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Enactor A suffers network packet delay</text>
+    <text x="26" y="243" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fca5a5">Missing monotonic version fence on Enactor A!</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card 3 -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">Stale v100 Overwrites Route 53</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Enactor A finally applies obsolete v100</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Points DynamoDB to decommissioned IPs</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Erases active Route 53 A-records across AZs</text>
+  </g>
+
+  <!-- Panel 2: The Cascading Blast Radius -->
+  <g transform="translate(425, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fca5a5">2. Cascading Platform Collapse</text>
+    <rect x="250" y="10" width="85" height="20" rx="4" fill="#dc2626"/>
+    <text x="292" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">113 Services</text>
+
+    <!-- Sub-card 1 -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">DynamoDB API Errors Hit 100%</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">11:48 PM PDT: DNS resolution fails globally for</text>
+    <text x="26" y="108" font-family="monospace" font-size="9.5" fill="#38bdf8">dynamodb.us-east-1.amazonaws.com</text>
+    <text x="26" y="123" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fca5a5">Millions of clients begin unconstrained retries</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card 2 -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">Internal AWS Infrastructure Failure</text>
+    <text x="26" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Internal control planes depend on DynamoDB:</text>
+    <text x="26" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• EC2 Instance Placement &amp; Launch Queue stalls</text>
+    <text x="26" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Network Load Balancers (NLB) drop health checks</text>
+    <text x="26" y="243" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94a3b8">CloudWatch, Cognito, Redshift, SQS cascade down</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card 3 -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">Global Thundering Herd Storm</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Global customers retry synchronously</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Exhausts CPU and thread pools across fleet</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Multi-region backbones choked by retry storms</text>
+  </g>
+
+  <!-- Panel 3: Recovery & SRE Takeaways -->
+  <g transform="translate(810, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#cardGrad)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#b45309" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fef3c7">3. The 14-Hour Recovery Tail</text>
+    <rect x="270" y="10" width="65" height="20" rx="4" fill="#d97706"/>
+    <text x="302" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">15h Total</text>
+
+    <!-- Sub-card 1 -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#10b981">Root Cause Mitigated: 02:25 AM</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">DNS Planner automation paused; valid Route 53</text>
+    <text x="26" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">records repopulated manually across us-east-1.</text>
+    <text x="26" y="123" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#a7f3d0">DynamoDB core operational after 2h 37m</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#f59e0b" stroke-width="2"/>
+
+    <!-- Sub-card 2 -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">The Backlog Quagmire (02:25 - 14:20)</text>
+    <text x="26" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Recovery delayed by massive system queues:</text>
+    <text x="26" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• EC2 queue: 100k+ deferred instance launches</text>
+    <text x="26" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• NLB controller state resync throttled</text>
+    <text x="26" y="243" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#94a3b8">Took 12+ hours to drain accumulated backlogs</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#f59e0b" stroke-width="2"/>
+
+    <!-- Sub-card 3 -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Economic &amp; Industry Impact</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• 2,500+ enterprises impacted</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Over 11 million user incident reports</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• $581M direct AWS impact; billions downstream</text>
+  </g>
+
+  <!-- Bottom Panel: SRE Engineering Defensive Patterns -->
+  <g transform="translate(40, 510)" filter="url(#shadow)">
+    <rect width="1120" height="280" rx="10" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="1120" height="40" rx="10" fill="#047857" fill-opacity="0.3"/>
+    <text x="24" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#a7f3d0">SRE Engineering Blueprint: Monotonic Fences, Throttling &amp; Anti-Thundering Herd Architecture</text>
+
+    <!-- Sub-panel 1: Monotonic Version Fencing -->
+    <rect x="24" y="55" width="330" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="40" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">1. Monotonic Version Fencing</text>
+    <text x="40" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Distributed workers must carry monotonic fencing tokens</text>
+    <text x="40" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Route 53 state machine rejects updates where:</text>
+    <text x="40" y="140" font-family="monospace" font-size="10.5" fill="#fca5a5">  incoming_token &lt; current_token</text>
+    <text x="40" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Prevents delayed workers from applying stale plans</text>
+    <rect x="40" y="185" width="298" height="55" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="50" y="205" font-family="monospace" font-size="10" fill="#38bdf8">UPDATE dns_state SET version = :v</text>
+    <text x="50" y="223" font-family="monospace" font-size="10" fill="#38bdf8">WHERE zone = :z AND version &lt; :v</text>
+
+    <!-- Sub-panel 2: Throttling & Queue Shedding -->
+    <rect x="374" y="55" width="350" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="390" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a78bfa">2. Queue Shedding &amp; Backpressure</text>
+    <text x="390" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Drop stale retry requests (Time-to-Live bounded queues)</text>
+    <text x="390" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Implement priority lanes for internal control planes</text>
+    <text x="390" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Avoid synchronous blocking on database cold starts</text>
+    <text x="390" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Coordinated omission avoidance in load reporting</text>
+    <rect x="390" y="185" width="318" height="55" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="400" y="205" font-family="monospace" font-size="10" fill="#a78bfa">queue.drop_if_expired(ttl_ms=30000);</text>
+    <text x="400" y="223" font-family="monospace" font-size="10" fill="#a78bfa">rate_limiter.shed_unprivileged_load();</text>
+
+    <!-- Sub-panel 3: Decorrelated Jittered Retries -->
+    <rect x="744" y="55" width="350" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="760" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">3. Decorrelated Jitter Backoff</text>
+    <text x="760" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Mandate decorrelated jitter in all client SDKs</text>
+    <text x="760" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Sleep between base and current * 3</text>
+    <text x="760" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Prevents synchronized spike waves on recovery</text>
+    <text x="760" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Circuit breakers open immediately on 503 cascades</text>
+    <rect x="760" y="185" width="318" height="55" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="770" y="205" font-family="monospace" font-size="10" fill="#86efac">sleep = min(cap, rand(base, sleep * 3))</text>
+    <text x="770" y="223" font-family="monospace" font-size="10" fill="#86efac">circuit_breaker.trip_on_consecutive(5)</text>
+  </g>
+</svg>

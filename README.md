@@ -473,10 +473,10 @@ Learnings/
 - [Ubuntu Server CVE 2026 98432 Kernel UAF And Patch Lag Nov 2026](News/Security/Ubuntu-Server-CVE-2026-98432-Kernel-UAF-And-Patch-Lag-Nov-2026.md)
 
 ### 🚨 Infrastructure & Outages
-- [AWS Outage October 19&20 2025](News/Outages/AWS-Outage-October-19%2620-2025.md)
+- [AWS US East 1 Outage October 2025](News/Outages/AWS-US-East-1-Outage-October-2025.md)
+- [Cloudflare Global Outage ClickHouse Config Nov 2025](News/Outages/Cloudflare-Global-Outage-ClickHouse-Config-Nov-2025.md)
 - [Supabase Outage Feb 2026](News/Outages/Supabase-Outage-Feb-2026.md)
 - [Tailwind Financial Crisis](News/Outages/Tailwind-Financial-Crisis.md)
-- [cloudflare down nov 2025](News/Outages/cloudflare-down-nov-2025.md)
 
 ### 📅 Weekly Updates
 - [Anthropic's Fourth Economic Index Report Jan 2026](News/Weekly-Updates/Anthropic%27s-Fourth-Economic-Index-Report-Jan-2026.md)

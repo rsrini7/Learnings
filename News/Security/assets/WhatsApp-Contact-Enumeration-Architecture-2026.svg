@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 830" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="redCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d151e"/>
+      <stop offset="100%" stop-color="#1f1118"/>
+    </linearGradient>
+    <linearGradient id="greenCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="830" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="600" y="42" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" fill="#f8fafc">WhatsApp 3.5-Billion Account Enumeration Architecture</text>
+  <text x="600" y="68" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">Anatomy of the unthrottled contact discovery protocol, global metadata harvesting, and Private Set Intersection defenses</text>
+
+  <!-- 3 Stages Side-by-Side -->
+
+  <!-- Panel 1: Number Generation & Client Bridge -->
+  <g transform="translate(40, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fca5a5">1. Number Permutation &amp; Tooling</text>
+    <rect x="250" y="10" width="85" height="20" rx="4" fill="#ef4444"/>
+    <text x="292" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Scraping</text>
+
+    <!-- Sub-card 1 -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Global E.164 Number Generation</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Uses Google's libphonenumber to generate</text>
+    <text x="26" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">63 billion phone numbers across 245 countries.</text>
+    <text x="26" y="123" font-family="monospace" font-size="9" fill="#a78bfa">Permutes all valid national dialing ranges</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card 2 -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">Automated whatsmeow Client Engine</text>
+    <text x="26" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Headless Go implementation connecting via:</text>
+    <text x="26" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Noise Protocol handshake over WebSockets</text>
+    <text x="26" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Pipelined binary protobuf query frames</text>
+    <text x="26" y="243" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fca5a5">Speeds exceed 100,000,000 queries / hour / IP</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card 3 -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">Missing Rate Limiting &amp; CAPTCHAs</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Zero IP-based sliding window rate limits</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Zero proof-of-work or CAPTCHA challenges</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Flaw existed continuously in production since 2017</text>
+  </g>
+
+  <!-- Panel 2: Contact Discovery Protocol -->
+  <g transform="translate(425, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fca5a5">2. Contact Discovery (usync)</text>
+    <rect x="250" y="10" width="85" height="20" rx="4" fill="#dc2626"/>
+    <text x="292" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">3.5B Users</text>
+
+    <!-- Sub-card 1 -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">The usync Batch Query Protocol</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Clients sync address books by sending batch arrays</text>
+    <text x="26" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">of phone numbers to WhatsApp edge servers.</text>
+    <text x="26" y="123" font-family="monospace" font-size="9" fill="#38bdf8">&lt;usync mode="query" context="interactive"&gt;</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card 2 -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">Rich Metadata Returns by Default</text>
+    <text x="26" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Server returns complete profile metadata:</text>
+    <text x="26" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Registered status confirmation (3.5B accounts)</text>
+    <text x="26" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• High-resolution profile photo URLs (57%)</text>
+    <text x="26" y="243" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#fca5a5">• Plaintext About/Status bio strings (29%)</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#f87171" stroke-width="2"/>
+
+    <!-- Sub-card 3 -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#450a0a" stroke="#ef4444" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fca5a5">Public Identity Key Exposure</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Business tags exposed for ~9% of user base</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Public cryptographic E2EE identity keys scraped</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fecaca">• Enables correlation across social networks</text>
+  </g>
+
+  <!-- Panel 3: Privacy Risks & Defenses -->
+  <g transform="translate(810, 95)" filter="url(#shadow)">
+    <rect width="350" height="390" rx="10" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#047857" fill-opacity="0.3"/>
+    <text x="20" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#a7f3d0">3. Privacy Impact &amp; Defense</text>
+    <rect x="250" y="10" width="85" height="20" rx="4" fill="#059669"/>
+    <text x="292" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Hardened</text>
+
+    <!-- Sub-card 1 -->
+    <rect x="16" y="55" width="318" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="75" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ef4444">Surveillance &amp; Phishing Risks</text>
+    <text x="26" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Scraped data facilitates weaponization:</text>
+    <text x="26" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Global reverse phone directory generation</text>
+    <text x="26" y="123" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#fca5a5">• State surveillance in restricted regimes (Iran/China)</text>
+
+    <!-- Connector -->
+    <path d="M 175 140 L 175 155" stroke="#10b981" stroke-width="2"/>
+
+    <!-- Sub-card 2 -->
+    <rect x="16" y="155" width="318" height="110" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="26" y="175" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#10b981">Meta Late-2025 Mitigation</text>
+    <text x="26" y="193" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Meta deployed anti-scraping defenses post-disclosure:</text>
+    <text x="26" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Rate limits on usync queries per account &amp; IP</text>
+    <text x="26" y="223" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Progressive verification challenges</text>
+    <text x="26" y="243" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5" fill="#a7f3d0">Responsible deletion verified by research team</text>
+
+    <!-- Connector -->
+    <path d="M 175 265 L 175 280" stroke="#10b981" stroke-width="2"/>
+
+    <!-- Sub-card 3 -->
+    <rect x="16" y="280" width="318" height="95" rx="6" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+    <text x="26" y="300" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Architectural Benchmark: Signal</text>
+    <text x="26" y="318" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Private Set Intersection (PSI) prevents enumeration</text>
+    <text x="26" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Server never learns phone numbers in address book</text>
+    <text x="26" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">• Privacy-by-default vs Opt-out privacy</text>
+  </g>
+
+  <!-- Bottom Panel: Architectural Blueprint -->
+  <g transform="translate(40, 510)" filter="url(#shadow)">
+    <rect width="1120" height="280" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="0" y="0" width="1120" height="40" rx="10" fill="#0369a1" fill-opacity="0.3"/>
+    <text x="24" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#bae6fd">Defensive Engineering Blueprint: Rate Limiting, Private Set Intersection (PSI) &amp; Privacy Defaults</text>
+
+    <!-- Sub-panel 1: Distributed Rate Limiter -->
+    <rect x="24" y="55" width="330" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="40" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">1. Sliding-Window Rate Limiting</text>
+    <text x="40" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Redis Token Bucket on user discovery APIs</text>
+    <text x="40" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Hard limit: max 500 contacts synced per day</text>
+    <text x="40" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Global IP throttling on anonymous connections</text>
+    <text x="40" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Flag sequential prefix enumeration patterns</text>
+    <rect x="40" y="185" width="298" height="55" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="50" y="205" font-family="monospace" font-size="10" fill="#38bdf8">limiter.allow_n(ctx, ip_key, count)</text>
+    <text x="50" y="223" font-family="monospace" font-size="10" fill="#38bdf8">if (!ok) return Status::TooManyRequests</text>
+
+    <!-- Sub-panel 2: Cryptographic PSI -->
+    <rect x="374" y="55" width="350" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="390" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a78bfa">2. Private Set Intersection (PSI)</text>
+    <text x="390" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Client blinds hashed phone numbers with random scalar</text>
+    <text x="390" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Server evaluates intersection over encrypted points</text>
+    <text x="390" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Server never sees contact list or unregistered numbers</text>
+    <text x="390" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Prevents brute-force dictionary attacks</text>
+    <rect x="390" y="185" width="318" height="55" rx="4" fill="#0f172a" stroke="#475569" stroke-width="1"/>
+    <text x="400" y="205" font-family="monospace" font-size="10" fill="#a78bfa">H(phone)^r * H(server_key)</text>
+    <text x="400" y="223" font-family="monospace" font-size="10" fill="#a78bfa">Zero-knowledge contact discovery</text>
+
+    <!-- Sub-panel 3: Privacy Defaults -->
+    <rect x="744" y="55" width="350" height="205" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="760" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">3. Privacy-by-Default Configuration</text>
+    <text x="760" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Default profile photo visibility: "My Contacts"</text>
+    <text x="760" y="120" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Default About bio visibility: "My Contacts"</text>
+    <text x="760" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Never serve high-res images to unmutual numbers</text>
+    <text x="760" y="160" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" fill="#cbd5e1">• Shift burden of protection from user to system</text>
+    <rect x="760" y="185" width="318" height="55" rx="4" fill="#064e3b" stroke="#10b981" stroke-width="1"/>
+    <text x="770" y="205" font-family="monospace" font-size="10" fill="#86efac">profile_photo_scope = CONTACTS_ONLY</text>
+    <text x="770" y="223" font-family="monospace" font-size="10" fill="#86efac">status_text_scope = CONTACTS_ONLY</text>
+  </g>
+</svg>
