@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 830" width="1120" role="img" aria-labelledby="title desc">
+<title id="title">Graph Databases at Scale: Traversal Models, Sharding and Partitioning</title>
+<desc id="desc">Architectural comparison of graph databases at scale. Details index-free adjacency versus distributed sharding, the supernode dilemma, and engine trade-offs.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/></marker></defs>
+<rect width="1120" height="830" rx="16" fill="#0b0f19"/>
+<text x="40" y="44" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#e2e8f0" font-weight="700">Graph Databases: Traversal Models and Distributed Sharding</text>
+<text x="40" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#94a3b8">Index-free memory pointers versus network cross-shard traversal at billion-edge scale.</text>
+<rect x="40" y="120" width="300" height="140" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Traversal mechanics</text>
+<text x="60" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Index-Free: Pointer dereferences</text>
+<text x="60" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Relational: Recursive index JOINs</text>
+<text x="60" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Cost scales with hops, not DB size</text>
+<rect x="410" y="120" width="300" height="140" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="430" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">The sharding dilemma</text>
+<text x="430" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">No natural single-key partition</text>
+<text x="430" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Cross-shard hops trigger RPC storm</text>
+<text x="430" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Supernodes create severe hot spots</text>
+<rect x="780" y="120" width="300" height="140" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="800" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Workload profile</text>
+<text x="800" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">OLTP: 1–3 hop point traversals</text>
+<text x="800" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">OLAP: Global PageRank &amp; clusters</text>
+<text x="800" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Write throughput vs query latency</text>
+<rect x="40" y="295" width="320" height="215" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="325" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">1. Scale-Up Native</text>
+<text x="60" y="348" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8">e.g. Neo4j Single-Leader</text>
+<text x="60" y="377" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Direct pointer-hopping in RAM</text>
+<text x="60" y="399" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Strict ACID transactions</text>
+<text x="60" y="421" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Single-writer throughput limit</text>
+<text x="60" y="443" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Read replicas copy full graph</text>
+<text x="60" y="475" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8">Limit: Machine RAM/disk ceiling</text>
+<rect x="400" y="295" width="320" height="215" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="420" y="325" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">2. Decoupled Cloud</text>
+<text x="420" y="348" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8">e.g. Amazon Neptune</text>
+<text x="420" y="377" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Compute detached from storage</text>
+<text x="420" y="399" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">6-way replicated storage volume</text>
+<text x="420" y="421" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Multi-engine: Gremlin / openCypher</text>
+<text x="420" y="443" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">No native pointer adjacency</text>
+<text x="420" y="475" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8">Limit: Storage read amplification</text>
+<rect x="760" y="295" width="320" height="215" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="780" y="325" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">3. Distributed Sharded</text>
+<text x="780" y="348" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8">e.g. TigerGraph / NebulaGraph</text>
+<text x="780" y="377" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Vertices &amp; edges cut across nodes</text>
+<text x="780" y="399" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">MPP parallel scatter-gather</text>
+<text x="780" y="421" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Scales to tens of billions of edges</text>
+<text x="780" y="443" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Network hop latency on cross-shards</text>
+<text x="780" y="475" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8">Limit: Operational &amp; cluster cost</text>
+<rect x="40" y="540" width="1040" height="150" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="570" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Engineering selection criteria across scale tiers</text>
+<text x="60" y="599" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Below 1 billion edges: Scale-up native engines (Neo4j) or managed cloud (Neptune) provide lower operational complexity.</text>
+<text x="60" y="621" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Above 5–10 billion edges: Distributed sharding (TigerGraph) becomes mandatory to overcome single-node RAM boundaries.</text>
+<text x="60" y="643" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Mitigate supernodes early: Cap degree traversals in queries, split high-degree hubs, and benchmark 3+ hop query distributions.</text>
+<text x="60" y="665" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Graph analytics (PageRank/WCC) and high-throughput point mutations require separate dedicated storage topologies.</text>
+<text x="40" y="730" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">Source boundary: Capabilities based on vendor whitepapers, LDBC benchmark standards and academic graph storage literature.</text>
+<text x="40" y="765" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">Performance varies significantly with vertex degree distribution, traversal depth and memory-to-disk caching ratios.</text>
+</svg>

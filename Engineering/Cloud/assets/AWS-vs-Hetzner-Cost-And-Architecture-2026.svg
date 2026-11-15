@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 830" width="1120" role="img" aria-labelledby="title desc">
+<title id="title">AWS vs Hetzner: Performance Density, Egress Economics and Operational Governance</title>
+<desc id="desc">Comparison of hyperscale managed cloud and bare-metal hosting. Details compute density, network egress pricing, operational boundaries and hybrid architectures.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/></marker></defs>
+<rect width="1120" height="830" rx="16" fill="#0b0f19"/>
+<text x="40" y="44" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#e2e8f0" font-weight="700">AWS vs Hetzner: Performance Density, Egress and Governance</text>
+<text x="40" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#94a3b8">Hyperscaler ecosystem abstraction versus dedicated bare-metal compute efficiency.</text>
+<rect x="40" y="120" width="300" height="140" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Compute density</text>
+<text x="60" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Hetzner: Dedicated AMD EPYC cores</text>
+<text x="60" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">AWS: Burstable or multi-tenant vCPUs</text>
+<text x="60" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Noisy neighbor &amp; hypervisor delta</text>
+<rect x="410" y="120" width="300" height="140" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="430" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Network egress economics</text>
+<text x="430" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">AWS: ~$0.09/GB egress + NAT fees</text>
+<text x="430" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Hetzner: 20 TB included, €1/TB after</text>
+<text x="430" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Data transfer dominates high volume</text>
+<rect x="780" y="120" width="300" height="140" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="800" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Operational governance</text>
+<text x="800" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">AWS: Granular IAM, SOC2, Multi-AZ</text>
+<text x="800" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Hetzner: Full host administrative root</text>
+<text x="800" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Manual backups &amp; hardware failover</text>
+<rect x="40" y="295" width="500" height="215" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="325" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">AWS: Managed elastic cloud</text>
+<text x="60" y="354" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Application Load Balancer across Multi-AZ</text>
+<text x="60" y="376" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Auto Scaling Groups (EC2 / ECS Fargate)</text>
+<text x="60" y="398" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Managed Multi-AZ RDS / Aurora failover</text>
+<text x="60" y="420" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Integrated CloudWatch, KMS and IAM governance</text>
+<text x="60" y="442" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Hidden costs: NAT Gateways, Cross-AZ data, EBS IOPS</text>
+<text x="60" y="475" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8">Best for: Spiky demand, strict compliance, global reach</text>
+<rect x="580" y="295" width="500" height="215" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="600" y="325" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Hetzner: Dedicated bare metal / VPS</text>
+<text x="600" y="354" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Direct NVMe PCIe 4.0/5.0 local disk throughput</text>
+<text x="600" y="376" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Dedicated physical cores without hypervisor stealing</text>
+<text x="600" y="398" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Unmetered or low-cost high-bandwidth network ports</text>
+<text x="600" y="420" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Zero per-request API or gateway transfer surcharges</text>
+<text x="600" y="442" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Operational cost: Team manages patching, RAID &amp; DR</text>
+<text x="600" y="475" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8">Best for: Predictable compute, CI/CD, high egress loads</text>
+<rect x="40" y="540" width="1040" height="150" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="60" y="570" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">The emerging compromise: Hybrid cloud architectures</text>
+<text x="60" y="599" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Route data-heavy workloads, background workers and batch rendering to dedicated bare-metal servers.</text>
+<text x="60" y="621" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Retain mission-critical relational persistence, IAM perimeter control and serverless burst in the hyperscaler.</text>
+<text x="60" y="643" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Bridge environments via WireGuard or dedicated point-to-point tunnels to eliminate public internet exposure.</text>
+<text x="60" y="665" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Optimize unit costs while preserving compliance boundaries and disaster recovery capabilities.</text>
+<text x="40" y="730" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">Source boundary: Pricing and performance depend on workload characteristics, region and contract terms.</text>
+<text x="40" y="765" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">Sysbench single-core runs do not model distributed network partitions, SLA guarantees or compliance audits.</text>
+</svg>

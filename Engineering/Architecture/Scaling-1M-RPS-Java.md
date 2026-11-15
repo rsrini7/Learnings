@@ -74,6 +74,69 @@ Virtual threads became a final feature in **JDK 21**. **JDK 24's JEP 491** remov
 
 Vert.x documents its event-loop model and the rule against blocking event-loop threads. Quarkus documents its virtual-thread integration and limitations. Neither source establishes a universal RPS ceiling for another Java framework. [Vert.x Core](https://vertx.io/docs/vertx-core/java/), [Quarkus virtual threads](https://quarkus.io/guides/virtual-threads).
 
+### Production Java Recipes: Reactive Event Loops and Virtual Threads
+
+#### Recipe A: Vert.x Non-Blocking Event-Loop Handler
+```java
+// Reactive non-blocking handler running on a Vert.x event loop
+public class FastLookupVerticle extends AbstractVerticle {
+    private Cache<String, Buffer> localCache;
+
+    @Override
+    public void start(Promise<Void> startPromise) {
+        Router router = Router.router(vertx);
+
+        router.get("/api/v1/lookup/:key").handler(ctx -> {
+            String key = ctx.pathParam("key");
+            Buffer cached = localCache.getIfPresent(key);
+
+            if (cached != null) {
+                // Zero-copy response: write pre-serialized buffer straight to socket
+                ctx.response()
+                   .putHeader("Content-Type", "application/json")
+                   .end(cached);
+                return;
+            }
+
+            // Asynchronous miss: delegate to DB pool without blocking event loop
+            fetchMissAsync(key)
+                .onSuccess(data -> ctx.response().end(data))
+                .onFailure(err -> ctx.fail(500, err));
+        });
+
+        vertx.createHttpServer()
+             .requestHandler(router)
+             .listen(8080)
+             .<Void>mapEmpty()
+             .onComplete(startPromise);
+    }
+}
+```
+
+#### Recipe B: Bounded Virtual Threads in Spring Boot 3.4+ / Quarkus
+Virtual threads eliminate thread exhaustion, but unconstrained concurrency can overwhelm downstream databases. Use a `Semaphore` to bound concurrent access:
+
+```java
+@RestController
+public class OrderController {
+    // Hard admission ceiling protecting backend database pool
+    private final Semaphore dbBudget = new Semaphore(100);
+
+    @GetMapping("/orders/{id}")
+    public OrderResponse getOrder(@PathVariable String id) throws InterruptedException {
+        if (!dbBudget.tryAcquire(20, TimeUnit.MILLISECONDS)) {
+            throw new ResponseStatusException(HttpStatus.TOO_MANY_REQUESTS, "Database concurrency capacity reached");
+        }
+        try {
+            // Virtual thread unmounts from carrier thread during blocking I/O
+            return orderRepository.findById(id);
+        } finally {
+            dbBudget.release();
+        }
+    }
+}
+```
+
 Start with the programming model and libraries that fit the service. Compare equivalent implementations if evidence identifies framework or driver overhead as a material constraint.
 
 ## 5. Optimize with measurements, not fixed multipliers
@@ -81,6 +144,17 @@ Start with the programming model and libraries that fit the service. Compare equ
 - **Reduce work:** remove avoidable database calls, repeated parsing and unnecessary serialization. Cache only where the consistency contract allows it.
 - **Bound concurrency:** coordinate application admissions, connection pools and downstream budgets. A million client requests do not require a million simultaneous database connections.
 - **Control allocation and pauses:** measure allocation rate, heap occupancy, garbage-collection behavior and CPU. ZGC is a collector choice, not a guaranteed application pause or throughput result. Supported modes and flags differ by JDK version. [Generational ZGC](https://openjdk.org/jeps/439), [removal of the non-generational mode](https://openjdk.org/jeps/490).
+
+### Production Generational ZGC Configuration Flags (JDK 21–25)
+
+| JVM Flag | Recommended Value | Engineering Purpose |
+|---|---|---|
+| `-XX:+UseZGC` | Enabled | Low-latency garbage collector with sub-millisecond pause goals. |
+| `-XX:+ZGenerational` | Enabled (Default JDK 24+) | Splits young/tenured generations, reducing CPU scanning overhead by ~4×. |
+| `-Xms32g -Xmx32g` | Fixed Heap | Prevents heap resizing latency during traffic spikes. |
+| `-XX:SoftMaxHeapSize=28g` | Soft Cap | Encourages proactive collection before hitting hard physical memory limits. |
+| `-XX:+AlwaysPreTouch` | Enabled | Page-touches memory at boot, preventing runtime page fault pauses on new requests. |
+
 - **Inspect network and OS limits when indicated:** bandwidth, packet rate, file descriptors, accept queues and interrupt distribution can matter. Apply hardware-specific tuning after identifying a constraint.
 - **Choose payload and compression deliberately:** measure real encoded sizes, compression CPU, client support and latency. A fixed percentage saving does not transfer between datasets.
 
@@ -124,6 +198,7 @@ Reworked from collected repository notes using official Java, PostgreSQL, Redis 
 ---
 
 **Related:**
+- [Scaling C++ Services to 1M RPS](Scaling-1M-RPS-C++.md) — Contrasts C++ thread-per-core, kernel bypass and zero-copy memory arenas with JVM runtime models.
 - [Scaling PostgreSQL for ChatGPT](../Databases/Scaling-PostgreSQL-ChatGPT.md) — Explains the separate limits of primary writes, replica reads, pooling and workload isolation.
 - [Workflow Orchestration](../Middleware/workflow-orchestration.md) — Covers durable asynchronous work, idempotency and recovery beyond a synchronous request.
 - [Java Plugin Architecture](../JVM/Java-Plugin-Arch.md) — Explains extension contracts and execution boundaries within and outside a JVM.

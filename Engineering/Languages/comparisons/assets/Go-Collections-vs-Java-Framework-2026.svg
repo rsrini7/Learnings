@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 830" width="1120" role="img" aria-labelledby="title desc">
+<title id="title">Go Collections vs Java Collections Framework: Architecture and Memory Layout</title>
+<desc id="desc">Architectural comparison of Go's flat composition model and proposed collections with Java's deep object-oriented hierarchy. Details memory layout, iterators, and concurrency.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/></marker></defs>
+<rect width="1120" height="830" rx="16" fill="#0b0f19"/>
+<text x="40" y="44" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#e2e8f0" font-weight="700">Go Collections vs Java Collections: Architecture and Memory</text>
+<text x="40" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#94a3b8">Orthogonal functions and value layouts versus deep inheritance hierarchies and boxed references.</text>
+<rect x="40" y="120" width="300" height="140" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Memory layout</text>
+<text x="60" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Go: Contiguous value slices</text>
+<text x="60" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Java: Arrays of heap pointers</text>
+<text x="60" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Cache locality &amp; pointer chasing</text>
+<rect x="410" y="120" width="300" height="140" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="430" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Hierarchy &amp; design</text>
+<text x="430" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Go: Orthogonal generic packages</text>
+<text x="430" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Java: Strict class/interface tree</text>
+<text x="430" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Composition vs polymorphism</text>
+<rect x="780" y="120" width="300" height="140" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="800" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Iteration model</text>
+<text x="800" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Go 1.23+: Coroutine iter.Seq[V]</text>
+<text x="800" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Java: java.util.Iterator &amp; Stream</text>
+<text x="800" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Push-iterators vs stateful pull</text>
+<rect x="40" y="295" width="500" height="215" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="325" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Java: Unified object-oriented hierarchy</text>
+<text x="60" y="354" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Iterable &lt;T&gt; ➔ Collection &lt;T&gt; ➔ List / Set / Queue</text>
+<text x="60" y="376" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Separate Map &lt;K,V&gt; key-value hierarchy</text>
+<text x="60" y="398" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Rich concurrent variants: ConcurrentHashMap, BlockingQueue</text>
+<text x="60" y="420" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Streams API with parallel pipeline execution</text>
+<text x="60" y="442" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Cost: Object header overhead (12–16 bytes per element)</text>
+<text x="60" y="475" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8">Focus: Polymorphism, enterprise abstraction, type safety</text>
+<rect x="580" y="295" width="500" height="215" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="600" y="325" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Go: Primitives + Composable generic packages</text>
+<text x="600" y="354" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Built-in language runtime types: slice and map</text>
+<text x="600" y="376" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Standalone generic algorithm libraries: slices, maps, cmp</text>
+<text x="600" y="398" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Proposed Go 1.28 standard collections: set, heap, orderedmap</text>
+<text x="600" y="420" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Push-based iteration using iter.Seq closures in for...range</text>
+<text x="600" y="442" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Memory: Inlined contiguous structs without boxing overhead</text>
+<text x="600" y="475" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8">Focus: Simplicity, hardware cache locality, low GC pressure</text>
+<rect x="40" y="540" width="1040" height="150" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="60" y="570" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Architectural trade-off: Enterprise ergonomics versus mechanical sympathy</text>
+<text x="60" y="599" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Java collections excel when complex business domain models require runtime interface polymorphism and thread-safe queues.</text>
+<text x="60" y="621" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Go collections minimize heap allocations by embedding structs directly in slice buffers, avoiding GC card-table write barriers.</text>
+<text x="60" y="643" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Go's proposed collections standardize idioms (e.g. map[K]struct{} to set.Set[K]) without introducing heavyweight subtyping.</text>
+<text x="60" y="665" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Choose based on data volume, allocation budgets and whether concurrency is coordinated via channels or shared memory.</text>
+<text x="40" y="730" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">Source boundary: Java mechanisms follow JDK 21–25 specifications; Go 1.28 collections reflect active GitHub proposal discussions.</text>
+<text x="40" y="765" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">Proposed Go package APIs, method names and iterator signatures remain subject to change prior to formal standard library adoption.</text>
+</svg>

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 960" width="1120" role="img" aria-labelledby="title desc">
+<title id="title">C++ at 1M RPS: Zero-Copy Memory, Kernel Bypass and Thread-Per-Core</title>
+<desc id="desc">Resource budgets for 1M RPS in C++ show concurrency, packet rate and persistence limits. Architecture uses thread-per-core isolation, io_uring or DPDK, zero-copy memory arenas and explicit durable commit paths.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/></marker></defs>
+<rect width="1120" height="960" rx="16" fill="#0b0f19"/>
+<text x="40" y="44" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#e2e8f0" font-weight="700">C++ at 1M RPS: Zero-Copy Memory, Kernel Bypass and Thread-Per-Core</text>
+<text x="40" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#94a3b8">Physical hardware constraints, memory architecture and separated read/write semantics.</text>
+<rect x="40" y="120" width="300" height="135" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="60" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Concurrency budget</text>
+<text x="60" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">1M req/s × 5 ms mean latency</text>
+<text x="60" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">About 5,000 in flight</text>
+<text x="60" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Little’s Law stable-state average</text>
+<rect x="410" y="120" width="300" height="135" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="430" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Packet &amp; network budget</text>
+<text x="430" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">8 KiB payload = 65.5 Gbit/s</text>
+<text x="430" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">1.2M–6.0M packets/s entering NIC</text>
+<text x="430" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Kernel softirq &amp; RSS bottleneck</text>
+<rect x="780" y="120" width="300" height="135" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="800" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Durable write budget</text>
+<text x="800" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">95% reads, 5% writes</text>
+<text x="800" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">50,000 durable writes/s</text>
+<text x="800" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Must cross storage boundary</text>
+<rect x="40" y="292" width="1040" height="100" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="322" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Network ingestion: Kernel Bypass or io_uring</text>
+<text x="60" y="351" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Multi-queue NIC RSS routes packets to dedicated hardware cores. Avoid kernel TCP stack overhead</text>
+<text x="60" y="373" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">via io_uring ring buffers or DPDK user-space polling. Pin IRQs to avoid cross-NUMA interconnect traffic.</text>
+<path d="M 560 394 V 425 H 290 V 458" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 560 425 H 830 V 458" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="461" width="500" height="145" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="60" y="491" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Thread-Per-Core (Shared-Nothing)</text>
+<text x="60" y="520" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">One thread pinned per CPU core (e.g. Seastar/Drogon)</text>
+<text x="60" y="542" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Zero cross-thread locks; communicate via SPSC queues</text>
+<text x="60" y="564" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">No mutex contention or thread context switches</text>
+<text x="60" y="586" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Local monotonic buffer arenas for request lifetimes</text>
+<rect x="580" y="461" width="500" height="145" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="600" y="491" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Zero-Copy Memory &amp; Cache Line Isolation</text>
+<text x="600" y="520" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">FlatBuffers / Protobuf arenas eliminate malloc/free</text>
+<text x="600" y="542" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Align hot atomics to 64-byte hardware cache lines</text>
+<text x="600" y="564" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Prevent destructive false sharing across cores</text>
+<text x="600" y="586" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Pre-allocated static packet ring buffers</text>
+<path d="M 290 608 L 290 648" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 830 608 L 830 648" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="651" width="500" height="120" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="60" y="681" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Hot cache read path</text>
+<text x="60" y="710" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">In-memory shard cache or cluster lookup</text>
+<text x="60" y="732" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Zero-copy response write straight to socket</text>
+<text x="60" y="754" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Misses bound by rate limits &amp; coalescing</text>
+<rect x="580" y="651" width="500" height="120" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="600" y="681" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Durable write or acceptance path</text>
+<text x="600" y="710" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Synchronous DB transaction or transactional outbox</text>
+<text x="600" y="732" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Redis in-memory write is NOT durable persistence</text>
+<text x="600" y="754" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">PostgreSQL 18 AIO batching / disk fsync budget</text>
+<rect x="40" y="805" width="1040" height="115" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="60" y="835" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Engineering reality: C++ removes GC pauses, not physical laws</text>
+<text x="60" y="864" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Benchmark success on synthetic plaintext does not prove transactional durability or network line-rate.</text>
+<text x="60" y="886" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Measure coordinated omission with wrk2, verify open-loop arrivals, and price egress and IOPS separately.</text>
+</svg>
