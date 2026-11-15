@@ -5,18 +5,17 @@
 
 ---
 
-## ⛔ The #1 Rule: `README.md` is auto-generated
+## ⛔ The #1 Rule: Navigation files are auto-generated
 
-**Do NOT hand-edit `README.md`.** It is regenerated from the directory structure
-by `Scripts/generate-readme.py`. Any manual edits will be overwritten.
+**Do NOT hand-edit `README.md`, `INDEX.md`, or any category `README.md` files.** They are all regenerated from the directory structure by `Scripts/generate-readme.py`. Any manual edits will be overwritten.
 
-To change what appears in the README:
+To change what appears in the navigation hubs:
 
 1. Add / move / rename the actual files.
 2. If you introduced a **new folder/section**, register it in
    `Scripts/generate-readme.py` (add a `get_md_files(...)` block and, if
    relevant, a line in the structure diagram inside that script).
-3. Regenerate:
+3. Regenerate navigation files:
    ```bash
    python3 Scripts/generate-readme.py
    ```

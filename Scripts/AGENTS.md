@@ -184,22 +184,19 @@ python3 Scripts/check-svg.py path/to/diagram.svg
 
 ## 📝 generate-readme.py
 
-Generates README.md with links to all files.
+Generates root `README.md`, complete `INDEX.md`, and 9 domain hub `README.md` files from a single discovered inventory.
 
 ```bash
 python3 Scripts/generate-readme.py
 ```
 
 ### What it does
-- **Auto-discovers** subfolders under each section — new folders are no longer
-  dropped. Unknown subfolders get an auto-generated title; anything still
-  unmatched lands in an `🗂️ Uncategorized (auto-added)` section.
-- Scans all markdown files in the repository
-- Categorizes by directory structure
-- Generates `README.md` (note: `index.md` generation was removed; only README is produced)
-- URL-encodes special characters in links
-- A final safety-net pass verifies every `.md` file on disk is linked, so
-  nothing is silently omitted.
+- **Auto-discovers** all content articles across the repository once and builds a single unified inventory.
+- **Root README.md**: High-level dashboard with domain navigation table, 9 curated starting points, repository structure tree, and utility script index.
+- **Complete INDEX.md**: Single-page, fully expanded archive of all 300+ technical articles, organized by domain and subcategory, optimized for browsing and browser `Ctrl+F` search.
+- **Nine Domain Hub READMEs**: Generates dedicated landing pages (`AI-ML/README.md`, `Engineering/README.md`, `Blockchain/README.md`, `QuantumComputing/README.md`, `Papers/README.md`, `DevSetup/README.md`, `Content/README.md`, `News/README.md`, `References/README.md`) with local scope descriptions and full article listings.
+- **Zero-Loss Verification**: Before writing files, verifies that every discovered article appears in `INDEX.md` and every article within a configured domain also appears in its domain hub. Root-level articles and articles in unconfigured domains appear in the index's Additional Articles section.
+- URL-encodes special characters in markdown links.
 
 ### When to use
 - After adding new files
