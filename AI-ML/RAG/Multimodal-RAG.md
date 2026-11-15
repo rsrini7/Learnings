@@ -1,5 +1,7 @@
 # Multimodal RAG: Retrieval Across Images, Audio, Video and Documents
 
+**Learning note · Revised 15 November 2026 · Primary papers and model repository checked**
+
 > **Core idea:** Multimodal retrieval-augmented generation (RAG) finds evidence in non-text media, then gives the relevant evidence and its source location to a model. Systems can convert media to text, search across aligned embeddings, or combine specialized indexes.
 
 ## 1. Foundations
@@ -10,16 +12,7 @@ Multimodal systems must also preserve evidence that is not naturally a text pass
 
 ## 2. A typical retrieval flow
 
-```mermaid
-flowchart TD
-    A["Documents and media"] --> B["Extract text, images, frames or audio segments"]
-    B --> C["Index evidence with source and location metadata"]
-    D["User question"] --> E["Route and encode the query"]
-    C --> F["Retrieve candidate evidence"]
-    E --> F
-    F --> G["Rerank and assemble supporting context"]
-    G --> H["Generate an answer with source references"]
-```
+![Multimodal RAG retrieval paths and evidence flow](assets/Multimodal-RAG-Retrieval-Paths-2026.svg)
 
 During ingestion, keep a link from each indexed item to the original file and its location. Useful locations include a document page, image region, video timestamp or audio time range. At answer time, return those references with the evidence so a reviewer can inspect the original.
 
@@ -57,7 +50,10 @@ The [Qwen3-VL-Embedding repository](https://github.com/QwenLM/Qwen3-VL-Embedding
 - Similarity scores are not proof that evidence supports an answer. Preserve citations or source pointers and verify the retrieved content.
 - Retrieval quality depends on the model, data preparation, query distribution and evaluation set. Benchmark with real questions from each modality.
 
-## Sources
+## 7. Source context and references
+
+Reworked from collected repository notes. The retrieval mechanisms were checked against the original RAG, CLIP, ImageBind, ColPali and Whisper papers, with the Qwen repository used as an implementation example. The three patterns are a design framework, not a claim that one model supports every modality.
+
 
 - Lewis et al., [Retrieval-Augmented Generation for Knowledge-Intensive NLP Tasks](https://arxiv.org/abs/2005.11401), 2020.
 - Radford et al., [Learning Transferable Visual Models From Natural Language Supervision (CLIP)](https://arxiv.org/abs/2103.00020), 2021.

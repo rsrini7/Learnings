@@ -1,5 +1,7 @@
 # AI Hardware for Machine Learning: A Practical Guide
 
+**Learning note · Revised 15 November 2026 · Selected vendor documentation checked**
+
 > **Core idea:** AI workloads use several kinds of processors because no single chip is best at every task. Compare the workload, memory system, software support and total cost rather than relying on chip labels.
 
 ## 1. Why AI uses specialized hardware
@@ -49,7 +51,10 @@ For a small on-device model, power and local availability may matter most. For l
 
 These are starting points, not universal rankings. Benchmark the model, batch size, sequence length, precision and serving setup you plan to use.
 
-## Sources
+## 6. Source context and references
+
+The product roles were checked against the linked TPU, Core ML, Trainium, Inferentia and DPU documentation. Hardware selection guidance is a workload-based evaluation framework, not a benchmark ranking.
+
 
 - [Google Cloud TPU documentation](https://cloud.google.com/tpu/docs/intro-to-tpu)
 - [Apple Core ML documentation](https://developer.apple.com/documentation/coreml/mlmodelconfiguration/computeunits)

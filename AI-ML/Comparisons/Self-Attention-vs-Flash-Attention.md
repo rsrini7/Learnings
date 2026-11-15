@@ -1,5 +1,7 @@
 # FlashAttention: Exact Attention with Less GPU Memory Traffic
 
+**Learning note · Revised 15 November 2026 · Original paper and reference implementation checked**
+
 > **Core idea:** FlashAttention keeps the standard attention calculation but changes how it is executed. Tiling and fused operations reduce data movement and avoid storing the full attention matrix in high-bandwidth memory.
 
 ## 1. The attention workload
@@ -12,7 +14,11 @@ GPUs have small, fast on-chip memory and larger high-bandwidth memory (HBM). Mov
 
 FlashAttention divides the query, key and value matrices into tiles. It loads a tile into fast on-chip memory, computes attention for that tile, and combines the results using an online softmax calculation. Fused kernels avoid writing the full score and probability matrices to HBM. During backpropagation, the algorithm recomputes selected values instead of storing every intermediate.
 
-The original paper describes FlashAttention as an **IO-aware exact attention algorithm**: it reduces memory traffic without replacing softmax attention with an approximation. Floating-point operation order can still produce small numerical differences.
+The [original paper](https://arxiv.org/abs/2205.14135) describes FlashAttention as an **IO-aware exact attention algorithm**: it reduces memory traffic without replacing softmax attention with an approximation. Floating-point operation order can still produce small numerical differences; the [reference implementation](https://github.com/Dao-AILab/flash-attention) documents its numerical-tolerance checks.
+
+![FlashAttention tiled memory flow](assets/FlashAttention-Tiled-Memory-Flow-2026.svg)
+
+*Both paths compute dense attention. The key difference is whether the full attention intermediates are stored in HBM.*
 
 ## 3. Comparison
 
@@ -38,7 +44,10 @@ FlashAttention is useful when attention intermediates or memory traffic limit tr
 
 For a system-level view of how memory constraints affect token generation, see [LLM inference](../LLMs/architecture/LLM-Inference.md).
 
-## Sources
+## 6. Source context and references
+
+The mechanism and complexity explanation were checked against the original FlashAttention paper and its reference implementation. No fixed speedup or proprietary model implementation is inferred from those sources.
+
 
 - Tri Dao et al., [FlashAttention: Fast and Memory-Efficient Exact Attention with IO-Awareness](https://arxiv.org/abs/2205.14135), NeurIPS 2022.
 - Tri Dao, [FlashAttention-2: Faster Attention with Better Parallelism and Work Partitioning](https://arxiv.org/abs/2307.08691), 2023.

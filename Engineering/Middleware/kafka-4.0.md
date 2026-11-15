@@ -1,134 +1,94 @@
-**Apache Kafka 4.0 Details:**
+# Apache Kafka 4.0: KRaft, Consumer Groups and Queue Semantics
 
-* **Cloud-Native Focus:** The primary theme of Kafka 4.0 is its continued evolution towards being more cloud-native (from video).
-   
-* **ZooKeeper Removal (KIP-500):**
-    * ZooKeeper has been fully removed and deprecated (from video)
-    * KRaft is now the standard for metadata management, offering improved scalability and resilience (from video).
-    * This change simplifies cloud deployments by eliminating a component that posed networking challenges (from video).
-   
-* **KIP-848: New Consumer Rebalance Protocol**
-    * "Lightweight Clients, Stable and Rapid Rebalances": Experience significantly faster and more stable consumer group rebalances[cite: 1].
-    * **Scalability and Efficiency:**
-        * Broker-driven rebalancing: Shifts coordination from clients to brokers, reducing client overhead[cite: 2].
-        * Multi-threaded broker processing: Parallelizes rebalances, handling large groups efficiently[cite: 2, 3].
-    * Improved Heartbeat API: Provides more efficient communication between clients and brokers with less network traffic[cite: 3].
-    * **Simplified Management:** Server-side configuration of heartbeats, timeouts, and assignors streamlines consumer setup[cite: 4].
-    * **Optimized Rebalancing:** Incremental, multi-threaded rebalancing allows for faster partition assignment for new consumers[cite: 5].
-    * **Server Enabled, Client Opt-In:**
-        * Enabled by default on Kafka 4.0 servers[cite: 6].
-        * Clients activate with group.protocol=consumer[cite: 6].
-    * **Enhanced Monitoring:** New metrics provide deeper insights into rebalance performance[cite: 7].
-    * This protocol shifts rebalance functionality from the client to the broker (from video)
-    * This is beneficial for cloud deployments, providing better control over consumer groups and rebalances (from video).
-    * Enhanced metrics are included for better observability during rebalances (from video).
-   
-* **KIP-932: Queues for Kafka (early access)**
-    * **What it is:**
-        * Introduces a new way to consume messages in Kafka, enabling cooperative consumption through "share groups"[cite: 8].
-        * Decouples consumers from partitions, so multiple consumers can read the same partition[cite: 9].
-        * Designed for queuing use cases, where higher throughput and parallel processing are desired[cite: 9].
-    * **New Features:**
-        * KafkaShareConsumer: A new client interface for interacting with share groups[cite: 10].
-        * Kafka CLI:
-            * kafka-console-share-consumer.sh: For consuming data using a share group[cite: 10].
-            * kafka-share-groups.sh: For managing share groups[cite: 11].
-        * AdminClient: Includes new methods for managing share groups[cite: 11].
-        * Metrics: Share groups have their own metrics (e.g., consumer lag) for monitoring and scaling[cite: 12].
-        * New APIs: Introduces ShareGroupHeartbeat, ShareGroupDescribe, ShareFetch, and ShareAcknowledge to support share groups[cite: 13].
-    * The goal of this release is to test the new share group functionality[cite: 14].
-    * **NOT FOR PRODUCTION USE**[cite: 15].
-    * Undocumented configs necessary in the server.properties file[cite: 15].
-    * Cannot upgrade clusters if share groups are enabled[cite: 15].
-    * Introduces share groups as an experimental feature, which is the beginning of queue functionality in Kafka (from video).
-    * Share groups allow multiple consumers to consume from the same partition (from video).
-    * This feature is **not for production use** and requires an undocumented configuration (from video).
-   
-* **KIP-1106: Add Duration-Based Offset Reset Option for Consumer Clients**
-    * KIP-405 added tiered storage, which made auto.offset.reset=earliest less fun[cite: 16].
-    * New duration-based offset reset: by\_duration[cite: 16].
-    * No change to the existing semantics and default value of auto.offset.reset[cite: 17].
-    * KafkaConsumer: Updated auto.offset.reset config option to support new config value of the format by\_duration:<duration>[cite: 18, 19].
-    * This automatically resets the offsets back by configured duration[cite: 19].
-    * KafkaShareConsumer: Add support for by\_duration:<duration> config value for share.auto.offset.reset[cite: 19].
-    * Kafka Streams: Deprecate existing Topology.AutoOffsetReset enum, add a new class org.apache.kafka.streams.AutoOffsetReset to capture the reset strategies[cite: 20].
-    * Adds the option to reset consumer offsets by duration (from video).
-    * This is particularly useful for tiered storage, preventing the need to read through large amounts of old data (from video).
-   
-* **KIP-1102: Clients re-bootstrapping based on timeout or error code**
-    * KIP-899 Limitations: Re-bootstrapping only occurred when no brokers were available[cite: 21].
-    * Clients could get stuck with stale metadata if connected to some brokers[cite: 22].
-    * **KIP-1102 Improvements:**
-        * Proactive re-bootstrapping: Introduces a metadata refresh timeout (default 5 minutes)[cite: 23].
-        * Clients re-bootstrap if no metadata update is received within this time[cite: 24].
-        * Server-triggered re-bootstrapping: Brokers/proxies can now return a REBOOTSTRAP\_REQUIRED error code, explicitly telling clients to re-bootstrap[cite: 25].
-        * Default in 4.0: metadata.recovery.strategy defaults to rebootstrap for new clients, improving resilience out-of-the-box[cite: 26].
-    * Improves the bootstrapping process (where clients discover broker metadata) (from video).
-    * Proactive and server-triggered re-bootstrapping prevents issues with stale metadata, especially after long client downtimes (from video).
-   
-* **KIP-966: Eligible Leader Replicas (part 1)**
-    * Part 1 (Included in Kafka 4.0): Enhanced Data Safety (No Unclean Leader Election):
-        * Introduces Eligible Leader Replicas (ELR): A subset of ISR replicas guaranteed to have complete data up to the high-watermark[cite: 27, 28].
-        * ELRs are safe for leader election, preventing data loss[cite: 28].
-        * ELR tracking: Managed by the KRaft controller, stored in PartitionRecord, no performance impact[cite: 29].
-        * DescribeTopicPartitions API introduced (default in 3.9, so not new in 4.0)[cite: 29, 30].
-        * Admin clients now use this API instead of the Metadata API[cite: 30].
-        * Requires minimum metadata version 4.0 IV1[cite: 31].
-        * Note: ELR is not enabled by default in 4.0. May become default in 4.1[cite: 31].
-    * Protects against data loss in specific scenarios involving single in-sync replicas (from video).
-    * Introduces "eligible leader replicas" which are guaranteed to have data up to the watermark (from video).
-   
-* **KIP-1076 & KIP-1091: Unlocking Kafka Streams Observability**
-    * **Before KIP-1076 & KIP-1091**
-        * Manual and cumbersome health assessment[cite: 32].
-        * Developers had to instrument and export metrics[cite: 32].
-        * Operators relied on dashboards for application health[cite: 32].
-    * **KIP-1076 Highlights**
-        * Extends KIP-714 (AK 3.7 in Feb, 2024) for Kafka Streams applications[cite: 32].
-        * Cluster operators can pull application metrics from the application[cite: 32].
-    * **KIP-1091 Highlights**
-        * Adds state metrics for each StreamThread and the client instance itself[cite: 32].
-        * Provides detailed visibility into application state[cite: 32].
-    * KIP-1076 allows the cluster to pull observability data from Kafka Streams clients (from video).
-    * KIP-1091 extends this with specific metadata about stream threads (from video).
-   
-* **KIP-1112: Custom Processor Wrapping**
-    * **Before KIP-1112**
-        * Cross-cutting logic required manual integration into each processor[cite: 33].
-        * DSL users lacked a straightforward method to apply these altogether[cite: 33].
-        * Resulted in duplicated code and increased maintenance efforts[cite: 33].
-    * **KIP-1112 Highlights**
-        * Introduces ProcessorWrapper interface[cite: 33].
-        * Inject custom logic around both Processor API and DSL processors seamlessly[cite: 33].
-    * Enables custom code to be run automatically within Kafka Streams DSL methods (from video).
-    * This facilitates cross-cutting concerns like logging within DSL calls (from video).
-   
-* **KIP-1104: Extract ForeignKey from Key in KTable Join**
-    * **Before KIP-1104**
-        * Foreign key extractor function could only access the record value[cite: 34].
-        * Required duplicating the record key into the value if one wants to use the key for FK joins[cite: 34].
-        * More work, more storage overhead[cite: 34].
-    * **KIP-1104 Highlights**
-        * Foreign keys can now be extracted from both the record key and record value[cite: 34].
-        * Simplifies the join process with a more intuitive API[cite: 34].
-    * Allows extracting a foreign key from the key of a message, simplifying join operations (from video).
-   
-* **KIP-1065: Better Reliability with Automatic Retry Mechanisms**
-    * **Before KIP-1065**
-        * Persistent errors (e.g., broker unavailable, missing output topic)[cite: 35].
-        * Default retry mechanism until timeout without the ability to break the retry loop, even after timeout[cite: 35].
-        * Expensive task recovery[cite: 35].
-    * **KIP-1065 Improvements**
-        * Enables users to break retry loops[cite: 35].
-        * "RETRY" option in ProductionExceptionHandler[cite: 35].
-        * Custom handlers for more control: Retry, Fail gracefully, Drop record and continue[cite: 35].
-    * Improves logging and handling of errors when output topics are unavailable (from video).
-   
-* **Summary of Key Changes:**
-    * ZooKeeper is replaced by KRaft for metadata management (from video).
-    * Queue functionality is in progress, with share groups as the first step (from video).
-    * Users are advised to read the release notes for complete details (from video).
+**Learning note · Revised 15 November 2026 · Scope: the Kafka 4.0 release**
+
+> **Core idea:** Kafka 4.0 removes ZooKeeper and makes the new consumer rebalance protocol generally available. Its queue-style share groups were early access in this release, so migration requirements and feature maturity need separate decisions.
+
+## 1. Foundations: what Kafka stores and who uses it
+
+Apache Kafka stores streams of records in **topics**. Each topic is divided into **partitions**, which are ordered logs. Producers append records; consumers read them. Brokers store the partitions and serve clients. Applications use Kafka for event streams, data pipelines and communication between services.
+
+A traditional consumer group shares partitions among its members. Within that group, a partition is assigned to one consumer at a time. Different groups can independently read the same topic. An **offset** identifies a record's position in a partition, allowing a consumer to track its progress. See the [official introduction](https://kafka.apache.org/40/getting-started/introduction/).
+
+| Term | Role in the system |
+|---|---|
+| Broker | Stores partition data and serves produce/fetch requests. |
+| Controller | Coordinates cluster metadata, including partition leadership. |
+| KRaft | Kafka's Raft-based metadata system, replacing the separate ZooKeeper dependency. |
+| Consumer coordinator | Broker-side component that manages a consumer group. It has a different job from the KRaft metadata controller. |
+| Rebalance | Changes the partition assignments when group membership or the subscribed topics change. |
+| Share group | Queue-style consumption in which consumers acquire records for processing and acknowledge the results. |
+
+## 2. KRaft: the metadata architecture changed
+
+Older Kafka clusters could use Apache ZooKeeper, a separate coordination service, to manage cluster metadata. Kafka 4.0 supports **KRaft mode only**. It retains replicated partition logs for event data while using a controller quorum for metadata. Controllers and brokers can have separate roles; KRaft does not mean every broker is a controller. [Kafka 4.0 release announcement](https://kafka.apache.org/blog/2025/03/18/apache-kafka-4.0.0-release-announcement/), [KRaft versus ZooKeeper](https://kafka.apache.org/40/getting-started/zk2kraft/).
+
+![Kafka 4.0 metadata and consumption architecture](assets/Kafka-4-KRaft-And-Consumption-2026.svg)
+
+*The upper path shows cluster metadata management. The lower paths compare conventional consumer groups with the queue-style share groups introduced in early access in 4.0.*
+
+Removing ZooKeeper removes a component to operate, but the controller quorum, broker storage, replication and capacity planning still need attention. For an existing ZooKeeper cluster, **complete the supported migration to KRaft before upgrading to 4.0**. The [versioned upgrade guide](https://kafka.apache.org/40/getting-started/upgrade/) defines the prerequisites and supported paths.
+
+## 3. Consumer groups: a different rebalance protocol
+
+**KIP-848** became generally available in Kafka 4.0. The new protocol moves assignment coordination to the server and supports incremental reconciliation of assignments. It is designed to reduce the disruption of group changes; the size of the improvement depends on the workload and deployment. [Release announcement, KIP-848](https://kafka.apache.org/blog/2025/03/18/apache-kafka-4.0.0-release-announcement/).
+
+Server support does not mean every consumer uses it. In the Kafka 4.0 Java client, the default `group.protocol` is `classic`. A compatible client opts into the new protocol with:
+
+```properties
+# Kafka 4.0 Java consumer configuration
+# Confirm support before applying this to another client implementation.
+group.protocol=consumer
+```
+
+With the new protocol, relevant heartbeat and session settings are controlled on the broker, so existing client tuning cannot simply be copied. Check the [4.0 consumer configuration reference](https://kafka.apache.org/40/configuration/consumer-configs/) and the upgrade instructions for the group transition.
+
+The change optimizes coordination. It does not remove the partition assignment model of a conventional consumer group or turn every application into queue-style processing.
+
+## 4. Share groups: distributing records rather than partition ownership
+
+**KIP-932** introduced early-access queue semantics in Kafka 4.0. A share group lets multiple consumers process records from the same partition through record acquisition, locks and acknowledgements. A record being acquired by one member is not a broadcast to every member. Failed or unacknowledged processing can lead to redelivery. [Release announcement](https://kafka.apache.org/blog/2025/03/18/apache-kafka-4.0.0-release-announcement/), [KIP-932 design](https://cwiki.apache.org/confluence/display/KAFKA/KIP-932%3A+Queues+for+Kafka).
+
+| Conventional consumer group | Share group |
+|---|---|
+| Assigns a partition to one group member at a time. | Shares record processing among members, including within a partition. |
+| Tracks consumer progress using offsets. | Uses acquisition and acknowledgement to track record delivery. |
+| Useful for ordered stream processing within each partition. | Useful for work distribution where records can be processed independently. |
+| Adding consumers beyond the partition count does not add active partition assignments. | Multiple consumers can take work from the same partition. |
+
+Ordering requirements and side effects still need application design. Concurrent completion can differ from log order, and redelivery means an external write must tolerate retries.
+
+**Version boundary:** “early access” describes Kafka 4.0. Do not use this historical status to judge a later version, or enable the 4.0 preview for production solely on the strength of newer documentation. Evaluate the exact release and its operational limits.
+
+## 5. Other changes worth knowing
+
+| Change in 4.0 | Practical meaning |
+|---|---|
+| Java baselines | Brokers, Connect and tools require Java 17; Java clients and Kafka Streams require Java 11. Runtime requirements are component-specific. |
+| Duration-based offset reset | `auto.offset.reset=by_duration:PT1H` selects a reset position about one hour before the current timestamp when no usable offset exists. It does not rewind a healthy consumer on every poll. |
+| Metadata rebootstrap improvements | Clients can recover from stale broker discovery information through timeout- or server-triggered rebootstrap. Bootstrap endpoints must remain reachable. |
+| Eligible Leader Replicas | ELR was a preview in 4.0. Evaluate its configuration and version requirements separately from the base upgrade. |
+
+Sources: [4.0 release announcement](https://kafka.apache.org/blog/2025/03/18/apache-kafka-4.0.0-release-announcement/), [consumer configuration](https://kafka.apache.org/40/configuration/consumer-configs/), [upgrade guide](https://kafka.apache.org/40/getting-started/upgrade/). This is a focused explanation; the release announcement also covers Kafka Streams and other API changes.
+
+## 6. Practical migration and verification
+
+1. **Inventory components.** Record broker mode, software and metadata versions, JVM versions, client libraries, Connect plugins and Streams applications.
+2. **Choose a supported path.** Follow the upgrade guide for the actual starting version. ZooKeeper migration and a 4.0 binary upgrade are distinct operations.
+3. **Establish a baseline in staging.** Measure produce/fetch errors, request latency, consumer lag, rebalances and controller health with representative traffic.
+4. **Change group protocol deliberately.** Confirm client support and use the documented transition process. Compare assignment behavior and recovery under consumer restarts.
+5. **Exercise application failures.** Restart a consumer after an external action but before progress is recorded. Verify duplicate handling and partition-order assumptions.
+6. **Treat previews as separate evaluations.** The base upgrade, new consumer protocol, share groups and ELR need their own acceptance criteria.
+
+Kafka's distribution includes `kafka-topics.sh` and `kafka-consumer-groups.sh`. Start with their `--help` output and the [4.0 operations guide](https://kafka.apache.org/40/operations/basic-kafka-operations/) to inspect topic state and conventional consumer groups. Lag is a progress signal; it does not by itself prove correct downstream business processing. Use the separate share-group tooling for share-group experiments.
+
+## 7. Source context
+
+Reworked from collected repository notes, with the release claims checked against Apache's 4.0 announcement, versioned documentation and KIP-932. Kafka 4.0.0 was announced on **18 March 2025**. This note explains that release rather than claiming it is the current recommended version.
+
+---
 
 **Related:**
-- [Java25-vs-Go1.24-Go1.25](../Languages/comparisons/Java25-vs-Go1.24-Go1.25.md) — Java and Go are the dominant languages for Kafka brokers and stream-processing clients; runtime choice affects share-group throughput.
-- [workflow-orchestration](workflow-orchestration.md) — Kafka often underpins event-driven orchestration engines like Netflix Conductor for durable workflow execution.
+- [Workflow Orchestration](workflow-orchestration.md) — Explains why an event log and a durable business workflow solve different coordination problems.
+- [Java Plugin Architecture](../JVM/Java-Plugin-Arch.md) — Covers dependency and lifecycle decisions relevant to extensible JVM services and connector hosts.
+- [Java and Go Runtime Comparison](../Languages/comparisons/Java25-vs-Go1.24-Go1.25.md) — Provides broader runtime context for applications around a Kafka deployment.

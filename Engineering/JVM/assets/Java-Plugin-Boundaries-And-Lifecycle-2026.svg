@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 775" width="1120" role="img" aria-labelledby="title desc">
+<title id="title">Java plugins: contracts and execution boundaries</title>
+<desc id="desc">The host shares an API with in-process plugins. Class loaders can separate dependencies within one JVM. An external extension communicates over an API and needs explicit operating-system controls. A lifecycle sequence validates, activates, drains and closes a plugin.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/></marker></defs>
+<rect width="1120" height="775" rx="16" fill="#0b0f19"/>
+<text x="40" y="44" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#e2e8f0" font-weight="700">Java plugins: contracts and execution boundaries</text>
+<text x="40" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#94a3b8">Discovery, lifecycle and dependency wiring are different parts of an extension system.</text>
+<text x="40" y="112" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">INSIDE ONE JVM</text>
+<rect x="40" y="132" width="300" height="115" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="162" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Host application</text>
+<text x="60" y="191" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Owns extension contracts</text>
+<text x="60" y="213" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Selects and invokes providers</text>
+<rect x="410" y="132" width="300" height="115" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="430" y="162" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Shared API types</text>
+<text x="430" y="191" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Visible to host and plugin</text>
+<text x="430" y="213" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Keep implementation private</text>
+<rect x="780" y="132" width="300" height="115" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="800" y="162" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Plugin implementation</text>
+<text x="800" y="191" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Runs inside the host JVM</text>
+<text x="800" y="213" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">May carry private libraries</text>
+<path d="M 341 190 L 408 190" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 711 190 L 778 190" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="280" width="500" height="140" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="310" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Mechanisms inside the JVM</text>
+<text x="60" y="339" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">ServiceLoader: provider discovery</text>
+<text x="60" y="361" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">JPMS: module dependencies and access</text>
+<text x="60" y="383" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">PF4J or OSGi: additional lifecycle models</text>
+<rect x="580" y="280" width="500" height="140" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="600" y="310" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">What class loading cannot guarantee</text>
+<text x="600" y="339" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">No operating-system sandbox by itself</text>
+<text x="600" y="361" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Threads and resources can affect the host</text>
+<text x="600" y="383" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Safe unloading requires resource cleanup</text>
+<text x="40" y="466" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">WHEN THE EXTENSION NEEDS A SEPARATE PROCESS</text>
+<rect x="40" y="486" width="500" height="115" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="516" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Host client</text>
+<text x="60" y="545" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Use a versioned API or message contract</text>
+<text x="60" y="567" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Handle timeouts, errors and retries</text>
+<rect x="580" y="486" width="500" height="115" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="600" y="516" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">External extension</text>
+<text x="600" y="545" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Apply credentials and resource limits</text>
+<text x="600" y="567" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Configure filesystem and network access</text>
+<path d="M 541 543 L 578 543" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="635" width="1040" height="110" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="60" y="665" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Plan replacement as a lifecycle</text>
+<text x="60" y="694" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Validate → initialize → route new work → drain old work → close resources → release references</text>
+<text x="60" y="716" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">A framework stop or unload call does not prove that every resource has been released.</text>
+</svg>
