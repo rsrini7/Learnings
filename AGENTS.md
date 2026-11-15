@@ -81,7 +81,7 @@ Keep the document deeply educational, engaging, and directly useful to practicin
 
 ### Article structure
 
-1. **Title and date:** a descriptive title, then `Daily learning · <date>` (for new daily notes) or `Learning note · Revised <date> · <qualifier>` (for restructured/revised deep reviews).
+1. **Title, date, and author attribution:** a descriptive title, then `Daily learning · <date>` (for new daily notes) or `Learning note · Revised <date> · <qualifier>` (for restructured/revised deep reviews), followed by the author attribution line `*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*`.
 2. **Core idea:** a short blockquote explaining what happened and why it matters in one or two plain-language sentences.
 3. **Foundations:** explain what each main product or organization does, why the parties are connected, and what normal use looks like. Add a familiar product comparison when it helps. Define essential terms before detailed mechanisms using a compact term/meaning or party/role table.
 4. **Deep Technical Mechanism:** explain what changed, broke, or how the system operates under the hood, step by step. Distinguish underlying concepts from specific implementation details. Cover wire protocols, byte/memory layouts, CPU/cache interactions, and data structures where relevant.
@@ -90,9 +90,22 @@ Keep the document deeply educational, engaging, and directly useful to practicin
 7. **Impact, Real-World Edge Cases & Gotchas:** Explain prerequisites and practical failure modes (e.g. supernodes, cache stampedes, false sharing, WAF stripping, carrier thread pinning, network partitions). Use a **Common Claims vs. Technical Realities** table to debunk frequent industry misconceptions.
 8. **Practical Adoption Blueprint & Verification Checklist:** Give concrete actions to benchmark, adopt, or verify. Include exact diagnostic commands (`ethtool`, `vmstat`, `wrk2`, `pg_stat_statements`, `jcmd`), test methodologies (open vs closed loops, coordinated omission), and measurable SLO criteria.
 9. **Timeline and Current State:** include meaningful dates, fixes, and rollout milestones when they clarify the evolution.
-10. **Source Context and Primary Disclosures:** provide an evidence table with dates and citations (RFCs, official docs, CVE advisories, GitHub PRs, academic papers). Attribute company claims and state observational limits.
+10. **Primary Sources, References and Evidence:** Provide a dedicated `## Primary Sources & References` list containing curated, high-value external links (specifications, whitepapers, official repos, foundational articles, key conference presentations, and explainer videos) with descriptive titles and 1-line annotations. Pair this with a `## Source Context` or evidence table with dates and citations (RFCs, CVE advisories, GitHub PRs, academic papers). Attribute company claims and state observational limits.
 11. **Supplementary Visuals (Keep Existing PNGs Intact):** Always retain existing valid repository diagrams/PNGs/GIFs in a dedicated `## Supplementary visuals` section with descriptive captions contextualizing how the revised text governs the technical claims.
 12. **Related Cross-References:** End with the required `**Related:**` section containing 3–5 bidirectional relative links with clear, concise reasons.
+
+### Curating External References & Primary Sources (No Blind Deletions)
+
+- **Never discard valid, meaningful external links:** When an existing note contains `Ref:` links, author disclosures, arXiv papers, GitHub repositories, or conference/video explainers, do NOT blindly delete them.
+- **Elevate and Format:** Transform unformatted links, bare URLs, or footnote dumps into a clean, annotated markdown reference list:
+  ```markdown
+  ## Primary Sources & References
+
+  1. [Author / Organization: Document Title](https://...) — Concise 1-line annotation explaining what this source covers and why it matters.
+  2. [GitHub: Org/Repo-Name](https://github.com/...) — Official open-source implementation, source code, and release notes.
+  3. [Speaker / Conference: Presentation Title](https://...) — Primary talk or technical explainer introducing the core system architecture.
+  ```
+- **Filter Low-Signal Noise:** Omit broken URLs, social media spam/echoes, and tangential meme videos, but preserve the original foundational author posts, primary papers, and authoritative technical explainers.
 
 ### Editorial and verification standard
 
