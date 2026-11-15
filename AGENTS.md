@@ -64,44 +64,35 @@ another format:
 - [eMudhra: Weak CA Keys and PKI Trust](News/Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)
 - [PHP2Shell: History, UAF and ASLR](News/Security/PHP2Shell-History-UAF-And-ASLR-Oct-2026.md)
 - [Polymarket: Compromised Monitoring Script](News/Security/Polymarket-DebugBear-Supply-Chain-Attack-Oct-2026.md)
+- [Java: Next-Gen Programming Models (Babylon & Panama)](Engineering/JVM/Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026.md)
+- [RFC 10008: HTTP QUERY Method](Engineering/Architecture/HTTP-QUERY-Method-RFC-10008-Nov-2026.md)
 
 Read the relevant reference before drafting. Apply this pattern across topics;
-adapt section names and omit sections that do not help explain the subject.
+adapt section names and scale depth to thoroughly explain the subject.
+
+### Do NOT Trim Useful, Verified Information (Depth + Readability)
+
+Restructuring is **NOT** an exercise in aggressive truncation or deleting technical depth. Its purpose is to eliminate unverified speculation, conversational filler, and broken formatting—while **amplifying verified technical mechanisms, concrete code implementations, production configurations, and practical takeaways**.
+
+Keep the document deeply educational, engaging, and directly useful to practicing engineers:
+- If an existing note has verified technical details, benchmark configurations, or architectural edge cases, **preserve and structure them** rather than discarding them.
+- Always explain the "why" and "how" behind the physics, protocols, and memory structures.
+- Strive for high reader value: an engineer reading the document should walk away with actionable code, architecture trade-offs, and failure mode awareness.
 
 ### Article structure
 
-1. **Title and date:** a descriptive title, then `Daily learning · <date>` with
-   verification status or an investigation qualifier where relevant.
-2. **Core idea:** a short blockquote explaining what happened and why it matters
-   in one or two plain-language sentences.
-3. **Foundations:** first explain in plain language what each main product or
-   organization does, why the parties are connected, and what normal use looks
-   like. Add a familiar product comparison when it helps, and state how the
-   products differ. Then define essential terms before the detailed mechanism;
-   use a compact term/meaning or party/role table when readers need one.
-4. **Mechanism:** explain what changed or broke, step by step. Distinguish the
-   underlying technology from its implementation, workflow or operational use.
-5. **Impact and limits:** explain prerequisites and practical consequences;
-   separate demonstrated results from possible outcomes. For incidents,
-   identify the supplier, affected platform and end users separately; state
-   who was exposed, who was demonstrably harmed, and what remains unknown.
-   Distinguish a compromised delivery path from a flaw in the supplier's
-   normal product, and a platform incident from an underlying protocol failure.
-   Use a claim/correction or question/answer table for common misconceptions.
-6. **Timeline and current state:** include meaningful dates, fixes and rollout
-   status when they clarify the story. Label time zones and distinguish announced,
-   scheduled and deployed changes as of the note's date.
-7. **Practical response and lessons:** give concrete actions and explain how to
-   verify the result. Search for relevant open-source code, tools or scripts
-   that help readers inspect, reproduce, detect or mitigate the topic. Include
-   useful finds with a source link, what each does, how to start and its limits;
-   omit a tool list when none helps. For incidents, give exact retrospective
-   search terms, logs or hashes where available, and explain what a hit, a
-   changed hash or missing evidence does and does not establish. For
-   non-incident topics, cover applications and trade-offs.
-8. **Source context and Related:** when the user supplies background material,
-   describe it briefly as "user-provided details" and identify the primary
-   sources used to check material claims. Then end with the required Related links.
+1. **Title and date:** a descriptive title, then `Daily learning · <date>` (for new daily notes) or `Learning note · Revised <date> · <qualifier>` (for restructured/revised deep reviews).
+2. **Core idea:** a short blockquote explaining what happened and why it matters in one or two plain-language sentences.
+3. **Foundations:** explain what each main product or organization does, why the parties are connected, and what normal use looks like. Add a familiar product comparison when it helps. Define essential terms before detailed mechanisms using a compact term/meaning or party/role table.
+4. **Deep Technical Mechanism:** explain what changed, broke, or how the system operates under the hood, step by step. Distinguish underlying concepts from specific implementation details. Cover wire protocols, byte/memory layouts, CPU/cache interactions, and data structures where relevant.
+5. **Architectural Visuals (SVGs & Mermaid):** Pair high-level custom architecture SVGs with focused in-line Mermaid sequence diagrams, state lifecycles, or decision trees.
+6. **Production Implementations & Code Recipes:** Include concrete, runnable, idiomatic code examples across relevant ecosystems (e.g. Go, Java, Rust, Python, C++, SQL, Envoy, Nginx, Linux sysctl). Show realistic implementations with error handling, memory pooling, and boundaries—not trivial toy snippets.
+7. **Impact, Real-World Edge Cases & Gotchas:** Explain prerequisites and practical failure modes (e.g. supernodes, cache stampedes, false sharing, WAF stripping, carrier thread pinning, network partitions). Use a **Common Claims vs. Technical Realities** table to debunk frequent industry misconceptions.
+8. **Practical Adoption Blueprint & Verification Checklist:** Give concrete actions to benchmark, adopt, or verify. Include exact diagnostic commands (`ethtool`, `vmstat`, `wrk2`, `pg_stat_statements`, `jcmd`), test methodologies (open vs closed loops, coordinated omission), and measurable SLO criteria.
+9. **Timeline and Current State:** include meaningful dates, fixes, and rollout milestones when they clarify the evolution.
+10. **Source Context and Primary Disclosures:** provide an evidence table with dates and citations (RFCs, official docs, CVE advisories, GitHub PRs, academic papers). Attribute company claims and state observational limits.
+11. **Supplementary Visuals (Keep Existing PNGs Intact):** Always retain existing valid repository diagrams/PNGs/GIFs in a dedicated `## Supplementary visuals` section with descriptive captions contextualizing how the revised text governs the technical claims.
+12. **Related Cross-References:** End with the required `**Related:**` section containing 3–5 bidirectional relative links with clear, concise reasons.
 
 ### Editorial and verification standard
 
@@ -246,6 +237,8 @@ a commit.
 - [ ] **Do NOT put images/SVGs in the root-level `assets/`** — use category-level `assets/`
 - [ ] User-provided videos treated as preliminary context (no chapter timelines, primary sources independently researched, no video-specific commentary unless requested)
 - [ ] User feelings, workplace frustrations, manager quotes, and employer/organization names generalized and anonymized (no literal quotes of internal workplace dynamics or employer identities; framed objectively as generic architectural/engineering trade-offs)
+- [ ] Existing valid PNGs/diagrams retained intact in `## Supplementary visuals` with explanatory captions
+- [ ] Verified technical depth preserved (no aggressive truncation; includes concrete code recipes and real-world edge cases)
 - [ ] SVGs validated for well-formed XML, container text overflows, text-on-text collisions, border straddles, connector piercing, and empty bottom dead space (`python3 Scripts/check-svg.py path/to.svg`)
 - [ ] Mermaid diagrams checked for statement semicolons, edge delimiter collisions (`||`), nested colons, bidirectional label overlaps, subgraph title wrapping (<=24 chars), and cluster-to-cluster edges
 - [ ] Math display blocks (`$$...$$`) placed flush-left (column 0, no list indentation) with subscripts outside `\text{}` (`\text{Score}_{\text{sub}}`) and literal comparison operators (no `&lt;` / `&gt;` entities)
