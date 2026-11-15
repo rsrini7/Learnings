@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 925" width="1120" role="img" aria-labelledby="title desc">
+<title id="title">Hybrid retrieval: candidates become an evidence package</title>
+<desc id="desc">An authorized query searches lexical and dense indexes. Fusion merges result lists and deduplicates evidence. Optional reranking and context expansion produce a bounded evidence package with source locations. Candidate sizes and optional stages require evaluation.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/></marker></defs>
+<rect width="1120" height="925" rx="16" fill="#0b0f19"/>
+<text x="40" y="44" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#e2e8f0" font-weight="700">Hybrid retrieval: candidates become an evidence package</text>
+<text x="40" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#94a3b8">Lexical matches, dense similarity, fusion and reranking solve different ranking problems.</text>
+<rect x="40" y="120" width="1040" height="95" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Establish the authorized query scope</text>
+<text x="60" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Trusted identity, mandatory filters and permitted source versions apply to every retrieval path.</text>
+<path d="M 560 217 V 247 H 290 V 277" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 560 247 H 830 V 277" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="280" width="500" height="115" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="310" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Lexical candidates</text>
+<text x="60" y="339" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">BM25 or another supported lexical method</text>
+<text x="60" y="361" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Useful for exact terms, names and identifiers</text>
+<rect x="580" y="280" width="500" height="115" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="600" y="310" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Dense candidates</text>
+<text x="600" y="339" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Compatible query and document encoders</text>
+<text x="600" y="361" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Useful for supported semantic matches</text>
+<path d="M 290 397 L 290 450" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 830 397 L 830 450" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="453" width="1040" height="110" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="483" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Fuse and deduplicate</text>
+<text x="60" y="512" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">RRF combines rank positions rather than assuming raw retrieval scores share a calibrated scale.</text>
+<text x="60" y="534" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Keep provenance and versions when equivalent evidence appears through multiple paths.</text>
+<path d="M 560 565 V 583 H 290 V 606" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="609" width="500" height="140" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="639" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Optional reranking</text>
+<text x="60" y="668" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Rescore a bounded candidate set for the query</text>
+<text x="60" y="690" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Measure the quality gain and added cost</text>
+<text x="60" y="712" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Missing candidates cannot be restored here</text>
+<rect x="580" y="609" width="500" height="140" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="600" y="639" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Select and expand context</text>
+<text x="600" y="668" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Preserve qualifiers and source locations</text>
+<text x="600" y="690" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Expand parent context when useful</text>
+<text x="600" y="712" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Deduplicate and enforce the final budget</text>
+<path d="M 541 679 L 578 679" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 830 751 V 770 H 560 V 791" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="794" width="1040" height="95" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="60" y="824" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Generate and check the answer</text>
+<text x="60" y="853" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Check evidence support and define what happens when the available material is insufficient.</text>
+</svg>

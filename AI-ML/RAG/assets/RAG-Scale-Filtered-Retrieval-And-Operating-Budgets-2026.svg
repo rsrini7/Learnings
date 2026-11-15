@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 890" width="1120" role="img" aria-labelledby="title desc">
+<title id="title">RAG serving at scale: constrained search and bounded work</title>
+<desc id="desc">The query scope and resource budget constrain lexical, approximate dense and structured retrieval paths. Candidates are fused and optionally reranked within a budget. The system selects evidence for generation while tracking latency, freshness and failure behavior.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/></marker></defs>
+<rect width="1120" height="890" rx="16" fill="#0b0f19"/>
+<text x="40" y="44" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#e2e8f0" font-weight="700">RAG serving at scale: constrained search and bounded work</text>
+<text x="40" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#94a3b8">Measure recall, access correctness and the full request critical path together.</text>
+<rect x="40" y="120" width="500" height="115" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Identity and mandatory constraints</text>
+<text x="60" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Tenant, source, version and access policy</text>
+<text x="60" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Trusted scope applies to each selected route</text>
+<rect x="580" y="120" width="500" height="115" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="600" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Request and resource budget</text>
+<text x="600" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Arrival rate, deadlines and candidate limits</text>
+<text x="600" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Model calls, context size and queue limits</text>
+<path d="M 290 237 V 275 H 190 V 312" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 290 275 H 560 V 312" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 830 237 V 275 H 930 V 312" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="315" width="300" height="135" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="345" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Lexical search</text>
+<text x="60" y="374" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Exact terms and identifiers</text>
+<text x="60" y="396" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Relevant metadata constraints</text>
+<text x="60" y="418" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Measure query distribution</text>
+<rect x="410" y="315" width="300" height="135" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="430" y="345" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Dense ANN search</text>
+<text x="430" y="374" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Approximate similarity search</text>
+<text x="430" y="396" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Recall depends on tuning</text>
+<text x="430" y="418" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Selective filters affect results</text>
+<rect x="780" y="315" width="300" height="135" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="800" y="345" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Structured route, if needed</text>
+<text x="800" y="374" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Exact state or aggregates</text>
+<text x="800" y="396" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Authorized query execution</text>
+<text x="800" y="418" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">A separate workload budget</text>
+<path d="M 190 452 L 190 497" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 560 452 L 560 497" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 930 452 L 930 497" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="500" width="1040" height="110" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="530" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Bound the candidate and context funnel</text>
+<text x="60" y="559" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Fuse and deduplicate; rerank a suitable shortlist; preserve the evidence the answer needs.</text>
+<text x="60" y="581" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Never relax mandatory access scope simply to fill a top-k response.</text>
+<path d="M 560 612 V 648 H 290 V 687" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 560 648 H 830 V 687" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="690" width="500" height="140" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="60" y="720" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Evidence package and generation</text>
+<text x="60" y="749" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Source IDs, versions and supporting locations</text>
+<text x="60" y="771" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Context and output budget</text>
+<text x="60" y="793" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Defined insufficient-evidence behavior</text>
+<rect x="580" y="690" width="500" height="140" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="600" y="720" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Observe operating behavior</text>
+<text x="600" y="749" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Quality by query and filter group</text>
+<text x="600" y="771" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Latency, errors, backlog and resource use</text>
+<text x="600" y="793" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Updates, deletion and degraded dependencies</text>
+<text x="40" y="866" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">A fast unfiltered vector test does not establish application quality or capacity under real constraints.</text>
+</svg>

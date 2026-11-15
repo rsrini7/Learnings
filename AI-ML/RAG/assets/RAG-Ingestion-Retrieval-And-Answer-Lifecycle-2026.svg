@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 915" width="1120" role="img" aria-labelledby="title desc">
+<title id="title">RAG: ingestion prepares evidence, queries select it</title>
+<desc id="desc">Ingestion collects sources, parses and chunks content, and publishes searchable representations. A user query is scoped, retrieved and ranked, then converted into an evidence package for generation. Evaluation checks the source, retrieval and answer layers separately.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/></marker></defs>
+<rect width="1120" height="915" rx="16" fill="#0b0f19"/>
+<text x="40" y="44" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#e2e8f0" font-weight="700">RAG: ingestion prepares evidence, queries select it</text>
+<text x="40" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#94a3b8">Source versions, access rules and evaluation connect both lifecycles.</text>
+<text x="40" y="112" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">INGESTION</text>
+<rect x="40" y="132" width="300" height="115" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="162" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Collect source versions</text>
+<text x="60" y="191" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Original content and locations</text>
+<text x="60" y="213" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Identity and access metadata</text>
+<rect x="410" y="132" width="300" height="115" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="430" y="162" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Parse and represent</text>
+<text x="430" y="191" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Extract text and structure</text>
+<text x="430" y="213" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Create chunks and embeddings</text>
+<rect x="780" y="132" width="300" height="115" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="800" y="162" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Publish searchable evidence</text>
+<text x="800" y="191" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Lexical or vector indexes</text>
+<text x="800" y="213" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Track version and update state</text>
+<path d="M 341 188 L 408 188" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 711 188 L 778 188" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 930 249 V 270 H 560 V 310" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="40" y="292" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">QUERY PROCESSING</text>
+<rect x="40" y="313" width="300" height="135" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="343" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Identity and query scope</text>
+<text x="60" y="372" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Authenticate the requester</text>
+<text x="60" y="394" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Enforce source and access rules</text>
+<text x="60" y="416" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Preserve mandatory constraints</text>
+<rect x="410" y="313" width="300" height="135" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="430" y="343" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Retrieve and rank</text>
+<text x="430" y="372" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Find relevant candidates</text>
+<text x="430" y="394" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Fuse or rerank when useful</text>
+<text x="430" y="416" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Deduplicate with provenance</text>
+<rect x="780" y="313" width="300" height="135" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="800" y="343" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Select supporting context</text>
+<text x="800" y="372" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Keep source locations</text>
+<text x="800" y="394" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Respect the context budget</text>
+<text x="800" y="416" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Check missing or stale evidence</text>
+<path d="M 341 380 L 408 380" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 711 380 L 778 380" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 930 450 V 482 H 290 V 515" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="518" width="500" height="140" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="548" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Generate from the selected evidence</text>
+<text x="60" y="577" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Answer the actual question</text>
+<text x="60" y="599" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Handle insufficient or conflicting evidence</text>
+<text x="60" y="621" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Retrieved instructions do not grant authority</text>
+<rect x="580" y="518" width="500" height="140" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="600" y="548" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Return an inspectable result</text>
+<text x="600" y="577" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Preserve source pointers and qualifiers</text>
+<text x="600" y="599" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Verify the answer is supported</text>
+<text x="600" y="621" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Apply output and application requirements</text>
+<path d="M 541 588 L 578 588" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 830 660 L 830 703" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="706" width="1040" height="110" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="60" y="736" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Evaluate the failure layer, then improve the right component</text>
+<text x="60" y="765" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Check source coverage, retrieval, ranking, answer support, permissions, freshness and operating cost.</text>
+<text x="60" y="787" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">A retrieved passage or citation link is evidence to inspect, not a guarantee that the answer is correct.</text>
+<text x="40" y="872" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">Conceptual flow: pipeline components and representations vary by application.</text>
+</svg>
