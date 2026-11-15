@@ -368,4 +368,5 @@ The shift from passive prediction to active autonomous agency represents one of 
 Ref: https://www.youtube.com/watch?v=GZha5ccTiQM
 
 **Related:**
-- [Prompt-Repetition-RE2](Prompt-Repetition-RE2.md) — RE2 prompt repetition complements agentic planning by improving long-context factual grounding.
+- [Prompt-Repetition-RE2-Architecture-2026](Prompt-Repetition-RE2-Architecture-2026.md) — RE2 prompt repetition complements agentic planning by improving long-context factual grounding.
+- [Recursive-Language-Models-RLM-Architecture-2026](Recursive-Language-Models-RLM-Architecture-2026.md) — Externalized context and neural-symbolic recursion for long-horizon agentic task execution.

@@ -15,16 +15,16 @@ Detailed technical breakdowns and critical evaluations of seminal machine learni
 ## 📑 Articles & Subcategories
 
 ## 🔍 DeepSeek Research
+- [DeepSeek Engram Conditional Memory 2026](deepseek/DeepSeek-Engram-Conditional-Memory-2026.md)
 - [DeepSeek R1 Incentivizing Reasoning Via RL 2026](deepseek/DeepSeek-R1-Incentivizing-Reasoning-Via-RL-2026.md)
 - [DeepSeek V3 Architecture And Hardware Software CoDesign 2026](deepseek/DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026.md)
-- [Deepseek Engram](deepseek/Deepseek-Engram.md)
 - [mHC Deepseek](deepseek/mHC-Deepseek.md)
 - [mHC Simplified](deepseek/mHC-Simplified.md)
 
 ## 🧠 Reasoning & LLMs
 - [Agentic Reasoning LLMs](reasoning/Agentic-Reasoning-LLMs.md)
-- [Prompt Repetition RE2](reasoning/Prompt-Repetition-RE2.md)
-- [RecursiveLanguageModels (RLMs)](reasoning/RecursiveLanguageModels-%28RLMs%29.md)
+- [Prompt Repetition RE2 Architecture 2026](reasoning/Prompt-Repetition-RE2-Architecture-2026.md)
+- [Recursive Language Models RLM Architecture 2026](reasoning/Recursive-Language-Models-RLM-Architecture-2026.md)
 
 ## 👁️ Vision & Multimodal
 - [MiraThinker 1.5](vision/MiraThinker-1.5.md)

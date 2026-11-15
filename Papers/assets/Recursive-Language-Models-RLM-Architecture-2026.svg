@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradients -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGradDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="blueCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="purpleCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#581c87" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="greenCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="redCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7f1d1d" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <!-- Arrow Marker -->
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrowPurple" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#c084fc"/>
+    </marker>
+    <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="700" fill="url(#bgGrad)"/>
+  <rect width="1200" height="700" fill="none" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Title & Header Bar -->
+  <g transform="translate(40, 24)">
+    <text x="0" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="-0.02em">
+      Recursive Language Models (RLMs): Neural-Symbolic Inference Architecture
+    </text>
+    <text x="0" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">
+      Breaking the Context Rot Barrier via Externalized REPL Execution, Deterministic Filtering, and Sub-Agent Recursion
+    </text>
+  </g>
+
+  <!-- Panel 1: The Context Rot Problem (Left) -->
+  <g transform="translate(40, 90)">
+    <rect width="340" height="570" rx="10" fill="url(#redCardGrad)" stroke="#ef4444" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="340" height="42" rx="10" fill="#ef4444" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#f87171">1. MONOLITHIC CONTEXT ROT</text>
+
+    <!-- Sub-card: Brute-Force Context Window -->
+    <g transform="translate(16, 56)">
+      <rect width="308" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Huge Document (1M - 11M Tokens)</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Input crammed directly into transformer context</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#f87171">• Attention overhead explodes quadratically: O(N²)</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#f87171">• 4x compute and memory per 2x token doubling</text>
+    </g>
+
+    <!-- Sub-card: Attention Dilution -->
+    <g transform="translate(16, 180)">
+      <rect width="308" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Uniform Attention Noise</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Every token competes equally across all heads</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#fca5a5">• Softmax distribution flattens into entropy noise</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#fca5a5">• Needle-in-haystack succeeds (O(1) retrieval)</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#fca5a5">• Pairwise reasoning fails catastrophically (O(N²))</text>
+    </g>
+
+    <!-- Sub-card: Empirical Collapse -->
+    <g transform="translate(16, 316)">
+      <rect width="308" height="130" rx="8" fill="#0f172a" stroke="#ef4444" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#f87171">Empirical Reasoning Collapse</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">OOLONG Benchmark (Frontier LLMs):</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#4ade80">• O(1) Key Lookup: 100% Accuracy</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#fbbf24">• O(N) Linear Aggregation: 20% - 30% Accuracy</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#ef4444">• O(N²) Quadratic Match: 0.04% Accuracy (Broken)</text>
+    </g>
+
+    <!-- Failure Summary -->
+    <g transform="translate(16, 460)">
+      <rect width="308" height="92" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#a5b4fc">The Fundamental Bottleneck:</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#cbd5e1">LLMs do not fail because they lack reasoning;</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">they fail when forced to reason over too much</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">unfiltered context at the same instant.</text>
+    </g>
+  </g>
+
+  <!-- Panel 2: The RLM Architecture (Center) -->
+  <g transform="translate(410, 90)">
+    <rect width="380" height="570" rx="10" fill="url(#blueCardGrad)" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="380" height="42" rx="10" fill="#38bdf8" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#38bdf8">2. RLM RECURSIVE ENGINE</text>
+
+    <!-- Context Externalization -->
+    <g transform="translate(16, 56)">
+      <rect width="348" height="110" rx="8" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Externalized REPL Workspace</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Document stored as persistent variable 'doc' in memory</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Never injected raw into the Root LLM prompt</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Supports standard Python slicing, regex, and ASTs</text>
+    </g>
+
+    <!-- Root LLM Orchestrator -->
+    <g transform="translate(16, 180)">
+      <rect width="348" height="120" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#c084fc">Root LLM Orchestrator (Tightly Bounded)</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Context stays ultra-small (&lt; 2,000 tokens):</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#e9d5ff">1. Writes Python code to inspect structure &amp; size</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#e9d5ff">2. Applies deterministic regex &amp; string filtering</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#e9d5ff">3. Decomposes problem into bounded semantic chunks</text>
+    </g>
+
+    <!-- Programmed Loops & Recursion -->
+    <g transform="translate(16, 316)">
+      <rect width="348" height="130" rx="8" fill="#0f172a" stroke="#059669" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#34d399">Programmable Recursion Loop</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Python executes code and manages sub-calls:</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#a7f3d0">• chunks = split_clean(doc, max_tokens=4000)</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#a7f3d0">• results = [llm_query(c, task) for c in chunks]</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#a7f3d0">• final_summary = aggregate_symbolic(results)</text>
+    </g>
+
+    <!-- Deterministic Map-Reduce -->
+    <g transform="translate(16, 460)">
+      <rect width="348" height="92" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Deterministic State Aggregation</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#94a3b8">Sub-call results stored in structured Python objects.</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">Guarantees 100% coverage; zero lost-in-the-middle</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#4ade80">dropouts and zero hallucinated aggregation joins.</text>
+    </g>
+  </g>
+
+  <!-- Panel 3: Execution & Scaling Results (Right) -->
+  <g transform="translate(820, 90)">
+    <rect width="340" height="570" rx="10" fill="url(#greenCardGrad)" stroke="#4ade80" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="340" height="42" rx="10" fill="#4ade80" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#4ade80">3. WORKERS &amp; INFERENCE SCALING</text>
+
+    <!-- Parallel Sub-LLMs -->
+    <g transform="translate(16, 56)">
+      <rect width="308" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#4ade80">Parallel Sub-LLMs (Rot-Free)</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Cheaper, smaller models (e.g. GPT-5-mini):</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Each handles single bounded chunk (&lt; 4K tokens)</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Operates in the optimal high-attention sweet spot</text>
+    </g>
+
+    <!-- Inference-Time Scaling Metrics -->
+    <g transform="translate(16, 180)">
+      <rect width="308" height="130" rx="8" fill="#0f172a" stroke="#22c55e" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#4ade80">Verified Benchmark Uplift</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Effective Context: Scaled to 11M+ tokens</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#4ade80">• Quadratic Tasks: 0.04% → 58% Accuracy (1450x)</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#4ade80">• Linear Aggregation: 25% → 89% Accuracy</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#38bdf8">• Cost Efficiency: Lower total cost than long RAG</text>
+    </g>
+
+    <!-- Comparison Table / Highlights -->
+    <g transform="translate(16, 326)">
+      <rect width="308" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Architecture vs Brute-Force</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Why RLMs Win at Scale:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ Deterministic coverage (no lost retrieval)</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ Zero retraining or new weights required</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ Scales compute at inference time dynamically</text>
+    </g>
+
+    <!-- Operational Takeaway -->
+    <g transform="translate(16, 460)">
+      <rect width="308" height="92" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#4ade80">Production Takeaway:</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#cbd5e1">Adding programmable code loops during</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">inference beats expanding transformer</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">attention windows every single time.</text>
+    </g>
+  </g>
+
+  <!-- Connectors between panels -->
+  <!-- Connector 1 -> 2 -->
+  <path d="M 380 375 L 410 375" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)"/>
+  <!-- Connector 2 -> 3 -->
+  <path d="M 790 375 L 820 375" fill="none" stroke="#4ade80" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+</svg>

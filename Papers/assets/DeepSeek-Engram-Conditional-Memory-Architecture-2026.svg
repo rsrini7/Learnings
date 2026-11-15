@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </linearGradient>
+
+    <linearGradient id="cardGradDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="blueCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="purpleCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#581c87" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="greenCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="redCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7f1d1d" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#4ade80"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="700" fill="url(#bgGrad)"/>
+  <rect width="1200" height="700" fill="none" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Title & Header Bar -->
+  <g transform="translate(40, 24)">
+    <text x="0" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="-0.02em">
+      DeepSeek Engram: Conditional Memory as a New Sparsity Axis
+    </text>
+    <text x="0" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">
+      Eliminating 35-40% Transformer Compute Waste via O(1) Multi-Head Hash Lookups and Gated Residual Fusion
+    </text>
+  </g>
+
+  <!-- Panel 1: The Problem (Left) -->
+  <g transform="translate(40, 90)">
+    <rect width="340" height="570" rx="10" fill="url(#redCardGrad)" stroke="#ef4444" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="340" height="42" rx="10" fill="#ef4444" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#f87171">1. COMPUTATIONAL WASTE IN LLMS</text>
+
+    <!-- Standard Transformer Bottleneck -->
+    <g transform="translate(16, 56)">
+      <rect width="308" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Lack of Native Lookup Primitive</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Static knowledge (names, idioms, code facts)</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#f87171">• Simulated via O(depth) neural layers</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#f87171">• 35-40% of total FLOPs burned on recall</text>
+    </g>
+
+    <!-- Example Breakdown -->
+    <g transform="translate(16, 180)">
+      <rect width="308" height="130" rx="8" fill="#0f172a" stroke="#ef4444" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#f87171">Example: "Diana, Princess of Wales"</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Layers 1-2: "Wales" is a country in UK</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#fca5a5">Layer 3: Contextualize Wales within Europe</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#fca5a5">Layer 4: Recognize "Princess" royal title</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#fca5a5">Layers 5-6: Finally reconstruct historical entity</text>
+    </g>
+
+    <!-- Consequence on Depth -->
+    <g transform="translate(16, 326)">
+      <rect width="308" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Degraded Effective Depth</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Impact on standard 32-layer LLMs:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Burns ~20% of layers on ontology parsing</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Leaves fewer layers for true multi-hop logic</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Crowds out long-context attention capacity</text>
+    </g>
+
+    <!-- Liang Wenfeng Quote -->
+    <g transform="translate(16, 460)">
+      <rect width="308" height="92" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#a5b4fc">Liang Wenfeng (DeepSeek Founder):</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#cbd5e1">"MoE solved the problem of 'how to compute less',</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">while Engram directly solves the problem of</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">'don't compute blindly'."</text>
+    </g>
+  </g>
+
+  <!-- Panel 2: The Engram Architecture (Center) -->
+  <g transform="translate(410, 90)">
+    <rect width="380" height="570" rx="10" fill="url(#blueCardGrad)" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="380" height="42" rx="10" fill="#38bdf8" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#38bdf8">2. ENGRAM CONDITIONAL PIPELINE</text>
+
+    <!-- N-Gram & Multi-Head Hash -->
+    <g transform="translate(16, 56)">
+      <rect width="348" height="110" rx="8" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">1. N-Gram Extraction &amp; Multi-Head Hashing</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Overlapping 2-3 token sequences from context:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Tokenizer compression (NFKC + vocab projection)</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• 8 deterministic hash functions create address keys</text>
+    </g>
+
+    <!-- Tiered Memory Tables -->
+    <g transform="translate(16, 180)">
+      <rect width="348" height="120" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#c084fc">2. Tiered O(1) Memory Lookup</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Massive embedding tables outside neural layers:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Hot VRAM: High-frequency static patterns</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Warm Host RAM: PCIe/NVLink async prefetch</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#e9d5ff">• 4-bit quantizable: Gigantic capacity at low VRAM</text>
+    </g>
+
+    <!-- Context-Aware Gating -->
+    <g transform="translate(16, 316)">
+      <rect width="348" height="130" rx="8" fill="#0f172a" stroke="#059669" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#34d399">3. Context-Aware Gated Fusion</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Selective integration via neural gating:</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Query projection = RMSNorm(hidden_state)</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Softmax dot-product scales memory vector</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Added directly via residual connection</text>
+    </g>
+
+    <!-- Layer Placement -->
+    <g transform="translate(16, 460)">
+      <rect width="348" height="92" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Strategic Layer Placement</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#94a3b8">Placed at early-to-mid layers (e.g. Layers 2 &amp; 15):</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">Absorbs pattern recognition early so upper layers</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#4ade80">operate with 100% capacity on abstract logic.</text>
+    </g>
+  </g>
+
+  <!-- Panel 3: Performance & MoE Synergies (Right) -->
+  <g transform="translate(820, 90)">
+    <rect width="340" height="570" rx="10" fill="url(#greenCardGrad)" stroke="#4ade80" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="340" height="42" rx="10" fill="#4ade80" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#4ade80">3. PERFORMANCE &amp; MOE SCALING</text>
+
+    <!-- Complementary Sparsity -->
+    <g transform="translate(16, 56)">
+      <rect width="308" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#4ade80">Complementary Sparsity Axes</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Dual sparsity under fixed budget:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• MoE (75% budget): Dynamic conditional compute</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Engram (25% budget): Static conditional memory</text>
+    </g>
+
+    <!-- Verified Metrics -->
+    <g transform="translate(16, 180)">
+      <rect width="308" height="130" rx="8" fill="#0f172a" stroke="#22c55e" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#4ade80">Empirical Benchmark Uplift</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Effective Depth: +30% to +40% capacity gain</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#4ade80">• Big-Bench Hard (BBH): +5.0% accuracy gain</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#4ade80">• Needle-in-Haystack: 84% → 97% (+12.8%)</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#38bdf8">• Inference Overhead: &lt; 3% latency cost</text>
+    </g>
+
+    <!-- Trillion-Parameter Viability -->
+    <g transform="translate(16, 326)">
+      <rect width="308" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Hardware Economics</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Why Engram wins on consumer silicon:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ Tables offload to cheap host DDR5 RAM</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ Zero backprop through memory lookup</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ Trillion-scale recall on accessible hardware</text>
+    </g>
+
+    <!-- Operational Takeaway -->
+    <g transform="translate(16, 460)">
+      <rect width="308" height="92" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#4ade80">Architectural Rule:</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#cbd5e1">Don't burn deep GPU matrix multiplications</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">on facts that can be retrieved in O(1) time</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">from a deterministic memory table.</text>
+    </g>
+  </g>
+
+  <!-- Connectors -->
+  <path d="M 380 375 L 410 375" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)"/>
+  <path d="M 790 375 L 820 375" fill="none" stroke="#4ade80" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+</svg>

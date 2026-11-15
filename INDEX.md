@@ -343,16 +343,16 @@ A complete, fully expanded single-page index of all technical articles and resea
 [📂 Open Dedicated Domain Hub (Papers/README.md)](Papers/README.md)
 
 ### 🔍 DeepSeek Research
+- [DeepSeek Engram Conditional Memory 2026](Papers/deepseek/DeepSeek-Engram-Conditional-Memory-2026.md)
 - [DeepSeek R1 Incentivizing Reasoning Via RL 2026](Papers/deepseek/DeepSeek-R1-Incentivizing-Reasoning-Via-RL-2026.md)
 - [DeepSeek V3 Architecture And Hardware Software CoDesign 2026](Papers/deepseek/DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026.md)
-- [Deepseek Engram](Papers/deepseek/Deepseek-Engram.md)
 - [mHC Deepseek](Papers/deepseek/mHC-Deepseek.md)
 - [mHC Simplified](Papers/deepseek/mHC-Simplified.md)
 
 ### 🧠 Reasoning & LLMs
 - [Agentic Reasoning LLMs](Papers/reasoning/Agentic-Reasoning-LLMs.md)
-- [Prompt Repetition RE2](Papers/reasoning/Prompt-Repetition-RE2.md)
-- [RecursiveLanguageModels (RLMs)](Papers/reasoning/RecursiveLanguageModels-%28RLMs%29.md)
+- [Prompt Repetition RE2 Architecture 2026](Papers/reasoning/Prompt-Repetition-RE2-Architecture-2026.md)
+- [Recursive Language Models RLM Architecture 2026](Papers/reasoning/Recursive-Language-Models-RLM-Architecture-2026.md)
 
 ### 👁️ Vision & Multimodal
 - [MiraThinker 1.5](Papers/vision/MiraThinker-1.5.md)

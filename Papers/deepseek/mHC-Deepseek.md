@@ -1049,5 +1049,5 @@ Found an error or have suggestions? Please submit issues or pull requests to imp
 
 **Related:**
 - [DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026](DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026.md) — Background on the MoE transformer designs (3B/9B/27B) that mHC was validated against.
-- [Deepseek-Engram](Deepseek-Engram.md) — Parallel DeepSeek innovation adding conditional memory to the same MoE foundation.
+- [DeepSeek-Engram-Conditional-Memory-2026](DeepSeek-Engram-Conditional-Memory-2026.md) — Parallel DeepSeek innovation adding conditional memory to the same MoE foundation.
 - [Google-Nested-Learning-And-Neural-Continuum-Memory-2026](../scaling/Google-Nested-Learning-And-Neural-Continuum-Memory-2026.md) — Google's nested learning offers an alternative stability+scaling paradigm for foundation models.

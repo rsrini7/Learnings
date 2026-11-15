@@ -1,0 +1,197 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </linearGradient>
+
+    <linearGradient id="cardGradDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="blueCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="purpleCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#581c87" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="greenCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="redCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7f1d1d" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#4ade80"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="700" fill="url(#bgGrad)"/>
+  <rect width="1200" height="700" fill="none" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Title & Header Bar -->
+  <g transform="translate(40, 24)">
+    <text x="0" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="-0.02em">
+      Prompt Repetition (RE2): Simulating Bidirectional Context in Causal Transformers
+    </text>
+    <text x="0" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">
+      Breaking the Causal Attention Asymmetry Trap via Second-Pass Re-Reading for Non-Reasoning Tasks
+    </text>
+  </g>
+
+  <!-- Panel 1: The Causal Trap (Left) -->
+  <g transform="translate(40, 90)">
+    <rect width="340" height="570" rx="10" fill="url(#redCardGrad)" stroke="#ef4444" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="340" height="42" rx="10" fill="#ef4444" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#f87171">1. THE CAUSAL ATTENTION TRAP</text>
+
+    <!-- Lower Triangular Mask -->
+    <g transform="translate(16, 56)">
+      <rect width="308" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Strict Lower-Triangular Masking</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Autoregressive decoder constraint:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#f87171">• Token i only attends to past tokens j &lt;= i</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#f87171">• Zero lookahead to subsequent prompt tokens</text>
+    </g>
+
+    <!-- Asymmetry Collapse -->
+    <g transform="translate(16, 180)">
+      <rect width="308" height="130" rx="8" fill="#0f172a" stroke="#ef4444" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#f87171">Information Asymmetry in Long Prompts</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">When processing Token 1 ("What"):</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#fca5a5">• Token 1 cannot attend to Token 4,000 (key fact)</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#fca5a5">• Early query representations lack contextual grounding</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#fca5a5">• Causes Needle-in-a-Haystack drop to 21.3%</text>
+    </g>
+
+    <!-- Real-World Impact -->
+    <g transform="translate(16, 326)">
+      <rect width="308" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Production Consequences</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Across enterprise RAG &amp; extraction fleets:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Up to 15% factual hallucination rates</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Expensive CoT chains used for simple lookups</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#cbd5e1">• High support costs correcting factual errors</text>
+    </g>
+
+    <!-- The Causal Trap Verdict -->
+    <g transform="translate(16, 460)">
+      <rect width="308" height="92" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#a5b4fc">The Core Bottleneck:</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#cbd5e1">The transformer's autoregressive mask acts</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">as a triangular prison, blinding earlier query</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">tokens from later reference material.</text>
+    </g>
+  </g>
+
+  <!-- Panel 2: The RE2 Mechanism (Center) -->
+  <g transform="translate(410, 90)">
+    <rect width="380" height="570" rx="10" fill="url(#blueCardGrad)" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="380" height="42" rx="10" fill="#38bdf8" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#38bdf8">2. RE2 RE-READING MECHANISM</text>
+
+    <!-- Transformation Schema -->
+    <g transform="translate(16, 56)">
+      <rect width="348" height="110" rx="8" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Prompt Transformation: Query Twice</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Repeats prompt sequence separated by '
+
+':</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Copy 1 establishes baseline causal KV cache</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Copy 2 acts as informed second-pass evaluation</text>
+    </g>
+
+    <!-- Simulated Bidirectionality -->
+    <g transform="translate(16, 180)">
+      <rect width="348" height="120" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#c084fc">Simulated Bidirectional Attention</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">When processing Copy 2 tokens:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Every token in Copy 2 attends to ALL Copy 1 tokens</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Complete contextual dependencies are resolved</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Effectively mimics bidirectional BERT-style attention</text>
+    </g>
+
+    <!-- Attention Matrix Diagram Simulation -->
+    <g transform="translate(16, 316)">
+      <rect width="348" height="130" rx="8" fill="#0f172a" stroke="#059669" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#34d399">Attention Density Matrix</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Cross-attention density distribution:</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Top-Left Block (Copy 1): Triangular Causal</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Bottom-Left Block (Copy 2 → Copy 1): Fully Dense</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Output Generation begins with maximum grounding</text>
+    </g>
+
+    <!-- Zero Training Requirement -->
+    <g transform="translate(16, 460)">
+      <rect width="348" height="92" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">100% Client-Side Wrapper</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#94a3b8">Requires zero model retraining or weight updates:</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">Drop-in Python wrapper compatible with all APIs</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#4ade80">(Gemini 2.0, OpenAI GPT-4o, Claude 3.7, DeepSeek).</text>
+    </g>
+  </g>
+
+  <!-- Panel 3: Performance & Economics (Right) -->
+  <g transform="translate(820, 90)">
+    <rect width="340" height="570" rx="10" fill="url(#greenCardGrad)" stroke="#4ade80" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="340" height="42" rx="10" fill="#4ade80" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#4ade80">3. BENCHMARKS &amp; ECONOMICS</text>
+
+    <!-- Needle-in-a-Haystack Benchmarks -->
+    <g transform="translate(16, 56)">
+      <rect width="308" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#4ade80">Needle-in-a-Haystack Uplift</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Standard Prompt vs RE2 (Google Research):</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Gemini 2.0: 21.3% → 97.3% (+356%)</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Claude 3.7: 38.1% → 92.4% (+142%)</text>
+    </g>
+
+    <!-- Model Matrix -->
+    <g transform="translate(16, 180)">
+      <rect width="308" height="130" rx="8" fill="#0f172a" stroke="#22c55e" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#4ade80">Cross-Model Non-Reasoning Win Rate</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#cbd5e1">• GPT-4o: 45.2% → 89.7% (+98%)</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#4ade80">• DeepSeek V3: 33.5% → 88.9% (+165%)</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#4ade80">• 47 Wins, 0 Losses across 70 benchmarks</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#38bdf8">• Generation Token Count: 0 extra tokens</text>
+    </g>
+
+    <!-- Token Economics -->
+    <g transform="translate(16, 326)">
+      <rect width="308" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Token Economics: RE2 vs CoT</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Why RE2 beats Chain-of-Thought on recall:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Input tokens are 10x-50x cheaper than output</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#a7f3d0">• RE2 cost overhead: ~17% (input tokens only)</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#a7f3d0">• CoT cost overhead: 300%+ (slow output FLOPs)</text>
+    </g>
+
+    <!-- Production Takeaway -->
+    <g transform="translate(16, 460)">
+      <rect width="308" height="92" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#4ade80">Deployment Rule:</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#cbd5e1">Use RE2 on factual extraction, search, and RAG;</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">reserve expensive Chain-of-Thought solely for</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">multi-step mathematical or code logic.</text>
+    </g>
+  </g>
+
+  <!-- Connectors -->
+  <path d="M 380 375 L 410 375" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)"/>
+  <path d="M 790 375 L 820 375" fill="none" stroke="#4ade80" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+</svg>

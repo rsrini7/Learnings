@@ -359,7 +359,7 @@ Phase 3: Hardware Networking Verification
 ---
 
 **Related:**
-- [Deepseek-Engram](Deepseek-Engram.md) — Analyzes conditional n-gram memory layers augmenting the DeepSeekMoE architecture.
+- [DeepSeek-Engram-Conditional-Memory-2026](DeepSeek-Engram-Conditional-Memory-2026.md) — Analyzes conditional n-gram memory layers augmenting the DeepSeekMoE architecture.
 - [mHC-Deepseek](mHC-Deepseek.md) — Covers Manifold-Constrained Hyper-Connections improving training stability in deep MoE networks.
 - [AI-Hardware-Chips-Explained](../../AI-ML/Hardware/AI-Hardware-Chips-Explained.md) — Details the GPU interconnect bandwidth limits (H800 vs H100) that DeepSeek's co-design overcame.
 - [KV-Cache-Prefix-Caching-And-Storage-Tiering-Nov-2026](../../AI-ML/LLMs/architecture/KV-Cache-Prefix-Caching-And-Storage-Tiering-Nov-2026.md) — Contextualizes MLA's 93.3% memory reduction within enterprise serving pipelines.
