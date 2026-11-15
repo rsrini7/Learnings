@@ -813,5 +813,5 @@ Build smart. Build grounded. Build the future with RAG.
 - [Reducing-Enterprise-RAG-Latency-2026](Reducing-Enterprise-RAG-Latency-2026.md) — Critical-path latency profiling, retrieval candidate tuning, adaptive rerank gating, and tail latency defense in enterprise RAG.
 - [RAG-Scaling-10M-Documents](RAG-Scaling-10M-Documents.md) — Scaling extension covering ingestion, retrieval funnel, and orchestration at 10M-document scale.
 - [Qwen3-VL-Embedding-and-Reranker](../LLMs/models/other/Qwen3-VL-Embedding-and-Reranker.md) — Concrete multimodal embedding and reranker model choice for retrieval and re-ranking pipelines.
-- [ai-token-optimization-tools](../LLMs/optimization/ai-token-optimization-tools.md) — Token-level compression tools that reduce RAG context window cost and latency.
+- [Multimodal RAG](Multimodal-RAG.md) — Extends this guide’s text-first retrieval flow to images, audio, video and source-level evidence.
 - [Jev-System-One-Decision-Model-2026](../LLMs/models/other/Jev-System-One-Decision-Model-2026.md) — Concise guide to using a typed decision model for filtering, reranking, and confidence-gated RAG flows.

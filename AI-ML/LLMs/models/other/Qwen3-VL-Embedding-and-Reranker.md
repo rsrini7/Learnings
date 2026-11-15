@@ -806,4 +806,5 @@ print(f"AI safety discussed at {timestamp}s")
 - [RAG-Architectures](../../../RAG/RAG-Architectures.md) — The two-stage retrieval pipeline (embedding recall -> reranker precision) is the canonical Tier 1 hybrid RAG architecture described here.
 - [RAG-Guide-Jan-2026](../../../RAG/RAG-Guide-Jan-2026.md) — Provides foundational chunking, retrieval, and evaluation context that the Qwen3 embedding/reranker code examples build on.
 - [RAG-Scaling-10M-Documents](../../../RAG/RAG-Scaling-10M-Documents.md) — Matryoshka truncation for 10x speedup and the embedding->reranker funnel are the exact scaling levers advocated at 10M-document scale here.
+- [Multimodal RAG](../../../RAG/Multimodal-RAG.md) — Places this model family in the broader retrieval design space for mixed text and visual evidence.
 - [LLM-Benchmarks](../../architecture/LLM-Benchmarks.md) — Defines MMEB-V2 (where Qwen3-VL-Embedding-8B ranks #1) and MTEB benchmark families used to score embedding quality.
