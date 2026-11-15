@@ -142,7 +142,7 @@ Learnings/
 #### 🎓 Training & Learning
 - [Auto Regression](AI-ML/LLMs/training/Auto-Regression.md)
 - [ContinualLearning](AI-ML/LLMs/training/ContinualLearning.md)
-- [Latent Thinkers](AI-ML/LLMs/training/Latent-Thinkers.md)
+- [Latent Thinkers And Hierarchical Reasoning Models 2026](AI-ML/LLMs/training/Latent-Thinkers-And-Hierarchical-Reasoning-Models-2026.md)
 - [ML Math](AI-ML/LLMs/training/ML-Math.md)
 - [Weight Space Programming Astra Qwen Nov 2026](AI-ML/LLMs/training/Weight-Space-Programming-Astra-Qwen-Nov-2026.md)
 
@@ -260,7 +260,7 @@ Learnings/
 - [Scaling PostgreSQL ChatGPT](Engineering/Databases/Scaling-PostgreSQL-ChatGPT.md)
 
 ### 📞 Middleware
-- [kafka 4.0](Engineering/Middleware/kafka-4.0.md)
+- [Kafka 4.0 KRaft Architecture And Migration 2026](Engineering/Middleware/Kafka-4.0-KRaft-Architecture-And-Migration-2026.md)
 - [workflow orchestration](Engineering/Middleware/workflow-orchestration.md)
 
 ### ☁️ Cloud
@@ -314,7 +314,7 @@ Learnings/
 ## ⚛️ Quantum Computing
 - [Google WillowChip QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
 - [Quantum AI Decision Makers(2026)](QuantumComputing/Quantum-AI-Decision-Makers%282026%29.md)
-- [Quantum Threat to Bitcoin](QuantumComputing/Quantum-Threat-to-Bitcoin.md)
+- [Quantum Threat to Bitcoin And Elliptic Curve Cryptography 2026](QuantumComputing/Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026.md)
 - [QuantumComputer Terms](QuantumComputing/QuantumComputer-Terms.md)
 - [VIO 40K Arch 10K Qubits](QuantumComputing/VIO-40K-Arch-10K-Qubits.md)
 

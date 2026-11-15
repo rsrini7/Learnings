@@ -782,5 +782,5 @@ The next 12-24 months will likely be the most critical period for these networks
 Start with your use case preference, but plan to gain competency across at least 2-3 of these networks. The ability to architect solutions across multiple settlement rails will be a significant differentiator.
 
 **Related:**
-- [Quantum-Threat-to-Bitcoin](../../QuantumComputing/Quantum-Threat-to-Bitcoin.md) — XRPL validators and HBAR aBFT are pitched as safer than Bitcoin's ECDSA against the looming quantum timeline.
+- [Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026](../../QuantumComputing/Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026.md) — XRPL validators and HBAR aBFT are pitched as safer than Bitcoin's ECDSA against the looming quantum timeline.
 - [GraphDB-massive-scale-analysis](../../Engineering/Databases/GraphDB-massive-scale-analysis.md) — XRPL issued-currencies/AMM and Hedera HCS tokenization raise the same indexing and graph-query challenges as enterprise ledger data.

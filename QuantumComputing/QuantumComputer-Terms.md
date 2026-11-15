@@ -57,5 +57,5 @@
 *   **Molecule Structure Prediction**: Quantum-assisted LEGO block shape guessing.
 
 **Related:**
-- [Quantum-Threat-to-Bitcoin](Quantum-Threat-to-Bitcoin.md) — Shows practical cryptographic stakes of Shor's algorithm and superposition defined here.
+- [Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026](Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026.md) — Shows practical cryptographic stakes of Shor's algorithm and superposition defined here.
 - [VIO-40K-Arch-10K-Qubits](VIO-40K-Arch-10K-Qubits.md) — Illustrates how coherence time, gate fidelity, and scalability terms translate into a 10K-qubit design.

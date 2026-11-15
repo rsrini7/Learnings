@@ -97,6 +97,6 @@ Based on collected repository notes, with mechanism and deployment claims checke
 ---
 
 **Related:**
-- [Kafka 4.0](kafka-4.0.md) — Distinguishes event-log consumption and queue delivery from end-to-end process coordination.
+- [Kafka 4.0](Kafka-4.0-KRaft-Architecture-And-Migration-2026.md) — Distinguishes event-log consumption and queue delivery from end-to-end process coordination.
 - [Java Plugin Architecture](../JVM/Java-Plugin-Arch.md) — Explains contracts and process boundaries for independently deployed extensions and workers.
 - [AWS versus Hetzner](../Cloud/AWS-vs-Hetzner.md) — Adds infrastructure context when comparing managed orchestration with self-hosted services.

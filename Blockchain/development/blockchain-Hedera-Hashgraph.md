@@ -341,5 +341,5 @@ Youtube Reference with Agentic AI: https://www.youtube.com/watch?v=1jerPeBZXo4&l
 Github Repo: https://github.com/hedera-dev/workshop-ai-agent-langgraph
 
 **Related:**
-- [Quantum-Threat-to-Bitcoin](../../QuantumComputing/Quantum-Threat-to-Bitcoin.md) — Hedera's aBFT finality and council governance are marketed as quantum-resistant advantages over PoW chains like Bitcoin.
+- [Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026](../../QuantumComputing/Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026.md) — Hedera's aBFT finality and council governance are marketed as quantum-resistant advantages over PoW chains like Bitcoin.
 - [AI-Periodic-Table](../../AI-ML/LLMs/economy/AI-Periodic-Table.md) — Hedera's enterprise council (Google, IBM, ServiceNow) plus AI partnerships (Dec 2025 surge) tie it to the AI infrastructure layer.

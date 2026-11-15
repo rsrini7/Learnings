@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 768" width="1120" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 788" width="1120" role="img" aria-labelledby="title desc">
 <title id="title">Kafka 4.0: metadata and record delivery</title>
 <desc id="desc">A controller quorum sends metadata to brokers. Below, conventional consumer groups assign partitions, while share groups acquire records and acknowledge processing. Share groups were early access in Kafka 4.0.</desc>
 <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/></marker></defs>
-<rect width="1120" height="768" rx="16" fill="#0b0f19"/>
+<rect width="1120" height="788" rx="16" fill="#0b0f19"/>
 <text x="40" y="44" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#e2e8f0" font-weight="700">Kafka 4.0: metadata and record delivery</text>
 <text x="40" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#94a3b8">KRaft manages cluster metadata. Consumer protocols determine how applications receive work.</text>
 <text x="40" y="110" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">CLUSTER METADATA AND DATA ACCESS</text>
@@ -41,8 +41,9 @@
 <text x="600" y="528" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Application consequence</text>
 <text x="600" y="557" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Multiple workers can share partition work</text>
 <text x="600" y="579" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Completion order and retries need design</text>
-<rect x="40" y="640" width="1040" height="100" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
-<text x="60" y="670" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Upgrade decisions are separate</text>
-<text x="60" y="699" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Migrate ZooKeeper before a 4.0 upgrade. Opt into the new consumer protocol deliberately.</text>
-<text x="60" y="721" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Share groups and ELR had separate preview status in Kafka 4.0.</text>
+<rect x="40" y="640" width="1040" height="95" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="668" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Upgrade decisions are separate</text>
+<text x="60" y="695" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Migrate ZooKeeper before a 4.0 upgrade. Opt into the new consumer protocol deliberately.</text>
+<text x="60" y="717" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Share groups and ELR had separate preview status in Kafka 4.0.</text>
+<text x="560" y="765" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
 </svg>

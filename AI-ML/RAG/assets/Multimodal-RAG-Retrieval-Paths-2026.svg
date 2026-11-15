@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 753" width="1120" role="img" aria-labelledby="title desc">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 770" width="1120" role="img" aria-labelledby="title desc">
 <title id="title">Multimodal RAG: three ways to find evidence</title>
 <desc id="desc">Three parallel retrieval paths: convert media to text, use aligned multimodal embeddings, or query specialized indexes and fuse results. All paths return evidence with locations to the answer-generation step.</desc>
 <defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/></marker></defs>
-<rect width="1120" height="753" rx="16" fill="#0b0f19"/>
+<rect width="1120" height="770" rx="16" fill="#0b0f19"/>
 <text x="40" y="44" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#e2e8f0" font-weight="700">Multimodal RAG: three ways to find evidence</text>
 <text x="40" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#94a3b8">Keep source locations through retrieval so a reader can inspect the original media.</text>
 <rect x="40" y="120" width="1040" height="90" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
@@ -32,7 +32,8 @@
 <text x="60" y="532" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Keep the retrieved page, region or segment and its source pointer.</text>
 <text x="60" y="554" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">A text summary is useful only when it preserves the information needed to answer.</text>
 <path d="M 560 590 L 560 625" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
-<rect x="40" y="628" width="1040" height="95" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
-<text x="60" y="658" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Generate and evaluate the answer</text>
-<text x="60" y="687" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Check retrieval coverage first, then verify that the answer is supported by the evidence.</text>
+<rect x="40" y="628" width="1040" height="85" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="60" y="656" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Generate and evaluate the answer</text>
+<text x="60" y="682" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Check retrieval coverage first, then verify that the answer is supported by the evidence.</text>
+<text x="560" y="746" font-family="Arial, Helvetica, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
 </svg>

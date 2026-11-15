@@ -425,5 +425,5 @@ The following visual documentation preserves the conceptual overview of the line
 - [LLM-Inference](../architecture/LLM-Inference.md) — Explains the memory bandwidth wall and KV-cache bottleneck that linear attention is designed to eliminate.
 - [microGPT-Architecture-Complete](../architecture/microGPT-Architecture-Complete.md) — Walks through standard causal self-attention mechanics and tensor projections replaced by linear state matrices.
 - [Auto-Regression](../training/Auto-Regression.md) — Details the sequential token-by-token generation pattern whose arithmetic intensity crisis motivates recurrent architectures.
-- [Latent-Thinkers](../training/Latent-Thinkers.md) — Explores recurrence in latent reasoning and hidden-state computation beyond standard token autoregression.
+- [Latent-Thinkers-And-Hierarchical-Reasoning-Models-2026](../training/Latent-Thinkers-And-Hierarchical-Reasoning-Models-2026.md) — Explores recurrence in latent reasoning and hidden-state computation beyond standard token autoregression.
 - [Persistent-Memory-Layers-AI-Agents](../architecture/Persistent-Memory-Layers-AI-Agents.md) — Examines multi-tier agent memory systems that complement architectural neural memory state.

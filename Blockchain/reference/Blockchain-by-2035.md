@@ -178,4 +178,4 @@ By 2035, blockchain offers developers tools for secure, decentralized systems. S
 
 **Related:**
 - [AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization](../enterprise/AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization.md) — Highlights today's legal, attribution, and infrastructure frictions that any 2035 tokenized world must resolve.
-- [Quantum-Threat-to-Bitcoin](../../QuantumComputing/Quantum-Threat-to-Bitcoin.md) — Surfaces the post-quantum risk to Bitcoin-as-economic-backbone assumed by the 2035 vision.
+- [Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026](../../QuantumComputing/Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026.md) — Surfaces the post-quantum risk to Bitcoin-as-economic-backbone assumed by the 2035 vision.

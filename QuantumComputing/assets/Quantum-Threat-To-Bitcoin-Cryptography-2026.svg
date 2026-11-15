@@ -1,0 +1,160 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 820" width="1240" height="820" role="img" aria-labelledby="title desc">
+  <title id="title">Quantum Threat to Bitcoin Cryptography Architecture</title>
+  <desc id="desc">Shor's algorithm versus Grover's algorithm, physical versus logical qubits, address reuse vulnerabilities, and post-quantum cryptographic migration paths</desc>
+
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </linearGradient>
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-rose" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#f43f5e"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4ade80"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1240" height="820" rx="16" fill="url(#bg-grad)"/>
+
+  <!-- Header Banner -->
+  <rect x="30" y="24" width="1180" height="76" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="60" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">Quantum Threat to Bitcoin Cryptography: Mechanics &amp; Timeline</text>
+  <text x="60" y="82" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">Shor's ECDSA Breakdown vs Grover's SHA-256 Resilience, Qubit Scaling, and Post-Quantum Migration</text>
+  <rect x="1050" y="44" width="130" height="30" rx="6" fill="#f43f5e" fill-opacity="0.15" stroke="#f43f5e" stroke-width="1"/>
+  <text x="1115" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#f43f5e" text-anchor="middle">SECURITY AUDIT</text>
+
+  <!-- Panel 1: Cryptographic Algorithm Vulnerability (Top Left) -->
+  <rect x="30" y="115" width="575" height="315" rx="12" fill="url(#card-grad)" stroke="#f43f5e" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="50" y="130" width="300" height="26" rx="6" fill="#f43f5e" fill-opacity="0.2"/>
+  <text x="60" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f43f5e">1. ALGORITHM ASYMMETRY</text>
+
+  <!-- Sub-block: ECDSA secp256k1 (Vulnerable) -->
+  <rect x="50" y="168" width="255" height="245" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1"/>
+  <rect x="65" y="180" width="135" height="22" rx="4" fill="#f43f5e" fill-opacity="0.25"/>
+  <text x="132" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f43f5e" text-anchor="middle">ECDSA secp256k1</text>
+  <text x="65" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">Target: Public Key Signatures</text>
+  <text x="65" y="242" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Threat: Shor's Algorithm</text>
+  <text x="65" y="260" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Mathematical primitive:</text>
+  <text x="80" y="280" font-family="Courier, monospace" font-size="11" fill="#f43f5e">Q = d * G (Discrete Log)</text>
+  <text x="65" y="302" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Complexity: O((log N)^3) poly-time</text>
+  <text x="65" y="322" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Classical: 2^128 operations</text>
+  <text x="65" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Quantum: ~2,048 logical qubits</text>
+  <text x="65" y="370" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f43f5e">Status: CATASTROPHIC BREAK</text>
+  <text x="65" y="390" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b">Private key derived from public key</text>
+
+  <!-- Sub-block: SHA-256 Proof of Work (Resilient) -->
+  <rect x="320" y="168" width="265" height="245" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1"/>
+  <rect x="335" y="180" width="135" height="22" rx="4" fill="#4ade80" fill-opacity="0.25"/>
+  <text x="402" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80" text-anchor="middle">SHA-256 Hashing</text>
+  <text x="335" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">Target: Mining &amp; Block Hashes</text>
+  <text x="335" y="242" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Threat: Grover's Algorithm</text>
+  <text x="335" y="260" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Mathematical primitive:</text>
+  <text x="350" y="280" font-family="Courier, monospace" font-size="11" fill="#4ade80">H = SHA256(SHA256(data))</text>
+  <text x="335" y="302" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Complexity: O(sqrt(N)) quadratic</text>
+  <text x="335" y="322" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Effective Security: 2^128 bits</text>
+  <text x="335" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Classical ASICs out-pace quantum</text>
+  <text x="335" y="370" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">Status: QUANTUM RESILIENT</text>
+  <text x="335" y="390" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b">Hash preimage remains intractable</text>
+
+  <!-- Panel 2: Address Reuse & Exposure Attack Surface (Top Right) -->
+  <rect x="635" y="115" width="575" height="315" rx="12" fill="url(#card-grad)" stroke="#fbbf24" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="655" y="130" width="310" height="26" rx="6" fill="#fbbf24" fill-opacity="0.2"/>
+  <text x="665" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">2. BITCOIN ATTACK SURFACE</text>
+
+  <!-- Exposed vs Shielded Cards -->
+  <rect x="655" y="168" width="260" height="110" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-width="1"/>
+  <text x="670" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f43f5e">Exposed Public Keys (High Risk)</text>
+  <text x="670" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• P2PK: ~1.7M Satoshi coins (pre-2010)</text>
+  <text x="670" y="228" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Reused P2PKH addresses</text>
+  <text x="670" y="246" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Mempool unconfirmed spends (10 min)</text>
+  <text x="670" y="266" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#f43f5e">Vulnerable: ~3.5M BTC total (~17%)</text>
+
+  <rect x="930" y="168" width="260" height="110" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1"/>
+  <text x="945" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">Shielded Addresses (Low Risk)</text>
+  <text x="945" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Fresh P2PKH / P2WPKH / Taproot</text>
+  <text x="945" y="228" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Public key Q is never broadcast</text>
+  <text x="945" y="246" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Protected by double hashing:</text>
+  <text x="945" y="266" font-family="Courier, monospace" font-size="10" fill="#4ade80">RIPEMD160(SHA256(Q))</text>
+
+  <!-- Mempool Race Attack Flow -->
+  <rect x="655" y="290" width="535" height="125" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="675" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">The Mempool Quantum Snatch Attack Window</text>
+  <text x="675" y="334" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">1. User broadcasts valid TX: exposes Public Key Q in mempool.</text>
+  <text x="675" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">2. Quantum attacker captures Q, solves discrete log d in &lt; 10 minutes.</text>
+  <text x="675" y="370" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">3. Attacker signs competing TX with higher fee (RBF) to steal UTXO before block confirmation.</text>
+  <text x="675" y="392" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24">Requires sub-10-minute quantum runtime; offline UTXOs allow unlimited crack time.</text>
+
+  <!-- Panel 3: Physical vs Logical Qubit Gap (Bottom Left) -->
+  <rect x="30" y="450" width="575" height="305" rx="12" fill="url(#card-grad)" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="50" y="465" width="290" height="26" rx="6" fill="#38bdf8" fill-opacity="0.2"/>
+  <text x="60" y="483" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">3. HARDWARE &amp; QUBIT GAP</text>
+
+  <!-- Bar comparison -->
+  <rect x="50" y="505" width="535" height="110" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="70" y="528" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">Surface Code Error Correction Overhead</text>
+  
+  <text x="70" y="552" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Logical Qubits Needed for secp256k1:</text>
+  <text x="360" y="552" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">~2,048 logical qubits</text>
+
+  <text x="70" y="574" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Physical Qubits per Logical (p=10^-3):</text>
+  <text x="360" y="574" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">~1,000 – 2,000 physical / logical</text>
+
+  <text x="70" y="598" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Total Physical Qubits Required:</text>
+  <text x="360" y="598" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" fill="#f43f5e">~2,000,000 to 4,000,000</text>
+
+  <!-- State of Hardware Card -->
+  <rect x="50" y="625" width="535" height="115" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+  <text x="70" y="648" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">State of Quantum Hardware (2026 Baseline)</text>
+  <text x="70" y="670" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Current physical qubit scale: ~1,000 to 5,000 noisy physical qubits (NISQ era).</text>
+  <text x="70" y="688" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Two-qubit gate error rates: ~10^-2 to 10^-3 (threshold for fault tolerance is ~10^-4).</text>
+  <text x="70" y="708" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• Practical Threat Horizon: 2032–2040+ based on primary physics literature.</text>
+  <text x="70" y="726" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b">Provides adequate time window for deliberate Bitcoin consensus soft-fork migration.</text>
+
+  <!-- Panel 4: Post-Quantum Migration Paths (Bottom Right) -->
+  <rect x="635" y="450" width="575" height="305" rx="12" fill="url(#card-grad)" stroke="#4ade80" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="655" y="465" width="310" height="26" rx="6" fill="#4ade80" fill-opacity="0.2"/>
+  <text x="665" y="483" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#4ade80">4. POST-QUANTUM MIGRATION PATHS</text>
+
+  <!-- Candidate Schemas -->
+  <rect x="655" y="505" width="170" height="110" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="670" y="528" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">1. Hash-Based (WOTS+)</text>
+  <text x="670" y="548" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">• Winternitz One-Time Sig</text>
+  <text x="670" y="566" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">• Pure hash security</text>
+  <text x="670" y="584" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">• Zero algebraic assumptions</text>
+  <text x="670" y="602" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#f43f5e">Cons: 2.5 KB sig size</text>
+
+  <rect x="835" y="505" width="175" height="110" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="850" y="528" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">2. Lattice (ML-DSA)</text>
+  <text x="850" y="548" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">• NIST FIPS 204 (Dilithium)</text>
+  <text x="850" y="566" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">• Fast verification</text>
+  <text x="850" y="584" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">• Sig size: ~2.4 KB to 3.3 KB</text>
+  <text x="850" y="602" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24">Cons: Block bloat</text>
+
+  <rect x="1020" y="505" width="170" height="110" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="1035" y="528" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">3. Falcon (NTRU)</text>
+  <text x="1035" y="548" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">• NIST FIPS 206</text>
+  <text x="1035" y="566" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">• Compact: 666 bytes</text>
+  <text x="1035" y="584" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">• Best block throughput</text>
+  <text x="1035" y="602" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#f43f5e">Cons: Floating-pt complexity</text>
+
+  <!-- Consensus Soft Fork Roadmap -->
+  <rect x="655" y="625" width="535" height="115" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1"/>
+  <text x="675" y="648" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">Consensus Soft-Fork Execution Strategy</text>
+  <text x="675" y="670" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Taproot Extension: Introduce new leaf version for quantum-safe spending scripts.</text>
+  <text x="675" y="688" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Grace Period &amp; Burn: Mandate unspent P2PK coins move to quantum addresses.</text>
+  <text x="675" y="708" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#e2e8f0">• After cut-off block height: Freeze un-migrated legacy outputs to protect supply cap.</text>
+  <text x="675" y="726" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">Eliminates existential security risk without fracturing network into competing hard forks.</text>
+
+  <!-- Centered Footer Attribution -->
+  <text x="620" y="790" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
+</svg>

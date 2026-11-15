@@ -592,4 +592,4 @@ Researched in response to backend architectural challenges surrounding URI query
 - [Scaling Java Services](Scaling-1M-RPS-Java.md) — Architectural patterns for high-throughput Java and JVM request handling.
 - [Migrating PHP: Static React, Java or Go](PHP-Migration-Static-React-Java-And-Go-Oct-2026.md) — Backend framework selection, HTTP handling, and edge deployment trade-offs.
 - [Deno Joins Cloudflare](../Languages/Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md) — Edge compute runtimes and modern CDN request processing architectures.
-- [Kafka 4.0 Architecture](../Middleware/kafka-4.0.md) — Distributed event streaming, idempotency guarantees, and message transport models.
+- [Kafka 4.0 Architecture](../Middleware/Kafka-4.0-KRaft-Architecture-And-Migration-2026.md) — Distributed event streaming, idempotency guarantees, and message transport models.

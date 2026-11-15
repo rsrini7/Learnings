@@ -148,6 +148,6 @@ No direct MMLU/HumanEval data is cited, which supports your cherry-picking conce
 
 **Related:**
 - [ContinualLearning](../training/ContinualLearning.md) — Nested Learning (Breakthrough #4) is named and described at the architecture level here while Continual Learning gives the full 5-level framework and economic case.
-- [Latent-Thinkers](../training/Latent-Thinkers.md) — Latent-space thinking and private CoT (Breakthrough #3) are the same MAP/HRM-style internal reasoning paradigms detailed in Latent-Thinkers.
+- [Latent-Thinkers-And-Hierarchical-Reasoning-Models-2026](../training/Latent-Thinkers-And-Hierarchical-Reasoning-Models-2026.md) — Latent-space thinking and private CoT (Breakthrough #3) are the same MAP/HRM-style internal reasoning paradigms detailed in Latent-Thinkers.
 - [Auto-Regression](../training/Auto-Regression.md) — Diffusion LLMs (Breakthrough #1) directly target the sequential auto-regressive bottleneck, offering a parallel-refinement alternative covered in depth there.
 - [Google-Nested-Learning](../../../Papers/scaling/Google-Nested-Learning.md) — Primary source for the Nested-Learning breakthrough, with the HOPE architecture details and experimental results this whitepaper summarizes.
