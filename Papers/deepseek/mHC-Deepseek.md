@@ -1048,6 +1048,6 @@ The Birkhoff polytope B(n) is the set of all n×n doubly stochastic matrices:
 Found an error or have suggestions? Please submit issues or pull requests to improve this guide for the community.
 
 **Related:**
-- [DeepSeek-Advancements](DeepSeek-Advancements.md) — Background on the MoE transformer designs (3B/9B/27B) that mHC was validated against.
+- [DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026](DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026.md) — Background on the MoE transformer designs (3B/9B/27B) that mHC was validated against.
 - [Deepseek-Engram](Deepseek-Engram.md) — Parallel DeepSeek innovation adding conditional memory to the same MoE foundation.
-- [Google-Nested-Learning](../scaling/Google-Nested-Learning.md) — Google's nested learning offers an alternative stability+scaling paradigm for foundation models.
+- [Google-Nested-Learning-And-Neural-Continuum-Memory-2026](../scaling/Google-Nested-Learning-And-Neural-Continuum-Memory-2026.md) — Google's nested learning offers an alternative stability+scaling paradigm for foundation models.

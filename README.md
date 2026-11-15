@@ -312,7 +312,7 @@ Learnings/
 ---
 
 ## ⚛️ Quantum Computing
-- [Google WillowChip QuantumEchoes Algorithm](QuantumComputing/Google-WillowChip-QuantumEchoes-Algorithm.md)
+- [Google Willow Quantum Chip And Quantum Echoes 2026](QuantumComputing/Google-Willow-Quantum-Chip-And-Quantum-Echoes-2026.md)
 - [Quantum AI Decision Makers(2026)](QuantumComputing/Quantum-AI-Decision-Makers%282026%29.md)
 - [Quantum Threat to Bitcoin And Elliptic Curve Cryptography 2026](QuantumComputing/Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026.md)
 - [QuantumComputer Terms](QuantumComputing/QuantumComputer-Terms.md)
@@ -323,8 +323,8 @@ Learnings/
 ## 📄 Research Papers
 
 ### 🔍 DeepSeek Research
-- [DeepSeek Advancements](Papers/deepseek/DeepSeek-Advancements.md)
 - [DeepSeek R1](Papers/deepseek/DeepSeek-R1.md)
+- [DeepSeek V3 Architecture And Hardware Software CoDesign 2026](Papers/deepseek/DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026.md)
 - [Deepseek Engram](Papers/deepseek/Deepseek-Engram.md)
 - [mHC Deepseek](Papers/deepseek/mHC-Deepseek.md)
 - [mHC Simplified](Papers/deepseek/mHC-Simplified.md)
@@ -340,8 +340,8 @@ Learnings/
 - [kimi k2.5 technical report](Papers/vision/kimi_k2.5_technical_report.md)
 
 ### 📈 Scaling & Architecture
-- [Facebook sparce memory finetuning](Papers/scaling/Facebook-sparce-memory-finetuning.md)
-- [Google Nested Learning](Papers/scaling/Google-Nested-Learning.md)
+- [Google Nested Learning And Neural Continuum Memory 2026](Papers/scaling/Google-Nested-Learning-And-Neural-Continuum-Memory-2026.md)
+- [Meta Sparse Memory Finetuning And Contextual Scaffolding 2026](Papers/scaling/Meta-Sparse-Memory-Finetuning-And-Contextual-Scaffolding-2026.md)
 - [The Science of Scaling AI Agent Systems](Papers/scaling/The-Science-of-Scaling-AI-Agent-Systems.md)
 
 ### 📋 Meta & Academic Tools
@@ -352,7 +352,7 @@ Learnings/
 - [VL JEPA Comprehensive Technical Guide](Papers/VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide.md)
 
 ### ⚖️ Paper Comparisons
-- [Google Nested Learning VS FB Sparce Memory](Papers/comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md)
+- [Google Nested Learning vs Meta Sparse Memory 2026](Papers/comparisons/Google-Nested-Learning-vs-Meta-Sparse-Memory-2026.md)
 - [LLM VLA VLM VL JEPA MAMBA3 DIFFUSION](Papers/comparisons/LLM-VLA-VLM-VL-JEPA-MAMBA3-DIFFUSION.md)
 
 ---

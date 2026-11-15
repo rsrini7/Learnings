@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 820" width="1240" height="820" role="img" aria-labelledby="title desc">
+  <title id="title">Google Nested Learning and Continuum Memory Architecture</title>
+  <desc id="desc">Multi-timescale optimization stacks, Continuum Memory System (CMS), HOPE architecture, and associative memory optimizers for continual lifelong learning</desc>
+
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </linearGradient>
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1240" height="820" rx="16" fill="url(#bg-grad)"/>
+
+  <!-- Header Banner -->
+  <rect x="30" y="24" width="1180" height="76" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="60" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">Google Nested Learning &amp; Continuum Memory (HOPE)</text>
+  <text x="60" y="82" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">Multi-Timescale Optimization, Associative Memory Optimizers &amp; Lifelong Continual Learning</text>
+  <rect x="1050" y="44" width="130" height="30" rx="6" fill="#38bdf8" fill-opacity="0.15" stroke="#38bdf8" stroke-width="1"/>
+  <text x="1115" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#38bdf8" text-anchor="middle">RESEARCH 2026</text>
+
+  <!-- Panel 1: Catastrophic Forgetting vs Nested Stacks (Top Left) -->
+  <rect x="30" y="115" width="575" height="315" rx="12" fill="url(#card-grad)" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="50" y="130" width="310" height="26" rx="6" fill="#38bdf8" fill-opacity="0.2"/>
+  <text x="60" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">1. NESTED OPTIMIZATION PARADIGM</text>
+
+  <!-- Standard Monolithic Box -->
+  <rect x="50" y="168" width="255" height="245" rx="8" fill="#1e293b" stroke="#f43f5e" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="65" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f43f5e">Standard Flat Optimization</text>
+  <text x="65" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Single global update rule:</text>
+  <text x="80" y="230" font-family="Courier, monospace" font-size="11" fill="#f43f5e">θ_(t+1) = θ_t - η ∇L(θ_t)</text>
+  <text x="65" y="252" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Uniform learning rate across layers</text>
+  <text x="65" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Catastrophic Forgetting:</text>
+  <text x="65" y="288" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">  Fine-tuning on domain B destroys</text>
+  <text x="65" y="306" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">  orthogonal representations of A</text>
+  <text x="65" y="335" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#f43f5e">• "Digital Attic" problem:</text>
+  <text x="65" y="353" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">  Replay buffers are shallow patches</text>
+  <text x="65" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b">Rigid single-frequency plasticity</text>
+
+  <!-- Russian Doll Nested Stacks -->
+  <rect x="320" y="168" width="265" height="245" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.4" stroke-width="1"/>
+  <text x="335" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Nested "Russian Doll" Stacks</text>
+  <text x="335" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Interconnected optimization levels:</text>
+  <text x="345" y="230" font-family="Courier, monospace" font-size="9" fill="#38bdf8">min_{θ_s} L(θ_s, θ_f*(θ_s))</text>
+  <text x="335" y="252" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Inner loop updates fast modules</text>
+  <text x="335" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Outer loop optimizes slow invariant</text>
+  <text x="335" y="288" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">  foundational knowledge</text>
+  <text x="335" y="315" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">• Bio-Inspired Neuroplasticity:</text>
+  <text x="335" y="335" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#e2e8f0">  Mimics synaptic multi-timescale</text>
+  <text x="335" y="353" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#e2e8f0">  memory consolidation in humans</text>
+  <text x="335" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Zero catastrophic forgetting</text>
+
+  <!-- Panel 2: Continuum Memory System (Top Right) -->
+  <rect x="635" y="115" width="575" height="315" rx="12" fill="url(#card-grad)" stroke="#4ade80" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="655" y="130" width="310" height="26" rx="6" fill="#4ade80" fill-opacity="0.2"/>
+  <text x="665" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#4ade80">2. CONTINUUM MEMORY SYSTEM (CMS)</text>
+
+  <!-- Tier 1: Fast Memory -->
+  <rect x="655" y="168" width="535" height="70" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+  <text x="675" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">High-Frequency Memory Tier (Fast Memory)</text>
+  <text x="675" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Update cadence: Every token / sequence step | High learning rate: η_fast</text>
+  <text x="675" y="228" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b">Handles immediate conversational context, short-term working memory, and dynamic prompts.</text>
+
+  <!-- Tier 2: Medium Memory -->
+  <rect x="655" y="248" width="535" height="70" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+  <text x="675" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Intermediate-Frequency Memory Tier (Medium Memory)</text>
+  <text x="675" y="290" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Update cadence: Every task / session chunk | Moderate learning rate: η_med</text>
+  <text x="675" y="308" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b">Consolidates session patterns, task workflows, and temporary domain rules.</text>
+
+  <!-- Tier 3: Slow Memory -->
+  <rect x="655" y="328" width="535" height="70" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1"/>
+  <text x="675" y="350" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">Low-Frequency Memory Tier (Slow Memory)</text>
+  <text x="675" y="370" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Update cadence: Across long epochs / validation gates | Conservative learning rate: η_slow</text>
+  <text x="675" y="388" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b">Anchors core language grammar, factual world knowledge, and mathematical logic.</text>
+
+  <!-- Panel 3: Optimizers as Associative Memory (Bottom Left) -->
+  <rect x="30" y="450" width="575" height="305" rx="12" fill="url(#card-grad)" stroke="#a855f7" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="50" y="465" width="310" height="26" rx="6" fill="#a855f7" fill-opacity="0.2"/>
+  <text x="60" y="483" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#a855f7">3. ASSOCIATIVE MEMORY OPTIMIZERS</text>
+
+  <rect x="50" y="505" width="535" height="110" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="70" y="528" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">The Delta-Rule Associative Memory Matrix (M_t)</text>
+  <text x="70" y="550" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">Instead of mechanical scalar momentum, the optimizer updates an associative key-value memory:</text>
+  <text x="85" y="575" font-family="Courier, monospace" font-size="11" fill="#38bdf8">M_t = (1 - α) M_(t-1) + η (v_t - M_(t-1) k_t) k_t^T</text>
+  <text x="70" y="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">• Error-correcting delta term (v_t - M k_t) prevents overwriting un-related key subspaces.</text>
+
+  <rect x="50" y="625" width="535" height="115" rx="8" fill="#1e293b" stroke="#a855f7" stroke-width="1"/>
+  <text x="70" y="648" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a855f7">Transition from Mechanical to Cognitive Storage</text>
+  <text x="70" y="670" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Mechanical Optimizer (SGD/Adam): Transient gradient accumulator with zero recall ability.</text>
+  <text x="70" y="690" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Cognitive Optimizer (HOPE): Trainable neural memory that retrieves past examples dynamically,</text>
+  <text x="70" y="708" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">  acting as an internal persistent neural cache directly inside model weights.</text>
+  <text x="70" y="726" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Enables in-weights lifelong adaptation without external vector databases.</text>
+
+  <!-- Panel 4: HOPE Architecture & Benchmark Results (Bottom Right) -->
+  <rect x="635" y="450" width="575" height="305" rx="12" fill="url(#card-grad)" stroke="#fbbf24" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="655" y="465" width="310" height="26" rx="6" fill="#fbbf24" fill-opacity="0.2"/>
+  <text x="665" y="483" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">4. HOPE ARCHITECTURE &amp; BENCHMARKS</text>
+
+  <!-- Comparison Table Box -->
+  <rect x="655" y="505" width="535" height="120" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="675" y="528" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Empirical Performance Across Continual Baselines</text>
+  <text x="675" y="552" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Standard Transformer: Severe perplexity spike (+84%) on Task A after training Task B.</text>
+  <text x="675" y="572" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Titans (Neural Long-Term Memory): Moderate forgetting (+18% perplexity degradation).</text>
+  <text x="675" y="592" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Sambar Architecture: Improved sequence retention, but high memory overhead.</text>
+  <text x="675" y="612" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">• HOPE (Nested Learning): Lower perplexity &amp; zero knowledge regression (&lt; 1.2% delta).</text>
+
+  <!-- Key Architecture Traits -->
+  <rect x="655" y="635" width="535" height="105" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="675" y="658" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">HOPE (Higher-Order Poly-Evolution) Innovations</text>
+  <text x="675" y="680" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Recursive learning with self-modifying gradient learning rules.</text>
+  <text x="675" y="698" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Extends context horizons beyond 2M tokens without quadratic attention memory bloat.</text>
+  <text x="675" y="722" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">Structural elegance eliminates the artificial barrier between training and inference.</text>
+
+  <!-- Centered Footer Attribution -->
+  <text x="620" y="790" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
+</svg>

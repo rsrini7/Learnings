@@ -1413,4 +1413,4 @@ where:
 **Related:**
 - [mHC-Deepseek](mHC-Deepseek.md) — Sister DeepSeek architecture release combining constrained multi-stream routing with conditional memory.
 - [Persistent-Memory-Layers-AI-Agents](../../AI-ML/LLMs/architecture/Persistent-Memory-Layers-AI-Agents.md) — Complementary persistent memory layer approach addressing transformer limitations with O(1) pattern lookup.
-- [Google-Nested-Learning-VS-FB-Sparce-Memory](../comparisons/Google-Nested-Learning-VS-FB-Sparce-Memory.md) — Comparison of memory-centric architectures from Google and Facebook parallels Engram's memory axis.
+- [Google-Nested-Learning-vs-Meta-Sparse-Memory-2026](../comparisons/Google-Nested-Learning-vs-Meta-Sparse-Memory-2026.md) — Comparison of memory-centric architectures from Google and Meta parallels Engram's memory axis.

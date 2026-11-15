@@ -1,0 +1,155 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 820" width="1240" height="820" role="img" aria-labelledby="title desc">
+  <title id="title">AI Hardware Accelerator Architectures and Interconnect Physics</title>
+  <desc id="desc">Architectural comparison of GPUs, TPUs, LPUs, and NPUs, the Roofline Model, memory hierarchies, and scale-up versus scale-out interconnect fabrics</desc>
+
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </linearGradient>
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4ade80"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1240" height="820" rx="16" fill="url(#bg-grad)"/>
+
+  <!-- Header Banner -->
+  <rect x="30" y="24" width="1180" height="76" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="60" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">AI Hardware Architectures &amp; Interconnect Physics</text>
+  <text x="60" y="82" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">Silicon Paradigms (GPU vs TPU vs LPU vs NPU), Roofline Dynamics, and Memory-Interconnect Walls</text>
+  <rect x="1050" y="44" width="130" height="30" rx="6" fill="#38bdf8" fill-opacity="0.15" stroke="#38bdf8" stroke-width="1"/>
+  <text x="1115" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#38bdf8" text-anchor="middle">SYSTEMS ARCH</text>
+
+  <!-- Panel 1: Processor Silicon Taxonomy (Top Left) -->
+  <rect x="30" y="115" width="575" height="315" rx="12" fill="url(#card-grad)" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="50" y="130" width="310" height="26" rx="6" fill="#38bdf8" fill-opacity="0.2"/>
+  <text x="60" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">1. ACCELERATOR SILICON PARADIGMS</text>
+
+  <!-- Sub-blocks: 4 silicon types -->
+  <rect x="50" y="168" width="255" height="110" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="65" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">GPU (NVIDIA B200 / H100)</text>
+  <text x="65" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#e2e8f0">SIMT + Tensor Cores</text>
+  <text x="65" y="230" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• HBM3e Memory: up to 8.0 TB/s</text>
+  <text x="65" y="248" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• NVLink-5: 1.8 TB/s per GPU</text>
+  <text x="65" y="266" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Best for: Large-scale training &amp; batched prefill</text>
+
+  <rect x="320" y="168" width="265" height="110" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="335" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#4ade80">TPU (Google v5p / v6e)</text>
+  <text x="335" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#e2e8f0">Systolic Array Matrix Units (MXU)</text>
+  <text x="335" y="230" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• 2D grid matrix multiplication</text>
+  <text x="335" y="248" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• 3D Torus with Optical Circuit Switch</text>
+  <text x="335" y="266" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">Best for: Multi-pod training &amp; cost efficiency</text>
+
+  <rect x="50" y="290" width="255" height="125" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="65" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">LPU (Groq Architecture)</text>
+  <text x="65" y="332" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#e2e8f0">Deterministic Pure-SRAM Core</text>
+  <text x="65" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• 230 MB SRAM per chip @ 80 TB/s</text>
+  <text x="65" y="370" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Zero external DRAM access latency</text>
+  <text x="65" y="388" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Compiler orchestrates all timing</text>
+  <text x="65" y="406" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24">Best for: Ultra-low latency single-user token gen</text>
+
+  <rect x="320" y="290" width="265" height="125" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="335" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#c084fc">NPU (Apple / Qualcomm)</text>
+  <text x="335" y="332" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#e2e8f0">Low-Power Edge Tensor Engine</text>
+  <text x="335" y="352" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• 2W to 15W power envelope</text>
+  <text x="335" y="370" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Unified Memory Architecture (UMA)</text>
+  <text x="335" y="388" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Hardware INT4/INT8 quantization</text>
+  <text x="335" y="406" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#c084fc">Best for: Phones, laptops, robotics, and edge</text>
+
+  <!-- Panel 2: The Roofline Model (Top Right) -->
+  <rect x="635" y="115" width="575" height="315" rx="12" fill="url(#card-grad)" stroke="#4ade80" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="655" y="130" width="310" height="26" rx="6" fill="#4ade80" fill-opacity="0.2"/>
+  <text x="665" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#4ade80">2. ROOFLINE MODEL &amp; INTENSITY</text>
+
+  <!-- Visual Roofline Graph -->
+  <rect x="655" y="168" width="535" height="150" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <!-- Axes -->
+  <line x1="710" y1="290" x2="1140" y2="290" stroke="#64748b" stroke-width="1.5"/>
+  <line x1="710" y1="290" x2="710" y2="190" stroke="#64748b" stroke-width="1.5"/>
+  <!-- Slanted line (Memory Bound) -->
+  <line x1="710" y1="290" x2="880" y2="210" stroke="#f43f5e" stroke-width="2.5"/>
+  <!-- Flat line (Compute Bound) -->
+  <line x1="880" y1="210" x2="1140" y2="210" stroke="#4ade80" stroke-width="2.5"/>
+
+  <!-- Labels on graph -->
+  <text x="730" y="240" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f43f5e">Memory-Bound</text>
+  <text x="730" y="256" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Slope = Bandwidth (GB/s)</text>
+  <text x="730" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#f43f5e">LLM Decode (TPOT)</text>
+
+  <text x="960" y="200" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">Compute-Bound (Ceiling)</text>
+  <text x="960" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Peak Tensor TFLOPS</text>
+  <text x="960" y="252" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" fill="#4ade80">LLM Prefill &amp; Training GEMM</text>
+
+  <text x="880" y="305" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24" text-anchor="middle">Knee (Inflexion Point: ~100–150 FLOPs/Byte)</text>
+
+  <!-- Explanatory text below graph -->
+  <rect x="655" y="328" width="535" height="92" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="675" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Operational Intensity = (Floating Point FLOPs) / (HBM Bytes Moved).</text>
+  <text x="675" y="368" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Autoregressive decoding (batch=1): ~1 FLOP/byte. Bandwidth throttled.</text>
+  <text x="675" y="388" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• Prefill &amp; Batching: Increases reuse per parameter, shifting execution</text>
+  <text x="688" y="406" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">rightward into compute saturation ceiling.</text>
+
+  <!-- Panel 3: Memory Hierarchy & Latency (Bottom Left) -->
+  <rect x="30" y="450" width="575" height="305" rx="12" fill="url(#card-grad)" stroke="#fbbf24" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="50" y="465" width="310" height="26" rx="6" fill="#fbbf24" fill-opacity="0.2"/>
+  <text x="60" y="483" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">3. MEMORY WALL &amp; LATENCY TIERS</text>
+
+  <!-- 4 Tier Memory Stack -->
+  <rect x="50" y="505" width="535" height="50" rx="6" fill="#1e293b" stroke="#4ade80" stroke-width="1"/>
+  <text x="70" y="525" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">On-Chip SRAM / L1 Cache</text>
+  <text x="70" y="543" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Capacity: 30–230 MB | Bandwidth: 19,000–80,000 GB/s | Latency: 15–30 cycles</text>
+
+  <rect x="50" y="562" width="535" height="50" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+  <text x="70" y="582" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">High Bandwidth Memory (HBM3e)</text>
+  <text x="70" y="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Capacity: 80–192 GB | Bandwidth: 3,350–8,000 GB/s | Latency: 400–800 cycles</text>
+
+  <rect x="50" y="619" width="535" height="50" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+  <text x="70" y="639" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Unified LPDDR5x (Edge NPUs / Apple Silicon)</text>
+  <text x="70" y="657" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Capacity: 16–128 GB | Bandwidth: 150–800 GB/s | Latency: 600–1,000 cycles</text>
+
+  <rect x="50" y="676" width="535" height="50" rx="6" fill="#1e293b" stroke="#f43f5e" stroke-width="1"/>
+  <text x="70" y="696" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f43f5e">Host DDR5 DRAM / PCIe Gen 5</text>
+  <text x="70" y="714" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Capacity: 512–2,048 GB | Bandwidth: 64–100 GB/s | Latency: 1,500+ cycles</text>
+
+  <!-- Panel 4: Interconnect Fabrics (Bottom Right) -->
+  <rect x="635" y="450" width="575" height="305" rx="12" fill="url(#card-grad)" stroke="#c084fc" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="655" y="465" width="310" height="26" rx="6" fill="#c084fc" fill-opacity="0.2"/>
+  <text x="665" y="483" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#c084fc">4. INTERCONNECT FABRIC PHYSICS</text>
+
+  <!-- Scale-Up Box -->
+  <rect x="655" y="505" width="260" height="135" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+  <text x="670" y="528" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Scale-Up (Intra-Chassis Fabric)</text>
+  <text x="670" y="550" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• NVLink-5: 1.8 TB/s bidirectional</text>
+  <text x="670" y="568" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Shared unified memory pool</text>
+  <text x="670" y="586" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Connects 8 to 72 GPUs as one</text>
+  <text x="670" y="606" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Required for Tensor Parallelism (TP)</text>
+  <text x="670" y="624" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b">Latency: &lt; 1 microsecond</text>
+
+  <!-- Scale-Out Box -->
+  <rect x="930" y="505" width="260" height="135" rx="8" fill="#1e293b" stroke="#c084fc" stroke-width="1"/>
+  <text x="945" y="528" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c084fc">Scale-Out (Inter-Node Fabric)</text>
+  <text x="945" y="550" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• InfiniBand NDR: 400 Gbps (50 GB/s)</text>
+  <text x="945" y="568" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• RoCE v2 / Ultra Ethernet (800 Gbps)</text>
+  <text x="945" y="586" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Connects thousands of nodes</text>
+  <text x="945" y="606" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">Used for Pipeline &amp; Data Parallelism</text>
+  <text x="945" y="624" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b">Latency: 5–15 microseconds</text>
+
+  <!-- DPU and Fabric Note -->
+  <rect x="655" y="650" width="535" height="76" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="675" y="672" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#e2e8f0">DPUs (BlueField-3) offload RoCE network congestion control and storage encryption,</text>
+  <text x="675" y="692" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">preventing tail latency spikes that stall synchronous all-reduce collective communication.</text>
+  <text x="675" y="712" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Cluster efficiency = min(Compute TFLOPS, Memory Bandwidth, Fabric Bisection Bandwidth).</text>
+
+  <!-- Centered Footer Attribution -->
+  <text x="620" y="790" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
+</svg>

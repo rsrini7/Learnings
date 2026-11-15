@@ -1,0 +1,130 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1240 820" width="1240" height="820" role="img" aria-labelledby="title desc">
+  <title id="title">DeepSeek-V3 Architecture and Hardware-Software Co-Design</title>
+  <desc id="desc">Multi-Head Latent Attention (MLA), DeepSeekMoE with auxiliary-loss-free balancing, DualPipe overlapping parallelism, and native FP8 mixed precision training</desc>
+
+  <defs>
+    <linearGradient id="bg-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </linearGradient>
+    <linearGradient id="card-grad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1240" height="820" rx="16" fill="url(#bg-grad)"/>
+
+  <!-- Header Banner -->
+  <rect x="30" y="24" width="1180" height="76" rx="12" fill="#1e293b" stroke="#334155" stroke-width="1.5"/>
+  <text x="60" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">DeepSeek-V3 Architecture &amp; Co-Design</text>
+  <text x="60" y="82" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">Multi-Head Latent Attention (MLA), DeepSeekMoE (256 Experts), DualPipe &amp; Native FP8 Training</text>
+  <rect x="1050" y="44" width="130" height="30" rx="6" fill="#38bdf8" fill-opacity="0.15" stroke="#38bdf8" stroke-width="1"/>
+  <text x="1115" y="64" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="600" fill="#38bdf8" text-anchor="middle">FRONTIER AI</text>
+
+  <!-- Panel 1: Multi-Head Latent Attention (MLA) (Top Left) -->
+  <rect x="30" y="115" width="575" height="315" rx="12" fill="url(#card-grad)" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="50" y="130" width="310" height="26" rx="6" fill="#38bdf8" fill-opacity="0.2"/>
+  <text x="60" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#38bdf8">1. MULTI-HEAD LATENT ATTENTION (MLA)</text>
+
+  <!-- Sub-block: Standard MHA vs MLA -->
+  <rect x="50" y="168" width="255" height="245" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="65" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f43f5e">Standard MHA / GQA</text>
+  <text x="65" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Stores separate K, V tensors</text>
+  <text x="65" y="228" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• 128 heads × 128 dim = 16,384 vals</text>
+  <text x="65" y="246" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Memory: ~8,192 bytes / token</text>
+  <text x="65" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#f43f5e">• KV Cache Bottleneck:</text>
+  <text x="65" y="288" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">  Memory capacity limits batch</text>
+  <text x="65" y="306" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">  size and context window scale</text>
+  <text x="65" y="335" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fbbf24">• Linear VRAM growth:</text>
+  <text x="65" y="353" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">  O(b × s × n_layers × d_model)</text>
+  <text x="65" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b">VRAM exhaustion under long context</text>
+
+  <!-- Sub-block: MLA Low-Rank Compression -->
+  <rect x="320" y="168" width="265" height="245" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+  <text x="335" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">DeepSeek MLA Compression</text>
+  <text x="335" y="210" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Joint low-rank KV latent vector:</text>
+  <text x="350" y="230" font-family="Courier, monospace" font-size="10" fill="#38bdf8">c_t^(KV) ∈ R^(512)</text>
+  <text x="335" y="252" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Decoupled RoPE vector: k_t^R ∈ R^64</text>
+  <text x="335" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Total stored per token: 576 bytes</text>
+  <text x="335" y="295" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">93.3% KV Cache Reduction:</text>
+  <text x="335" y="315" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#e2e8f0">Enables massive batch sizes &amp;</text>
+  <text x="335" y="333" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#e2e8f0">128K context on standard GPUs</text>
+  <text x="335" y="358" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">Matrix absorption during inference:</text>
+  <text x="335" y="376" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#64748b">W_UK and W_UV absorb into weights</text>
+  <text x="335" y="396" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Matches MHA quality at GQA footprint</text>
+
+  <!-- Panel 2: DeepSeekMoE & Loss-Free Load Balancing (Top Right) -->
+  <rect x="635" y="115" width="575" height="315" rx="12" fill="url(#card-grad)" stroke="#4ade80" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="655" y="130" width="310" height="26" rx="6" fill="#4ade80" fill-opacity="0.2"/>
+  <text x="665" y="148" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#4ade80">2. DEEPSEEKMOE &amp; DYNAMIC BIAS</text>
+
+  <!-- Fine-grained Expert Structure -->
+  <rect x="655" y="168" width="535" height="110" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="675" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">Fine-Grained Expert Architecture (671B Total, 37B Active)</text>
+  <text x="675" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• 1 Shared Expert: Always active for all tokens to capture universal representations.</text>
+  <text x="675" y="232" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• 256 Routed Experts: Fine-grained specialization across factual sub-domains.</text>
+  <text x="675" y="252" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• Top-8 Routing: Each token activates 8 routed experts + 1 shared expert (37B active).</text>
+
+  <!-- Auxiliary-Loss-Free Balancing -->
+  <rect x="655" y="290" width="535" height="125" rx="8" fill="#1e293b" stroke="#4ade80" stroke-width="1"/>
+  <text x="675" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">Auxiliary-Loss-Free Load Balancing (Dynamic Bias b_i)</text>
+  <text x="675" y="334" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Traditional MoE adds auxiliary loss term: L_total = L_pred + γ L_balance (hurts model quality).</text>
+  <text x="675" y="354" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• DeepSeek introduces dynamic routing bias: s_i = Sigmoid(u_t^T e_i) + b_i.</text>
+  <text x="675" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• If expert i is overloaded: bias b_i decreases; if underloaded: b_i increases.</text>
+  <text x="675" y="394" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">Zero gradient interference: balances GPU memory without corrupting next-token accuracy.</text>
+
+  <!-- Panel 3: DualPipe Parallelism & Overlapping (Bottom Left) -->
+  <rect x="30" y="450" width="575" height="305" rx="12" fill="url(#card-grad)" stroke="#fbbf24" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="50" y="465" width="310" height="26" rx="6" fill="#fbbf24" fill-opacity="0.2"/>
+  <text x="60" y="483" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#fbbf24">3. DUALPIPE OVERLAPPED PARALLELISM</text>
+
+  <!-- Pipeline Schedule Card -->
+  <rect x="50" y="505" width="535" height="120" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="70" y="528" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">DualPipe Forward / Backward Communication Overlap</text>
+  <text x="70" y="550" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Interleaved Pipeline Parallelism: Chunks computation into micro-batches.</text>
+  <text x="70" y="570" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Forward GEMM F_i executes concurrently with Backward All-to-All dispatch B_(i-1).</text>
+  <text x="70" y="590" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Completely hides inter-node MoE all-to-all cross-network latency.</text>
+  <text x="70" y="610" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Zero pipeline bubble overhead on compute-constrained H800 clusters.</text>
+
+  <!-- Multiplane Fat-Tree Network Card -->
+  <rect x="50" y="635" width="535" height="105" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="70" y="658" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">Multiplane Fat-Tree Network Topology</text>
+  <text x="70" y="680" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• H800 PCIe / NVLink bandwidth restrictions overcome via optimized RoCE v2.</text>
+  <text x="70" y="698" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Eliminates network congestion hot-spots across 2,048 GPUs via isolated planes.</text>
+  <text x="70" y="722" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">Software-hardware co-design matches 100,000 H100 throughput on constrained silicon.</text>
+
+  <!-- Panel 4: Native FP8 Mixed Precision Training (Bottom Right) -->
+  <rect x="635" y="450" width="575" height="305" rx="12" fill="url(#card-grad)" stroke="#c084fc" stroke-opacity="0.5" stroke-width="1.5"/>
+  <rect x="655" y="465" width="310" height="26" rx="6" fill="#c084fc" fill-opacity="0.2"/>
+  <text x="665" y="483" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#c084fc">4. NATIVE FP8 MIXED PRECISION</text>
+
+  <!-- FP8 Tile Box -->
+  <rect x="655" y="505" width="535" height="110" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="675" y="528" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c084fc">Fine-Grained 128×128 Tile-Wise Quantization</text>
+  <text x="675" y="550" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Weights and activations stored in FP8 (E4M3 / E5M2) format.</text>
+  <text x="675" y="570" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Scaled in small 128×128 tiles to prevent outlier activations from clipping precision.</text>
+  <text x="675" y="592" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• High-precision accumulation in FP32 during GEMM tensor core dot products.</text>
+
+  <!-- Cost and Economics Box -->
+  <rect x="655" y="625" width="535" height="115" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="675" y="648" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">Training Cost &amp; Compute Efficiency Comparison</text>
+  <text x="675" y="670" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• DeepSeek-V3 Pretraining: 2,048 H800 GPUs for ~2 months | Total cost: ~$5.58M.</text>
+  <text x="675" y="690" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Frontier Competitor (Grok-3 / Llama-3): ~100,000 H100 GPUs | Total cost: $100M+.</text>
+  <text x="675" y="710" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• Multi-Token Prediction (MTP): Speculative multi-token decoding accelerates inference 2×.</text>
+  <text x="675" y="728" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">Proves algorithmic efficiency beats brute-force silicon scale.</text>
+
+  <!-- Centered Footer Attribution -->
+  <text x="620" y="790" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b" text-anchor="middle">Architecture &amp; Design by Srinivasan Ragothaman (@rsrini7)</text>
+</svg>
