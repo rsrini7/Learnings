@@ -189,7 +189,7 @@ In-depth research, architectural breakdowns, and hands-on implementations across
 
 ## ⚖️ Comparisons
 - [Interview Q&A role Variants](Comparisons/Interview-Q%26A-role-Variants.md)
-- [Java Python Enterprise AI](Comparisons/Java-Python-Enterprise-AI.md)
+- [Java Python Enterprise AI Playbook 2026](Comparisons/Java-Python-Enterprise-AI-Playbook-2026.md)
 - [Self Attention vs Flash Attention](Comparisons/Self-Attention-vs-Flash-Attention.md)
 - [SiteGPT Alternatives](Comparisons/SiteGPT-Alternatives.md)
 - [Top 50 Q&A AI ML Eng](Comparisons/Top-50-Q%26A-AI-ML-Eng.md)

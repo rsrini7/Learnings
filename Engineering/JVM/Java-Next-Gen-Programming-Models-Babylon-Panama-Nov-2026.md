@@ -686,7 +686,7 @@ Based on user-provided research details and presentation disclosures from Ana-Ma
 
 **Related:**
 - [Project-Detroit-Java-Polyglot-Runtimes-Nov-2026](Project-Detroit-Java-Polyglot-Runtimes-Nov-2026.md) — Architectural analysis of embedding native CPython and V8 runtimes via FFM versus GraalVM Truffle.
-- [Java-Standard_Classes-vs-Records-vs-Carrier_Classes](Java-Standard_Classes-vs-Records-vs-Carrier_Classes.md) — Memory layout mechanics in Java, detailing object headers, alignment, and data compactness.
-- [Java-Python-Enterprise-AI](../../AI-ML/Comparisons/Java-Python-Enterprise-AI.md) — Comprehensive playbook on enterprise AI architecture, covering Spring AI, LangChain4j, and production inference tiers.
+- [Java-Standard_Classes-vs-Records-vs-Carrier_Classes](Java-Classes-Records-And-Carrier-Classes-2026.md) — Memory layout mechanics in Java, detailing object headers, alignment, and data compactness.
+- [Java-Python-Enterprise-AI](../../AI-ML/Comparisons/Java-Python-Enterprise-AI-Playbook-2026.md) — Comprehensive playbook on enterprise AI architecture, covering Spring AI, LangChain4j, and production inference tiers.
 - [Scaling-1M-RPS-Java](../Architecture/Scaling-1M-RPS-Java.md) — Concurrency and scalability architecture utilizing Project Loom Virtual Threads without carrier thread pinning.
 - [Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026](../Languages/Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md) — Technical review of V8 isolates, native engine embedding, and modern foreign runtime trade-offs.

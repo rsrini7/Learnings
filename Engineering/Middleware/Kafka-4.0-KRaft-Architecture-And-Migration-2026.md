@@ -323,4 +323,4 @@ Step 4: Execute Binary Upgrade to Apache Kafka 4.0
 - [Workflow-Orchestration](workflow-orchestration.md) — Analyzes the boundary between append-only event streams and durable workflow orchestration engines.
 - [HTTP-QUERY-Method-RFC-10008-Nov-2026](../Architecture/HTTP-QUERY-Method-RFC-10008-Nov-2026.md) — Examines message payload encapsulation and gateway routing protocols.
 - [Java-Plugin-Arch](../JVM/Java-Plugin-Arch.md) — Details classloader isolation and dependency management relevant to Kafka Connect hosts.
-- [Java25-vs-Go1.24-Go1.25](../Languages/comparisons/Java25-vs-Go1.24-Go1.25.md) — Evaluates JVM garbage collection performance under heavy streaming workloads.
+- [Java25-vs-Go1.24-Go1.25](../Languages/comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md) — Evaluates JVM garbage collection performance under heavy streaming workloads.

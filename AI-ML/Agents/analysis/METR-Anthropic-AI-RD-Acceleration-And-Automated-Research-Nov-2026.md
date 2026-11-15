@@ -248,5 +248,5 @@ The contrast between Western and Chinese AI labs extends directly into how capab
 - [OpenAI Agents Misalignment Monitoring](OpenAI-Agents-Disabled-Misalignment-Monitoring-Oct-2026.md) — examines safety boundaries, monitoring overrides, and organizational risks in autonomous agent deployment.
 - [Claude Developer Ecosystem](../../LLMs/models/anthropic/Claude-Developer-Ecosystem-Jan-2026.md) — deep dive into Anthropic's developer tooling, API evolution, and agent architecture.
 - [The Chinese AI Trifecta for Developers and Architects](../../LLMs/models/other/Chinese-AI-Trifecta-2025-2026.md) — technical evaluation of Moonshot AI, Zhipu AI, and MiniMax, focusing on Muon optimizers and int4 quantization.
-- [DeepSeek-R1 Research Review](../../../Papers/deepseek/DeepSeek-R1.md) — foundational paper review of pure reinforcement learning, reasoning elicitation, and distillation mechanics.
+- [DeepSeek-R1 Research Review](../../../Papers/deepseek/DeepSeek-R1-Incentivizing-Reasoning-Via-RL-2026.md) — foundational paper review of pure reinforcement learning, reasoning elicitation, and distillation mechanics.
 - [DeepSeek SuperAgent and Decoupled Architecture](../frameworks/DeepSeek-SuperAgent-And-Harness-Architecture-Nov-2026.md) — decoupled memory topology, agentic tool harnesses, and inference optimization.

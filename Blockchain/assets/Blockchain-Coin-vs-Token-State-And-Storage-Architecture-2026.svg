@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 880" width="1180" height="880" role="img" aria-labelledby="title desc">
+  <title id="title">Blockchain Coins vs Tokens: State Ledger and Virtual Storage Architecture</title>
+  <desc id="desc">Architectural comparison of Layer 1 native coins tracked in protocol world state tries versus smart contract tokens stored in virtual contract storage slots.</desc>
+  <defs>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1180" height="880" rx="16" fill="#0b0f19"/>
+
+  <!-- Main Header -->
+  <text x="50" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" fill="#f8fafc" font-weight="700">Blockchain Coins vs Tokens: State Ledger &amp; Storage Architecture</text>
+  <text x="50" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#94a3b8">Layer 1 Protocol State Ledgers vs. Virtual Smart Contract Storage Slots (EVM / ERC-20 / SPL)</text>
+
+  <!-- Panel 1: Native Coin (Top Left) -->
+  <rect x="50" y="110" width="525" height="340" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="50" y="110" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="70" y="137" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#38bdf8" font-weight="700">1. Layer 1 Native Coin (Protocol State Ledger)</text>
+
+  <rect x="70" y="170" width="485" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#38bdf8" font-weight="600">World State Trie &amp; Account Nonce</text>
+  <text x="85" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Native asset of base blockchain (BTC, ETH, SOL)</text>
+  <text x="85" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Directly tracked inside node client state database (LevelDB/Pebble)</text>
+  <text x="85" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Storage Path: Root State Trie -&gt; Account Leaf [Nonce, Balance, CodeHash]</text>
+
+  <rect x="70" y="295" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#38bdf8" font-weight="600">Execution Mechanics: Native Value Transfer</text>
+  <text x="85" y="343" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Executed directly via base transaction: {to, value, gasLimit}</text>
+  <text x="85" y="363" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Standard gas cost: Exactly 21,000 gas on Ethereum</text>
+  <text x="85" y="383" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Opcode: CALL with msg.value; zero EVM bytecode execution</text>
+  <text x="85" y="405" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#38bdf8">Network Utility: Pays validator gas fees and secures consensus</text>
+
+  <!-- Panel 2: Smart Contract Token (Top Right) -->
+  <rect x="605" y="110" width="525" height="340" rx="12" fill="#1e293b" stroke="#4ade80" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="605" y="110" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="625" y="137" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#4ade80" font-weight="700">2. Smart Contract Token (Virtual Storage Slots)</text>
+
+  <rect x="605" y="170" width="485" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="620" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#4ade80" font-weight="600">Virtual Storage Slot Key-Value Mapping</text>
+  <text x="620" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Software abstraction built on top of host L1/L2 blockchain</text>
+  <text x="620" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Token balance stored at slot: keccak256(owner_address . slot_p)</text>
+  <text x="620" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Contract State: Account itself owns no token; contract storage does</text>
+
+  <rect x="605" y="295" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="620" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#4ade80" font-weight="600">Execution Mechanics: EVM Contract Call</text>
+  <text x="620" y="343" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Invoked with 4-byte selector (e.g. 0xa9059cbb for transfer())</text>
+  <text x="620" y="363" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Gas cost: 45,000–65,000+ gas (SLOAD + SSTORE + Event LOG3)</text>
+  <text x="620" y="383" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Security Risk: Subject to reentrancy, integer overflows, &amp; bad logic</text>
+  <text x="620" y="405" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#4ade80">Application Utility: Governance (UNI), Stablecoins (USDT), Utility (LINK)</text>
+
+  <!-- Panel 3: Gas Economics (Bottom Left) -->
+  <rect x="50" y="475" width="525" height="360" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="50" y="475" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="70" y="502" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#fbbf24" font-weight="700">3. Gas Dynamics &amp; The Two-Step Approve Pattern</text>
+
+  <rect x="70" y="535" width="485" height="130" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#fbbf24" font-weight="600">The Two-Transaction Friction (approve + transferFrom)</text>
+  <text x="85" y="583" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Step 1: User calls token.approve(spender, amount) [Costs Gas]</text>
+  <text x="85" y="603" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Step 2: Spender contract calls token.transferFrom(user, dest, amount)</text>
+  <text x="85" y="623" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Gas Currency: User MUST hold native coin (ETH) to transact tokens</text>
+  <text x="85" y="645" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#fbbf24">UX Problem: Users with $1,000 USDT cannot send funds without $5 in ETH</text>
+
+  <rect x="70" y="680" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="705" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#fbbf24" font-weight="600">Account Abstraction Solution (ERC-4337)</text>
+  <text x="85" y="728" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Paymaster contracts sponsor native gas on behalf of user</text>
+  <text x="85" y="748" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Paymaster deducts equivalent fee directly in ERC-20 token</text>
+  <text x="85" y="768" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• ERC-2612 Permit: Off-chain EIP-712 signature replaces approve()</text>
+  <text x="85" y="790" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Modern Standard: Single-click token transfers via smart accounts</text>
+
+  <!-- Panel 4: Wrapped Assets & Standards (Bottom Right) -->
+  <rect x="605" y="475" width="525" height="360" rx="12" fill="#1e293b" stroke="#e2e8f0" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="605" y="475" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="625" y="502" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#f8fafc" font-weight="700">4. Wrapped Assets &amp; Token Standards</text>
+
+  <rect x="605" y="535" width="485" height="130" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="620" y="560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#e2e8f0" font-weight="600">Why Wrapped ETH (WETH) Exists</text>
+  <text x="620" y="583" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Native ETH was created before ERC-20 standard existed</text>
+  <text x="620" y="603" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Smart contracts cannot handle native ETH with ERC-20 interfaces</text>
+  <text x="620" y="623" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• WETH contract locks ETH 1:1 and mints ERC-20 compliant tokens</text>
+  <text x="620" y="645" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#4ade80">Enables: Seamless trading across decentralized exchanges (Uniswap)</text>
+
+  <rect x="605" y="680" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="620" y="705" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#e2e8f0" font-weight="600">Multi-Ecosystem Standard Taxonomy</text>
+  <text x="620" y="728" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• ERC-20 (Fungible) / ERC-721 (Non-fungible) / ERC-1155 (Multi-token)</text>
+  <text x="620" y="748" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Solana SPL: Distinct Mint and Token Account data architecture</text>
+  <text x="620" y="768" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Security: Tokens inherit L1 consensus, but add contract exploit risk</text>
+  <text x="620" y="790" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#38bdf8">Verdict: Coins are digital energy; tokens are programmable software</text>
+</svg>

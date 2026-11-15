@@ -207,7 +207,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 
 ### ⚖️ Comparisons
 - [Interview Q&A role Variants](AI-ML/Comparisons/Interview-Q%26A-role-Variants.md)
-- [Java Python Enterprise AI](AI-ML/Comparisons/Java-Python-Enterprise-AI.md)
+- [Java Python Enterprise AI Playbook 2026](AI-ML/Comparisons/Java-Python-Enterprise-AI-Playbook-2026.md)
 - [Self Attention vs Flash Attention](AI-ML/Comparisons/Self-Attention-vs-Flash-Attention.md)
 - [SiteGPT Alternatives](AI-ML/Comparisons/SiteGPT-Alternatives.md)
 - [Top 50 Q&A AI ML Eng](AI-ML/Comparisons/Top-50-Q%26A-AI-ML-Eng.md)
@@ -241,10 +241,10 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Scaling 1M RPS Java](Engineering/Architecture/Scaling-1M-RPS-Java.md)
 
 ### ☕ JVM
+- [Java Classes Records And Carrier Classes 2026](Engineering/JVM/Java-Classes-Records-And-Carrier-Classes-2026.md)
 - [Java Next Gen Programming Models Babylon Panama Nov 2026](Engineering/JVM/Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026.md)
 - [Java Plugin Arch](Engineering/JVM/Java-Plugin-Arch.md)
 - [Java Remote Debugging JDWP And Troubleshooting 2026](Engineering/JVM/Java-Remote-Debugging-JDWP-And-Troubleshooting-2026.md)
-- [Java Standard Classes vs Records vs Carrier Classes](Engineering/JVM/Java-Standard_Classes-vs-Records-vs-Carrier_Classes.md)
 - [Project Detroit Java Polyglot Runtimes Nov 2026](Engineering/JVM/Project-Detroit-Java-Polyglot-Runtimes-Nov-2026.md)
 
 ### 💾 Databases
@@ -267,7 +267,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [WASM Rust](Engineering/Languages/WASM-Rust.md)
 - [Go Proposed Collections vs Java Collections Framework 2026](Engineering/Languages/comparisons/Go-Proposed-Collections-vs-Java-Collections-Framework-2026.md)
 - [Go SIMD vs NumPy vs Java Vector API 2026](Engineering/Languages/comparisons/Go-SIMD-vs-NumPy-vs-Java-Vector-API-2026.md)
-- [Java25 vs Go1.24 Go1.25](Engineering/Languages/comparisons/Java25-vs-Go1.24-Go1.25.md)
+- [Java 25 vs Go 1.25 Performance Analysis 2026](Engineering/Languages/comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md)
 - [rust vs c](Engineering/Languages/comparisons/rust-vs-c.md)
 
 
@@ -289,10 +289,10 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Hardhat Development](Blockchain/ethereum/Hardhat-Development.md)
 
 ### 💰 Crypto & Tokens
+- [Blockchain Coin vs Token Architecture And Economics 2026](Blockchain/crypto/Blockchain-Coin-vs-Token-Architecture-And-Economics-2026.md)
 - [CryptoACTs Jan 2026](Blockchain/crypto/CryptoACTs-Jan-2026.md)
 - [ISO20022 Aligned Crypto Rails XRP XLM XDC HBAR](Blockchain/crypto/ISO20022-Aligned-Crypto-Rails-XRP-XLM-XDC-HBAR.md)
 - [StableCoins Jan 2026](Blockchain/crypto/StableCoins-Jan-2026.md)
-- [blockchain coin vs token](Blockchain/crypto/blockchain-coin-vs-token.md)
 
 ### 🏢 Enterprise & Banking
 - [AI Blockchain and the Hidden Frictions of Real World Asset Tokenization](Blockchain/enterprise/AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization.md)
@@ -324,7 +324,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 [📂 Open Dedicated Domain Hub (QuantumComputing/README.md)](QuantumComputing/README.md)
 
 - [Google Willow Quantum Chip And Quantum Echoes 2026](QuantumComputing/Google-Willow-Quantum-Chip-And-Quantum-Echoes-2026.md)
-- [Quantum AI Decision Makers(2026)](QuantumComputing/Quantum-AI-Decision-Makers%282026%29.md)
+- [Quantum AI Decision Makers 2026](QuantumComputing/Quantum-AI-Decision-Makers-2026.md)
 - [Quantum Computing Foundations And State Mechanics 2026](QuantumComputing/Quantum-Computing-Foundations-And-State-Mechanics-2026.md)
 - [Quantum Threat to Bitcoin And Elliptic Curve Cryptography 2026](QuantumComputing/Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026.md)
 - [VIO 40K Arch 10K Qubits](QuantumComputing/VIO-40K-Arch-10K-Qubits.md)
@@ -343,7 +343,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 [📂 Open Dedicated Domain Hub (Papers/README.md)](Papers/README.md)
 
 ### 🔍 DeepSeek Research
-- [DeepSeek R1](Papers/deepseek/DeepSeek-R1.md)
+- [DeepSeek R1 Incentivizing Reasoning Via RL 2026](Papers/deepseek/DeepSeek-R1-Incentivizing-Reasoning-Via-RL-2026.md)
 - [DeepSeek V3 Architecture And Hardware Software CoDesign 2026](Papers/deepseek/DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026.md)
 - [Deepseek Engram](Papers/deepseek/Deepseek-Engram.md)
 - [mHC Deepseek](Papers/deepseek/mHC-Deepseek.md)

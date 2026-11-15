@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 880" width="1180" height="880" role="img" aria-labelledby="title desc">
+  <title id="title">Quantum AI and Optimization Architecture: Hybrid Pipeline and Due Diligence</title>
+  <desc id="desc">Architectural diagram illustrating hybrid classical-quantum variational algorithms (VQE/QAOA), the data encoding tax, barren plateau gradients, and quantum-inspired classical optimization.</desc>
+  <defs>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1180" height="880" rx="16" fill="#0b0f19"/>
+
+  <!-- Main Header -->
+  <text x="50" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" fill="#f8fafc" font-weight="700">Quantum AI Architecture: Hybrid Variational Loops &amp; Due Diligence</text>
+  <text x="50" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#94a3b8">Parameterized Quantum Circuits (PQC), QAOA Mechanics, Barren Plateaus, and the Data Encoding Tax</text>
+
+  <!-- Panel 1: Hybrid Variational Loop (Top Left) -->
+  <rect x="50" y="110" width="525" height="340" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="50" y="110" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="70" y="137" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#38bdf8" font-weight="700">1. Hybrid Classical-Quantum Variational Loop</text>
+
+  <rect x="70" y="170" width="485" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#38bdf8" font-weight="600">The Variational Quantum Eigensolver (VQE / QAOA)</text>
+  <text x="85" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• QPU prepares ansatz state |ψ(θ)&gt; via parameterized gates</text>
+  <text x="85" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Measurement collapses state; evaluates cost expectation &lt;H&gt;</text>
+  <text x="85" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Execution Loop: Classical optimizer updates parameters θ</text>
+
+  <rect x="70" y="295" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#38bdf8" font-weight="600">Classical Optimizer Primacy</text>
+  <text x="85" y="343" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• COBYLA, SPSA, or Adam runs on host classical CPU/GPU</text>
+  <text x="85" y="363" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• QPU acts solely as an analog coprocessor for expectation values</text>
+  <text x="85" y="383" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Total execution time dominated by cloud network roundtrips</text>
+  <text x="85" y="405" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#38bdf8">Reality: System quality depends more on classical optimizer than qubits</text>
+
+  <!-- Panel 2: Data Encoding Tax (Top Right) -->
+  <rect x="605" y="110" width="525" height="340" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="605" y="110" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="625" y="137" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#fbbf24" font-weight="700">2. The Data Encoding Tax &amp; Input Bottleneck</text>
+
+  <rect x="605" y="170" width="485" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="620" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#fbbf24" font-weight="600">State Preparation Complexity O(2^n)</text>
+  <text x="620" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Classical data cannot be loaded into quantum states instantly</text>
+  <text x="620" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Encoding N classical floats into amplitudes requires O(2^n) gates</text>
+  <text x="620" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">The Bottleneck: Loading data takes longer than classical processing</text>
+
+  <rect x="605" y="295" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="620" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#fbbf24" font-weight="600">The QRAM Impossibility in NISQ Era</text>
+  <text x="620" y="343" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• True Quantum RAM (QRAM) requires millions of fault-tolerant gates</text>
+  <text x="620" y="363" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Without QRAM, Quantum AI cannot process big data tabular sets</text>
+  <text x="620" y="383" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Quantum kernels only feasible for small, mathematically dense inputs</text>
+  <text x="620" y="405" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#fbbf24">Due Diligence: Reject vendor claims of "Quantum AI on Enterprise Data Lakes"</text>
+
+  <!-- Panel 3: Barren Plateaus (Bottom Left) -->
+  <rect x="50" y="475" width="525" height="360" rx="12" fill="#1e293b" stroke="#e2e8f0" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="50" y="475" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="70" y="502" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#f8fafc" font-weight="700">3. The Barren Plateau &amp; Decoherence Limits</text>
+
+  <rect x="70" y="535" width="485" height="130" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#e2e8f0" font-weight="600">Exponential Gradient Vanishing</text>
+  <text x="85" y="583" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Concentration of measure in high-dimensional Hilbert spaces</text>
+  <text x="85" y="603" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Variance of cost function gradient decays exponentially: O(2^-n)</text>
+  <text x="85" y="623" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Beyond 30-40 qubits, random parameter circuits become untrainable</text>
+  <text x="85" y="645" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#fbbf24">Consequence: QPU returns flat noise; classical gradient descent stalls</text>
+
+  <rect x="70" y="680" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="705" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#e2e8f0" font-weight="600">Decoherence &amp; Gate Depth Walls (NISQ Reality)</text>
+  <text x="85" y="728" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Physical qubit coherence time T2 limited to 50–200 microseconds</text>
+  <text x="85" y="748" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Practical circuit depth capped at 20-50 gate layers before noise dominates</text>
+  <text x="85" y="768" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Fault-tolerant logical qubits (post-2030) required for general AI speedups</text>
+  <text x="85" y="790" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Failure Mode: Adding more qubits without error correction degrades fidelity</text>
+
+  <!-- Panel 4: Quantum-Inspired Classical (Bottom Right) -->
+  <rect x="605" y="475" width="525" height="360" rx="12" fill="#1e293b" stroke="#4ade80" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="605" y="475" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="625" y="502" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#4ade80" font-weight="700">4. High-ROI Strategy: Quantum-Inspired Classical</text>
+
+  <rect x="605" y="535" width="485" height="130" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="620" y="560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#4ade80" font-weight="600">Tensor Networks &amp; Simulated Annealing on GPUs</text>
+  <text x="620" y="583" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Matrix Product States (MPS) capture quantum correlation mathematically</text>
+  <text x="620" y="603" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Executes on commodity NVIDIA Tensor Core GPU clusters</text>
+  <text x="620" y="623" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Delivers 10%–20% efficiency gains in logistics, routing, &amp; finance today</text>
+  <text x="620" y="645" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#4ade80">Commercial Advantage: Zero cryogenic hardware costs or cloud queue latencies</text>
+
+  <rect x="605" y="680" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="620" y="702" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#e2e8f0" font-weight="600">The Litmus Test for Enterprise Leaders</text>
+  <text x="620" y="723" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Litmus Test: "If removing the QPU does not break product,</text>
+  <text x="620" y="741" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">  you bought a classical algorithm — which may still be right."</text>
+  <text x="620" y="763" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Focus strictly on bottlenecks taking &gt;12 hours on classical solvers</text>
+  <text x="620" y="788" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#38bdf8">Pragmatic Mandate: Treat quantum as accelerator, not mythology</text>
+</svg>

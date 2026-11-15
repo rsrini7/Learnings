@@ -15,7 +15,7 @@ Detailed technical breakdowns and critical evaluations of seminal machine learni
 ## 📑 Articles & Subcategories
 
 ## 🔍 DeepSeek Research
-- [DeepSeek R1](deepseek/DeepSeek-R1.md)
+- [DeepSeek R1 Incentivizing Reasoning Via RL 2026](deepseek/DeepSeek-R1-Incentivizing-Reasoning-Via-RL-2026.md)
 - [DeepSeek V3 Architecture And Hardware Software CoDesign 2026](deepseek/DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026.md)
 - [Deepseek Engram](deepseek/Deepseek-Engram.md)
 - [mHC Deepseek](deepseek/mHC-Deepseek.md)

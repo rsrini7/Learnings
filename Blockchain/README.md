@@ -20,10 +20,10 @@ Technical investigations and architectural whitepapers for distributed ledger sy
 - [Hardhat Development](ethereum/Hardhat-Development.md)
 
 ## 💰 Crypto & Tokens
+- [Blockchain Coin vs Token Architecture And Economics 2026](crypto/Blockchain-Coin-vs-Token-Architecture-And-Economics-2026.md)
 - [CryptoACTs Jan 2026](crypto/CryptoACTs-Jan-2026.md)
 - [ISO20022 Aligned Crypto Rails XRP XLM XDC HBAR](crypto/ISO20022-Aligned-Crypto-Rails-XRP-XLM-XDC-HBAR.md)
 - [StableCoins Jan 2026](crypto/StableCoins-Jan-2026.md)
-- [blockchain coin vs token](crypto/blockchain-coin-vs-token.md)
 
 ## 🏢 Enterprise & Banking
 - [AI Blockchain and the Hidden Frictions of Real World Asset Tokenization](enterprise/AI-Blockchain-and-the-Hidden-Frictions-of-Real-World-Asset-Tokenization.md)

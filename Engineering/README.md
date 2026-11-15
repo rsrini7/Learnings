@@ -21,10 +21,10 @@ Deep dives into high-throughput backend systems, modern runtime internals, distr
 - [Scaling 1M RPS Java](Architecture/Scaling-1M-RPS-Java.md)
 
 ## ☕ JVM
+- [Java Classes Records And Carrier Classes 2026](JVM/Java-Classes-Records-And-Carrier-Classes-2026.md)
 - [Java Next Gen Programming Models Babylon Panama Nov 2026](JVM/Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026.md)
 - [Java Plugin Arch](JVM/Java-Plugin-Arch.md)
 - [Java Remote Debugging JDWP And Troubleshooting 2026](JVM/Java-Remote-Debugging-JDWP-And-Troubleshooting-2026.md)
-- [Java Standard Classes vs Records vs Carrier Classes](JVM/Java-Standard_Classes-vs-Records-vs-Carrier_Classes.md)
 - [Project Detroit Java Polyglot Runtimes Nov 2026](JVM/Project-Detroit-Java-Polyglot-Runtimes-Nov-2026.md)
 
 ## 💾 Databases
@@ -47,7 +47,7 @@ Deep dives into high-throughput backend systems, modern runtime internals, distr
 - [WASM Rust](Languages/WASM-Rust.md)
 - [Go Proposed Collections vs Java Collections Framework 2026](Languages/comparisons/Go-Proposed-Collections-vs-Java-Collections-Framework-2026.md)
 - [Go SIMD vs NumPy vs Java Vector API 2026](Languages/comparisons/Go-SIMD-vs-NumPy-vs-Java-Vector-API-2026.md)
-- [Java25 vs Go1.24 Go1.25](Languages/comparisons/Java25-vs-Go1.24-Go1.25.md)
+- [Java 25 vs Go 1.25 Performance Analysis 2026](Languages/comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md)
 - [rust vs c](Languages/comparisons/rust-vs-c.md)
 
 ---

@@ -106,4 +106,4 @@ Researched after PHP2Shell to distinguish language choice from removing unnecess
 - [PHP2Shell Exploit Debate](../../News/Security/PHP2Shell-Exploit-Debate-Threat-Models-And-Patch-Status-Oct-2026.md) — Threat-model distinctions and updated patch status that inform migration priorities.
 - [PHP2Shell: History, UAF and ASLR](../../News/Security/PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — The native-runtime incident motivating this migration comparison.
 - [Scaling Java Services](Scaling-1M-RPS-Java.md) — JVM deployment and performance considerations after selecting Java.
-- [Java and Go Comparison](../Languages/comparisons/Java25-vs-Go1.24-Go1.25.md) — Language/runtime trade-offs relevant to the backend shortlist.
+- [Java and Go Comparison](../Languages/comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md) — Language/runtime trade-offs relevant to the backend shortlist.

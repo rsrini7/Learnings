@@ -393,6 +393,6 @@ By decoupling your application logic from the SIMD implementation, you can swap 
 
 **Related:**
 - [Go Proposed Collections vs. Java Collections Framework (2026)](Go-Proposed-Collections-vs-Java-Collections-Framework-2026.md) — How Go standard library evolution balances backward compatibility against enterprise developer ergonomics.
-- [Java 25 vs. Go 1.24 & Go 1.25 Runtime Comparison](Java25-vs-Go1.24-Go1.25.md) — Detailed memory model, GC tracing, and concurrency primitives between modern Go and Java runtimes.
+- [Java 25 vs. Go 1.24 & Go 1.25 Runtime Comparison](Java-25-vs-Go-1.25-Performance-Analysis-2026.md) — Detailed memory model, GC tracing, and concurrency primitives between modern Go and Java runtimes.
 - [Go Test Performance: Windows vs. Linux (2026)](../Go-Test-Performance-Windows-vs-Linux-2026.md) — OS-level scheduling, process instantiation overhead, and filesystem bottlenecks in Go toolchains.
 - [TypeScript Rust Port (TSRS) Architecture (Nov 2026)](../TypeScript-Rust-Port-TSRS-Architecture-Nov-2026.md) — Memory layout optimizations, pointer compression, and native SIMD throughput in systems compilers.

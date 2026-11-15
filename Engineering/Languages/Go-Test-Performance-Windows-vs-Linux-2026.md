@@ -376,7 +376,7 @@ If developers or CI pipelines cannot refactor legacy tests immediately, running 
 ---
 
 **Related:**
-- [Java25-vs-Go1.24-Go1.25](comparisons/Java25-vs-Go1.24-Go1.25.md) — Comprehensive runtime, garbage collection, and process threading analysis between modern Java and Go.
+- [Java25-vs-Go1.24-Go1.25](comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md) — Comprehensive runtime, garbage collection, and process threading analysis between modern Java and Go.
 - [TypeScript-Rust-Port-TSRS-Architecture-Nov-2026](TypeScript-Rust-Port-TSRS-Architecture-Nov-2026.md) — Analyzes compiler performance, process memory footprint, and toolchain porting trade-offs.
 - [PHP-Migration-Static-React-Java-And-Go](../Architecture/PHP-Migration-Static-React-Java-And-Go-Oct-2026.md) — Enterprise migration patterns, CLI toolchain harnesses, and CLI automation pipelines.
 - [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Fast feedback loops in developer agent harnesses and test execution latency constraints.

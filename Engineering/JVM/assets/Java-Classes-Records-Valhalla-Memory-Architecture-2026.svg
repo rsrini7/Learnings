@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 880" width="1180" height="880" role="img" aria-labelledby="title desc">
+  <title id="title">Java Data Modeling and Memory Layout: Classes, Records, and Valhalla</title>
+  <desc id="desc">Architectural comparison of Java standard identity classes, records, Amber carrier classes, and Valhalla value objects. Details memory layout, headers, and pattern matching.</desc>
+  <defs>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1180" height="880" rx="16" fill="#0b0f19"/>
+
+  <!-- Main Header -->
+  <text x="50" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" fill="#f8fafc" font-weight="700">Java Data Modeling: Memory Layout &amp; Semantic Evolution</text>
+  <text x="50" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#94a3b8">Standard Identity Classes, Records (JEP 395), Carrier Classes (Amber), and Value Classes (Valhalla)</text>
+
+  <!-- Panel 1: Standard Class (Top Left) -->
+  <rect x="50" y="110" width="525" height="340" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="50" y="110" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="70" y="137" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#38bdf8" font-weight="700">1. Standard Identity Class (Classic OOP)</text>
+
+  <rect x="70" y="170" width="485" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#38bdf8" font-weight="600">Heap Memory Layout (16-24 Bytes Overhead)</text>
+  <text x="85" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Mark Word (8B): Hash code, GC age, lock &amp; biased state</text>
+  <text x="85" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Klass Word (4B/8B): Metadata pointer to Java class definition</text>
+  <text x="85" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Consequence: Pointer arrays chase memory across CPU cache lines</text>
+
+  <rect x="70" y="295" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#38bdf8" font-weight="600">Semantic &amp; Framework Characteristics</text>
+  <text x="85" y="343" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Focus: Opaque encapsulation, behavioral state, identity (==)</text>
+  <text x="85" y="363" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Mutability: Fully mutable or defensively immutable</text>
+  <text x="85" y="383" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Ecosystem: Required for JPA / Hibernate entity proxies</text>
+  <text x="85" y="405" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Drawback: Verbose boilerplate and lack of deconstruction</text>
+
+  <!-- Panel 2: Records (Top Right) -->
+  <rect x="605" y="110" width="525" height="340" rx="12" fill="#1e293b" stroke="#4ade80" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="605" y="110" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="625" y="137" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#4ade80" font-weight="700">2. Java Records (JEP 395: Transparent Carriers)</text>
+
+  <rect x="625" y="170" width="485" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="640" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#4ade80" font-weight="600">The Transparent Component Contract</text>
+  <text x="640" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• "The API is the representation": State cannot be hidden</text>
+  <text x="640" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Implicit final fields, canonical constructor, accessors &amp; equals</text>
+  <text x="640" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Runtime Memory: Still an identity object with 12-16B header</text>
+
+  <rect x="625" y="295" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="640" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#4ade80" font-weight="600">Pattern Matching &amp; Deconstruction (JEP 440)</text>
+  <text x="640" y="343" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Full deconstruction support: case Point(int x, int y) -&gt; ...</text>
+  <text x="640" y="363" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Compact constructors enforce invariants without duplication</text>
+  <text x="640" y="383" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Ideal for DTOs, API payloads, event messages &amp; composite keys</text>
+  <text x="640" y="405" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#4ade80">Safety: Eliminates accidental state divergence and setter leaks</text>
+
+  <!-- Panel 3: Carrier Classes (Bottom Left) -->
+  <rect x="50" y="475" width="525" height="360" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="50" y="475" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="70" y="502" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#fbbf24" font-weight="700">3. Carrier Classes (Project Amber Proposal)</text>
+
+  <rect x="70" y="535" width="485" height="130" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#fbbf24" font-weight="600">The Flexible Data Carrier Bridge</text>
+  <text x="85" y="583" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Extends record ergonomics without the rigid immutability lock</text>
+  <text x="85" y="603" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Declares public component contract while allowing internal state</text>
+  <text x="85" y="623" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Supports mutable fields, caching, and custom subclass hierarchies</text>
+  <text x="85" y="645" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#fbbf24">Solves: The dilemma where developers reject records due to lack of evolution</text>
+
+  <rect x="70" y="680" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="705" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#fbbf24" font-weight="600">Component Decoupling (Logical != Physical)</text>
+  <text x="85" y="728" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Logical components exposed to pattern matching deconstructors</text>
+  <text x="85" y="748" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Physical representation can be re-architected without breaking API</text>
+  <text x="85" y="768" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Enables lazy evaluation and memoization inside transparent objects</text>
+  <text x="85" y="790" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Target: Complex domain entities requiring pattern deconstruction</text>
+
+  <!-- Panel 4: Valhalla Value Classes (Bottom Right) -->
+  <rect x="605" y="475" width="525" height="360" rx="12" fill="#1e293b" stroke="#e2e8f0" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="605" y="475" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="625" y="502" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#f8fafc" font-weight="700">4. Value Classes (Project Valhalla: JEP 401)</text>
+
+  <rect x="625" y="535" width="485" height="130" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="640" y="560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#e2e8f0" font-weight="600">Zero-Header Memory Flattening</text>
+  <text x="640" y="583" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Strips identity: Identity-free value objects ("codes like a class")</text>
+  <text x="640" y="603" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• "Works like an int": Inlined directly into array memory buffers</text>
+  <text x="640" y="623" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Zero object header overhead; zero pointer chasing on cache lines</text>
+  <text x="640" y="645" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#4ade80">Performance: True C-struct memory density directly on JVM heap</text>
+
+  <rect x="625" y="680" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="640" y="705" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#e2e8f0" font-weight="600">The Amber vs Valhalla Orthogonality</text>
+  <text x="640" y="728" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Project Amber (Carrier/Records) governs the PROGRAMMING MODEL</text>
+  <text x="640" y="748" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Project Valhalla governs the PHYSICAL MEMORY MODEL</text>
+  <text x="640" y="768" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Orthogonal convergence: A record can also be a Valhalla value class</text>
+  <text x="640" y="790" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#38bdf8">Synthesis: record value Point(double x, double y) = peak throughput</text>
+</svg>

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1180 880" width="1180" height="880" role="img" aria-labelledby="title desc">
+  <title id="title">Java and Python Enterprise AI: Systems Tiering and Inference Pipeline</title>
+  <desc id="desc">Architectural tiering of enterprise AI: Python scientific training and model serialization paired with Java 25 JVM in-process inference, Loom concurrency, and enterprise governance.</desc>
+  <defs>
+    <marker id="arrow-cyan" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrow-emerald" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#4ade80"/>
+    </marker>
+    <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#fbbf24"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1180" height="880" rx="16" fill="#0b0f19"/>
+
+  <!-- Main Header -->
+  <text x="50" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="24" fill="#f8fafc" font-weight="700">Enterprise AI Architecture: Python Laboratory to Java Factory</text>
+  <text x="50" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="14" fill="#94a3b8">End-to-end division of labor: Model training, JVM in-process inference, Loom concurrency, and enterprise governance</text>
+
+  <!-- Panel 1: Python Scientific Core (Top Left) -->
+  <rect x="50" y="110" width="525" height="340" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="50" y="110" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="70" y="137" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#fbbf24" font-weight="700">Tier 1: Research, Training &amp; Export (Python Core)</text>
+
+  <rect x="70" y="170" width="485" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#fbbf24" font-weight="600">Model Experimentation &amp; Fine-Tuning</text>
+  <text x="85" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• PyTorch, Hugging Face, LoRA/QLoRA parameter adaptation</text>
+  <text x="85" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Specialized ML: Isolation Forests, XGBoost, Prophet forecasting</text>
+  <text x="85" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Scientific Role: Algorithm research, evaluation &amp; weights fitting</text>
+
+  <rect x="70" y="295" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#fbbf24" font-weight="600">Standardized Model Serialization</text>
+  <text x="85" y="343" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Export to ONNX (Open Neural Network Exchange) format</text>
+  <text x="85" y="363" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Quantization: INT8 / FP16 graph optimizations via ONNX Runtime</text>
+  <text x="85" y="383" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• SafeTensors &amp; GGUF for local Small Language Models (SLMs)</text>
+  <text x="85" y="405" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Handoff Contract: Versioned binary artifacts published to registry</text>
+
+  <!-- Panel 2: JVM In-Process Inference (Top Right) -->
+  <rect x="605" y="110" width="525" height="340" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="605" y="110" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="625" y="137" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#38bdf8" font-weight="700">Tier 2: In-Process JVM Serving &amp; FFM Bindings</text>
+
+  <rect x="625" y="170" width="485" height="110" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="640" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#38bdf8" font-weight="600">Zero-Serialization Native Acceleration (Panama FFM)</text>
+  <text x="640" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• OpenJDK Foreign Function &amp; Memory (JEP 454) bindings</text>
+  <text x="640" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Direct off-heap memory mapping to C/C++ CUDA runtime</text>
+  <text x="640" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Latency Advantage: Eliminates JSON/gRPC inter-process latency</text>
+
+  <rect x="625" y="295" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="640" y="320" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#38bdf8" font-weight="600">Modern Java AI Runtimes (DJL &amp; Jlama)</text>
+  <text x="640" y="343" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Deep Java Library (DJL): Engine-agnostic PyTorch/TensorFlow</text>
+  <text x="640" y="363" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Jlama: 100% pure Java LLM inference engine with Vector API</text>
+  <text x="640" y="383" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• High-throughput batch inference directly within business services</text>
+  <text x="640" y="405" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Footprint: High thread density with zero Python GIL contention</text>
+
+  <!-- Panel 3: Enterprise Orchestration (Bottom Left) -->
+  <rect x="50" y="475" width="525" height="360" rx="12" fill="#1e293b" stroke="#4ade80" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="50" y="475" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="70" y="502" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#4ade80" font-weight="700">Tier 3: Enterprise Orchestration (Spring AI &amp; Loom)</text>
+
+  <rect x="70" y="535" width="485" height="130" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#4ade80" font-weight="600">Spring AI &amp; LangChain4j Abstractions</text>
+  <text x="85" y="583" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Declarative ChatClient API ("Hibernate of AI Prompts")</text>
+  <text x="85" y="603" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Model Context Protocol (MCP) tool integration and function calling</text>
+  <text x="85" y="623" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• RAG orchestration: Hybrid dense embeddings + BM25 keyword</text>
+  <text x="85" y="645" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#4ade80">Scalability: Project Loom virtual threads yield during remote LLM wait</text>
+
+  <rect x="70" y="680" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="85" y="705" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#4ade80" font-weight="600">Semantic Caching Architecture (60%–80% Cost Reduction)</text>
+  <text x="85" y="728" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Inbound prompt embedding compared against Redis/Pgvector cache</text>
+  <text x="85" y="748" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Cosine similarity score &gt; 0.92 returns cached model output</text>
+  <text x="85" y="768" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Eliminates repetitive LLM API billing and cuts latency to 5ms</text>
+  <text x="85" y="790" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Impact: Huge cost savings across repetitive customer queries</text>
+
+  <!-- Panel 4: Governance & Reliability (Bottom Right) -->
+  <rect x="605" y="475" width="525" height="360" rx="12" fill="#1e293b" stroke="#e2e8f0" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="605" y="475" width="525" height="42" rx="12" fill="#0f172a" fill-opacity="0.6"/>
+  <text x="625" y="502" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="16" fill="#f8fafc" font-weight="700">Tier 4: Enterprise Governance, Security &amp; Compliance</text>
+
+  <rect x="625" y="535" width="485" height="130" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="640" y="560" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#e2e8f0" font-weight="600">Enterprise Security &amp; Observability</text>
+  <text x="640" y="583" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• OAuth2 / OIDC authentication with Spring Security 6.4</text>
+  <text x="640" y="603" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• OpenTelemetry distributed tracing: Span per prompt, token, &amp; tool</text>
+  <text x="640" y="623" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Real-time token consumption metrics exported to Prometheus</text>
+  <text x="640" y="645" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#94a3b8">Compliance: Strict data isolation &amp; tenant boundary enforcement</text>
+
+  <rect x="625" y="680" width="485" height="135" rx="8" fill="#0f172a" stroke="#334155"/>
+  <text x="640" y="705" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" fill="#e2e8f0" font-weight="600">Auditing, PII Masking &amp; Prompt Firewalls</text>
+  <text x="640" y="728" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• In-flight PII redaction (regex &amp; local NER token classification)</text>
+  <text x="640" y="748" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Prompt injection guardrails evaluated before LLM dispatch</text>
+  <text x="640" y="768" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#cbd5e1">• Immutable append-only audit trail for regulatory compliance</text>
+  <text x="640" y="790" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="12" fill="#fbbf24">Mandate: Verifiable enterprise auditability for banking &amp; healthcare</text>
+</svg>

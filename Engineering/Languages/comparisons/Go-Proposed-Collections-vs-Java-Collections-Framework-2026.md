@@ -203,7 +203,7 @@ Evaluated against the official Java Development Kit (JDK 21–25) Java Collectio
 
 **Related:**
 - [Go SIMD vs NumPy vs Java Vector API](Go-SIMD-vs-NumPy-vs-Java-Vector-API-2026.md) — Analyzes compiler intrinsics, vector registers and low-level memory layout differences between Go and Java.
-- [Java 25 vs Go 1.24/1.25 Runtime Comparison](Java25-vs-Go1.24-Go1.25.md) — Comprehensive architectural evaluation of garbage collection, memory consumption and execution latency.
+- [Java 25 vs Go 1.24/1.25 Runtime Comparison](Java-25-vs-Go-1.25-Performance-Analysis-2026.md) — Comprehensive architectural evaluation of garbage collection, memory consumption and execution latency.
 - [Scaling Java Services to 1M RPS](../../Architecture/Scaling-1M-RPS-Java.md) — Evaluates JVM garbage collection budgets (ZGC) and payload serialization costs.
 - [Scaling C++ Services to 1M RPS](../../Architecture/Scaling-1M-RPS-C++.md) — Contrasts high-performance C++ zero-copy memory arenas with managed language collection allocations.
 - [Rust versus C](rust-vs-c.md) — Examines ownership semantics and zero-cost abstraction collections in systems programming.

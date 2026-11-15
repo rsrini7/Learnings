@@ -151,5 +151,5 @@ By 2027–2028, agentic AI adoption could reach 50% in dev ops, per industry tre
 Amazon semantics: "User error," but the warning on oversight endures. For deeper dives (e.g., Kiro architecture or similar Google/Microsoft incidents), let me know! 🚀
 
 **Related:**
-- [Java-Python-Enterprise-AI](../../../AI-ML/Comparisons/Java-Python-Enterprise-AI.md) — Kiro and Amazon Q Developer are agentic AI coding tools whose risks intersect enterprise Java/Python AI adoption.
+- [Java-Python-Enterprise-AI](../../../AI-ML/Comparisons/Java-Python-Enterprise-AI-Playbook-2026.md) — Kiro and Amazon Q Developer are agentic AI coding tools whose risks intersect enterprise Java/Python AI adoption.
 - [SpringBoot-4-Migration-Copilot-VSCode](../../../AI-ML/Agents/Spring-Boot-4-Migration/SpringBoot-4-Migration-Copilot-VSCode.md) — Agentic AI tools generating Java/Spring Boot code without guardrails mirror the Kiro Cost Explorer misconfiguration pattern.
