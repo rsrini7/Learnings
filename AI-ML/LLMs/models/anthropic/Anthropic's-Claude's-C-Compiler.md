@@ -224,9 +224,12 @@ Formal verification, using tools like Coq or Isabelle for proving correctness of
 
 ---
 
-## Conclusion
+## Supplementary visuals
 
-CCC demonstrates the potential of multi-agent AI in producing functional software artifacts, with implications for efficiency and innovation. However, security risks require stringent controls to prevent supply chain vulnerabilities. Adoption should prioritize verification and hybrid approaches.
+![Autonomous Multi-Agent Anthropic CCC](../../../assets/Autonomous-Multi-Agent-Anthropic-CCC.png)
+*Figure 1: Anthropic's Autonomous C Compiler (CCC) multi-agent architecture, coordination dynamics, and empirical reality check.*
+
+---
 
 **References:** Anthropic Engineering Documentation, CCC Repository, "Compilers: Principles, Techniques, and Tools," Thompson's 1984 Lecture, Wheeler's Diverse Double Compilation Approach.
 

@@ -11,6 +11,9 @@ Sources include Lee's presentation, market reports from BlackRock and Grayscale,
 ## The Crypto Supercycle: Alive and Evolving
 A supercycle extends beyond Bitcoin's traditional 4-year halving cycles, fueled by macro factors like rate cuts, quantitative easing, and fiscal stimulus. Lee predicts Bitcoin at $250K-$300K and Ethereum at $12K-$62K by 2026, based on ETH/BTC ratios and adoption.
 
+![Bitcoin 4-Year Cycle Analysis](../assets/Bitcoin-4-year-cycle.png)
+*Figure 1: Bitcoin four-year halving cycle cadence, structural cycle breaks, and macroeconomic decoupling indicators.*
+
 ### Verification and Trends
 - **Bullish Views**: CZ forecasts a 2026 supercycle from U.S. policies and ETFs. Pal sees liquidity surges breaking old cycles, with Bitcoin as a fiat hedge.
 - **Data Points**: Crypto market cap at $3.27T in early 2026. Institutional inflows via ETFs exceed $115B in 2025. Adoption runway: Only 4.4M Bitcoin wallets hold >$10K, vs. 900M global retirement accounts (200x potential).

@@ -61,6 +61,9 @@ King predicted most assets tokenized by 2035 for fractional ownership and liquid
 ### Key Technology: Real-World Assets (RWAs)
 RWAs are off-chain assets represented as on-chain tokens. Use smart contracts to enforce rules (e.g., ownership transfer). Standards: ERC-20 for fungible, ERC-721 for NFTs, ERC-1400 for securities (adds compliance like transfer restrictions).
 
+![Tokenization 5 Reasons Big Unlock](../assets/Tokenization-5-reasons-big-unlock.png)
+*Figure 2: Key economic drivers and liquidity unlocking mechanisms in real-world asset tokenization.*
+
 RWAs like real estate, treasuries, and metals will tokenize, allowing fractional ownership, DeFi collateral, and yield farming. Securitize tokenized over $4B in assets for BlackRock and KKR, going public at $1.25B valuation in 2025. Centrifuge financed $1.2B+ across asset classes via pools, with TVL at $529M in Q2 2025. Market forecasts predict $16T by 2030, driven by institutions.
 
 ```mermaid

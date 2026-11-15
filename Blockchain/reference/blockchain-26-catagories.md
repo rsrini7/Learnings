@@ -2,6 +2,9 @@
 
 *A consolidated, developer-focused research and learning map covering all major sectors, technologies, and use cases across the blockchain ecosystem.*
 
+![Blockchain Ecosystem Mind Map](../assets/Blockchain-Mind-Map.png)
+*Figure 1: Comprehensive architectural mind map indexing core distributed ledger domains, consensus layers, and developer tooling across the 26 ecosystem categories.*
+
 ---
 
 ## Table of Contents

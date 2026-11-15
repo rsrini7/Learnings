@@ -13,6 +13,9 @@
 
 ## Executive Summary
 
+![Moltbot Security Analysis Summary](../../assets/Clawdbot%28Moltbot%29-Security-Analysis-Jan-2026.png)
+*Figure 1: Executive threat landscape and exposed instance statistics for Moltbot/Clawdbot gateways.*
+
 Moltbot represents a critical case study in AI agent security risks. Shodan-based scans in late January 2026 identified approximately 1,000 publicly reachable Moltbot/Clawdbot gateway fingerprints, with a significant fraction permitting unauthenticated or weakly authenticated access, enabling credential exposure and command execution. This analysis covers architecture, key features, vulnerabilities, risks, costs, attack scenarios, comparisons, industry predictions, future threats, defenses, and appendices.
 
 **Critical Finding**: The combination of always-on operation, broad system access, and common misconfigurations amplifies risks, turning Moltbot into a potential insider threat. Treat it as infrastructure, not a toy.
@@ -44,6 +47,9 @@ Moltbot represents a critical case study in AI agent security risks. Shodan-base
 On January 27, 2026, project founder Peter Steinberger reported receiving a trademark request from Anthropic regarding the "Clawdbot" name's similarity to "Claude." The project announced a rename to "Moltbot" during a high-traffic window. During the transition period (characterized in community posts as "10 seconds of chaos"), scammers launched impersonation campaigns including fraudulent $CLAWD tokens that reportedly spiked to approximately $16M market cap (based on on-chain data from DexScreener and CoinMarketCap snapshots at 2026-01-27 ~14:00 UTC) before collapsing by over 90%. Social media handles and related accounts were also targeted by impersonators, sparking impersonation campaigns and poisoning skills libraries like ClawdHub with malicious packages.
 
 ## 2. Architecture Overview
+
+![Moltbot Security & Architectural Analysis](../../assets/Moltbot-Security-Arch-Analysis.png)
+*Figure 2: Architecture, proactive capabilities, and execution node security boundaries in Moltbot.*
 
 Moltbot is a TypeScript-based CLI application designed for local-first operation, emphasizing determinism, explainability, and user control. It runs as a background daemon, exposing a gateway server that integrates with messaging channels (e.g., WhatsApp, Telegram, Slack) for user interaction. Key components include:
 

@@ -96,6 +96,9 @@ graph LR
 
 The entire computational engine is built on **scalar-level** automatic differentiation. This mirrors the scalar autograd pattern introduced in MicroGrad, but is implemented independently here — every single weight, activation, and loss is a `Value` node. This makes the math completely transparent but is inherently slow: every multiply is a Python function call creating a new object.
 
+![microGPT Value Class Module](../../assets/microGPT-Updated.png)
+*Figure 3: Andrej Karpathy's scalar Value autograd class module tracking scalar data, accumulated gradients, and reverse topological backward pass.*
+
 ```mermaid
 graph LR
     A["Value(a)"] --"× Value(b)"--> B["Value(a×b)<br/>local_grads=(b, a)"]
