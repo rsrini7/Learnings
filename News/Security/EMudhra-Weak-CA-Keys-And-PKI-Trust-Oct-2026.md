@@ -208,7 +208,7 @@ Based on user-provided details, with material claims checked against primary dis
 ---
 
 **Related:**
-- [Linux Kernel ZDI Public Reports](Linux-Kernel-ZDI-Public-Reports-KSMBD-Oct-2026.md) — Another October disclosure with distinct affected components and mitigation.
+- [Passkeys](../../References/Passkeys.md) — Explains origin-bound account authentication, complementing the certificate trust used to authenticate HTTPS services.
 - [PHP2Shell: History, UAF and ASLR](PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — Compare a serious primitive with the additional conditions needed for exploitation.
 - [LiteLLM 1.107.0 Supply-Chain Compromise](LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md) — LiteLLM delayed a release while removing this CA from its trust store, showing the downstream operational impact.
 - [Notepad++ Targeted Attack](Notepad++-Targetted-Attach.md) — Compare software-update authenticity and failures in trusted delivery paths.

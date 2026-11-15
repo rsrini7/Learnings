@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 900" width="1120" role="img" aria-labelledby="title desc">
+<title id="title">PostgreSQL scaling: route work by its requirements</title>
+<desc id="desc">Applications route writes and consistency-sensitive work through pooled connections to a primary. Eligible reads go to replicas. Caches can avoid reads but their miss and failure paths need admission limits. A primary write bottleneck is separate from read scaling.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/></marker></defs>
+<rect width="1120" height="900" rx="16" fill="#0b0f19"/>
+<text x="40" y="44" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#e2e8f0" font-weight="700">PostgreSQL scaling: route work by its requirements</text>
+<text x="40" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#94a3b8">Educational synthesis of the reported principles, not a current production inventory.</text>
+<rect x="40" y="120" width="1040" height="95" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Application routing and admission</text>
+<text x="60" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Classify writes, freshness-sensitive reads, replica-eligible reads and cacheable results.</text>
+<path d="M 560 217 V 250 H 290 V 285" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 560 250 H 830 V 285" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="288" width="500" height="140" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="318" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Primary route</text>
+<text x="60" y="347" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Writes and reads needing appropriate freshness</text>
+<text x="60" y="369" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Reuse bounded connections through a pool</text>
+<text x="60" y="391" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Protect transaction and write capacity</text>
+<rect x="580" y="288" width="500" height="140" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="600" y="318" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Read offload route</text>
+<text x="600" y="347" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Cache eligible results or use read replicas</text>
+<text x="600" y="369" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Isolate interactive work from background jobs</text>
+<text x="600" y="391" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Bound miss, refresh and fallback traffic</text>
+<path d="M 290 430 L 290 470" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 830 430 L 830 470" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="473" width="500" height="140" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="503" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">PostgreSQL primary</text>
+<text x="60" y="532" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Commits changes and produces replication data</text>
+<text x="60" y="554" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Query work, locks and vacuum still matter</text>
+<text x="60" y="576" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">More replicas do not multiply write capacity</text>
+<rect x="580" y="473" width="500" height="140" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="600" y="503" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Read-only replicas</text>
+<text x="600" y="532" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Replay the primary’s changes</text>
+<text x="600" y="554" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Serve eligible reads with a lag policy</text>
+<text x="600" y="576" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Replica count alone is not an HA guarantee</text>
+<path d="M 541 543 L 578 543" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="655" width="1040" height="110" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="60" y="685" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Verify consistency and degraded operation</text>
+<text x="60" y="714" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Measure pool wait, query latency, replication lag, cache loss and priority isolation.</text>
+<text x="60" y="736" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Define acceptable stale reads, recovery time and possible data loss before interpreting failover.</text>
+<text x="40" y="815" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">Source boundary: detailed case-study claims follow Microsoft’s accessible account.</text>
+<text x="40" y="851" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">OpenAI’s official RSS entry verifies the later article title, publication date and summary.</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 1020" width="1120" role="img" aria-labelledby="title desc">
+<title id="title">Passkeys: register a credential, then prove control</title>
+<desc id="desc">Registration creates an account-bound credential and stores its public key. Authentication obtains a fresh challenge, authorizes use of the existing credential and returns a signed assertion. Server verification includes the origin, RP binding, challenge, signature and required flags.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/></marker></defs>
+<rect width="1120" height="1020" rx="16" fill="#0b0f19"/>
+<text x="40" y="44" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#e2e8f0" font-weight="700">Passkeys: register a credential, then prove control</text>
+<text x="40" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#94a3b8">The browser and authenticator perform the ceremony. The server verifies the complete response.</text>
+<text x="40" y="120" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">REGISTRATION</text>
+<text x="580" y="120" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">AUTHENTICATION</text>
+<rect x="40" y="142" width="500" height="115" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="172" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">1. Authorize enrollment</text>
+<text x="60" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Identify the account receiving the credential</text>
+<text x="60" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Apply the required proof or reauthentication</text>
+<rect x="580" y="142" width="500" height="115" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="600" y="172" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">1. Issue a fresh login challenge</text>
+<text x="600" y="201" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Set RP scope and verification requirements</text>
+<text x="600" y="223" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Bind pending options to the ceremony</text>
+<path d="M 290 259 L 290 297" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 830 259 L 830 297" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="300" width="500" height="115" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">2. Generate registration options</text>
+<text x="60" y="359" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Fresh challenge, RP and user information</text>
+<text x="60" y="381" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Algorithms and authenticator policy</text>
+<rect x="580" y="300" width="500" height="115" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="600" y="330" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">2. Select and authorize a credential</text>
+<text x="600" y="359" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Platform finds an eligible credential</text>
+<text x="600" y="381" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">User presence and verification are distinct</text>
+<path d="M 290 417 L 290 455" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 830 417 L 830 455" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="458" width="500" height="115" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="60" y="488" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">3. Authenticator creates the key pair</text>
+<text x="60" y="517" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">User authorizes credential creation</text>
+<text x="60" y="539" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Return the public-key credential response</text>
+<rect x="580" y="458" width="500" height="115" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="600" y="488" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">3. Authenticator returns an assertion</text>
+<text x="600" y="517" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Private key signs the required data</text>
+<text x="600" y="539" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">The website receives no biometric or local PIN</text>
+<path d="M 290 575 L 290 613" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 830 575 L 830 613" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="616" width="500" height="140" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="646" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">4. Verify and bind the credential</text>
+<text x="60" y="675" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Validate the full registration response</text>
+<text x="60" y="697" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Store credential ID, public key and metadata</text>
+<text x="60" y="719" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Bind the credential to the authorized account</text>
+<rect x="580" y="616" width="500" height="140" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="600" y="646" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">4. Verify before creating a session</text>
+<text x="600" y="675" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Check challenge, origin and RP binding</text>
+<text x="600" y="697" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Verify signature, account and required flags</text>
+<text x="600" y="719" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Apply the library’s complete verification rules</text>
+<rect x="40" y="800" width="1040" height="110" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="60" y="830" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Credential scope and account policy both matter</text>
+<text x="60" y="859" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">A credential is scoped to a service. Synced and device-bound credentials have different custody models.</text>
+<text x="60" y="881" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Use maintained verification code and separately protect enrollment, recovery and application sessions.</text>
+<text x="40" y="959" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">The response is not just a signature over the challenge. WebAuthn binds authenticator and client data.</text>
+<text x="40" y="994" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">Conceptual ceremonies: exact options, storage and policy depend on the implementation.</text>
+</svg>
