@@ -88,6 +88,12 @@ For a working starting point, the official open-source [Temporal samples](https:
 
 Based on collected repository notes, with mechanism and deployment claims checked against the linked project documentation. Product capabilities and supported SDKs change; verify them for the version being adopted.
 
+## 8. Supplementary visual
+
+![Previously collected workflow orchestration comparison](assets/Workflow-orchestration.png)
+
+*Previously collected illustration, retained for reference. Current capabilities and recovery guarantees should be interpreted using the primary sources and qualifications above.*
+
 ---
 
 **Related:**

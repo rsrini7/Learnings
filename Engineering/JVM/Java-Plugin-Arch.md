@@ -94,6 +94,12 @@ Before adopting runtime loading, build a small representative host and two provi
 
 Reworked from collected repository notes. The mechanisms above were checked against the Java API and JPMS specification proposal, OSGi specification, PF4J documentation and Spring Boot documentation. The boundary and lifecycle recommendations are engineering guidance, not a comparative performance benchmark.
 
+## 8. Supplementary visual
+
+![Previously collected Java plugin and extension architecture](assets/Java-Plugin&Extension-Architecture.png)
+
+*Previously collected illustration, retained for reference. The revised explanation above distinguishes lifecycle, dependency separation and security boundaries.*
+
 ---
 
 **Related:**

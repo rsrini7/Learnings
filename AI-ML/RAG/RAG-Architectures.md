@@ -138,6 +138,8 @@ Based on collected repository notes, with named methods checked against the link
 
 ![AI-ML/assets/RAG/RAG-OpenSource-Stacks.png](../assets/RAG/RAG-OpenSource-Stacks.png)
 
+[Previously collected RAG and AI engineering mind map](../assets/RAG/MindMap_RAG_Architecture_2026.png) — supplementary reference image. The diagram includes broader AI topics and collected terminology; use the verified explanations above for the RAG methods and their limits.
+
 *Previously collected illustrations, retained for reference. The source-qualified explanations above describe the supported mechanisms and limits.*
 
 ---
