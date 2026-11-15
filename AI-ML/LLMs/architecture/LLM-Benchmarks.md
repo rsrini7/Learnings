@@ -1,241 +1,103 @@
-# 📄 Whitepaper: Understanding LLM Benchmarks
+# LLM Benchmarks: Model Quality, Human Preference and Serving Performance
 
-**A Simple Guide to Measuring AI Intelligence**
+**Learning note · Revised 15 November 2026 · Original benchmark papers and evaluation tools checked**
 
-## What is an LLM Benchmark?
+> **Core idea:** A benchmark measures performance on a defined task under a defined procedure. A useful model choice combines relevant task quality, application-level evaluation and serving measurements. A leaderboard position alone does not establish that a model is suitable for your workload.
 
-**LLM Benchmarks** are standardized tests for AI models—think of them as the SAT or GRE for language models. They measure specific capabilities like reasoning, coding, knowledge recall, and tool use through structured tasks and datasets.
+## 1. Foundations: what is actually being tested?
 
-However, no single benchmark tells the whole story. Each test captures only a narrow aspect of performance, which is why researchers use multiple benchmarks and leaderboards (like MMLU for knowledge, SWE-bench for coding, or Chatbot Arena for real user preferences) to build a complete picture of a model's strengths and limitations.
+A model answering a question, an agent editing a repository and a server handling concurrent requests are different systems. They need different tests. A **benchmark** combines tasks or inputs, a procedure for running them and a scoring rule. Its result belongs to that combination.
 
-Benchmarks provide scores (usually percentages) to compare models objectively. They are like report cards for AI.
+For example, a multiple-choice question can be scored by selecting an answer. A coding task may require execution against tests. An agent task also depends on its tools, prompts and execution budget. A serving test measures how quickly requests complete under a particular load. The original [HumanEval paper](https://arxiv.org/abs/2107.03374), [SWE-bench project](https://github.com/SWE-bench/SWE-bench) and [MLPerf Inference rules](https://github.com/mlcommons/inference_policies/blob/master/inference_rules.adoc) illustrate these different evaluation units.
 
+| Evaluation axis | Question it helps answer | Examples of evidence |
+|---|---|---|
+| Model/task quality | Can the system solve the relevant tasks? | Accuracy, executable test success, retrieval quality or factual support. |
+| Human preference | Which response do people prefer in the comparison? | Blinded pairwise votes and an uncertainty-aware ranking. |
+| Application behavior | Does the complete product work under its actual constraints? | Tool outcomes, schema validity, permissions and supported answers on representative tasks. |
+| Serving performance | Can the deployment meet the required latency and volume? | Latency distributions, throughput, errors and goodput. |
 
-## Why do we need them?
+## 2. An evaluation flow for a real decision
 
-* **Comparison:** See which LLM is better at certain tasks, if Model A (e.g., GPT-4) is better than Model B (e.g., Llama-3).
-* **Progress Tracking:** To see how much AI is improving every month or over time.
-* **Guide development**: Help researchers focus on weak areas.
-* **Inform users**: Help people choose the right model for their needs.
-* **Choosing the Right Tool:** If you need an AI for coding, you look at coding benchmark scores.
+![LLM evaluation flow separating task quality, preference and serving measurements](../assets/LLM-Benchmark-Evaluation-And-Measurement-2026.svg)
 
+*Start with the intended use and compare candidates under recorded conditions. Public benchmarks help narrow the search; a held-out application set tests whether the result transfers.*
 
-## Core idea of LLM benchmarks
+First choose the behavior and operating requirements you need. Then select relevant public benchmarks, create representative application cases and measure serving performance for candidates that meet the quality requirement. Preserve the evaluation artifacts so the comparison can be reproduced after model or system updates.
 
-- Benchmarks define a **task**, a dataset, and a scoring metric (e.g., accuracy) to turn model behavior into a 0–100 style score for easy comparison.
-- Typical tasks include multiple-choice Q&A, math word problems, coding tasks, or conversational prompts, with metrics such as accuracy, recall, and perplexity.
-- Leaderboards (Open LLM, Chatbot Arena, etc.) aggregate scores from multiple benchmarks to rank models and show trade-offs between strengths like reasoning, coding, and instruction following.
+## 3. Major benchmark families and their limits
 
+| Family | What it tests | What the result does not establish |
+|---|---|---|
+| **MMLU / MMLU-Pro** | Broad academic knowledge and problem solving using multiple-choice tasks. | Free-form factual reliability or suitability for every specialist domain. The suites and scoring setups differ. |
+| **GSM8K / GPQA** | GSM8K uses grade-school math problems; GPQA uses difficult science questions written by domain experts. | Reliability on arbitrary numerical or scientific work. Dataset, answer format and prompting matter. |
+| **HumanEval** | Producing code for function-level programming tasks, judged with executable tests. | Repository-scale engineering, maintainability or secure behavior beyond the tests. |
+| **SWE-bench** | Resolving real repository issues through code changes evaluated in an execution environment. | A raw model capability independent of its agent, tools, task subset and budget. |
+| **Berkeley Function Calling Leaderboard, BFCL** | Tool/function-call behavior under the suite's scenarios. | Reliability for every real API or permission boundary. Versions and supported task categories matter. |
+| **MTEB** | Embedding performance across tasks such as retrieval, similarity and classification. | Generative answer quality or a universal best embedding model for every language and corpus. |
+| **MMMU** | Multimodal understanding and reasoning across college-level subjects. | Reliable interpretation of all document layouts, charts, images or production media. |
 
-***
+Original sources: [MMLU](https://arxiv.org/abs/2009.03300), [MMLU-Pro](https://arxiv.org/abs/2406.01574), [GSM8K](https://arxiv.org/abs/2110.14168), [GPQA](https://arxiv.org/abs/2311.12022), [HumanEval](https://arxiv.org/abs/2107.03374), [SWE-bench](https://github.com/SWE-bench/SWE-bench), [BFCL](https://gorilla.cs.berkeley.edu/leaderboard.html), [MTEB](https://arxiv.org/abs/2210.07316), [MMMU](https://arxiv.org/abs/2311.16502).
 
-## Major benchmark families
+A broad average can hide a weakness in the task or language you care about. Inspect relevant component scores and failure examples alongside the overall result.
 
-### General knowledge & reasoning
+## 4. Scoring procedures change the meaning of a number
 
-- **MMLU (Massive Multitask Language Understanding) / MMLU Pro**: Massive multitask multiple‑choice exam over 57+ subjects (STEM, humanities, social sciences). Measures academic and professional knowledge; final score is averaged per category then across all categories.
-- **ARC (AI2 Reasoning Challenge) / ARC-C**: Science questions (grades ~3–9) with an "easy" and "challenge" split (ARC-C); widely used for standardized reasoning evaluation and example of how to run your own eval via lm‑evaluation‑harness.
-- **HellaSwag**: Evaluates commonsense natural language inference by requiring models to select the most plausible continuation of a given scenario. Tests common sense reasoning about everyday situations.
-- **Winogrande**: Tests commonsense reasoning through pronoun resolution problems. Models must understand context and relationships to correctly identify what pronouns refer to.
-- **TruthfulQA**: Measures whether models produce truthful answers to questions that some humans might answer incorrectly due to misconceptions or false beliefs.
-- **GSM8K**: Grade-school level math word problems that require step-by-step thinking and arithmetic reasoning. Tests basic mathematical problem-solving abilities.
-- **GPQA / GPQA-Diamond**: Extremely hard graduate-level science questions written by domain experts. Even humans with Google struggle to answer these, but top AIs are starting to excel here. GPQA-Diamond is the most challenging subset.
-- **AIME / AIME 2025**: Based on the American Invitational Mathematics Examination, a notoriously difficult math competition. Tests multi-step symbolic reasoning with problems requiring exact correctness.
-- **AGIEval, BigBench/BBH**: Focus on exam‑style reasoning and "hard" language tasks respectively.
-- **MMLU-Pro**: Harder version with more reasoning required.
-- **LiveBench / WildBench**: Newer tests using fresh questions (from recent news/contests) to avoid contamination. LiveBench releases new questions monthly with objective ground-truth answers.
+- **Accuracy or exact match:** check which outputs count as correct, how answers are extracted and what normalization is applied.
+- **Pass@k:** a programming metric about obtaining a passing solution within `k` samples, as estimated by the benchmark procedure. A pass@10 result is not directly comparable to pass@1; they use different sampling budgets. [HumanEval methodology](https://arxiv.org/abs/2107.03374).
+- **Resolved issue rate:** check the issue subset, tests, repository setup, agent configuration and execution limits. “SWE-bench” and a named subset such as “Verified” are not interchangeable labels. [SWE-bench evaluation](https://github.com/SWE-bench/SWE-bench).
+- **Judge-model score:** another model grades outputs. Save the judge model, prompt and rubric. The MT-Bench/Chatbot Arena study documents concerns including position and verbosity bias. [LLM-as-a-judge study](https://arxiv.org/abs/2306.05685).
+- **Preference ranking:** people compare responses. This measures preference under the platform's sampled conversations and voting process, with uncertainty around the ranking. [Chatbot Arena paper](https://arxiv.org/abs/2403.04132).
 
-***
+Different measures can disagree without either result being a calculation error: they may be evaluating different behavior. A polished response can be preferred while failing a precise factual or executable test.
 
-### Coding and tool‑use benchmarks
+## 5. Freshness, contamination and uncertainty
 
-- **SWE‑Bench**: Tests whether a model can read real GitHub issues and generate code patches that pass tests; contamination is a concern, so "verified" or post‑cutoff suites are preferred.
-- **HumanEval**: Tests if an AI can write a small, working piece of Python code from a text description. Measures basic code generation capability with pass@1 metric.
-- **LiveCodeBench**: Holistic and contamination-free evaluation that continuously collects new coding problems over time. Focuses on broader code-related capabilities including self-repair, code execution, test output prediction, and code generation. Problems are sourced from LeetCode and AtCoder competitions.
-- **OJBench**: Tests raw algorithmic skill using problems from online judges like LeetCode or Codeforces. Focuses on precision and performance under strict runtime constraints, edge cases, and optimization—closer to competitive programming.
-- **BigCodeBench**: Measures code generation and problem solving on curated coding tasks and programming challenges.
-- **Tau-2 Bench (τ-bench)**: Focuses on advanced reasoning tasks like planning, multi-step problem solving, and tool use in coding contexts.
-- **AceBench (ACEBench)**: Evaluates LLMs on comprehensive software engineering tasks including implementing features, refactoring code, and debugging across large codebases. Simulates realistic end-to-end engineering workflows including both front-end and back-end logic.
-- **Tool‑usage reliability / function‑calling benchmarks** (e.g., Gorilla function calling, tool‑use leaderboards): Measure how reliably a model calls tools/APIs in multi‑tool setups such as MCP‑heavy agents.
+**Contamination** occurs when evaluation material, or information closely revealing it, enters model development or training. High benchmark performance then becomes weaker evidence of generalization. Public exposure alone does not prove that a particular model memorized a test.
 
-***
+Refreshing questions can reduce some contamination risks, but “live” or “new” does not automatically mean human voting or complete resistance to leakage. **LiveBench**, for example, proposes regularly updated tasks with objective scoring. A preference arena and a refreshed task suite are different designs. [LiveBench paper](https://arxiv.org/abs/2406.19314).
 
-## Leaderboards and what they mean
+For an application, maintain a held-out set covering real inputs, edge cases, languages and failures. Keep it separate from prompt tuning and inspect results by category. Record how many examples were tested and how uncertain small score differences are. Repeatedly optimizing against the same held-out set can also turn it into development data.
 
-### Representative leaderboard types
+## 6. Serving benchmarks need controlled workloads
 
-| Aspect           | Examples                          | What they aggregate | What you learn |
-|-----------------|------------------------------------|---------------------|----------------|
-| Open LLM boards | Open LLM Leaderboard, YALL        | MMLU, ARC, GSM8K, TruthfulQA, BBH, etc. | General capability profile across reasoning, knowledge, safety. |
-| Arena‑style      | Chatbot Arena, MT‑Bench + ELO      | Pairwise chat comparisons + MT‑Bench | Interactive chat quality and instruction following vs peers. |
-| Specialized      | Coding leaderboards, function‑calling boards | SWE‑Bench, HumanEval, tool‑use suites | Depth in one capability like coding or tools. |
+A quality benchmark and a load test answer different questions. Measure the selected deployment with representative input and output lengths, not just a single repeated prompt.
 
-- Benchmarks can be run in **zero‑shot** or **few‑shot** modes; adding examples usually raises scores and needs to be matched when comparing models.
-- Tools like **EleutherAI's lm‑evaluation‑harness** standardize how tasks like MMLU or ARC are run (prompt templates, number of shots, scoring) so results are more comparable across models.
+| Record or measure | Why it matters |
+|---|---|
+| Model and tokenizer revision | Architecture, weights, tokenization and chat formatting affect quality and execution. |
+| Precision and engine build | Quantization, kernels and runtime versions can change both speed and outputs. |
+| Hardware and distribution | Device count, memory and interconnect determine what work can be executed efficiently. |
+| Input/output lengths | Prefill and decode have different costs; early stopping changes the workload. |
+| Arrival rate and concurrency | A fixed number of simultaneous clients differs from requests arriving at a specified rate. Client-side queues can alter the observed load. |
+| Cold/warm state and prefix reuse | Warm-up and cache hits can change results substantially. Deliberate cache reuse should be reported. |
+| TTFT, TPOT/ITL and total latency | These separate first-token delay, ongoing generation and full completion time. Define timing boundaries and report percentiles. |
+| Throughput, failures and goodput | Count completed work, timeouts and errors. Report how much work met the stated service requirements. |
 
-Leaderboards rank models using multiple benchmarks:
+The [vLLM benchmark CLI](https://docs.vllm.ai/en/latest/cli/bench/serve/) exposes separate controls for request rate, maximum concurrency, latency percentiles and goodput thresholds. [MLPerf Inference](https://mlcommons.org/benchmarks/inference-datacenter/) provides standardized workloads and quality/performance rules; its results still need to be interpreted within the specified scenario and submission conditions.
 
-- **Hugging Face Open LLM Leaderboard**: Focuses on open-source models, uses average scores.
-- **LMSYS Chatbot Arena**: Blind user votes (Elo ratings) — often considered most realistic.
-- **Artificial Analysis**: Detailed tests including speed, cost, and quality.
+A server can increase aggregate throughput while making individual requests slower. Compare the capacity that meets your latency and quality requirements, rather than selecting the largest tokens-per-second number.
 
-***
+## 7. Open-source tools and a practical starting point
 
-## The Two Ways to Test
+| Tool | Use | How to start and its limits |
+|---|---|---|
+| [lm-evaluation-harness](https://github.com/EleutherAI/lm-evaluation-harness) | Runs a collection of model evaluation tasks. | Follow its quickstart, pin the tool/model revisions and select named tasks. Check each task's prompts, answer extraction and chat-template handling. |
+| [SWE-bench](https://github.com/SWE-bench/SWE-bench) | Evaluates repository-issue patches using its harness and environments. | Start with the evaluation setup and a small supported task sample. Environment and agent configuration are part of the result. |
+| [MTEB](https://github.com/embeddings-benchmark/mteb) | Evaluates embedding models on selected tasks. | Choose tasks matching your language and retrieval use case. An average over unrelated tasks can obscure the requirement. |
+| [vLLM serving benchmark](https://docs.vllm.ai/en/latest/cli/bench/serve/) | Exercises a compatible serving endpoint and records performance. | Begin with `vllm bench serve --help`, then configure the workload and save results. It is not a substitute for model-quality or application-correctness evaluation. |
 
-Research shows there are two main "flavors" of testing:
+For a reviewable comparison, retain: **model and system revisions, task/version identifiers, prompts/templates, decoding and tool budgets, hardware/load settings, scoring rules, results and representative failures**. Use the same conditions where comparability requires them, and explicitly document justified differences.
 
-| Feature | **Static Benchmarks** (The "Fixed Test") | **Live Leaderboards** (The "Crowd Test") |
-| --- | --- | --- |
-| **How it works** | A set list of questions and answers. | Humans chat with two AIs and vote for the better one. |
-| **Example** | MMLU, HumanEval, GSM8K, ARC-C | **LMSYS Chatbot Arena** |
-| **Pros** | Fast, cheap, and repeatable. | Hard to "cheat"; reflects real-world use. |
-| **Cons** | AI might "memorize" the answers during training. | Subjective; depends on human opinion. |
+## 8. Source context
 
-***
+Based on collected repository notes, with benchmark definitions checked against the original papers, project evaluation repositories and MLCommons rules. Supported tasks, scoring procedures and benchmark versions change. Record them when an evaluation is run.
 
-## Current Challenges
-
-As AI gets smarter, our tests are facing major problems:
-
-1. **Contamination ("Teaching to the Test"):** Because AI models are trained on the whole internet, they often "see" the exam questions before they take them. This makes their scores look better than they actually are.
-* *Solution:* Researchers now use **"Canary Strings"** (hidden text codes) to tell AI trainers to keep test data out of the training set. Benchmarks like LiveBench and LiveCodeBench release new questions continuously to avoid contamination.
-
-2. **Saturation:** Top models are getting nearly 90-100% on old tests (like MMLU). This makes the tests too easy to tell which model is actually better.
-* *Solution:* New "Frontier" tests like **Humanity's Last Exam (HLE)**, **ARC-AGI**, **GPQA-Diamond**, and **AIME 2025** are being created to be much more difficult.
-
-3. **Benchmark Gaming**: Companies train specifically on benchmark styles.
-
-4. **Not Real-World**: High scores don't always mean good performance in actual use.
-
-5. **Static Questions**: Old questions become easy as models improve.
-
-
-```mermaid
-flowchart LR
-    A["Create Benchmark"] --> B["Models Train on Internet Data"]
-    B --> C{"Questions Leaked?"}
-    C -->|Yes| D["Contamination → Inflated Scores"]
-    C -->|No| E["Fair Test"]
-    D --> F["New Harder Benchmarks Needed"]
-    E --> G["Reliable Comparison"]
-```
-
-## Recent Improvements (2024-2026)
-
-- **Contamination-free tests**: LiveBench, LiveCodeBench, Arena-Hard, and others use new questions monthly or continuously.
-- **Human preference leaderboards**: LMSYS Arena focuses on what users actually prefer.
-- **Multi-dimensional evaluation**: New leaderboards measure reasoning depth, tool use, and long-context handling.
-- **Specialized engineering benchmarks**: AceBench and Tau-2 Bench test realistic software development workflows.
-- **Competition-grade challenges**: OJBench, AIME 2025, and GPQA-Diamond push models to their limits with expert-level problems.
-
-***
-
-## Strengths, limits, and how to use them
-
-- Strengths:  
-  - Fast model filtering: quickly rule out weak models for a use case (e.g., need math → check GSM8K/AIME; need coding → check SWE‑Bench / HumanEval / LiveCodeBench).
-  - Regression testing: track whether fine‑tuning or new releases actually improve targeted skills (e.g., comparing zero‑shot vs 25‑shot ARC after fine‑tuning).
-  - Communication: give a shared numeric language ("Model X: 90% on science test benchmark") for teams and customers.
-
-- Limitations:  
-  - They may miss **edge cases** or your specific domain quirks, so production behavior can differ from benchmark scores.
-  - Overfitting and contamination (training on benchmark data, or benchmarks becoming saturated) can inflate scores without real capability gains.
-  - Implementation details (prompt formats, number of shots, scoring functions like length‑normalized log‑likelihood vs regex extraction) can change scores noticeably.
-
-- Practical guidance:  
-  - Use benchmarks to narrow candidates, then run **task‑specific, custom evals** for your application (your own datasets, success criteria, and environments).
-  - For Cline‑style dev workflows:  
-    - Coding‑heavy → SWE‑Bench, HumanEval, LiveCodeBench, BigCodeBench, OJBench.  
-    - Domain‑heavy coding → MMLU Pro, GPQA, AIME.  
-    - Tool‑heavy agents → tool‑usage reliability benchmarks, AceBench, Tau-2 Bench, and function‑calling leaderboards.
-
-***
-
-## Conceptual diagram
-
-
-```mermaid
-flowchart TD
-    A["LLM Benchmarks"] --> B["Tasks & Datasets"]
-    A --> C["Metrics & Scoring"]
-    A --> D["Leaderboard Aggregation"]
-    
-    B --> E["General Knowledge"]
-    B --> F["Reasoning"]
-    B --> G["Mathematics"]
-    B --> H["Coding"]
-    B --> I["Safety & Truthfulness"]
-    B --> J["Agent & Tool Use"]
-    B --> K["Human Preference"]
-    
-    E --> E1["MMLU (School & Professional)"]
-    E --> E2["MMLU-Pro (Enhanced)"]
-    E --> E3["ARC / ARC-C (Science Questions)"]
-    E --> E4["AGIEval (Standardized Tests)"]
-    E --> E5["HellaSwag (Commonsense)"]
-    E --> E6["Winogrande (Pronoun Resolution)"]
-    
-    F --> F1["GPQA / GPQA-Diamond (Graduate-Level Science)"]
-    
-    G --> G1["GSM8K (School Math)"]
-    G --> G2["AIME / AIME 2025 (Competition Math)"]
-    G --> G3["MATH (Competition-Level)"]
-    
-    H --> H1["HumanEval (Basic Python)"]
-    H --> H2["LiveCodeBench (Holistic Coding)"]
-    H --> H3["SWE-bench (Real Bug Fixing)"]
-    H --> H4["OJBench (Algorithmic/Competitive)"]
-    H --> H5["BigCodeBench (Problem Solving)"]
-    H --> H6["AceBench (Full-Stack Engineering)"]
-    
-    I --> I1["TruthfulQA (Truthfulness)"]
-    
-    J --> J1["Tau-2 Bench (Planning & Tools)"]
-    J --> J2["AceBench (Software Engineering)"]
-    J --> J3["Function Calling Benchmarks"]
-    
-    K --> K1["LMSYS Chatbot Arena (User Votes)"]
-    K --> K2["MT-Bench (Multi-Turn)"]
-    K --> K3["LiveBench (Contamination-Free)"]
-    
-    D --> L["Open LLM Leaderboard"]
-    D --> M["YALL Leaderboard"]
-    D --> N["Chatbot Arena"]
-    D --> O["Specialized Boards"]
-    
-    O --> O1["Coding Leaderboards"]
-    O --> O2["Tool Use Leaderboards"]
-```    
-
-***
-
-## Summary & Conclusion
-
-Benchmarks are the best way to keep AI companies honest and help users pick the right model. However, no single score tells the whole story.
-LLM benchmarks are useful tools to compare models and track progress, but they have clear limitations. High benchmark scores do not guarantee strong real-world performance. The field is rapidly creating better, contamination-resistant tests. Always test a model on your specific tasks for the truest picture.
-
-This guide is based on widely discussed concepts in the AI community, verified across major sources including academic papers, leaderboards, and expert analyses up to January 2026.
-
-**Recommendation:**
-
-* For **General Use**, look at the **LMSYS Chatbot Arena**.
-* For **Deep Reasoning**, look at **GPQA-Diamond** and **AIME 2025**.
-* For **Professional Coding**, look at **SWE-bench**, **LiveCodeBench**, and **AceBench**.
-* For **Algorithmic Skills**, look at **OJBench**.
-* For **Commonsense & Knowledge**, look at **MMLU**, **HellaSwag**, and **Winogrande**.
-
-
-## Sources & Reference Videos
-
-* [Overview of Evaluation Metrics](https://www.youtube.com/watch?v=JOIV1LdRnP8)
-* [Top 5 Benchmarks Explained](https://www.youtube.com/watch?v=aOjgPJ94-aM)
-* [The Problem with Contamination](https://www.youtube.com/watch?v=-YPiHoHLRSY)
-* [Deep Dive: Coding Benchmarks](https://www.youtube.com/watch?v=QNQHRjU3DoM)
+---
 
 **Related:**
-- [microGPT-Technical-Deep-Dive](microGPT-Technical-Deep-Dive.md) — Section 8 'Performance Characteristics' benchmarks microGPT's loss curve as a concrete example of model evaluation methodology.
-- [Persistent-Memory-Layers-AI-Agents](Persistent-Memory-Layers-AI-Agents.md) — Memory layer solutions (Mem0, Graphiti) are evaluated on LOCOMO and DMR benchmarks, illustrating domain-specific evaluation.
-- [LLM-Inference](LLM-Inference.md) — Defines the latency and throughput metrics (TTFT, TPOT, TPS) that this benchmark taxonomy categorizes and measures.
-- [LLM-Council](LLM-Council.md) — Council's 'Academic Validation' section positions multi-model ranking as an alternative benchmark for human-preference evaluation.
-- [Jev-System-One-Decision-Model-2026](../models/other/Jev-System-One-Decision-Model-2026.md) — A worked case study in reading vendor-published evaluation claims (workflow evals, reference-model bias, a mathematically asserted 0% type-error rate) rather than trusting headline multipliers.
+- [LLM Inference](LLM-Inference.md) — Defines the request lifecycle and serving metrics used in performance evaluation.
+- [LLM Inference Engines](LLM-Inference-Engines.md) — Explains execution choices that must be controlled in an engine comparison.
+- [AI Agent Evaluation Architectures](../../Agents/frameworks/AI-Agent-Evaluation-Architectures-Multi-Tier-Graders-And-Harnesses-Nov-2026.md) — Extends model tests to complete agents, graders and execution harnesses.
+- [Multimodal RAG](../../RAG/Multimodal-RAG.md) — Separates retrieval coverage from answer support when evaluating mixed-media applications.
+- [KV Cache, Prefix Caching and Storage Tiering](KV-Cache-Prefix-Caching-And-Storage-Tiering-Nov-2026.md) — Explains why cache state and reuse affect repeatable serving measurements.

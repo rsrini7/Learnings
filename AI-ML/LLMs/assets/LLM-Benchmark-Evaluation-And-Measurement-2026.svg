@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 890" width="1120" role="img" aria-labelledby="title desc">
+<title id="title">LLM evaluation: define the question before the score</title>
+<desc id="desc">Start with the intended application and operating requirements. Evaluate task correctness, optional human preference and serving performance separately. Record the complete configuration and use a held-out application set before choosing or updating a deployment.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M 0 0 L 10 5 L 0 10 z" fill="#38bdf8"/></marker></defs>
+<rect width="1120" height="890" rx="16" fill="#0b0f19"/>
+<text x="40" y="44" font-family="Arial, Helvetica, sans-serif" font-size="25" fill="#e2e8f0" font-weight="700">LLM evaluation: define the question before the score</text>
+<text x="40" y="76" font-family="Arial, Helvetica, sans-serif" font-size="15" fill="#94a3b8">Task quality, human preference and serving capacity provide different evidence.</text>
+<rect x="40" y="120" width="1040" height="95" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="150" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Define the use and acceptance criteria</text>
+<text x="60" y="179" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Representative tasks, languages, allowed tools, acceptable errors, latency and volume.</text>
+<path d="M 560 217 V 250 H 200 V 282" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 560 250 L 560 282" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 560 250 H 920 V 282" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="285" width="320" height="170" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="60" y="315" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Task and application quality</text>
+<text x="60" y="344" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Relevant public task suites</text>
+<text x="60" y="366" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Held-out application cases</text>
+<text x="60" y="388" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Executable or rubric-based scoring</text>
+<text x="60" y="410" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Inspect failure categories</text>
+<rect x="400" y="285" width="320" height="170" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="420" y="315" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Human preference, if useful</text>
+<text x="420" y="344" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Blinded response comparisons</text>
+<text x="420" y="366" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Record the voting procedure</text>
+<text x="420" y="388" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Account for uncertainty</text>
+<text x="420" y="410" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Preference is its own measure</text>
+<rect x="760" y="285" width="320" height="170" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="780" y="315" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Serving performance</text>
+<text x="780" y="344" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Representative request lengths</text>
+<text x="780" y="366" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Controlled load and cache state</text>
+<text x="780" y="388" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Latency, throughput and errors</text>
+<text x="780" y="410" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Count work that meets deadlines</text>
+<path d="M 200 457 L 200 515" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 560 457 L 560 515" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 920 457 L 920 515" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="518" width="1040" height="115" rx="12" fill="#1e293b" stroke="#38bdf8" stroke-opacity="0.6"/>
+<text x="60" y="548" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#38bdf8" font-weight="700">Keep the result attached to its conditions</text>
+<text x="60" y="577" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Model revision, task subset, prompts, sampling budget, tools, harness and scoring procedure.</text>
+<text x="60" y="599" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Engine build, precision, hardware, arrival rate, concurrency and cold or warm cache state.</text>
+<path d="M 290 635 L 290 673" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M 830 635 L 830 673" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="676" width="500" height="140" rx="12" fill="#1e293b" stroke="#4ade80" stroke-opacity="0.6"/>
+<text x="60" y="706" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#4ade80" font-weight="700">Make a workload-specific decision</text>
+<text x="60" y="735" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Meet the required task-quality threshold</text>
+<text x="60" y="757" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Compare capacity within latency requirements</text>
+<text x="60" y="779" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Include operating effort and measured cost</text>
+<rect x="580" y="676" width="500" height="140" rx="12" fill="#1e293b" stroke="#fbbf24" stroke-opacity="0.6"/>
+<text x="600" y="706" font-family="Arial, Helvetica, sans-serif" font-size="18" fill="#fbbf24" font-weight="700">Repeat when the system changes</text>
+<text x="600" y="735" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Check model, prompt and engine updates</text>
+<text x="600" y="757" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Preserve evaluation artifacts and failures</text>
+<text x="600" y="779" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#e2e8f0">Keep development separate from held-out cases</text>
+<text x="40" y="862" font-family="Arial, Helvetica, sans-serif" font-size="14" fill="#94a3b8" font-weight="700">Public scores help narrow candidates. Application evidence determines whether the result transfers.</text>
+</svg>
