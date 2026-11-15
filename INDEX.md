@@ -264,7 +264,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Deno Joins Cloudflare Adoption And Runtime Lessons Oct 2026](Engineering/Languages/Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md)
 - [Go Test Performance Windows vs Linux 2026](Engineering/Languages/Go-Test-Performance-Windows-vs-Linux-2026.md)
 - [TypeScript Rust Port TSRS Architecture Nov 2026](Engineering/Languages/TypeScript-Rust-Port-TSRS-Architecture-Nov-2026.md)
-- [WASM Rust](Engineering/Languages/WASM-Rust.md)
+- [WASM Rust High Performance Runtime 2026](Engineering/Languages/WASM-Rust-High-Performance-Runtime-2026.md)
 - [Go Proposed Collections vs Java Collections Framework 2026](Engineering/Languages/comparisons/Go-Proposed-Collections-vs-Java-Collections-Framework-2026.md)
 - [Go SIMD vs NumPy vs Java Vector API 2026](Engineering/Languages/comparisons/Go-SIMD-vs-NumPy-vs-Java-Vector-API-2026.md)
 - [Java 25 vs Go 1.25 Performance Analysis 2026](Engineering/Languages/comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md)

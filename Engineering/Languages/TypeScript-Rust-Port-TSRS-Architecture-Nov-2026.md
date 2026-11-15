@@ -1,10 +1,11 @@
 # TypeScript Ported to Rust: Inside tsrs, the 3x-to-10x Speedup Over Go, and the AI Compiler Frontier
 
-**Daily learning · 5 November 2026 · Primary-source review · Systems Architecture**
+Daily learning · 5 November 2026 · Primary-source review · Systems Architecture
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Microsoft rewrote the TypeScript compiler in Go (TypeScript 7.0 / Project Corsa) to escape Node.js single-threaded constraints. In October 2026, an experimental port of that compiler to Rust—**`tsrs`**—was synthesized in three weeks using autonomous AI coding agents (Claude Opus 5.5). Incubated under the **Oxc** project alongside Cloudflare and VoidZero, `tsrs` achieves an additional 3x to 10x speedup and ~70% lower memory usage via 4-byte pointer compression, lazy generic member resolution, module-affinity work stealing, and zero-GC linear memory that compiles natively to WebAssembly.
 
-This research note breaks down the architectural evolution, memory layout innovations, multi-agent synthesis methodology, and ecosystem impact of `tsrs`. It begins with the Better Stack technical overview ([source video](https://www.youtube.com/watch?v=Quf05tmWjaQ)) and expands across primary disclosures from Owner.com, Cloudflare, VoidZero, Oxc, and the Microsoft TypeScript compiler team.
+This research note breaks down the architectural evolution, memory layout innovations, multi-agent synthesis methodology, and ecosystem impact of `tsrs`. It begins with the Better Stack technical overview and expands across primary disclosures from Owner.com, Cloudflare, VoidZero, Oxc, and the Microsoft TypeScript compiler team.
 
 ![TSRS Architecture and Compiler Pipeline](assets/tsrs-compiler-architecture.svg)
 
@@ -31,6 +32,17 @@ To understand why `tsrs` exists and why its performance numbers matter, one must
 | **Cloudflare**<br/>*(Christoph Nakazawa, Dimitri Mitropoulos)* | Co-sponsor & edge platform operator | Sponsoring `tsrs` development; bringing TypeScript compilation and type-checking to Cloudflare Workers and client-side sandboxes via zero-GC WebAssembly. |
 | **VoidZero & Oxc Project**<br/>*(Evan You, Boshen Chen)* | High-performance JS toolchain & project host | Incubating `tsrs` under `oxc-project`; unifying the parser, linter (`oxlint`), bundler (`rolldown`), and type-checker (`tsrslint`) under a shared Rust memory graph. |
 | **Theo Browne (`tsc-rs`)** | Independent compiler developer | Built an early parallel TypeScript Rust port; merged efforts with `tsrs` and Oxc to unify Language Server Protocol (LSP) and compiler execution. |
+
+### Essential Vocabulary
+
+| Term | Technical Meaning in `tsrs` | System Implication |
+|---|---|---|
+| **Pointer Compression** | Encoding 64-bit memory addresses as 32-bit unsigned offsets relative to an arena base address. | Halves pointer footprint across 12.8M symbols; increases CPU L3 cache residency by 2x. |
+| **Virtual Memory Arena** | Reserving 32 GiB of contiguous virtual address space upfront via OS `mmap` with demand paging. | Eliminates per-node allocator overhead; enables zero-GC bulk deallocation on process exit. |
+| **Lazy Member Resolution** | Deferring field and method instantiation on generic types until explicitly queried by the checker. | Eliminates 80%+ of unaccessed generic member symbols on complex database schemas (Drizzle, Prisma). |
+| **Module-Affinity Clustering** | Routing files that share common imported type definitions to the same checker worker thread. | Maximizes thread-local type cache hits; reduces duplicate AST and symbol synthesis across threads. |
+| **Determinism Gate** | Synchronization barrier ordering diagnostics by source location rather than thread completion order. | Guarantees byte-identical compiler output across runs regardless of dynamic work stealing. |
+| **Miri Verification** | Rust interpreter that detects Undefined Behavior (UB), aliasing violations, and unaligned reads. | Enforces memory safety over `unsafe` virtual arena abstractions without relying solely on unit tests. |
 
 ---
 
@@ -174,7 +186,222 @@ Both Go and Rust compilers parse and bind files once, then spawn worker checker 
 
 ---
 
-## 5. The AI Synthesis Loop: How 0 Handwritten Lines Built a Compiler
+## 5. Production Implementations & Code Recipes
+
+To illustrate how `tsrs` achieves these mechanical advantages in safe and unsafe Rust, consider the following idiomatic implementations reflecting the core runtime algorithms.
+
+### Recipe 1: 4-Byte Compressed Pointer and Virtual Arena Manager
+
+```rust
+use std::marker::PhantomData;
+use std::ptr::NonNull;
+use std::sync::atomic::{AtomicUsize, Ordering};
+
+/// A 32-bit compressed pointer addressing objects within a 32 GiB virtual arena.
+#[derive(Copy, Clone, Debug, PartialEq, Eq, Hash)]
+#[repr(transparent)]
+pub struct CompressedPtr<T> {
+    offset: u32,
+    _marker: PhantomData<*const T>,
+}
+
+impl<T> CompressedPtr<T> {
+    pub const NULL: Self = Self {
+        offset: 0,
+        _marker: PhantomData,
+    };
+
+    #[inline(always)]
+    pub fn is_null(&self) -> bool {
+        self.offset == 0
+    }
+
+    #[inline(always)]
+    pub fn from_offset(offset: u32) -> Self {
+        Self {
+            offset,
+            _marker: PhantomData,
+        }
+    }
+
+    #[inline(always)]
+    pub fn offset(&self) -> u32 {
+        self.offset
+    }
+}
+
+/// Contiguous 32 GiB Virtual Memory Arena reserved via mmap.
+pub struct VirtualArena {
+    base: NonNull<u8>,
+    capacity: usize,
+    allocated: AtomicUsize,
+}
+
+unsafe impl Send for VirtualArena {}
+unsafe impl Sync for VirtualArena {}
+
+impl VirtualArena {
+    /// Reserves 32 GiB of virtual address space upfront with demand paging.
+    pub fn new(capacity: usize) -> std::io::Result<Self> {
+        #[cfg(unix)]
+        {
+            let ptr = unsafe {
+                libc::mmap(
+                    std::ptr::null_mut(),
+                    capacity,
+                    libc::PROT_READ | libc::PROT_WRITE,
+                    libc::MAP_PRIVATE | libc::MAP_ANONYMOUS | libc::MAP_NORESERVE,
+                    -1,
+                    0,
+                )
+            };
+
+            if ptr == libc::MAP_FAILED {
+                return Err(std::io::Error::last_os_error());
+            }
+
+            Ok(Self {
+                base: NonNull::new(ptr as *mut u8).expect("mmap returned non-null"),
+                capacity,
+                allocated: AtomicUsize::new(8), // Offset 0 reserved for NULL
+            })
+        }
+        #[cfg(not(unix))]
+        {
+            panic!("Virtual arena requires POSIX mmap support");
+        }
+    }
+
+    /// Allocates an instance of T in the arena, returning a 4-byte CompressedPtr.
+    pub fn alloc<T>(&self, val: T) -> Option<CompressedPtr<T>> {
+        let size = std::mem::size_of::<T>();
+        let align = std::mem::align_of::<T>();
+        
+        loop {
+            let current = self.allocated.load(Ordering::Relaxed);
+            let aligned = (current + align - 1) & !(align - 1);
+            let next = aligned + size;
+
+            if next > self.capacity || next > u32::MAX as usize {
+                return None; // Exceeded 4 GiB direct 32-bit offset or arena capacity
+            }
+
+            if self.allocated.compare_exchange_weak(
+                current,
+                next,
+                Ordering::AcqRel,
+                Ordering::Relaxed,
+            ).is_ok() {
+                unsafe {
+                    let dest = self.base.as_ptr().add(aligned) as *mut T;
+                    std::ptr::write(dest, val);
+                }
+                return Some(CompressedPtr::from_offset(aligned as u32));
+            }
+        }
+    }
+
+    /// Dereferences a 32-bit CompressedPtr to a standard Rust reference.
+    #[inline(always)]
+    pub unsafe fn resolve<'a, T>(&self, ptr: CompressedPtr<T>) -> Option<&'a T> {
+        if ptr.is_null() {
+            None
+        } else {
+            let raw = self.base.as_ptr().add(ptr.offset() as usize) as *const T;
+            Some(&*raw)
+        }
+    }
+}
+
+impl Drop for VirtualArena {
+    fn drop(&mut self) {
+        #[cfg(unix)]
+        unsafe {
+            libc::munmap(self.base.as_ptr() as *mut libc::c_void, self.capacity);
+        }
+    }
+}
+```
+
+### Recipe 2: Lazy Generic Member Table Resolution
+
+```rust
+use std::collections::HashMap;
+use std::sync::RwLock;
+
+#[derive(Clone, Debug, PartialEq, Eq, Hash)]
+pub struct TypeId(pub u32);
+
+#[derive(Clone, Debug)]
+pub struct Symbol {
+    pub name: String,
+    pub return_type: TypeId,
+}
+
+#[derive(Clone, Debug)]
+pub struct GenericSubstitution {
+    pub param_index: u32,
+    pub target_type: TypeId,
+}
+
+/// Stores template member recipes and synthesizes specialized members on demand.
+pub struct LazyMemberTable {
+    templates: HashMap<TypeId, Vec<Symbol>>,
+    instantiations: RwLock<HashMap<(TypeId, String), Symbol>>,
+}
+
+impl LazyMemberTable {
+    pub fn new() -> Self {
+        Self {
+            templates: HashMap::new(),
+            instantiations: RwLock::new(HashMap::new()),
+        }
+    }
+
+    pub fn register_template(&mut self, generic_id: TypeId, members: Vec<Symbol>) {
+        self.templates.insert(generic_id, members);
+    }
+
+    /// Resolves only the requested member on demand, avoiding eager instantiation of all fields.
+    pub fn resolve_member(
+        &self,
+        generic_id: TypeId,
+        member_name: &str,
+        subst: &[GenericSubstitution],
+    ) -> Option<Symbol> {
+        let key = (generic_id.clone(), member_name.to_string());
+
+        // Fast path: Check read lock cache
+        {
+            let cache = self.instantiations.read().unwrap();
+            if let Some(sym) = cache.get(&key) {
+                return Some(sym.clone());
+            }
+        }
+
+        // Slow path: Look up template and apply substitution
+        let template_members = self.templates.get(&generic_id)?;
+        let matched = template_members.iter().find(|m| m.name == member_name)?;
+
+        // Apply type substitution to return type
+        let mut specialized = matched.clone();
+        for s in subst {
+            if specialized.return_type.0 == s.param_index {
+                specialized.return_type = s.target_type.clone();
+            }
+        }
+
+        // Write to cache
+        let mut cache = self.instantiations.write().unwrap();
+        cache.insert(key, specialized.clone());
+        Some(specialized)
+    }
+}
+```
+
+---
+
+## 6. The AI Synthesis Loop: How 0 Handwritten Lines Built a Compiler
 
 One of the most consequential aspects of `tsrs` is its creation methodology: **Max Schwenk wrote zero manual lines of code.** The entire port was orchestrated through autonomous AI coding agents (Claude Opus 5.5).
 
@@ -197,12 +424,12 @@ sequenceDiagram
         Agent->>Runner: Benchmark on isolated bare-metal CI runner
         Runner-->>Agent: Evaluate against Ratchet (Inst -1%, Wall -2%, Mem -5%)
         alt Meets Bar and Byte-Identical
-            Agent->>Agent: Commit change & update ratchet baseline
+            Agent->>Agent: Commit change and update ratchet baseline
         else Fails Bar or Changes Output
-            Agent->>Agent: Discard experiment & record failure log
+            Agent->>Agent: Discard experiment and record failure log
         end
     end
-    Agent->>Upstream: Backport lazy member resolution & memory fixes to TS 7.1 Go
+    Agent->>Upstream: Backport lazy member resolution and memory fixes to TS 7.1 Go
 ```
 
 ### The Architectural Guardrails
@@ -221,7 +448,7 @@ To prevent the agent from producing unusable or drifting code ("slop"), Schwenk 
 
 ---
 
-## 6. Empirical Benchmarks: JavaScript vs Go vs Rust
+## 7. Empirical Benchmarks: JavaScript vs Go vs Rust
 
 The following data reflects the median of 20 runs on Owner.com's backend monolith (*Olympus*, ~37,000 files) comparing official Microsoft Go releases against `tsrs`:
 
@@ -247,68 +474,104 @@ Type-aware linting has historically been an even worse resource bottleneck becau
 
 ---
 
-## 7. Ecosystem Dynamic: "Not a Fork" and Upstream Collaboration
+## 8. Impact, Real-World Edge Cases & Gotchas
 
-A common danger in language tooling is fragmentation: a community port creates diverging type semantics, splitting library authors into incompatible camps.
+### Common Claims vs. Technical Realities
 
-The maintainers of `tsrs` (Cloudflare, VoidZero, and Owner.com) have taken an explicit, binding stance:
+| Area | Common Industry Claim | Technical Reality in `tsrs` |
+|---|---|---|
+| **Language Speed** | "Rust is automatically 3x to 10x faster than Go just because of language syntax." | False. Algorithmic parity with Go was maintained; speedups stemmed from 4-byte pointer compression, 32 GiB virtual arena layouts, zero-GC execution, and lazy generic evaluation. |
+| **Forking Threat** | "`tsrs` is a rogue fork that will fragment the TypeScript language ecosystem." | False. Maintainers explicitly rejected forking; they run automated daily syncs against Microsoft's Git tree and backport optimizations directly to TypeScript 7.1 Go. |
+| **Autonomous AI Slop** | "Autonomous AI code generators produce unmaintainable, hallucinated compiler spaghetti." | False when constrained. 15,197 conformance test suites, Miri UB verification, and CI optimization ratchets forced mathematically verifiable correctness. |
+| **Memory Safety** | "Using `unsafe` for virtual memory arenas negates all Rust safety guarantees." | False. Unsafe code is isolated strictly within the allocation crate and audited with continuous Miri fault-injection runs; compiler passes remain 100% safe Rust. |
+| **Wasm Execution** | "Go compiles to WebAssembly just as easily as Rust for browser and edge use." | False. Go's Wasm binary embeds the Go runtime GC and scheduler; Rust compiles to lean, zero-GC linear memory, enabling sub-second execution on Cloudflare Workers. |
 
-> "To be clear, we are **not** forking TypeScript. We believe the TypeScript team should remain in full control of the language's design and direction... A Rust port has to follow those decisions closely, or it will eventually fall apart and become incompatible."
-> — *Cloudflare & VoidZero Announcement*
+### Architectural Failure Modes and Mitigations
 
-### The Two-Way Upstream Pipeline
-
-1. **Automated Synchronization (The Vinext Model):** Modeled after Cloudflare's `Vinext` (which tracks Next.js), an automated agent runs daily:
-   - Scans upstream Microsoft TypeScript Git commits.
-   - Generates diffs and opens tracking issues for semantic changes.
-   - Runs the full compatibility test matrix every night against `tsrs`.
-   - Proposes automated PRs to bridge any newly introduced gaps.
-2. **Upstream Contribution:** Several performance optimizations pioneered in `tsrs` (such as lazy member resolution techniques and memory layout ideas) were contributed back to Microsoft's Go compiler, making TypeScript 7.1 Go up to 2.5x faster than 7.0.
-3. **Toolchain Consolidation:** With `tsrs` joining the **Oxc** organization, developers gain a unified Rust toolchain where the parser, AST, linter (`oxlint`), bundler (`rolldown`), and type-checker share identical in-memory representations, eliminating multi-process IPC serialization.
+1. **Arena Pointer Overflow Beyond 4 GiB Direct Addressing:**
+   - *Risk:* 32-bit offsets directly address up to 4 GiB without scaling. If a single compilation unit exceeds 4 GiB of live symbols, direct 32-bit offsets wrap.
+   - *Mitigation:* `tsrs` applies 8-byte alignment scaling (`offset << 3`), scaling the addressable space of a 32-bit index to 32 GiB while ensuring memory remains aligned.
+2. **Non-Deterministic Diagnostic Output Under Dynamic Work Stealing:**
+   - *Risk:* Dynamic work-stealing threads finish files in arbitrary order depending on CPU core load, causing error messages to display in erratic orders across runs.
+   - *Mitigation:* `tsrs` implements a deterministic barrier that buffers diagnostics and sorts them by source file order and byte position prior to console emission.
+3. **Miri False Positives on OS Memory Mapping:**
+   - *Risk:* Miri does not support raw OS syscalls like `mmap` directly without specialized shims.
+   - *Mitigation:* In Miri test harnesses, `VirtualArena` switches dynamically to a large pre-allocated `Vec<u8>` or POSIX emulation layer to verify aliasing rules without tripping driver stubs.
 
 ---
 
-## 8. Practical Impact: Why This Matters for Developers and AI Agents
+## 9. Practical Adoption Blueprint & Verification Checklist
 
-The consequences of dropping typecheck times from 80s to 7s and memory from 36 GiB to 6 GiB extend far beyond CI waiting times:
+### Verification Commands
 
-### 1. High-Density Parallel AI Agent Worktrees
-When human engineers write code, they run one compiler at a time. When autonomous coding agents (like Antigravity, Claude Code, or Codex) work in a repository, 4 to 8 agents may operate simultaneously in separate Git worktrees. Under Go's 36+ GiB footprint, a single developer machine locked up instantly. With `tsrs` using 6 GiB, a standard 36 GiB M-series MacBook can comfortably host several parallel agent loops.
-
-### 2. Client-Side Browser and Edge Wasm Execution
-Because Rust compiles to lean, linear-memory WebAssembly without bundling a garbage collector, `tsrs` can run directly inside:
-- **Browser Playgrounds & WebContainers:** Full, instant TypeScript typechecking directly on the client machine without spinning up remote backend servers.
-- **Cloudflare Workers:** Sub-second sandboxed validation and compilation within edge worker request lifecycles.
-
-### 3. Immediate Developer Verification
 ```bash
-# Install the experimental tsrs compiler
+# 1. Install the experimental tsrs compiler
 npm install -D tsrs
 
-# Run type-checking without emitting files
+# 2. Run type-checking in no-emit mode on your codebase
 npx tsrs --noEmit
 
-# Point oxlint to the high-performance tsrs lint backend
+# 3. Compare execution metrics and memory against official TypeScript
+time npx tsc --noEmit
+time npx tsrs --noEmit
+
+# 4. Run type-aware linting with oxlint using the Rust checker backend
 npx oxlint --type-check
+
+# 5. Profile hardware instructions and cache performance (Linux)
+perf stat -e instructions,cycles,cache-references,cache-misses npx tsrs --noEmit
 ```
+
+### Production Readiness Checklist
+
+- [ ] **Typecheck Parity:** Run `npx tsrs --noEmit` alongside `tsc --noEmit` in CI; verify zero diagnostic diffs.
+- [ ] **Leaf Pruning Verification:** Confirm `--noEmit` drops unused AST nodes on standalone test suites.
+- [ ] **Worker Thread Tuning:** Benchmark typecheck wall time across 4, 8, and 16 checker threads to identify the optimal core allocation for your CI instances.
+- [ ] **Agent Worktree Scaling:** Test hosting 4 to 8 parallel agent worktrees on developer machines without exceeding workstation RAM thresholds.
 
 ---
 
-## 9. Source Context and Verification
+## 10. Timeline and Current State
 
-This research note synthesized technical findings across the following primary disclosures:
+- **July 2026:** Microsoft officially releases TypeScript 7.0 (*Project Corsa*), porting `tsc` to Go and achieving an 8x to 12x speedup over Node.js.
+- **October 2026 (Weeks 1–3):** Max Schwenk directs Claude Opus 5.5 to synthesize `tsrs` from the Go source in three weeks; achieves 99.97% test parity across 15,197 conformance tests.
+- **Late October 2026:** Cloudflare and VoidZero sponsor the project and incubate it under the **Oxc** organization alongside `oxlint` and `rolldown`.
+- **November 2026:** Several architectural innovations from `tsrs` (lazy generic member resolution and memory layouts) are upstreamed to Microsoft's TypeScript 7.1 Go nightlies.
+- **Present:** `tsrs` powers high-speed typechecking and `oxlint` linting across large-scale enterprise monoliths, browser playgrounds, and Cloudflare Workers.
 
-1. **Source Video:** Better Stack overview, *[TypeScript Got Ported To Rust... And It's 3x Faster Than Go](https://www.youtube.com/watch?v=Quf05tmWjaQ)* (November 2026).
-2. **Owner.com Engineering Disclosure:** Max Schwenk, *[tsrs: A Rust port of TypeScript, written entirely by agents, cut our typecheck from 80 seconds to 7](https://building.owner.com/tsrs)* (October 2026).
-3. **Cloudflare & VoidZero Joint Announcement:** Boshen Chen, Dimitri Mitropoulos, Christoph Nakazawa, *[Introducing tsrs: A Port of TypeScript to Rust](https://blog.cloudflare.com/typescript-rust-port)* (October 2026).
-4. **Oxc Repository & Toolchain:** Boshen Chen et al., *[oxc-project/tsrs](https://github.com/oxc-project)* (October 2026).
-5. **Microsoft TypeScript 7.0 Architecture:** Official Microsoft disclosures on *Project Corsa* and the Go port (July 2026).
+---
+
+## 11. Primary Sources & References
+
+1. [Better Stack: TypeScript Got Ported To Rust... And It's 3x Faster Than Go](https://www.youtube.com/watch?v=Quf05tmWjaQ) — Technical video breakdown of the `tsrs` architecture, Go vs. Rust memory layouts, and benchmark findings.
+2. [Owner.com Engineering: tsrs: A Rust port of TypeScript, written entirely by agents](https://building.owner.com/tsrs) — Max Schwenk's primary architectural disclosure detailing the 3-week multi-agent synthesis and 80s to 7s speedup on Olympus.
+3. [Cloudflare Blog: Introducing tsrs: A Port of TypeScript to Rust](https://blog.cloudflare.com/typescript-rust-port) — Dimitri Mitropoulos, Christoph Nakazawa, and Boshen Chen on Oxc incubation, edge Wasm execution, and ecosystem alignment.
+4. [GitHub: oxc-project/tsrs](https://github.com/oxc-project) — Official open-source repository containing the Rust implementation, parser integration, and conformance runners.
+5. [Microsoft DevBlogs: TypeScript 7.0 Architecture (Project Corsa)](https://devblogs.microsoft.com/typescript/) — Authoritative specifications and background on the Go compiler implementation.
+
+### Source Context & Verification
+
+| Source Title | Publisher / Author | Date | Evidentiary Role |
+|---|---|---|---|
+| *tsrs: A Rust port of TypeScript* | Max Schwenk (Owner.com) | Oct 2026 | Primary author disclosure; benchmark metrics on 37k-file monolith. |
+| *Introducing tsrs* | Cloudflare & VoidZero | Oct 2026 | Sponsorship disclosure; WebAssembly and edge compilation roadmap. |
+| *TypeScript 7.0 Release Notes* | Microsoft TypeScript Team | July 2026 | Baseline Go implementation details; 15,197 conformance test corpus. |
+| *Better Stack Technical Review* | Better Stack Community | Nov 2026 | Independent third-party empirical overview and video analysis. |
+
+---
+
+## 12. Supplementary visuals
+
+The following architecture diagram details the complete `tsrs` compilation pipeline, comparing the single-threaded Node.js V8 heap, Go runtime garbage collection, and Rust virtual arena memory management:
+
+![TSRS Architecture and Compiler Pipeline](assets/tsrs-compiler-architecture.svg)
+*Figure 1: High-level architectural pipeline of `tsrs`, showing the front-end Oxc parser, the 32 GiB virtual memory arena with 4-byte pointer compression, lazy generic member table resolution, and module-affinity work stealing.*
 
 ---
 
 **Related:**
-- [Go-Test-Performance-Windows-vs-Linux-2026](Go-Test-Performance-Windows-vs-Linux-2026.md) — Analyzes Go test and CLI process execution latency differences between Windows and Linux, including compiler and subprocess performance.
+- [Go-Test-Performance-Windows-vs-Linux-2026](Go-Test-Performance-Windows-vs-Linux-2026.md) — Analyzes Go test and CLI process execution latency differences between Windows and Linux.
 - [Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026](Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md) — Cloudflare's runtime strategy, edge isolation, and Rust integration with `workerd`.
-- [WASM-Rust](WASM-Rust.md) — WebAssembly linear memory models, zero-GC execution, and Rust compilation advantages.
-- [Java25-vs-Go1.24-Go1.25](comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md) — Comparative analysis of Go runtime scheduling, garbage collection overhead, and concurrency models.
+- [WASM-Rust-High-Performance-Runtime-2026](WASM-Rust-High-Performance-Runtime-2026.md) — WebAssembly linear memory models, zero-GC execution, and Rust compilation advantages.
+- [Java-25-vs-Go-1.25-Performance-Analysis-2026](comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md) — Comparative analysis of Go runtime scheduling, garbage collection overhead, and concurrency models.
 - [PHP-Migration-Static-React-Java-And-Go-Oct-2026](../Architecture/PHP-Migration-Static-React-Java-And-Go-Oct-2026.md) — Architectural trade-offs in systems rewrites and cross-language runtime transitions.

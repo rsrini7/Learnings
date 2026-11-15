@@ -44,7 +44,7 @@ Deep dives into high-throughput backend systems, modern runtime internals, distr
 - [Deno Joins Cloudflare Adoption And Runtime Lessons Oct 2026](Languages/Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md)
 - [Go Test Performance Windows vs Linux 2026](Languages/Go-Test-Performance-Windows-vs-Linux-2026.md)
 - [TypeScript Rust Port TSRS Architecture Nov 2026](Languages/TypeScript-Rust-Port-TSRS-Architecture-Nov-2026.md)
-- [WASM Rust](Languages/WASM-Rust.md)
+- [WASM Rust High Performance Runtime 2026](Languages/WASM-Rust-High-Performance-Runtime-2026.md)
 - [Go Proposed Collections vs Java Collections Framework 2026](Languages/comparisons/Go-Proposed-Collections-vs-Java-Collections-Framework-2026.md)
 - [Go SIMD vs NumPy vs Java Vector API 2026](Languages/comparisons/Go-SIMD-vs-NumPy-vs-Java-Vector-API-2026.md)
 - [Java 25 vs Go 1.25 Performance Analysis 2026](Languages/comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md)
