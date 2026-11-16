@@ -12,7 +12,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 
 ## 📑 Quick Jump by Domain
 
-- [🧠 AI & Machine Learning](#ai-ml) (127 articles)
+- [🧠 AI & Machine Learning](#ai-ml) (128 articles)
 - [☁️ Software Engineering](#engineering) (24 articles)
 - [⛓️ Blockchain & DLT](#blockchain) (17 articles)
 - [⚛️ Quantum Computing](#quantumcomputing) (5 articles)
@@ -83,6 +83,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [How Ralph Works with Amp](AI-ML/Agents/frameworks/How-Ralph-Works-with-Amp.md)
 - [InternetOfAgents](AI-ML/Agents/frameworks/InternetOfAgents.md)
 - [Ralph Wiggum Loops And Ralph Mode 2026](AI-ML/Agents/frameworks/Ralph-Wiggum-Loops-And-Ralph-Mode-2026.md)
+- [Super Agent Vs Personal Agent Architecture Nov 2026](AI-ML/Agents/frameworks/Super-Agent-Vs-Personal-Agent-Architecture-Nov-2026.md)
 
 #### 💻 AI-Assisted Development
 - [AI Accelerated Development Playbook](AI-ML/Agents/development/AI-Accelerated-Development-Playbook.md)

@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 790" role="img" aria-labelledby="title desc">
+<title id="title">Personal intent, durable team work, and governed knowledge</title>
+<desc id="desc">Proposed architecture with a personal profile, authorized task intake, durable tickets, replaceable attempts, and separately scoped knowledge promotion.</desc>
+<defs><marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0L8 4L0 8Z" fill="#94a3b8"/></marker></defs>
+<rect width="1400" height="790" fill="#0b0f19"/>
+<g font-family="Arial, sans-serif">
+<text x="40" y="44" font-size="30" fill="#f8fafc" font-weight="700">Personal relevance + durable team execution</text>
+<text x="40" y="75" font-size="18" fill="#94a3b8">Proposed composition: identity, authority, recovery, and memory have separate contracts.</text>
+<text x="40" y="122" font-size="16" fill="#38bdf8" font-weight="700">PERSONAL CONTEXT</text>
+<text x="500" y="122" font-size="16" fill="#4ade80" font-weight="700">AUTHORIZED TEAM WORK</text>
+<rect x="40" y="145" width="380" height="135" rx="14" fill="#1e293b" stroke="#38bdf8"/>
+<text x="60" y="176" font-size="20" fill="#38bdf8" font-weight="700">Personal assistant</text>
+<text x="60" y="207" font-size="17" fill="#e2e8f0">Messages, schedules, external events</text>
+<text x="60" y="232" font-size="17" fill="#e2e8f0">Person-scoped preferences and history</text>
+<text x="60" y="257" font-size="17" fill="#e2e8f0">Select relevant intent for delegation</text>
+<rect x="500" y="145" width="400" height="135" rx="14" fill="#1e293b" stroke="#4ade80"/>
+<text x="520" y="176" font-size="20" fill="#4ade80" font-weight="700">Policy and intake</text>
+<text x="520" y="207" font-size="17" fill="#e2e8f0">Verify source and requester identity</text>
+<text x="520" y="232" font-size="17" fill="#e2e8f0">Deduplicate and classify the event</text>
+<text x="520" y="257" font-size="17" fill="#e2e8f0">Bound authority before execution</text>
+<rect x="980" y="145" width="380" height="135" rx="14" fill="#1e293b" stroke="#4ade80"/>
+<text x="1000" y="176" font-size="20" fill="#4ade80" font-weight="700">Durable task ledger</text>
+<text x="1000" y="207" font-size="17" fill="#e2e8f0">Ticket, mandate, subscriptions</text>
+<text x="1000" y="232" font-size="17" fill="#e2e8f0">Artifacts and pending effects</text>
+<text x="1000" y="257" font-size="17" fill="#e2e8f0">Recover state after interruption</text>
+<path d="M420 210L488 210" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M900 210L968 210" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="430" y="190" font-size="14" fill="#94a3b8">intent</text>
+<rect x="500" y="340" width="400" height="135" rx="14" fill="#1e293b" stroke="#4ade80"/>
+<text x="520" y="371" font-size="20" fill="#4ade80" font-weight="700">Task worker</text>
+<text x="520" y="402" font-size="17" fill="#e2e8f0">Stable ticket context and workspace</text>
+<text x="520" y="427" font-size="17" fill="#e2e8f0">Replaceable execution attempts</text>
+<text x="520" y="452" font-size="17" fill="#e2e8f0">Tools constrained by task authority</text>
+<rect x="980" y="340" width="380" height="135" rx="14" fill="#1e293b" stroke="#fbbf24"/>
+<text x="1000" y="371" font-size="20" fill="#fbbf24" font-weight="700">Reviewable outcome</text>
+<text x="1000" y="402" font-size="17" fill="#e2e8f0">Verified artifact and execution record</text>
+<text x="1000" y="427" font-size="17" fill="#e2e8f0">Review or approval where required</text>
+<text x="1000" y="452" font-size="17" fill="#e2e8f0">Reconcile uncertain external writes</text>
+<path d="M1170 280V310H700V328" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+<path d="M900 407L968 407" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+<rect x="40" y="340" width="380" height="135" rx="14" fill="#1e293b" stroke="#38bdf8"/>
+<text x="60" y="371" font-size="20" fill="#38bdf8" font-weight="700">Personal feedback</text>
+<text x="60" y="402" font-size="17" fill="#e2e8f0">Relevant progress and final result</text>
+<text x="60" y="427" font-size="17" fill="#e2e8f0">Ask for a decision when necessary</text>
+<text x="60" y="452" font-size="17" fill="#e2e8f0">Keep private facts out of team scope</text>
+<path d="M1170 475V510H230V487" fill="none" stroke="#94a3b8" stroke-width="2" marker-end="url(#arrow)"/>
+<text x="700" y="534" font-size="15" fill="#94a3b8">Result returned to its authorized audience</text>
+<text x="40" y="577" font-size="16" fill="#fbbf24" font-weight="700">KNOWLEDGE IS PROMOTED SEPARATELY</text>
+<rect x="40" y="600" width="590" height="130" rx="14" fill="#1e293b" stroke="#38bdf8"/>
+<text x="60" y="631" font-size="20" fill="#38bdf8" font-weight="700">Personal memory</text>
+<text x="60" y="662" font-size="17" fill="#e2e8f0">Owner and profile scope</text>
+<text x="60" y="687" font-size="17" fill="#e2e8f0">Preferences and selected personal facts</text>
+<text x="60" y="712" font-size="17" fill="#e2e8f0">No automatic disclosure to team workers</text>
+<rect x="710" y="600" width="650" height="130" rx="14" fill="#1e293b" stroke="#fbbf24"/>
+<text x="730" y="631" font-size="20" fill="#fbbf24" font-weight="700">Project knowledge service — proposed extension</text>
+<text x="730" y="662" font-size="17" fill="#e2e8f0">Access filters, provenance, verification, and expiry</text>
+<text x="730" y="687" font-size="17" fill="#e2e8f0">Promote checked findings from completed work</text>
+<text x="730" y="712" font-size="17" fill="#e2e8f0">Retrieve only knowledge permitted for this task</text>
+<text x="40" y="766" font-size="18" fill="#94a3b8">A saved conversation is context. A ticket is work state. A reusable fact needs a knowledge policy.</text>
+</g></svg>

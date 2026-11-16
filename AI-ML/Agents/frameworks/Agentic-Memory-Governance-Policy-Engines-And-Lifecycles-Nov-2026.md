@@ -518,6 +518,7 @@ This architecture synthesizes principles of enterprise agentic state management,
 ---
 
 **Related:**
+- [Super Agent vs Personal Agent](Super-Agent-Vs-Personal-Agent-Architecture-Nov-2026.md) — Applies governed memory boundaries to personal assistants and durable team task services.
 - [Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md](Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md) — 5-tier concentric harness mechanics, KV prefix caching, and parametric centroid judgment memory.
 - [AmshaAgent-Architecture-Memory-Layering-And-Governance-Nov-2026.md](AmshaAgent-Architecture-Memory-Layering-And-Governance-Nov-2026.md) — Enterprise Java 25/Quarkus agent with CAS core memory, hybrid RRF RAG, and typed decision seams.
 - [DeepSeek-SuperAgent-And-Harness-Architecture-Nov-2026.md](DeepSeek-SuperAgent-And-Harness-Architecture-Nov-2026.md) — SuperAgent harness architecture, multi-tiered prompt budgeting, and decoupled memory topologies.

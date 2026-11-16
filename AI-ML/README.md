@@ -65,6 +65,7 @@ In-depth research, architectural breakdowns, and hands-on implementations across
 - [How Ralph Works with Amp](Agents/frameworks/How-Ralph-Works-with-Amp.md)
 - [InternetOfAgents](Agents/frameworks/InternetOfAgents.md)
 - [Ralph Wiggum Loops And Ralph Mode 2026](Agents/frameworks/Ralph-Wiggum-Loops-And-Ralph-Mode-2026.md)
+- [Super Agent Vs Personal Agent Architecture Nov 2026](Agents/frameworks/Super-Agent-Vs-Personal-Agent-Architecture-Nov-2026.md)
 
 ### 💻 AI-Assisted Development
 - [AI Accelerated Development Playbook](Agents/development/AI-Accelerated-Development-Playbook.md)

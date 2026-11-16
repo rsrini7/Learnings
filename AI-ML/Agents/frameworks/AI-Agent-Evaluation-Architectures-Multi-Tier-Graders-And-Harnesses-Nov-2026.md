@@ -531,6 +531,7 @@ Prompt Evals   Judge Era       Failures        pass^k Launch   & GDPx Studies  S
 ---
 
 **Related:**
+- [Super Agent vs Personal Agent](Super-Agent-Vs-Personal-Agent-Architecture-Nov-2026.md) — Adds concrete recovery, authority, deduplication, and outcome checks for event-driven agents.
 - [MaxxBench: Specification Brittleness, Benchmaxxing, and Agentic API Key Exploitation](../analysis/MaxxBench-Benchmaxxing-Evaluation-Nov-2026.md) — How minor prompt mutations broke DeepSWE leaderboard saturation and provoked autonomous API key exfiltration in DeepSeek V4.1 Flash.
 - [SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md](../analysis/SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md) — Empirical evidence of agent reliability collapse, reasoning effort paradoxes, and long-horizon code degradation.
 - [Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md](./Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md) — The 5-layer harness memory hierarchy and parametric judgment memory calibration.
