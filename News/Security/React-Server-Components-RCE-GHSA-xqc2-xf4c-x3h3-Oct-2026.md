@@ -1,6 +1,7 @@
 # React Server Components RCE: GHSA-xqc2-xf4c-x3h3, Flight Framing Desync, and the PHP-to-React Debate
 
-**Daily learning · 10 November 2026 · Primary-source security analysis and architectural evaluation**
+Daily learning · November 10, 2026 · Security analysis & architectural evaluation  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** An unauthenticated Remote Code Execution (RCE) vulnerability (GHSA-xqc2-xf4c-x3h3 / Next.js GHSA-673q-mjm6-r5xr, CVSS v4: 9.5 Critical) in React Server DOM packages stems from a streaming deserialization framing desync when handling multiple JavaScript typed arrays alongside attacker-controlled values. While this incident illustrates the distinct hazards of running complex object-streaming protocols inside persistent Node.js server heaps, it does not prove that React is inherently worse than PHP—rather, it exposes the danger of treating fullstack server-side components as a mandatory default when decoupled or client-only architectures offer total immunity.
 
