@@ -358,7 +358,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 ### 👁️ Vision & Multimodal
 - [Kimi K2.5 Technical Report And Vision Architecture 2026](Papers/vision/Kimi-K2.5-Technical-Report-And-Vision-Architecture-2026.md)
 - [MiroThinker 1.5 Research Agent Architecture 2026](Papers/vision/MiroThinker-1.5-Research-Agent-Architecture-2026.md)
-- [VL JEPA Executive Brief](Papers/vision/VL-JEPA-Executive-Brief.md)
+- [VL JEPA Executive Brief 2026](Papers/vision/VL-JEPA-Executive-Brief-2026.md)
 
 ### 📈 Scaling & Architecture
 - [Google Nested Learning And Neural Continuum Memory 2026](Papers/scaling/Google-Nested-Learning-And-Neural-Continuum-Memory-2026.md)
@@ -373,8 +373,8 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [VL JEPA Comprehensive Technical Guide 2026](Papers/VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide-2026.md)
 
 ### ⚖️ Paper Comparisons
+- [Frontier AI Architectures VL JEPA Mamba3 VLA Cosmos 2026](Papers/comparisons/Frontier-AI-Architectures-VL-JEPA-Mamba3-VLA-Cosmos-2026.md)
 - [Google Nested Learning vs Meta Sparse Memory 2026](Papers/comparisons/Google-Nested-Learning-vs-Meta-Sparse-Memory-2026.md)
-- [LLM VLA VLM VL JEPA MAMBA3 DIFFUSION](Papers/comparisons/LLM-VLA-VLM-VL-JEPA-MAMBA3-DIFFUSION.md)
 
 
 [↑ Back to Quick Jump](#quick-jump) · [← Back to Root Hub](README.md)

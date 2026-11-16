@@ -453,7 +453,7 @@ timeline
 ---
 
 **Related:**
-- [VL-JEPA-Executive-Brief](../vision/VL-JEPA-Executive-Brief.md) — Strategic executive brief and decision-maker synthesis of VL-JEPA's performance and deployment metrics.
+- [VL-JEPA-Executive-Brief-2026](../vision/VL-JEPA-Executive-Brief-2026.md) — Strategic executive brief and decision-maker synthesis of VL-JEPA's performance and deployment metrics.
 - [Kimi-K2.5-Technical-Report-And-Vision-Architecture-2026](../vision/Kimi-K2.5-Technical-Report-And-Vision-Architecture-2026.md) — Multimodal MoE and vision transformer architectures comparing autoregressive token visual backbones with predictive latent designs.
-- [LLM-VLA-VLM-VL-JEPA-MAMBA3-DIFFUSION](../comparisons/LLM-VLA-VLM-VL-JEPA-MAMBA3-DIFFUSION.md) — Places VL-JEPA within the broader multi-modal vision-language architecture trade-off matrix.
+- [Frontier-AI-Architectures-VL-JEPA-Mamba3-VLA-Cosmos-2026](../comparisons/Frontier-AI-Architectures-VL-JEPA-Mamba3-VLA-Cosmos-2026.md) — Places VL-JEPA within the broader multi-modal vision-language architecture trade-off matrix.
 - [Multimodal-RAG](../../AI-ML/RAG/Multimodal-RAG.md) — Evaluates embedding-space similarity retrieval and multimodal indexing patterns aligned with VL-JEPA's latent nearest-neighbor lookup.

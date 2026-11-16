@@ -1,10 +1,15 @@
-# Comprehensive AI Architecture Comparison Guide
+# Frontier AI Architectures: VL-JEPA, Mamba-3, Transformers, VLA, and Nvidia Cosmos (2026)
 
-Modern AI architectures: VL-JEPA, Mamba-3, Transformers, Diffusion Models, VLA systems, and Nvidia Cosmos World Models.
+Learning note · Revised March 2026 · Comparative Systems Architecture  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
-## 🎯 What You Need to Know in 120 Seconds
+> **Core idea:** Comparing the six foundational modern AI paradigms (Transformers, VL-JEPA, Mamba-3, Diffusion Models, Dual-System VLA, and Nvidia Cosmos) across operational trade-offs, prediction spaces (tokens, continuous embeddings, action chunks, pixels), and asymptotic complexity ($O(n^2)$ vs. linear $O(n)$). For real-time embodied robotics, latent semantic prediction (VL-JEPA) and dual-frequency VLA architectures dominate edge latency, while pixel-generative world models (Nvidia Cosmos) anchor large-scale offline simulation.
 
-## 🎯 AI Architecture Decision Tree – 2026 Production Reality
+![Frontier AI Architecture Comparison](assets/Frontier-AI-Architectures-Comparison-2026.svg)
+
+---
+
+## 🎯 Executive Summary & AI Architecture Decision Tree (2026 Production Reality)
 
 𝗪𝗵𝗶𝗰𝗵 𝗔𝗜 𝗔𝗿𝗰𝗵𝗶𝘁𝗲𝗰𝘁𝘂𝗿𝗲 𝗔𝗰𝘁𝘂𝗮𝗹𝗹𝘆 𝗦𝗰𝗮𝗹𝗲𝘀 𝗶𝗻 𝗥𝗲𝗮𝗹-𝗧𝗶𝗺𝗲 𝗘𝗺𝗯𝗼𝗱𝗶𝗲𝗱 𝗦𝘆𝘀𝘁𝗲𝗺𝘀?
 
@@ -63,11 +68,12 @@ Risk: Latency prohibits closed-loop control
 
 **Is the winning 2026 embodied stack built on latent efficiency or pixel-scale simulation?**
 
-👤 Srinivasan Ragothaman (@rsrini7)
-
 ---
 
+## Supplementary visuals
+
 ![Comprehensive AI Architecture Comparison Guide](assets/Comprehensive-AI-Architecture-Comparison-Guide.png)
+*Figure 1: High-level visual comparison of prediction targets, asymptotic compute complexities, and deployment horizons across frontier models.*
 
 ---
 
@@ -949,5 +955,8 @@ This guide synthesizes information from:
 All trademarks and product names are property of their respective owners.
 
 **Related:**
-- [VL-JEPA-Executive-Brief](../vision/VL-JEPA-Executive-Brief.md) — Quick-orientation counterpart to the comprehensive VL-JEPA guide cited throughout this comparison.
-- [Beyond-SoftMax-Attention](../../AI-ML/LLMs/attention/Beyond-SoftMax-Attention.md) — Underlying attention-substitute theory behind Mamba-3 and other non-transformer entries in the comparison.
+- [VL-JEPA Executive Brief (2026)](../vision/VL-JEPA-Executive-Brief-2026.md) — Quick-orientation counterpart to the comprehensive VL-JEPA guide cited throughout this comparison.
+- [Google Nested Learning vs. Meta Sparse Memory Finetuning](Google-Nested-Learning-vs-Meta-Sparse-Memory-2026.md) — Continual learning architectures and multi-timescale memory optimization.
+- [DeepSeek mHC Architecture Simplified](../deepseek/DeepSeek-mHC-Architecture-Simplified-2026.md) — Manifold-constrained hyperconnections for multi-stream residual scaling.
+- [Agentic Reasoning Architectures and Reflection Loops](../reasoning/Agentic-Reasoning-Architectures-And-Reflection-Loops-2026.md) — Evaluates test-time compute scaling and iterative reflection in frontier models.
+- [Beyond SoftMax Attention](../../AI-ML/LLMs/attention/Beyond-SoftMax-Attention.md) — Underlying attention-substitute theory behind Mamba-3 and other non-transformer entries in the comparison.

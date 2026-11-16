@@ -3,7 +3,7 @@
 Learning note · Revised November 2026 · Frontier Multimodal Architectures  
 *By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
-> By predicting semantic targets directly in continuous embedding space rather than generating autoregressive text tokens word-by-word, Meta FAIR's VL-JEPA eliminates the parameter bloat required to memorize linguistic variants. Operating with only 1.6 billion trainable parameters, VL-JEPA achieves state-of-the-art causal world modeling (65.7% accuracy vs. GPT-4o's 53.3%), matches 13B+ baselines with 43× less training data, and accelerates video inference by 2.85× via selective scene-change decoding.
+> **Core idea:** By predicting semantic targets directly in continuous embedding space rather than generating autoregressive text tokens word-by-word, Meta FAIR's VL-JEPA eliminates the parameter bloat required to memorize linguistic variants. Operating with only 1.6 billion trainable parameters, VL-JEPA achieves state-of-the-art causal world modeling (65.7% accuracy vs. GPT-4o's 53.3%), matches 13B+ baselines with 43× less training data, and accelerates video inference by 2.85× via selective scene-change decoding.
 
 ---
 
@@ -343,7 +343,7 @@ The following visual documentation preserves the foundational architecture diagr
 ---
 
 **Related:**
-- [LLM-VLA-VLM-VL-JEPA-MAMBA3-DIFFUSION](../comparisons/LLM-VLA-VLM-VL-JEPA-MAMBA3-DIFFUSION.md) — Comprehensive comparative analysis contrasting VL-JEPA with Mamba-3, Diffusion policies, and dual-system Vision-Language-Action (VLA) architectures.
+- [Frontier-AI-Architectures-VL-JEPA-Mamba3-VLA-Cosmos-2026](../comparisons/Frontier-AI-Architectures-VL-JEPA-Mamba3-VLA-Cosmos-2026.md) — Comprehensive comparative analysis contrasting VL-JEPA with Mamba-3, Diffusion policies, and dual-system Vision-Language-Action (VLA) architectures.
 - [Multimodal-RAG](../../AI-ML/RAG/Multimodal-RAG.md) — Explores how continuous joint embedding spaces optimize multimodal retrieval pipelines and vector similarity indexing.
 - [Beyond-SoftMax-Attention](../../AI-ML/LLMs/attention/Beyond-SoftMax-Attention.md) — Analyzes subquadratic attention mechanisms and linear state models that parallel VL-JEPA's search for inference efficiency.
 - [Inside-A-Neuron-Architecture-And-Mechanics-2026](../../AI-ML/LLMs/attention/Inside-A-Neuron-Architecture-And-Mechanics-2026.md) — Details the mathematical foundations of vector inner products and non-linear activations underlying transformer representations.

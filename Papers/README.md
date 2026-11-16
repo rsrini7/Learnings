@@ -29,7 +29,7 @@ Detailed technical breakdowns and critical evaluations of seminal machine learni
 ## 👁️ Vision & Multimodal
 - [Kimi K2.5 Technical Report And Vision Architecture 2026](vision/Kimi-K2.5-Technical-Report-And-Vision-Architecture-2026.md)
 - [MiroThinker 1.5 Research Agent Architecture 2026](vision/MiroThinker-1.5-Research-Agent-Architecture-2026.md)
-- [VL JEPA Executive Brief](vision/VL-JEPA-Executive-Brief.md)
+- [VL JEPA Executive Brief 2026](vision/VL-JEPA-Executive-Brief-2026.md)
 
 ## 📈 Scaling & Architecture
 - [Google Nested Learning And Neural Continuum Memory 2026](scaling/Google-Nested-Learning-And-Neural-Continuum-Memory-2026.md)
@@ -44,8 +44,8 @@ Detailed technical breakdowns and critical evaluations of seminal machine learni
 - [VL JEPA Comprehensive Technical Guide 2026](VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide-2026.md)
 
 ## ⚖️ Paper Comparisons
+- [Frontier AI Architectures VL JEPA Mamba3 VLA Cosmos 2026](comparisons/Frontier-AI-Architectures-VL-JEPA-Mamba3-VLA-Cosmos-2026.md)
 - [Google Nested Learning vs Meta Sparse Memory 2026](comparisons/Google-Nested-Learning-vs-Meta-Sparse-Memory-2026.md)
-- [LLM VLA VLM VL JEPA MAMBA3 DIFFUSION](comparisons/LLM-VLA-VLM-VL-JEPA-MAMBA3-DIFFUSION.md)
 
 ---
 
