@@ -18,8 +18,8 @@ Detailed technical breakdowns and critical evaluations of seminal machine learni
 - [DeepSeek Engram Conditional Memory 2026](deepseek/DeepSeek-Engram-Conditional-Memory-2026.md)
 - [DeepSeek R1 Incentivizing Reasoning Via RL 2026](deepseek/DeepSeek-R1-Incentivizing-Reasoning-Via-RL-2026.md)
 - [DeepSeek V3 Architecture And Hardware Software CoDesign 2026](deepseek/DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026.md)
+- [DeepSeek mHC Architecture Simplified 2026](deepseek/DeepSeek-mHC-Architecture-Simplified-2026.md)
 - [DeepSeek mHC Manifold Constrained Hyperconnections 2026](deepseek/DeepSeek-mHC-Manifold-Constrained-Hyperconnections-2026.md)
-- [mHC Simplified](deepseek/mHC-Simplified.md)
 
 ## 🧠 Reasoning & LLMs
 - [Agentic Reasoning Architectures And Reflection Loops 2026](reasoning/Agentic-Reasoning-Architectures-And-Reflection-Loops-2026.md)
@@ -28,7 +28,7 @@ Detailed technical breakdowns and critical evaluations of seminal machine learni
 
 ## 👁️ Vision & Multimodal
 - [Kimi K2.5 Technical Report And Vision Architecture 2026](vision/Kimi-K2.5-Technical-Report-And-Vision-Architecture-2026.md)
-- [MiraThinker 1.5](vision/MiraThinker-1.5.md)
+- [MiroThinker 1.5 Research Agent Architecture 2026](vision/MiroThinker-1.5-Research-Agent-Architecture-2026.md)
 - [VL JEPA Executive Brief](vision/VL-JEPA-Executive-Brief.md)
 
 ## 📈 Scaling & Architecture
@@ -38,7 +38,7 @@ Detailed technical breakdowns and critical evaluations of seminal machine learni
 
 ## 📋 Meta & Academic Tools
 - [Google Titans Learning To Memorize At Test Time 2026](meta/Google-Titans-Learning-To-Memorize-At-Test-Time-2026.md)
-- [PaperBanana Automating Academic Illustration for AI Scientists](meta/PaperBanana-Automating-Academic-Illustration-for-AI-Scientists.md)
+- [PaperBanana Automating Academic Illustration for AI Scientists 2026](meta/PaperBanana-Automating-Academic-Illustration-for-AI-Scientists-2026.md)
 
 ## 🎥 VL-JEPA
 - [VL JEPA Comprehensive Technical Guide 2026](VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide-2026.md)

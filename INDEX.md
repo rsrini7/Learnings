@@ -347,8 +347,8 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [DeepSeek Engram Conditional Memory 2026](Papers/deepseek/DeepSeek-Engram-Conditional-Memory-2026.md)
 - [DeepSeek R1 Incentivizing Reasoning Via RL 2026](Papers/deepseek/DeepSeek-R1-Incentivizing-Reasoning-Via-RL-2026.md)
 - [DeepSeek V3 Architecture And Hardware Software CoDesign 2026](Papers/deepseek/DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026.md)
+- [DeepSeek mHC Architecture Simplified 2026](Papers/deepseek/DeepSeek-mHC-Architecture-Simplified-2026.md)
 - [DeepSeek mHC Manifold Constrained Hyperconnections 2026](Papers/deepseek/DeepSeek-mHC-Manifold-Constrained-Hyperconnections-2026.md)
-- [mHC Simplified](Papers/deepseek/mHC-Simplified.md)
 
 ### 🧠 Reasoning & LLMs
 - [Agentic Reasoning Architectures And Reflection Loops 2026](Papers/reasoning/Agentic-Reasoning-Architectures-And-Reflection-Loops-2026.md)
@@ -357,7 +357,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 
 ### 👁️ Vision & Multimodal
 - [Kimi K2.5 Technical Report And Vision Architecture 2026](Papers/vision/Kimi-K2.5-Technical-Report-And-Vision-Architecture-2026.md)
-- [MiraThinker 1.5](Papers/vision/MiraThinker-1.5.md)
+- [MiroThinker 1.5 Research Agent Architecture 2026](Papers/vision/MiroThinker-1.5-Research-Agent-Architecture-2026.md)
 - [VL JEPA Executive Brief](Papers/vision/VL-JEPA-Executive-Brief.md)
 
 ### 📈 Scaling & Architecture
@@ -367,7 +367,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 
 ### 📋 Meta & Academic Tools
 - [Google Titans Learning To Memorize At Test Time 2026](Papers/meta/Google-Titans-Learning-To-Memorize-At-Test-Time-2026.md)
-- [PaperBanana Automating Academic Illustration for AI Scientists](Papers/meta/PaperBanana-Automating-Academic-Illustration-for-AI-Scientists.md)
+- [PaperBanana Automating Academic Illustration for AI Scientists 2026](Papers/meta/PaperBanana-Automating-Academic-Illustration-for-AI-Scientists-2026.md)
 
 ### 🎥 VL-JEPA
 - [VL JEPA Comprehensive Technical Guide 2026](Papers/VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide-2026.md)

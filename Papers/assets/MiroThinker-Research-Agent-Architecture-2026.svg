@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="780" fill="url(#bgGrad)" />
+
+  <!-- Grid lines -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.4">
+    <line x1="0" y1="90" x2="1200" y2="90" />
+    <line x1="0" y1="420" x2="1200" y2="420" />
+    <line x1="600" y1="90" x2="600" y2="760" />
+  </g>
+
+  <!-- Header -->
+  <g transform="translate(40, 28)">
+    <rect x="0" y="0" width="1120" height="54" rx="8" fill="#1e293b" opacity="0.6" stroke="#334155" />
+    <text x="20" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+      MiroThinker 1.5: Interactive Scaling &amp; Verification-Driven Agent Architecture
+    </text>
+    <rect x="910" y="14" width="190" height="26" rx="13" fill="#0284c7" opacity="0.2" stroke="#38bdf8" stroke-width="1" />
+    <text x="1005" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#38bdf8" text-anchor="middle">
+      Open Research Agent
+    </text>
+  </g>
+
+  <!-- Card 1: Interactive Scaling Paradigm -->
+  <g transform="translate(40, 102)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#38bdf8" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      1. Interactive Scaling: Process Over Raw Parameters
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      Standard Chatbot vs. Research Agent
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Standard LLM: Single-pass direct generation (prone to confident hallucination)
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • MiroThinker: Multi-step Plan → Search → Code Exec → Verify → Refine loop
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      Deep Tool Integration via MCP
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Up to 400+ sequential tool invocations per research trajectory
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Integrates Google Search, Jina reader, E2B sandboxed Python, calculators
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      Autonomous Self-Correction
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Detects logical contradictions across retrieved primary sources
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Backtracks and generates revised queries when search evidence conflicts
+    </text>
+  </g>
+
+  <!-- Card 2: Dual MoE Engine Specs -->
+  <g transform="translate(620, 102)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#4ade80" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      2. Dual Mixture-of-Experts (MoE) Architecture
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      MiroThinker-30B (3B Active Parameters)
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Lightweight MoE routing activating 3B weights per token pass
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • 20x cheaper to run ($0.07 / call) while outperforming 1T dense baselines
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      MiroThinker-235B (22B Active Parameters)
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Large-scale MoE designed for multi-document synthesis and discovery
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Excels at complex mathematical proofs, patent cross-checks, and code logic
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      256K Context Window Architecture
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Ingests 200+ page technical PDF whitepapers and repositories in memory
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Needle-in-a-haystack retrieval maintains 99.8% precision across full span
+    </text>
+  </g>
+
+  <!-- Card 3: 3-Stage Training Pipeline -->
+  <g transform="translate(40, 432)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#fbbf24" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      3. 3-Stage Verification Training Pipeline
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      Stage 1: Supervised Fine-Tuning (SFT)
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Trained on 147K structured research trajectories from MiroVerse dataset
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Inculcates XML-based tool call grammar, parameter extraction, and step planning
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      Stage 2: Direct Preference Optimization (DPO)
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Rewards evidence-seeking and multi-source verification over blind answers
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Heavily penalizes ungrounded assertions and simulated citations
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      Stage 3: Group Relative Policy Optimization (GRPO)
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Reinforcement learning inside a time-constrained sandbox with ground truth
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Prevents data contamination; rewards minimal-step verifiable tool paths
+    </text>
+  </g>
+
+  <!-- Card 4: Benchmark Matrix -->
+  <g transform="translate(620, 432)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#c084fc" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      4. Research Benchmark Validation
+    </text>
+
+    <!-- Benchmark Row 1 -->
+    <rect x="18" y="56" width="504" height="52" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c084fc">
+      BrowseComp Web Research: 69.8% (235B) / 56.1% (30B)
+    </text>
+    <text x="30" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      Beats competing 1T parameter dense models (~65%) on live internet tasks
+    </text>
+
+    <!-- Benchmark Row 2 -->
+    <rect x="18" y="116" width="504" height="52" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="136" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c084fc">
+      GAIA-Val-165 (Complex Multi-Modal Reasoning): 80.8%
+    </text>
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      Sets top open-source performance on long-horizon, multi-step problem solving
+    </text>
+
+    <!-- Benchmark Row 3 -->
+    <rect x="18" y="176" width="504" height="52" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c084fc">
+      BrowseComp-ZH (Chinese Web Exploration): 71.5%
+    </text>
+    <text x="30" y="214" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      Robust cross-lingual research across international documentation and indices
+    </text>
+
+    <!-- Benchmark Row 4 -->
+    <rect x="18" y="236" width="504" height="52" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="256" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c084fc">
+      Open Source Ecosystem: MiroFlow, MiroTrain, MiroVerse
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      Fully permissive MIT license across code, weights, dataset, and training harnesses
+    </text>
+  </g>
+</svg>

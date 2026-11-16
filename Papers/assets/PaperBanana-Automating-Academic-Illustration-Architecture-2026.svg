@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="780" fill="url(#bgGrad)" />
+
+  <!-- Grid lines -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.4">
+    <line x1="0" y1="90" x2="1200" y2="90" />
+    <line x1="0" y1="420" x2="1200" y2="420" />
+    <line x1="600" y1="90" x2="600" y2="760" />
+  </g>
+
+  <!-- Header -->
+  <g transform="translate(40, 28)">
+    <rect x="0" y="0" width="1120" height="54" rx="8" fill="#1e293b" opacity="0.6" stroke="#334155" />
+    <text x="20" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+      PaperBanana: 5-Agent Multi-Stage Academic Illustration Architecture
+    </text>
+    <rect x="910" y="14" width="190" height="26" rx="13" fill="#0284c7" opacity="0.2" stroke="#38bdf8" stroke-width="1" />
+    <text x="1005" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#38bdf8" text-anchor="middle">
+      Multi-Agent VLM Pipeline
+    </text>
+  </g>
+
+  <!-- Card 1: Linear Planning Phase -->
+  <g transform="translate(40, 102)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#38bdf8" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      Phase 1: Linear Reference-Driven Planning
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      1. Source Context &amp; Intent Ingestion
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Ingests raw methodology prose and intended communicative figure caption
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Extracts primary entity relationships, data flow tensors, and boundaries
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      2. Retriever &amp; Planner Agents
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Retriever: Semantic search over curated NeurIPS diagrams for structural templates
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Planner: Deconstructs text into nodes, layout flowcharts, and connections
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      3. Stylist Agent Formulation
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Applies academic color theory (subtle pastels, high-contrast text)
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Enforces typographic hierarchy, padding rules, and modular alignments
+    </text>
+  </g>
+
+  <!-- Card 2: Iterative Refinement Loop -->
+  <g transform="translate(620, 102)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#4ade80" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      Phase 2: Iterative Refinement &amp; Critique (T=3)
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      1. Visualizer Agent (Candidate Rendering)
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Generates initial draft illustration from stylized plan specifications
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Preserves semantic relationships between upstream inputs and model heads
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      2. Critic Agent (VLM-as-a-Judge Evaluation)
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Evaluates visual fidelity against source text (detects missing arrows / errors)
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Flags overlapping text labels, line collisions, and aesthetic noise
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      3. Feedback Convergence Loop
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Refines structural description and re-renders across 3 feedback iterations
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Emits final publication-ready illustration once aesthetic score passes threshold
+    </text>
+  </g>
+
+  <!-- Card 3: Dual-Mode Rendering -->
+  <g transform="translate(40, 432)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#fbbf24" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      Dual-Mode Rendering Pipeline (Diagram vs. Code)
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      Mode 1: Conceptual System Architecture (Raster)
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Routes to diffusion models (Imagen-3) for visual flowcharts and metaphors
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Ideal for high-level methodology overviews and pipeline hardware blocks
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      Mode 2: Statistical Plots &amp; Empirical Data (Code)
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Generates deterministic executable Python (Matplotlib / Seaborn) scripts
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Eliminates numerical hallucinations; guarantees exact numeric precision
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      Model Context Protocol (MCP) IDE Tooling
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • MCP server interfaces expose diagram generation directly inside VS Code
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Enables autonomous paper-authoring tools to render figures during draft runs
+    </text>
+  </g>
+
+  <!-- Card 4: Evaluation & Benchmarks -->
+  <g transform="translate(620, 432)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#c084fc" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      Empirical Evaluation on PaperBananaBench
+    </text>
+
+    <!-- Benchmark Row 1 -->
+    <rect x="18" y="56" width="504" height="52" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c084fc">
+      Visual Faithfulness Score (45.8% vs. 8.5% Baseline)
+    </text>
+    <text x="30" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      Evaluated across 292 NeurIPS methodology sections; outperforms Paper2Fig 5.3x
+    </text>
+
+    <!-- Benchmark Row 2 -->
+    <rect x="18" y="116" width="504" height="52" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="136" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c084fc">
+      Human Preference Rate: 72.7% Blind Win Rate
+    </text>
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      Double-blind review by ML researchers preferred PaperBanana figures over baselines
+    </text>
+
+    <!-- Benchmark Row 3 -->
+    <rect x="18" y="176" width="504" height="52" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c084fc">
+      Conciseness &amp; Clutter Reduction: +37.2% Gain
+    </text>
+    <text x="30" y="214" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      Eliminates redundant text boxes, excessive decorations, and noisy connectors
+    </text>
+
+    <!-- Benchmark Row 4 -->
+    <rect x="18" y="236" width="504" height="52" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="256" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c084fc">
+      Production Time Savings: 5 Minutes vs. 2+ Hours
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      Reduces academic illustration labor from hours of manual TikZ/PowerPoint to automated run
+    </text>
+  </g>
+</svg>

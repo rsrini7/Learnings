@@ -462,4 +462,4 @@ The following original repository diagrams illustrate the conceptual analogy, mu
 - [DeepSeek-R1-Incentivizing-Reasoning-Via-RL-2026](DeepSeek-R1-Incentivizing-Reasoning-Via-RL-2026.md) — Analyzes large-scale reinforcement learning and reasoning dynamics that benefit from mHC training stability.
 - [DeepSeek-Engram-Conditional-Memory-2026](DeepSeek-Engram-Conditional-Memory-2026.md) — Hardware-level conditional memory addressing pattern recall waste alongside mHC multi-stream architectures.
 - [Google-Nested-Learning-And-Neural-Continuum-Memory-2026](../scaling/Google-Nested-Learning-And-Neural-Continuum-Memory-2026.md) — Examines continuum memory models and multi-timescale gradient optimization in deep networks.
-- [mHC-Simplified](mHC-Simplified.md) — Concise executive summary of DeepSeek's manifold-constrained hyperconnection architecture.
+- [DeepSeek-mHC-Architecture-Simplified-2026](DeepSeek-mHC-Architecture-Simplified-2026.md) — Concise executive summary and PyTorch recipe for DeepSeek's manifold-constrained hyperconnection architecture.

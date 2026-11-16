@@ -1,8 +1,15 @@
-# MiroThinker 1.5: Whitepaper
+# MiroThinker 1.5: Research Agent Architecture and Verification Scaling (2026)
 
-![Papers/assets/MiroThinker-1.5.png](../assets/MiroThinker-1.5.png)
+Learning note · Revised March 2026 · Agentic Reasoning & Verification  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
-## What is MiroThinker 1.5?
+> **Core idea:** MiroThinker 1.5 establishes the "Interactive Scaling" paradigm, demonstrating that a 30B parameter Mixture-of-Experts (MoE) research agent executing iterative Plan-Search-Verify-Refine loops with 400+ tool calls outperforms 1T dense models on complex browsing and research benchmarks (such as BrowseComp and GAIA) at 20× lower inference cost ($0.07 vs. $1.40+).
+
+![MiroThinker Architecture](../assets/MiroThinker-Research-Agent-Architecture-2026.svg)
+
+---
+
+## 1. What is MiroThinker 1.5?
 
 MiroThinker 1.5 is an open-source AI research agent from MiroMind AI. Unlike regular chatbots that answer immediately, it works like a smart researcher that:
 
@@ -389,6 +396,18 @@ For developers and architects, MiroThinker offers a practical path to building A
 
 **Start exploring today and build the next generation of trustworthy AI systems.**
 
+---
+
+## Supplementary visuals
+
+![MiroThinker 1.5 Architecture Overview](../assets/MiroThinker-1.5.png)
+*Figure 1: Architectural diagram of the MiroThinker research agent, illustrating tool call orchestration, sandbox verification, and multi-source evidence synthesis.*
+
+---
+
 **Related:**
-- [RAG-Guide-Jan-2026](../../AI-ML/RAG/RAG-Guide-Jan-2026.md) — MiroThinker's search-verify-refine loop mirrors modern RAG pipelines with retrieval and source-grounded synthesis.
-- [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Shares the iterative plan-then-execute agent loop pattern for tool-using AI workflows.
+- [PaperBanana: Automating Academic Illustration for AI Scientists](../meta/PaperBanana-Automating-Academic-Illustration-for-AI-Scientists-2026.md) — Multi-agent visual reasoning pipeline that pairs with MiroThinker research workflows.
+- [Agentic Reasoning Architectures and Reflection Loops](../reasoning/Agentic-Reasoning-Architectures-And-Reflection-Loops-2026.md) — Deconstructs multi-turn reflection, test-time compute scaling, and verifiable reward models.
+- [Science of Scaling AI Agent Systems](../scaling/Science-of-Scaling-AI-Agent-Systems-2026.md) — Empirical scaling laws governing multi-step tool calls, token budgets, and agentic compute allocation.
+- [RAG Guide (Jan 2026)](../../AI-ML/RAG/RAG-Guide-Jan-2026.md) — MiroThinker's search-verify-refine loop mirrors modern RAG pipelines with retrieval and source-grounded synthesis.
+- [AI Coding Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Shares the iterative plan-then-execute agent loop pattern for tool-using AI workflows.
