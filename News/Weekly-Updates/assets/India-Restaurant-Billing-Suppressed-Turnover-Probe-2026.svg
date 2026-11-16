@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 740" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.03" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.03" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0.03" />
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0.03" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Background -->
+  <rect width="1200" height="740" fill="url(#bgGrad)" />
+
+  <!-- HEADER -->
+  <g transform="translate(30, 24)">
+    <text x="0" y="20" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" letter-spacing="0.5">INDIA RESTAURANT POS TURNOVER SUPPRESSION FORENSICS</text>
+    <text x="0" y="38" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">60 TB Big Data Extraction · POS Database Reconstruction · Machine Learning Triangulation · ₹70,000 Cr Tax Audit</text>
+  </g>
+
+  <!-- COLUMN 1: DISCOVERY & INGESTION -->
+  <g transform="translate(30, 75)">
+    <rect width="270" height="495" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect width="270" height="60" rx="8" fill="url(#amberGrad)" />
+    <circle cx="25" cy="30" r="12" fill="#d97706" />
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" text-anchor="middle">1</text>
+    <text x="46" y="26" fill="#fde68a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">AUDIT ORIGIN</text>
+    <text x="46" y="42" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Footfall vs. POS Cloud Ingestion</text>
+
+    <!-- Content Box -->
+    <rect x="12" y="70" width="246" height="235" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="22" y="90" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Initial Physical Inspection</text>
+    <text x="22" y="110" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Footfall Discrepancy Audits</text>
+    <text x="22" y="126" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Hyderabad &amp; Vizag biryani hubs</text>
+    <text x="22" y="146" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• POS Backend Subpoena</text>
+    <text x="22" y="162" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Petpooja cloud database secured</text>
+    <text x="22" y="182" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Massive Data Extraction Scope</text>
+    <text x="22" y="198" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  60 Terabytes of raw transaction data</text>
+    <text x="22" y="218" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• 1.77 Lakh Restaurant IDs</text>
+    <text x="22" y="234" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Spanning 6 financial years (FY20–26)</text>
+    <text x="22" y="254" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Total Processed Turnover</text>
+    <text x="22" y="270" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  ₹2.43 Lakh Crore in gross orders</text>
+    <text x="22" y="292" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Physical audits led to cloud backend subpoena</text>
+
+    <!-- Takeaway -->
+    <rect x="12" y="315" width="246" height="165" rx="6" fill="#1e1e2e" stroke="#334155" />
+    <text x="22" y="335" fill="#fde68a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">The Deletion Anti-Feature</text>
+    <text x="22" y="355" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Post-Billing Deletion Switch</text>
+    <text x="22" y="371" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  POS allowed editing/deleting bills</text>
+    <text x="22" y="391" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Cash Order Exploitation</text>
+    <text x="22" y="407" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Collected in cash; purged from DB</text>
+    <text x="22" y="427" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• 10% Market Share Dominance</text>
+    <text x="22" y="443" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Widespread adoption enabled scale</text>
+    <text x="22" y="465" fill="#d97706" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700">Software Features Turned Into Tax Evaders</text>
+  </g>
+
+  <!-- COLUMN 2: BIG DATA FORENSICS -->
+  <g transform="translate(320, 75)">
+    <rect width="270" height="495" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect width="270" height="60" rx="8" fill="url(#blueGrad)" />
+    <circle cx="25" cy="30" r="12" fill="#0284c7" />
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" text-anchor="middle">2</text>
+    <text x="46" y="26" fill="#7dd3fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">FORENSIC ETL</text>
+    <text x="46" y="42" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Hadoop/Spark Log Reconstruction</text>
+
+    <!-- Content Box -->
+    <rect x="12" y="70" width="246" height="235" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="22" y="90" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Digital Data Reconstruction</text>
+    <text x="22" y="110" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Distributed Spark Processing</text>
+    <text x="22" y="126" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Hydrates 60 TB across clusters</text>
+    <text x="22" y="146" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Write-Ahead Log (WAL) Audit</text>
+    <text x="22" y="162" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Extracts deleted row tombstones</text>
+    <text x="22" y="182" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Invoice Sequence Gap Analysis</text>
+    <text x="22" y="198" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Detects missing sequential IDs</text>
+    <text x="22" y="218" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Metadata Timestamp Alignment</text>
+    <text x="22" y="234" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Reconstructs bill creation vs delete</text>
+    <text x="22" y="254" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Direct Deletion Tracing</text>
+    <text x="22" y="270" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  ₹13,317 Cr in exact verified cuts</text>
+    <text x="22" y="292" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Software deletions left immutable logs</text>
+
+    <!-- Takeaway -->
+    <rect x="12" y="315" width="246" height="165" rx="6" fill="#1e1e2e" stroke="#334155" />
+    <text x="22" y="335" fill="#7dd3fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Digital Forensic Mastery</text>
+    <text x="22" y="355" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Immutable Ledger Principle</text>
+    <text x="22" y="371" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Cloud databases retain CDC history</text>
+    <text x="22" y="391" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Ayakar Bhavan Forensic Lab</text>
+    <text x="22" y="407" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Engineers parsed raw binary dumps</text>
+    <text x="22" y="427" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Zero-Loss Reconstruction</text>
+    <text x="22" y="443" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Every deleted biryani bill was found</text>
+    <text x="22" y="465" fill="#0284c7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700">Database CDC Bypasses Local Application Deletes</text>
+  </g>
+
+  <!-- COLUMN 3: ML & TRIANGULATION -->
+  <g transform="translate(610, 75)">
+    <rect width="270" height="495" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect width="270" height="60" rx="8" fill="url(#purpleGrad)" />
+    <circle cx="25" cy="30" r="12" fill="#9333ea" />
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" text-anchor="middle">3</text>
+    <text x="46" y="26" fill="#d8b4fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">ML TRIANGULATION</text>
+    <text x="46" y="42" fill="#c084fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Cross-Database Anomaly Models</text>
+
+    <!-- Content Box -->
+    <rect x="12" y="70" width="246" height="235" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="22" y="90" fill="#c084fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Multi-Source Verification</text>
+    <text x="22" y="110" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Peak-Hour Anomaly Clustering</text>
+    <text x="22" y="126" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Deletions spike at 2pm-4pm &amp; 11pm</text>
+    <text x="22" y="146" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• 27% Average Sales Suppression</text>
+    <text x="22" y="162" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Observed across sample chains</text>
+    <text x="22" y="182" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• GST Returns (GSTR-3B) Cross-Check</text>
+    <text x="22" y="198" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Reported turnover vs. reconstructed</text>
+    <text x="22" y="218" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Bank PAN &amp; UPI Reconciliation</text>
+    <text x="22" y="234" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Matching settlement volumes</text>
+    <text x="22" y="254" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Generative AI Schema Mapping</text>
+    <text x="22" y="270" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Maps unstructured menu metadata</text>
+    <text x="22" y="292" fill="#c084fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Cross-validation proved systemic intent</text>
+
+    <!-- Takeaway -->
+    <rect x="12" y="315" width="246" height="165" rx="6" fill="#1e1e2e" stroke="#334155" />
+    <text x="22" y="335" fill="#d8b4fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Triangulation Dimensions</text>
+    <text x="22" y="355" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Dimension 1: POS Raw Logs</text>
+    <text x="22" y="371" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Ground truth order items generated</text>
+    <text x="22" y="391" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Dimension 2: Banking Settlements</text>
+    <text x="22" y="407" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Digital card/UPI receipts recorded</text>
+    <text x="22" y="427" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Dimension 3: Tax Declarations</text>
+    <text x="22" y="443" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Artificially deflated turnover filed</text>
+    <text x="22" y="465" fill="#9333ea" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700">Multi-Source Verification Destroys Evasion</text>
+  </g>
+
+  <!-- COLUMN 4: ENFORCEMENT & OUTCOMES -->
+  <g transform="translate(900, 75)">
+    <rect width="270" height="495" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect width="270" height="60" rx="8" fill="url(#emeraldGrad)" />
+    <circle cx="25" cy="30" r="12" fill="#059669" />
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" text-anchor="middle">4</text>
+    <text x="46" y="26" fill="#a7f3d0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">ENFORCEMENT</text>
+    <text x="46" y="42" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">₹70,000 Cr Turnover Probe</text>
+
+    <!-- Content Box -->
+    <rect x="12" y="70" width="246" height="235" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="22" y="90" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Scale &amp; Geographic Scope</text>
+    <text x="22" y="110" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• ₹70,000 Crore Total Suppression</text>
+    <text x="22" y="126" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Estimated unrecorded turnover</text>
+    <text x="22" y="146" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• ₹12,000–15,000 Cr Tax Loss</text>
+    <text x="22" y="162" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Combined GST &amp; Income Tax evaded</text>
+    <text x="22" y="182" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• State-by-State Deletion Ranking</text>
+    <text x="22" y="198" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Karnataka: ₹2,000 Cr · TS: ₹1,500 Cr</text>
+    <text x="22" y="218" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Tamil Nadu &amp; Maharashtra</text>
+    <text x="22" y="234" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  TN: ₹1,200 Cr · Nationwide probe</text>
+    <text x="22" y="254" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• CBDT National Rollout</text>
+    <text x="22" y="270" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Central Board expands lab models</text>
+    <text x="22" y="292" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Landmark precedent for AI enforcement</text>
+
+    <!-- Takeaway -->
+    <rect x="12" y="315" width="246" height="165" rx="6" fill="#1e1e2e" stroke="#334155" />
+    <text x="22" y="335" fill="#a7f3d0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Governance &amp; Software Mandates</text>
+    <text x="22" y="355" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Immutable POS Architecture</text>
+    <text x="22" y="371" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Mandate append-only crypto ledgers</text>
+    <text x="22" y="391" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Real-Time Invoice Hashing</text>
+    <text x="22" y="407" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  E-invoicing pushed to retail POS</text>
+    <text x="22" y="427" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• End of Arbitrary Deletions</text>
+    <text x="22" y="443" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Vendor liabilities for audit-trail bypass</text>
+    <text x="22" y="465" fill="#059669" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700">Shift to Algorithmic Tax Compliance</text>
+  </g>
+
+  <!-- BOTTOM COMPARATIVE BANNER -->
+  <g transform="translate(30, 585)">
+    <rect width="1140" height="125" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <text x="25" y="24" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">THE DIGITAL FORENSIC PIPELINE: FROM POINT-OF-SALE DELETIONS TO CROSS-STATE TAX RECOVERY</text>
+
+    <!-- Spectrum Line -->
+    <line x1="25" y1="45" x2="1115" y2="45" stroke="#475569" stroke-width="4" stroke-linecap="round" />
+
+    <circle cx="120" cy="45" r="10" fill="#d97706" stroke="#ffffff" stroke-width="2" />
+    <text x="120" y="68" fill="#fde68a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Step 1: Point-of-Sale Event</text>
+    <text x="120" y="84" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Bill generated · Customer pays cash · Bill deleted</text>
+    <text x="120" y="98" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Local POS attempts to suppress turnover</text>
+
+    <circle cx="440" cy="45" r="10" fill="#0284c7" stroke="#ffffff" stroke-width="2" />
+    <text x="440" y="68" fill="#7dd3fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Step 2: Cloud Ingestion</text>
+    <text x="440" y="84" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">60 TB Big Data dump ingested via Hadoop/Spark</text>
+    <text x="440" y="98" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">WAL logs preserve deleted transaction tombstones</text>
+
+    <circle cx="760" cy="45" r="10" fill="#9333ea" stroke="#ffffff" stroke-width="2" />
+    <text x="760" y="68" fill="#d8b4fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Step 3: ML Triangulation</text>
+    <text x="760" y="84" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Cross-checks GSTR-3B filings &amp; UPI settlements</text>
+    <text x="760" y="98" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Proves 27% systematic peak-hour suppression</text>
+
+    <circle cx="1020" cy="45" r="10" fill="#059669" stroke="#ffffff" stroke-width="2" />
+    <text x="1020" y="68" fill="#a7f3d0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Step 4: Statutory Demand</text>
+    <text x="1020" y="84" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">CBDT establishes ₹70k Cr suppression</text>
+    <text x="1020" y="98" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Mandates append-only retail POS architectures</text>
+  </g>
+</svg>

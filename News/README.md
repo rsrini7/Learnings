@@ -53,7 +53,7 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 - [Tailwind Financial Crisis](Outages/Tailwind-Financial-Crisis.md)
 
 ## 📅 Weekly Updates
-- [Anthropic's Fourth Economic Index Report Jan 2026](Weekly-Updates/Anthropic%27s-Fourth-Economic-Index-Report-Jan-2026.md)
+- [Anthropic Fourth Economic Index Report Jan 2026](Weekly-Updates/Anthropic-Fourth-Economic-Index-Report-Jan-2026.md)
 - [Apr 05 2026](Weekly-Updates/Apr-05-2026.md)
 - [Dec 14 2025](Weekly-Updates/Dec-14-2025.md)
 - [Dec 21 2025](Weekly-Updates/Dec-21-2025.md)
@@ -68,6 +68,7 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 - [Global AI Scam Landscape And Defense Playbook 2026](Weekly-Updates/Global-AI-Scam-Landscape-And-Defense-Playbook-2026.md)
 - [India GSoc 2026 Extended](Weekly-Updates/India-GSoc-2026-Extended.md)
 - [India GSoc 2026 Trends Challenges Solutions](Weekly-Updates/India-GSoc-2026-Trends-Challenges-Solutions.md)
+- [India Restaurant Billing Suppressed Turnover Probe 2026](Weekly-Updates/India-Restaurant-Billing-Suppressed-Turnover-Probe-2026.md)
 - [Jan 11 2026](Weekly-Updates/Jan-11-2026.md)
 - [Jan 18 2026](Weekly-Updates/Jan-18-2026.md)
 - [Jan 25 2026](Weekly-Updates/Jan-25-2026.md)
@@ -77,9 +78,8 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 - [Mar 15 2026](Weekly-Updates/Mar-15-2026.md)
 - [Mar 21 2026](Weekly-Updates/Mar-21-2026.md)
 - [Mar 29 2026](Weekly-Updates/Mar-29-2026.md)
-- [Singapore IMDA Agentic AI Governance Framework](Weekly-Updates/Singapore-IMDA-Agentic-AI-Governance-Framework.md)
+- [Singapore IMDA Agentic AI Governance Framework 2026](Weekly-Updates/Singapore-IMDA-Agentic-AI-Governance-Framework-2026.md)
 - [WIPO International Fellowship](Weekly-Updates/WIPO-International-Fellowship.md)
-- [₹70,000 Crore Suppressed Turnover Probe in Restaurant Billing](Weekly-Updates/%E2%82%B970%2C000%20Crore%20Suppressed%20Turnover%20Probe%20in%20Restaurant%20Billing.md)
 
 ---
 

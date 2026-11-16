@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0b0f19" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Header Gradient -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#818cf8" />
+    </linearGradient>
+
+    <!-- Shadow Filter -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Outer Frame -->
+  <rect x="20" y="20" width="1160" height="780" rx="16" fill="none" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Header Banner -->
+  <g transform="translate(40, 45)">
+    <rect x="0" y="0" width="1120" height="80" rx="12" fill="url(#cardGrad1)" stroke="#38bdf8" stroke-width="1.5" filter="url(#dropShadow)" />
+    <circle cx="45" cy="40" r="22" fill="#0284c7" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="45" y="47" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="bold" fill="#38bdf8" text-anchor="middle">SG</text>
+
+    <text x="85" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="bold" fill="#f8fafc">
+      Singapore IMDA Model AI Governance Framework for Agentic AI
+    </text>
+    <text x="85" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">
+      Official Guidance (January 2026) · Autonomous Planning, Tool Use, Multi-Step Action Guardrails &amp; Human Oversight
+    </text>
+  </g>
+
+  <!-- Dimension 1: Assess and Bound Risks Upfront -->
+  <g transform="translate(40, 145)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad1)" stroke="#38bdf8" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">1</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      Assess &amp; Bound Risks Upfront
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#38bdf8">
+      Architectural Scoping &amp; Intentional Blast Radius Caps
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Autonomy Level Scoping
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Explicitly bound agent agency; classify operations into advisory,
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      supervised execution, or fully automated low-impact workflows.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Tool &amp; Memory Isolation (Least Privilege)
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Enforce fine-grained API permissions; restrict destructive tools;
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      isolate long-term memory partitions across untrusted user tenants.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Execution Sandboxing
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Confine bash and code interpreters to ephemeral microVMs;
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      rate-limit tool calls, max tokens, and wall-clock execution quotas.
+    </text>
+  </g>
+
+  <!-- Dimension 2: Meaningful Human Accountability -->
+  <g transform="translate(615, 145)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad1)" stroke="#4ade80" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#15803d" fill-opacity="0.3" stroke="#4ade80" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#4ade80" text-anchor="middle">2</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      Meaningful Human Accountability
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#4ade80">
+      Oversight Paradigms &amp; Real-World Liability Assignment
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Human-in-the-Loop (HITL) Checkpoints
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Require explicit human cryptographic sign-off before financial
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      disbursements, PII disclosure, or irreversible database mutations.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Human-on-the-Loop (HOTL) Supervised Oversight
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Maintain real-time telemetry dashboards and operator kill switches
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      to pause, inspect, and override multi-agent reasoning chains.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Strict Legal &amp; Corporate Liability Mapping
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Anchor responsibility to human deployers; autonomous agents
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      cannot assume legal personhood or absolve deployers of negligence.
+    </text>
+  </g>
+
+  <!-- Dimension 3: Technical Controls & System Guardrails -->
+  <g transform="translate(40, 460)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad1)" stroke="#fbbf24" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#b45309" fill-opacity="0.3" stroke="#fbbf24" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#fbbf24" text-anchor="middle">3</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      Technical Controls &amp; System Guardrails
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#fbbf24">
+      Pre-Deployment Red-Teaming, Validation &amp; Runtime Defense
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Adversarial Red-Teaming &amp; Goal-Hijacking Defense
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Simulate prompt injections, indirect payload attacks, tool misuse,
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      and recursive loop exhaustion before production deployment.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Runtime Guardrail Interceptors
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Validate tool input parameters against strict JSON schemas;
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      filter toxic outputs, hallucinated commands, and PII leakage.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Cryptographic Audit Trails &amp; Provenance
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Log reasoning traces, prompt states, and tool arguments into
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      tamper-evident append-only ledgers for statutory post-mortems.
+    </text>
+  </g>
+
+  <!-- Dimension 4: End-User Responsibility & Transparency -->
+  <g transform="translate(615, 460)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad1)" stroke="#c084fc" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#7e22ce" fill-opacity="0.3" stroke="#c084fc" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#c084fc" text-anchor="middle">4</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      End-User Responsibility &amp; Transparency
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#c084fc">
+      User Awareness, Consent Boundaries &amp; Feedback Mechanisms
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Unambiguous Agent Identity Disclosure
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Inform users clearly when interacting with an autonomous agent;
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      display intended task scopes, confidence ratings, and limitations.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Reversible Actions &amp; Step-Back Guarantees
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Provide human operators with undo capabilities, rollback paths,
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      and preview windows before committing real-world actions.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Continuous Feedback &amp; Incident Reporting
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Establish active channels for users to flag agent drift, unauthorized
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      actions, and unexpected side effects back to safety engineering.
+    </text>
+  </g>
+
+  <!-- Footer Info -->
+  <g transform="translate(40, 770)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b">
+      Infocomm Media Development Authority (IMDA) · AI Verify Foundation · Published January 2026 · Model AI Governance Framework for Agentic AI
+    </text>
+  </g>
+</svg>

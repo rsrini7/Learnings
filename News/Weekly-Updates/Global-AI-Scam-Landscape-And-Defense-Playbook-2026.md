@@ -480,6 +480,8 @@ The table below contrasts common public assumptions regarding AI fraud with empi
 ---
 
 **Related:**
+- [India-Restaurant-Billing-Suppressed-Turnover-Probe-2026.md](India-Restaurant-Billing-Suppressed-Turnover-Probe-2026.md) — Big data forensics and cloud POS transaction reconstruction uncovering ₹70,000 Cr in suppressed retail revenue.
+- [Anthropic-Fourth-Economic-Index-Report-Jan-2026.md](Anthropic-Fourth-Economic-Index-Report-Jan-2026.md) — Empirical analysis of AI labor dynamics, task automation vs. augmentation, and the economic supervision tax.
 - [India-Spam-Calls-DND-And-TRAI-Enforcement-Oct-2026.md](../Security/India-Spam-Calls-DND-And-TRAI-Enforcement-Oct-2026.md) — Analyzes telecom network-level controls, DND registry blacklisting, and TRAI carrier penalties.
 - [Banks-Third-Party-AI-Agents-Oct-2026.md](../Security/Banks-Third-Party-AI-Agents-Oct-2026.md) — Examines authorization boundaries, synthetic identity fraud, and identity verification gaps in digital banking.
 - [WhatsApp-Contact-Enumeration-And-Data-Leak-2026.md](../Security/WhatsApp-Contact-Enumeration-And-Data-Leak-2026.md) — Documents large-scale protocol scraping exposing 3.5 billion phone numbers that feed scam target databases.

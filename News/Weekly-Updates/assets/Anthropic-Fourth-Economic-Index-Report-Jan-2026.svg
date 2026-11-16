@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0b0f19" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Shadow Filter -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Outer Frame -->
+  <rect x="20" y="20" width="1160" height="780" rx="16" fill="none" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Header Banner -->
+  <g transform="translate(40, 45)">
+    <rect x="0" y="0" width="1120" height="80" rx="12" fill="url(#cardGrad)" stroke="#f97316" stroke-width="1.5" filter="url(#dropShadow)" />
+    <circle cx="45" cy="40" r="22" fill="#c2410c" fill-opacity="0.2" stroke="#f97316" stroke-width="1.5" />
+    <text x="45" y="47" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="bold" fill="#f97316" text-anchor="middle">EI</text>
+
+    <text x="85" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="bold" fill="#f8fafc">
+      Anthropic Fourth Economic Index: AI Labor Dynamics &amp; Task Disruption
+    </text>
+    <text x="85" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">
+      Empirical Analysis of 2 Million Claude Interactions (Jan 2026) · The 5 Economic Primitives &amp; The Supervision Tax
+    </text>
+  </g>
+
+  <!-- Panel 1: The Five Economic Primitives -->
+  <g transform="translate(40, 145)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">1</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      The 5 Economic Primitives
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#38bdf8">
+      Empirical Micro-Taxonomy of Real-World AI Utilization
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Task Complexity &amp; Education Level
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Categorizes tasks by required education level and reasoning steps;
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      college-level tasks achieve 12x speedup vs. 9x for routine tasks.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Augmentation (52%) vs. Automation (45%)
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Workplace usage centers on iterative collaboration (52%) over
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      fully unassisted autonomous task execution (45% in APIs).
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Task Purpose &amp; Empirical Success Rate
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      49% of jobs use AI for &gt;= 25% of tasks (up from 36%);
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      success rates decline precipitously as task horizons expand.
+    </text>
+  </g>
+
+  <!-- Panel 2: The Complexity-Acceleration Paradox -->
+  <g transform="translate(615, 145)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#4ade80" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#15803d" fill-opacity="0.3" stroke="#4ade80" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#4ade80" text-anchor="middle">2</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      The Complexity Acceleration Paradox
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#4ade80">
+      Higher Skill Levels Yield Exponentially Greater AI Returns
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Prompt Quality as the Primary Multiplier
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Educated knowledge workers provide rich context and constraints,
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      extracting dramatically higher reasoning accuracy from models.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Software Engineering as Leading Indicator
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Software error correction represents 6% of all Claude usage;
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      coding tasks constitute ~33% consumer and ~50% API volume.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      O*NET Task Disaggregation
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Occupations decompose into bundles of separable activities;
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      AI automates specific sub-tasks while leaving roles intact.
+    </text>
+  </g>
+
+  <!-- Panel 3: The Duration vs. Success Degradation Curve -->
+  <g transform="translate(40, 460)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#fbbf24" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#b45309" fill-opacity="0.3" stroke="#fbbf24" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#fbbf24" text-anchor="middle">3</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      The Supervision Overhead &amp; Failure Curve
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#fbbf24">
+      Why Theoretical Productivity Projections Are Halved
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Task Duration Degradation
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Success rate reaches ~60% for tasks requiring &lt;1 hour,
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      dropping to ~45% for extended tasks exceeding 5 hours.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      The "Babysitting" Tax
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Unassisted AI generates subtle errors requiring human review,
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      debugging, and rework, cutting gross speedups by roughly 50%.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Autonomous Horizons Barrier
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Without structured intermediate checkpoints, multi-turn reasoning
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      drifts, accumulating compounding context and syntax errors.
+    </text>
+  </g>
+
+  <!-- Panel 4: The Bottleneck Economy & Shift to Managerial Oversight -->
+  <g transform="translate(615, 460)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#c084fc" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#7e22ce" fill-opacity="0.3" stroke="#c084fc" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#c084fc" text-anchor="middle">4</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      The Bottleneck Economy
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#c084fc">
+      Shift from Direct Task Execution to AI Orchestration
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Surging Premium on Unautomatable Tasks
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      As digital synthesis becomes commoditized, physical manipulation,
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      in-person negotiation, and clinical judgment capture premium value.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Managerial Review as Core Competency
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Engineers shift from writing boilerplate code to evaluating
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      AI architecture drafts, reviewing pull requests, and auditing diffs.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Upskilling vs. Deskilling Bifurcation
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      High-agency professionals leverage AI to elevate strategic scope,
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      while routine data-entry roles face erosion and disintermediation.
+    </text>
+  </g>
+
+  <!-- Footer Info -->
+  <g transform="translate(40, 770)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b">
+      Anthropic Economic Index · Report 4 (January 2026) · Claude Multi-Turn Interaction Dataset · O*NET Work Activities
+    </text>
+  </g>
+</svg>

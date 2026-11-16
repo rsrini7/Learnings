@@ -526,7 +526,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Tailwind Financial Crisis](News/Outages/Tailwind-Financial-Crisis.md)
 
 ### 📅 Weekly Updates
-- [Anthropic's Fourth Economic Index Report Jan 2026](News/Weekly-Updates/Anthropic%27s-Fourth-Economic-Index-Report-Jan-2026.md)
+- [Anthropic Fourth Economic Index Report Jan 2026](News/Weekly-Updates/Anthropic-Fourth-Economic-Index-Report-Jan-2026.md)
 - [Apr 05 2026](News/Weekly-Updates/Apr-05-2026.md)
 - [Dec 14 2025](News/Weekly-Updates/Dec-14-2025.md)
 - [Dec 21 2025](News/Weekly-Updates/Dec-21-2025.md)
@@ -541,6 +541,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Global AI Scam Landscape And Defense Playbook 2026](News/Weekly-Updates/Global-AI-Scam-Landscape-And-Defense-Playbook-2026.md)
 - [India GSoc 2026 Extended](News/Weekly-Updates/India-GSoc-2026-Extended.md)
 - [India GSoc 2026 Trends Challenges Solutions](News/Weekly-Updates/India-GSoc-2026-Trends-Challenges-Solutions.md)
+- [India Restaurant Billing Suppressed Turnover Probe 2026](News/Weekly-Updates/India-Restaurant-Billing-Suppressed-Turnover-Probe-2026.md)
 - [Jan 11 2026](News/Weekly-Updates/Jan-11-2026.md)
 - [Jan 18 2026](News/Weekly-Updates/Jan-18-2026.md)
 - [Jan 25 2026](News/Weekly-Updates/Jan-25-2026.md)
@@ -550,9 +551,8 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Mar 15 2026](News/Weekly-Updates/Mar-15-2026.md)
 - [Mar 21 2026](News/Weekly-Updates/Mar-21-2026.md)
 - [Mar 29 2026](News/Weekly-Updates/Mar-29-2026.md)
-- [Singapore IMDA Agentic AI Governance Framework](News/Weekly-Updates/Singapore-IMDA-Agentic-AI-Governance-Framework.md)
+- [Singapore IMDA Agentic AI Governance Framework 2026](News/Weekly-Updates/Singapore-IMDA-Agentic-AI-Governance-Framework-2026.md)
 - [WIPO International Fellowship](News/Weekly-Updates/WIPO-International-Fellowship.md)
-- [₹70,000 Crore Suppressed Turnover Probe in Restaurant Billing](News/Weekly-Updates/%E2%82%B970%2C000%20Crore%20Suppressed%20Turnover%20Probe%20in%20Restaurant%20Billing.md)
 
 
 [↑ Back to Quick Jump](#quick-jump) · [← Back to Root Hub](README.md)

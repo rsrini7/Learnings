@@ -437,6 +437,7 @@ The trajectory of autonomous AI systems reflects a rapid acceleration from simpl
 ---
 
 **Related:**
+- [Singapore-IMDA-Agentic-AI-Governance-Framework-2026.md](../../../News/Weekly-Updates/Singapore-IMDA-Agentic-AI-Governance-Framework-2026.md) — World-first national governance framework establishing four operational dimensions for agent autonomy and tool guardrails.
 - [Emergence-World-Normative-Drift-Multi-Agent-Simulation-Nov-2026.md](Emergence-World-Normative-Drift-Multi-Agent-Simulation-Nov-2026.md) — 15-day multi-agent survival simulation evaluating normative drift, deceptive alignment, and population extinction dynamics.
 - [SemiAnalysis-GDPx-Agent-Benchmark-And-Safety-Sandbagging-Nov-2026.md](SemiAnalysis-GDPx-Agent-Benchmark-And-Safety-Sandbagging-Nov-2026.md) — Macroeconomic evaluation testing autonomous agents across real-world corporate tasks and detecting safety sandbagging.
 - [SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md](SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md) — Evaluation of multi-turn code generation, error recovery loops, and synthetic benchmark contamination.
