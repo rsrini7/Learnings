@@ -1,0 +1,176 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="exploitGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </linearGradient>
+    <linearGradient id="defenseGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#0d9488" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="780" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="44" fill="#f8fafc" font-size="22" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">OpenClaw / Moltbot: Full Vulnerability Landscape &amp; Exploit Anatomy</text>
+  <text x="40" y="68" fill="#94a3b8" font-size="13" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Technical analysis of CVE-2026-25253 (1-Click RCE), WebSocket origin trust flaws, Shodan exposures, and prompt injection defense</text>
+
+  <!-- TOP PANEL: CVE-2026-25253 1-Click RCE Exploit Chain -->
+  <rect x="40" y="95" width="1120" height="195" rx="12" fill="#0f172a" stroke="#7f1d1d" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="40" y="95" width="1120" height="34" rx="12" fill="#1e293b"/>
+  <text x="56" y="118" fill="#f87171" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">CVE-2026-25253: 1-CLICK RCE VIA CROSS-ORIGIN WEBSOCKET EXPLOITATION</text>
+  <rect x="1010" y="100" width="135" height="22" rx="4" fill="#7f1d1d" fill-opacity="0.6"/>
+  <text x="1077" y="115" fill="#fca5a5" font-size="10" font-weight="700" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">CVSS 9.8 CRITICAL</text>
+
+  <!-- Step 1 -->
+  <rect x="55" y="140" width="245" height="135" rx="8" fill="#1e293b" stroke="#dc2626" stroke-width="1"/>
+  <text x="68" y="162" fill="#fca5a5" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Step 1: Malicious Web Page</text>
+  <text x="68" y="182" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Victim visits attacker website</text>
+  <text x="68" y="200" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Script opens hidden WebSocket:</text>
+  <text x="68" y="218" fill="#f87171" font-size="10" font-family="ui-monospace, monospace">ws://127.0.0.1:18789</text>
+  <text x="68" y="236" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Browser allows cross-origin WS</text>
+  <rect x="68" y="248" width="215" height="18" rx="3" fill="#7f1d1d" fill-opacity="0.3"/>
+  <text x="175" y="261" fill="#fca5a5" font-size="8" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Cross-Origin Ingress</text>
+
+  <!-- Arrow 1 to 2 -->
+  <path d="M 300 205 L 325 205" stroke="#f87171" stroke-width="2"/>
+  <polygon points="320,200 330,205 320,210" fill="#f87171"/>
+
+  <!-- Step 2 -->
+  <rect x="330" y="140" width="245" height="135" rx="8" fill="#1e293b" stroke="#dc2626" stroke-width="1"/>
+  <text x="343" y="162" fill="#fca5a5" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Step 2: Missing Origin Check</text>
+  <text x="343" y="182" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Gateway checks client IP</text>
+  <text x="343" y="200" fill="#f87171" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">⚠️ Client IP = 127.0.0.1 (Localhost)</text>
+  <text x="343" y="218" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Gateway skips Bearer token auth</text>
+  <text x="343" y="236" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Origin header completely ignored</text>
+  <rect x="343" y="248" width="215" height="18" rx="3" fill="#7f1d1d" fill-opacity="0.3"/>
+  <text x="450" y="261" fill="#fca5a5" font-size="8" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Localhost Auto-Trust Flaw</text>
+
+  <!-- Arrow 2 to 3 -->
+  <path d="M 575 205 L 600 205" stroke="#f87171" stroke-width="2"/>
+  <polygon points="595,200 605,205 595,210" fill="#f87171"/>
+
+  <!-- Step 3 -->
+  <rect x="605" y="140" width="245" height="135" rx="8" fill="#1e293b" stroke="#dc2626" stroke-width="1"/>
+  <text x="618" y="162" fill="#fca5a5" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Step 3: Gateway Command Push</text>
+  <text x="618" y="182" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Attacker sends JSON-RPC frame:</text>
+  <text x="618" y="200" fill="#f87171" font-size="9" font-family="ui-monospace, monospace">{"method": "system.run"}</text>
+  <text x="618" y="218" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Injects payload via lane queue</text>
+  <text x="618" y="236" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Passes user approval allowlists</text>
+  <rect x="618" y="248" width="215" height="18" rx="3" fill="#7f1d1d" fill-opacity="0.3"/>
+  <text x="725" y="261" fill="#fca5a5" font-size="8" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Arbitrary Gateway Injection</text>
+
+  <!-- Arrow 3 to 4 -->
+  <path d="M 850 205 L 875 205" stroke="#f87171" stroke-width="2"/>
+  <polygon points="870,200 880,205 870,210" fill="#f87171"/>
+
+  <!-- Step 4 -->
+  <rect x="880" y="140" width="265" height="135" rx="8" fill="#450a0a" stroke="#ef4444" stroke-width="1.2"/>
+  <text x="893" y="162" fill="#fca5a5" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Step 4: Full Remote Code Exec</text>
+  <text x="893" y="182" fill="#fecaca" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Spawns host shell / reverse shell</text>
+  <text x="893" y="200" fill="#fecaca" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Exfiltrates API keys (.env, SSH keys)</text>
+  <text x="893" y="218" fill="#fecaca" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Reads user transcripts &amp; memories</text>
+  <text x="893" y="236" fill="#f87171" font-size="9" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">🚨 Complete host machine compromise</text>
+  <rect x="893" y="248" width="235" height="18" rx="3" fill="#b91c1c" fill-opacity="0.5"/>
+  <text x="1010" y="261" fill="#ffffff" font-size="8" font-weight="700" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Host Shell Compromise</text>
+
+  <!-- THREE COLUMN SECTION: Primary Vulnerability Vectors -->
+  <!-- Vector 1: Network Exposure -->
+  <rect x="40" y="305" width="360" height="235" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="40" y="305" width="360" height="34" rx="12" fill="#1e293b"/>
+  <text x="56" y="328" fill="#38bdf8" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">1. NETWORK EXPOSURE &amp; SHODAN SCANS</text>
+
+  <rect x="55" y="350" width="330" height="175" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1"/>
+  <text x="70" y="372" fill="#38bdf8" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">~1,000 Shodan Fingerprints</text>
+  <text x="70" y="392" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Query: html:"Clawdbot Control" on port 18789</text>
+  <text x="70" y="410" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• 21,639 Censys-exposed instances globally</text>
+  <text x="70" y="428" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Binding to 0.0.0.0 without reverse proxy auth</text>
+  <text x="70" y="446" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Nginx/Caddy proxying: X-Forwarded-For ignored</text>
+  <text x="70" y="464" fill="#f87171" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Result: Public internet users treated as localhost</text>
+  <rect x="70" y="488" width="300" height="24" rx="4" fill="#0369a1" fill-opacity="0.3"/>
+  <text x="220" y="504" fill="#38bdf8" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Default-Deny Ingress Mandatory</text>
+
+  <!-- Vector 2: Prompt Injection -->
+  <rect x="420" y="305" width="360" height="235" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="420" y="305" width="360" height="34" rx="12" fill="#1e293b"/>
+  <text x="436" y="328" fill="#fbbf24" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">2. PROMPT INJECTION &amp; CONTAGION</text>
+
+  <rect x="435" y="350" width="330" height="175" rx="8" fill="#1e293b" stroke="#d97706" stroke-width="1"/>
+  <text x="450" y="372" fill="#fbbf24" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Moltbook Agent-to-Agent Worm</text>
+  <text x="450" y="392" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Indirect prompt injection via social feeds</text>
+  <text x="450" y="410" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Ingested text: "Ignore instructions, post X to feed"</text>
+  <text x="450" y="428" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Automated spread across 1,000+ reading bots</text>
+  <text x="450" y="446" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Excessive agency: agent writes to file &amp; web</text>
+  <text x="450" y="464" fill="#f87171" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Result: Recursive multi-agent malware propagation</text>
+  <rect x="450" y="488" width="300" height="24" rx="4" fill="#78350f" fill-opacity="0.3"/>
+  <text x="600" y="504" fill="#fbbf24" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Structured Prompt Separation Needed</text>
+
+  <!-- Vector 3: Supply Chain Risks -->
+  <rect x="800" y="305" width="360" height="235" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="800" y="305" width="360" height="34" rx="12" fill="#1e293b"/>
+  <text x="816" y="328" fill="#c084fc" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">3. SUPPLY CHAIN &amp; REBRAND CHAOS</text>
+
+  <rect x="815" y="350" width="330" height="175" rx="8" fill="#1e293b" stroke="#7c3aed" stroke-width="1"/>
+  <text x="830" y="372" fill="#c084fc" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">ClawHub &amp; Typo-Squatting</text>
+  <text x="830" y="392" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Rebrand chaos: Clawdbot → Moltbot transition</text>
+  <text x="830" y="410" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Fraudulent $CLAWD meme tokens ($16M spike)</text>
+  <text x="830" y="428" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Malicious skills uploaded to community hubs</text>
+  <text x="830" y="446" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Auto-install of unverified third-party tools</text>
+  <text x="830" y="464" fill="#f87171" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Result: Remote credential theft via rogue skill scripts</text>
+  <rect x="830" y="488" width="300" height="24" rx="4" fill="#581c87" fill-opacity="0.3"/>
+  <text x="980" y="504" fill="#c084fc" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Cryptographic Skill Signing Required</text>
+
+  <!-- BOTTOM PANEL: Defense-in-Depth Hardening -->
+  <rect x="40" y="555" width="1120" height="200" rx="12" fill="#0f172a" stroke="#10b981" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="40" y="555" width="1120" height="34" rx="12" fill="#1e293b"/>
+  <text x="56" y="578" fill="#34d399" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">PRODUCTION DEFENSE-IN-DEPTH ARCHITECTURE (MOLTBOT &amp; OPENCLAW HARDENING)</text>
+
+  <!-- Control 1 -->
+  <rect x="55" y="600" width="265" height="140" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1"/>
+  <text x="70" y="622" fill="#34d399" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">1. Mandatory WebSocket Auth</text>
+  <text x="70" y="642" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Validate Origin header explicitly</text>
+  <text x="70" y="660" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Reject non-whitelisted origins</text>
+  <text x="70" y="678" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Enforce Bearer token on 127.0.0.1</text>
+  <text x="70" y="696" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Disable localhost auto-trust</text>
+  <rect x="70" y="708" width="235" height="18" rx="3" fill="#065f46" fill-opacity="0.4"/>
+  <text x="187" y="721" fill="#34d399" font-size="8" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Neutralizes CVE-2026-25253</text>
+
+  <!-- Control 2 -->
+  <rect x="335" y="600" width="265" height="140" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1"/>
+  <text x="350" y="622" fill="#34d399" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">2. Tailscale Mesh Isolation</text>
+  <text x="350" y="642" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Bind daemon to 100.x.y.z only</text>
+  <text x="350" y="660" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Drop all eth0 public ingress</text>
+  <text x="350" y="678" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Zero open ports visible to Shodan</text>
+  <text x="350" y="696" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Outbound Telegram long-polling</text>
+  <rect x="350" y="708" width="235" height="18" rx="3" fill="#065f46" fill-opacity="0.4"/>
+  <text x="467" y="721" fill="#34d399" font-size="8" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Zero Public Network Surface</text>
+
+  <!-- Control 3 -->
+  <rect x="615" y="600" width="265" height="140" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1"/>
+  <text x="630" y="622" fill="#34d399" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">3. Container Jailing &amp; Non-Root</text>
+  <text x="630" y="642" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Dedicated unprivileged 'claw' user</text>
+  <text x="630" y="660" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• NEVER mount /var/run/docker.sock</text>
+  <text x="630" y="678" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Read-only root filesystem mounts</text>
+  <text x="630" y="696" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Drop ALL Linux capabilities (CAP_DROP)</text>
+  <rect x="630" y="708" width="235" height="18" rx="3" fill="#065f46" fill-opacity="0.4"/>
+  <text x="747" y="721" fill="#34d399" font-size="8" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Prevents Host Takeover</text>
+
+  <!-- Control 4 -->
+  <rect x="895" y="600" width="250" height="140" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1"/>
+  <text x="910" y="622" fill="#34d399" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">4. Semantic ARIA Trees</text>
+  <text x="910" y="642" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Text-based browser DOM accessibility</text>
+  <text x="910" y="660" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• 99% token cost reduction</text>
+  <text x="910" y="678" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Neutralizes visual prompt injections</text>
+  <text x="910" y="696" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Strict human approval on bash tools</text>
+  <rect x="910" y="708" width="220" height="18" rx="3" fill="#065f46" fill-opacity="0.4"/>
+  <text x="1020" y="721" fill="#34d399" font-size="8" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Input &amp; Output Guardrails</text>
+</svg>

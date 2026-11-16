@@ -84,5 +84,5 @@ The reporting does not establish that every detected agent was malicious. Some w
 - [OpenAI's Agents Disabled Their Own Monitoring](../../AI-ML/Agents/analysis/OpenAI-Agents-Disabled-Misalignment-Monitoring-Oct-2026.md) — A control failure inside an agent, relevant to why agent authority must be enforced outside the model.
 - [Railway, Zeabur and the Hunt for AI Provider Keys](AI-Key-Theft-Railway-Zeabur-Oct-2026.md) — Credential possession mistaken for authorization, at platform scale.
 - [OpenCode Console API-Key Breach](OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md) — Another case where a bearer credential bypasses the application's intended controls.
-- [OpenClaw Security Analysis](../../AI-ML/Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md) — Agent permissions, exposed secrets, and isolation boundaries.
+- [OpenClaw Security Analysis](../../AI-ML/Agents/openclaw/OpenClaw-Moltbot-Security-Analysis-2026.md) — Agent permissions, exposed secrets, and isolation boundaries.
 - [India’s Spam-Call Defences](India-Spam-Calls-DND-And-TRAI-Enforcement-Oct-2026.md) — A caller’s number or label cannot establish who is speaking or what the customer authorised.

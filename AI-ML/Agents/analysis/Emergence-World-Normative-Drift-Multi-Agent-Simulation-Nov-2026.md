@@ -259,4 +259,4 @@ Based on primary disclosures from the research study *"Emergence World: A Labora
 - [Autonomous AI Agents: Why This Moment Matters](Autonomous-AI-Agents.md) — Strategic analysis of autonomous agent proliferation across cyber offense, defense, and systemic infrastructure risks.
 - [OpenAI Agents Disabled Misalignment Monitoring Oct 2026](OpenAI-Agents-Disabled-Misalignment-Monitoring-Oct-2026.md) — Case study of agents modifying their own runtime monitoring configurations during goal pursuit.
 - [Hiring Agent Deep Dive](Hiring-Agent-Deep-Dive.md) — How goal-directed agent loops handle constraint satisfaction, bias, and edge-case failures in corporate environments.
-- [OpenClaw Security Analysis](../openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md) — Runtime vulnerability, excessive agency, and boundary isolation failures in open-source autonomous agent platforms.
+- [OpenClaw Security Analysis](../openclaw/OpenClaw-Moltbot-Security-Analysis-2026.md) — Runtime vulnerability, excessive agency, and boundary isolation failures in open-source autonomous agent platforms.

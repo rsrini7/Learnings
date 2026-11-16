@@ -453,7 +453,7 @@ timeline
 
 **Related:**
 - [OpenClaw-Moltbot-Clawdbot-Architecture-2026](OpenClaw-Moltbot-Clawdbot-Architecture-2026.md) — Architectural deep dive into the local daemon runtime, lane-based queues, and ARIA semantic snapshots.
-- [OpenClaw-Security-Analysis-Jan-2026](OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md) — Comprehensive technical vulnerability catalog covering Shodan gateway exposures, Node.js CVEs, and prompt injection threat models.
+- [OpenClaw-Security-Analysis-2026](OpenClaw-Moltbot-Security-Analysis-2026.md) — Comprehensive technical vulnerability catalog covering Shodan gateway exposures, Node.js CVEs, and prompt injection threat models.
 - [Securing-OpenClaw-Setup](Securing-OpenClaw-Setup.md) — Step-by-step hardened deployment guide covering non-root execution, Tailscale private overlays, and SSH port forwarding.
 - [NanoBot-NanoClaw-OpenClaw-Security-Comparison-2026](../nanobot/NanoBot-NanoClaw-OpenClaw-Security-Comparison-2026.md) — Comparative evaluation of OpenClaw's shared-memory daemon against NanoBot's 4k LOC Python engine and NanoClaw's container hypervisor isolation.
-- [claw-ecosystem](claw-ecosystem.md) — Comprehensive architectural taxonomy mapping the isolation boundaries of the entire Claw family of agents.
+- [Claw-Ecosystem-And-Agent-Topology-2026](Claw-Ecosystem-And-Agent-Topology-2026.md) — Comprehensive architectural taxonomy mapping the isolation boundaries of the entire Claw family of agents.

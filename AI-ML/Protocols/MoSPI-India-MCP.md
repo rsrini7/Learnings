@@ -237,4 +237,4 @@ To get the most out of the official MoSPI data, use these prompts. Note that the
 
 **Related:**
 - [Agent-Skills](../Agents/skills/Agent-Skills.md) — MoSPI's curated 7-dataset MCP server illustrates the Skills-vs-MCP boundary in a trusted-data, government context.
-- [claw-ecosystem](../Agents/openclaw/claw-ecosystem.md) — Broader MCP ecosystem overview that contrasts with MoSPI's narrow, domain-scoped server design.
+- [Claw-Ecosystem-And-Agent-Topology-2026](../Agents/openclaw/Claw-Ecosystem-And-Agent-Topology-2026.md) — Broader MCP ecosystem overview that contrasts with MoSPI's narrow, domain-scoped server design.

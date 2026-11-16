@@ -33,7 +33,7 @@ Representative, high-depth architectural investigations and verified implementat
 
 1. [microGPT: Scalar Autograd Engine & Transformer Architecture](AI-ML/LLMs/architecture/microGPT-Technical-Deep-Dive.md)  
    *Algorithmic walkthrough of pure-Python scalar autograd, multi-head causal attention, and complete 240-line GPT architecture.*
-2. [OpenClaw / Moltbot: Autonomous Agent Security Analysis](AI-ML/Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md)  
+2. [OpenClaw / Moltbot: Autonomous Agent Security Analysis](AI-ML/Agents/openclaw/OpenClaw-Moltbot-Security-Analysis-2026.md)  
    *Comprehensive threat modeling, Shodan discovery data, and execution-node hardening for local-first autonomous agents.*
 3. [HTTP QUERY Method (RFC 10008)](Engineering/Architecture/HTTP-QUERY-Method-RFC-10008-Nov-2026.md)  
    *IETF RFC 10008 analysis: safe request-body queries, idempotent semantic caching, and Gateway/WAF configuration.*

@@ -369,5 +369,5 @@ https://www.youtube.com/watch?v=tnsrnsy_Lus
 
 **Related:**
 - [OpenClaw-Moltbot-Clawdbot-Architecture-2026](OpenClaw-Moltbot-Clawdbot-Architecture-2026.md) — Explains the gateway port 18789, loopback binding, JSONL session storage, and channel pairing that this tutorial configures.
-- [openclaw-usecases-video-supplement](openclaw-usecases-video-supplement.md) — Concrete CRM, briefing, and skills workflows to deploy once this secure VPS setup is complete and Telegram pairing succeeds.
+- [OpenClaw-Enterprise-Usecases-And-Workflows-2026](OpenClaw-Enterprise-Usecases-And-Workflows-2026.md) — Concrete CRM, briefing, and skills workflows to deploy once this secure VPS setup is complete and Telegram pairing succeeds.
 - [OpenClaw-Autonomous-System-Whitepaper-2026](OpenClaw-Autonomous-System-Whitepaper-2026.md) — Frames why a hardened VPS deployment is necessary by characterizing agents as privileged infrastructure rather than developer tools.

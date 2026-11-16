@@ -199,6 +199,6 @@ Raad attributes the sustained attacks to AI agents, but no independently inspect
 **Related:**
 - [Grok Build Passive DNS Exposure](Grok-Build-Passive-DNS-Data-Exposure-Nov-2026.md) — How shadow AI app builders leave internal corporate data and API keys unauthenticated on public subdomains.
 - [Anthropic API Restrictions](../../AI-ML/LLMs/models/anthropic/Anthropic-API-Restrictions.md) — Distinguish the earlier subscription-access dispute from this hosted credential incident.
-- [OpenClaw Security Analysis](../../AI-ML/Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md) — Compare agent permissions, exposed secrets and isolation boundaries.
+- [OpenClaw Security Analysis](../../AI-ML/Agents/openclaw/OpenClaw-Moltbot-Security-Analysis-2026.md) — Compare agent permissions, exposed secrets and isolation boundaries.
 - [Railway, Zeabur and the Hunt for AI Provider Keys](AI-Key-Theft-Railway-Zeabur-Oct-2026.md) — Compare this period's platform breaches targeting inference credentials.
 - [PHP2Shell: History, UAF and ASLR](PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — Contrast only: separate a vulnerability primitive from the conditions needed for practical exploitation.

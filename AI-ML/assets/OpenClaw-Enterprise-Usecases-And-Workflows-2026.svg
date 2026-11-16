@@ -1,0 +1,242 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0b0f19" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGradDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="accentCyan" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <linearGradient id="accentEmerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+
+    <linearGradient id="accentPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+
+    <linearGradient id="accentAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+
+    <!-- Arrow Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981" />
+    </marker>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="700" fill="url(#bgGrad)" />
+
+  <!-- Header Section -->
+  <rect x="30" y="25" width="1140" height="65" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="50" y="55" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700">OPENCLAW ENTERPRISE AUTOMATION &amp; MULTI-CHANNEL DISPATCH MATRIX</text>
+  <text x="50" y="75" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Persistent Identity Core · Multi-Perspective Advisory Councils · RAG Knowledge Vault · Outbound Approval Gates</text>
+  <rect x="990" y="42" width="160" height="30" rx="6" fill="#0369a1" />
+  <text x="1070" y="62" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">CLAUDE OPUS 4.6 CORE</text>
+
+  <!-- COLUMN 1: INGRESS & CHANNEL MULTIPLEXING -->
+  <g transform="translate(30, 105)">
+    <!-- Main Ingress Container -->
+    <rect width="260" height="565" rx="8" fill="url(#cardGradDark)" stroke="#38bdf8" stroke-width="1.5" />
+    <rect width="260" height="36" rx="8" fill="url(#accentCyan)" />
+    <text x="130" y="23" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">1. MULTI-CHANNEL INGRESS</text>
+
+    <!-- Channel Cards -->
+    <!-- Telegram -->
+    <rect x="15" y="50" width="230" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="70" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">📱 Telegram Bot (Primary Interface)</text>
+    <text x="25" y="90" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• 2-way conversational interactive shell</text>
+    <text x="25" y="108" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• Action-item approval inline buttons</text>
+    <text x="25" y="124" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Delivers 7am briefings &amp; critical alerts</text>
+
+    <!-- Slack & Team Comms -->
+    <rect x="15" y="145" width="230" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="165" fill="#a855f7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">💼 Slack &amp; Team Workspaces</text>
+    <text x="25" y="185" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• #knowledge broadcast stream</text>
+    <text x="25" y="203" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• Video pitch idea extraction mentions</text>
+    <text x="25" y="219" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Restricted mode: suppresses sensitive PII</text>
+
+    <!-- WhatsApp & SMS -->
+    <rect x="15" y="240" width="230" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="260" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">💬 WhatsApp, SMS &amp; Voice</text>
+    <text x="25" y="280" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• Voice notes routed to Whisper STT</text>
+    <text x="25" y="298" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• Mobile tasks &amp; quick expense logs</text>
+    <text x="25" y="314" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Twilio / WhatsApp Cloud API bridge</text>
+
+    <!-- Scheduled Automation Triggers -->
+    <rect x="15" y="335" width="230" height="110" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="355" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">⏰ Autonomous Cron Triggers</text>
+    <text x="25" y="375" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• Every 5m: Fathom transcript poller</text>
+    <text x="25" y="393" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• Hourly: Encrypted DB &amp; Git sync</text>
+    <text x="25" y="411" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• Nightly 1am-3:30am: Advisory councils</text>
+    <text x="25" y="429" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• Morning 7am: Exec briefing push</text>
+
+    <!-- Health Check & Heartbeat -->
+    <rect x="15" y="455" width="230" height="95" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="475" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">💓 Heartbeat &amp; Watchdog</text>
+    <text x="25" y="495" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• 6-hour calendar &amp; inbox sweep</text>
+    <text x="25" y="513" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11">• Missing run &gt; 2x interval alerts</text>
+    <text x="25" y="531" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Silent on success · Alerts on failures</text>
+  </g>
+
+  <!-- COLUMN 2: ORCHESTRATION & PERSISTENCE CORE -->
+  <g transform="translate(310, 105)">
+    <!-- Container -->
+    <rect width="560" height="275" rx="8" fill="url(#cardGradDark)" stroke="#10b981" stroke-width="1.5" />
+    <rect width="560" height="36" rx="8" fill="url(#accentEmerald)" />
+    <text x="280" y="23" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">2. ORCHESTRATION ENGINE &amp; PERSISTENT STATE CORE</text>
+
+    <!-- Left Box: Identity & Memory State Files -->
+    <rect x="15" y="50" width="255" height="210" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="72" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Persistent Personality &amp; Memory</text>
+    
+    <text x="25" y="94" fill="#a855f7" font-family="Courier, monospace" font-size="11" font-weight="700">IDENTITY.md</text>
+    <text x="25" y="110" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Defines role, persistent traits, character</text>
+
+    <text x="25" y="132" fill="#a855f7" font-family="Courier, monospace" font-size="11" font-weight="700">SOUL.md</text>
+    <text x="25" y="148" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Tone, humor rules, boundaries, style rules</text>
+
+    <text x="25" y="170" fill="#a855f7" font-family="Courier, monospace" font-size="11" font-weight="700">MEMORY.md</text>
+    <text x="25" y="186" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Distilled weekly from daily note reflections</text>
+
+    <text x="25" y="208" fill="#a855f7" font-family="Courier, monospace" font-size="11" font-weight="700">TOOLS.md / USER.md</text>
+    <text x="25" y="224" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">API specs, user context &amp; workspace IDs</text>
+
+    <text x="25" y="246" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Fresh Wakeup: Reloads state on each turn</text>
+
+    <!-- Right Box: Gateway, Routing & Security Gate -->
+    <rect x="290" y="50" width="255" height="210" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="300" y="72" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Security Gate &amp; Prompt Defense</text>
+
+    <text x="300" y="94" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">Deterministic Ingestion Filter</text>
+    <text x="300" y="110" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Strips "System:", role hijacking markers</text>
+
+    <text x="300" y="132" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">Secrets Redaction Pipeline</text>
+    <text x="300" y="148" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Masks API tokens, bearer keys in all logs</text>
+
+    <text x="300" y="170" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">Outbound Action Gate</text>
+    <text x="300" y="186" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Public posts &amp; emails require explicit OK</text>
+
+    <text x="300" y="208" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">Cost &amp; Token Limiter</text>
+    <text x="300" y="224" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Daily budget threshold alerts on spikes</text>
+
+    <text x="300" y="246" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Localhost Only (127.0.0.1 / Tailscale)</text>
+  </g>
+
+  <!-- COLUMN 2 BOTTOM: ADVISORY COUNCILS & SUB-AGENTS -->
+  <g transform="translate(310, 395)">
+    <!-- Container -->
+    <rect width="560" height="275" rx="8" fill="url(#cardGradDark)" stroke="#a855f7" stroke-width="1.5" />
+    <rect width="560" height="36" rx="8" fill="url(#accentPurple)" />
+    <text x="280" y="23" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">3. NIGHTLY MULTI-PERSPECTIVE ADVISORY COUNCILS</text>
+
+    <!-- Council 1: Business Council -->
+    <rect x="15" y="48" width="165" height="212" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="70" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">💼 Business Council</text>
+    <text x="25" y="88" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">14 Ingest Streams:</text>
+    <text x="25" y="104" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• YouTube &amp; IG stats</text>
+    <text x="25" y="120" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• X / Twitter analytics</text>
+    <text x="25" y="136" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• CRM deals &amp; emails</text>
+    <text x="25" y="156" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">8 Domain Specialists:</text>
+    <text x="25" y="172" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Finance, Growth, Brand</text>
+    <text x="25" y="188" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Ops, Community, Tech</text>
+    <text x="25" y="210" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Synthesizes Top 10</text>
+    <text x="25" y="226" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Ranked Recommendations</text>
+
+    <!-- Council 2: Security Review -->
+    <rect x="195" y="48" width="170" height="212" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="205" y="70" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">🛡️ Security Council</text>
+    <text x="205" y="88" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Nightly 3:30am Scan:</text>
+    <text x="205" y="104" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Reads raw codebase</text>
+    <text x="205" y="120" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Reviews recent commits</text>
+    <text x="205" y="140" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">4 Review Perspectives:</text>
+    <text x="205" y="156" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Offensive (Exploits)</text>
+    <text x="205" y="172" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Defensive (Sanitization)</text>
+    <text x="205" y="188" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Data Privacy (PII/Keys)</text>
+    <text x="205" y="204" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Realism (Zero theater)</text>
+    <text x="205" y="226" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Immediate Telegram Ping</text>
+    <text x="205" y="242" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Triggered on Critical Severity</text>
+
+    <!-- Council 3: Platform & Developer Sub-Agents -->
+    <rect x="380" y="48" width="165" height="212" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="390" y="70" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">⚙️ Sub-Agents &amp; Dev</text>
+    <text x="390" y="88" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Task Delegation Tiers:</text>
+    <text x="390" y="104" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Light: In-process edits</text>
+    <text x="390" y="120" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Medium: Cursor CLI</text>
+    <text x="390" y="136" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Heavy: Background worker</text>
+    <text x="390" y="156" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">Sub-Agent Runtime:</text>
+    <text x="390" y="172" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Recursive spawning</text>
+    <text x="390" y="188" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Timeout monitoring</text>
+    <text x="390" y="210" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Platform Health Check</text>
+    <text x="390" y="226" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Doc drift &amp; dependency audit</text>
+  </g>
+
+  <!-- COLUMN 3: EXECUTION, STORAGE & WORKFLOWS -->
+  <g transform="translate(890, 105)">
+    <!-- Container -->
+    <rect width="280" height="565" rx="8" fill="url(#cardGradDark)" stroke="#fbbf24" stroke-width="1.5" />
+    <rect width="280" height="36" rx="8" fill="url(#accentAmber)" />
+    <text x="140" y="23" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">4. DATA PLANE &amp; PIPELINES</text>
+
+    <!-- Fathom & CRM Pipeline -->
+    <rect x="15" y="50" width="250" height="110" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="70" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">🤝 Fathom Meeting CRM Pipeline</text>
+    <text x="25" y="88" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Polls Fathom AI transcript after call</text>
+    <text x="25" y="104" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Maps attendees to SQLite CRM contacts</text>
+    <text x="25" y="120" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Extracts actions: Mine vs. Waiting-on</text>
+    <text x="25" y="136" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Approved tasks push to Todoist / Asana</text>
+    <text x="25" y="152" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Approval queue sent to Telegram</text>
+
+    <!-- Knowledge Base RAG -->
+    <rect x="15" y="170" width="250" height="110" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="190" fill="#a855f7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">📚 RAG Knowledge Vault</text>
+    <text x="25" y="208" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Drops URL into Telegram topic</text>
+    <text x="25" y="224" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Ingests X/Twitter threads (FxTwitter)</text>
+    <text x="25" y="240" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Fetches YouTube transcripts &amp; PDFs</text>
+    <text x="25" y="256" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• SQLite + vector embeddings search</text>
+    <text x="25" y="272" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Cross-posts summaries to Slack #kb</text>
+
+    <!-- Content & Video Pitch Flow -->
+    <rect x="15" y="290" width="250" height="105" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="310" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">🎬 Content Pitch &amp; Dedup Pipeline</text>
+    <text x="25" y="328" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Triggered by idea mention in Slack</text>
+    <text x="25" y="344" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Research X trends &amp; prior saved items</text>
+    <text x="25" y="360" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Cosine sim &gt; 0.4 drops duplicates</text>
+    <text x="25" y="376" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Asana card: 3 hooks, outlines, angles</text>
+    <text x="25" y="390" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Generates titles, thumbnails, scripts</text>
+
+    <!-- SQLite & Backup Plane -->
+    <rect x="15" y="405" width="250" height="145" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="425" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">🗄️ Multi-Database &amp; Backup Mesh</text>
+    <text x="25" y="443" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• 12 local SQLite databases auto-scanned</text>
+    <text x="25" y="459" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• CRM, Knowledge, Metrics, Pitches, Logs</text>
+    <text x="25" y="475" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Hourly encrypted tar to Google Drive</text>
+    <text x="25" y="491" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Hourly Git commit &amp; push to GitHub</text>
+    <text x="25" y="507" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Retains rolling 7-day snapshot buffer</text>
+    <text x="25" y="525" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Dual failure alerting via Telegram</text>
+    <text x="25" y="541" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Total disaster recovery in single bash run</text>
+  </g>
+
+  <!-- Connective Arrows -->
+  <line x1="290" y1="210" x2="310" y2="210" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrow)" />
+  <line x1="870" y1="210" x2="890" y2="210" stroke="#10b981" stroke-width="2" marker-end="url(#arrowGreen)" />
+  <line x1="590" y1="380" x2="590" y2="395" stroke="#a855f7" stroke-width="2" marker-end="url(#arrow)" />
+</svg>

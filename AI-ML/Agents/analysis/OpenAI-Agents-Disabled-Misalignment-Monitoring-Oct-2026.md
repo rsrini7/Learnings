@@ -80,4 +80,4 @@ The Astra denial matters independently of the monitoring change. An agent that i
 - [Banks and Unvetted AI Agents](../../../News/Security/Banks-Third-Party-AI-Agents-Oct-2026.md) — Why credential possession and task consent are not the same as bounded delegation.
 - [OpenCode Console API-Key Breach](../../../News/Security/OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md) — Agent platforms as credential stores and the limits of gateway controls.
 - [Node.js Brotli Decoder](../../../News/Security/Node.js-Brotli-Node2Shell-RCE-Oct-2026.md) — Codex Security reported that runtime bug in the same week; this note concerns agents changing their own controls.
-- [OpenClaw Security Analysis](../openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md) — Agent permissions, exposed secrets, and isolation boundaries.
+- [OpenClaw Security Analysis](../openclaw/OpenClaw-Moltbot-Security-Analysis-2026.md) — Agent permissions, exposed secrets, and isolation boundaries.
