@@ -285,4 +285,4 @@ The following data table summarizes the global profile metadata exposure observe
 - [MongoBleed (CVE-2025-14847)](MongoBleed-Dec2025.md) — Another major late-2025 unauthenticated data exposure event involving raw network protocol parsing.
 - [PHP2Shell: History, UAF and ASLR](PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — Compare data harvesting and privacy boundary failures with memory corruption and code execution.
 - [eMudhra Weak CA Keys](EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md) — Analyzes PKI trust boundaries and cryptographic key exposures across identity platforms.
-- [10.0_CVE_React2Shell_Whitepaper](10.0_CVE_React2Shell_Whitepaper.md) — Large-scale exploitation of web protocol deserialization across exposed internet infrastructure.
+- [React2Shell (CVE-2025-55182)](React2Shell-CVE-2025-55182-Flight-Protocol-RCE-2026.md) — Large-scale exploitation of web protocol deserialization across exposed internet infrastructure.

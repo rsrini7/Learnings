@@ -325,7 +325,7 @@ Researched following public disclosures regarding React Server DOM and Next.js i
 ---
 
 **Related:**
-- [React2Shell Whitepaper (CVE-2025-55182)](10.0_CVE_React2Shell_Whitepaper.md) — The earlier December 2025 prototype-pollution Flight protocol RCE that initiated the RSC security debate.
+- [React2Shell Whitepaper (CVE-2025-55182)](React2Shell-CVE-2025-55182-Flight-Protocol-RCE-2026.md) — The earlier December 2025 prototype-pollution Flight protocol RCE that initiated the RSC security debate.
 - [PHP Migration: Static React, Java or Go?](../../Engineering/Architecture/PHP-Migration-Static-React-Java-And-Go-Oct-2026.md) — Architectural strategy for decoupling web presentation from backend runtimes without taking on RSC complexity.
 - [PHP2Shell: History, UAF and ASLR](PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — Technical analysis of the native C-runtime Use-After-Free in PHP that balances comparisons between PHP and Node.js security.
 - [Node.js Brotli Node2Shell RCE](Node.js-Brotli-Node2Shell-RCE-Oct-2026.md) — Examination of native buffer manipulation and RCE vectors within the Node.js runtime environment.

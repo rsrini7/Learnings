@@ -372,6 +372,6 @@ The following diagrams illustrate the original exploit sequence, uninitialized h
 
 **Related:**
 - [PHP2Shell: History, UAF and ASLR](PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — Compare memory disclosure with a leak-and-corruption chain that enables RCE.
-- [Node.js-Async-Hooks-DoS-Vulnerability](Node.js-Async-Hooks-DoS-Vulnerability.md) — Sister infrastructure-layer CVE write-up for a critical runtime flaw from the same period.
+- [Node.js Async Hooks DoS (CVE-2025-59466)](NodeJS-Async-Hooks-Stack-Exhaustion-DoS-CVE-2025-59466-2026.md) — Sister infrastructure-layer CVE write-up for a critical runtime flaw from the same period.
 - [Largest-WhatsApp-Data-Leak-in-History](Largest-WhatsApp-Data-Leak-in-History.md) — Both are unauthenticated, internet-scale data exposure events disclosed in late 2025.
-- [10.0_CVE_React2Shell_Whitepaper](10.0_CVE_React2Shell_Whitepaper.md) — Unauthenticated remote attack vector exploiting protocol deserialization in server runtimes.
+- [React2Shell (CVE-2025-55182)](React2Shell-CVE-2025-55182-Flight-Protocol-RCE-2026.md) — Unauthenticated remote attack vector exploiting protocol deserialization in server runtimes.

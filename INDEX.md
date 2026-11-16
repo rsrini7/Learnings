@@ -488,8 +488,6 @@ A complete, fully expanded single-page index of all technical articles and resea
 [📂 Open Dedicated Domain Hub (News/README.md)](News/README.md)
 
 ### 🛡️ Security & Vulnerabilities
-- [10.0 CVE React2Shell Whitepaper](News/Security/10.0_CVE_React2Shell_Whitepaper.md)
-- [10.0 CVE n8n vulnerability](News/Security/10.0_CVE_n8n-vulnerability.md)
 - [AI Key Theft Railway Zeabur Oct 2026](News/Security/AI-Key-Theft-Railway-Zeabur-Oct-2026.md)
 - [AWS Firecracker MicroVM Escape Vulnerabilities Nov 2026](News/Security/AWS-Firecracker-MicroVM-Escape-Vulnerabilities-Nov-2026.md)
 - [Banks Third Party AI Agents Oct 2026](News/Security/Banks-Third-Party-AI-Agents-Oct-2026.md)
@@ -505,8 +503,9 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [LiteLLM 1.107.0 Supply Chain Compromise Oct 2026](News/Security/LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md)
 - [Local AI And Agent Security Threat Model Nov 2026](News/Security/Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md)
 - [MongoBleed Dec2025](News/Security/MongoBleed-Dec2025.md)
-- [Node.js Async Hooks DoS Vulnerability](News/Security/Node.js-Async-Hooks-DoS-Vulnerability.md)
+- [N8n Workflow Automation RCE Suite CVE 2025 68613 2026](News/Security/N8n-Workflow-Automation-RCE-Suite-CVE-2025-68613-2026.md)
 - [Node.js Brotli Node2Shell RCE Oct 2026](News/Security/Node.js-Brotli-Node2Shell-RCE-Oct-2026.md)
+- [NodeJS Async Hooks Stack Exhaustion DoS CVE 2025 59466 2026](News/Security/NodeJS-Async-Hooks-Stack-Exhaustion-DoS-CVE-2025-59466-2026.md)
 - [Notepad++ Targeted Attack Nov 2026](News/Security/Notepad%2B%2B-Targeted-Attack-Nov-2026.md)
 - [OpenAI 948 Linux Kernel LPEs Autonomous Exploits Nov 2026](News/Security/OpenAI-948-Linux-Kernel-LPEs-Autonomous-Exploits-Nov-2026.md)
 - [OpenCode Console API Key Breach And Distillation Oct 2026](News/Security/OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md)
@@ -516,6 +515,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [PHP2Shell Steal My Bitcoin Challenge Oct 2026](News/Security/PHP2Shell-Steal-My-Bitcoin-Challenge-Oct-2026.md)
 - [Polymarket DebugBear Supply Chain Attack Oct 2026](News/Security/Polymarket-DebugBear-Supply-Chain-Attack-Oct-2026.md)
 - [React Server Components RCE GHSA xqc2 xf4c x3h3 Oct 2026](News/Security/React-Server-Components-RCE-GHSA-xqc2-xf4c-x3h3-Oct-2026.md)
+- [React2Shell CVE 2025 55182 Flight Protocol RCE 2026](News/Security/React2Shell-CVE-2025-55182-Flight-Protocol-RCE-2026.md)
 - [Security Vulnerabilities in Wireless Devices and Apps](News/Security/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
 - [Ubuntu Server CVE 2026 98432 Kernel UAF And Patch Lag Nov 2026](News/Security/Ubuntu-Server-CVE-2026-98432-Kernel-UAF-And-Patch-Lag-Nov-2026.md)
 

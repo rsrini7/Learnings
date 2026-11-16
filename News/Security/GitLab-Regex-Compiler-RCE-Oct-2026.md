@@ -69,5 +69,5 @@ The vulnerability was reported by researcher **joaxcar** through GitLab's Hacker
 - [Linux Kernel ZDI Public Reports](Linux-Kernel-ZDI-Public-Reports-KSMBD-Oct-2026.md) — Compare an available GitLab patch with kernel fixes still in maintainer trees.
 - [Node.js Brotli Decoder](Node.js-Brotli-Node2Shell-RCE-Oct-2026.md) — Another same-week runtime/parser memory-safety failure requiring a version upgrade.
 - [PHP2Shell: History, UAF and ASLR](PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — Compare a pre-authentication RCE in a widely deployed runtime.
-- [React2Shell Whitepaper](10.0_CVE_React2Shell_Whitepaper.md) — Another maximum-severity RCE affecting a developer-facing platform.
+- [React2Shell (CVE-2025-55182)](React2Shell-CVE-2025-55182-Flight-Protocol-RCE-2026.md) — Another maximum-severity RCE affecting a developer-facing platform.
 - [LiteLLM 1.107.0 Supply-Chain Compromise](LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md) — Why CI/CD credentials and release pipelines are high-value targets once a developer platform is compromised.

@@ -78,4 +78,4 @@ Node.js credits **OpenAI Codex Security** researchers Khai Tran and Sylvie Mayer
 - [PHP2Shell: History, UAF and ASLR](PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — Compare another runtime-level memory-corruption path from the same week.
 - [GitLab CVE-2026-110264](GitLab-Regex-Compiler-RCE-Oct-2026.md) — Same-week unauthenticated RCE in developer infrastructure rather than the application runtime.
 - [LiteLLM 1.107.0 Supply-Chain Compromise](LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md) — Shows the other direction: a package release, not a runtime binary, as the compromised artifact.
-- [Node.js Async Hooks DoS](Node.js-Async-Hooks-DoS-Vulnerability.md) — Earlier Node.js failure mode where request handling becomes a process-level problem.
+- [Node.js Async Hooks DoS (CVE-2025-59466)](NodeJS-Async-Hooks-Stack-Exhaustion-DoS-CVE-2025-59466-2026.md) — Earlier Node.js failure mode where request handling becomes a process-level problem.
