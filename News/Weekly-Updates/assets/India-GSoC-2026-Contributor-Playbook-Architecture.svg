@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="780" fill="url(#bgGrad)" />
+
+  <!-- Grid lines for subtle tech texture -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.4">
+    <line x1="0" y1="90" x2="1200" y2="90" />
+    <line x1="0" y1="420" x2="1200" y2="420" />
+    <line x1="600" y1="90" x2="600" y2="760" />
+  </g>
+
+  <!-- Header -->
+  <g transform="translate(40, 28)">
+    <rect x="0" y="0" width="1120" height="54" rx="8" fill="#1e293b" opacity="0.6" stroke="#334155" />
+    <text x="20" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+      Google Summer of Code: End-to-End Contributor Operational Architecture
+    </text>
+    <rect x="910" y="14" width="190" height="26" rx="13" fill="#0284c7" opacity="0.2" stroke="#38bdf8" stroke-width="1" />
+    <text x="1005" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="11" font-weight="600" fill="#38bdf8" text-anchor="middle">
+      GSoC 2026 Contributor Blueprint
+    </text>
+  </g>
+
+  <!-- Card 1: Stage 1 - Foundation & Reconnaissance -->
+  <g transform="translate(40, 102)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#38bdf8" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      Stage 1: Foundation &amp; Reconnaissance (Oct – Jan)
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      1. Technical Stack Mastery &amp; Target Shortlisting
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Profile alignment: C++/Rust (systems), Python (ML/data), TypeScript (web)
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Shortlist 3-5 multi-year recurring orgs; clone and build repos locally
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      2. Progressive Contribution Ladder (Easy to Non-Trivial)
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Step 1: Documentation clarifications, broken test harness repairs
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Step 2: &quot;good-first-issue&quot; bug fixes → 5-10 merged PRs before proposal
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      3. Community Norms &amp; Mentorship Etiquette
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Participate in public Slack/Discord/IRC; avoid private DMs to mentors
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Read architectural RFCs, review peer PRs, and engage with triagers
+    </text>
+  </g>
+
+  <!-- Card 2: Stage 2 - Proposal Engineering -->
+  <g transform="translate(620, 102)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#4ade80" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      Stage 2: Proposal Engineering &amp; Architecture (Feb – Apr)
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      1. Concrete Technical Specification (No High-Level Buzzwords)
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Define exact data structures, wire protocols, API contracts, schemas
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Provide sequence flows and architecture diagrams of target state
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      2. 12-Week Milestone Breakdown &amp; Deliverables
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Split into discrete 2-week deliverables with tangible testable PRs
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Reserve 2-3 weeks buffer for review delays, rebasing, edge cases
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      3. Pre-Submission Review Loop
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Share draft proposals with prospective mentors 2-3 weeks before deadline
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Incorporate mentor architectural feedback before final portal submission
+    </text>
+  </g>
+
+  <!-- Card 3: Stage 3 - Execution & Coding Lifecycle -->
+  <g transform="translate(40, 432)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#fbbf24" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      Stage 3: Execution &amp; Coding Lifecycle (May – Aug)
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      1. Community Bonding (May 8 – June 1)
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Establish weekly sync rhythm, working hours, and communication cadence
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Refine sub-tasks and verify staging/CI pipeline triggers locally
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      2. Phase 1 &amp; Midterm Gate (June 2 – July 18)
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Deliver core modules and unit tests incrementally; avoid giant PRs
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Midterm Evaluation: Mentors assess code velocity, communication, quality
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      3. Phase 2 &amp; Upstream Landings (July 21 – Aug 25)
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Integration tests, documentation, performance benchmarks, and cleanup
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Final Evaluation: Public work product report and merged mainline code
+    </text>
+  </g>
+
+  <!-- Card 4: Stage 4 - Mentor Evaluation Rubric -->
+  <g transform="translate(620, 432)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#c084fc" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      Stage 4: Evaluation Rubric &amp; Scoring Matrix
+    </text>
+
+    <!-- Scoring Weight 1 -->
+    <rect x="18" y="56" width="504" height="52" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c084fc">
+      Technical Competence &amp; Code Quality (40% Weight)
+    </text>
+    <text x="30" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      Test coverage, architectural compliance, code readability, error handling
+    </text>
+
+    <!-- Scoring Weight 2 -->
+    <rect x="18" y="116" width="504" height="52" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="136" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c084fc">
+      Communication &amp; Professional Independence (25% Weight)
+    </text>
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      Proactive blockers reporting, asynchronous clarity, response to reviews
+    </text>
+
+    <!-- Scoring Weight 3 -->
+    <rect x="18" y="176" width="504" height="52" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c084fc">
+      Proposal Realism &amp; Scope Feasibility (20% Weight)
+    </text>
+    <text x="30" y="214" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      Practical milestones, contingency management, accurate difficulty estimate
+    </text>
+
+    <!-- Scoring Weight 4 -->
+    <rect x="18" y="236" width="504" height="52" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="256" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#c084fc">
+      Long-Term Open Source Retention (15% Weight)
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      Likelihood of continued post-GSoC stewardship, triaging, and mentoring
+    </text>
+  </g>
+</svg>

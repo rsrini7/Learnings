@@ -524,7 +524,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [AWS US East 1 Outage October 2025](News/Outages/AWS-US-East-1-Outage-October-2025.md)
 - [Cloudflare Global Outage ClickHouse Config Nov 2025](News/Outages/Cloudflare-Global-Outage-ClickHouse-Config-Nov-2025.md)
 - [Supabase Outage Feb 2026](News/Outages/Supabase-Outage-Feb-2026.md)
-- [Tailwind Financial Crisis](News/Outages/Tailwind-Financial-Crisis.md)
+- [Tailwind Financial Crisis 2026](News/Outages/Tailwind-Financial-Crisis-2026.md)
 
 ### 📅 Weekly Updates
 - [Anthropic Fourth Economic Index Report Jan 2026](News/Weekly-Updates/Anthropic-Fourth-Economic-Index-Report-Jan-2026.md)
@@ -540,7 +540,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Feb 8 2026](News/Weekly-Updates/Feb-8-2026.md)
 - [Global AI Scam Landscape And Defense Playbook 2026](News/Weekly-Updates/Global-AI-Scam-Landscape-And-Defense-Playbook-2026.md)
 - [Global Tech Fellowships And Open Source Grants Guide 2026](News/Weekly-Updates/Global-Tech-Fellowships-And-Open-Source-Grants-Guide-2026.md)
-- [India GSoc 2026 Extended](News/Weekly-Updates/India-GSoc-2026-Extended.md)
+- [India GSoC 2026 Contributor Playbook And Operational Guide](News/Weekly-Updates/India-GSoC-2026-Contributor-Playbook-And-Operational-Guide.md)
 - [India GSoc 2026 Trends Challenges Solutions](News/Weekly-Updates/India-GSoc-2026-Trends-Challenges-Solutions.md)
 - [India Restaurant Billing Suppressed Turnover Probe 2026](News/Weekly-Updates/India-Restaurant-Billing-Suppressed-Turnover-Probe-2026.md)
 - [Jan 11 2026](News/Weekly-Updates/Jan-11-2026.md)

@@ -1,6 +1,9 @@
 # Google Summer of Code: Participation Trends, Challenges, and the Path Forward
 
-## A White Paper on Program Integrity and Community Sustainability
+**White paper · Revised 16 November 2026 · Program integrity and community sustainability**  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
+
+> **Core idea:** Since 2012, India has been the largest participant country in Google Summer of Code (GSoC), contributing over 21,000 developers to global open-source software. However, the ecosystem faces severe sustainability friction from automated proposal spam, credentialism, and maintainer burnout. This white paper analyzes historical participation data, root causes, and stakeholder perspectives, proposing an evidence-based operational framework that preserves accessibility for contributors from non-elite institutions while safeguarding volunteer maintainer bandwidth.
 
 ## Abstract
 
@@ -12,7 +15,13 @@ Google Summer of Code (GSoC) has successfully introduced over 21,000 contributor
 
 ---
 
-![India-GSoc-2026-Trends-Challenges-Solutions](../Security/assets/India-GSoc-2026-Trends-Challenges-Solutions.png)
+![Google Summer of Code India Ecosystem Architecture](assets/India-GSoC-2026-Trends-Challenges-Solutions-Architecture.svg)
+
+*Figure 1: Architectural overview of Google Summer of Code participation dynamics, demographic growth, maintainer friction points, and community sustainability frameworks.*
+
+---
+
+![India-GSoc-2026-Trends-Challenges-Solutions](assets/India-GSoc-2026-Trends-Challenges-Solutions.png)
 
 ---
 
@@ -642,7 +651,7 @@ Despite challenges, many Indian contributors exemplify ethical, high-quality par
 - Link all your contributions (PRs, issues, community interactions)
 - Write authentically—reviewers can detect AI-generated content
 
-> **For comprehensive guidance:** See Appendix F for a month-by-month preparation plan, Appendix G for detailed proposal templates and checklists, and Appendix H for organization selection strategies. These operational guides translate the principles above into actionable steps. Navigate to : [India-GSoc-2026-Extended.md](India-GSoc-2026-Extended.md)
+> **For comprehensive guidance:** See Appendix F for a month-by-month preparation plan, Appendix G for detailed proposal templates and checklists, and Appendix H for organization selection strategies. These operational guides translate the principles above into actionable steps. Navigate to : [India-GSoC-2026-Contributor-Playbook-And-Operational-Guide.md](India-GSoC-2026-Contributor-Playbook-And-Operational-Guide.md)
 
 **Comprehensive Proposal Structure (From Successful Examples):**
 
@@ -941,7 +950,7 @@ Midterm Evaluation (Week 8):
    - Recognize and reward quality quickly
 
 > **Ready-to-use resources:** Communities can share Appendix C (Sample Contribution Guidelines) and Appendix F (Operational Playbook) with newcomers as standardized onboarding material that promotes ethical participation from day one.
-Navigate to : [India-GSoc-2026-Extended.md](India-GSoc-2026-Extended.md)
+Navigate to : [India-GSoC-2026-Contributor-Playbook-And-Operational-Guide.md](India-GSoC-2026-Contributor-Playbook-And-Operational-Guide.md)
 
 ---
 
@@ -1443,5 +1452,14 @@ The challenges documented in this white paper are significant but not insurmount
 
 *This white paper is intended as an educational resource for stakeholders in the open-source ecosystem. Views expressed represent analysis of publicly available information and do not constitute official positions of Google, GSoC, or any mentioned organizations.*
 
-*Document compiled: January 22, 2026*
-*Author: Srinivasan Ragothaman*
+*Document compiled: January 22, 2026 · Revised: November 16, 2026*  
+*Author: Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
+
+---
+
+**Related:**
+- [India GSoC Contributor Playbook and Operational Guide](India-GSoC-2026-Contributor-Playbook-And-Operational-Guide.md) — Companion operational guide containing preparation roadmaps, proposal templates, and reviewer evaluation rubrics.
+- [Global Tech Fellowships and Open Source Grants Guide](Global-Tech-Fellowships-And-Open-Source-Grants-Guide-2026.md) — Comprehensive landscape of alternative global software fellowships including LFX, Outreachy, and MLH.
+- [Decline of Stack Overflow and Developer Knowledge Shifts](Decline-Of-Stack-Overflow-And-Developer-Knowledge-Shifts-2026.md) — Analysis of how generative AI reshaping technical knowledge discovery impacts newcomer open-source onboarding.
+- [WIPO International Fellowship Program Architecture](WIPO-International-Fellowship-Program-Architecture-2026.md) — Institutional fellowship structures, selection criteria, and professional technical specialization models.
+- [Tailwind AI Disruption and Open-Source Financial Crisis](../Outages/Tailwind-Financial-Crisis-2026.md) — Examination of economic sustainability and business model vulnerabilities in commercial open-source ecosystems.

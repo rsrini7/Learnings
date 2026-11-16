@@ -1,8 +1,17 @@
-# New Appendices for India-GSoC-2026-Trends-Challenges-Solutions.md
+# Google Summer of Code: Contributor Playbook and Operational Guide (2026)
 
-Source Document to refer : [India-GSoc-2026-Trends-Challenges-Solutions.md](India-GSoc-2026-Trends-Challenges-Solutions.md)
+Learning note · Revised March 2026 · Operational Guide
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
-![India-GSoc-2026-Extended.png](../Security/assets/India-GSoc-2026-Extended.png)
+> **Core idea:** An operational companion to the primary ecosystem whitepaper [India GSoC 2026 Trends, Challenges, and Solutions](India-GSoc-2026-Trends-Challenges-Solutions.md), codifying a concrete month-by-month contributor preparation plan, technical proposal architectures, mentor evaluation rubrics, and organization selection frameworks for open-source software sustainability.
+
+![GSoC 2026 Contributor Architecture](assets/India-GSoC-2026-Contributor-Playbook-Architecture.svg)
+
+---
+
+## 1. Executive Summary & Companion Scope
+
+This operational guide provides the execution mechanics, technical templates, and evaluation criteria designed to support contributors applying to and executing projects in Google Summer of Code (GSoC) 2026. While the primary research whitepaper ([India GSoC 2026: Ecosystem Analysis & Strategic Roadmap](India-GSoc-2026-Trends-Challenges-Solutions.md)) analyzes ecosystem metrics, applicant volume inflation, and macroeconomic funding shifts, this document delivers tactical frameworks for prospective contributors, mentors, and open-source project administrators.
 
 ## Appendix F: Operational Playbook for Contributors
 
@@ -1608,4 +1617,18 @@ If <3 are YES → Reconsider; may not be good fit
 ```
 
 ---
+
+## Supplementary visuals
+
+![GSoC Contributor Workflow and Extended Decision Matrix](assets/India-GSoc-2026-Extended.png)
+*Figure: Longitudinal contributor preparation roadmap and organizational selection decision hierarchy.*
+
+---
+
+**Related:**
+- [India GSoC 2026 Trends, Challenges, and Solutions](India-GSoc-2026-Trends-Challenges-Solutions.md) — Primary research whitepaper analyzing macroeconomic open-source trends, applicant metrics, and ecosystem sustainability.
+- [RFC 10008: HTTP QUERY Method](../../Engineering/Architecture/HTTP-QUERY-Method-RFC-10008-Nov-2026.md) — Production implementation patterns, safe idempotent query structures, and protocol mechanics.
+- [Tailwind Financial Crisis (2026)](../Outages/Tailwind-Financial-Crisis-2026.md) — Economic sustainability, open-source sponsorship dynamics, and commercial open-source software (COSS) failure modes.
+- [OpenCode Console API Key Breach and Distillation](../Security/OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md) — Security engineering, credential leak forensics, and LLM fine-tuning threat models.
+
 
