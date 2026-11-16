@@ -1,6 +1,7 @@
 # French Supermarket Refrigeration Cyber-Sabotage: Architecture, Living-off-the-Land OT Abuse, and Physical Consequences
 
-**Daily learning · 12 November 2026 · Primary-source review · Joint French C4 attribution**
+Daily learning · November 12, 2026 · Primary-source review · Joint French C4 attribution  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Overnight on 11–12 October 2026, state-sponsored cyber operators breached internet-exposed industrial refrigeration controllers across roughly 700 retail sites in France. By abusing native supervisory interfaces without deploying malware, the attackers forced continuous electric defrost heating and suppressed alerts, driving case temperatures up to 80°C, spoiling tens of millions of euros of food, and triggering at least 15 physical in-store fires. [CERTFR-2026-ALE-012](https://www.cert.cyber.gouv.fr), [CERTFR-2026-CTI-009](https://www.cert.cyber.gouv.fr/uploads/CERTFR-2026-CTI-009.pdf).
 

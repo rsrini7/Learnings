@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="780" fill="url(#bgGrad)" />
+
+  <!-- Grid lines -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.4">
+    <line x1="0" y1="90" x2="1200" y2="90" />
+    <line x1="0" y1="420" x2="1200" y2="420" />
+    <line x1="600" y1="90" x2="600" y2="760" />
+  </g>
+
+  <!-- Header -->
+  <g transform="translate(40, 28)">
+    <rect x="0" y="0" width="1120" height="54" rx="8" fill="#1e293b" opacity="0.6" stroke="#334155" />
+    <text x="20" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+      PHP2Shell Architecture: ZendMM Request Heaps, Cross-Request UAF &amp; ASLR Defeat
+    </text>
+    <rect x="910" y="14" width="190" height="26" rx="13" fill="#e11d48" opacity="0.2" stroke="#f43f5e" stroke-width="1" />
+    <text x="1005" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#f43f5e" text-anchor="middle">
+      CVE-2026-109618 / 19
+    </text>
+  </g>
+
+  <!-- Card 1: ZendMM & Bailout State Inconsistency -->
+  <g transform="translate(40, 102)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#f43f5e" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      1. Memory Bailout &amp; Dangling Worker Pointers
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f43f5e">
+      ZendMM emalloc() vs. Bailout longjmp()
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Multipart upload parsing allocates session buffers on Zend request heap
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Memory ceiling triggers zend_bailout(); execution jumps past cleanup
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f43f5e">
+      Request Heap Teardown vs. Worker Lifetime
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Request heap is freed, but worker process (mod_php / FPM) survives
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Worker globals (PS(id), BG(unserialize)) still hold pointers to freed memory
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f43f5e">
+      Architectural Invariant Violated
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Persistent state must never point to transient request-scoped allocations
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Dangling pointer becomes live upon next request arrival in same worker
+    </text>
+  </g>
+
+  <!-- Card 2: Cross-Request UAF Lifecycle -->
+  <g transform="translate(620, 102)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#fbbf24" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      2. Cross-Request Use-After-Free (UAF) Mechanics
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      Request 1: Trigger State Priming &amp; Bailout
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Client sends malformed multipart body triggering upload progress allocation
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Intentional memory exhaustion frees slot while retaining global pointer
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      Request 2: Reclaiming the Freed Slot
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Subsequent request arrives at same worker; ZendMM recycles heap bin
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Controlled attacker payload occupies the previously freed memory chunk
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      Type Confusion &amp; Control Transfer
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Stale pointer interprets attacker data as struct with function pointers
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Method call jumps to controlled address inside attacker payload
+    </text>
+  </g>
+
+  <!-- Card 3: ASLR Defeat & RCE Chain -->
+  <g transform="translate(40, 432)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#38bdf8" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      3. ASLR Bypass: Information Leak to Remote Shell
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      Step 1: Unauthenticated Memory Disclosure
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Stale PS(id) reflects freed bytes into outgoing PHPSESSID cookie header
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Discloses libc base, PHP binary offsets, and heap pointers to attacker
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      Step 2: Heap Grooming &amp; ROP Chain Assembly
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Pre-computed offsets allow constructing valid Return-Oriented Programming chain
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Multi-part headers deposit ROP payload directly into groomed heap bins
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      Step 3: Execution Hijack (RCE)
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Worker execution pivots stack to heap ROP chain; calls system() / execve()
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Yields interactive shell under www-data / web server service credentials
+    </text>
+  </g>
+
+  <!-- Card 4: SAPI Impact & Defense In Depth -->
+  <g transform="translate(620, 432)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#4ade80" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      4. SAPI Vulnerability Matrix &amp; Hardening Protocols
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      SAPI Exposure Spectrum
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Apache mod_php: Critical risk; single process handles multiple requests
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • PHP-FPM: High risk; worker pool reuse allows cross-request targeting
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      Operational Workaround: Worker Recycling
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Configure pm.max_requests = 1 in php-fpm.conf to kill child after 1 hit
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Disable upload progress: session.upload_progress.enabled = 0
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      Upstream Patch Fixes (October 2026)
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • PHP 8.2.35, 8.3.36, 8.4.27, 8.5.12 introduce soft VM safe points
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Explicitly NULL-out and reset all worker globals during request teardown
+    </text>
+  </g>
+</svg>

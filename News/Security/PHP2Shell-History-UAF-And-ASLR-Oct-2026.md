@@ -1,8 +1,13 @@
 # PHP2Shell: History, Use-After-Free and ASLR
 
-**Daily learning · 22 October 2026 · Updated 27 October 2026 · Technical details cross-checked against primary sources**
+Daily learning · October 22, 2026 · Updated October 27, 2026 · Technical deep dive  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** PHP can leave request state unfinished or retain a pointer after freeing its memory. Cleanup or a later request then trusts invalid data. Disclosure plus controlled corruption can turn this into RCE.
+
+![PHP2Shell Architecture: ZendMM Request Heaps, Cross-Request UAF & ASLR Defeat](assets/PHP2Shell-History-UAF-And-ASLR-Architecture-2026.svg)
+
+---
 
 ## 1. What actually broke?
 
