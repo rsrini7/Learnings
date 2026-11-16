@@ -418,7 +418,7 @@ Based on primary video disclosures from Maurizio Cimadamore's presentation *Proj
 
 **Related:**
 - [Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026](Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026.md) — Deep dive into Project Babylon's Code Reflection and Panama's FFM API for compiling Java to ONNX and GPU kernels.
-- [Java-Plugin-Arch](Java-Plugin-Arch.md) — System design patterns for JVM extensibility, where scripting engines provide lightweight business rule execution.
+- [Java-Plugin-Architecture-And-Dynamic-Classloaders-2026](Java-Plugin-Architecture-And-Dynamic-Classloaders-2026.md) — System design patterns for JVM extensibility, where scripting engines provide lightweight business rule execution.
 - [Java-Standard_Classes-vs-Records-vs-Carrier_Classes](Java-Classes-Records-And-Carrier-Classes-2026.md) — Memory layout mechanics in modern Java, detailing object header overhead and carrier class memory compactness.
 - [Scaling-Java-Services-To-1-Million-RPS-2026](../Architecture/Scaling-Java-Services-To-1-Million-RPS-2026.md) — Virtual thread scaling architecture, illustrating why avoiding carrier thread pinning is vital under high RPS.
 - [Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026](../Languages/Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md) — Analysis of JavaScript runtime consolidation and the economics of maintaining native V8 embeddings.

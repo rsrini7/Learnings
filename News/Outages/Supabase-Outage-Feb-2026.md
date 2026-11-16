@@ -90,8 +90,8 @@ sequenceDiagram
     IaC->>AWS: Invoke ModifyVpcBlockPublicAccessOptions(block-bidirectional)
     AWS->>IGW: Enforce regional packet drop immediately (21:12 UTC)
     Note over IGW: All ingress and egress traffic blocked instantly!
-    ALB--xClients: Request counts plunge to 0; connections terminated
-    Push--xObservability: Outbound metric push fails; agents go dark
+    ALB--xClients: Request counts plunge to 0, connections terminated
+    Push--xObservability: Outbound metric push fails, agents go dark
     Note over Observability: Monitoring Blind Spot: Absence of errors mistaken for health
 ```
 
@@ -285,5 +285,5 @@ The following diagram illustrates the original incident timeline, affected cloud
 **Related:**
 - [AWS US-East-1 Outage October 2025](AWS-US-East-1-Outage-October-2025.md) — Demonstrates how internal control-plane dependencies cascade into cross-service outages.
 - [Cloudflare Global Outage ClickHouse Config](Cloudflare-Global-Outage-ClickHouse-Config-Nov-2025.md) — Another homogeneous automated configuration failure that caused worldwide service disruption.
-- [AWS vs Hetzner](../../Engineering/Cloud/AWS-vs-Hetzner.md) — Compares managed cloud blast radiuses and network dependency risks against dedicated infrastructure.
+- [AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026](../../Engineering/Cloud/AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026.md) — Compares managed cloud blast radiuses and network dependency risks against dedicated infrastructure.
 - [Scaling-PostgreSQL-High-Throughput-Architecture-2026](../../Engineering/Databases/Scaling-PostgreSQL-High-Throughput-Architecture-2026.md) — Deep dive into PostgreSQL primary-replica scaling, connection pooling, and connection failover.

@@ -201,7 +201,7 @@ Reworked from collected repository notes using official Java, PostgreSQL, Redis 
 **Related:**
 - [Scaling-Cpp-Services-To-1-Million-RPS-2026](Scaling-Cpp-Services-To-1-Million-RPS-2026.md) — Contrasts C++ thread-per-core, kernel bypass and zero-copy memory arenas with JVM runtime models.
 - [Scaling-PostgreSQL-High-Throughput-Architecture-2026](../Databases/Scaling-PostgreSQL-High-Throughput-Architecture-2026.md) — Explains the separate limits of primary writes, replica reads, pooling and workload isolation.
-- [Workflow Orchestration](../Middleware/workflow-orchestration.md) — Covers durable asynchronous work, idempotency and recovery beyond a synchronous request.
-- [Java Plugin Architecture](../JVM/Java-Plugin-Arch.md) — Explains extension contracts and execution boundaries within and outside a JVM.
+- [Workflow-Orchestration-And-Durable-Execution-Engines-2026](../Middleware/Workflow-Orchestration-And-Durable-Execution-Engines-2026.md) — Covers durable asynchronous work, idempotency and recovery beyond a synchronous request.
+- [Java-Plugin-Architecture-And-Dynamic-Classloaders-2026](../JVM/Java-Plugin-Architecture-And-Dynamic-Classloaders-2026.md) — Explains extension contracts and execution boundaries within and outside a JVM.
 - [Java and Go Runtime Comparison](../Languages/comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md) — Provides wider language/runtime context without replacing workload-specific measurements.
 - [HTTP QUERY Method](HTTP-QUERY-Method-RFC-10008-Nov-2026.md) — Discusses request semantics, cache keys and retry behavior relevant to query APIs.

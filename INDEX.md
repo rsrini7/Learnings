@@ -244,7 +244,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 ### ☕ JVM
 - [Java Classes Records And Carrier Classes 2026](Engineering/JVM/Java-Classes-Records-And-Carrier-Classes-2026.md)
 - [Java Next Gen Programming Models Babylon Panama Nov 2026](Engineering/JVM/Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026.md)
-- [Java Plugin Arch](Engineering/JVM/Java-Plugin-Arch.md)
+- [Java Plugin Architecture And Dynamic Classloaders 2026](Engineering/JVM/Java-Plugin-Architecture-And-Dynamic-Classloaders-2026.md)
 - [Java Remote Debugging JDWP And Troubleshooting 2026](Engineering/JVM/Java-Remote-Debugging-JDWP-And-Troubleshooting-2026.md)
 - [Project Detroit Java Polyglot Runtimes Nov 2026](Engineering/JVM/Project-Detroit-Java-Polyglot-Runtimes-Nov-2026.md)
 
@@ -254,12 +254,12 @@ A complete, fully expanded single-page index of all technical articles and resea
 
 ### 📞 Middleware
 - [Kafka 4.0 KRaft Architecture And Migration 2026](Engineering/Middleware/Kafka-4.0-KRaft-Architecture-And-Migration-2026.md)
-- [workflow orchestration](Engineering/Middleware/workflow-orchestration.md)
+- [Workflow Orchestration And Durable Execution Engines 2026](Engineering/Middleware/Workflow-Orchestration-And-Durable-Execution-Engines-2026.md)
 
 ### ☁️ Cloud
-- [AWS vs Hetzner](Engineering/Cloud/AWS-vs-Hetzner.md)
-- [AWS Downtime Caused By AI Mistake](Engineering/Cloud/AWS/AWS-Downtime-Caused-By-AI-Mistake.md)
-- [aws deepracer ubuntu local installs](Engineering/Cloud/AWS/aws-deepracer-ubuntu-local-installs.md)
+- [AWS vs Hetzner Compute Economics And Architecture 2026](Engineering/Cloud/AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026.md)
+- [AWS Control Plane Downtime AI Automated Outage 2026](Engineering/Cloud/AWS/AWS-Control-Plane-Downtime-AI-Automated-Outage-2026.md)
+- [AWS DeepRacer Ubuntu Local Installation Guide 2026](Engineering/Cloud/AWS/AWS-DeepRacer-Ubuntu-Local-Installation-Guide-2026.md)
 
 ### 💻 Languages
 - [Deno Joins Cloudflare Adoption And Runtime Lessons Oct 2026](Engineering/Languages/Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md)
@@ -269,7 +269,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Go Proposed Collections vs Java Collections Framework 2026](Engineering/Languages/comparisons/Go-Proposed-Collections-vs-Java-Collections-Framework-2026.md)
 - [Go SIMD vs NumPy vs Java Vector API 2026](Engineering/Languages/comparisons/Go-SIMD-vs-NumPy-vs-Java-Vector-API-2026.md)
 - [Java 25 vs Go 1.25 Performance Analysis 2026](Engineering/Languages/comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md)
-- [rust vs c](Engineering/Languages/comparisons/rust-vs-c.md)
+- [Rust vs C Systems Programming And Memory Safety 2026](Engineering/Languages/comparisons/Rust-vs-C-Systems-Programming-And-Memory-Safety-2026.md)
 
 
 [↑ Back to Quick Jump](#quick-jump) · [← Back to Root Hub](README.md)
@@ -325,10 +325,10 @@ A complete, fully expanded single-page index of all technical articles and resea
 [📂 Open Dedicated Domain Hub (QuantumComputing/README.md)](QuantumComputing/README.md)
 
 - [Google Willow Quantum Chip And Quantum Echoes 2026](QuantumComputing/Google-Willow-Quantum-Chip-And-Quantum-Echoes-2026.md)
+- [QuantWare VIO 40K 10K Qubit QPU Architecture 2026](QuantumComputing/QuantWare-VIO-40K-10K-Qubit-QPU-Architecture-2026.md)
 - [Quantum AI Decision Makers 2026](QuantumComputing/Quantum-AI-Decision-Makers-2026.md)
 - [Quantum Computing Foundations And State Mechanics 2026](QuantumComputing/Quantum-Computing-Foundations-And-State-Mechanics-2026.md)
 - [Quantum Threat to Bitcoin And Elliptic Curve Cryptography 2026](QuantumComputing/Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026.md)
-- [VIO 40K Arch 10K Qubits](QuantumComputing/VIO-40K-Arch-10K-Qubits.md)
 
 
 [↑ Back to Quick Jump](#quick-jump) · [← Back to Root Hub](README.md)

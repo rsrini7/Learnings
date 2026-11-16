@@ -1,0 +1,242 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="panelGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#090d16" />
+    </linearGradient>
+
+    <!-- Markers -->
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowEmerald" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#4ade80" />
+    </marker>
+    <marker id="arrowAmber" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#fbbf24" />
+    </marker>
+    <marker id="arrowRose" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#f43f5e" />
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Title & Header -->
+  <g transform="translate(60, 45)">
+    <text x="0" y="0" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="700" letter-spacing="-0.5px">QuantWare VIO-40K: 3D Chiplet Superconducting QPU Architecture</text>
+    <text x="0" y="24" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13">10,000 Physical Qubits, 40,000 Vertical TSV Cryo-I/O Lines, and Hybrid NVIDIA NVQLink / CUDA-Q Stack</text>
+  </g>
+
+  <!-- PANEL 1: Planar Bottleneck vs 3D TSV Chiplet Packaging (Left, x=60, w=350) -->
+  <g transform="translate(60, 95)">
+    <rect width="350" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+    
+    <!-- Badge -->
+    <rect x="20" y="20" width="190" height="26" rx="6" fill="#0369a1" fill-opacity="0.3" stroke="#0ea5e9" stroke-width="1" />
+    <text x="30" y="37" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">HARDWARE ARCHITECTURE</text>
+    
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">3D Chiplet Vertical Stacking</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Solving perimeter wiring choke points</text>
+
+    <!-- Legacy Planar Diagram Card -->
+    <rect x="20" y="106" width="310" height="116" rx="8" fill="#0f172a" stroke="#ef4444" stroke-width="1" stroke-dasharray="3,3" />
+    <text x="32" y="126" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Legacy Planar QPUs (Perimeter I/O Limit)</text>
+    <text x="32" y="144" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• Wiring perimeter scales as O(√N), area O(N)</text>
+    <text x="32" y="160" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• Heavy microwave crosstalk between trace lines</text>
+    <text x="32" y="176" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• Thermal heat load exceeds dilution capacity at 15 mK</text>
+    <text x="32" y="196" fill="#ef4444" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">Max scaling barrier: ~100 to 1,000 qubits</text>
+
+    <!-- VIO-40K 3D Chiplet Diagram Card -->
+    <g transform="translate(20, 236)">
+      <rect width="310" height="236" rx="8" fill="#0f172a" stroke="#0ea5e9" stroke-width="1.2" />
+      <text x="14" y="22" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">VIO-40K Multi-Layer Vertical Die Stack</text>
+
+      <!-- Layer 1: Qubit Array Substrate -->
+      <rect x="14" y="34" width="282" height="34" rx="4" fill="#1e293b" stroke="#38bdf8" stroke-width="1" />
+      <text x="24" y="52" fill="#e2e8f0" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">Top Die: 10,000 Transmon Qubit Array</text>
+      <text x="24" y="64" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Josephson junctions + coplanar resonators</text>
+
+      <!-- Superconducting Microbumps -->
+      <g fill="#fbbf24">
+        <circle cx="50" cy="74" r="3" />
+        <circle cx="100" cy="74" r="3" />
+        <circle cx="150" cy="74" r="3" />
+        <circle cx="200" cy="74" r="3" />
+        <circle cx="250" cy="74" r="3" />
+      </g>
+      <text x="110" y="83" fill="#fbbf24" font-family="'JetBrains Mono', monospace" font-size="8.5">Superconducting Indium Bumps</text>
+
+      <!-- Layer 2: Interposer with TSVs -->
+      <rect x="14" y="90" width="282" height="54" rx="4" fill="#1e293b" stroke="#4ade80" stroke-width="1" />
+      <text x="24" y="108" fill="#4ade80" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">Silicon Interposer + Through-Silicon Vias</text>
+      <text x="24" y="122" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Vertical coaxial routing channels (40,000 lines)</text>
+      <text x="24" y="136" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Zero planar edge routing choke points</text>
+
+      <!-- Layer 3: Cryogenic Multi-Coax Interface -->
+      <rect x="14" y="152" width="282" height="36" rx="4" fill="#1e293b" stroke="#818cf8" stroke-width="1" />
+      <text x="24" y="170" fill="#a5b4fc" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="600">Base Die: Cryogenic I/O Carrier</text>
+      <text x="24" y="182" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Multi-ribbon low-loss flexible striplines</text>
+
+      <!-- Arrows showing vertical feed -->
+      <path d="M 60 216 L 60 194" stroke="#38bdf8" stroke-width="1.5" marker-end="url(#arrowCyan)" />
+      <path d="M 150 216 L 150 194" stroke="#4ade80" stroke-width="1.5" marker-end="url(#arrowEmerald)" />
+      <path d="M 240 216 L 240 194" stroke="#fbbf24" stroke-width="1.5" marker-end="url(#arrowAmber)" />
+      <text x="68" y="228" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9.5">40,000 Vertical Control / Readout Channels</text>
+    </g>
+
+    <!-- Key Metrics Card -->
+    <rect x="20" y="486" width="310" height="154" rx="8" fill="#0f172a" stroke="#334155" />
+    <text x="32" y="508" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Scaling Metrics Comparison</text>
+    <text x="32" y="528" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">Physical Qubits: <tspan fill="#38bdf8" font-weight="700">10,000 (100x vs 2025 standard)</tspan></text>
+    <text x="32" y="546" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">Cryogenic I/O Lines: <tspan fill="#4ade80" font-weight="700">40,000 coaxial channels</tspan></text>
+    <text x="32" y="564" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">Surface Code Distance d=7: <tspan fill="#fbbf24" font-weight="700">~100 Logical Qubits</tspan></text>
+    <text x="32" y="582" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">Die Footprint: <tspan fill="#e2e8f0" font-weight="600">Smaller than 100-qubit planar die</tspan></text>
+    <text x="32" y="600" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">Target Availability: <tspan fill="#38bdf8" font-weight="700">2026 Kilofab / 2028 Delivery</tspan></text>
+    <text x="32" y="622" fill="#a5b4fc" font-family="'JetBrains Mono', monospace" font-size="9.5">Scaling to 1M qubits via modular multi-QPU mesh</text>
+  </g>
+
+  <!-- PANEL 2: Cryogenic Refrigeration & Signal Path (Middle, x=425, w=350) -->
+  <g transform="translate(425, 95)">
+    <rect width="350" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+    
+    <!-- Badge -->
+    <rect x="20" y="20" width="170" height="26" rx="6" fill="#047857" fill-opacity="0.3" stroke="#10b981" stroke-width="1" />
+    <text x="30" y="37" fill="#4ade80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">CRYOGENIC SIGNAL CHAIN</text>
+    
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">Dilution Refrigerator Stages</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Thermal management &amp; microwave fidelity</text>
+
+    <!-- Stage 1: Room Temperature (300K) -->
+    <g transform="translate(20, 108)">
+      <rect width="310" height="88" rx="6" fill="#0f172a" stroke="#e2e8f0" stroke-width="0.8" />
+      <rect x="10" y="10" width="60" height="20" rx="4" fill="#334155" />
+      <text x="18" y="24" fill="#f8fafc" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">300 K</text>
+      <text x="78" y="25" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Room Temperature Electronics</text>
+      <text x="14" y="44" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• High-speed AWGs (Arbitrary Waveform Gen)</text>
+      <text x="14" y="60" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• Real-time FPGA demodulators &amp; DAC/ADC banks</text>
+      <text x="14" y="76" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• PCIe Gen5 / NVQLink fiber optical host bridges</text>
+    </g>
+
+    <!-- Stage 2: 4K Cryogenic Stage -->
+    <g transform="translate(20, 206)">
+      <rect width="310" height="96" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+      <rect x="10" y="10" width="55" height="20" rx="4" fill="#0369a1" fill-opacity="0.5" />
+      <text x="20" y="24" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">4.2 K</text>
+      <text x="74" y="25" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Pulse Conditioning &amp; Pre-Amps</text>
+      <text x="14" y="46" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• Cryogenic HEMT low-noise readout amplifiers</text>
+      <text x="14" y="62" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• 20 dB microwave attenuators for drive lines</text>
+      <text x="14" y="78" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• Heat sinking: removes 1.5 W baseline load</text>
+    </g>
+
+    <!-- Stage 3: Still & Cold Plates (100 mK) -->
+    <g transform="translate(20, 312)">
+      <rect width="310" height="90" rx="6" fill="#0f172a" stroke="#818cf8" stroke-width="1" />
+      <rect x="10" y="10" width="70" height="20" rx="4" fill="#4338ca" fill-opacity="0.4" />
+      <text x="16" y="24" fill="#a5b4fc" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">100 mK</text>
+      <text x="88" y="25" fill="#a5b4fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Thermal Intercept &amp; Isolation</text>
+      <text x="14" y="46" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• Superconducting NbTi coaxial line transitions</text>
+      <text x="14" y="62" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• Cryogenic circulators &amp; directional isolators</text>
+      <text x="14" y="78" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• Suppresses 300K Johnson-Nyquist thermal noise</text>
+    </g>
+
+    <!-- Stage 4: Mixing Chamber (15 mK) -->
+    <g transform="translate(20, 412)">
+      <rect width="310" height="126" rx="6" fill="#0f172a" stroke="#4ade80" stroke-width="1.2" />
+      <rect x="10" y="10" width="60" height="20" rx="4" fill="#065f46" fill-opacity="0.6" />
+      <text x="18" y="24" fill="#4ade80" font-family="'JetBrains Mono', monospace" font-size="10" font-weight="700">15 mK</text>
+      <text x="78" y="25" fill="#4ade80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Mixing Chamber &amp; VIO-40K QPU</text>
+      <text x="14" y="46" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5" font-weight="600">QuantWare VIO-40K 10,000-Qubit Core</text>
+      <text x="14" y="64" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Permalloy &amp; Nb magnetic shielding can</text>
+      <text x="14" y="80" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Infrared Eccosorb filters absorb stray photons</text>
+      <text x="14" y="96" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Dilution cooling capacity: ~20 µW at 15 mK</text>
+      <text x="14" y="112" fill="#4ade80" font-family="'JetBrains Mono', monospace" font-size="9.5">TSV routing minimizes parasitic heat load</text>
+    </g>
+
+    <!-- Cryo Coherence Box -->
+    <rect x="20" y="550" width="310" height="90" rx="6" fill="#0f172a" stroke="#334155" />
+    <text x="32" y="570" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" font-weight="700">Coherence Budget (T1 / T2*)</text>
+    <text x="32" y="588" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">Relaxation Time T1: <tspan fill="#38bdf8" font-weight="600">> 50 µs</tspan> (energy dissipation)</text>
+    <text x="32" y="606" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">Dephasing Time T2*: <tspan fill="#fbbf24" font-weight="600">> 35 µs</tspan> (flux noise / TLS loss)</text>
+    <text x="32" y="624" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">Two-Qubit CZ Gate Fidelity: <tspan fill="#4ade80" font-weight="700">> 99.5%</tspan></text>
+  </g>
+
+  <!-- PANEL 3: Hybrid NVQLink & CUDA-Q Stack (Right, x=790, w=350) -->
+  <g transform="translate(790, 95)">
+    <rect width="350" height="660" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.5" />
+    
+    <!-- Badge -->
+    <rect x="20" y="20" width="180" height="26" rx="6" fill="#7c2d12" fill-opacity="0.3" stroke="#f97316" stroke-width="1" />
+    <text x="30" y="37" fill="#fb923c" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600">HYBRID CO-PROCESSING</text>
+    
+    <text x="20" y="70" fill="#f1f5f9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="700">NVIDIA NVQLink &amp; CUDA-Q</text>
+    <text x="20" y="90" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Real-time QEC and GPU-accelerated control</text>
+
+    <!-- Classical Supercomputer Box -->
+    <g transform="translate(20, 108)">
+      <rect width="310" height="96" rx="6" fill="#0f172a" stroke="#76b900" stroke-width="1" />
+      <text x="14" y="22" fill="#76b900" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">NVIDIA Accelerated Supercomputer</text>
+      <text x="14" y="38" fill="#e2e8f0" font-family="'JetBrains Mono', monospace" font-size="10.5">Grace Blackwell / DGX GH200 Nodes</text>
+      <text x="14" y="56" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• CUDA-Q unified compiler &amp; runtime</text>
+      <text x="14" y="72" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• Real-time Tensor Core syndrome decoders</text>
+      <text x="14" y="88" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• Minimum-Weight Matching in &lt; 1 µs</text>
+    </g>
+
+    <!-- NVQLink Bus -->
+    <g transform="translate(20, 214)">
+      <rect width="310" height="60" rx="6" fill="#1e1b4b" stroke="#6366f1" stroke-width="1.2" />
+      <text x="14" y="20" fill="#a5b4fc" font-family="'JetBrains Mono', monospace" font-size="11" font-weight="700">NVIDIA NVQLink Interconnect</text>
+      <text x="14" y="36" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Ultra-low-latency PCIe/NVLink direct bridge</text>
+      <text x="14" y="50" fill="#4ade80" font-family="'JetBrains Mono', monospace" font-size="9.5">Latency: &lt; 500 ns round-trip | Sub-µs feedback</text>
+    </g>
+
+    <!-- Arrow down to Quantum Controller -->
+    <path d="M 175 276 L 175 292" stroke="#6366f1" stroke-width="2" marker-end="url(#arrowCyan)" />
+
+    <!-- Quantum Controller & Pulse Synthesis -->
+    <g transform="translate(20, 296)">
+      <rect width="310" height="106" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1" />
+      <text x="14" y="22" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Real-Time QPU Control Unit</text>
+      <text x="14" y="40" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• High-speed FPGA / DSP pulse engines</text>
+      <text x="14" y="56" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• IQ microwave mixer calibration &amp; pulse shaping</text>
+      <text x="14" y="72" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10.5">• Real-time dispersive readout demodulation</text>
+      <text x="14" y="92" fill="#fbbf24" font-family="'JetBrains Mono', monospace" font-size="10">Feedback latency: 850 ns &lt; T2 (35 µs)</text>
+    </g>
+
+    <!-- Closed QEC Loop Card -->
+    <rect x="20" y="414" width="310" height="226" rx="8" fill="#0f172a" stroke="#334155" />
+    <text x="32" y="436" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">Closed-Loop QEC Feedback Cycle</text>
+    
+    <g transform="translate(32, 448)">
+      <rect x="0" y="0" width="286" height="34" rx="4" fill="#1e293b" />
+      <text x="10" y="16" fill="#38bdf8" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700">1. Syndrome Readout (10k Qubits)</text>
+      <text x="10" y="28" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Dispersive cavity state shift measured</text>
+
+      <rect x="0" y="40" width="286" height="34" rx="4" fill="#1e293b" />
+      <text x="10" y="56" fill="#818cf8" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700">2. NVQLink Ingestion into GPU</text>
+      <text x="10" y="68" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Streams 40k channel bitstrings to Tensor Cores</text>
+
+      <rect x="0" y="80" width="286" height="34" rx="4" fill="#1e293b" />
+      <text x="10" y="96" fill="#4ade80" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700">3. Real-Time MWPM Graph Matching</text>
+      <text x="10" y="108" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Calculates minimum error chains in ~300 ns</text>
+
+      <rect x="0" y="120" width="286" height="34" rx="4" fill="#1e293b" />
+      <text x="10" y="136" fill="#fbbf24" font-family="'JetBrains Mono', monospace" font-size="9.5" font-weight="700">4. Dynamic Phase / Pauli Correction</text>
+      <text x="10" y="148" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Transmits correction pulse before T2 dephasing</text>
+    </g>
+    <text x="32" y="626" fill="#4ade80" font-family="'JetBrains Mono', monospace" font-size="9.5">Achieves fault-tolerant memory threshold</text>
+  </g>
+</svg>

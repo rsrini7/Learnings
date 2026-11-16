@@ -371,7 +371,7 @@ The following visual documentation preserves the high-level system architecture 
 ---
 
 **Related:**
-- [AWS-vs-Hetzner](../../Engineering/Cloud/AWS-vs-Hetzner.md) — Analyzes high-throughput bare-metal infrastructure costs and network topologies relevant to large-scale recommendation workloads.
+- [AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026](../../Engineering/Cloud/AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026.md) — Analyzes high-throughput bare-metal infrastructure costs and network topologies relevant to large-scale recommendation workloads.
 - [Scaling-Cpp-Services-To-1-Million-RPS-2026](../../Engineering/Architecture/Scaling-Cpp-Services-To-1-Million-RPS-2026.md) — Explores low-latency zero-copy networking and event loops that parallel Home Mixer's Rust Tokio architecture.
 - [LLM-Inference](../LLMs/architecture/LLM-Inference.md) — Examines GPU batching, memory bandwidth optimization, and transformer inference latency.
 - [AI-Periodic-Table](../LLMs/economy/AI-Periodic-Table.md) — Catalogs the foundational primitives and model topologies powering modern enterprise AI systems.

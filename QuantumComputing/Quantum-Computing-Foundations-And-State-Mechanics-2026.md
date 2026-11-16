@@ -482,4 +482,4 @@ When evaluating quantum computing claims, SDK libraries (Qiskit, Cirq, PennyLane
 - [Google-Willow-Quantum-Chip-And-Quantum-Echoes-2026](Google-Willow-Quantum-Chip-And-Quantum-Echoes-2026.md) — Analyzes the 105-qubit planar architecture, surface code scaling, and Loschmidt echo algorithms running on physical transmon hardware.
 - [Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026](Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026.md) — Examines how Shor's and Grover's algorithm mechanics threaten ECDSA secp256k1 and SHA-256.
 - [Quantum-AI-Decision-Makers(2026)](Quantum-AI-Decision-Makers-2026.md) — Strategic executive framework evaluating NISQ limitations, barren plateaus, and commercial quantum utility.
-- [VIO-40K-Arch-10K-Qubits](VIO-40K-Arch-10K-Qubits.md) — High-density physical architecture scaling transmon qubits to 10,000 physical nodes in cryogenic dilution environments.
+- [QuantWare-VIO-40K-10K-Qubit-QPU-Architecture-2026](QuantWare-VIO-40K-10K-Qubit-QPU-Architecture-2026.md) — High-density physical architecture scaling transmon qubits to 10,000 physical nodes in cryogenic dilution environments.

@@ -23,7 +23,7 @@ Deep dives into high-throughput backend systems, modern runtime internals, distr
 ## ☕ JVM
 - [Java Classes Records And Carrier Classes 2026](JVM/Java-Classes-Records-And-Carrier-Classes-2026.md)
 - [Java Next Gen Programming Models Babylon Panama Nov 2026](JVM/Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026.md)
-- [Java Plugin Arch](JVM/Java-Plugin-Arch.md)
+- [Java Plugin Architecture And Dynamic Classloaders 2026](JVM/Java-Plugin-Architecture-And-Dynamic-Classloaders-2026.md)
 - [Java Remote Debugging JDWP And Troubleshooting 2026](JVM/Java-Remote-Debugging-JDWP-And-Troubleshooting-2026.md)
 - [Project Detroit Java Polyglot Runtimes Nov 2026](JVM/Project-Detroit-Java-Polyglot-Runtimes-Nov-2026.md)
 
@@ -33,12 +33,12 @@ Deep dives into high-throughput backend systems, modern runtime internals, distr
 
 ## 📞 Middleware
 - [Kafka 4.0 KRaft Architecture And Migration 2026](Middleware/Kafka-4.0-KRaft-Architecture-And-Migration-2026.md)
-- [workflow orchestration](Middleware/workflow-orchestration.md)
+- [Workflow Orchestration And Durable Execution Engines 2026](Middleware/Workflow-Orchestration-And-Durable-Execution-Engines-2026.md)
 
 ## ☁️ Cloud
-- [AWS vs Hetzner](Cloud/AWS-vs-Hetzner.md)
-- [AWS Downtime Caused By AI Mistake](Cloud/AWS/AWS-Downtime-Caused-By-AI-Mistake.md)
-- [aws deepracer ubuntu local installs](Cloud/AWS/aws-deepracer-ubuntu-local-installs.md)
+- [AWS vs Hetzner Compute Economics And Architecture 2026](Cloud/AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026.md)
+- [AWS Control Plane Downtime AI Automated Outage 2026](Cloud/AWS/AWS-Control-Plane-Downtime-AI-Automated-Outage-2026.md)
+- [AWS DeepRacer Ubuntu Local Installation Guide 2026](Cloud/AWS/AWS-DeepRacer-Ubuntu-Local-Installation-Guide-2026.md)
 
 ## 💻 Languages
 - [Deno Joins Cloudflare Adoption And Runtime Lessons Oct 2026](Languages/Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md)
@@ -48,7 +48,7 @@ Deep dives into high-throughput backend systems, modern runtime internals, distr
 - [Go Proposed Collections vs Java Collections Framework 2026](Languages/comparisons/Go-Proposed-Collections-vs-Java-Collections-Framework-2026.md)
 - [Go SIMD vs NumPy vs Java Vector API 2026](Languages/comparisons/Go-SIMD-vs-NumPy-vs-Java-Vector-API-2026.md)
 - [Java 25 vs Go 1.25 Performance Analysis 2026](Languages/comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md)
-- [rust vs c](Languages/comparisons/rust-vs-c.md)
+- [Rust vs C Systems Programming And Memory Safety 2026](Languages/comparisons/Rust-vs-C-Systems-Programming-And-Memory-Safety-2026.md)
 
 ---
 

@@ -174,5 +174,5 @@ For distributed clusters (TigerGraph, NebulaGraph):
 - [Scaling-PostgreSQL-High-Throughput-Architecture-2026](Scaling-PostgreSQL-High-Throughput-Architecture-2026.md) — Explains the single-primary relational write bottleneck and when relational models hit join scalability limits.
 - [Scaling-Java-Services-To-1-Million-RPS-2026](../Architecture/Scaling-Java-Services-To-1-Million-RPS-2026.md) — Analyzes concurrency, throughput budgets, and storage offloading at high query volumes.
 - [Scaling-Cpp-Services-To-1-Million-RPS-2026](../Architecture/Scaling-Cpp-Services-To-1-Million-RPS-2026.md) — Details thread-per-core architectures and kernel-bypass I/O relevant to native graph database storage engines.
-- [Workflow Orchestration](../Middleware/workflow-orchestration.md) — Covers durable asynchronous processing and retries when coordinating distributed data pipelines.
-- [AWS versus Hetzner](../Cloud/AWS-vs-Hetzner.md) — Contrasts managed cloud database services (Neptune) with bare-metal dedicated hosting economics.
+- [Workflow-Orchestration-And-Durable-Execution-Engines-2026](../Middleware/Workflow-Orchestration-And-Durable-Execution-Engines-2026.md) — Covers durable asynchronous processing and retries when coordinating distributed data pipelines.
+- [AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026](../Cloud/AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026.md) — Contrasts managed cloud database services (Neptune) with bare-metal dedicated hosting economics.

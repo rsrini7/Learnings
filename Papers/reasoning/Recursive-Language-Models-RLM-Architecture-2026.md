@@ -123,7 +123,7 @@ RLMs replace brute-force context ingestion with a structured neural-symbolic loo
 sequenceDiagram
     autonumber
     participant User as End User / Application
-    participant Root as Root LLM (GPT-5, &lt;2K tokens)
+    participant Root as Root LLM (GPT-5, Under 2K tokens)
     participant REPL as Python REPL Environment
     participant Workers as Parallel Sub-LLMs (GPT-5-mini)
 

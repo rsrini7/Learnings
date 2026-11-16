@@ -225,6 +225,6 @@ Synthesized from primary C++ high-performance networking documentation, the Tech
 **Related:**
 - [Scaling-Java-Services-To-1-Million-RPS-2026](Scaling-Java-Services-To-1-Million-RPS-2026.md) — Analyzes JVM virtual threads, garbage collection tuning (ZGC), and memory budgets under the same 1M RPS target.
 - [Scaling-PostgreSQL-High-Throughput-Architecture-2026](../Databases/Scaling-PostgreSQL-High-Throughput-Architecture-2026.md) — Examines single-primary database bottlenecks, connection pooling, and replica lag at massive query volumes.
-- [Workflow Orchestration](../Middleware/workflow-orchestration.md) — Explains asynchronous durable execution, idempotency, and retries when decoupling requests from the synchronous write path.
-- [Rust versus C](../Languages/comparisons/rust-vs-c.md) — Compares memory safety guarantees, zero-cost abstractions, and low-level performance characteristics.
+- [Workflow-Orchestration-And-Durable-Execution-Engines-2026](../Middleware/Workflow-Orchestration-And-Durable-Execution-Engines-2026.md) — Explains asynchronous durable execution, idempotency, and retries when decoupling requests from the synchronous write path.
+- [Rust-vs-C-Systems-Programming-And-Memory-Safety-2026](../Languages/comparisons/Rust-vs-C-Systems-Programming-And-Memory-Safety-2026.md) — Compares memory safety guarantees, zero-cost abstractions, and low-level performance characteristics.
 - [HTTP QUERY Method](HTTP-QUERY-Method-RFC-10008-Nov-2026.md) — Discusses safe request caching, body hashing, and idempotent querying at scale.

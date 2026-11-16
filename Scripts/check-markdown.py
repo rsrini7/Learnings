@@ -124,13 +124,13 @@ def scan_file(filepath):
                     # Analyze Mermaid block
                     if mermaid_type == 'sequenceDiagram':
                         for m_idx, m_line in enumerate(mermaid_lines):
-                            if ('->>' in m_line or '-->>' in m_line) and ';' in m_line:
+                            if ';' in m_line:
                                 issues.append({
                                     'file': filepath,
                                     'line': mermaid_start + m_idx + 1,
-                                    'type': 'Mermaid: Semicolon in sequenceDiagram message',
+                                    'type': 'Mermaid: Semicolon in sequenceDiagram',
                                     'snippet': m_line.strip(),
-                                    'fix_advice': 'Replace ";" with "and" or a comma to avoid statement termination.'
+                                    'fix_advice': 'Replace ";" and HTML entities with plain text, commas, or "and" to avoid statement termination.'
                                 })
                     elif mermaid_type in ('flowchart', 'graph'):
                         subgraphs = {}

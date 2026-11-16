@@ -114,6 +114,6 @@ The [full OpenAI article](https://openai.com/index/scaling-postgresql/) returned
 
 **Related:**
 - [Scaling-Java-Services-To-1-Million-RPS-2026](../Architecture/Scaling-Java-Services-To-1-Million-RPS-2026.md) — Applies database budgets, caching and overload control to a hypothetical high-throughput service.
-- [Workflow Orchestration](../Middleware/workflow-orchestration.md) — Explains durable processing and retries when work is moved outside a synchronous database path.
+- [Workflow-Orchestration-And-Durable-Execution-Engines-2026](../Middleware/Workflow-Orchestration-And-Durable-Execution-Engines-2026.md) — Explains durable processing and retries when work is moved outside a synchronous database path.
 - [Graph-Databases-At-Massive-Scale-Architecture-2026](Graph-Databases-At-Massive-Scale-Architecture-2026.md) — Provides a different workload and data-model perspective on database scaling and join limits.
-- [AWS versus Hetzner](../Cloud/AWS-vs-Hetzner.md) — Adds infrastructure and operational cost context to deployment choices.
+- [AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026](../Cloud/AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026.md) — Adds infrastructure and operational cost context to deployment choices.

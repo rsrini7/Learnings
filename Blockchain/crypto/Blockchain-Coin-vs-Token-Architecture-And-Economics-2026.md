@@ -80,7 +80,7 @@ sequenceDiagram
     Note over User, Core: Native Coin Transfer (ETH)
     User->>Core: Base TX: {to: Bob, value: 1.5 ETH, gas: 21,000}
     Core->>Core: Decrement Alice ETH, Increment Bob ETH
-    Note over Core: Completed in 1 step; zero smart contract execution
+    Note over Core: Completed in 1 step, with zero smart contract execution
     end
 
     rect rgb(30, 41, 59)

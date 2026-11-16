@@ -237,7 +237,7 @@ The following diagram illustrates the original financial impact, documentation t
 ---
 
 **Related:**
-- [AWS vs Hetzner](../../Engineering/Cloud/AWS-vs-Hetzner.md) — Examines cloud economics, infrastructure cost discipline, and operational viability for small engineering teams.
+- [AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026](../../Engineering/Cloud/AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026.md) — Examines cloud economics, infrastructure cost discipline, and operational viability for small engineering teams.
 - [Deno Joins Cloudflare](../../Engineering/Languages/Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md) — Another case study of modern runtime economics and the pressures driving independent developer tool companies into larger platforms.
 - [n8n Automation RCE Suite](../Security/N8n-Workflow-Automation-RCE-Suite-CVE-2025-68613-2026.md) — Examines sustainability and security boundaries in commercial open-source automation platforms.
 - [Cloudflare Global Outage ClickHouse Config](Cloudflare-Global-Outage-ClickHouse-Config-Nov-2025.md) — Analyzes edge infrastructure, proxy routing, and the operational dependencies of modern web platforms.

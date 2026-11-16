@@ -1,6 +1,6 @@
 # AWS versus Hetzner: Compute Density, Egress Economics and Operational Governance
 
-**Learning note · Revised 15 November 2026 · Infrastructure economics and operational boundary analysis**  
+Learning note · Revised November 2026 · Infrastructure Economics &amp; Cloud Architecture  
 *By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Dedicated bare-metal and VPS hosting provides substantially higher raw compute, memory and I/O density per dollar alongside low-cost network bandwidth, whereas hyperscalers provide managed control planes, elastic multi-AZ failover and granular compliance governance. Engineering teams choose between managing hardware and operational reliability directly or paying a recurring cloud abstraction premium.
@@ -258,5 +258,5 @@ Evaluated using official AWS EC2 on-demand and data transfer pricing schedules, 
 - [Scaling-Java-Services-To-1-Million-RPS-2026](../Architecture/Scaling-Java-Services-To-1-Million-RPS-2026.md) — Demonstrates how network egress and instance bandwidth budgets dictate infrastructure costs.
 - [Scaling-Cpp-Services-To-1-Million-RPS-2026](../Architecture/Scaling-Cpp-Services-To-1-Million-RPS-2026.md) — Evaluates hardware CPU pinning, NUMA boundaries, and kernel-bypass I/O on bare metal vs virtualized instances.
 - [Scaling-PostgreSQL-High-Throughput-Architecture-2026](../Databases/Scaling-PostgreSQL-High-Throughput-Architecture-2026.md) — Analyzes single-primary bottlenecks and managed database trade-offs in cloud environments.
-- [Workflow Orchestration](../Middleware/workflow-orchestration.md) — Covers durable background worker processing that can be offloaded to low-cost dedicated compute tiers.
+- [Workflow-Orchestration-And-Durable-Execution-Engines-2026](../Middleware/Workflow-Orchestration-And-Durable-Execution-Engines-2026.md) — Covers durable background worker processing that can be offloaded to low-cost dedicated compute tiers.
 - [MacMini Setup Guide](../../DevSetup/MacMini-Setup.md) — Explores cost-efficient local homelab infrastructure as an alternative to public cloud development environments.

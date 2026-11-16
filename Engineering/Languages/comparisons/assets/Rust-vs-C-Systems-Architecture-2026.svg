@@ -1,0 +1,110 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="cGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <linearGradient id="rustGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="760" fill="url(#bgGrad)" />
+
+  <!-- Header Section -->
+  <text x="600" y="44" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="0.5">RUST VS. C: SYSTEMS ARCHITECTURE &amp; MEMORY SAFETY</text>
+  <text x="600" y="72" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">Manual Pointer Arithmetic (C) vs. Compile-Time Affine Ownership &amp; Borrow Checking (Rust)</text>
+
+  <!-- PANEL 1: C SYSTEMS MODEL -->
+  <g transform="translate(40, 100)" filter="url(#shadow)">
+    <rect width="540" height="520" rx="12" fill="url(#cGrad)" stroke="#38bdf8" stroke-width="1.5" />
+    
+    <!-- Title Badge -->
+    <rect x="24" y="20" width="492" height="42" rx="8" fill="#0369a1" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1" />
+    <text x="270" y="41" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">C: Unconstrained Manual Pointer Discipline</text>
+    <text x="270" y="55" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#7dd3fc">Direct Memory Access · Minimalist Runtime · Stable ABI</text>
+
+    <!-- Sub-card 1: Memory Model -->
+    <rect x="24" y="78" width="492" height="92" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="36" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">1. Memory Lifecycle &amp; Allocation</text>
+    <text x="36" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Explicit heap lifecycle: malloc() / free()</text>
+    <text x="36" y="136" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Unchecked pointer arithmetic (ptr + offset)</text>
+    <text x="36" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Uninitialized stack variables contain raw memory garbage</text>
+
+    <!-- Sub-card 2: Failure Modes -->
+    <rect x="24" y="184" width="492" height="92" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="36" y="204" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f87171">2. Vulnerability Surface &amp; Undefined Behavior (UB)</text>
+    <text x="36" y="224" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Spatial: Buffer overflows &amp; out-of-bounds array reads</text>
+    <text x="36" y="242" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Temporal: Use-after-free (UAF), double free, dangling pointers</text>
+    <text x="36" y="260" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fca5a5">• Accounts for ~70% of high-severity CVEs in major codebases</text>
+
+    <!-- Sub-card 3: Concurrency -->
+    <rect x="24" y="290" width="492" height="92" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="36" y="310" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">3. Concurrency &amp; Thread Safety</text>
+    <text x="36" y="330" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Raw POSIX threads (pthread_create) &amp; shared memory</text>
+    <text x="36" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Synchronization left entirely to programmer discipline</text>
+    <text x="36" y="366" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Compiler cannot detect data races; race bugs trigger UB</text>
+
+    <!-- Sub-card 4: Compilation & ABI -->
+    <rect x="24" y="396" width="492" height="96" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="36" y="416" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">4. Toolchain, Compilation &amp; Interop</text>
+    <text x="36" y="436" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Fast compilation times (separate compilation per .c unit)</text>
+    <text x="36" y="454" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Minimal binary footprint (~15 KB hello world)</text>
+    <text x="36" y="472" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• De facto universal standard ABI; native interop across all OSes</text>
+  </g>
+
+  <!-- PANEL 2: RUST SYSTEMS MODEL -->
+  <g transform="translate(620, 100)" filter="url(#shadow)">
+    <rect width="540" height="520" rx="12" fill="url(#rustGrad)" stroke="#fbbf24" stroke-width="1.5" />
+    
+    <!-- Title Badge -->
+    <rect x="24" y="20" width="492" height="42" rx="8" fill="#78350f" fill-opacity="0.25" stroke="#fbbf24" stroke-width="1" />
+    <text x="270" y="41" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#fbbf24">Rust: Compile-Time Ownership &amp; Lifetimes</text>
+    <text x="270" y="55" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#fde68a">Affine Type System · Zero-Cost Borrow Checker · Fearless Concurrency</text>
+
+    <!-- Sub-card 1: Memory Model -->
+    <rect x="24" y="78" width="492" height="92" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="36" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">1. Ownership, Move Semantics &amp; RAII</text>
+    <text x="36" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Exactly one owner per value; move semantics by default</text>
+    <text x="36" y="136" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Automatic deterministic cleanup when owner drops out of scope</text>
+    <text x="36" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• Zero garbage collection overhead; zero manual free() calls</text>
+
+    <!-- Sub-card 2: Borrow Checker -->
+    <rect x="24" y="184" width="492" height="92" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="36" y="204" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">2. Borrow Checker: Aliasing XOR Mutability</text>
+    <text x="36" y="224" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Many shared immutable references (&amp;T) OR one mutable (&amp;mut T)</text>
+    <text x="36" y="242" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Lifetime analysis ('a) statically prevents dangling pointers</text>
+    <text x="36" y="260" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#86efac">• Mathematically impossible to trigger UAF or double-free in safe code</text>
+
+    <!-- Sub-card 3: Concurrency -->
+    <rect x="24" y="290" width="492" height="92" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="36" y="310" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">3. Type-Enforced Fearless Concurrency</text>
+    <text x="36" y="330" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Send trait: Safe to transfer ownership across thread boundaries</text>
+    <text x="36" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Sync trait: Safe to share references across threads (&amp;T: Send)</text>
+    <text x="36" y="366" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#86efac">• Data races rejected at compile time by the borrow checker</text>
+
+    <!-- Sub-card 4: Compilation & ABI -->
+    <rect x="24" y="396" width="492" height="96" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="36" y="416" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">4. Toolchain, Compilation &amp; Packaging</text>
+    <text x="36" y="436" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Slower compilation due to borrow checking &amp; monomorphization</text>
+    <text x="36" y="454" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Default binaries include panic landing pads &amp; backtraces (~3.9 MB)</text>
+    <text x="36" y="472" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Release stripping (-C strip=symbols) reduces size to ~300 KB</text>
+  </g>
+
+  <!-- BOTTOM COMPARATIVE SUMMARY -->
+  <g transform="translate(40, 642)">
+    <rect width="1120" height="92" rx="10" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="24" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">CORE ARCHITECTURAL SYNTHESIS</text>
+    <text x="24" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• <tspan fill="#38bdf8" font-weight="600">C Philosophy:</tspan> Trust the programmer completely. Provide direct assembly-like primitives and a stable ABI; accept that memory errors cause silent corruption or crashes.</text>
+    <text x="24" y="68" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fbbf24" font-weight="600">• Rust Philosophy: <tspan fill="#cbd5e1" font-weight="400">Shift verification from post-mortem debugging to compile-time proof. Enforce aliasing XOR mutability; encapsulate hardware unsafety inside audited unsafe blocks.</tspan></text>
+  </g>
+</svg>

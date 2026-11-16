@@ -3,7 +3,7 @@
 `Learning note · Revised November 2026 · AI Research & Reinforcement Learning`  
 *By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
-> DeepSeek-R1 demonstrates that complex reasoning, long-chain mathematical deduction, and autonomous error self-correction ("aha moments") can be elicited entirely through pure reinforcement learning on a base model without prior supervised human demonstration. By introducing Group Relative Policy Optimization (GRPO), DeepSeek eliminated the memory-intensive critic network and scaled test-time compute to match frontier proprietary models like OpenAI o1.
+> **Core idea:** DeepSeek-R1 demonstrates that complex reasoning, long-chain mathematical deduction, and autonomous error self-correction ("aha moments") can be elicited entirely through pure reinforcement learning on a base model without prior supervised human demonstration. By introducing Group Relative Policy Optimization (GRPO), DeepSeek eliminated the memory-intensive critic network and scaled test-time compute to match frontier proprietary models like OpenAI o1.
 
 ---
 

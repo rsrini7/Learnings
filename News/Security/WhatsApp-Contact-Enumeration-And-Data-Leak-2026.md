@@ -99,7 +99,7 @@ sequenceDiagram
     autonumber
     participant Attacker as Headless Client (whatsmeow)
     participant Edge as WhatsApp Edge Gateway
-    participant Registry as Account Registry &amp; Media CDN
+    participant Registry as Account Registry and Media CDN
 
     Attacker->>Edge: Noise Protocol Handshake (Session established)
     loop Pipelined Batch Queries (100M numbers / hour)

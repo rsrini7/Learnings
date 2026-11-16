@@ -66,7 +66,7 @@ sequenceDiagram
     Note over EnactorA: Network jitter / retries delay Enactor A
     EnactorB->>R53: Applies Plan v102 successfully
     EnactorB->>Planner: Marks Plan v100 as retired / cleaned up
-    Note over EnactorA: Enactor A unblocks; lacks monotonic version check!
+    Note over EnactorA: Enactor A unblocks, lacks monotonic version check!
     EnactorA->>R53: Retries and APPLIES obsolete Plan v100
     Note over R53: Active v102 IPs replaced with decommissioned v100 IPs
     R53--xClient: DNS Resolution Fails (NXDOMAIN / Connection Refused)
@@ -304,5 +304,5 @@ The following diagram illustrates the original incident timeline, affected cloud
 **Related:**
 - [Cloudflare Global Outage ClickHouse Config](Cloudflare-Global-Outage-ClickHouse-Config-Nov-2025.md) — Another global platform disruption caused by configuration generator desync and homogeneous edge crashes.
 - [Supabase Outage Feb 2026](Supabase-Outage-Feb-2026.md) — Demonstrates how a single regional AWS VPC control-plane kill-switch isolated production databases.
-- [AWS vs Hetzner](../../Engineering/Cloud/AWS-vs-Hetzner.md) — Examines cloud blast radius dynamics, managed dependency coupling, and multi-region cost trade-offs.
+- [AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026](../../Engineering/Cloud/AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026.md) — Examines cloud blast radius dynamics, managed dependency coupling, and multi-region cost trade-offs.
 - [Scaling-Cpp-Services-To-1-Million-RPS-2026](../../Engineering/Architecture/Scaling-Cpp-Services-To-1-Million-RPS-2026.md) — Explores zero-copy networking and asynchronous backpressure to avoid thundering herd queue exhaustion.
