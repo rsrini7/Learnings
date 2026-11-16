@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0b0f19" />
+    </linearGradient>
+
+    <!-- Card Gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Header Gradient -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#dc2626" />
+      <stop offset="50%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#f87171" />
+    </linearGradient>
+
+    <!-- Shadow Filter -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Outer Frame -->
+  <rect x="20" y="20" width="1160" height="780" rx="16" fill="none" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Header Banner -->
+  <g transform="translate(40, 45)">
+    <rect x="0" y="0" width="1120" height="80" rx="12" fill="url(#cardGrad)" stroke="#ef4444" stroke-width="1.5" filter="url(#dropShadow)" />
+    <circle cx="45" cy="40" r="22" fill="#991b1b" fill-opacity="0.2" stroke="#ef4444" stroke-width="1.5" />
+    <text x="45" y="47" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="bold" fill="#ef4444" text-anchor="middle">GL</text>
+
+    <text x="85" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="bold" fill="#f8fafc">
+      GitLab CVE-2026-110264: Regex Compiler Integer Overflow &amp; RCE
+    </text>
+    <text x="85" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">
+      CVSS 10.0 Maximum Severity · Unauthenticated Remote Code Execution · Onigmo C Engine Heap Corruption (2014–2026)
+    </text>
+  </g>
+
+  <!-- Panel 1: Vulnerability Scope & Exposure -->
+  <g transform="translate(40, 145)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#ef4444" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#991b1b" fill-opacity="0.3" stroke="#ef4444" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle">1</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      Vulnerability Scope &amp; Exposure
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#ef4444">
+      CVSS 10.0: Network, Zero Privileges, Zero Interaction
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Decade-Long Blast Radius (GitLab 7.0 to 19.5)
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Affects every self-managed CE/EE instance deployed since 2014;
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      GitLab.com and updated Dedicated multi-tenants already patched.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Pre-Authentication Attack Surface
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      An unauthenticated attacker over the network can execute arbitrary
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      commands as the 'git' service user without valid credentials.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      The Recurring Engine Vulnerability Pattern
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Fourth code-execution flaw in Onigmo reported within 30 days;
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      supercedes the Oct 12 patch (CVE-2026-97229) with broader reach.
+    </text>
+  </g>
+
+  <!-- Panel 2: Integer Overflow Compiler Mechanics -->
+  <g transform="translate(615, 145)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#fbbf24" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#b45309" fill-opacity="0.3" stroke="#fbbf24" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#fbbf24" text-anchor="middle">2</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      Compiler Integer Overflow Mechanics
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#fbbf24">
+      Onigmo / Ruby Regexp Repeat-ID Heap Corruption
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Repeat-ID Counter Arithmetic Wrap
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Complex nested quantifiers (e.g., (a{n}){m}) trigger integer
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      overflow in Onigmo's repeat-ID allocation tables during compilation.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Undersized Heap Allocation
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      The wrapped integer causes malloc() to allocate a truncated buffer;
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      bytecode emission proceeds with full-sized compiled instruction sequences.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      C Heap Out-of-Bounds Overwrite
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Compiled NFA bytecode overwrites adjacent heap metadata and function
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      pointers, redirecting control flow to arbitrary shellcode payloads.
+    </text>
+  </g>
+
+  <!-- Panel 3: Ingress Vectors & ReDoS Escalation -->
+  <g transform="translate(40, 460)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">3</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      Ingress Vectors &amp; Detection Signatures
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#38bdf8">
+      Where Untrusted Regular Expressions Reach the Compiler
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Unauthenticated Markdown &amp; Org-Mode Renderers
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Public issues, snippets, and commit diffs trigger text rendering
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      engines that compile custom user-supplied delimiter patterns.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Webhook &amp; URL Filtering Rules
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Dynamic regex sanitization rules in system hook filters compile
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      untrusted expressions prior to session authentication.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Log Anomaly Detection Signatures
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      GitLab alerts highlight bursts of Onigmo worker SIGSEGV crashes
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      and spikes in Org-mode rendering exception logs.
+    </text>
+  </g>
+
+  <!-- Panel 4: Blast Radius & Remediation Matrix -->
+  <g transform="translate(615, 460)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#4ade80" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#15803d" fill-opacity="0.3" stroke="#4ade80" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#4ade80" text-anchor="middle">4</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      Blast Radius &amp; Immediate Patch Matrix
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#4ade80">
+      Supply Chain Defense · Required Version Upgrades
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Full Software Supply Chain Compromise
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      A compromised server yields proprietary repos, CI/CD variables,
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      runner tokens, deploy keys, and production release pipelines.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Mandatory Fixed Version Matrix
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Upgrade immediately to: 19.5.1, 19.4.3, 19.3.6, 19.2.9,
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      19.1.9, 19.0.10, or 18.11.13. Earlier patches do not protect.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Active Service Restart Verification
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Confirm that Puma, Sidekiq, and Onigmo worker daemons restarted
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      on the updated binary using 'gitlab-ctl status' and version audits.
+    </text>
+  </g>
+
+  <!-- Footer Info -->
+  <g transform="translate(40, 770)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b">
+      GitLab Security Advisory (Oct 21, 2026) · CVE-2026-110264 · HackerOne Report by joaxcar · Onigmo Regex Engine Patch
+    </text>
+  </g>
+</svg>
