@@ -1,0 +1,159 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#b91c1c" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#059669" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0ea5e9" />
+      <stop offset="100%" stop-color="#6366f1" />
+    </linearGradient>
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="780" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="44" fill="#f8fafc" font-size="22" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Model Context Protocol: Scalability Crisis vs. Code-Mode Federation</text>
+  <text x="40" y="68" fill="#94a3b8" font-size="13" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Architectural comparison of static JSON-RPC schema bloat against sandboxed Programmatic Tool Calling (Claude Sonnet 4.6 &amp; Cloudflare)</text>
+
+  <!-- LEFT PANEL: Traditional JSON-RPC Tool Binding -->
+  <rect x="40" y="90" width="540" height="390" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)"/>
+  <rect x="40" y="90" width="540" height="36" rx="12" fill="#1e293b"/>
+  <text x="56" y="114" fill="#f87171" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TRADITIONAL MCP: STATIC JSON-RPC BINDING</text>
+  <rect x="425" y="96" width="145" height="22" rx="4" fill="#7f1d1d" fill-opacity="0.6"/>
+  <text x="497" y="111" fill="#fca5a5" font-size="10" font-weight="700" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">97K Token Overhead</text>
+
+  <!-- Step 1: Upfront Schema Explosion -->
+  <rect x="60" y="140" width="500" height="85" rx="8" fill="#1e293b" stroke="#7f1d1d" stroke-width="1.2"/>
+  <text x="75" y="162" fill="#fca5a5" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">1. Upfront Schema Explosion (5 Connected Servers)</text>
+  <text x="75" y="182" fill="#cbd5e1" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Injects full JSON-Schema for Filesystem, Git, Docker, DB, Slack</text>
+  <text x="75" y="200" fill="#f87171" font-size="11" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">⚠️ Consumes 97,000 tokens (48% of 200K window) before turn zero</text>
+  <text x="75" y="216" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Anthropic internal deployments reached 134,000 tokens in static schemas</text>
+
+  <!-- Arrow -->
+  <path d="M 310 225 L 310 245" stroke="#f87171" stroke-width="2"/>
+  <polygon points="305,240 310,250 315,240" fill="#f87171"/>
+
+  <!-- Step 2: Multi-Turn Ping-Pong -->
+  <rect x="60" y="250" width="500" height="90" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="75" y="272" fill="#e2e8f0" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">2. Iterative JSON-RPC Round Trips (Latency Bottleneck)</text>
+  <text x="75" y="292" fill="#94a3b8" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Turn 1: Model emits JSON tool_call (list_files)</text>
+  <text x="75" y="308" fill="#94a3b8" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Turn 2: Client sends full 20KB JSON payload back into context</text>
+  <text x="75" y="324" fill="#f87171" font-size="11" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Turn 3+: Quadratic context growth; intermediate bloat degrades attention</text>
+
+  <!-- Arrow -->
+  <path d="M 310 340 L 310 360" stroke="#f87171" stroke-width="2"/>
+  <polygon points="305,355 310,365 315,355" fill="#f87171"/>
+
+  <!-- Step 3: Failure Modes -->
+  <rect x="60" y="365" width="500" height="95" rx="8" fill="#450a0a" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="75" y="387" fill="#fca5a5" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">3. Attention Degradation &amp; Error Vulnerability</text>
+  <text x="75" y="407" fill="#fecaca" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Opus 4 internal MCP accuracy drops to 49% due to schema noise</text>
+  <text x="75" y="423" fill="#fecaca" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• PII leakage: raw unredacted data dumps injected into model context</text>
+  <text x="75" y="439" fill="#f87171" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Result: 5–8x higher inference costs; extreme susceptibility to prompt drift</text>
+
+  <!-- RIGHT PANEL: Code-Mode Programmatic Tool Calling -->
+  <rect x="620" y="90" width="540" height="390" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)"/>
+  <rect x="620" y="90" width="540" height="36" rx="12" fill="#1e293b"/>
+  <text x="636" y="114" fill="#34d399" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">EVOLVED MCP: CODE-MODE TOOL CALLING</text>
+  <rect x="1005" y="96" width="145" height="22" rx="4" fill="#065f46" fill-opacity="0.6"/>
+  <text x="1077" y="111" fill="#6ee7b7" font-size="10" font-weight="700" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">80–98% Token Savings</text>
+
+  <!-- Step 1: Lightweight Type Signatures -->
+  <rect x="640" y="140" width="500" height="85" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1.2"/>
+  <text x="655" y="162" fill="#6ee7b7" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">1. Lightweight Type Signatures &amp; Dynamic Tool Search</text>
+  <text x="655" y="182" fill="#cbd5e1" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Exposes tools as concise TypeScript / Python type declarations</text>
+  <text x="655" y="200" fill="#34d399" font-size="11" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">⚡ Ingress cost drops from 97,000 to ~2,500 tokens (97% reduction)</text>
+  <text x="655" y="216" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Tools loaded dynamically via semantic embedding search on user intent</text>
+
+  <!-- Arrow -->
+  <path d="M 890 225 L 890 245" stroke="#10b981" stroke-width="2"/>
+  <polygon points="885,240 890,250 895,240" fill="#10b981"/>
+
+  <!-- Step 2: Code Synthesis & Sandboxed Execution -->
+  <rect x="640" y="250" width="500" height="90" rx="8" fill="#1e293b" stroke="#047857" stroke-width="1"/>
+  <text x="655" y="272" fill="#a7f3d0" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">2. Single-Turn Programmatic Synthesis (Code Mode)</text>
+  <text x="655" y="292" fill="#cbd5e1" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Model writes executable script calling tools as native library imports</text>
+  <text x="655" y="308" fill="#cbd5e1" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Loops, filters, and aggregations execute inside local sandbox</text>
+  <text x="655" y="324" fill="#34d399" font-size="11" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">⚡ Eliminates intermediate round trips; only final summary returns to context</text>
+
+  <!-- Arrow -->
+  <path d="M 890 340 L 890 360" stroke="#10b981" stroke-width="2"/>
+  <polygon points="885,355 890,365 895,355" fill="#10b981"/>
+
+  <!-- Step 3: Verified Accuracy Gains -->
+  <rect x="640" y="365" width="500" height="95" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.2"/>
+  <text x="655" y="387" fill="#6ee7b7" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">3. High Accuracy, Determinism &amp; PII Shielding</text>
+  <text x="655" y="407" fill="#d1fae5" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• BrowseComp benchmark: +13% (Sonnet 4.6), +16% (Opus 4.6)</text>
+  <text x="655" y="423" fill="#d1fae5" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Deep Search QA: +7 to +8 F1 points via Dynamic Filtering</text>
+  <text x="655" y="439" fill="#a7f3d0" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Sandbox intercepts PII locally; credentials never leave isolated network boundary</text>
+
+  <!-- BOTTOM PANEL: Production Federation Architecture -->
+  <rect x="40" y="500" width="1120" height="250" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)"/>
+  <rect x="40" y="500" width="1120" height="34" rx="12" fill="#1e293b"/>
+  <text x="56" y="523" fill="#38bdf8" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">ENTERPRISE FEDERATION ARCHITECTURE: GATEWAY &amp; SANDBOX ISOLATION</text>
+
+  <!-- Step A: Agent Core -->
+  <rect x="60" y="545" width="230" height="185" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1"/>
+  <text x="75" y="568" fill="#38bdf8" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Agent Ingress &amp; Router</text>
+  <text x="75" y="588" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Claude Sonnet 4.6 / GPT-5</text>
+  <text x="75" y="612" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Semantic Tool Search (k=3)</text>
+  <text x="75" y="630" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Dynamic Schema Pruning</text>
+  <text x="75" y="648" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Code Mode Script Generator</text>
+  <rect x="75" y="685" width="200" height="24" rx="4" fill="#0369a1" fill-opacity="0.3"/>
+  <text x="175" y="701" fill="#38bdf8" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Input Token Reduction: 85%</text>
+
+  <!-- Arrow A to B -->
+  <path d="M 290 635 L 340 635" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="335,630 345,635 335,640" fill="#38bdf8"/>
+
+  <!-- Step B: Sandboxed Runtime -->
+  <rect x="345" y="545" width="255" height="185" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+  <text x="360" y="568" fill="#34d399" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Sandboxed Code Runner</text>
+  <text x="360" y="588" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Wasm / Firecracker / Docker</text>
+  <text x="360" y="612" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Microsecond runtime spinup</text>
+  <text x="360" y="630" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Intermediate array filtering</text>
+  <text x="360" y="648" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• CPU &amp; memory cgroups caps</text>
+  <rect x="360" y="685" width="225" height="24" rx="4" fill="#065f46" fill-opacity="0.3"/>
+  <text x="472" y="701" fill="#34d399" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Zero Host Filesystem Leakage</text>
+
+  <!-- Arrow B to C -->
+  <path d="M 600 635 L 650 635" stroke="#10b981" stroke-width="2"/>
+  <polygon points="645,630 655,635 645,640" fill="#10b981"/>
+
+  <!-- Step C: Security Proxy -->
+  <rect x="655" y="545" width="245" height="185" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+  <text x="670" y="568" fill="#fbbf24" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">PII Shield &amp; Egress Proxy</text>
+  <text x="670" y="588" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Credential Broker &amp; DLP</text>
+  <text x="670" y="612" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Tokenized ephemeral secrets</text>
+  <text x="670" y="630" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Data Loss Prevention filter</text>
+  <text x="670" y="648" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• HTTP outbound egress allowlist</text>
+  <rect x="670" y="685" width="215" height="24" rx="4" fill="#78350f" fill-opacity="0.3"/>
+  <text x="777" y="701" fill="#fbbf24" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Credential Boundary Hardening</text>
+
+  <!-- Arrow C to D -->
+  <path d="M 900 635 L 945 635" stroke="#fbbf24" stroke-width="2"/>
+  <polygon points="940,630 950,635 940,640" fill="#fbbf24"/>
+
+  <!-- Step D: Federated MCP Servers -->
+  <rect x="950" y="545" width="190" height="185" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1"/>
+  <text x="965" y="568" fill="#c084fc" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Federated MCP Servers</text>
+  <text x="965" y="588" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Standard 2026 Endpoints</text>
+  <text x="965" y="612" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• SSE &amp; Stdio transports</text>
+  <text x="965" y="630" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• GitHub, Slack, Postgres</text>
+  <text x="965" y="648" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Internal Microservices</text>
+  <rect x="965" y="685" width="160" height="24" rx="4" fill="#581c87" fill-opacity="0.3"/>
+  <text x="1045" y="701" fill="#c084fc" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Standard JSON-RPC Target</text>
+</svg>

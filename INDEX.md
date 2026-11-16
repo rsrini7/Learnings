@@ -101,7 +101,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [DSPy Declarative Self Improving Language Programs 2026](AI-ML/Agents/Programming/DSPy-Declarative-Self-Improving-Language-Programs-2026.md)
 
 #### 🌐 Network & Self-Hosting
-- [self hosted networking ai agent complete guide 2026](AI-ML/Agents/Network/self-hosted-networking-ai-agent-complete-guide-2026.md)
+- [Self Hosted Networking And AI Agent Guide 2026](AI-ML/Agents/Network/Self-Hosted-Networking-And-AI-Agent-Guide-2026.md)
 
 #### 🍃 Spring Boot 4 Migration
 - [SpringBoot 4 Migration Copilot VSCode](AI-ML/Agents/Spring-Boot-4-Migration/SpringBoot-4-Migration-Copilot-VSCode.md)
@@ -195,9 +195,9 @@ A complete, fully expanded single-page index of all technical articles and resea
 
 
 ### 🔗 Protocols
-- [MCP Scalability Issue Solution v3](AI-ML/Protocols/MCP_Scalability_Issue_Solution_v3.md)
+- [MCP Scalability Architecture And Federation 2026](AI-ML/Protocols/MCP-Scalability-Architecture-And-Federation-2026.md)
 - [MoSPI India MCP](AI-ML/Protocols/MoSPI-India-MCP.md)
-- [UCP](AI-ML/Protocols/UCP.md)
+- [Universal Commerce Protocol Architecture 2026](AI-ML/Protocols/Universal-Commerce-Protocol-Architecture-2026.md)
 
 
 ### 🎯 Fine-Tuning

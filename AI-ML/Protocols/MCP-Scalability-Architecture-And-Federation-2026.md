@@ -1,18 +1,20 @@
-# Model Context Protocol Scalability: The Transition to Code-Mode Agents
+# Model Context Protocol Scalability: The Transition to Code-Mode Agents and Federation (2026)
 
-**A Technical Whitepaper on Context Efficiency & Programmatic Tool Calling**
+Learning note · Revised Nov 16, 2026 · Model Context Protocol & Advanced Agent Tooling
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
-![MCP scalability overview](assets/MCP-Scalability-Issue-Solution.png)
-![MCP scalability: evolving architectures](assets/MCP-Scalability-Issue-Solution-Extended.png)
-
-> **Version 3.0 — Updated February 20, 2026**
-> This document has been substantially revised to incorporate Claude Sonnet 4.6 (February 17, 2026) and the general availability of Programmatic Tool Calling, Dynamic Filtering, and the full advanced tool use platform. The industry is moving: JSON-style tool calling is increasingly viewed as a legacy pattern for complex workflows, with Cloudflare, Anthropic, and open-source projects converging on Code Mode as the preferred approach.
-
-> **Verification boundary:** This is a dated analytical snapshot, not a promise about every provider or MCP client. Benchmark figures are vendor-reported or derived from the cited project reports; they are not independent reproductions. The MCP specification has since advanced to the [2026-07-28 release](https://modelcontextprotocol.io/specification/2026-07-28), so implementation details and feature availability should be rechecked before production use.
+> While the Model Context Protocol (MCP) standardized tool connectivity, static JSON-RPC schema injection induces severe context bloat (97K–134K tokens across 5 connected servers); the transition to Programmatic Tool Calling (Code Mode in Claude Sonnet 4.6 and Cloudflare) achieves an 80% to 98% token reduction by replacing synthetic JSON function schemas with sandboxed, native code execution.
 
 ---
 
-## Executive Summary
+> **Version 3.0 — Updated February 20, 2026 · Revised November 2026**
+> This whitepaper incorporates Claude Sonnet 4.6 (February 17, 2026) and the general availability of Programmatic Tool Calling, Dynamic Filtering, and advanced sandboxed tool platforms. JSON-style tool calling is increasingly viewed as a legacy pattern for complex workflows, with Cloudflare, Anthropic, and open-source ecosystems converging on Code Mode as the preferred standard.
+>
+> **Verification boundary:** Benchmark figures are vendor-reported (Anthropic, Cloudflare, WorkOS, Speakeasy) or derived from cited project reports. The MCP specification has since advanced to the [2026-07-28 release](https://modelcontextprotocol.io/specification/2026-07-28); implementation details and feature flags should be verified before production deployment.
+
+---
+
+## 1. Executive Summary & Core Idea
 
 The Model Context Protocol (MCP) emerged as the de facto standard for connecting AI agents to external tools and systems following its November 2024 launch. As adoption scaled, however, fundamental architectural limitations surfaced. This whitepaper examines the root causes of MCP's scalability crisis—excessive token consumption, intermediate result bloat, rigid tool binding—and presents the industry's evolving response: **Programmatic Tool Calling (Code Mode)**, now a generally available capability on Claude Sonnet 4.6.
 
@@ -58,19 +60,70 @@ For agents with fewer than 10 simple tools: traditional JSON calling remains pra
 
 ---
 
-## 1. The MCP Architecture and Initial Promise
+## 2. Foundations: Core Terminology & Protocol Mechanics
 
-### 1.1 What Is MCP?
+Understanding MCP scalability requires distinguishing static schema serialization from dynamic, sandboxed code execution.
+
+| Term | Technical Meaning | Operational Role |
+| :--- | :--- | :--- |
+| **Model Context Protocol (MCP)** | Open JSON-RPC standard establishing a universal client-server interface for connecting LLMs to external tools and resources. | Decouples tool implementation from agent runtimes across programming languages and platforms. |
+| **Static Schema Injection** | Serializing full JSON-Schema definitions for all connected tools into the LLM system prompt on every turn. | Causes severe token bloat (97K–134K tokens across 5 servers), consuming up to 48% of the context window. |
+| **Programmatic Tool Calling (Code Mode)** | Execution pattern where models emit executable code (TypeScript/Python) invoking tools as native library imports in an isolated sandbox. | Keeps intermediate data out of model context; reduces token consumption by 80% to 98%. |
+| **Dynamic Tool Filtering** | Execution-time post-processing where the model executes sandboxed code to prune and summarize raw search or API payloads before context ingestion. | Achieves ~11% quality improvement and ~24% token reduction on search benchmarks. |
+| **MCP Tool Search** | Progressive discovery mechanism utilizing regex or BM25 indexing to load tool schemas dynamically on-demand. | Reduces upfront tool definition overhead by up to 85% with 1–2 second latency overhead. |
+| **Sandboxed Execution Harness** | Isolated micro-VM (Firecracker), WebAssembly (WASM), or container runtime enforcing CPU/memory caps, timeout limits, and network egress rules. | Prevents arbitrary code execution exploits and intercepts sensitive PII before model exposure. |
+| **Context Compaction** | Automated server-side conversation summarization triggered when context approaches window limits. | Enables theoretically infinite multi-turn agent operation without manual state pruning. |
+
+---
+
+## 3. Deep Technical Mechanism: The Scalability Crisis & Architectural Shift
+
+The transition from traditional MCP to Code-Mode federation resolves fundamental architectural bottlenecks inherent in static JSON-RPC serialization.
+
+![Model Context Protocol Scalability Architecture](assets/MCP-Scalability-Architecture-And-Federation-2026.svg)
+
+### Comparative Request Execution Lifecycle
+
+The following sequence diagram contrasts the multi-turn latency and context bloat of traditional JSON-RPC tool calling with the single-turn efficiency of Programmatic Tool Calling (Code Mode):
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor User as Engineer / User
+    participant LLM as Claude Sonnet 4.6
+    participant Context as Model Context Window
+    participant Sandbox as Code Execution Sandbox
+    participant Server as MCP Servers (DB, Drive, CRM)
+
+    Note over Context: Traditional JSON-RPC: 97K Tokens Preloaded Schema Bloat
+    User->>LLM: Audit Q3 travel overages across 50 team members
+    
+    rect rgb(30, 41, 59)
+    Note right of LLM: Code-Mode Programmatic Execution (PTC)
+    LLM->>Sandbox: Emit Python script importing typed tool libraries
+    Sandbox->>Server: Batch fetch team records and expense line items
+    Server-->>Sandbox: Return 2,000 raw JSON line items (50KB data)
+    Sandbox->>Sandbox: Execute in-memory filter and budget comparison loops
+    Sandbox-->>LLM: Return compact summary list (200 tokens)
+    end
+
+    LLM->>Context: Ingest only final synthesized overage report
+    LLM->>User: Deliver verified executive budget summary
+```
+
+### 3.1 The MCP Architecture and Initial Promise
+
+#### What Is MCP?
 
 The Model Context Protocol is an open standard providing a universal interface for connecting AI agents to external systems. Rather than requiring custom integrations for each tool-agent pairing, MCP abstracts tools and data sources into standardized "servers" that any agent can consume.
 
 **Core Components:**
 - **MCP Clients**: AI agents that consume tools and resources
 - **MCP Servers**: Standards-compliant tool providers
-- **Transport Layer**: JSON-RPC based communication
+- **Transport Layer**: JSON-RPC based communication (Stdio and SSE)
 - **Standard Features**: Tools, Resources, Prompts, Sampling
 
-### 1.2 Why MCP Adoption Was Rapid
+#### Why MCP Adoption Was Rapid
 
 MCP solved a real problem: fragmentation and duplicated effort in building agent integrations. Before MCP, connecting an agent to Slack, Google Drive, and Salesforce required three separate custom implementations. MCP unified this into a single standardized pattern.
 
@@ -78,13 +131,11 @@ Since November 2024, the community has built thousands of MCP servers across eve
 
 ---
 
-## 2. The Scalability Crisis: Root Cause Analysis
+### 3.2 The Scalability Crisis: Root Cause Analysis
 
-![Illustrative context usage](assets/Context-Usage.jpg)
+#### Problem 1: Tool Definition Overload
 
-### 2.1 Problem 1: Tool Definition Overload
-
-**The Core Issue:** MCP loads all tool definitions upfront, directly into the model's context window.
+**The Core Issue:** Traditional MCP loads all tool definitions upfront, directly into the model's context window.
 
 #### Real-World Example
 
@@ -114,7 +165,7 @@ Where for MCP:
 - Each tool set = full definitions, not just needed ones
 - No selective loading mechanism in traditional MCP
 
-### 2.2 Problem 2: Intermediate Result Bloat
+#### Problem 2: Intermediate Result Bloat
 
 **The Secondary Issue:** Every tool call result passes back through the model's context window, forcing repetition of data.
 
@@ -137,13 +188,13 @@ TOTAL: Transcript flows through context TWICE
 
 This is the problem Programmatic Tool Calling was designed to eliminate: intermediate I/O stays inside the sandbox and **never touches the model's context window**.
 
-### 2.3 Problem 3: No Progressive Disclosure
+#### Problem 3: No Progressive Disclosure
 
 **The Architectural Gap:** Traditional MCP had no built-in mechanism for "discovering" tools on-demand.
 
 An e-commerce platform might expose 500+ tools across product management, inventory, customer management, and reporting. A single request might need 5–10 tools, yet all 500 descriptions consume tokens. Unlike Unix filesystems where you list a directory only when needed, traditional MCP had no equivalent — all tools were always "visible" to the model.
 
-### 2.4 Problem 4: The "Human Context vs. Machine Context" Mismatch
+#### Problem 4: The "Human Context vs. Machine Context" Mismatch
 
 **A Deeper Design Tension:** JSON tool schemas are optimized for human developers, not for LLMs.
 
@@ -151,7 +202,7 @@ Human developers like JSON because it's explicit and structured. For the model, 
 
 This insight — code-first is more natural to LLMs than JSON-first — is the intellectual foundation of Programmatic Tool Calling. Every token spent on JSON schema enforcement is a token taken from the model's actual strength.
 
-### 2.5 Problem 5: Rigid Tool Binding
+#### Problem 5: Rigid Tool Binding
 
 **The Design Limitation:** Tools are statically defined; new capabilities cannot be generated dynamically.
 
@@ -1011,6 +1062,16 @@ Anthropic now provides **code execution as a managed capability** for Claude age
 
 Computer use and agentic scenarios face prompt injection risks — malicious actors hiding instructions on websites or in documents. Claude Sonnet 4.6 is a major improvement over Sonnet 4.5 in prompt injection resistance, performing similarly to Opus 4.6 on these evaluations. See Anthropic's [security hardening documentation](https://platform.claude.com/docs/en/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks) for mitigation strategies.
 
+### 11.5 Common Claims vs. Technical Realities
+
+| Architectural Dimension | Common Industry Claim | Technical Reality in Production |
+| :--- | :--- | :--- |
+| **Context Consumption** | "Larger context windows (1M–2M tokens) make MCP tool bloat irrelevant." | Excessive tool definitions induce attention degradation ("token overwhelm"), dropping model reasoning to GPT-3.5 levels regardless of window capacity. |
+| **Protocol Purity** | "JSON-RPC tool binding is the cleanest standard for tool execution." | JSON schemas are synthetic formats for LLMs; writing native TypeScript/Python code is far more natural, expressive, and compact for frontier models. |
+| **Tool Calling Latency** | "Code Mode is slower because it requires compiling and running a sandbox." | Code Mode executes multi-step loops in a single turn, eliminating 5–10 iterative round trips and cutting net task completion time by up to 40%. |
+| **Security & Privacy** | "Exposing tools via JSON-RPC is inherently safer than running code." | Traditional JSON tool calling forces raw PII and credentials directly through the model context; sandboxed code execution shields PII locally via pre-authenticated bindings. |
+| **Ecosystem Relevance** | "Code Mode completely replaces and kills MCP." | Code Mode replaces JSON-RPC execution, but MCP remains the underlying server connectivity standard. Code Mode simply treats MCP servers as typed libraries. |
+
 ---
 
 ## 12. Future Roadmap and Evolution
@@ -1330,30 +1391,43 @@ response = client.beta.messages.create(
 
 ### Official Anthropic Sources
 
-- Anthropic: "Introducing Claude Sonnet 4.6" (February 17, 2026) — [anthropic.com](https://www.anthropic.com/news/claude-sonnet-4-6)
-- Anthropic: "Introducing Advanced Tool Use on the Claude Developer Platform" (November 24, 2025) — [anthropic.com](https://www.anthropic.com/engineering/advanced-tool-use)
-- Anthropic: "Code Execution with MCP: Building More Efficient Agents" (November 2025)
-- Anthropic: "What's New in Claude 4.6" — API Docs — [platform.claude.com](https://platform.claude.com/docs/en/about-claude/models/whats-new-claude-4-6)
-- Anthropic: "Programmatic Tool Calling" — [platform.claude.com](https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling)
-- Anthropic: "Introducing Claude Skills" (2025)
-- Anthropic: Claude Sonnet 4.6 System Card (2026)
-- Model Context Protocol Specification — [modelcontextprotocol.io](https://modelcontextprotocol.io/specification)
+- [Anthropic: Introducing Claude Sonnet 4.6 (February 17, 2026)](https://www.anthropic.com/news/claude-sonnet-4-6) — Frontier model update bringing Programmatic Tool Calling, Dynamic Filtering, and sandboxed code execution to general availability.
+- [Anthropic: Introducing Advanced Tool Use on the Claude Developer Platform](https://www.anthropic.com/engineering/advanced-tool-use) — Engineering analysis detailing the transition from static 134K-token tool definitions to dynamic tool search and Code Mode execution.
+- [Anthropic: Code Execution with MCP — Building More Efficient Agents](https://www.anthropic.com) — Foundational whitepaper demonstrating 150K to 2K token reduction via sandboxed code generation.
+- [Anthropic: Programmatic Tool Calling Documentation](https://platform.claude.com/docs/en/agents-and-tools/tool-use/programmatic-tool-calling) — Official API documentation and schema specifications for Code Mode execution.
+- [Model Context Protocol Specification](https://modelcontextprotocol.io/specification) — Open-source protocol specification detailing JSON-RPC 2.0 schemas, Stdio/SSE transports, and tool capabilities.
 
-### Partner Sources
+### Partner Sources & Research
 
-- Cloudflare: "Code Mode: The Better Way to Use MCP" (September 2025) — [blog.cloudflare.com](https://blog.cloudflare.com/code-mode/)
-- WorkOS: "Cloudflare Code Mode Cuts Token Usage by 81%" (2025)
-- GitHub: Claude Sonnet 4.6 General Availability in GitHub Copilot (February 18, 2026)
-- Databricks, Replit, Cursor, Cognition, Windsurf, GitHub — Customer testimonials, February 2026
+- [Cloudflare: Code Mode — The Better Way to Use MCP (September 2025)](https://blog.cloudflare.com/code-mode/) — Architectural analysis demonstrating 30% to 81% token reduction using Workers-based sandboxed tool execution.
+- [WorkOS: Cloudflare Code Mode Cuts Token Usage by 81%](https://workos.com) — Empirical study quantifying context efficiency gains in enterprise authentication and directory sync workflows.
+- [Speakeasy: Reducing MCP Token Usage by 100x](https://speakeasyapi.dev) — Technical evaluation of schema compression, dynamic tool discovery, and client-side caching.
+- [OSWorld-Verified Benchmark](https://os-world.github.io/) — Standardized evaluation suite for OS and computer-use agent capabilities (Sonnet 4.6 achieved 72.5%).
 
-### Community and Research
+### Source Context & Observational Bounds
 
-- MCP-Zero: Active Tool Discovery (arXiv)
-- LiteLLM: Native Programmatic Tool Calling Support (Multi-provider)
-- Blocks Goose Agent: Code Mode MCP Support
-- Speakeasy: "Reducing MCP Token Usage by 100x" (2025)
-- OSWorld-Verified Benchmark — [os-world.github.io](https://os-world.github.io/)
-- Vending-Bench Arena — [andonlabs.com](https://andonlabs.com/evals/vending-bench-arena)
+| Reference Identifier | Testing Scope | Primary Metric Verified | Known Observational Limits |
+| :--- | :--- | :--- | :--- |
+| **Anthropic Internal Evals (2025–2026)** | 50+ Enterprise MCP Tools | 97K–134K tokens reduced to 2.5K–8.7K tokens; Opus 4 accuracy: 49% → 74%. | Vendor-reported benchmark on proprietary developer platform; specific savings vary by tool schema density. |
+| **Cloudflare Code Mode (2025)** | Cloudflare Workers Runtime | 30% to 81% token reduction on multi-service orchestration. | Evaluated inside Cloudflare V8 isolate sandboxes; requires server-side JavaScript execution support. |
+| **BrowseComp Benchmark** | Multi-Site Fact Retrieval | +13% (Sonnet 4.6), +16% (Opus 4.6) with Dynamic Filtering. | Evaluates web search synthesis; does not directly test write-heavy transactional database mutations. |
+
+---
+
+## Supplementary Visuals
+
+The original conceptual diagrams below illustrate the evolutionary baseline of MCP context growth and the transition toward layered tool architectures:
+
+![MCP scalability overview](assets/MCP-Scalability-Issue-Solution.png)
+*Figure 1: Traditional MCP context bloat baseline, contrasting linear schema token accumulation with user query space.*
+
+![MCP scalability: evolving architectures](assets/MCP-Scalability-Issue-Solution-Extended.png)
+*Figure 2: Evolving tool architectures across traditional JSON-RPC, on-demand Tool Search, and sandboxed Code Mode.*
+
+![Illustrative context usage](assets/Context-Usage.jpg)
+*Figure 3: Historical token consumption profile illustrating how static tool definitions consume up to 48% of active context before task initiation.*
+
+---
 
 ---
 

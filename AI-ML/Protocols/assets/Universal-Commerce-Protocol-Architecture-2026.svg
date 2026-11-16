@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+    <linearGradient id="greenGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#a78bfa" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="780" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="44" fill="#f8fafc" font-size="22" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Universal Commerce Protocol (UCP): Architecture &amp; Payment Flow</text>
+  <text x="40" y="68" fill="#94a3b8" font-size="13" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Standardized multi-agent shopping lifecycle: capability discovery, idempotent session state, and AP2 cryptographic payment delegation</text>
+
+  <!-- TOP-LEFT PANEL: Discovery & Ingress -->
+  <rect x="40" y="95" width="360" height="380" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="40" y="95" width="360" height="36" rx="12" fill="#1e293b"/>
+  <text x="56" y="119" fill="#38bdf8" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">1. DISCOVERY &amp; PROFILE INGRESS</text>
+
+  <!-- Step 1.1: Buyer Intent -->
+  <rect x="55" y="145" width="330" height="65" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1"/>
+  <text x="70" y="167" fill="#38bdf8" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Buyer Intent &amp; AI Agent Orchestration</text>
+  <text x="70" y="185" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• User: "Buy Sony wireless headphones &lt; $400"</text>
+  <text x="70" y="200" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Agent (Gemini / Claude / ChatGPT) resolves merchant</text>
+
+  <!-- Arrow -->
+  <path d="M 220 210 L 220 225" stroke="#38bdf8" stroke-width="2"/>
+  <polygon points="215,220 220,230 225,220" fill="#38bdf8"/>
+
+  <!-- Step 1.2: Well-Known Discovery -->
+  <rect x="55" y="230" width="330" height="100" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1"/>
+  <text x="70" y="252" fill="#38bdf8" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Profile Discovery (GET /.well-known/ucp)</text>
+  <text x="70" y="272" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Returns merchant capabilities manifest</text>
+  <text x="70" y="290" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Advertises dev.ucp.shopping.checkout (2026-01-11)</text>
+  <text x="70" y="308" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Payment handlers: Google Pay, Visa, Mastercard</text>
+  <text x="70" y="324" fill="#38bdf8" font-size="9" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">⚡ Solves N × M integration bottleneck via single schema</text>
+
+  <!-- Step 1.3: Semantic Enrichment -->
+  <rect x="55" y="345" width="330" height="115" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="70" y="367" fill="#e2e8f0" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">AI-Facing Semantic Catalog Data</text>
+  <text x="70" y="387" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Compatibility: iOS, Android, PS5, LDAC codecs</text>
+  <text x="70" y="405" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Substitutions: Bose QC45 (reason: price diff -$50)</text>
+  <text x="70" y="423" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Pre-authored FAQ &amp; 30-day return policy snippets</text>
+  <text x="70" y="441" fill="#cbd5e1" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Structured knowledge graph for zero-hallucination answers</text>
+
+  <!-- CENTER PANEL: Stateful Checkout Session Lifecycle -->
+  <rect x="420" y="95" width="390" height="380" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="420" y="95" width="390" height="36" rx="12" fill="#1e293b"/>
+  <text x="436" y="119" fill="#34d399" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">2. THREE-STEP STATEFUL CHECKOUT SESSION</text>
+
+  <!-- Step 2.1: Incomplete -->
+  <rect x="435" y="145" width="360" height="65" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1"/>
+  <text x="450" y="167" fill="#34d399" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Phase 1: POST /checkout-sessions (incomplete)</text>
+  <text x="450" y="185" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Agent submits items array + buyer email</text>
+  <text x="450" y="200" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Merchant creates session; returns required_fields: [shipping]</text>
+
+  <!-- Arrow -->
+  <path d="M 615 210 L 615 225" stroke="#34d399" stroke-width="2"/>
+  <polygon points="610,220 615,230 620,220" fill="#34d399"/>
+
+  <!-- Step 2.2: Ready for Complete -->
+  <rect x="435" y="230" width="360" height="75" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1"/>
+  <text x="450" y="252" fill="#34d399" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Phase 2: PUT /checkout-sessions/{id} (ready_for_complete)</text>
+  <text x="450" y="272" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Full replacement update with shipping address and method</text>
+  <text x="450" y="290" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Merchant calculates tax + shipping; status becomes ready</text>
+
+  <!-- Arrow -->
+  <path d="M 615 305 L 615 320" stroke="#34d399" stroke-width="2"/>
+  <polygon points="610,315 615,325 620,315" fill="#34d399"/>
+
+  <!-- Step 2.3: Completed -->
+  <rect x="435" y="325" width="360" height="70" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.2"/>
+  <text x="450" y="347" fill="#a7f3d0" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Phase 3: POST /checkout-sessions/{id}/complete</text>
+  <text x="450" y="367" fill="#d1fae5" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Status: completed; ingests AP2 mandate token</text>
+  <text x="450" y="383" fill="#6ee7b7" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Emits confirmed order ID, tracking URL, delivery date</text>
+
+  <!-- Escalation Branch -->
+  <rect x="435" y="410" width="360" height="50" rx="6" fill="#1e293b" stroke="#f59e0b" stroke-width="1"/>
+  <text x="450" y="428" fill="#fbbf24" font-size="10" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Escalation Escape: requires_escalation</text>
+  <text x="450" y="446" fill="#cbd5e1" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">If complex KYC or high spend occurs: emits continue_url for merchant UI</text>
+
+  <!-- RIGHT PANEL: AP2 Cryptographic Payments -->
+  <rect x="830" y="95" width="330" height="380" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="830" y="95" width="330" height="36" rx="12" fill="#1e293b"/>
+  <text x="846" y="119" fill="#c084fc" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">3. AP2 PAYMENT MANDATES</text>
+
+  <!-- AP2 Card 1: Tokenization -->
+  <rect x="845" y="145" width="300" height="70" rx="8" fill="#1e293b" stroke="#7c3aed" stroke-width="1"/>
+  <text x="860" y="167" fill="#c084fc" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Payment Tokenization (Zero Card Data)</text>
+  <text x="860" y="187" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Google Pay / Apple Pay / Visa Token</text>
+  <text x="860" y="202" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Agent never handles raw 16-digit PANs or CVVs</text>
+
+  <!-- AP2 Card 2: Cryptographic Mandate -->
+  <rect x="845" y="230" width="300" height="100" rx="8" fill="#1e293b" stroke="#7c3aed" stroke-width="1"/>
+  <text x="860" y="252" fill="#c084fc" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Signed Authorization Mandate</text>
+  <text x="860" y="272" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Cryptographically binds session ID, amount, items</text>
+  <text x="860" y="290" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Signed by user wallet private key</text>
+  <text x="860" y="308" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Merchant PSP verifies signature via AP2 gateway</text>
+  <text x="860" y="322" fill="#c084fc" font-size="9" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">🔒 Non-repudiable consent; eliminates agent fraud</text>
+
+  <!-- AP2 Card 3: Merchant of Record -->
+  <rect x="845" y="345" width="300" height="115" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="860" y="367" fill="#e2e8f0" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Merchant-of-Record Autonomy</text>
+  <text x="860" y="387" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Retailer retains full pricing &amp; tax authority</text>
+  <text x="860" y="405" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Direct settlement to merchant PSP account</text>
+  <text x="860" y="423" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Idempotency-Key headers prevent double billing</text>
+  <text x="860" y="441" fill="#cbd5e1" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Complies with PSD2 SCA &amp; global financial regulations</text>
+
+  <!-- BOTTOM PANEL: 2026 Protocol Ecosystem Comparison -->
+  <rect x="40" y="495" width="1120" height="255" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="40" y="495" width="1120" height="34" rx="12" fill="#1e293b"/>
+  <text x="56" y="518" fill="#fbbf24" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">2026 PROTOCOL ECOSYSTEM: INTERSECTION &amp; FUNCTIONAL BOUNDARIES</text>
+
+  <!-- Col 1: UCP -->
+  <rect x="55" y="540" width="265" height="195" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1"/>
+  <text x="70" y="563" fill="#38bdf8" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">UCP (Universal Commerce)</text>
+  <text x="70" y="583" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Google + 20+ Enterprise Partners</text>
+  <text x="70" y="607" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Full lifecycle: search to returns</text>
+  <text x="70" y="625" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Standard /.well-known/ucp manifest</text>
+  <text x="70" y="643" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Shopify, Walmart, Target, Etsy backing</text>
+  <text x="70" y="661" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Vendor-neutral open governance</text>
+  <rect x="70" y="695" width="235" height="24" rx="4" fill="#0369a1" fill-opacity="0.3"/>
+  <text x="187" y="711" fill="#38bdf8" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Open Industry Standard</text>
+
+  <!-- Col 2: AP2 -->
+  <rect x="335" y="540" width="265" height="195" rx="8" fill="#1e293b" stroke="#7c3aed" stroke-width="1"/>
+  <text x="350" y="563" fill="#c084fc" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">AP2 (Agent Payments)</text>
+  <text x="350" y="583" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Google + Payment Networks</text>
+  <text x="350" y="607" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Payment authorization substrate</text>
+  <text x="350" y="625" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Cryptographic mandate signatures</text>
+  <text x="350" y="643" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Visa, Mastercard, Google Pay</text>
+  <text x="350" y="661" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Composable sub-layer under UCP</text>
+  <rect x="350" y="695" width="235" height="24" rx="4" fill="#581c87" fill-opacity="0.3"/>
+  <text x="467" y="711" fill="#c084fc" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Cryptographic Trust Layer</text>
+
+  <!-- Col 3: ACP -->
+  <rect x="615" y="540" width="265" height="195" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+  <text x="630" y="563" fill="#fbbf24" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">ACP (Agentic Commerce)</text>
+  <text x="630" y="583" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">OpenAI + Stripe Ecosystem</text>
+  <text x="630" y="607" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Conversational checkout focus</text>
+  <text x="630" y="625" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Native Stripe payment integration</text>
+  <text x="630" y="643" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Tight ChatGPT agent binding</text>
+  <text x="630" y="661" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Less emphasis on discovery/returns</text>
+  <rect x="630" y="695" width="235" height="24" rx="4" fill="#78350f" fill-opacity="0.3"/>
+  <text x="747" y="711" fill="#fbbf24" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Stripe / OpenAI Ecosystem</text>
+
+  <!-- Col 4: MCP -->
+  <rect x="895" y="540" width="250" height="195" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+  <text x="910" y="563" fill="#34d399" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">MCP (Model Context Protocol)</text>
+  <text x="910" y="583" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Anthropic Open Protocol</text>
+  <text x="910" y="607" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Generic agent tool connection</text>
+  <text x="910" y="625" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Transports: Stdio, SSE, Code Mode</text>
+  <text x="910" y="643" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• UCP endpoints exposed as MCP tools</text>
+  <text x="910" y="661" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Tool Search &amp; sandbox federation</text>
+  <rect x="910" y="695" width="220" height="24" rx="4" fill="#065f46" fill-opacity="0.3"/>
+  <text x="1020" y="711" fill="#34d399" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Tool Binding Substrate</text>
+</svg>

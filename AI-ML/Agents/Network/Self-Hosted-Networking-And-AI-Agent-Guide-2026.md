@@ -1,8 +1,14 @@
 # The Complete Self-Hosted Networking & AI Agent Guide (2026)
 
-> **The Ultimate Reference:** VPS, Tailscale, Technitium, AWS architecture, OpenClaw/ClawdBot secure deployment, advanced configurations, and the latest February 2026 updates.
+Daily learning · Nov 16, 2026
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
-**Version:** 2026.2.18 | **Last Updated:** February 18, 2026
+> Hosting autonomous AI agents on a hardened VPS inside a private Tailscale WireGuard mesh with Technitium split-DNS and zero public ingress ports eliminates the entire remote attack surface—protecting credentials, API keys, and internal state from unauthorized access and prompt injection.
+
+---
+
+> **The Ultimate Reference:** VPS, Tailscale, Technitium, AWS architecture, OpenClaw/ClawdBot secure deployment, advanced configurations, and the latest February 2026 updates.
+> **Version:** 2026.2.18 · Revised November 2026
 
 ---
 
@@ -89,6 +95,41 @@
 | **Subnet Router** | A Tailscale-connected node that exposes an entire private network (e.g., AWS VPC) to your other devices | **The Gateway / Bridge** to a private subnet |
 | **Opus 4.6** | Anthropic's latest Claude model (Feb 2026) designed for autonomous, agentic reasoning and long-horizon tasks | **The Strategic Planner** |
 | **GPT-5.3-Codex** | OpenAI's latest coding model (Feb 2026) designed for interactive, rapid code generation and execution | **The Interactive Builder** |
+
+---
+
+### Zero-Trust Mesh Topology Architecture
+
+The diagram below details the private overlay topology connecting client devices, Technitium split-DNS, hardened SSH interfaces, and sandboxed OpenClaw runtimes:
+
+![Self-Hosted Networking Architecture](../../assets/Self-Hosted-Networking-And-AI-Agent-Guide-2026.svg)
+
+### End-to-End Zero-Ingress Communication Flow
+
+```mermaid
+sequenceDiagram
+    autonumber
+    actor Engineer as Authorized Admin
+    participant Laptop as Admin Laptop (100.100.1.10)
+    participant Mesh as Tailscale WireGuard Mesh
+    participant VPS as Hardened VPS (tailscale0: 100.85.20.10)
+    participant Agent as OpenClaw Daemon
+    participant Telegram as Telegram Cloud Servers
+
+    Note over VPS: eth0: All Inbound Ports Dropped (22, 80, 443, 3000)
+    Engineer->>Laptop: Initiate SSH or Web UI request
+    Laptop->>Mesh: Encrypt packet via Noise Protocol
+    Mesh->>VPS: Ingress via tailscale0 interface (Allowed)
+    VPS->>Agent: Route to Gateway UI (127.0.0.1:3000)
+    
+    rect rgb(30, 41, 59)
+    Note right of Agent: Outbound Chat Channel Polling
+    Agent->>Telegram: Outbound HTTPS long-poll (getUpdates)
+    Telegram-->>Agent: Return user prompt message
+    Agent->>Agent: Execute task in non-root Docker container
+    Agent->>Telegram: Outbound HTTPS sendMessage response
+    end
+```
 
 ---
 
@@ -300,7 +341,15 @@ Think of this as building a **Private Gated Estate:**
 
 ---
 
-*[Due to length constraints, I'll continue with critical sections. The full guide maintains all original content from Parts 1-3 and adds comprehensive Part 2B with advanced OpenClaw configurations and 2026 updates]*
+## 8. Common Claims vs. Technical Realities (Zero-Trust AI Hosting)
+
+| Architectural Dimension | Common Industry Claim | Technical Reality in Production |
+| :--- | :--- | :--- |
+| **Firewall Ingress** | "AI agents require public webhooks (ports 80/443) to receive external chat messages." | Using outbound-initiated long polling (Telegram `getUpdates` or Discord Gateway WebSockets) requires zero open inbound firewall ports. |
+| **Docker Sandboxing** | "Mounting `/var/run/docker.sock` into an agent container is safe if credentials are hidden." | Mounting the Docker socket grants full root privileges over the host system, enabling trivial container escape and host takeover. |
+| **Mesh Latency** | "Routing all agent traffic through Tailscale introduces significant network lag." | Tailscale establishes direct peer-to-peer WireGuard UDP tunnels via STUN; latency overhead is negligible (&lt;1–3ms) unless DERP relaying is forced. |
+| **Local vs Cloud Hosting** | "Running autonomous agents on a home desktop is cheaper and just as reliable as a VPS." | Home IP churn, NAT traversal issues, unexpected OS sleep cycles, and power outages disrupt persistent agent loops; a $5–10/mo VPS guarantees 99.9% uptime. |
+| **Root Privileges** | "Running AI agents as root is standard practice for containerized developer setups." | Autonomous agents that execute shell tools must strictly run under an unprivileged user (`claw`) with read-only root filesystems to prevent system corruption. |
 
 ---
 
@@ -1468,21 +1517,26 @@ Found an error or have a suggestion? This guide is maintained as a living docume
 - Content corrections: Submit detailed feedback with section references
 - Additional examples: Share your deployment configurations (anonymized)
 
-**Contact:**
-- Based on content from: TechWithTim YouTube Channel
-- Video 1 (Security): https://www.youtube.com/watch?v=tnsrnsy_Lus
-- Video 2 (Advanced): https://www.youtube.com/watch?v=vte-fDoZczE
+## Primary Sources & References
+
+1. [Tailscale Documentation: WireGuard Mesh Networking & Access Controls](https://tailscale.com/kb) — Official reference for device authentication, ACL policies, DERP relays, and MagicDNS.
+2. [Technitium DNS Server Documentation](https://technitium.com/dns/) — Setup guides for self-hosted DNS server, DNS-over-HTTPS (DoH), and local zone split-horizon resolution.
+3. [OpenClaw GitHub Organization](https://github.com/openclaw) — Open-source autonomous gateway implementation, Docker configurations, and security advisories (CVE-2026-25253).
+4. [TechWithTim: OpenClaw Security Setup Tutorial](https://www.youtube.com/watch?v=tnsrnsy_Lus) — Video tutorial detailing VPS provisioning, SSH lockdown to WireGuard, and gateway authentication.
+5. [TechWithTim: Advanced OpenClaw Multi-Model Architecture](https://www.youtube.com/watch?v=vte-fDoZczE) — Technical walkthrough of Opus 4.6 planner delegation to GPT-5.3-Codex and QMD vector memory.
+
+### Source Context & Observational Bounds
+
+| Reference Identifier | Testing Scope | Primary Invariants Verified | Known Observational Limits |
+| :--- | :--- | :--- | :--- |
+| **Tailscale WireGuard Mesh** | Linux VPS Overlay Network | Drop-all public ingress; zero open public ports on eth0. | Peer-to-peer performance relies on STUN NAT hole-punching; falls back to encrypted DERP relays under symmetric NAT. |
+| **OpenClaw v2026.2.17** | Hostinger Docker Deployment | Telegram long-polling (outbound HTTPS only); non-root container sandbox. | Container breakouts possible if Docker socket (`/var/run/docker.sock`) is mounted to agent containers. |
 
 ---
 
-*Guide Version: 2026.2.18 | Last Updated: February 18, 2026*
-
-*Covers: VPS, Tailscale, Technitium, AWS EC2, AWS Client VPN, Route 53, OpenClaw v2026.2.17, Opus 4.6, GPT-5.3-Codex, Sonnet 4.6, xAI Grok, Telegram, Discord, WhatsApp, Slack, SSH Hardening, Docker, QMD Vector Memory, ClawHub, Sub-Agents, Heartbeat, Cron, Security Patches, Prompt Injection Defense*
-
-*Primary Sources: TechWithTim YouTube tutorials on OpenClaw security setup and advanced configuration | Verified against official documentation from Anthropic, OpenAI, Tailscale, and OpenClaw*
-
 **Related:**
-- [OpenClaw-Moltbot-Clawdbot-Architecture-2026](../openclaw/OpenClaw-Moltbot-Clawdbot-Architecture-2026.md) — Architecture of the OpenClaw gateway this guide deploys and hardens across Parts 2A and 2B.
-- [OpenClaw(Moltbot-or-Clawdbot)-Security-Analysis-Jan-2026](../openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md) — Threat model and CVE details behind Sections 23-26's prompt-injection defense and security checklist.
-- [AI-Coding-Loops](../development/AI-Coding-Loops.md) — Maps Sections 42-44's HEARTBEAT.md, sub-agents, and cron-automation patterns onto the five-loop autonomy framework.
-- [OpenClaw-Autonomous-System-Whitepaper-2026](../openclaw/OpenClaw-Autonomous-System-Whitepaper-2026.md) — Broader claw-ecosystem synthesis this guide's Part 3 (Feb 2026 updates) updates with infrastructure-layer specifics.
+- [OpenClaw-Moltbot-Clawdbot-Architecture-2026](../openclaw/OpenClaw-Moltbot-Clawdbot-Architecture-2026.md) — Architecture of the OpenClaw gateway deployed and hardened across this guide.
+- [OpenClaw-Autonomous-System-Whitepaper-2026](../openclaw/OpenClaw-Autonomous-System-Whitepaper-2026.md) — Threat model, CVE-2026-25253 1-click RCE exploit, and gateway security boundaries.
+- [NanoBot-NanoClaw-OpenClaw-Security-Comparison-2026](../nanobot/NanoBot-NanoClaw-OpenClaw-Security-Comparison-2026.md) — Container-per-group isolation and security comparison between NanoBot, NanoClaw, and OpenClaw.
+- [MCP-Scalability-Architecture-And-Federation-2026](../../Protocols/MCP-Scalability-Architecture-And-Federation-2026.md) — Model Context Protocol scalability and sandboxed Code-Mode execution relevant to self-hosted agent tooling.
+- [AI-Coding-Loops](../development/AI-Coding-Loops.md) — Autonomous loop execution, spec-driven harnesses, and persistent agent iteration patterns.

@@ -83,7 +83,7 @@ In-depth research, architectural breakdowns, and hands-on implementations across
 - [DSPy Declarative Self Improving Language Programs 2026](Agents/Programming/DSPy-Declarative-Self-Improving-Language-Programs-2026.md)
 
 ### 🌐 Network & Self-Hosting
-- [self hosted networking ai agent complete guide 2026](Agents/Network/self-hosted-networking-ai-agent-complete-guide-2026.md)
+- [Self Hosted Networking And AI Agent Guide 2026](Agents/Network/Self-Hosted-Networking-And-AI-Agent-Guide-2026.md)
 
 ### 🍃 Spring Boot 4 Migration
 - [SpringBoot 4 Migration Copilot VSCode](Agents/Spring-Boot-4-Migration/SpringBoot-4-Migration-Copilot-VSCode.md)
@@ -177,9 +177,9 @@ In-depth research, architectural breakdowns, and hands-on implementations across
 
 
 ## 🔗 Protocols
-- [MCP Scalability Issue Solution v3](Protocols/MCP_Scalability_Issue_Solution_v3.md)
+- [MCP Scalability Architecture And Federation 2026](Protocols/MCP-Scalability-Architecture-And-Federation-2026.md)
 - [MoSPI India MCP](Protocols/MoSPI-India-MCP.md)
-- [UCP](Protocols/UCP.md)
+- [Universal Commerce Protocol Architecture 2026](Protocols/Universal-Commerce-Protocol-Architecture-2026.md)
 
 
 ## 🎯 Fine-Tuning

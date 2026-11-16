@@ -1,0 +1,186 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="shieldGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#dc2626" />
+    </linearGradient>
+    <linearGradient id="wireGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#0d9488" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="780" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="44" fill="#f8fafc" font-size="22" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Self-Hosted AI Agent Architecture: Zero-Trust Mesh Topology</text>
+  <text x="40" y="68" fill="#94a3b8" font-size="13" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Hardened VPS hosting, WireGuard P2P overlay, Technitium split-DNS, and sandboxed OpenClaw execution (2026)</text>
+
+  <!-- COLUMN 1: Threat Perimeter & Public Boundary -->
+  <rect x="40" y="95" width="240" height="490" rx="12" fill="#0f172a" stroke="#7f1d1d" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="40" y="95" width="240" height="36" rx="12" fill="#1e293b"/>
+  <text x="56" y="119" fill="#f87171" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">PUBLIC THREAT PERIMETER</text>
+
+  <!-- Public IP Card -->
+  <rect x="55" y="145" width="210" height="95" rx="8" fill="#1e293b" stroke="#dc2626" stroke-width="1.2"/>
+  <text x="68" y="167" fill="#fca5a5" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Public Interface (eth0)</text>
+  <text x="68" y="187" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Public IP: 203.0.113.45</text>
+  <text x="68" y="205" fill="#f87171" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">⛔ Port 22 (SSH): BLOCKED</text>
+  <text x="68" y="223" fill="#f87171" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">⛔ Port 3000 (UI): BLOCKED</text>
+
+  <!-- Firewall Drop Rule -->
+  <rect x="55" y="255" width="210" height="120" rx="8" fill="#450a0a" stroke="#dc2626" stroke-width="1"/>
+  <text x="68" y="277" fill="#fca5a5" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Hostinger / UFW Firewall</text>
+  <text x="68" y="297" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Policy: DROP all ingress</text>
+  <text x="68" y="315" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Port scanners see zero open ports</text>
+  <text x="68" y="333" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Prevents automated brute-force</text>
+  <text x="68" y="351" fill="#fca5a5" font-size="9" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Zero public attack surface</text>
+
+  <!-- Threat Vectors Blocked -->
+  <rect x="55" y="390" width="210" height="180" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+  <text x="68" y="412" fill="#e2e8f0" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Neutralized Threat Vectors</text>
+  <text x="68" y="432" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">✓ SSH password spray &amp; bots</text>
+  <text x="68" y="450" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">✓ Shodan / Censys indexing</text>
+  <text x="68" y="468" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">✓ Unauthenticated Webhook hits</text>
+  <text x="68" y="486" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">✓ Direct DDoS traffic saturation</text>
+  <text x="68" y="504" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">✓ Gateway UI credential stuffing</text>
+  <rect x="68" y="535" width="185" height="24" rx="4" fill="#7f1d1d" fill-opacity="0.4"/>
+  <text x="160" y="551" fill="#fca5a5" font-size="9" font-weight="700" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Default-Deny Ingress</text>
+
+  <!-- COLUMN 2: WireGuard Mesh Overlay (Tailscale) -->
+  <rect x="300" y="95" width="280" height="490" rx="12" fill="#0f172a" stroke="#0284c7" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="300" y="95" width="280" height="36" rx="12" fill="#1e293b"/>
+  <text x="316" y="119" fill="#38bdf8" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">TAILSCALE WIREGUARD MESH OVERLAY</text>
+
+  <!-- Device Nodes -->
+  <rect x="315" y="145" width="250" height="95" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1"/>
+  <text x="328" y="167" fill="#38bdf8" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Authorized Client Devices</text>
+  <text x="328" y="187" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Engineer Laptop: 100.100.1.10</text>
+  <text x="328" y="205" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Mobile Device: 100.100.1.15</text>
+  <text x="328" y="223" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Mutual Noise-protocol cryptographic keys</text>
+
+  <!-- Mesh Features -->
+  <rect x="315" y="255" width="250" height="150" rx="8" fill="#1e293b" stroke="#0369a1" stroke-width="1"/>
+  <text x="328" y="277" fill="#38bdf8" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Overlay Networking (tailscale0)</text>
+  <text x="328" y="297" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• P2P encrypted WireGuard tunnels</text>
+  <text x="328" y="315" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• NAT traversal via DERP relays</text>
+  <text x="328" y="333" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• MagicDNS auto hostname lookup</text>
+  <text x="328" y="351" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Exit Node: Private encrypted egress</text>
+  <text x="328" y="369" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Subnet Router: Exposes internal VPC</text>
+  <rect x="328" y="385" width="225" height="15" rx="3" fill="#0369a1" fill-opacity="0.3"/>
+  <text x="440" y="396" fill="#38bdf8" font-size="8" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Zero-Config End-to-End Encryption</text>
+
+  <!-- Technitium DNS Card -->
+  <rect x="315" y="420" width="250" height="150" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+  <text x="328" y="442" fill="#34d399" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Technitium Split-Horizon DNS</text>
+  <text x="328" y="462" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Local zone: *.agent.internal</text>
+  <text x="328" y="480" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Ad &amp; tracking sinkholing</text>
+  <text x="328" y="498" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• DNS-over-HTTPS (DoH) upstream</text>
+  <text x="328" y="516" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Prevents ISP DNS query snooping</text>
+  <rect x="328" y="535" width="225" height="24" rx="4" fill="#065f46" fill-opacity="0.4"/>
+  <text x="440" y="551" fill="#34d399" font-size="9" font-weight="700" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Traffic Control &amp; Privacy Shield</text>
+
+  <!-- COLUMN 3: Hardened VPS Host -->
+  <rect x="600" y="95" width="270" height="490" rx="12" fill="#0f172a" stroke="#10b981" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="600" y="95" width="270" height="36" rx="12" fill="#1e293b"/>
+  <text x="616" y="119" fill="#34d399" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">HARDENED HOST (UBUNTU VPS)</text>
+
+  <!-- SSH Hardening Card -->
+  <rect x="615" y="145" width="240" height="105" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1"/>
+  <text x="628" y="167" fill="#34d399" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Locked SSH (Tailscale Only)</text>
+  <text x="628" y="187" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• ListenAddress 100.85.20.10</text>
+  <text x="628" y="205" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• PermitRootLogin no</text>
+  <text x="628" y="223" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• PasswordAuthentication no</text>
+  <text x="628" y="241" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Accessible only by authenticated Tailscale peers</text>
+
+  <!-- User Isolation Card -->
+  <rect x="615" y="265" width="240" height="95" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="628" y="287" fill="#e2e8f0" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Unprivileged Service Accounts</text>
+  <text x="628" y="307" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Dedicated 'claw' user without sudo</text>
+  <text x="628" y="325" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Systemd service sandboxing</text>
+  <text x="628" y="343" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• NoWriteMounts &amp; PrivateTmp flags</text>
+
+  <!-- Process Control -->
+  <rect x="615" y="375" width="240" height="195" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1"/>
+  <text x="628" y="397" fill="#34d399" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Host-Level Security Guardrails</text>
+  <text x="628" y="417" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Automatic unattended-upgrades</text>
+  <text x="628" y="435" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Fail2Ban active on local mesh</text>
+  <text x="628" y="453" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Ephemeral port binding (127.0.0.1)</text>
+  <text x="628" y="471" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Sysctl TCP hardening params</text>
+  <text x="628" y="489" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Daily automated snapshot backup</text>
+  <rect x="628" y="535" width="215" height="24" rx="4" fill="#065f46" fill-opacity="0.4"/>
+  <text x="735" y="551" fill="#34d399" font-size="9" font-weight="700" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Hardened Host Boundary</text>
+
+  <!-- COLUMN 4: OpenClaw Autonomous Agent -->
+  <rect x="890" y="95" width="270" height="490" rx="12" fill="#0f172a" stroke="#a78bfa" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="890" y="95" width="270" height="36" rx="12" fill="#1e293b"/>
+  <text x="906" y="119" fill="#c084fc" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">OPENCLAW AGENT RUNTIME (2026)</text>
+
+  <!-- Agent Model Strategy -->
+  <rect x="905" y="145" width="240" height="105" rx="8" fill="#1e293b" stroke="#7c3aed" stroke-width="1"/>
+  <text x="918" y="167" fill="#c084fc" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Dual-Model Orchestration</text>
+  <text x="918" y="187" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Opus 4.6: Autonomous planner</text>
+  <text x="918" y="205" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• GPT-5.3-Codex: Interactive coder</text>
+  <text x="918" y="223" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Dynamic `/model` command switch</text>
+  <text x="918" y="241" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Cost-optimized token delegation</text>
+
+  <!-- Multi-Tier Memory -->
+  <rect x="905" y="265" width="240" height="105" rx="8" fill="#1e293b" stroke="#7c3aed" stroke-width="1"/>
+  <text x="918" y="287" fill="#c084fc" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Multi-Tier Memory Architecture</text>
+  <text x="918" y="307" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• SOUL.md / identity.md directives</text>
+  <text x="918" y="325" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Daily memory logs + compaction</text>
+  <text x="918" y="343" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• QMD / Voyage AI vector search</text>
+  <text x="918" y="361" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Persistent context without state rot</text>
+
+  <!-- Sandboxed Execution -->
+  <rect x="905" y="385" width="240" height="185" rx="8" fill="#1e293b" stroke="#7c3aed" stroke-width="1"/>
+  <text x="918" y="407" fill="#c084fc" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Container Jailing &amp; Skills</text>
+  <text x="918" y="427" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Docker container sandbox</text>
+  <text x="918" y="445" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Telegram Long-Polling (No Webhook)</text>
+  <text x="918" y="463" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• No raw docker.sock mount</text>
+  <text x="918" y="481" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Outbound-only TLS connection</text>
+  <text x="918" y="499" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Rate-limited spend caps</text>
+  <rect x="918" y="535" width="215" height="24" rx="4" fill="#581c87" fill-opacity="0.4"/>
+  <text x="1025" y="551" fill="#c084fc" font-size="9" font-weight="700" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Sandboxed Autonomous Core</text>
+
+  <!-- BOTTOM PANEL: Security Invariants -->
+  <rect x="40" y="605" width="1120" height="145" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="40" y="605" width="1120" height="32" rx="12" fill="#1e293b"/>
+  <text x="56" y="626" fill="#fbbf24" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">ZERO-TRUST SECURITY INVARIANTS FOR PRODUCTION AI AGENT HOSTING</text>
+
+  <!-- Invariant 1 -->
+  <rect x="55" y="647" width="260" height="90" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="70" y="669" fill="#38bdf8" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">1. Zero Public Ingress Ports</text>
+  <text x="70" y="689" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Drop all incoming packets on eth0.</text>
+  <text x="70" y="707" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Admin and API traffic must travel exclusively</text>
+  <text x="70" y="723" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">over encrypted WireGuard tunnels.</text>
+
+  <!-- Invariant 2 -->
+  <rect x="335" y="647" width="260" height="90" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="350" y="669" fill="#34d399" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">2. Least-Privilege Host Identity</text>
+  <text x="350" y="689" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Disable root login and password auth.</text>
+  <text x="350" y="707" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Run OpenClaw as an unprivileged user</text>
+  <text x="350" y="723" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">with read-only root filesystem mounts.</text>
+
+  <!-- Invariant 3 -->
+  <rect x="615" y="647" width="260" height="90" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="630" y="669" fill="#c084fc" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">3. Outbound Message Long-Polling</text>
+  <text x="630" y="689" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Use Telegram / Discord polling.</text>
+  <text x="630" y="707" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Avoid listening webhooks to keep the VPS</text>
+  <text x="630" y="723" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">completely invisible to internet crawlers.</text>
+
+  <!-- Invariant 4 -->
+  <rect x="895" y="647" width="250" height="90" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+  <text x="910" y="669" fill="#fbbf24" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">4. Non-Root Sandbox Isolation</text>
+  <text x="910" y="689" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Never mount /var/run/docker.sock.</text>
+  <text x="910" y="707" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Execute untrusted code inside isolated</text>
+  <text x="910" y="723" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">WASM or ephemeral rootless containers.</text>
+</svg>

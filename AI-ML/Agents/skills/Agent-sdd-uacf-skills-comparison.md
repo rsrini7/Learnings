@@ -165,7 +165,7 @@ Result: Expert-level Excel handling
 
 References:
 
-[MCP Scalability](../../Protocols/MCP_Scalability_Issue_Solution_v3.md)
+[MCP Scalability](../../Protocols/MCP-Scalability-Architecture-And-Federation-2026.md)
 
 ---
 
@@ -1688,6 +1688,6 @@ Together, they create a comprehensive framework for the era of AI-assisted softw
 This document is designed to be a comprehensive reference guide for understanding and implementing Spec-Driven Development, the Unified Agent Context Framework, and Claude Agent Skills in professional software development environments.
 
 **Related:**
-- [MCP_Scalability_Issue_Solution_v3](../../Protocols/MCP_Scalability_Issue_Solution_v3.md) — deepens the Skills progressive-disclosure token analysis with concrete numbers and architectural patterns.
+- [MCP-Scalability-Architecture-And-Federation-2026.md](../../Protocols/MCP-Scalability-Architecture-And-Federation-2026.md) — deepens the Skills progressive-disclosure token analysis with concrete numbers and architectural patterns.
 - [Spec-Driven-Development-Frameworks](../development/Spec-Driven-Development-Frameworks.md) — full whitepaper on the six SDD frameworks (BMAD, Spec Kit, OpenSpec, Agent OS, Conductor, Serena) referenced throughout this comparison.
 - [Agent-Skills](Agent-Skills.md) — canonical definition of the Skills primitive that this article positions as Layer 3 capability composition.

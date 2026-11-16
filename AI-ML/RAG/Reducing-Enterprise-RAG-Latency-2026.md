@@ -843,4 +843,4 @@ This deep architectural review is based on user-provided technical lecture mater
 - [RAG-Scaling-10M-Documents](RAG-Scaling-10M-Documents.md) — Architectural patterns for scaling document ingestion, hybrid search funnels, and relational ACL filtering across 10 million documents.
 - [RAG-Architectures](RAG-Architectures.md) — High-level structural taxonomy of advanced, modular, and agentic RAG architectures.
 - [ai-token-optimization-tools](../LLMs/optimization/ai-token-optimization-tools.md) — Token-level compression and context pruning techniques to accelerate prompt prefill and reduce LLM inference latency.
-- [MCP_Scalability_Issue_Solution_v3](../Protocols/MCP_Scalability_Issue_Solution_v3.md) — Latency optimization and context-efficiency strategies for multi-agent tool-routing and orchestration systems.
+- [MCP-Scalability-Architecture-And-Federation-2026.md](../Protocols/MCP-Scalability-Architecture-And-Federation-2026.md) — Latency optimization and context-efficiency strategies for multi-agent tool-routing and orchestration systems.
