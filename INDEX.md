@@ -568,9 +568,9 @@ A complete, fully expanded single-page index of all technical articles and resea
 
 [📂 Open Dedicated Domain Hub (References/README.md)](References/README.md)
 
-- [GangOf4](References/GangOf4.md)
-- [Passkeys](References/Passkeys.md)
-- [searching or downloading research papers](References/searching-or-downloading-research-papers.md)
+- [Academic Research Paper Discovery And Retrieval 2026](References/Academic-Research-Paper-Discovery-And-Retrieval-2026.md)
+- [Gang Of Four Design Patterns In Functional Programming 2026](References/Gang-Of-Four-Design-Patterns-In-Functional-Programming-2026.md)
+- [Passkeys WebAuthn Authentication And Security 2026](References/Passkeys-WebAuthn-Authentication-And-Security-2026.md)
 
 
 [↑ Back to Quick Jump](#quick-jump) · [← Back to Root Hub](README.md)

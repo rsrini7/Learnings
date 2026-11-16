@@ -192,4 +192,4 @@ That’s how enterprise AI scales — quietly, safely, and under control.
 
 **Related:**
 - [GenAI-cost-Optimization](../../AI-ML/LLMs/optimization/GenAI-cost-Optimization.md) — Cost-bounded agent services in the roadmap align with proxy, caching, and routing cost-optimization strategies.
-- [GangOf4](../../References/GangOf4.md) — FP alternatives to GoF patterns inform the design of auditable, composable enterprise AI services in Java.
+- [Gang-Of-Four-Design-Patterns-In-Functional-Programming-2026](../../References/Gang-Of-Four-Design-Patterns-In-Functional-Programming-2026.md) — FP alternatives to GoF patterns inform the design of auditable, composable enterprise AI services in Java.

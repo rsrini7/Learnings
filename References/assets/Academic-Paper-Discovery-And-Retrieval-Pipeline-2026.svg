@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="760" fill="url(#bgGrad)" />
+
+  <!-- Header -->
+  <text x="600" y="44" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="0.5">ACADEMIC RESEARCH PAPER DISCOVERY &amp; RETRIEVAL PIPELINE</text>
+  <text x="600" y="72" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">The Open Access Stack: Metadata Discovery, Preprint Archives, DOI Resolvers, and Automated Ingestion</text>
+
+  <!-- STAGE 1: DISCOVERY & METADATA -->
+  <g transform="translate(40, 100)" filter="url(#shadow)">
+    <rect width="265" height="520" rx="12" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5" />
+    
+    <!-- Title -->
+    <rect x="15" y="18" width="235" height="42" rx="8" fill="#0369a1" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1" />
+    <text x="132" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#38bdf8">1. Semantic Discovery</text>
+    <text x="132" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#7dd3fc">Citation Graphs &amp; DOIs</text>
+
+    <!-- Content Boxes -->
+    <rect x="15" y="74" width="235" height="96" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">CrossRef &amp; DataCite</text>
+    <text x="25" y="114" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Authority for DOI prefixes</text>
+    <text x="25" y="132" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Standardized bibliographic JSON</text>
+    <text x="25" y="150" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Content negotiation protocols</text>
+
+    <rect x="15" y="182" width="235" height="96" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="202" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">OpenAlex &amp; Semantic Scholar</text>
+    <text x="25" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• 250M+ scholarly entities</text>
+    <text x="25" y="240" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Directed citation graph traversal</text>
+    <text x="25" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Open REST APIs &amp; embeddings</text>
+
+    <rect x="15" y="290" width="235" height="96" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="310" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Google Scholar &amp; Consensus</text>
+    <text x="25" y="330" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Full-text web crawling</text>
+    <text x="25" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• AI-assisted evidence synthesis</text>
+    <text x="25" y="366" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Author h-index tracking</text>
+
+    <!-- Bottom summary -->
+    <rect x="15" y="398" width="235" height="106" rx="6" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1" />
+    <text x="25" y="420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#38bdf8">Primary Output:</text>
+    <text x="25" y="440" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">Digital Object Identifier (DOI)</text>
+    <text x="25" y="458" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">Title, Abstract, Author list,</text>
+    <text x="25" y="476" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">and inbound/outbound citations.</text>
+  </g>
+
+  <!-- STAGE 2: PREPRINTS & REPOSITORIES -->
+  <g transform="translate(325, 100)" filter="url(#shadow)">
+    <rect width="265" height="520" rx="12" fill="url(#cardGrad)" stroke="#4ade80" stroke-width="1.5" />
+    
+    <!-- Title -->
+    <rect x="15" y="18" width="235" height="42" rx="8" fill="#14532d" fill-opacity="0.25" stroke="#4ade80" stroke-width="1" />
+    <text x="132" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#4ade80">2. Preprint Archives</text>
+    <text x="132" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#86efac">Open Green Literature</text>
+
+    <!-- Content Boxes -->
+    <rect x="15" y="74" width="235" height="96" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">arXiv.org (Cornell)</text>
+    <text x="25" y="114" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Computer Science, Math, Physics</text>
+    <text x="25" y="132" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Free open PDF &amp; LaTeX sources</text>
+    <text x="25" y="150" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Direct OAI-PMH &amp; REST APIs</text>
+
+    <rect x="15" y="182" width="235" height="96" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="202" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">bioRxiv &amp; medRxiv (CSHL)</text>
+    <text x="25" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Biology &amp; Health Sciences</text>
+    <text x="25" y="240" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Rapid pre-peer-review sharing</text>
+    <text x="25" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Versioned DOIs per manuscript</text>
+
+    <rect x="15" y="290" width="235" height="96" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="310" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">Institutional Repositories</text>
+    <text x="25" y="330" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• MIT DSpace, Harvard DASH</text>
+    <text x="25" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• University postprints &amp; theses</text>
+    <text x="25" y="366" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• National consortia (E-ShodhSindhu)</text>
+
+    <!-- Bottom summary -->
+    <rect x="15" y="398" width="235" height="106" rx="6" fill="#14532d" fill-opacity="0.3" stroke="#16a34a" stroke-width="1" />
+    <text x="25" y="420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#4ade80">Primary Benefit:</text>
+    <text x="25" y="440" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">Zero paywalls, early research</text>
+    <text x="25" y="458" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">dissemination, and direct access</text>
+    <text x="25" y="476" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">to reproducible code &amp; data.</text>
+  </g>
+
+  <!-- STAGE 3: OPEN ACCESS RESOLVERS -->
+  <g transform="translate(610, 100)" filter="url(#shadow)">
+    <rect width="265" height="520" rx="12" fill="url(#cardGrad)" stroke="#fbbf24" stroke-width="1.5" />
+    
+    <!-- Title -->
+    <rect x="15" y="18" width="235" height="42" rx="8" fill="#78350f" fill-opacity="0.25" stroke="#fbbf24" stroke-width="1" />
+    <text x="132" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#fbbf24">3. Legal OA Resolvers</text>
+    <text x="132" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#fde68a">Unpaywall &amp; CORE</text>
+
+    <!-- Content Boxes -->
+    <rect x="15" y="74" width="235" height="96" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Unpaywall REST API</text>
+    <text x="25" y="114" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Maps DOI to legal open PDF URLs</text>
+    <text x="25" y="132" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Harvests 50K+ journals &amp; repos</text>
+    <text x="25" y="150" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Powers Web of Science &amp; Scopus</text>
+
+    <rect x="15" y="182" width="235" height="96" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="202" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">CORE Aggregator (UK)</text>
+    <text x="25" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• World's largest open aggregator</text>
+    <text x="25" y="240" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• 200M+ research outputs</text>
+    <text x="25" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Full-text machine indexing API</text>
+
+    <rect x="15" y="290" width="235" height="96" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="310" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">BASE (Bielefeld Engine)</text>
+    <text x="25" y="330" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• 10,000+ institutional sources</text>
+    <text x="25" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• 60%+ verified open-access files</text>
+    <text x="25" y="366" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Deep intellectual repository search</text>
+
+    <!-- Bottom summary -->
+    <rect x="15" y="398" width="235" height="106" rx="6" fill="#78350f" fill-opacity="0.3" stroke="#d97706" stroke-width="1" />
+    <text x="25" y="420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#fbbf24">Resolution Logic:</text>
+    <text x="25" y="440" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">Input: 10.xxxx/yyyy</text>
+    <text x="25" y="458" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">Check: best_oa_location.url</text>
+    <text x="25" y="476" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">Output: Direct verified PDF URL</text>
+  </g>
+
+  <!-- STAGE 4: AUTOMATED INGESTION & RAG -->
+  <g transform="translate(895, 100)" filter="url(#shadow)">
+    <rect width="265" height="520" rx="12" fill="url(#cardGrad)" stroke="#a855f7" stroke-width="1.5" />
+    
+    <!-- Title -->
+    <rect x="15" y="18" width="235" height="42" rx="8" fill="#581c87" fill-opacity="0.25" stroke="#a855f7" stroke-width="1" />
+    <text x="132" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#a855f7">4. Ingestion &amp; RAG</text>
+    <text x="132" y="52" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#d8b4fe">Vector Pipelines &amp; AI</text>
+
+    <!-- Content Boxes -->
+    <rect x="15" y="74" width="235" height="96" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="94" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a855f7">Automated Downloader</text>
+    <text x="25" y="114" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Polite pool rate limiting (1 rps)</text>
+    <text x="25" y="132" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Streaming chunked byte writes</text>
+    <text x="25" y="150" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• SHA-256 deduplication cache</text>
+
+    <rect x="15" y="182" width="235" height="96" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="202" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a855f7">PDF Layout Extraction</text>
+    <text x="25" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• PyMuPDF &amp; PDFMiner layout parsing</text>
+    <text x="25" y="240" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Multi-column text de-hyphenation</text>
+    <text x="25" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Formula &amp; table boundary bounding</text>
+
+    <rect x="15" y="290" width="235" height="96" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="25" y="310" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a855f7">Vector Index &amp; Citations</text>
+    <text x="25" y="330" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Chunking by section &amp; paragraph</text>
+    <text x="25" y="348" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• Embeddings + hybrid BM25 search</text>
+    <text x="25" y="366" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• Multi-agent evidence synthesis</text>
+
+    <!-- Bottom summary -->
+    <rect x="15" y="398" width="235" height="106" rx="6" fill="#581c87" fill-opacity="0.3" stroke="#9333ea" stroke-width="1" />
+    <text x="25" y="420" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#a855f7">Downstream Engine:</text>
+    <text x="25" y="440" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">Populates local research vaults,</text>
+    <text x="25" y="458" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">AI research agents (MiroThinker),</text>
+    <text x="25" y="476" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">and enterprise technical docs.</text>
+  </g>
+
+  <!-- BOTTOM COMPARATIVE SUMMARY -->
+  <g transform="translate(40, 642)">
+    <rect width="1120" height="92" rx="10" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="24" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">THE MODERN OPEN RESEARCH ACCESS PIPELINE</text>
+    <text x="24" y="48" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• <tspan fill="#38bdf8" font-weight="600">Discovery:</tspan> Query OpenAlex, CrossRef, and Semantic Scholar to locate persistent DOIs and build author citation networks.</text>
+    <text x="24" y="66" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80" font-weight="600">• Harvesting: <tspan fill="#cbd5e1" font-weight="400">Resolve DOIs via Unpaywall and CORE APIs to locate legally hosted preprints and institutional postprints.</tspan></text>
+    <text x="24" y="84" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#a855f7" font-weight="600">• Ingestion: <tspan fill="#cbd5e1" font-weight="400">Stream PDFs with SHA-256 deduplication and convert multi-column text into chunked embeddings for local RAG.</tspan></text>
+  </g>
+</svg>

@@ -412,4 +412,4 @@ That is how payment platforms scale AI — safely, quietly, and under control.
 
 **Related:**
 - [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Phase-level coding-agent literacy connects to practical AI-coding-loop patterns engineers should master.
-- [GangOf4](../../References/GangOf4.md) — Architecture depth in later phases benefits from grounding in classic GoF patterns and their FP alternatives.
+- [Gang-Of-Four-Design-Patterns-In-Functional-Programming-2026](../../References/Gang-Of-Four-Design-Patterns-In-Functional-Programming-2026.md) — Architecture depth in later phases benefits from grounding in classic GoF patterns and their FP alternatives.

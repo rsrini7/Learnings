@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="panelGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+    <filter id="shadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="780" fill="url(#bgGrad)" />
+
+  <!-- Header -->
+  <text x="600" y="44" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="0.5">THE 23 GANG OF FOUR PATTERNS IN FUNCTIONAL PROGRAMMING</text>
+  <text x="600" y="72" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">Internalizing Object-Oriented Patterns into Types, Algebraic Structures, and Pure Function Composition</text>
+
+  <!-- PANEL 1: CREATIONAL PATTERNS -->
+  <g transform="translate(40, 100)" filter="url(#shadow)">
+    <rect width="350" height="540" rx="12" fill="url(#panelGrad)" stroke="#38bdf8" stroke-width="1.5" />
+    
+    <!-- Title Badge -->
+    <rect x="20" y="20" width="310" height="42" rx="8" fill="#0369a1" fill-opacity="0.25" stroke="#38bdf8" stroke-width="1" />
+    <text x="175" y="41" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">Creational Patterns (5)</text>
+    <text x="175" y="55" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#7dd3fc">Construction via Types &amp; Functions</text>
+
+    <!-- Mapping Items -->
+    <rect x="20" y="78" width="310" height="78" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="32" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Abstract Factory &amp; Factory Method</text>
+    <text x="32" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• OO: Polymorphic factory subclasses</text>
+    <text x="32" y="136" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• FP: Parametric polymorphism &amp; Tagless Final</text>
+    <text x="32" y="150" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">  Behavior selected by compile-time type constraints</text>
+
+    <rect x="20" y="168" width="310" height="74" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="32" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Singleton</text>
+    <text x="32" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• OO: Global mutable class instance</text>
+    <text x="32" y="226" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• FP: Immutability &amp; explicit parameter passing</text>
+    <text x="32" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">  No hidden shared state; pure values passed cleanly</text>
+
+    <rect x="20" y="254" width="310" height="74" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="32" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Builder</text>
+    <text x="32" y="294" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• OO: Step-by-step mutable fluent API</text>
+    <text x="32" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• FP: Smart constructors &amp; validated ADTs</text>
+    <text x="32" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">  Ensures unrepresentable states are invalid at compile time</text>
+
+    <rect x="20" y="340" width="310" height="74" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="32" y="360" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Prototype</text>
+    <text x="32" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• OO: Deep object clone hooks</text>
+    <text x="32" y="398" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• FP: Structural sharing &amp; copy-on-write</text>
+    <text x="32" y="410" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">  Immutable nodes share memory; O(1) cloning</text>
+
+    <!-- Bottom Summary Box -->
+    <rect x="20" y="430" width="310" height="92" rx="6" fill="#0c4a6e" fill-opacity="0.3" stroke="#0284c7" stroke-width="1" />
+    <text x="32" y="452" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#38bdf8">Creational Philosophy Shift:</text>
+    <text x="32" y="472" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">Instead of complex instantiators, FP relies on</text>
+    <text x="32" y="490" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">algebraic data types, compile-time constraints,</text>
+    <text x="32" y="508" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#7dd3fc">and pure capability interpreters.</text>
+  </g>
+
+  <!-- PANEL 2: STRUCTURAL PATTERNS -->
+  <g transform="translate(425, 100)" filter="url(#shadow)">
+    <rect width="350" height="540" rx="12" fill="url(#panelGrad)" stroke="#4ade80" stroke-width="1.5" />
+    
+    <!-- Title Badge -->
+    <rect x="20" y="20" width="310" height="42" rx="8" fill="#14532d" fill-opacity="0.25" stroke="#4ade80" stroke-width="1" />
+    <text x="175" y="41" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#4ade80">Structural Patterns (7)</text>
+    <text x="175" y="55" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#86efac">Composition over Object Wrappers</text>
+
+    <!-- Mapping Items -->
+    <rect x="20" y="78" width="310" height="78" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="32" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">Adapter &amp; Bridge</text>
+    <text x="32" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• OO: Wrapper classes and interface delegates</text>
+    <text x="32" y="136" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#38bdf8">• FP: Pure transformation functions (A → B)</text>
+    <text x="32" y="150" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">  Separates stable algebra from swappable runtime interpreters</text>
+
+    <rect x="20" y="168" width="310" height="74" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="32" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">Composite</text>
+    <text x="32" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• OO: Common interface across nodes &amp; trees</text>
+    <text x="32" y="226" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#38bdf8">• FP: Recursive ADTs &amp; Catamorphisms (Folds)</text>
+    <text x="32" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">  Uniform traversal via standard fold/reduce semantics</text>
+
+    <rect x="20" y="254" width="310" height="74" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="32" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">Decorator &amp; Proxy</text>
+    <text x="32" y="294" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• OO: Layered wrapper classes &amp; interceptors</text>
+    <text x="32" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#38bdf8">• FP: Function wrapping &amp; Middleware (f ∘ g)</text>
+    <text x="32" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">  Pipelines compose via Kleisli arrows and effect suspension</text>
+
+    <rect x="20" y="340" width="310" height="74" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="32" y="360" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">Flyweight &amp; Facade</text>
+    <text x="32" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• OO: Object pools and simplified interfaces</text>
+    <text x="32" y="398" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#38bdf8">• FP: Referential transparency &amp; Module APIs</text>
+    <text x="32" y="410" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">  Sharing is native; pure module exports form natural facades</text>
+
+    <!-- Bottom Summary Box -->
+    <rect x="20" y="430" width="310" height="92" rx="6" fill="#14532d" fill-opacity="0.3" stroke="#16a34a" stroke-width="1" />
+    <text x="32" y="452" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#4ade80">Structural Philosophy Shift:</text>
+    <text x="32" y="472" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">Functions compose more cleanly than objects wrap.</text>
+    <text x="32" y="490" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">Immutability eliminates identity mutation traps</text>
+    <text x="32" y="508" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#86efac">and makes structural sharing zero-overhead.</text>
+  </g>
+
+  <!-- PANEL 3: BEHAVIORAL PATTERNS -->
+  <g transform="translate(810, 100)" filter="url(#shadow)">
+    <rect width="350" height="540" rx="12" fill="url(#panelGrad)" stroke="#fbbf24" stroke-width="1.5" />
+    
+    <!-- Title Badge -->
+    <rect x="20" y="20" width="310" height="42" rx="8" fill="#78350f" fill-opacity="0.25" stroke="#fbbf24" stroke-width="1" />
+    <text x="175" y="41" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#fbbf24">Behavioral Patterns (11)</text>
+    <text x="175" y="55" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="500" fill="#fde68a">Data Flows, Monads &amp; Effects</text>
+
+    <!-- Mapping Items -->
+    <rect x="20" y="78" width="310" height="78" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="32" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Strategy &amp; Template Method</text>
+    <text x="32" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• OO: Strategy interfaces &amp; abstract skeleton classes</text>
+    <text x="32" y="136" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• FP: Higher-Order Functions as parameters</text>
+    <text x="32" y="150" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">  Functions are first-class; pass behaviors directly</text>
+
+    <rect x="20" y="168" width="310" height="74" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="32" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Command &amp; Interpreter</text>
+    <text x="32" y="208" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• OO: Command invokers &amp; AST visitor interpreters</text>
+    <text x="32" y="226" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• FP: Programs as Values (IO Monad, EDSLs)</text>
+    <text x="32" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">  Separates description of effects from their execution</text>
+
+    <rect x="20" y="254" width="310" height="74" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="32" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Observer &amp; State</text>
+    <text x="32" y="294" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• OO: Event listeners &amp; mutable state transitions</text>
+    <text x="32" y="312" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• FP: Event Streams &amp; State Monad: S → (A, S)</text>
+    <text x="32" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">  Deterministic state transitions via pure reducers</text>
+
+    <rect x="20" y="340" width="310" height="74" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="32" y="360" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Visitor &amp; Iterator</text>
+    <text x="32" y="380" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">• OO: Double-dispatch &amp; stateful iterator objects</text>
+    <text x="32" y="398" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• FP: Pattern Matching &amp; Foldable / Streams</text>
+    <text x="32" y="410" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">  Compiler-enforced exhaustive pattern decomposition</text>
+
+    <!-- Bottom Summary Box -->
+    <rect x="20" y="430" width="310" height="92" rx="6" fill="#78350f" fill-opacity="0.3" stroke="#d97706" stroke-width="1" />
+    <text x="32" y="452" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#fbbf24">Behavioral Philosophy Shift:</text>
+    <text x="32" y="472" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">Behavior becomes data, effects become values,</text>
+    <text x="32" y="490" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">and complex runtime dispatch is replaced by</text>
+    <text x="32" y="508" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fde68a">pure declarative pattern matching.</text>
+  </g>
+
+  <!-- BOTTOM COMPARATIVE SUMMARY -->
+  <g transform="translate(40, 660)">
+    <rect width="1120" height="88" rx="10" fill="#1e293b" stroke="#475569" stroke-width="1" />
+    <text x="24" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">CORE ARCHITECTURAL SYNTHESIS: FROM OO CEREMONIES TO FP CONSTRUCTS</text>
+    <text x="24" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">• <tspan fill="#38bdf8" font-weight="600">Creational:</tspan> Factory classes and builders are replaced by algebraic types, smart constructors, and tagless final capability algebras.</text>
+    <text x="24" y="62" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">• <tspan fill="#4ade80" font-weight="600">Structural:</tspan> Wrappers and proxies dissolve into pure function composition (f ∘ g), catamorphic folds, and structural memory sharing.</text>
+    <text x="24" y="78" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fbbf24">• <tspan fill="#fbbf24" font-weight="600">Behavioral:</tspan> Hidden mutation and double-dispatch dissolve into pure state transitions S → (A, S), pattern matching, and monadic effect values.</text>
+  </g>
+</svg>

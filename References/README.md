@@ -14,9 +14,9 @@ Enduring software engineering design patterns, modern identity protocols, and ac
 
 ## 📑 Articles & Subcategories
 
-- [GangOf4](GangOf4.md)
-- [Passkeys](Passkeys.md)
-- [searching or downloading research papers](searching-or-downloading-research-papers.md)
+- [Academic Research Paper Discovery And Retrieval 2026](Academic-Research-Paper-Discovery-And-Retrieval-2026.md)
+- [Gang Of Four Design Patterns In Functional Programming 2026](Gang-Of-Four-Design-Patterns-In-Functional-Programming-2026.md)
+- [Passkeys WebAuthn Authentication And Security 2026](Passkeys-WebAuthn-Authentication-And-Security-2026.md)
 
 ---
 
