@@ -1,6 +1,7 @@
 # AWS Firecracker: MicroVM Guest-to-Host Escapes and Virtio Device Flaws (CVE-2026-5747 & CVE-2026-122192)
 
-**Daily learning · 07 November 2026 · Technical deep dive cross-checked against vendor advisories and primary sources**
+Daily learning · November 07, 2026 · Technical deep dive  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Vulnerabilities in AWS Firecracker's opt-in `virtio-pci` device emulation layer and memory-discard mechanisms allowed an attacker with root privileges inside a guest microVM to trigger an out-of-bounds write in the host Virtual Machine Monitor (VMM) process, demonstrating potential guest-to-host breakout. The flaw highlights that memory-safe languages like Rust cannot eliminate state-machine logic errors at hardware and device emulation boundaries.
 

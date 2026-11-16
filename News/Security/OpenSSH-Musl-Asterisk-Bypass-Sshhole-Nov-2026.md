@@ -1,6 +1,7 @@
 # OpenSSH and musl libc: The *sshole Logic Flaw and Authentication Bypass (CVE-2026-123158)
 
-**Daily learning · 06 November 2026 · Technical deep dive cross-checked against vendor advisories and primary sources**
+Daily learning · November 06, 2026 · Technical deep dive  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** An attacker supplying an oversized password (between 257 and 1,024 bytes) to an OpenSSH server running on `musl libc` without PAM can bypass authentication entirely against accounts configured with no password (`*` in `/etc/shadow`). The flaw is not a memory corruption bug, but a multi-decade logic collision where an error-sentinel return value from `musl`'s `crypt()` matched a 40-year-old shadow file account-disabling convention.
 

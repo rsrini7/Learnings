@@ -1,8 +1,13 @@
 # eMudhra: Eight Weak CA Keys and the PKI Trust Gap
 
-**Daily learning · 22 October 2026 · Revalidated 31 October 2026 · Investigation ongoing**
+Daily learning · October 22, 2026 · Revalidated October 31, 2026 · Investigation ongoing  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Eight certificate-issuing keys were small enough to guess almost instantly. An attacker could use them to impersonate services to clients that still trusted the affected chains. Browsers received emergency blocks; other software needs its own trust updates.
+
+![eMudhra Weak CA Keys & PKI Trust Architecture](assets/EMudhra-Weak-CA-Keys-PKI-Trust-Architecture-2026.svg)
+
+---
 
 ## 1. First understand the chain: who trusts whom?
 

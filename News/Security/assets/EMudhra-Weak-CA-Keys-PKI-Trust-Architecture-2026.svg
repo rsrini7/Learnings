@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="780" fill="url(#bgGrad)" />
+
+  <!-- Grid lines for architectural structure -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.4">
+    <line x1="0" y1="90" x2="1200" y2="90" />
+    <line x1="0" y1="420" x2="1200" y2="420" />
+    <line x1="600" y1="90" x2="600" y2="760" />
+  </g>
+
+  <!-- Header -->
+  <g transform="translate(40, 28)">
+    <rect x="0" y="0" width="1120" height="54" rx="8" fill="#1e293b" opacity="0.6" stroke="#334155" />
+    <text x="20" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700" fill="#f8fafc">
+      eMudhra Weak CA Keys: PKI Cryptanalysis &amp; Downstream Trust Disconnect
+    </text>
+    <rect x="910" y="14" width="190" height="26" rx="13" fill="#e11d48" opacity="0.2" stroke="#f43f5e" stroke-width="1" />
+    <text x="1005" y="31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#f43f5e" text-anchor="middle">
+      P-384 Single-Byte Keys
+    </text>
+  </g>
+
+  <!-- Card 1: Key Ceremony & Weak Scalar Generation -->
+  <g transform="translate(40, 102)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#f43f5e" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      1. Ceremony Flaw: 8-Bit Secrets in 384-Bit Formats
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f43f5e">
+      Cryptanalytic Scalar Brute-Force (Q = d × G)
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Private scalars d: 4, 56, 66, 115, 155, 156, 230, 237 (all d &lt; 256)
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • P-384 curve not broken; 47 bytes of leading zero padding disguised d
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f43f5e">
+      Ceremony Object Collision &amp; CSR Generation
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Rehearsal wrap/unwrap script retained weak test objects inside HSM
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Automated CSR generator pointed to duplicate labels containing weak keys
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f43f5e">
+      Public Verification &amp; Instant Factorization
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Scott Helme reconstructed all 8 private keys on a laptop in &lt; 1 second
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Required only 255 point multiplications against base point G
+    </text>
+  </g>
+
+  <!-- Card 2: Attack Mechanism & MitM Interception -->
+  <g transform="translate(620, 102)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#fbbf24" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      2. Threat Mechanics: Forgery &amp; Interception Prerequisites
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      Arbitrary Domain Leaf Certificate Forgery
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Attacker issues validly signed TLS certs for ANY domain (e.g. stripe.com)
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Affected 6 TLS intermediate CAs and 2 code-signing intermediate CAs
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      Network Interception Requirement (MitM Position)
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Certificate alone cannot redirect packets: requires DNS poison or BGP hijack
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Once in MitM position, client TLS handshake validates forged cert cleanly
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      Limits: Forward Secrecy &amp; Historical Capture
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • CA signing keys cannot decrypt past TLS sessions (ECDHE forward secrecy)
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Attack is strictly active/in-flight; cannot passively decrypt past PCAPs
+    </text>
+  </g>
+
+  <!-- Card 3: The Downstream Trust Disconnect -->
+  <g transform="translate(40, 432)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#38bdf8" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      3. The Trust Disconnect: Browsers vs. Enterprise Runtimes
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      Web Browsers: Rapid Automatic Invalidation
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Chrome (CRLSet) &amp; Firefox (OneCRL) pushed emergency blocks in hours
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Strict Certificate Transparency (CT) enforcement rejected unlogged certs
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      Server Runtimes &amp; Stale Static Trust Stores
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Node.js, Python (certifi), Go, Rust (webpki) bundle static CA snapshots
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Non-browser HTTP clients ignore CRL/OCSP and do not enforce CT logs
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      OS Developer Tools (curl, git, container runners)
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • macOS CLI tools (curl/git) rely on /etc/ssl/cert.pem, bypassing Keychain
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Container base images (Alpine, Debian, Ubuntu) require explicit rebuilds
+    </text>
+  </g>
+
+  <!-- Card 4: Path Validation & Remediation Checklist -->
+  <g transform="translate(620, 432)" filter="url(#shadow)">
+    <rect width="540" height="302" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="540" height="42" rx="10" fill="#1e293b" />
+    <rect x="0" y="32" width="540" height="10" fill="#1e293b" />
+    <circle cx="24" cy="21" r="7" fill="#4ade80" />
+    <text x="40" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" fill="#f8fafc">
+      4. Path Validation Trap &amp; Remediation Architecture
+    </text>
+
+    <!-- Subcard A -->
+    <rect x="18" y="56" width="504" height="68" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="76" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      The Cross-Signing Trap (Sectigo AAA Path)
+    </text>
+    <text x="30" y="96" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Distrusting eMudhra Root G3 does not block Sectigo cross-signed chain
+    </text>
+    <text x="30" y="112" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Clients build alternate path to Sectigo AAA Certificate Services root!
+    </text>
+
+    <!-- Subcard B -->
+    <rect x="18" y="134" width="504" height="74" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="154" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      SPKI Pinning &amp; Public Key Blacklisting
+    </text>
+    <text x="30" y="174" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Remediation requires SubjectPublicKeyInfo (SPKI) hash rejection
+    </text>
+    <text x="30" y="190" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Disallows key regardless of parent root, intermediate name, or issuer
+    </text>
+
+    <!-- Subcard C -->
+    <rect x="18" y="218" width="504" height="72" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="30" y="238" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      Production Verification Protocol
+    </text>
+    <text x="30" y="258" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Upgrade Node.js (22.23.4+, 24.22.1+, 26.12.1+) and Python certifi
+    </text>
+    <text x="30" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Test endpoints using curl/git; confirm handshake failure on test chains
+    </text>
+  </g>
+</svg>
