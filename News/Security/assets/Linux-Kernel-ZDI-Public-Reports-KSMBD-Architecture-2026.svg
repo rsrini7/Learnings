@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0b0f19" />
+    </linearGradient>
+
+    <!-- Card Gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Header Gradient -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#f59e0b" />
+    </linearGradient>
+
+    <!-- Shadow Filter -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Outer Frame -->
+  <rect x="20" y="20" width="1160" height="780" rx="16" fill="none" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Header Banner -->
+  <g transform="translate(40, 45)">
+    <rect x="0" y="0" width="1120" height="80" rx="12" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5" filter="url(#dropShadow)" />
+    <circle cx="45" cy="40" r="22" fill="#0369a1" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="45" y="47" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="bold" fill="#38bdf8" text-anchor="middle">LK</text>
+
+    <text x="85" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="bold" fill="#f8fafc">
+      Linux Kernel ksmbd Vulnerabilities &amp; Public ZDI Reports (2026)
+    </text>
+    <text x="85" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">
+      In-Kernel SMB Architecture · Dispatch-Race Heap Leaks · SMB Direct RDMA Integer Underflow
+    </text>
+  </g>
+
+  <!-- Panel 1: In-Kernel ksmbd vs Userspace Samba -->
+  <g transform="translate(40, 145)">
+    <rect x="0" y="0" width="545" height="300" rx="12" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">1</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      In-Kernel ksmbd vs. Userspace Samba
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#38bdf8">
+      Architectural Boundary and Kernel Attack Surface
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="66" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="87" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Ring 0 In-Kernel High-Throughput Design
+    </text>
+    <text x="28" y="105" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      'ksmbd' executes SMB file server logic directly in kernel space
+    </text>
+    <text x="28" y="122" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      to eliminate context switches and maximize NVMe storage performance.
+    </text>
+
+    <rect x="16" y="140" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Userspace Samba Isolation Contrast
+    </text>
+    <text x="28" y="179" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Traditional Samba ('smbd') runs in an unprivileged userspace process;
+    </text>
+    <text x="28" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      vulnerabilities in Samba do not directly corrupt kernel heap structures.
+    </text>
+
+    <rect x="16" y="214" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Strict Exposure Prerequisites
+    </text>
+    <text x="28" y="253" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Exploitation requires CONFIG_SMB_SERVER enabled in the kernel,
+    </text>
+    <text x="28" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      'ksmbd.ko' loaded, and an active listener bound to TCP port 445.
+    </text>
+  </g>
+
+  <!-- Panel 2: ZDI-CAN-33774 Protocol Dispatch Race -->
+  <g transform="translate(615, 145)">
+    <rect x="0" y="0" width="545" height="300" rx="12" fill="url(#cardGrad)" stroke="#f59e0b" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#78350f" fill-opacity="0.3" stroke="#f59e0b" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f59e0b" text-anchor="middle">2</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      ZDI-CAN-33774: Protocol Dispatch Race
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#f59e0b">
+      Pre-Authentication Connection Table Confusion
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="66" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="87" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      SMB1 to SMB2 State Transition
+    </text>
+    <text x="28" y="105" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Client initiates connection via a legacy SMB1 negotiate request;
+    </text>
+    <text x="28" y="122" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      server worker begins updating the connection handler table to SMB2.
+    </text>
+
+    <rect x="16" y="140" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Pipelined Request Dispatch Race
+    </text>
+    <text x="28" y="179" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Attacker sends pipelined requests before negotiation finishes;
+    </text>
+    <text x="28" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      request queued under SMB1 is dispatched using the new SMB2 table.
+    </text>
+
+    <rect x="16" y="214" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Heap Over-Read &amp; KASLR Leak
+    </text>
+    <text x="28" y="253" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Server parses short SMB1 buffer using larger SMB2 struct offsets;
+    </text>
+    <text x="28" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      reads beyond buffer boundary, leaking kernel pointers (CVSS 9.0).
+    </text>
+  </g>
+
+  <!-- Panel 3: ZDI-CAN-33549 SMB Direct RDMA Underflow -->
+  <g transform="translate(40, 465)">
+    <rect x="0" y="0" width="545" height="300" rx="12" fill="url(#cardGrad)" stroke="#ef4444" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#991b1b" fill-opacity="0.3" stroke="#ef4444" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#ef4444" text-anchor="middle">3</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      ZDI-CAN-33549: SMB Direct RDMA Underflow
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#ef4444">
+      Integer Underflow in Remote Direct Memory Access
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="66" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="87" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      High-Speed RDMA Transport Subsystem
+    </text>
+    <text x="28" y="105" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      SMB Direct accelerates data transfers over InfiniBand/RoCE fabrics;
+    </text>
+    <text x="28" y="122" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      implemented in 'fs/smb/server/smbdirect.c' for zero-copy file I/O.
+    </text>
+
+    <rect x="16" y="140" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Descriptor Length Arithmetic Wrapping
+    </text>
+    <text x="28" y="179" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      A transfer descriptor length exceeding remaining data zeroes the length;
+    </text>
+    <text x="28" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      a second subtraction wraps unsigned integers to huge positive values.
+    </text>
+
+    <rect x="16" y="214" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Kernel Slab Corruption &amp; KASAN Panic
+    </text>
+    <text x="28" y="253" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Underflow causes memory copy routines to overrun slab allocations,
+    </text>
+    <text x="28" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      triggering Kernel AddressSanitizer (KASAN) crashes (CVSS 9.0).
+    </text>
+  </g>
+
+  <!-- Panel 4: Disclosure Dynamics & Remediation -->
+  <g transform="translate(615, 465)">
+    <rect x="0" y="0" width="545" height="300" rx="12" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#064e3b" fill-opacity="0.3" stroke="#10b981" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#10b981" text-anchor="middle">4</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      Disclosure Dynamics &amp; Remediation
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#10b981">
+      Mailing List Disclosures, Kernel Commits &amp; Hardening
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="66" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="87" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Public Mailing List Disclosure Event
+    </text>
+    <text x="28" y="105" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      ZDI transmitted unpatched bug reports to public LKML lists;
+    </text>
+    <text x="28" y="122" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      prompted maintainer responses and review of AI disclosure guidelines.
+    </text>
+
+    <rect x="16" y="140" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Upstream Maintainer Fix Commit
+    </text>
+    <text x="28" y="179" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Maintainer Namjae Jeon committed connection locking to ensure
+    </text>
+    <text x="28" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      negotiation finishes before subsequent requests are processed.
+    </text>
+
+    <rect x="16" y="214" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Enterprise Mitigation Blueprint
+    </text>
+    <text x="28" y="253" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Maintainer commits do not equal released vendor distro packages;
+    </text>
+    <text x="28" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      disable 'ksmbd' where unneeded and firewall TCP 445 to trusted subnets.
+    </text>
+  </g>
+</svg>

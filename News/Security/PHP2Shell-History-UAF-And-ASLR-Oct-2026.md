@@ -292,4 +292,4 @@ Follow-up sources: [LiveOverflow: php2shell 24 hours later](https://www.youtube.
 - [PHP2Shell Exploit Debate](PHP2Shell-Exploit-Debate-Threat-Models-And-Patch-Status-Oct-2026.md) — Distinguish local bugs, conditional chains, remote proofs and the October 23 follow-up.
 - [PHP2Shell Steal My Bitcoin Challenge](PHP2Shell-Steal-My-Bitcoin-Challenge-Oct-2026.md) — A live exploit result with an initially unreachable PHP-script path and a wrong wallet key.
 - [PHP Migration: Static React, Java and Go](../../Engineering/Architecture/PHP-Migration-Static-React-Java-And-Go-Oct-2026.md) — Long-term migration choices that separate runtime removal from language-level memory safety.
-- [Node.js Brotli Decoder](Node.js-Brotli-Node2Shell-RCE-Oct-2026.md) — Compare how runtime flaws depend on the application path that reaches them.
+- [Node.js Brotli Decoder](NodeJS-Brotli-Node2Shell-RCE-Oct-2026.md) — Compare how runtime flaws depend on the application path that reaches them.
