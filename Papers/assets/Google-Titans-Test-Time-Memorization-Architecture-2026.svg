@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </linearGradient>
+
+    <linearGradient id="cardGradDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="blueCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="purpleCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#581c87" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="greenCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="amberCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#78350f" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#4ade80"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="700" fill="url(#bgGrad)"/>
+  <rect width="1200" height="700" fill="none" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Title & Header Bar -->
+  <g transform="translate(40, 24)">
+    <text x="0" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="-0.02em">
+      Google Titans: Learning to Memorize at Test Time Architecture
+    </text>
+    <text x="0" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">
+      Surprise-Driven Neural Long-Term Memory, Sliding Window Attention, and Test-Time Gradient Descent
+    </text>
+  </g>
+
+  <!-- Panel 1: Memory Dilemma (Left) -->
+  <g transform="translate(40, 90)">
+    <rect width="340" height="570" rx="10" fill="url(#amberCardGrad)" stroke="#f59e0b" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="340" height="42" rx="10" fill="#f59e0b" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#fbbf24">1. THE MEMORY SCALING DILEMMA</text>
+
+    <!-- Transformers Attention -->
+    <g transform="translate(16, 56)">
+      <rect width="308" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Full Self-Attention (Transformers)</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Exact token-to-token associative retrieval:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#fca5a5">• Quadratic computational cost: O(N²)</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#fca5a5">• KV cache explodes to terabytes at long context</text>
+    </g>
+
+    <!-- Linear RNNs / SSMs -->
+    <g transform="translate(16, 180)">
+      <rect width="308" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Linear RNNs &amp; State Space Models</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Fast linear inference: O(N)</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#fbbf24">• Constant-size hidden state compresses past</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#f87171">• Lossy memory bottleneck: forgets fine details</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#f87171">• Fails on associative recall and needle tasks</text>
+    </g>
+
+    <!-- The Architectural Gap -->
+    <g transform="translate(16, 316)">
+      <rect width="308" height="130" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">The Missing Primitive</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Foundation models needed an architecture that:</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#38bdf8">1. Retains linear O(N) execution complexity</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#38bdf8">2. Memorizes non-lossy historical facts</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#38bdf8">3. Dynamically updates memory during inference</text>
+    </g>
+
+    <!-- Core Insight -->
+    <g transform="translate(16, 460)">
+      <rect width="308" height="92" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#a5b4fc">Google Titans Insight:</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#cbd5e1">Memory is not a static hidden vector;</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">it is a neural network whose parameters update</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">online at test time driven by surprise.</text>
+    </g>
+  </g>
+
+  <!-- Panel 2: Titans Mechanism (Center) -->
+  <g transform="translate(410, 90)">
+    <rect width="380" height="570" rx="10" fill="url(#blueCardGrad)" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="380" height="42" rx="10" fill="#38bdf8" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#38bdf8">2. TEST-TIME MEMORIZATION ENGINE</text>
+
+    <!-- Tri-Memory Triad -->
+    <g transform="translate(16, 56)">
+      <rect width="348" height="110" rx="8" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">1. The Tri-Memory Architecture</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Three synergistic memory tiers:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Short-Term: Local Sliding-Window Attention (Window W)</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Long-Term: Neural MLP weights M_t updated online</text>
+    </g>
+
+    <!-- Surprise-Driven Gradient Step -->
+    <g transform="translate(16, 180)">
+      <rect width="348" height="120" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#c084fc">2. Surprise-Driven Online Learning</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Memory weights update during inference:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Surprise S_t = ∇ ℓ(M_{t-1}(k_t), v_t)</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Dynamic Momentum + Adaptive Forgetting gate</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Unsurprising tokens bypassed; key surprises memorized</text>
+    </g>
+
+    <!-- Three Architectural Variants -->
+    <g transform="translate(16, 316)">
+      <rect width="348" height="130" rx="8" fill="#0f172a" stroke="#059669" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#34d399">3. Integration Architectures (MAC / MAG / MAL)</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Three ways to couple memory with attention:</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#a7f3d0">• MAC (Memory as Context): Prefix tokens in attention</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#a7f3d0">• MAG (Memory as Gating): Learned neural cross-gate</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#a7f3d0">• MAL (Memory as a Layer): Dedicated sequential block</text>
+    </g>
+
+    <!-- Linear Complexity -->
+    <g transform="translate(16, 460)">
+      <rect width="348" height="92" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Strict Linear O(N) Complexity</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#94a3b8">By restricting self-attention to a sliding window W,</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">total FLOPs and memory scale strictly linearly with</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#4ade80">sequence length: O(W · N), while context is infinite.</text>
+    </g>
+  </g>
+
+  <!-- Panel 3: Performance (Right) -->
+  <g transform="translate(820, 90)">
+    <rect width="340" height="570" rx="10" fill="url(#greenCardGrad)" stroke="#4ade80" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="340" height="42" rx="10" fill="#4ade80" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#4ade80">3. EMPIRICAL SCALING RESULTS</text>
+
+    <!-- 2M+ Context Scaling -->
+    <g transform="translate(16, 56)">
+      <rect width="308" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#4ade80">2,000,000+ Token Context Scaling</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Tested on extreme sequence lengths:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Retains 100% needle-in-haystack accuracy</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Zero degradation over 2M tokens</text>
+    </g>
+
+    <!-- Benchmark Uplift -->
+    <g transform="translate(16, 180)">
+      <rect width="308" height="130" rx="8" fill="#0f172a" stroke="#22c55e" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#4ade80">Outperforms Mamba &amp; Transformers</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#cbd5e1">Empirical benchmark comparison:</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#4ade80">• BABILong Reasoning: +14.2% over Mamba-2</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#4ade80">• Associative Recall: Perfect score at 128K+</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#38bdf8">• Perplexity: Superior to standard Llama baselines</text>
+    </g>
+
+    <!-- Hardware Economics -->
+    <g transform="translate(16, 326)">
+      <rect width="308" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Hardware Efficiency</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Why Titans wins on deployment cost:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ Constant KV memory footprint (bounded by W)</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ GPU inference latency stays flat across sequence</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ Fast parallel training via associative scan</text>
+    </g>
+
+    <!-- Operational Takeaway -->
+    <g transform="translate(16, 460)">
+      <rect width="308" height="92" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#4ade80">Paradigm Shift:</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#cbd5e1">Test-time memorization combines the associative</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">precision of attention with the infinite streaming</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">scalability of linear recurrence.</text>
+    </g>
+  </g>
+
+  <!-- Connectors -->
+  <path d="M 380 375 L 410 375" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)"/>
+  <path d="M 790 375 L 820 375" fill="none" stroke="#4ade80" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+</svg>

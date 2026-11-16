@@ -1,0 +1,195 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </linearGradient>
+
+    <linearGradient id="cardGradDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="blueCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="purpleCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#581c87" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="greenCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="redCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7f1d1d" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#4ade80"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="700" fill="url(#bgGrad)"/>
+  <rect width="1200" height="700" fill="none" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Title & Header Bar -->
+  <g transform="translate(40, 24)">
+    <text x="0" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="-0.02em">
+      DeepSeek mHC: Manifold-Constrained Hyper-Connections Architecture
+    </text>
+    <text x="0" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">
+      Stabilizing Multi-Stream Deep Networks via Birkhoff Polytope Projections and Sinkhorn-Knopp Normalization
+    </text>
+  </g>
+
+  <!-- Panel 1: The Problem (Left) -->
+  <g transform="translate(40, 90)">
+    <rect width="340" height="570" rx="10" fill="url(#redCardGrad)" stroke="#ef4444" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="340" height="42" rx="10" fill="#ef4444" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#f87171">1. MULTI-STREAM INSTABILITY</text>
+
+    <!-- Standard Residual Bottleneck -->
+    <g transform="translate(16, 56)">
+      <rect width="308" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Single-Stream Residual Bottleneck</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Standard ResNet: x(l+1) = x(l) + F(x(l))</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Rock-solid identity mapping (norm = 1.0)</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#f87171">• Restricts information to a single scalar path</text>
+    </g>
+
+    <!-- Unconstrained Hyper-Connections -->
+    <g transform="translate(16, 180)">
+      <rect width="308" height="130" rx="8" fill="#0f172a" stroke="#ef4444" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#f87171">Unconstrained Hyper-Connections (HC)</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Introduced n=4 parallel streams with matrix H:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#fca5a5">• Learnable mixing without bounded eigenvalues</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#fca5a5">• 3,000x signal explosion in &lt; 10 transformer layers</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#fca5a5">• Causes catastrophic NaN loss spikes &amp; crashes</text>
+    </g>
+
+    <!-- Empirical Failure Rate -->
+    <g transform="translate(16, 326)">
+      <rect width="308" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">The 27B+ Collapse Barrier</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">At large scale (27B parameter MoE models):</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Unconstrained multi-stream runs fail ~80%</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Wastes millions in high-end GPU cluster compute</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Forced an artificial trade-off: stability vs capacity</text>
+    </g>
+
+    <!-- Structural Takeaway -->
+    <g transform="translate(16, 460)">
+      <rect width="308" height="92" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#a5b4fc">The Fundamental Barrier:</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#cbd5e1">Without mathematical manifold bounds, parallel</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">residual mixing matrices act as exponential</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">amplifiers, blowing gradients to infinity.</text>
+    </g>
+  </g>
+
+  <!-- Panel 2: The mHC Solution (Center) -->
+  <g transform="translate(410, 90)">
+    <rect width="380" height="570" rx="10" fill="url(#blueCardGrad)" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="380" height="42" rx="10" fill="#38bdf8" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#38bdf8">2. THE BIRKHOFF MANIFOLD ENGINE</text>
+
+    <!-- Birkhoff Polytope Constraint -->
+    <g transform="translate(16, 56)">
+      <rect width="348" height="110" rx="8" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">The Birkhoff Polytope Constraint</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Forces residual mixing matrix H to be doubly stochastic:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Sum across every row = 1.0 (no signal surge)</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Sum across every col = 1.0 (no gradient vanish)</text>
+    </g>
+
+    <!-- Sinkhorn-Knopp Projection -->
+    <g transform="translate(16, 180)">
+      <rect width="348" height="120" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#c084fc">Sinkhorn-Knopp Projection Algorithm</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Projects unconstrained raw weights W into the manifold:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Alternating row and column softmax/normalization</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Bounded spectral norm: ||H||₂ = 1.0 guaranteed</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Maximum 60-layer gain drops from 3,000x to 1.6x</text>
+    </g>
+
+    <!-- Multi-Stream Routing -->
+    <g transform="translate(16, 316)">
+      <rect width="348" height="130" rx="8" fill="#0f172a" stroke="#059669" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#34d399">Multi-Stream Routing (n=4 Streams)</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">4 parallel residual streams running alongside blocks:</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Identity-preserving initialization: H ≈ I₄</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Sigmoid-modulated dynamic attention cross-talk</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Enables distinct functional specialization per stream</text>
+    </g>
+
+    <!-- Zero Loss of Stability -->
+    <g transform="translate(16, 460)">
+      <rect width="348" height="92" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Provable Mathematical Guarantee</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#94a3b8">Because ||H||₂ = 1, forward signals remain strictly bounded.</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">Backpropagation gradients propagate without vanishing</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#4ade80">or exploding across arbitrarily deep networks.</text>
+    </g>
+  </g>
+
+  <!-- Panel 3: Results (Right) -->
+  <g transform="translate(820, 90)">
+    <rect width="340" height="570" rx="10" fill="url(#greenCardGrad)" stroke="#4ade80" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="340" height="42" rx="10" fill="#4ade80" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#4ade80">3. EMPIRICAL VERIFICATION</text>
+
+    <!-- 400% Capacity Expansion -->
+    <g transform="translate(16, 56)">
+      <rect width="308" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#4ade80">400% Internal Capacity Increase</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Tested on DeepSeekMoE architectures:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• 4 parallel residual streams vs 1 baseline stream</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Training time overhead: Only +6.7%</text>
+    </g>
+
+    <!-- Verified Metrics -->
+    <g transform="translate(16, 180)">
+      <rect width="308" height="130" rx="8" fill="#0f172a" stroke="#22c55e" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#4ade80">Benchmark Reasoning Gains</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#cbd5e1">Evaluated across 3B, 9B, and 27B models:</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#4ade80">• MMLU Knowledge: +2.8% improvement</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#4ade80">• Big-Bench Hard (BBH): +3.4% accuracy gain</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#38bdf8">• Training Crashes: 0% NaN failures (100% stable)</text>
+    </g>
+
+    <!-- Hardware Efficiency -->
+    <g transform="translate(16, 326)">
+      <rect width="308" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Hardware Overhead Profile</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Why mHC scales smoothly on GPU clusters:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ Memory footprint surge: Only +6.27%</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ FP8 native training precision compatible</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ Directly integrates with DeepSeek-V3 MoE</text>
+    </g>
+
+    <!-- Operational Takeaway -->
+    <g transform="translate(16, 460)">
+      <rect width="308" height="92" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#4ade80">Architectural Rule:</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#cbd5e1">Multi-stream residual networks require rigorous</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">geometric manifold constraints; without them,</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">expressivity becomes training suicide.</text>
+    </g>
+  </g>
+
+  <!-- Connectors -->
+  <path d="M 380 375 L 410 375" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)"/>
+  <path d="M 790 375 L 820 375" fill="none" stroke="#4ade80" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+</svg>

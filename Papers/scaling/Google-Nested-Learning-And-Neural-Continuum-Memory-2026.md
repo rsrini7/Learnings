@@ -337,6 +337,6 @@ Phase 3: Continual Domain Evaluation
 
 **Related:**
 - [Meta-Sparse-Memory-Finetuning-And-Contextual-Scaffolding-2026](Meta-Sparse-Memory-Finetuning-And-Contextual-Scaffolding-2026.md) — Companion continual-learning approach targeting targeted memory slot updates during fine-tuning.
-- [Titans-GooglePaper](../meta/Titans-GooglePaper.md) — Covers Google's foundational neural long-term memory architecture that preceded HOPE.
+- [Google-Titans-Learning-To-Memorize-At-Test-Time-2026](../meta/Google-Titans-Learning-To-Memorize-At-Test-Time-2026.md) — Covers Google's foundational neural long-term memory architecture that preceded HOPE.
 - [ContinualLearning](../../AI-ML/LLMs/training/ContinualLearning.md) — Comprehensive reference on continual learning taxonomies, rehearsal benchmarks, and catastrophic forgetting.
 - [AI-in-Next-18-Months](../../AI-ML/LLMs/economy/AI-in-Next-18-Months.md) — Places Nested Learning within the broader macroeconomic and architectural roadmap.

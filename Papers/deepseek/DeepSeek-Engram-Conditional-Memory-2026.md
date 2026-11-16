@@ -465,6 +465,6 @@ The following original repository diagrams illustrate the conceptual memory-comp
 **Related:**
 - [DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026](DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026.md) — Analyzes Multi-Head Latent Attention (MLA), DeepSeekMoE, and FP8 mixed-precision training co-design.
 - [DeepSeek-R1-Incentivizing-Reasoning-Via-RL-2026](DeepSeek-R1-Incentivizing-Reasoning-Via-RL-2026.md) — Evaluates inference-time reasoning and reinforcement learning dynamics in frontier models.
-- [mHC-Deepseek](mHC-Deepseek.md) — DeepSeek's manifold-constrained hyperconnection architecture optimizing stability during trillion-parameter training.
+- [DeepSeek-mHC-Manifold-Constrained-Hyperconnections-2026](DeepSeek-mHC-Manifold-Constrained-Hyperconnections-2026.md) — DeepSeek's manifold-constrained hyperconnection architecture optimizing stability during trillion-parameter training.
 - [Recursive-Language-Models-RLM-Architecture-2026](../reasoning/Recursive-Language-Models-RLM-Architecture-2026.md) — Neural-symbolic externalized context architectures solving long-context attention degradation.
 - [KV-Cache-Prefix-Caching-And-Storage-Tiering-Nov-2026](../../AI-ML/LLMs/architecture/KV-Cache-Prefix-Caching-And-Storage-Tiering-Nov-2026.md) — Memory tiering and hardware cache architectures for large-scale language model inference.

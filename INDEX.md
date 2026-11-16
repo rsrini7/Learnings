@@ -346,7 +346,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [DeepSeek Engram Conditional Memory 2026](Papers/deepseek/DeepSeek-Engram-Conditional-Memory-2026.md)
 - [DeepSeek R1 Incentivizing Reasoning Via RL 2026](Papers/deepseek/DeepSeek-R1-Incentivizing-Reasoning-Via-RL-2026.md)
 - [DeepSeek V3 Architecture And Hardware Software CoDesign 2026](Papers/deepseek/DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026.md)
-- [mHC Deepseek](Papers/deepseek/mHC-Deepseek.md)
+- [DeepSeek mHC Manifold Constrained Hyperconnections 2026](Papers/deepseek/DeepSeek-mHC-Manifold-Constrained-Hyperconnections-2026.md)
 - [mHC Simplified](Papers/deepseek/mHC-Simplified.md)
 
 ### 🧠 Reasoning & LLMs
@@ -355,9 +355,9 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Recursive Language Models RLM Architecture 2026](Papers/reasoning/Recursive-Language-Models-RLM-Architecture-2026.md)
 
 ### 👁️ Vision & Multimodal
+- [Kimi K2.5 Technical Report And Vision Architecture 2026](Papers/vision/Kimi-K2.5-Technical-Report-And-Vision-Architecture-2026.md)
 - [MiraThinker 1.5](Papers/vision/MiraThinker-1.5.md)
 - [VL JEPA Executive Brief](Papers/vision/VL-JEPA-Executive-Brief.md)
-- [kimi k2.5 technical report](Papers/vision/kimi_k2.5_technical_report.md)
 
 ### 📈 Scaling & Architecture
 - [Google Nested Learning And Neural Continuum Memory 2026](Papers/scaling/Google-Nested-Learning-And-Neural-Continuum-Memory-2026.md)
@@ -365,8 +365,8 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [The Science of Scaling AI Agent Systems](Papers/scaling/The-Science-of-Scaling-AI-Agent-Systems.md)
 
 ### 📋 Meta & Academic Tools
+- [Google Titans Learning To Memorize At Test Time 2026](Papers/meta/Google-Titans-Learning-To-Memorize-At-Test-Time-2026.md)
 - [PaperBanana Automating Academic Illustration for AI Scientists](Papers/meta/PaperBanana-Automating-Academic-Illustration-for-AI-Scientists.md)
-- [Titans GooglePaper](Papers/meta/Titans-GooglePaper.md)
 
 ### 🎥 VL-JEPA
 - [VL JEPA Comprehensive Technical Guide](Papers/VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide.md)

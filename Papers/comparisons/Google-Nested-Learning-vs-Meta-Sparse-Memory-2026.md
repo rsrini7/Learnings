@@ -56,5 +56,5 @@
 **Related:**
 - [Google-Nested-Learning-And-Neural-Continuum-Memory-2026](../scaling/Google-Nested-Learning-And-Neural-Continuum-Memory-2026.md) — Comprehensive technical review of Google's Nested Learning, Continuum Memory, and HOPE architecture.
 - [Meta-Sparse-Memory-Finetuning-And-Contextual-Scaffolding-2026](../scaling/Meta-Sparse-Memory-Finetuning-And-Contextual-Scaffolding-2026.md) — Deep dive into Meta AI's targeted memory surgery, Top-K slot routing, and SCMS validation.
-- [Titans-GooglePaper](../meta/Titans-GooglePaper.md) — Analyzes Google's foundational neural long-term memory architecture.
+- [Google-Titans-Learning-To-Memorize-At-Test-Time-2026](../meta/Google-Titans-Learning-To-Memorize-At-Test-Time-2026.md) — Analyzes Google's foundational neural long-term memory architecture.
 - [ContinualLearning](../../AI-ML/LLMs/training/ContinualLearning.md) — Comprehensive guide to continual learning evaluation benchmarks, plasticity, and stability.

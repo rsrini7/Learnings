@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </linearGradient>
+
+    <linearGradient id="cardGradDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="blueCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="purpleCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#581c87" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="greenCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#4ade80"/>
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="700" fill="url(#bgGrad)"/>
+  <rect width="1200" height="700" fill="none" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Title & Header Bar -->
+  <g transform="translate(40, 24)">
+    <text x="0" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="-0.02em">
+      Kimi K2.5 Architecture: Multimodal Trillion-MoE &amp; Agent Swarm Orchestration
+    </text>
+    <text x="0" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">
+      Moonshot AI's 32:1 Ultra-Sparse MoE, Native Vision Tokenization, and Parallel-Agent RL (PARL)
+    </text>
+  </g>
+
+  <!-- Panel 1: Trillion MoE Architecture (Left) -->
+  <g transform="translate(40, 90)">
+    <rect width="340" height="570" rx="10" fill="url(#blueCardGrad)" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="340" height="42" rx="10" fill="#38bdf8" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#38bdf8">1. ULTRA-SPARSE TRILLION MOE</text>
+
+    <!-- Model Dimensions -->
+    <g transform="translate(16, 56)">
+      <rect width="308" height="110" rx="8" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">1.04T Total / 32B Active Params</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">32:1 Sparsity Ratio per Forward Pass:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#38bdf8">• 384 fine-grained experts across 61 layers</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#38bdf8">• 8 routed experts + 1 shared expert per token</text>
+    </g>
+
+    <!-- Attention Mechanics -->
+    <g transform="translate(16, 180)">
+      <rect width="308" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Multi-Head Latent Attention (MLA)</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Compressed KV cache architecture:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#e2e8f0">• Hidden dimension: 7,168 with 64 heads</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#e2e8f0">• Reduces memory bandwidth ceiling by ~70%</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#e2e8f0">• 256K native multimodal context window</text>
+    </g>
+
+    <!-- Training Corpus -->
+    <g transform="translate(16, 316)">
+      <rect width="308" height="130" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">15 Trillion Token Mixed Corpus</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Interleaved pre-training corpus:</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Text, code repositories, UI layouts</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#cbd5e1">• High-resolution video frames &amp; charts</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#38bdf8">• Joint visual-symbolic alignment from step 0</text>
+    </g>
+
+    <!-- Efficiency Note -->
+    <g transform="translate(16, 460)">
+      <rect width="308" height="92" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#a5b4fc">Efficiency Profile:</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#cbd5e1">Delivers trillion-parameter knowledge depth</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">with the inference latency and VRAM footprint</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">of a standard 32B dense model.</text>
+    </g>
+  </g>
+
+  <!-- Panel 2: Multimodal Vision (Center) -->
+  <g transform="translate(410, 90)">
+    <rect width="380" height="570" rx="10" fill="url(#purpleCardGrad)" stroke="#a855f7" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="380" height="42" rx="10" fill="#a855f7" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#c084fc">2. NATIVE MULTIMODAL VISION</text>
+
+    <!-- Vision Tokenizer -->
+    <g transform="translate(16, 56)">
+      <rect width="348" height="110" rx="8" fill="#0f172a" stroke="#7e22ce" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#c084fc">Moonshot Vision Tokenizer</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Native high-resolution patch encoder:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Dynamic aspect ratio image slicing</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Direct token projection without cross-attention bottleneck</text>
+    </g>
+
+    <!-- Visual to Code -->
+    <g transform="translate(16, 180)">
+      <rect width="348" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Visual-to-Code Generation</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Pixel-accurate front-end synthesis:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• High-fidelity Figma / UI screenshot translation</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Emits idiomatic React, Tailwind, and Vue components</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Retains responsive breakpoints &amp; spacing</text>
+    </g>
+
+    <!-- Visual Debugging Loops -->
+    <g transform="translate(16, 316)">
+      <rect width="348" height="130" rx="8" fill="#0f172a" stroke="#059669" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#34d399">Closed-Loop Autonomous Debugging</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Agent inspects visual output directly:</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#a7f3d0">1. Executes code in headless browser sandbox</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#a7f3d0">2. Takes screenshot &amp; compares against reference</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#a7f3d0">3. Automatically corrects CSS layout shifts &amp; bugs</text>
+    </g>
+
+    <!-- Multimodal Breadth -->
+    <g transform="translate(16, 460)">
+      <rect width="348" height="92" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#c084fc">Cross-Modal Reasoning</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#94a3b8">Interprets dense charts, architectural diagrams,</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">and multi-page PDF documents with millimeter-level</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">bounding box precision and OCR grounding.</text>
+    </g>
+  </g>
+
+  <!-- Panel 3: Agent Swarms (Right) -->
+  <g transform="translate(820, 90)">
+    <rect width="340" height="570" rx="10" fill="url(#greenCardGrad)" stroke="#4ade80" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="340" height="42" rx="10" fill="#4ade80" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#4ade80">3. PARALLEL AGENT SWARMS</text>
+
+    <!-- PARL Orchestration -->
+    <g transform="translate(16, 56)">
+      <rect width="308" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#4ade80">Parallel-Agent RL (PARL)</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Trained specifically for swarm orchestration:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Decomposes large goals into parallel DAG tasks</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Dispatches up to 1,500 simultaneous tool calls</text>
+    </g>
+
+    <!-- Speedup Metrics -->
+    <g transform="translate(16, 180)">
+      <rect width="308" height="130" rx="8" fill="#0f172a" stroke="#22c55e" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#4ade80">4.5x Faster Execution Latency</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#cbd5e1">Benchmarked on complex multi-repo refactoring:</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#4ade80">• Sequential Agent: 42 minutes wall-clock</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#4ade80">• Kimi PARL Swarm: 9.3 minutes wall-clock</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#38bdf8">• 0% task degradation under parallel fan-out</text>
+    </g>
+
+    <!-- License & Deployment -->
+    <g transform="translate(16, 326)">
+      <rect width="308" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Open-Weight Deployment</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Production deployment options:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ Modified MIT Open-Weight License</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ Expert offloading: NVMe SSD for idle experts</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#a7f3d0">✓ Native integration into vLLM and SGLang</text>
+    </g>
+
+    <!-- Operational Takeaway -->
+    <g transform="translate(16, 460)">
+      <rect width="308" height="92" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#4ade80">Architectural Shift:</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#cbd5e1">The future of AI engineering moves from</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">single agents waiting on serial tool calls to</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">synchronized, parallelized swarm execution.</text>
+    </g>
+  </g>
+
+  <!-- Connectors -->
+  <path d="M 380 375 L 410 375" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)"/>
+  <path d="M 790 375 L 820 375" fill="none" stroke="#4ade80" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+</svg>
