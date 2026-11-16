@@ -1,6 +1,7 @@
 # HTTP Egress Credential Proxies vs. MCP Gateways: Breaking the Lethal Trifecta in AI Agent Security
 
-**Daily learning · 6 November 2026 · Technical review and architectural threat analysis**
+Daily learning · November 06, 2026 · Technical review & architectural threat analysis  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Large language models cannot distinguish between control instructions and ingested text data. When an autonomous coding agent possesses access to private data, exposure to untrusted public inputs, and an egress channel (the "Lethal Trifecta"), indirect prompt injection can hijack the agent to exfiltrate proprietary code. While control-plane MCP Gateways police only JSON-RPC messages and leave raw credentials exposed in agent memory, network-layer **HTTP Egress Credential Proxies** strip secrets from the sandbox entirely and inject credentials on the wire. However, to prevent data theft via legitimate API endpoints, egress brokers must enforce granular, path-level URI allowlisting rather than simple domain routing.
 

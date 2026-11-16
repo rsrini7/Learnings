@@ -1,6 +1,7 @@
 # The Local AI & Agent Security Threat Model: Weights, Runners, Sandboxing, and Apple MLX
 
-**Daily learning · 5 November 2026 · Technical review and threat modeling**
+Daily learning · November 05, 2026 · Technical review & threat modeling  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Running open-weight models locally is private by default—prompts do not secretly phone home to big tech. The authentic danger is execution security and supply-chain poisoning: when untrusted models are plugged into agent harnesses with shell, file-system, or MCP tools, parser bugs, template injections, and sleeper-agent weights can achieve persistent arbitrary code execution and credential exfiltration.
 

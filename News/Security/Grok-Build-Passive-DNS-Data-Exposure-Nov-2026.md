@@ -1,6 +1,7 @@
 # Grok Build: "Unlisted" Subdomains and Passive DNS Expose 35,500+ Apps
 
-**Daily learning · 12 November 2026 · Primary-source review · Exposure analysis**
+Daily learning · November 12, 2026 · Exposure analysis  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Security researchers at Claroc uncovered that 35,578 out of 37,571 live applications built with SpaceXSI's Grok Build on `grok.me` subdomains were completely accessible without authentication. Users relied on randomized URLs for secrecy, but passive DNS sensors continuously ingested those lookups into global telemetry databases, exposing intensive care patient data, corporate employee passwords, internal API keys, and vendor roadmaps.
 
