@@ -1474,4 +1474,4 @@ The original conceptual diagrams below illustrate the evolutionary baseline of M
 - [OpenClaw-Moltbot-Clawdbot-Architecture-2026](../Agents/openclaw/OpenClaw-Moltbot-Clawdbot-Architecture-2026.md) — Updated OpenClaw architecture where dynamic tool discovery addresses the v3-quantified scalability bottlenecks.
 - [AI-Coding-Loops](../Agents/development/AI-Coding-Loops.md) — AI-coding loop patterns that benefit most from v3's Code Mode default for multi-tool, multi-step agent workflows.
 - [RAG-Architectures](../RAG/RAG-Architectures.md) — RAG pipelines consume MCP resources, so the token-reduction strategies here apply directly to retrieval-augmented systems.
-- [clawwork-architecture-deep-dive](../Agents/openclaw/clawwork-architecture-deep-dive.md) — Production MCP integration showing how OpenClaw mitigates the same context-window and tool-binding problems examined here.
+- [ClawWork-Agent-Architecture-And-Economic-Survival-2026](../Agents/openclaw/ClawWork-Agent-Architecture-And-Economic-Survival-2026.md) — Production MCP integration showing how OpenClaw mitigates the same context-window and tool-binding problems examined here.

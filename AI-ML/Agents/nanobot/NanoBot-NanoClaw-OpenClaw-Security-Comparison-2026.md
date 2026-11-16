@@ -422,5 +422,5 @@ timeline
 - [OpenClaw-Moltbot-Clawdbot-Architecture-2026](../openclaw/OpenClaw-Moltbot-Clawdbot-Architecture-2026.md) — Detailed architecture of OpenClaw's gateway, lane-based queue, and ARIA semantic snapshots.
 - [OpenClaw-Autonomous-System-Whitepaper-2026](../openclaw/OpenClaw-Autonomous-System-Whitepaper-2026.md) — Enterprise whitepaper analyzing the systems reality, privilege boundaries, and prompt injection threat models.
 - [OpenClaw-Security-Analysis-2026](../openclaw/OpenClaw-Moltbot-Security-Analysis-2026.md) — In-depth technical catalog covering CVE-2026-25253 and Shodan gateway telemetry.
-- [nanobot-architecture-deep-dive](nanobot-architecture-deep-dive.md) — Deep architectural walkthrough of HKUDS's ~4k LOC Python runtime and MessageBus loop.
+- [NanoBot-Minimal-Agent-Runtime-Architecture-2026](NanoBot-Minimal-Agent-Runtime-Architecture-2026.md) — Deep architectural walkthrough of HKUDS's ~4k LOC Python runtime and MessageBus loop.
 - [Claw-Ecosystem-And-Agent-Topology-2026](../openclaw/Claw-Ecosystem-And-Agent-Topology-2026.md) — Comprehensive comparative taxonomy mapping the isolation boundaries of the Claw agent ecosystem.

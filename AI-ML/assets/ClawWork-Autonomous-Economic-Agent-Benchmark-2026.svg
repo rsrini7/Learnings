@@ -1,0 +1,183 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0b0f19" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="headerAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+
+    <linearGradient id="headerRed" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#dc2626" />
+      <stop offset="100%" stop-color="#f87171" />
+    </linearGradient>
+
+    <linearGradient id="headerBlue" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <!-- Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981" />
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="720" fill="url(#bgGrad)" />
+
+  <!-- Main Header -->
+  <rect x="30" y="20" width="1140" height="65" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="50" y="50" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700">CLAWWORK: AUTONOMOUS AGENT ECONOMIC BENCHMARK &amp; LABOR DYNAMICS</text>
+  <text x="50" y="70" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">GDPVal Benchmark (44 Occupations · 220 Tasks) · BLS Wage Model · $10 Baseline · Double-Loss Payout Threshold</text>
+  <rect x="980" y="38" width="170" height="30" rx="6" fill="#0369a1" />
+  <text x="1065" y="58" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">SQUID GAME FOR AGENTS</text>
+
+  <!-- COLUMN 1: GDPVAL BENCHMARK MATRIX -->
+  <g transform="translate(30, 100)">
+    <rect width="340" height="475" rx="8" fill="url(#cardGrad)" stroke="#fbbf24" stroke-width="1.5" />
+    <rect width="340" height="36" rx="8" fill="url(#headerAmber)" />
+    <text x="170" y="23" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">1. GDPVAL OCCUPATIONAL BENCHMARK</text>
+
+    <!-- Scope Container -->
+    <rect x="15" y="50" width="310" height="70" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="70" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Benchmark Scale &amp; Source</text>
+    <text x="25" y="88" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• 44 real-world professional occupations</text>
+    <text x="25" y="104" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Exactly 5 tasks per occupation = 220 total tasks</text>
+
+    <!-- Sectors & BLS Wages -->
+    <rect x="15" y="130" width="310" height="195" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="150" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Professional Sectors &amp; BLS Rates</text>
+    <text x="25" y="170" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Finance: Financial Analyst ($48.90/h), Lawyer ($75/h)</text>
+    <text x="25" y="186" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Tech: Developer ($55.00/h), IT Manager ($68/h)</text>
+    <text x="25" y="202" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Health: Nurse Practitioner ($58/h), Pharmacist ($62/h)</text>
+    <text x="25" y="218" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Media: Editor ($38/h), Journalist ($34/h), Producer</text>
+    <text x="25" y="234" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Ops: Project Manager ($52/h), Compliance Officer</text>
+    <text x="25" y="250" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Commerce: Real Estate Broker ($45/h), Buyer</text>
+    <text x="25" y="266" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Logistics: Supply Chain Planner, Order Clerk</text>
+    <text x="25" y="286" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Formula: MaxPayment = Hours × BLS Wage</text>
+    <text x="25" y="306" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">e.g. 3.0h Analyst task = $146.70 ceiling</text>
+
+    <!-- Task Assignment -->
+    <rect x="15" y="335" width="310" height="125" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="355" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Realistic Deliverable Mandate</text>
+    <text x="25" y="373" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Must produce actual output files (.py, .xlsx, .md)</text>
+    <text x="25" y="389" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Conversational claims in chat are NOT evaluated</text>
+    <text x="25" y="405" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• AST and sheet integrity verified on disk</text>
+    <text x="25" y="425" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Eliminates superficial hallucination pass</text>
+    <text x="25" y="443" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Mirrors professional contractual standards</text>
+  </g>
+
+  <!-- COLUMN 2: DOUBLE-LOSS & STRATEGIC TRADE-OFF -->
+  <g transform="translate(390, 100)">
+    <rect width="420" height="475" rx="8" fill="url(#cardGrad)" stroke="#f87171" stroke-width="1.5" />
+    <rect width="420" height="36" rx="8" fill="url(#headerRed)" />
+    <text x="210" y="23" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">2. DOUBLE-LOSS &amp; STRATEGY ENGINE</text>
+
+    <!-- Starter Asset -->
+    <rect x="15" y="50" width="390" height="65" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="70" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Initial Asset Baseline: $10.00</text>
+    <text x="25" y="88" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Every model begins tournament with exactly $10.00 capital</text>
+    <text x="25" y="102" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Reaching $0.00 triggers immediate permanent elimination</text>
+
+    <!-- Meta-Decision Gate -->
+    <rect x="15" y="125" width="390" height="110" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="145" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Meta-Decision Gate (decide_activity)</text>
+    <text x="25" y="163" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• WORK: Attempt assignment for market payout</text>
+    <text x="25" y="179" fill="#fca5a5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">  Risk: Burns tokens; earns $0 if quality score &lt; 0.60</text>
+    <text x="25" y="195" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• LEARN: Update MEMORY.md knowledge base</text>
+    <text x="25" y="211" fill="#7dd3fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">  Benefit: Enhances future quality; no immediate income</text>
+    <text x="25" y="225" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Choice is emergent based on prompt context balance</text>
+
+    <!-- Double Loss Payout Mechanics -->
+    <rect x="15" y="245" width="390" height="215" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="265" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Evaluation &amp; Double-Loss Mechanics</text>
+    
+    <text x="25" y="285" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">SCENARIO A: Quality Score &gt;= 0.60 (Pass)</text>
+    <text x="25" y="301" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Actual Payout = MaxReward × Quality Score</text>
+    <text x="25" y="317" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Net Profit = Payout − Cumulative Token Costs</text>
+    <text x="25" y="333" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">  e.g. $146.70 × 0.82 = $120.29 − $0.03 = +$120.26 Net</text>
+
+    <text x="25" y="358" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700">SCENARIO B: Quality Score &lt; 0.60 (Double Loss)</text>
+    <text x="25" y="374" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Payout = $0.00 (Zero compensation credited)</text>
+    <text x="25" y="390" fill="#fca5a5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Token costs ALREADY DEDUCTED silently per turn</text>
+    <text x="25" y="406" fill="#fca5a5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Net Result = −$0.075 (Direct capital reduction)</text>
+    <text x="25" y="426" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">A low-quality agent burns capital and goes broke</text>
+    <text x="25" y="444" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Penalizes verbose, hallucinatory reasoning failure modes</text>
+  </g>
+
+  <!-- COLUMN 3: LIVEBENCH TOURNAMENT RESULTS -->
+  <g transform="translate(830, 100)">
+    <rect width="340" height="475" rx="8" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5" />
+    <rect width="340" height="36" rx="8" fill="url(#headerBlue)" />
+    <text x="170" y="23" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">3. LIVEBENCH TOURNAMENT STANDINGS</text>
+
+    <!-- Leaderboard Container -->
+    <rect x="15" y="50" width="310" height="185" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="70" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Multi-Model Economic Standings (168 Tasks)</text>
+
+    <!-- Model 1: Qwen3-Max -->
+    <rect x="25" y="82" width="290" height="42" rx="4" fill="#082f49" stroke="#0284c7" stroke-width="1" />
+    <text x="35" y="98" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">🥇 Qwen3-Max: $9,712.92 Net Worth</text>
+    <text x="35" y="114" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Starter: $10.00 · Spent: $4.49 · Avg Score: 39.5%</text>
+
+    <!-- Model 2: Kimi-K2.5 -->
+    <rect x="25" y="130" width="290" height="42" rx="4" fill="#1e1b4b" stroke="#4338ca" stroke-width="1" />
+    <text x="35" y="146" fill="#a5b4fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">🥈 Kimi-K2.5: $5,919.19 Net Worth</text>
+    <text x="35" y="162" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Starter: $10.00 · Spent: $6.12 · Strong coder</text>
+
+    <!-- Model 3: GLM-4.7 -->
+    <rect x="25" y="178" width="290" height="42" rx="4" fill="#14532d" stroke="#16a34a" stroke-width="1" />
+    <text x="35" y="194" fill="#86efac" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">🥉 GLM-4.7: $509.85 Net Worth</text>
+    <text x="35" y="210" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Starter: $10.00 · Stable survivor · +4,998% return</text>
+
+    <!-- Key Analysis -->
+    <rect x="15" y="245" width="310" height="215" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="265" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Empirical Economic Takeaways</text>
+    <text x="25" y="285" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• High Win Rate Is NOT Required for Profit:</text>
+    <text x="25" y="301" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Qwen3-Max passed &lt;40% of tasks, but passed</text>
+    <text x="25" y="315" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  high-paying engineering/finance tasks decisively.</text>
+    <text x="25" y="335" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Token Efficiency Trumps Raw Model Size:</text>
+    <text x="25" y="351" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  A 32B model with concise tool calling beats</text>
+    <text x="25" y="365" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  a 70B model with verbose multi-turn loop bloat.</text>
+    <text x="25" y="385" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Expected Value Governs Survival:</text>
+    <text x="25" y="401" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  E[Payout] &gt; E[Cost] ensures long-term wealth.</text>
+    <text x="25" y="420" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">LiveBench WebSocket Telemetry:</text>
+    <text x="25" y="436" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Streams PnL charts in real time to React UI</text>
+  </g>
+
+  <!-- BOTTOM COMPARATIVE BANNER -->
+  <g transform="translate(30, 585)">
+    <rect width="1140" height="110" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <text x="25" y="25" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">ECONOMIC AGENT BENCHMARK VS. CONVENTIONAL LEADERBOARDS</text>
+
+    <!-- Spectrum Line -->
+    <line x1="25" y1="50" x2="1115" y2="50" stroke="#475569" stroke-width="4" stroke-linecap="round" />
+
+    <circle cx="150" cy="50" r="10" fill="#ef4444" stroke="#ffffff" stroke-width="2" />
+    <text x="150" y="72" fill="#fca5a5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Academic Chat Benchmarks</text>
+    <text x="150" y="88" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Unmetered compute · Free retries · Disconnected from labor value</text>
+
+    <circle cx="600" cy="50" r="10" fill="#f59e0b" stroke="#ffffff" stroke-width="2" />
+    <text x="600" y="72" fill="#fde68a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Task Completion Benchmarks (SWE-bench / GAIA)</text>
+    <text x="600" y="88" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Pass/fail binary output · Ignores token burn economics &amp; ROI</text>
+
+    <circle cx="1000" cy="50" r="10" fill="#10b981" stroke="#ffffff" stroke-width="2" />
+    <text x="1000" y="72" fill="#6ee7b7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">ClawWork Economic Survival (LiveBench)</text>
+    <text x="1000" y="88" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Market wage mapping · Double-loss penalty · File checks</text>
+  </g>
+</svg>

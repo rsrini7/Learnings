@@ -589,6 +589,6 @@ The original ecosystem diagram below illustrates the foundational project diverg
 - [OpenClaw-Moltbot-Security-Analysis-2026](OpenClaw-Moltbot-Security-Analysis-2026.md) — Comprehensive deep dive into CVE-2026-25253, WebSocket origin verification flaws, and Moltbook agent contagion.
 - [OpenClaw-Autonomous-System-Whitepaper-2026](OpenClaw-Autonomous-System-Whitepaper-2026.md) — Technical whitepaper on the OpenClaw autonomous architecture, event loop, and tool execution.
 - [OpenClaw-Enterprise-Usecases-And-Workflows-2026](OpenClaw-Enterprise-Usecases-And-Workflows-2026.md) — Enterprise multi-channel automations, RAG knowledge vaults, and advisory councils.
-- [nanobot-architecture-deep-dive](../nanobot/nanobot-architecture-deep-dive.md) — Architectural deep dive into HKUDS NanoBot's minimalist Python agent runtime.
-- [clawwork-architecture-deep-dive](clawwork-architecture-deep-dive.md) — Economic-layer multi-agent architecture built on top of the NanoBot framework.
+- [NanoBot-Minimal-Agent-Runtime-Architecture-2026](../nanobot/NanoBot-Minimal-Agent-Runtime-Architecture-2026.md) — Architectural deep dive into HKUDS NanoBot's minimalist Python agent runtime.
+- [ClawWork-Agent-Architecture-And-Economic-Survival-2026](ClawWork-Agent-Architecture-And-Economic-Survival-2026.md) — Economic-layer multi-agent architecture built on top of the NanoBot framework.
 - [OpenClaw-Moltbot-Clawdbot-Architecture-2026](OpenClaw-Moltbot-Clawdbot-Architecture-2026.md) — Analysis of OpenClaw's TypeScript lane-queue architecture and execution flow.

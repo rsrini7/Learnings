@@ -367,4 +367,4 @@ timeline
 - [OpenClaw-Security-Analysis-2026](OpenClaw-Moltbot-Security-Analysis-2026.md) — In-depth vulnerability catalog detailing gateway authentication bypasses, Node.js CVEs, and prompt injection vectors.
 - [Claw-Ecosystem-And-Agent-Topology-2026](Claw-Ecosystem-And-Agent-Topology-2026.md) — Compares OpenClaw's TypeScript lane-queue architecture against containerized and WASM-isolated agent frameworks.
 - [NanoBot-NanoClaw-OpenClaw-Security-Comparison-2026](../nanobot/NanoBot-NanoClaw-OpenClaw-Security-Comparison-2026.md) — Contrasts OpenClaw's 430k LOC shared daemon with NanoBot's 4k LOC Python runtime and NanoClaw's hypervisor container isolation.
-- [nanobot-architecture-deep-dive](../nanobot/nanobot-architecture-deep-dive.md) — Deep architectural analysis of the minimal HKUDS NanoBot agent runtime.
+- [NanoBot-Minimal-Agent-Runtime-Architecture-2026](../nanobot/NanoBot-Minimal-Agent-Runtime-Architecture-2026.md) — Deep architectural analysis of the minimal HKUDS NanoBot agent runtime.

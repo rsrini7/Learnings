@@ -1,0 +1,191 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0b0f19" />
+    </linearGradient>
+
+    <!-- Card Gradients -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <linearGradient id="headerAmber" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#fbbf24" />
+    </linearGradient>
+
+    <linearGradient id="headerPurple" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#a855f7" />
+    </linearGradient>
+
+    <linearGradient id="headerEmerald" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#059669" />
+      <stop offset="100%" stop-color="#10b981" />
+    </linearGradient>
+
+    <!-- Marker -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowGreen" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 10 5 L 0 9 z" fill="#10b981" />
+    </marker>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="720" fill="url(#bgGrad)" />
+
+  <!-- Header -->
+  <rect x="30" y="20" width="1140" height="65" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.5" />
+  <text x="50" y="50" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="700">CLAWWORK: AGENT ECONOMY &amp; PROFIT-AND-LOSS SURVIVAL ARCHITECTURE</text>
+  <text x="50" y="70" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Dual-Layer Subclassing · Transparent Token Metering · BLS Wage Mapping · 4-Dimensional Rubric Inspection</text>
+  <rect x="990" y="38" width="160" height="30" rx="6" fill="#0369a1" />
+  <text x="1070" y="58" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" text-anchor="middle">HKU DATA LAB (HKUDS)</text>
+
+  <!-- COLUMN 1: INGRESS & ECONOMIC DISPATCH -->
+  <g transform="translate(30, 100)">
+    <rect width="330" height="475" rx="8" fill="url(#cardGrad)" stroke="#fbbf24" stroke-width="1.5" />
+    <rect width="330" height="36" rx="8" fill="url(#headerAmber)" />
+    <text x="165" y="23" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">1. TASK INGESTION &amp; DISPATCH</text>
+
+    <!-- Task Ingestion Source -->
+    <rect x="15" y="50" width="300" height="85" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="70" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">GDPVal Benchmark &amp; User Tasks</text>
+    <text x="25" y="88" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• 220 professional tasks across 44 occupations</text>
+    <text x="25" y="104" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Automated cron injection via InboundMessage</text>
+    <text x="25" y="120" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Command format: /clawwork [task_description]</text>
+
+    <!-- Interceptor Loop -->
+    <rect x="15" y="145" width="300" height="100" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="165" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">ClawWorkAgentLoop (The Interceptor)</text>
+    <text x="25" y="183" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Subclasses NanoBot's AgentLoop</text>
+    <text x="25" y="199" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Overrides _process_message only</text>
+    <text x="25" y="215" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Wraps each run with financial transaction bookkeeping</text>
+    <text x="25" y="231" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Zero modification to NanoBot core internals</text>
+
+    <!-- TaskClassifier -->
+    <rect x="15" y="255" width="300" height="105" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="275" fill="#a855f7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">TaskClassifier (Job Valuation)</text>
+    <text x="25" y="293" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Maps task to 44 BLS occupations (temp 0.3)</text>
+    <text x="25" y="309" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Estimates human duration (e.g. 3.0 hours)</text>
+    <text x="25" y="325" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Formula: MaxPayment = Hours × BLS Hourly Wage</text>
+    <text x="25" y="343" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">e.g. Data Analyst (3h × $50/hr = $150 max)</text>
+
+    <!-- Meta Decision Gate -->
+    <rect x="15" y="370" width="300" height="90" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="390" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">decide_activity (Meta-Decision Gate)</text>
+    <text x="25" y="408" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Agent explicitly declares: WORK or LEARN</text>
+    <text x="25" y="424" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• WORK: Execute task for income (risks token loss)</text>
+    <text x="25" y="440" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• LEARN: Update MEMORY.md (zero immediate payout)</text>
+    <text x="25" y="452" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Balances short-term survival vs. long-term skill</text>
+  </g>
+
+  <!-- COLUMN 2: REASONING & TRANSPARENT BILLING -->
+  <g transform="translate(380, 100)">
+    <rect width="440" height="475" rx="8" fill="url(#cardGrad)" stroke="#a855f7" stroke-width="1.5" />
+    <rect width="440" height="36" rx="8" fill="url(#headerPurple)" />
+    <text x="220" y="23" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">2. REASONING CORE &amp; TOKEN METERING</text>
+
+    <!-- NanoBot Core (Unchanged) -->
+    <rect x="15" y="50" width="410" height="120" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="70" fill="#a855f7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Unmodified NanoBot Loop (loop.py)</text>
+    <text x="25" y="88" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• ContextBuilder: Assembles task prompt + MEMORY.md state</text>
+    <text x="25" y="104" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• ToolRegistry: 9 Base Tools (read, write, exec, web_search)</text>
+    <text x="25" y="120" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• 8 ClawWork Tools: decide_activity, submit_work, learn, status...</text>
+    <text x="25" y="136" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Multi-turn execution guard: max_iterations protection</text>
+    <text x="25" y="154" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">100% NanoBot runtime stability preserved</text>
+
+    <!-- TrackedProvider -->
+    <rect x="15" y="180" width="410" height="155" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="200" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">TrackedProvider (Silent Token Meter)</text>
+    <text x="25" y="218" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Wraps LiteLLM provider transparently</text>
+    <text x="25" y="234" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Intercepts response.usage metadata (prompt + completion tokens)</text>
+    <text x="25" y="250" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Deducts exact token costs from balance immediately</text>
+    <text x="25" y="266" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Cost incurred whether the task ultimately succeeds or fails</text>
+    <text x="25" y="282" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Agent never sees billing logic; receives pure content</text>
+    <text x="25" y="302" fill="#38bdf8" font-family="Courier, monospace" font-size="9">calculate_cost(prompt_tokens, completion_tokens, model)</text>
+    <text x="25" y="322" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Reusable design pattern for rate limiting &amp; observability</text>
+
+    <!-- Artifact Generation Box -->
+    <rect x="15" y="345" width="410" height="115" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="365" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Deliverable Artifacts on Local Disk</text>
+    <text x="25" y="383" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Produces actual files: .xlsx, .py, .md, .csv, .pdf</text>
+    <text x="25" y="399" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Calls submit_work(artifact_paths=["analysis.xlsx"])</text>
+    <text x="25" y="415" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Missing deliverables trigger immediate automatic score caps (0-2)</text>
+    <text x="25" y="435" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Verification inspects real files, not agent assertions</text>
+  </g>
+
+  <!-- COLUMN 3: EVALUATION & LEDGER ENGINE -->
+  <g transform="translate(840, 100)">
+    <rect width="330" height="475" rx="8" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.5" />
+    <rect width="330" height="36" rx="8" fill="url(#headerEmerald)" />
+    <text x="165" y="23" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" text-anchor="middle">3. EVALUATION &amp; LEDGER</text>
+
+    <!-- Evaluation Rubrics -->
+    <rect x="15" y="50" width="300" height="120" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="70" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">4-Dimensional Rubric Engine</text>
+    <text x="25" y="88" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Completeness (40%): All sections &amp; tabs present</text>
+    <text x="25" y="104" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Correctness (30%): Calculations &amp; formulas valid</text>
+    <text x="25" y="120" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Quality (20%): Professional formatting &amp; clarity</text>
+    <text x="25" y="136" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Domain Standards (10%): Follows industry conventions</text>
+    <text x="25" y="154" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Stored in 44 occupation JSON meta-prompts</text>
+
+    <!-- Payout Logic -->
+    <rect x="15" y="180" width="300" height="135" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="200" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Payout vs. Double Loss Mechanics</text>
+    <text x="25" y="218" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Score &gt;= 0.60: SUCCESSFUL PAYOUT</text>
+    <text x="25" y="234" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Payout = MaxReward × Quality Score</text>
+    <text x="25" y="250" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• e.g. Score 0.82 on $122 task → +$100.25 credited</text>
+    <text x="25" y="270" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Score &lt; 0.60: DOUBLE LOSS FAILURE</text>
+    <text x="25" y="286" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Payout = $0 (Zero income credited)</text>
+    <text x="25" y="302" fill="#fca5a5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">Token costs already burned → net negative impact</text>
+
+    <!-- EconomicTracker & LiveBench -->
+    <rect x="15" y="325" width="300" height="135" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="25" y="345" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">EconomicTracker &amp; LiveBench</text>
+    <text x="25" y="363" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Real-time ledger: balance, earned, spent</text>
+    <text x="25" y="379" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Response footer: Cost: $X | Earned: $Y | Bal: $Z</text>
+    <text x="25" y="395" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• FastAPI backend + WebSocket real-time broadcast</text>
+    <text x="25" y="411" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• React UI displays multi-agent competitive leaderboard</text>
+    <text x="25" y="433" fill="#10b981" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Real-time elimination if balance hits $0.00</text>
+  </g>
+
+  <!-- BOTTOM SPECTRUM BAR: EMERGENT SURVIVAL TIERS -->
+  <g transform="translate(30, 585)">
+    <rect width="1140" height="110" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <text x="25" y="25" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">EMERGENT ECONOMIC TIERS (OBSERVED BEHAVIORAL PATTERNS)</text>
+
+    <!-- Spectrum Line -->
+    <line x1="25" y1="50" x2="1115" y2="50" stroke="#475569" stroke-width="4" stroke-linecap="round" />
+
+    <!-- Node 1: Bankrupt -->
+    <circle cx="80" cy="50" r="9" fill="#ef4444" stroke="#ffffff" stroke-width="2" />
+    <text x="80" y="72" fill="#fca5a5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Bankrupt ($0.00)</text>
+    <text x="80" y="88" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Agent eliminated</text>
+
+    <!-- Node 2: Struggling -->
+    <circle cx="280" cy="50" r="9" fill="#f59e0b" stroke="#ffffff" stroke-width="2" />
+    <text x="280" y="72" fill="#fde68a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Struggling (&lt; $5)</text>
+    <text x="280" y="88" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Picks safe high-reward tasks</text>
+
+    <!-- Node 3: Surviving -->
+    <circle cx="530" cy="50" r="9" fill="#0284c7" stroke="#ffffff" stroke-width="2" />
+    <text x="530" y="72" fill="#7dd3fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Surviving ($5–$50)</text>
+    <text x="530" y="88" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Balanced work/learn choices</text>
+
+    <!-- Node 4: Stable -->
+    <circle cx="780" cy="50" r="9" fill="#10b981" stroke="#ffffff" stroke-width="2" />
+    <text x="780" y="72" fill="#6ee7b7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Stable ($50–$500)</text>
+    <text x="780" y="88" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Can invest in knowledge bases</text>
+
+    <!-- Node 5: Thriving -->
+    <circle cx="1030" cy="50" r="9" fill="#3b82f6" stroke="#ffffff" stroke-width="2" />
+    <text x="1030" y="72" fill="#93c5fd" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" text-anchor="middle">Thriving (&gt; $500)</text>
+    <text x="1030" y="88" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Qwen3-Max: $10 → $9,712</text>
+  </g>
+</svg>
