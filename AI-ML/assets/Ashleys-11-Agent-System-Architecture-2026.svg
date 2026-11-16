@@ -1,0 +1,204 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="busGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="50%" stop-color="#6366f1" />
+      <stop offset="100%" stop-color="#0d9488" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="780" fill="url(#bgGradient)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="44" fill="#f8fafc" font-size="22" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">11-Agent Autonomous Enterprise Workforce Architecture</text>
+  <text x="40" y="68" fill="#94a3b8" font-size="13" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Operational topology spanning inbound capture, telemetry hygiene, risk auditing, synthetic personas, and HITL governance</text>
+
+  <!-- Central Event Bus & State Coordinator -->
+  <rect x="40" y="360" width="1120" height="60" rx="10" fill="#1e293b" stroke="url(#busGrad)" stroke-width="2.5" filter="url(#shadow)"/>
+  <text x="600" y="386" fill="#38bdf8" font-size="14" font-weight="700" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">CENTRAL EVENT BUS &amp; ORCHESTRATION STATE MACHINE</text>
+  <text x="600" y="405" fill="#94a3b8" font-size="11" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Asynchronous Event Streaming (Kafka / Redis) • State Persistence • HITL Approval Gates • Audit Telemetry</text>
+
+  <!-- CLUSTER 1: Inbound Lead Generation & Capture (Top Left) -->
+  <rect x="40" y="90" width="540" height="250" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="40" y="90" width="540" height="34" rx="12" fill="#1e293b"/>
+  <text x="56" y="113" fill="#38bdf8" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">PILLAR 1: INBOUND INGESTION &amp; PIPELINE VELOCITY</text>
+
+  <!-- Agent 1 Card -->
+  <rect x="55" y="135" width="155" height="190" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+  <text x="65" y="156" fill="#38bdf8" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">1. After-Hours Sales</text>
+  <text x="65" y="174" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">24/7 Web &amp; Voice</text>
+  <text x="65" y="196" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Real-time qualification</text>
+  <text x="65" y="214" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Instant calendar booking</text>
+  <text x="65" y="232" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Fiscal profile scraping</text>
+  <text x="65" y="250" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Zero lead abandonment</text>
+  <rect x="65" y="292" width="135" height="22" rx="4" fill="#0369a1" fill-opacity="0.3"/>
+  <text x="132" y="307" fill="#38bdf8" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Latency &lt; 800ms</text>
+
+  <!-- Agent 2 Card -->
+  <rect x="225" y="135" width="165" height="190" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+  <text x="235" y="156" fill="#38bdf8" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">2. AI Receptionist</text>
+  <text x="235" y="174" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">PSTN / Telephony Voice</text>
+  <text x="235" y="196" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Client script branches</text>
+  <text x="235" y="214" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Live speech-to-text</text>
+  <text x="235" y="232" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• SMS trigger sequencing</text>
+  <text x="235" y="250" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Urgent human escalation</text>
+  <rect x="235" y="292" width="145" height="22" rx="4" fill="#0369a1" fill-opacity="0.3"/>
+  <text x="307" y="307" fill="#38bdf8" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Multi-Tenant Routing</text>
+
+  <!-- Agent 10 Card -->
+  <rect x="405" y="135" width="160" height="190" rx="8" fill="#1e293b" stroke="#38bdf8" stroke-width="1"/>
+  <text x="415" y="156" fill="#38bdf8" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">10. Lead Qualifier</text>
+  <text x="415" y="174" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">ICP Scoring &amp; Pipeline</text>
+  <text x="415" y="196" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Automated ICP scoring</text>
+  <text x="415" y="214" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• MQL-to-SQL gatekeeping</text>
+  <text x="415" y="232" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Apollo data enrichment</text>
+  <text x="415" y="250" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• High-touch rep handoff</text>
+  <rect x="415" y="292" width="140" height="22" rx="4" fill="#0369a1" fill-opacity="0.3"/>
+  <text x="485" y="307" fill="#38bdf8" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Deterministic Rules</text>
+
+  <!-- CLUSTER 2: Retention, Revenue & Risk Audit (Top Right) -->
+  <rect x="620" y="90" width="540" height="250" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="620" y="90" width="540" height="34" rx="12" fill="#1e293b"/>
+  <text x="636" y="113" fill="#a78bfa" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">PILLAR 2: RETENTION, EXPANSION &amp; RISK AUDITING</text>
+
+  <!-- Agent 3 Card -->
+  <rect x="635" y="135" width="160" height="190" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1"/>
+  <text x="645" y="156" fill="#a78bfa" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">3. Legal Risk Auditor</text>
+  <text x="645" y="174" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Contracts &amp; NDAs</text>
+  <text x="645" y="196" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Clause risk extraction</text>
+  <text x="645" y="214" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Anomaly redline alerts</text>
+  <text x="645" y="232" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Non-standard SLA check</text>
+  <text x="645" y="250" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Attorney review queuing</text>
+  <rect x="645" y="292" width="140" height="22" rx="4" fill="#581c87" fill-opacity="0.3"/>
+  <text x="715" y="307" fill="#c084fc" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">HITL Escrow Gate</text>
+
+  <!-- Agent 5 Card -->
+  <rect x="810" y="135" width="160" height="190" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1"/>
+  <text x="820" y="156" fill="#a78bfa" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">5. Happiness Meter</text>
+  <text x="820" y="174" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Sentiment Telemetry</text>
+  <text x="820" y="196" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Email tone monitoring</text>
+  <text x="820" y="214" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Call note NLP scoring</text>
+  <text x="820" y="232" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Pre-churn alarm flag</text>
+  <text x="820" y="250" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Upsell signal detection</text>
+  <rect x="820" y="292" width="140" height="22" rx="4" fill="#581c87" fill-opacity="0.3"/>
+  <text x="890" y="307" fill="#c084fc" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Proactive Early Alarm</text>
+
+  <!-- Agent 6 Card -->
+  <rect x="985" y="135" width="160" height="190" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1"/>
+  <text x="995" y="156" fill="#a78bfa" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">6. Renewal &amp; Upsell</text>
+  <text x="995" y="174" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Account Intelligence</text>
+  <text x="995" y="196" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• 90-day pre-expiry prep</text>
+  <text x="995" y="214" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Telemetry trend rollup</text>
+  <text x="995" y="232" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Win milestones summary</text>
+  <text x="995" y="250" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Executive renewal brief</text>
+  <rect x="985" y="292" width="140" height="22" rx="4" fill="#581c87" fill-opacity="0.3"/>
+  <text x="1055" y="307" fill="#c084fc" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Strategic Briefing</text>
+
+  <!-- CLUSTER 3: Operational Bus & Telemetry Hygiene (Bottom Left) -->
+  <rect x="40" y="450" width="540" height="260" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="40" y="450" width="540" height="34" rx="12" fill="#1e293b"/>
+  <text x="56" y="473" fill="#10b981" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">PILLAR 3: PERSISTENT MEMORY &amp; DATA HYGIENE</text>
+
+  <!-- Agent 4 Card -->
+  <rect x="55" y="495" width="155" height="195" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+  <text x="65" y="516" fill="#10b981" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">4. CRM Dedupe</text>
+  <text x="65" y="534" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Zero-ETL Data Hygiene</text>
+  <text x="65" y="556" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Entity fuzzy matching</text>
+  <text x="65" y="574" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Schema normalization</text>
+  <text x="65" y="592" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Stripe + HubSpot sync</text>
+  <text x="65" y="610" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Cross-record merging</text>
+  <rect x="65" y="652" width="135" height="22" rx="4" fill="#064e3b" fill-opacity="0.3"/>
+  <text x="132" y="667" fill="#34d399" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Clean Record Bus</text>
+
+  <!-- Agent 7 Card -->
+  <rect x="225" y="495" width="165" height="195" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+  <text x="235" y="516" fill="#10b981" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">7. Second Brain</text>
+  <text x="235" y="534" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Knowledge Graph RAG</text>
+  <text x="235" y="556" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Persistent relation map</text>
+  <text x="235" y="574" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Multi-channel synthesis</text>
+  <text x="235" y="592" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Follow-up radar flags</text>
+  <text x="235" y="610" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Contextual recall query</text>
+  <rect x="235" y="652" width="145" height="22" rx="4" fill="#064e3b" fill-opacity="0.3"/>
+  <text x="307" y="667" fill="#34d399" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Hybrid Graph &amp; Vector</text>
+
+  <!-- Agent 11 Card -->
+  <rect x="405" y="495" width="160" height="195" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+  <text x="415" y="516" fill="#10b981" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">11. Research Dossier</text>
+  <text x="415" y="534" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Pre-Call Intelligence</text>
+  <text x="415" y="556" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Executive profile crawl</text>
+  <text x="415" y="574" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Corporate 10-K &amp; news</text>
+  <text x="415" y="592" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Social footprint scans</text>
+  <text x="415" y="610" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• 1-page meeting briefing</text>
+  <rect x="415" y="652" width="140" height="22" rx="4" fill="#064e3b" fill-opacity="0.3"/>
+  <text x="485" y="667" fill="#34d399" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Automated Dossier</text>
+
+  <!-- CLUSTER 4: Synthetic Coaching & Outbound Atomization (Bottom Right) -->
+  <rect x="620" y="450" width="540" height="260" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="620" y="450" width="540" height="34" rx="12" fill="#1e293b"/>
+  <text x="636" y="473" fill="#fbbf24" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">PILLAR 4: SYNTHETIC COACHING &amp; CONTENT ATOMIZATION</text>
+
+  <!-- Agent 8 Card -->
+  <rect x="635" y="495" width="160" height="195" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+  <text x="645" y="516" fill="#fbbf24" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">8. Synthetic CFO</text>
+  <text x="645" y="534" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Adversarial Pitch Roleplay</text>
+  <text x="645" y="556" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Budget ROI skepticism</text>
+  <text x="645" y="574" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Tough objection trees</text>
+  <text x="645" y="592" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Value proposition test</text>
+  <text x="645" y="610" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Rep readiness scoring</text>
+  <rect x="645" y="652" width="140" height="22" rx="4" fill="#78350f" fill-opacity="0.3"/>
+  <text x="715" y="667" fill="#fbbf24" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Stress-Test Arena</text>
+
+  <!-- Agent 9 Card -->
+  <rect x="810" y="495" width="160" height="195" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+  <text x="820" y="516" fill="#fbbf24" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">9. Content Engine</text>
+  <text x="820" y="534" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Cross-Channel Atomizer</text>
+  <text x="820" y="556" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Video transcript parsing</text>
+  <text x="820" y="574" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Long to short snippets</text>
+  <text x="820" y="592" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Brand tone guardrails</text>
+  <text x="820" y="610" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Multi-platform queue</text>
+  <rect x="820" y="652" width="140" height="22" rx="4" fill="#78350f" fill-opacity="0.3"/>
+  <text x="890" y="667" fill="#fbbf24" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">High-Volume Pipeline</text>
+
+  <!-- Supporting Systems Card -->
+  <rect x="985" y="495" width="160" height="195" rx="8" fill="#1e293b" stroke="#64748b" stroke-width="1"/>
+  <text x="995" y="516" fill="#cbd5e1" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">+ Ops Infrastructure</text>
+  <text x="995" y="534" fill="#94a3b8" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Telemetry &amp; Triage</text>
+  <text x="995" y="556" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Inbox priority triage</text>
+  <text x="995" y="574" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Multi-touch attribution</text>
+  <text x="995" y="592" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Automated onboarding</text>
+  <text x="995" y="610" fill="#94a3b8" font-size="9" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Daily KPI scorecards</text>
+  <rect x="985" y="652" width="140" height="22" rx="4" fill="#334155" fill-opacity="0.5"/>
+  <text x="1055" y="667" fill="#94a3b8" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Human Gatekeepers</text>
+
+  <!-- Flow Connectors -->
+  <!-- Connector 1 from Pillar 1 down to Bus -->
+  <path d="M 310 340 L 310 360" stroke="#38bdf8" stroke-width="2" stroke-dasharray="3,3"/>
+  <!-- Connector 2 from Pillar 2 down to Bus -->
+  <path d="M 890 340 L 890 360" stroke="#a78bfa" stroke-width="2" stroke-dasharray="3,3"/>
+  <!-- Connector 3 from Bus down to Pillar 3 -->
+  <path d="M 310 420 L 310 450" stroke="#10b981" stroke-width="2" stroke-dasharray="3,3"/>
+  <!-- Connector 4 from Bus down to Pillar 4 -->
+  <path d="M 890 420 L 890 450" stroke="#fbbf24" stroke-width="2" stroke-dasharray="3,3"/>
+
+  <!-- Footer Legend -->
+  <rect x="40" y="730" width="1120" height="30" rx="6" fill="#0f172a" stroke="#1e293b" stroke-width="1"/>
+  <text x="56" y="750" fill="#94a3b8" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Key Principles:</text>
+  <circle cx="160" cy="746" r="4" fill="#38bdf8"/>
+  <text x="170" y="750" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Event Ingress</text>
+  <circle cx="280" cy="746" r="4" fill="#a78bfa"/>
+  <text x="290" y="750" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Autonomous Evaluation</text>
+  <circle cx="480" cy="746" r="4" fill="#10b981"/>
+  <text x="490" y="750" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Unified Persistent State</text>
+  <circle cx="680" cy="746" r="4" fill="#fbbf24"/>
+  <text x="690" y="750" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Synthetic Stress-Testing</text>
+  <circle cx="880" cy="746" r="4" fill="#f43f5e"/>
+  <text x="890" y="750" fill="#cbd5e1" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">HITL Escrow on Destructive Actions</text>
+</svg>

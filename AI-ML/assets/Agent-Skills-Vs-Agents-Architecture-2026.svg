@@ -1,0 +1,141 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <linearGradient id="failGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ef4444" />
+      <stop offset="100%" stop-color="#f97316" />
+    </linearGradient>
+    <linearGradient id="passGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#06b6d4" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="750" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="40" y="44" fill="#f8fafc" font-size="22" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Agent Skills vs. Passive Context: Architecture &amp; Failure Modes</text>
+  <text x="40" y="68" fill="#94a3b8" font-size="13" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Empirical evaluation of Active Retrieval (AgentSkills) vs. Passive Ingress (AGENTS.md) on frontier framework APIs</text>
+
+  <!-- LEFT PANEL: Active Retrieval (The Skills Trap) -->
+  <rect x="40" y="90" width="540" height="370" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="40" y="90" width="540" height="36" rx="12" fill="#1e293b"/>
+  <text x="56" y="114" fill="#f87171" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">PATH A: ACTIVE ON-DEMAND RETRIEVAL (AGENT SKILLS)</text>
+  <rect x="475" y="96" width="95" height="22" rx="4" fill="#7f1d1d" fill-opacity="0.6"/>
+  <text x="522" y="111" fill="#fca5a5" font-size="10" font-weight="700" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">53% Pass Rate</text>
+
+  <!-- Step 1: Ingress & Meta-Cognition -->
+  <rect x="60" y="140" width="500" height="60" rx="8" fill="#1e293b" stroke="#475569" stroke-width="1"/>
+  <text x="75" y="162" fill="#e2e8f0" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">1. Task Ingress &amp; Unconscious Incompetence</text>
+  <text x="75" y="182" fill="#94a3b8" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Agent receives: "Implement Next.js 16 caching and async cookies()"</text>
+
+  <!-- Step 2: The Decision Bottleneck (Failure Point) -->
+  <path d="M 310 200 L 310 220" stroke="#f87171" stroke-width="2"/>
+  <polygon points="305,215 310,225 315,215" fill="#f87171"/>
+
+  <rect x="60" y="225" width="500" height="70" rx="8" fill="#450a0a" stroke="#dc2626" stroke-width="1.5"/>
+  <text x="75" y="247" fill="#fca5a5" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">2. The Epistemic Blindspot (Decision Bottleneck)</text>
+  <text x="75" y="267" fill="#fecaca" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Agent assumes pre-trained parametric weights are accurate.</text>
+  <text x="75" y="283" fill="#f87171" font-size="11" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">🚨 56% of runs: Agent never invokes skill (assumes it already knows).</text>
+
+  <!-- Step 3: Hallucinated Execution -->
+  <path d="M 310 295 L 310 315" stroke="#f87171" stroke-width="2"/>
+  <polygon points="305,310 310,320 315,310" fill="#f87171"/>
+
+  <rect x="60" y="320" width="500" height="60" rx="8" fill="#1e293b" stroke="#7f1d1d" stroke-width="1"/>
+  <text x="75" y="342" fill="#fca5a5" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">3. Stale API Generation &amp; Test Breakage</text>
+  <text x="75" y="362" fill="#94a3b8" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Emits deprecated Next.js 14 sync cookies(); fails build and unit tests.</text>
+
+  <!-- Summary Badge Left -->
+  <rect x="60" y="395" width="500" height="48" rx="6" fill="#1e293b"/>
+  <text x="75" y="415" fill="#f87171" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Root Cause:</text>
+  <text x="150" y="415" fill="#cbd5e1" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Requires meta-cognition ("I don't know this") before retrieval.</text>
+  <text x="75" y="433" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Minor prompt perturbations swing invocation success wildly.</text>
+
+  <!-- RIGHT PANEL: Passive Root Context (AGENTS.md) -->
+  <rect x="620" y="90" width="540" height="370" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="620" y="90" width="540" height="36" rx="12" fill="#1e293b"/>
+  <text x="636" y="114" fill="#34d399" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">PATH B: PASSIVE REPO-ROOT CONTEXT (AGENTS.MD)</text>
+  <rect x="1050" y="96" width="100" height="22" rx="4" fill="#065f46" fill-opacity="0.6"/>
+  <text x="1100" y="111" fill="#6ee7b7" font-size="10" font-weight="700" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">100% Pass Rate</text>
+
+  <!-- Step 1: Zero-Decision Ingestion -->
+  <rect x="640" y="140" width="500" height="60" rx="8" fill="#1e293b" stroke="#059669" stroke-width="1"/>
+  <text x="655" y="162" fill="#6ee7b7" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">1. Immediate Zero-Decision Context Ingress</text>
+  <text x="655" y="182" fill="#94a3b8" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">AGENTS.md (~8KB compressed doc index) pre-loaded in system prompt.</text>
+
+  <!-- Step 2: Directive Override -->
+  <path d="M 890 200 L 890 220" stroke="#10b981" stroke-width="2"/>
+  <polygon points="885,215 890,225 895,215" fill="#10b981"/>
+
+  <rect x="640" y="225" width="500" height="70" rx="8" fill="#064e3b" stroke="#10b981" stroke-width="1.5"/>
+  <text x="655" y="247" fill="#a7f3d0" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">2. Explicit Retrieval-Led Reasoning Directive</text>
+  <text x="655" y="267" fill="#d1fae5" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">"Prefer retrieval-led reasoning over pre-training weights for Next.js tasks."</text>
+  <text x="655" y="283" fill="#34d399" font-size="11" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">⚡ Zero decision overhead: Maps concepts directly to local MDX docs.</text>
+
+  <!-- Step 3: Verified Execution -->
+  <path d="M 890 295 L 890 315" stroke="#10b981" stroke-width="2"/>
+  <polygon points="885,310 890,320 895,310" fill="#10b981"/>
+
+  <rect x="640" y="320" width="500" height="60" rx="8" fill="#1e293b" stroke="#047857" stroke-width="1"/>
+  <text x="655" y="342" fill="#6ee7b7" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">3. Flawless Compilation &amp; Test Execution</text>
+  <text x="655" y="362" fill="#94a3b8" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Emits correct 'use cache' directives, async headers, passes 100% of tests.</text>
+
+  <!-- Summary Badge Right -->
+  <rect x="640" y="395" width="500" height="48" rx="6" fill="#1e293b"/>
+  <text x="655" y="415" fill="#34d399" font-size="11" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Advantage:</text>
+  <text x="730" y="415" fill="#cbd5e1" font-size="11" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Eliminates hesitation; guarantees context presence every turn.</text>
+  <text x="655" y="433" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Deterministic index lookup outperforms dynamic skill invocation.</text>
+
+  <!-- BOTTOM PANEL: The Reconciled Hybrid Architecture -->
+  <rect x="40" y="480" width="1120" height="235" rx="12" fill="#0f172a" stroke="#334155" stroke-width="1.5" filter="url(#shadow)"/>
+  <rect x="40" y="480" width="1120" height="34" rx="12" fill="#1e293b"/>
+  <text x="56" y="503" fill="#38bdf8" font-size="13" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">THE RECONCILED ARCHITECTURE: 4-TIER CONTEXT &amp; CAPABILITY MATRIX</text>
+
+  <!-- Tier 1 -->
+  <rect x="60" y="525" width="255" height="175" rx="8" fill="#1e293b" stroke="#0284c7" stroke-width="1"/>
+  <text x="75" y="548" fill="#38bdf8" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Tier 1: Passive Root Index</text>
+  <text x="75" y="568" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">AGENTS.md / CLAUDE.md</text>
+  <text x="75" y="592" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Compressed semantic index</text>
+  <text x="75" y="610" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Architectural constraints</text>
+  <text x="75" y="628" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Critical API overrides</text>
+  <rect x="75" y="658" width="225" height="24" rx="4" fill="#0369a1" fill-opacity="0.3"/>
+  <text x="187" y="674" fill="#38bdf8" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Always Injected (Zero Latency)</text>
+
+  <!-- Tier 2 -->
+  <rect x="340" y="525" width="255" height="175" rx="8" fill="#1e293b" stroke="#10b981" stroke-width="1"/>
+  <text x="355" y="548" fill="#34d399" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Tier 2: Local Doc Trees</text>
+  <text x="355" y="568" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">docs/ or specs/ (*.mdx)</text>
+  <text x="355" y="592" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Granular API documentation</text>
+  <text x="355" y="610" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Code snippets &amp; type definitions</text>
+  <text x="355" y="628" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Read on-demand via exact path</text>
+  <rect x="355" y="658" width="225" height="24" rx="4" fill="#065f46" fill-opacity="0.3"/>
+  <text x="467" y="674" fill="#34d399" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Deterministic Path Retrieval</text>
+
+  <!-- Tier 3 -->
+  <rect x="620" y="525" width="255" height="175" rx="8" fill="#1e293b" stroke="#fbbf24" stroke-width="1"/>
+  <text x="635" y="548" fill="#fbbf24" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Tier 3: Specialized Skills</text>
+  <text x="635" y="568" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">SKILL.md &amp; Codemods</text>
+  <text x="635" y="592" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Multi-step migrations (v15 → v16)</text>
+  <text x="635" y="610" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Third-party tool workflows (Stripe)</text>
+  <text x="635" y="628" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Action-oriented executable scripts</text>
+  <rect x="635" y="658" width="225" height="24" rx="4" fill="#78350f" fill-opacity="0.3"/>
+  <text x="747" y="674" fill="#fbbf24" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Invoked for Explicit Actions</text>
+
+  <!-- Tier 4 -->
+  <rect x="900" y="525" width="240" height="175" rx="8" fill="#1e293b" stroke="#a78bfa" stroke-width="1"/>
+  <text x="915" y="548" fill="#c084fc" font-size="12" font-weight="700" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Tier 4: Verification Oracles</text>
+  <text x="915" y="568" fill="#cbd5e1" font-size="10" font-weight="600" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Compiler, Lint &amp; Unit Tests</text>
+  <text x="915" y="592" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• `next build` / TypeScript AST</text>
+  <text x="915" y="610" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Deterministic exit status feedback</text>
+  <text x="915" y="628" fill="#94a3b8" font-size="10" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">• Re-injects error diff on failure</text>
+  <rect x="915" y="658" width="210" height="24" rx="4" fill="#581c87" fill-opacity="0.3"/>
+  <text x="1020" y="674" fill="#c084fc" font-size="9" font-weight="600" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">Automated Ground Truth Oracle</text>
+</svg>

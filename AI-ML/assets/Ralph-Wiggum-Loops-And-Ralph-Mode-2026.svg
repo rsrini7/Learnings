@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Title & Meta Header -->
+  <g transform="translate(50, 40)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">
+      Ralph Wiggum Loops &amp; Ralph Mode: Filesystem-as-Memory Architecture
+    </text>
+    <text x="0" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">
+      Stateless iteration, stop-hook exit interception (exit code 2), and deterministic verification oracles
+    </text>
+  </g>
+
+  <!-- Section 1: Context Rot vs Filesystem-as-Memory (y: 85..365) -->
+  <g transform="translate(50, 85)">
+    <rect width="1100" height="280" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)" />
+    <text x="25" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">
+      1. Architectural Comparison: Chat Context Accumulation vs Stateless Iteration
+    </text>
+
+    <!-- Left Box: Traditional Chat-History Accumulation -->
+    <g transform="translate(25, 45)">
+      <rect width="515" height="210" rx="8" fill="#0f172a" stroke="#f43f5e" stroke-width="1.2" />
+      <rect x="0" y="0" width="515" height="30" rx="8" fill="#e11d48" fill-opacity="0.2" />
+      <text x="14" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#f43f5e">
+        TRADITIONAL CHAT LOOP: Context Rot &amp; Token Bloat
+      </text>
+
+      <text x="14" y="55" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Turn 1: User prompt + Initial code generation (4,000 tokens)</text>
+      <text x="14" y="75" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Turn 5: Cumulative tool outputs + error logs (32,000 tokens)</text>
+      <text x="14" y="95" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Turn 15: Sliding window eviction starts dropping original specs</text>
+      <text x="14" y="115" font-family="sans-serif" font-size="11" fill="#f87171">• Context Rot: Attention disperses across old failed attempts</text>
+      <text x="14" y="135" font-family="sans-serif" font-size="11" fill="#f87171">• Model loops repetitively on solved syntax bugs</text>
+      
+      <rect x="14" y="158" width="487" height="30" rx="4" fill="#1e293b" stroke="#f43f5e" />
+      <text x="22" y="177" font-family="sans-serif" font-size="11" font-weight="600" fill="#f43f5e">
+        Result: Degrading intelligence, escalating token costs ($20+/hr)
+      </text>
+    </g>
+
+    <!-- Right Box: Ralph Wiggum Filesystem-as-Memory -->
+    <g transform="translate(560, 45)">
+      <rect width="515" height="210" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.2" />
+      <rect x="0" y="0" width="515" height="30" rx="8" fill="#059669" fill-opacity="0.2" />
+      <text x="14" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#34d399">
+        RALPH WIGGUM LOOP: Stateless Iteration via Filesystem
+      </text>
+
+      <text x="14" y="55" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Turn N: Agent starts with 100% fresh context window</text>
+      <text x="14" y="75" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Memory Source: Ingests PROMPT.md + current filesystem files</text>
+      <text x="14" y="95" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Execution: Modifies code, runs test suite, updates TODO list</text>
+      <text x="14" y="115" font-family="sans-serif" font-size="11" fill="#4ade80">• Git Commit: Changes committed to disk as durable state checkpoints</text>
+      <text x="14" y="135" font-family="sans-serif" font-size="11" fill="#4ade80">• Zero Context Rot: Model reasons with maximum attention capacity</text>
+
+      <rect x="14" y="158" width="487" height="30" rx="4" fill="#1e293b" stroke="#34d399" />
+      <text x="22" y="177" font-family="sans-serif" font-size="11" font-weight="600" fill="#4ade80">
+        Result: Predictable iteration, stable token budgets, runs for hours
+      </text>
+    </g>
+  </g>
+
+  <!-- Section 2: Stop Hook Mechanics & Verification Oracles (y: 380..780) -->
+  <g transform="translate(50, 380)">
+    <rect width="1100" height="400" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)" />
+    <text x="25" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">
+      2. The Stop Hook Loop Engine &amp; The Deterministic Completion Oracle
+    </text>
+
+    <!-- Column 1: The Stop Hook Interception -->
+    <g transform="translate(25, 45)">
+      <rect width="335" height="330" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.2" />
+      <rect x="0" y="0" width="335" height="30" rx="8" fill="#d97706" fill-opacity="0.2" />
+      <text x="14" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+        Stop-Hook Interception Engine
+      </text>
+
+      <text x="14" y="55" font-family="sans-serif" font-size="11" font-weight="600" fill="#f8fafc">1. Agent Attempts Exit:</text>
+      <text x="14" y="73" font-family="sans-serif" font-size="11" fill="#94a3b8">• Claude finishes turn and attempts process exit</text>
+      <text x="14" y="91" font-family="sans-serif" font-size="11" fill="#94a3b8">• Emits exit code 0 to terminal</text>
+
+      <text x="14" y="120" font-family="sans-serif" font-size="11" font-weight="600" fill="#fbbf24">2. Ralph Hook Traps Signal:</text>
+      <text x="14" y="138" font-family="sans-serif" font-size="11" fill="#94a3b8">• Hook intercepts Claude process termination</text>
+      <text x="14" y="156" font-family="sans-serif" font-size="11" fill="#94a3b8">• Evaluates verification conditions</text>
+
+      <text x="14" y="185" font-family="sans-serif" font-size="11" font-weight="600" fill="#f43f5e">3. Exit Code 2 Rejection:</text>
+      <text x="14" y="203" font-family="sans-serif" font-size="11" fill="#94a3b8">• If work incomplete, emits exit code 2</text>
+      <text x="14" y="221" font-family="sans-serif" font-size="11" fill="#94a3b8">• Blocks agent shutdown completely</text>
+      <text x="14" y="239" font-family="sans-serif" font-size="11" fill="#94a3b8">• Re-injects same PROMPT.md into runner</text>
+
+      <rect x="14" y="270" width="307" height="42" rx="4" fill="#1e293b" stroke="#fbbf24" />
+      <text x="22" y="288" font-family="sans-serif" font-size="10" font-weight="600" fill="#fbbf24">Primitive Loop Command:</text>
+      <text x="22" y="303" font-family="monospace" font-size="10" fill="#38bdf8">while :; do cat PROMPT.md | claude; done</text>
+    </g>
+
+    <!-- Column 2: The Completion Trap -->
+    <g transform="translate(385, 45)">
+      <rect width="335" height="330" rx="8" fill="#0f172a" stroke="#f43f5e" stroke-width="1.2" />
+      <rect x="0" y="0" width="335" height="30" rx="8" fill="#e11d48" fill-opacity="0.2" />
+      <text x="14" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#f43f5e">
+        The Completion Trap: False Promises
+      </text>
+
+      <text x="14" y="55" font-family="sans-serif" font-size="11" font-weight="600" fill="#f8fafc">The String Completion Trap:</text>
+      <text x="14" y="75" font-family="sans-serif" font-size="11" fill="#94a3b8">Naively checking for output token:</text>
+      <text x="14" y="95" font-family="monospace" font-size="11" fill="#f87171">&lt;promise&gt;DONE&lt;/promise&gt;</text>
+
+      <text x="14" y="125" font-family="sans-serif" font-size="11" font-weight="600" fill="#f87171">Why String Checking Fails:</text>
+      <text x="14" y="145" font-family="sans-serif" font-size="11" fill="#94a3b8">• LLM emits string to escape repetitive loop</text>
+      <text x="14" y="165" font-family="sans-serif" font-size="11" fill="#94a3b8">• Code fails to compile or build crashes</text>
+      <text x="14" y="185" font-family="sans-serif" font-size="11" fill="#94a3b8">• Hallucinated confidence without execution</text>
+      <text x="14" y="205" font-family="sans-serif" font-size="11" fill="#94a3b8">• Emitting "DONE" is NOT evidence of done</text>
+
+      <rect x="14" y="245" width="307" height="65" rx="4" fill="#1e293b" stroke="#f43f5e" />
+      <text x="22" y="265" font-family="sans-serif" font-size="11" font-weight="600" fill="#f87171">The Fundamental Rule:</text>
+      <text x="22" y="283" font-family="sans-serif" font-size="11" fill="#cbd5e1">Never trust model output strings.</text>
+      <text x="22" y="299" font-family="sans-serif" font-size="11" fill="#4ade80">Only trust external verification oracles.</text>
+    </g>
+
+    <!-- Column 3: Deterministic Oracles -->
+    <g transform="translate(745, 45)">
+      <rect width="330" height="330" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.2" />
+      <rect x="0" y="0" width="330" height="30" rx="8" fill="#059669" fill-opacity="0.2" />
+      <text x="14" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#34d399">
+        Deterministic Verification Oracles
+      </text>
+
+      <text x="14" y="55" font-family="sans-serif" font-size="11" font-weight="600" fill="#4ade80">Real Verification Primitives:</text>
+
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Unit &amp; Integration Test Suites:</text>
+      <text x="26" y="98" font-family="monospace" font-size="10" fill="#38bdf8">pytest --maxfail=1 / vitest run</text>
+
+      <text x="14" y="125" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Static Compiler Checks:</text>
+      <text x="26" y="143" font-family="monospace" font-size="10" fill="#38bdf8">tsc --noEmit / cargo check</text>
+
+      <text x="14" y="170" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Linter &amp; Security Scanners:</text>
+      <text x="26" y="188" font-family="monospace" font-size="10" fill="#38bdf8">eslint . / bandit -r ./src</text>
+
+      <text x="14" y="215" font-family="sans-serif" font-size="11" fill="#cbd5e1">• End-to-End Build Verification:</text>
+      <text x="26" y="233" font-family="monospace" font-size="10" fill="#38bdf8">npm run build / go build ./...</text>
+
+      <rect x="14" y="260" width="302" height="50" rx="4" fill="#1e293b" stroke="#34d399" />
+      <text x="22" y="278" font-family="sans-serif" font-size="10" font-weight="600" fill="#4ade80">Durable State + Deterministic Oracle</text>
+      <text x="22" y="296" font-family="sans-serif" font-size="10" fill="#94a3b8">= Unbreakable Autonomous Coding</text>
+    </g>
+  </g>
+</svg>

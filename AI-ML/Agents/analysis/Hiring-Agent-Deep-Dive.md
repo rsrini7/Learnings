@@ -456,4 +456,4 @@ The repository is valuable because it exposes how an LLM hiring pipeline can be 
 - [AI Coding Loops](../development/AI-Coding-Loops.md) — Iterative development patterns relevant to building and evaluating LLM-assisted hiring pipelines.
 - [Spec Driven Development Frameworks](../development/Spec-Driven-Development-Frameworks.md) — Spec-first approach applicable to designing structured hiring rubrics and evaluation criteria.
 - [AI PMRoles](../development/AI-PMRoles.md) — PM role boundaries in AI systems relevant to hiring-agent governance and human-in-the-loop design.
-- [Agent Skills vs Agents](../skills/Agent-Skills-vs-Agents.md.md) — Skills vs Agents comparison relevant to understanding Hiring Agent's skill-based evaluation approach.
+- [Agent Skills vs Agents](../skills/Agent-Skills-Vs-Agents-Architecture-2026.md) — Skills vs Agents comparison relevant to understanding Hiring Agent's skill-based evaluation approach.
