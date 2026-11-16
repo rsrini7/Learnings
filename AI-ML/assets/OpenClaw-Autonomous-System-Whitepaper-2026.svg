@@ -1,0 +1,166 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Title & Meta Header -->
+  <g transform="translate(50, 40)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">
+      OpenClaw Autonomous Systems Whitepaper: Orchestration &amp; Security Perimeter
+    </text>
+    <text x="0" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">
+      Event-driven input loops, CVE-2026-25253 1-click RCE exploit flow, and privileged infrastructure defense
+    </text>
+  </g>
+
+  <!-- Panel 1: The Five Ingress Vectors (y: 85..345) -->
+  <g transform="translate(50, 85)">
+    <rect width="1100" height="250" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)" />
+    <text x="25" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">
+      1. The Five Ingress Vectors Generating Operational Autonomy
+    </text>
+
+    <!-- Vector 1: Direct Chat -->
+    <g transform="translate(25, 45)">
+      <rect width="200" height="185" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2" />
+      <rect x="0" y="0" width="200" height="28" rx="8" fill="#0284c7" fill-opacity="0.2" />
+      <text x="12" y="19" font-family="sans-serif" font-size="11" font-weight="700" fill="#38bdf8">1. Direct Chat</text>
+
+      <text x="12" y="48" font-family="sans-serif" font-size="11" fill="#cbd5e1">• WhatsApp / Telegram</text>
+      <text x="12" y="68" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Slack / Discord / Signal</text>
+      <text x="12" y="88" font-family="sans-serif" font-size="11" fill="#94a3b8">• Frequency: On-demand</text>
+      <text x="12" y="108" font-family="sans-serif" font-size="11" fill="#94a3b8">• Interactive queries</text>
+      <text x="12" y="128" font-family="sans-serif" font-size="11" fill="#94a3b8">• User-initiated tasks</text>
+      <text x="12" y="152" font-family="sans-serif" font-size="10" fill="#38bdf8">Synchronous entry point</text>
+    </g>
+
+    <!-- Vector 2: Heartbeats -->
+    <g transform="translate(240, 45)">
+      <rect width="200" height="185" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.2" />
+      <rect x="0" y="0" width="200" height="28" rx="8" fill="#059669" fill-opacity="0.2" />
+      <text x="12" y="19" font-family="sans-serif" font-size="11" font-weight="700" fill="#34d399">2. Heartbeat Timers</text>
+
+      <text x="12" y="48" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Interval: 15-30 min</text>
+      <text x="12" y="68" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Proactive inbox scans</text>
+      <text x="12" y="88" font-family="sans-serif" font-size="11" fill="#94a3b8">• System health checks</text>
+      <text x="12" y="108" font-family="sans-serif" font-size="11" fill="#94a3b8">• Calendar reminders</text>
+      <text x="12" y="128" font-family="sans-serif" font-size="11" fill="#94a3b8">• Wake-up triggers</text>
+      <text x="12" y="152" font-family="sans-serif" font-size="10" fill="#34d399">Simulates "alive" behavior</text>
+    </g>
+
+    <!-- Vector 3: Cron Jobs -->
+    <g transform="translate(455, 45)">
+      <rect width="200" height="185" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.2" />
+      <rect x="0" y="0" width="200" height="28" rx="8" fill="#d97706" fill-opacity="0.2" />
+      <text x="12" y="19" font-family="sans-serif" font-size="11" font-weight="700" fill="#fbbf24">3. Cron Schedules</text>
+
+      <text x="12" y="48" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Exact time scheduling</text>
+      <text x="12" y="68" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Daily briefings (8 AM)</text>
+      <text x="12" y="88" font-family="sans-serif" font-size="11" fill="#94a3b8">• Nightly backups</text>
+      <text x="12" y="108" font-family="sans-serif" font-size="11" fill="#94a3b8">• Batch summary reports</text>
+      <text x="12" y="128" font-family="sans-serif" font-size="11" fill="#94a3b8">• Recurring scrapers</text>
+      <text x="12" y="152" font-family="sans-serif" font-size="10" fill="#fbbf24">Time-locked automation</text>
+    </g>
+
+    <!-- Vector 4: Internal Hooks -->
+    <g transform="translate(670, 45)">
+      <rect width="200" height="185" rx="8" fill="#0f172a" stroke="#c084fc" stroke-width="1.2" />
+      <rect x="0" y="0" width="200" height="28" rx="8" fill="#7c3aed" fill-opacity="0.2" />
+      <text x="12" y="19" font-family="sans-serif" font-size="11" font-weight="700" fill="#c084fc">4. Internal Hooks</text>
+
+      <text x="12" y="48" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Daemon startup / exit</text>
+      <text x="12" y="68" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Context overflow alerts</text>
+      <text x="12" y="88" font-family="sans-serif" font-size="11" fill="#94a3b8">• Tool error callbacks</text>
+      <text x="12" y="108" font-family="sans-serif" font-size="11" fill="#94a3b8">• Memory compaction</text>
+      <text x="12" y="128" font-family="sans-serif" font-size="11" fill="#94a3b8">• Auth renewal events</text>
+      <text x="12" y="152" font-family="sans-serif" font-size="10" fill="#c084fc">Lifecycle event loop</text>
+    </g>
+
+    <!-- Vector 5: External Webhooks -->
+    <g transform="translate(885, 45)">
+      <rect width="190" height="185" rx="8" fill="#0f172a" stroke="#f43f5e" stroke-width="1.2" />
+      <rect x="0" y="0" width="190" height="28" rx="8" fill="#e11d48" fill-opacity="0.2" />
+      <text x="12" y="19" font-family="sans-serif" font-size="11" font-weight="700" fill="#f43f5e">5. External Webhooks</text>
+
+      <text x="12" y="48" font-family="sans-serif" font-size="11" fill="#cbd5e1">• GitHub PR alerts</text>
+      <text x="12" y="68" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Stripe transaction events</text>
+      <text x="12" y="88" font-family="sans-serif" font-size="11" fill="#94a3b8">• Email notifications</text>
+      <text x="12" y="108" font-family="sans-serif" font-size="11" fill="#94a3b8">• CI/CD build failures</text>
+      <text x="12" y="128" font-family="sans-serif" font-size="11" fill="#94a3b8">• Monitoring alerts</text>
+      <text x="12" y="152" font-family="sans-serif" font-size="10" fill="#f43f5e">Event-driven triggers</text>
+    </g>
+  </g>
+
+  <!-- Panel 2: Threat Modeling & CVE-2026-25253 (y: 350..770) -->
+  <g transform="translate(50, 350)">
+    <rect width="1100" height="420" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)" />
+    <text x="25" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#f43f5e">
+      2. Threat Modeling: CVE-2026-25253 1-Click RCE vs Hardened Production Perimeter
+    </text>
+
+    <!-- Left Box: Vulnerable Path -->
+    <g transform="translate(25, 45)">
+      <rect width="515" height="350" rx="8" fill="#0f172a" stroke="#f43f5e" stroke-width="1.2" />
+      <rect x="0" y="0" width="515" height="30" rx="8" fill="#e11d48" fill-opacity="0.2" />
+      <text x="14" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#f43f5e">
+        VULNERABLE PATH: 1-Click Gateway RCE (CVSS 8.8)
+      </text>
+
+      <text x="14" y="55" font-family="sans-serif" font-size="11" font-weight="600" fill="#fb7185">Step 1: Malicious Website Ingress</text>
+      <text x="14" y="75" font-family="sans-serif" font-size="11" fill="#94a3b8">• User visits attacker site with local OpenClaw daemon running</text>
+      <text x="14" y="95" font-family="sans-serif" font-size="11" fill="#94a3b8">• Attacker JavaScript initiates WebSocket to ws://127.0.0.1:18789</text>
+
+      <text x="14" y="125" font-family="sans-serif" font-size="11" font-weight="600" fill="#fb7185">Step 2: Cross-Origin Trust Flaw</text>
+      <text x="14" y="145" font-family="sans-serif" font-size="11" fill="#94a3b8">• Gateway failed to inspect HTTP Origin / Host headers</text>
+      <text x="14" y="165" font-family="sans-serif" font-size="11" fill="#94a3b8">• Missing authentication token check on local loopback</text>
+      <text x="14" y="185" font-family="sans-serif" font-size="11" fill="#94a3b8">• Browser happily establishes cross-origin WebSocket connection</text>
+
+      <text x="14" y="215" font-family="sans-serif" font-size="11" font-weight="600" fill="#fb7185">Step 3: Arbitrary Command Execution</text>
+      <text x="14" y="235" font-family="sans-serif" font-size="11" fill="#94a3b8">• Attacker sends crafted JSON-RPC tool invocation: exec("curl ... | sh")</text>
+      <text x="14" y="255" font-family="sans-serif" font-size="11" fill="#94a3b8">• OpenClaw daemon executes command with user privileges</text>
+      <text x="14" y="275" font-family="sans-serif" font-size="11" fill="#94a3b8">• SSH keys, API tokens, and local files exfiltrated immediately</text>
+
+      <rect x="14" y="305" width="487" height="30" rx="4" fill="#1e293b" stroke="#f43f5e" />
+      <text x="22" y="325" font-family="sans-serif" font-size="11" font-weight="700" fill="#f43f5e">
+        Impact: Complete host compromise via single browser visit
+      </text>
+    </g>
+
+    <!-- Right Box: Hardened Perimeter -->
+    <g transform="translate(560, 45)">
+      <rect width="515" height="350" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.2" />
+      <rect x="0" y="0" width="515" height="30" rx="8" fill="#059669" fill-opacity="0.2" />
+      <text x="14" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#34d399">
+        HARDENED PERIMETER: Defense-in-Depth Architecture
+      </text>
+
+      <text x="14" y="55" font-family="sans-serif" font-size="11" font-weight="600" fill="#4ade80">Control 1: Strict Origin Header Validation</text>
+      <text x="14" y="75" font-family="sans-serif" font-size="11" fill="#94a3b8">• WebSocket handshake rejects any Origin not explicitly allowlisted</text>
+      <text x="14" y="95" font-family="sans-serif" font-size="11" fill="#94a3b8">• Rejects external web browser cross-origin requests immediately</text>
+
+      <text x="14" y="125" font-family="sans-serif" font-size="11" font-weight="600" fill="#4ade80">Control 2: High-Entropy Bearer Auth Tokens</text>
+      <text x="14" y="145" font-family="sans-serif" font-size="11" fill="#94a3b8">• Local RPC requires cryptographic Bearer token on connection</text>
+      <text x="14" y="165" font-family="sans-serif" font-size="11" fill="#94a3b8">• Stored with 0600 file permissions; unguessable by third parties</text>
+      <text x="14" y="185" font-family="sans-serif" font-size="11" fill="#94a3b8">• Invalid credentials terminate the socket connection instantly</text>
+
+      <text x="14" y="215" font-family="sans-serif" font-size="11" font-weight="600" fill="#4ade80">Control 3: Tool Sandboxing &amp; Execution Allowlist</text>
+      <text x="14" y="235" font-family="sans-serif" font-size="11" fill="#94a3b8">• Shell execution locked to read-only tool subset (jq, grep, git log)</text>
+      <text x="14" y="255" font-family="sans-serif" font-size="11" fill="#94a3b8">• Dangerous utilities require interactive CLI approval</text>
+      <text x="14" y="275" font-family="sans-serif" font-size="11" fill="#94a3b8">• Docker / gVisor isolation prevents host filesystem traversal</text>
+
+      <rect x="14" y="305" width="487" height="30" rx="4" fill="#1e293b" stroke="#34d399" />
+      <text x="22" y="325" font-family="sans-serif" font-size="11" font-weight="700" fill="#4ade80">
+        Status: Patched on Jan 30, 2026 (v2026.1.30+ releases)
+      </text>
+    </g>
+  </g>
+</svg>

@@ -165,4 +165,4 @@ That is a higher bar than most AI benchmarks set. And it is a more honest one.
 
 **Related:**
 - [nanobot-architecture-deep-dive](../nanobot/nanobot-architecture-deep-dive.md) — Underlying NanoBot runtime that ClawWork inherits 100% from, including the AgentLoop and memory system referenced in this article's architecture section.
-- [OpenClaw-Whitepaper](OpenClaw-Whitepaper.md) — Different agent framing — OpenClaw's broad proactive daemon for personal use versus ClawWork's narrow economic-simulation agent benchmark.
+- [OpenClaw-Autonomous-System-Whitepaper-2026](OpenClaw-Autonomous-System-Whitepaper-2026.md) — Different agent framing — OpenClaw's broad proactive daemon for personal use versus ClawWork's narrow economic-simulation agent benchmark.

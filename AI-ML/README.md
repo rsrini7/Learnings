@@ -17,9 +17,9 @@ In-depth research, architectural breakdowns, and hands-on implementations across
 ## 🤖 Agents & Autonomy
 
 ### 🤖 OpenClaw / Moltbot / Clawdbot
-- [OpenClaw(Moltbot or Clawdbot) Architecture](Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Architecture.md)
 - [OpenClaw(Moltbot or Clawdbot) Security Analysis Jan 2026](Agents/openclaw/OpenClaw%28Moltbot-or-Clawdbot%29-Security-Analysis-Jan-2026.md)
-- [OpenClaw Whitepaper](Agents/openclaw/OpenClaw-Whitepaper.md)
+- [OpenClaw Autonomous System Whitepaper 2026](Agents/openclaw/OpenClaw-Autonomous-System-Whitepaper-2026.md)
+- [OpenClaw Moltbot Clawdbot Architecture 2026](Agents/openclaw/OpenClaw-Moltbot-Clawdbot-Architecture-2026.md)
 - [Securing OpenClaw Setup](Agents/openclaw/Securing-OpenClaw-Setup.md)
 - [claw ecosystem](Agents/openclaw/claw-ecosystem.md)
 - [clawwork architecture deep dive](Agents/openclaw/clawwork-architecture-deep-dive.md)
@@ -27,7 +27,7 @@ In-depth research, architectural breakdowns, and hands-on implementations across
 - [openclaw usecases video supplement](Agents/openclaw/openclaw-usecases-video-supplement.md)
 
 ### 🔬 NanoBot
-- [NanoBot vs NanoClaw vs OpenClaw Technical Analysis & Security Comparison](Agents/nanobot/NanoBot-vs-NanoClaw-vs-OpenClaw-Technical-Analysis-%26-Security-Comparison.md)
+- [NanoBot NanoClaw OpenClaw Security Comparison 2026](Agents/nanobot/NanoBot-NanoClaw-OpenClaw-Security-Comparison-2026.md)
 - [nanobot architecture deep dive](Agents/nanobot/nanobot-architecture-deep-dive.md)
 
 ### 🎯 Agent Skills & Claude

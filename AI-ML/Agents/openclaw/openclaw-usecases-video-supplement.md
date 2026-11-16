@@ -1641,5 +1641,5 @@ To update the original PDF location, replace the content in Section 22 with the 
 
 **Related:**
 - [Securing-OpenClaw-Setup](Securing-OpenClaw-Setup.md) — Required secure deployment baseline — Tailscale-isolated VPS, sandboxed Gmail/Drive accounts, and prompt-injection defenses are prerequisites for these workflows.
-- [OpenClaw-Whitepaper](OpenClaw-Whitepaper.md) — Broader architectural and security context for the OpenClaw capabilities (cron jobs, memory files, skills) that these video walkthroughs configure.
+- [OpenClaw-Autonomous-System-Whitepaper-2026](OpenClaw-Autonomous-System-Whitepaper-2026.md) — Broader architectural and security context for the OpenClaw capabilities (cron jobs, memory files, skills) that these video walkthroughs configure.
 - [claw-ecosystem](claw-ecosystem.md) — Ecosystem context — these workflows depend on OpenClaw's high-trust, broad-access model that the survey flags as Level 1 application-level isolation.

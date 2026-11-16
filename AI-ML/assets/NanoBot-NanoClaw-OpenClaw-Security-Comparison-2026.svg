@@ -1,0 +1,181 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Title & Meta Header -->
+  <g transform="translate(50, 40)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">
+      NanoBot vs NanoClaw vs OpenClaw: Architectural &amp; Security Isolation Taxonomy
+    </text>
+    <text x="0" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">
+      Comparative auditability, privilege boundaries, and container hypervisor isolation across autonomous agent runtimes
+    </text>
+  </g>
+
+  <!-- Section 1: The Three Architectural Archetypes (y: 85..415) -->
+  <g transform="translate(50, 85)">
+    <rect width="1100" height="330" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)" />
+    <text x="25" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">
+      1. Runtime Paradigms, Codebase Footprint &amp; Attack Surface
+    </text>
+
+    <!-- Column 1: NanoBot (HKUDS) -->
+    <g transform="translate(25, 45)">
+      <rect width="335" height="260" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+      <rect x="0" y="0" width="335" height="32" rx="8" fill="#0284c7" fill-opacity="0.2" />
+      <text x="14" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">NanoBot (HKUDS)</text>
+
+      <rect x="14" y="45" width="307" height="26" rx="4" fill="#1e293b" stroke="#334155" />
+      <text x="22" y="62" font-family="sans-serif" font-size="11" font-weight="600" fill="#38bdf8">Size: ~4,000 LOC Python | Stars: 9.3k</text>
+
+      <text x="14" y="95" font-family="sans-serif" font-size="11" font-weight="600" fill="#f8fafc">Architecture: Minimalist Research Loop</text>
+      <text x="14" y="115" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Single process with internal message bus</text>
+      <text x="14" y="135" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Unified context builder &amp; skills loader</text>
+      <text x="14" y="155" font-family="sans-serif" font-size="11" fill="#cbd5e1">• 100% auditable in an afternoon</text>
+      <text x="14" y="175" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Zero gateway daemons or socket RPCs</text>
+
+      <text x="14" y="205" font-family="sans-serif" font-size="11" font-weight="600" fill="#fbbf24">Isolation Boundary: Application Process</text>
+      <text x="14" y="225" font-family="sans-serif" font-size="11" fill="#94a3b8">• Tools execute directly in host Python</text>
+      <text x="14" y="245" font-family="sans-serif" font-size="11" fill="#38bdf8">Ideal for educational &amp; research setups</text>
+    </g>
+
+    <!-- Column 2: NanoClaw (gavrielc) -->
+    <g transform="translate(385, 45)">
+      <rect width="335" height="260" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5" />
+      <rect x="0" y="0" width="335" height="32" rx="8" fill="#059669" fill-opacity="0.2" />
+      <text x="14" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#34d399">NanoClaw (gavrielc)</text>
+
+      <rect x="14" y="45" width="307" height="26" rx="4" fill="#1e293b" stroke="#334155" />
+      <text x="22" y="62" font-family="sans-serif" font-size="11" font-weight="600" fill="#34d399">Size: ~500 LOC TypeScript Core | Stars: 5.4k</text>
+
+      <text x="14" y="95" font-family="sans-serif" font-size="11" font-weight="600" fill="#f8fafc">Architecture: Container-Per-Group Isolation</text>
+      <text x="14" y="115" font-family="sans-serif" font-size="11" fill="#cbd5e1">• WhatsApp/Baileys ingress feeds SQLite queue</text>
+      <text x="14" y="135" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Host orchestrator spawns isolated micro-containers</text>
+      <text x="14" y="155" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Each chat group gets isolated container</text>
+      <text x="14" y="175" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Claude Agent SDK runs inside container jail</text>
+
+      <text x="14" y="205" font-family="sans-serif" font-size="11" font-weight="600" fill="#4ade80">Isolation Boundary: OS Hypervisor Container</text>
+      <text x="14" y="225" font-family="sans-serif" font-size="11" fill="#94a3b8">• Prompt injection cannot escape container mount</text>
+      <text x="14" y="245" font-family="sans-serif" font-size="11" fill="#34d399">Gold standard for execution containment</text>
+    </g>
+
+    <!-- Column 3: OpenClaw (openclaw) -->
+    <g transform="translate(745, 45)">
+      <rect width="330" height="260" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5" />
+      <rect x="0" y="0" width="330" height="32" rx="8" fill="#d97706" fill-opacity="0.2" />
+      <text x="14" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#fbbf24">OpenClaw (openclaw)</text>
+
+      <rect x="14" y="45" width="302" height="26" rx="4" fill="#1e293b" stroke="#334155" />
+      <text x="22" y="62" font-family="sans-serif" font-size="11" font-weight="600" fill="#fbbf24">Size: ~430,000 LOC TypeScript | Stars: 170k</text>
+
+      <text x="14" y="95" font-family="sans-serif" font-size="11" font-weight="600" fill="#f8fafc">Architecture: Full-Platform Daemon</text>
+      <text x="14" y="115" font-family="sans-serif" font-size="11" fill="#cbd5e1">• 29+ messaging channel adapters</text>
+      <text x="14" y="135" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Persistent gateway daemon on loopback port 18789</text>
+      <text x="14" y="155" font-family="sans-serif" font-size="11" fill="#cbd5e1">• ClawHub registry with 3,000+ community skills</text>
+      <text x="14" y="175" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Lane-based command queue serialization</text>
+
+      <text x="14" y="205" font-family="sans-serif" font-size="11" font-weight="600" fill="#f43f5e">Isolation Boundary: Application Layer</text>
+      <text x="14" y="225" font-family="sans-serif" font-size="11" fill="#94a3b8">• Shared process memory; requires external sandboxing</text>
+      <text x="14" y="245" font-family="sans-serif" font-size="11" fill="#fbbf24">Feature complete, requires defensive hardening</text>
+    </g>
+  </g>
+
+  <!-- Section 2: Privilege Boundaries & Blast Radius Matrix (y: 435..775) -->
+  <g transform="translate(50, 435)">
+    <rect width="1100" height="340" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)" />
+    <text x="25" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">
+      2. Security Boundary Comparison: Blast Radius of Indirect Prompt Injection
+    </text>
+
+    <!-- Comparison Table / Diagram -->
+    <g transform="translate(25, 45)">
+      <!-- Row 1: Header -->
+      <rect width="1050" height="32" rx="4" fill="#334155" />
+      <text x="15" y="21" font-family="sans-serif" font-size="11" font-weight="700" fill="#f8fafc">SECURITY VECTOR</text>
+      <text x="260" y="21" font-family="sans-serif" font-size="11" font-weight="700" fill="#38bdf8">NANOBOT (HKUDS)</text>
+      <text x="530" y="21" font-family="sans-serif" font-size="11" font-weight="700" fill="#34d399">NANOCLAW (gavrielc)</text>
+      <text x="800" y="21" font-family="sans-serif" font-size="11" font-weight="700" fill="#fbbf24">OPENCLAW (DEFAULT)</text>
+
+      <!-- Row 2: Ingress Protection -->
+      <g transform="translate(0, 38)">
+        <rect width="1050" height="42" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1" />
+        <text x="15" y="18" font-family="sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Ingress Exposure</text>
+        <text x="15" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">Network attack surface</text>
+
+        <text x="260" y="18" font-family="sans-serif" font-size="11" fill="#4ade80">Low (No daemon)</text>
+        <text x="260" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">CLI or direct channel poll</text>
+
+        <text x="530" y="18" font-family="sans-serif" font-size="11" fill="#4ade80">Minimal (Polling)</text>
+        <text x="530" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">SQLite polling loop</text>
+
+        <text x="800" y="18" font-family="sans-serif" font-size="11" fill="#f43f5e">High (Gateway Socket)</text>
+        <text x="800" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">ws://127.0.0.1:18789</text>
+      </g>
+
+      <!-- Row 3: Prompt Injection Containment -->
+      <g transform="translate(0, 86)">
+        <rect width="1050" height="42" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1" />
+        <text x="15" y="18" font-family="sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Prompt Injection Jail</text>
+        <text x="15" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">Tool abuse containment</text>
+
+        <text x="260" y="18" font-family="sans-serif" font-size="11" fill="#fbbf24">Host Process Shell</text>
+        <text x="260" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">Python ambient user rights</text>
+
+        <text x="530" y="18" font-family="sans-serif" font-size="11" fill="#4ade80">OS Hypervisor Container</text>
+        <text x="530" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">Confined to mounted folder</text>
+
+        <text x="800" y="18" font-family="sans-serif" font-size="11" fill="#f43f5e">Host Ambient Shell</text>
+        <text x="800" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">Full user rights (unless Docker)</text>
+      </g>
+
+      <!-- Row 4: Memory & Secrets Leakage -->
+      <g transform="translate(0, 134)">
+        <rect width="1050" height="42" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1" />
+        <text x="15" y="18" font-family="sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Cross-Tenant Isolation</text>
+        <text x="15" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">Multi-group data leakage</text>
+
+        <text x="260" y="18" font-family="sans-serif" font-size="11" fill="#fbbf24">Shared Session State</text>
+        <text x="260" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">Single SQLite DB</text>
+
+        <text x="530" y="18" font-family="sans-serif" font-size="11" fill="#4ade80">Strict Per-Group Jail</text>
+        <text x="530" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">Distinct container per chat</text>
+
+        <text x="800" y="18" font-family="sans-serif" font-size="11" fill="#fbbf24">Lane Queue Separation</text>
+        <text x="800" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">Logical lane separation</text>
+      </g>
+
+      <!-- Row 5: Auditability & Supply Chain -->
+      <g transform="translate(0, 182)">
+        <rect width="1050" height="42" rx="4" fill="#0f172a" stroke="#334155" stroke-width="1" />
+        <text x="15" y="18" font-family="sans-serif" font-size="11" font-weight="600" fill="#cbd5e1">Auditability &amp; Risk</text>
+        <text x="15" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">Supply chain exposure</text>
+
+        <text x="260" y="18" font-family="sans-serif" font-size="11" fill="#4ade80">High Auditability</text>
+        <text x="260" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">4k LOC clean Python</text>
+
+        <text x="530" y="18" font-family="sans-serif" font-size="11" fill="#4ade80">Extreme Auditability</text>
+        <text x="530" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">500 LOC TS core</text>
+
+        <text x="800" y="18" font-family="sans-serif" font-size="11" fill="#f43f5e">Low Auditability</text>
+        <text x="800" y="32" font-family="sans-serif" font-size="10" fill="#94a3b8">430k LOC + 3k skills registry</text>
+      </g>
+
+      <!-- Bottom Summary Box -->
+      <g transform="translate(0, 232)">
+        <rect width="1050" height="46" rx="4" fill="#0f172a" stroke="#34d399" stroke-width="1.2" />
+        <text x="15" y="19" font-family="sans-serif" font-size="11" font-weight="700" fill="#4ade80">Core Architectural Takeaway: True agent security is achieved not by adding application-level guardrails,</text>
+        <text x="15" y="35" font-family="sans-serif" font-size="11" font-weight="700" fill="#4ade80">but by shrinking the orchestrator core (&lt;500 LOC) and delegating execution boundaries to OS-level container hypervisors.</text>
+      </g>
+    </g>
+  </g>
+</svg>

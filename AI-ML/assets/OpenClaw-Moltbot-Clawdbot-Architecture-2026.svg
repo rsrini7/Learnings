@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Title & Meta Header -->
+  <g transform="translate(50, 40)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">
+      OpenClaw (Moltbot / Clawdbot) System Architecture &amp; Execution Topology
+    </text>
+    <text x="0" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">
+      Local-first deterministic runtime: Lane-based queue serialization, ARIA browser snapshots, and hybrid memory
+    </text>
+  </g>
+
+  <!-- Section 1: Ingress & Gateway Layer (x: 50, y: 85, w: 1100, h: 220) -->
+  <g transform="translate(50, 85)">
+    <rect width="1100" height="220" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)" />
+    <text x="25" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">
+      1. Multi-Channel Ingress &amp; Gateway Serialization Layer (ws://127.0.0.1:18789)
+    </text>
+
+    <!-- Channels Container -->
+    <g transform="translate(25, 45)">
+      <rect width="280" height="150" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.2" />
+      <rect x="0" y="0" width="280" height="28" rx="8" fill="#0284c7" fill-opacity="0.2" />
+      <text x="14" y="19" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Inbound Channel Adapters</text>
+      
+      <text x="14" y="48" font-family="sans-serif" font-size="11" fill="#cbd5e1">• WhatsApp (Baileys socket relay)</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Telegram (grammY bot polling)</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Slack / Discord / Signal / iMessage</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Cron jobs &amp; proactive heartbeat triggers</text>
+      <text x="14" y="128" font-family="sans-serif" font-size="11" fill="#94a3b8">Payload: Normalizes input into UnifiedMessage</text>
+    </g>
+
+    <!-- Flow arrow 1 -->
+    <line x1="315" y1="120" x2="355" y2="120" stroke="#38bdf8" stroke-width="2" stroke-dasharray="4,2" />
+
+    <!-- Lane-Based Queue Container -->
+    <g transform="translate(365, 45)">
+      <rect width="360" height="150" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.2" />
+      <rect x="0" y="0" width="360" height="28" rx="8" fill="#059669" fill-opacity="0.2" />
+      <text x="14" y="19" font-family="sans-serif" font-size="12" font-weight="700" fill="#34d399">Lane-Based Command Queue</text>
+
+      <text x="14" y="48" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Serial-by-default execution per session</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Prevents async race conditions on tools</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Eliminates non-deterministic tool state mutation</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Queue locks release only upon step completion</text>
+      <text x="14" y="128" font-family="sans-serif" font-size="11" fill="#4ade80">Guarantees clean, non-interleaved audit logs</text>
+    </g>
+
+    <!-- Flow arrow 2 -->
+    <line x1="735" y1="120" x2="775" y2="120" stroke="#34d399" stroke-width="2" stroke-dasharray="4,2" />
+
+    <!-- Gateway Daemon -->
+    <g transform="translate(785, 45)">
+      <rect width="290" height="150" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.2" />
+      <rect x="0" y="0" width="290" height="28" rx="8" fill="#d97706" fill-opacity="0.2" />
+      <text x="14" y="19" font-family="sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Gateway Daemon &amp; Security</text>
+
+      <text x="14" y="48" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Loopback bound: 127.0.0.1:18789</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Origin-header check (blocks CSRF / RCE)</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Bearer auth token validation</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Session affinity &amp; channel dispatch</text>
+      <text x="14" y="128" font-family="sans-serif" font-size="11" fill="#fbbf24">Hardened against CVE-2026-25253</text>
+    </g>
+  </g>
+
+  <!-- Section 2: Agent Runtime & Execution Engine (x: 50, y: 320, w: 1100, h: 260) -->
+  <g transform="translate(50, 320)">
+    <rect width="1100" height="260" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)" />
+    <text x="25" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">
+      2. Agentic Reasoning Loop, Computer Use &amp; Tool Sandbox
+    </text>
+
+    <!-- Card 1: Context Builder & LLM Router -->
+    <g transform="translate(25, 45)">
+      <rect width="335" height="195" rx="8" fill="#0f172a" stroke="#334155" />
+      <rect x="0" y="0" width="335" height="28" rx="8" fill="#334155" fill-opacity="0.5" />
+      <text x="14" y="19" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Context Builder &amp; LLM Router</text>
+
+      <text x="14" y="48" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Dynamic system prompt synthesis</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Ingests AGENTS.md, skills schemas, and history</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Context Window Guard: compacts overflowing tokens</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Multi-provider routing: Claude 3.7 / GPT-5 / vLLM</text>
+      <text x="14" y="128" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Max turn loop limiter: capped at 20 turns</text>
+      <text x="14" y="148" font-family="sans-serif" font-size="11" fill="#94a3b8">Prevents runaway token burning and loops</text>
+    </g>
+
+    <!-- Card 2: Computer Use & ARIA Browser -->
+    <g transform="translate(385, 45)">
+      <rect width="335" height="195" rx="8" fill="#0f172a" stroke="#334155" />
+      <rect x="0" y="0" width="335" height="28" rx="8" fill="#334155" fill-opacity="0.5" />
+      <text x="14" y="19" font-family="sans-serif" font-size="12" font-weight="700" fill="#fbbf24">Playwright ARIA Semantic Engine</text>
+
+      <text x="14" y="48" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Text-based accessibility trees vs screenshots</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Snapshot payload: 50 KB text vs 5 MB PNG</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Element indexing: button "Sign In" [ref=12]</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#cbd5e1">• 99% token reduction for browser automation</text>
+      <text x="14" y="128" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Native screen reader compatibility &amp; speed</text>
+      <text x="14" y="148" font-family="sans-serif" font-size="11" fill="#fbbf24">Enables fast, low-cost DOM interaction</text>
+    </g>
+
+    <!-- Card 3: Local Tool Execution Sandbox -->
+    <g transform="translate(745, 45)">
+      <rect width="330" height="195" rx="8" fill="#0f172a" stroke="#334155" />
+      <rect x="0" y="0" width="330" height="28" rx="8" fill="#334155" fill-opacity="0.5" />
+      <text x="14" y="19" font-family="sans-serif" font-size="12" font-weight="700" fill="#f43f5e">Local Tool Execution Sandbox</text>
+
+      <text x="14" y="48" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Shell command allowlist (blocks chaining / subshells)</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Path jailing: restricts filesystem ops to workspace</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Docker container isolation (optional strict mode)</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Interactive approval for elevated operations</text>
+      <text x="14" y="128" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Process supervisor: enforces execution timeouts</text>
+      <text x="14" y="148" font-family="sans-serif" font-size="11" fill="#f43f5e">Mitigates prompt injection blast radius</text>
+    </g>
+  </g>
+
+  <!-- Section 3: Transparent Memory & State Storage (x: 50, y: 595, w: 1100, h: 185) -->
+  <g transform="translate(50, 595)">
+    <rect width="1100" height="185" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)" />
+    <text x="25" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">
+      3. Transparent Two-Tier Memory Subsystem &amp; Search Engine
+    </text>
+
+    <!-- Memory Card 1: Chronological Transcripts -->
+    <g transform="translate(25, 45)">
+      <rect width="335" height="120" rx="8" fill="#0f172a" stroke="#334155" />
+      <rect x="0" y="0" width="335" height="26" rx="8" fill="#334155" fill-opacity="0.5" />
+      <text x="14" y="18" font-family="sans-serif" font-size="11" font-weight="700" fill="#cbd5e1">Tier 1: Chronological Transcripts</text>
+
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">• Append-only JSONL files per conversation</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#94a3b8">• Full provenance of tool calls and results</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#38bdf8">• Easily inspected, grep-able, and auditable</text>
+    </g>
+
+    <!-- Memory Card 2: Markdown Knowledge Files -->
+    <g transform="translate(385, 45)">
+      <rect width="335" height="120" rx="8" fill="#0f172a" stroke="#334155" />
+      <rect x="0" y="0" width="335" height="26" rx="8" fill="#334155" fill-opacity="0.5" />
+      <text x="14" y="18" font-family="sans-serif" font-size="11" font-weight="700" fill="#cbd5e1">Tier 2: User-Editable Markdown Files</text>
+
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">• Plaintext MEMORY.md and memory/ directory</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#94a3b8">• Zero automated decay; human-editable insights</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#4ade80">• Git-trackable history and version control</text>
+    </g>
+
+    <!-- Memory Card 3: Hybrid Search Engine -->
+    <g transform="translate(745, 45)">
+      <rect width="330" height="120" rx="8" fill="#0f172a" stroke="#334155" />
+      <rect x="0" y="0" width="330" height="26" rx="8" fill="#334155" fill-opacity="0.5" />
+      <text x="14" y="18" font-family="sans-serif" font-size="11" font-weight="700" fill="#cbd5e1">Hybrid Retrieval: Vector + FTS5</text>
+
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">• SQLite Vector extension for semantic similarity</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#94a3b8">• SQLite FTS5 for exact keyword &amp; code matching</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#fbbf24">• RRF score fusion for balanced context retrieval</text>
+    </g>
+  </g>
+</svg>

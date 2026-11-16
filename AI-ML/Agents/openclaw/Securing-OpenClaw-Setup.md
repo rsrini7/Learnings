@@ -41,10 +41,10 @@
 ## 5. First SSH Login to the VPS
 
 1. Open the Terminal app (Windows: Windows Terminal, not cmd; Mac/Linux: Terminal).
-2. SSH into the VPS:  
-   \[
-   \text{ssh root@YOUR\_VPS\_IP}
-   \]  
+2. SSH into the VPS:  
+   ```bash
+   ssh root@YOUR_VPS_IP
+   ```
 3. When prompted to trust the host, type `yes`.
 4. Paste the root password (no characters will show), press Enter.
 5. If login fails, re‑check the password or use Hostinger’s dashboard console to reset it.
@@ -259,11 +259,9 @@ Gateway UI runs on the gateway port (default 18789) on the server and is bound t
 1. In Telegram, ask your bot: “How do I find the gateway token?”
 2. It responds with a command to run in the server terminal to print the token.
 3. Run the command, copy the resulting token string.
-4. In the browser, append the token as a query parameter:  
-   \[
-   \text{http://127.0.0.1:18789/?token=YOUR\_TOKEN}
-   \]  
-   and load the page; now the UI is connected.
+4. In the browser, append the token as a query parameter:  
+   `http://127.0.0.1:18789/?token=YOUR_TOKEN`  
+   and load the page; now the UI is connected.
 5. Through this UI you can:  
    - View and use chat.  
    - Inspect channels and instances.  
@@ -370,6 +368,6 @@ By the end of the video’s process, you have:
 https://www.youtube.com/watch?v=tnsrnsy_Lus
 
 **Related:**
-- [OpenClaw(Moltbot-or-Clawdbot)-Architecture](OpenClaw%28Moltbot-or-Clawdbot%29-Architecture.md) — Explains the gateway port 18789, loopback binding, JSONL session storage, and channel pairing that this tutorial configures.
+- [OpenClaw-Moltbot-Clawdbot-Architecture-2026](OpenClaw-Moltbot-Clawdbot-Architecture-2026.md) — Explains the gateway port 18789, loopback binding, JSONL session storage, and channel pairing that this tutorial configures.
 - [openclaw-usecases-video-supplement](openclaw-usecases-video-supplement.md) — Concrete CRM, briefing, and skills workflows to deploy once this secure VPS setup is complete and Telegram pairing succeeds.
-- [OpenClaw-Whitepaper](OpenClaw-Whitepaper.md) — Frames why a hardened VPS deployment is necessary by characterizing agents as privileged infrastructure rather than developer tools.
+- [OpenClaw-Autonomous-System-Whitepaper-2026](OpenClaw-Autonomous-System-Whitepaper-2026.md) — Frames why a hardened VPS deployment is necessary by characterizing agents as privileged infrastructure rather than developer tools.
