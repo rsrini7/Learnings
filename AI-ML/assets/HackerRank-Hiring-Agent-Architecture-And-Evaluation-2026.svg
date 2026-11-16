@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 740" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.03" />
+    </linearGradient>
+    <linearGradient id="purpleGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#a855f7" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#a855f7" stop-opacity="0.03" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.03" />
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0.03" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Background -->
+  <rect width="1200" height="740" fill="url(#bgGrad)" />
+
+  <!-- HEADER -->
+  <g transform="translate(30, 24)">
+    <text x="0" y="20" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" letter-spacing="0.5">HACKERRANK HIRING AGENT: PIPELINE ARCHITECTURE &amp; EVALUATION</text>
+    <text x="0" y="38" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">PyMuPDF Document Ingestion · GitHub Metadata Crawler · Jinja Rubric Scoring · Seniority Distortion</text>
+  </g>
+
+  <!-- COLUMN 1: RESUME EXTRACTION -->
+  <g transform="translate(30, 75)">
+    <rect width="270" height="495" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect width="270" height="60" rx="8" fill="url(#blueGrad)" />
+    <circle cx="25" cy="30" r="12" fill="#0284c7" />
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" text-anchor="middle">1</text>
+    <text x="46" y="26" fill="#7dd3fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">INGESTION &amp; EXTRACTION</text>
+    <text x="46" y="42" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">pymupdf_rag.py &amp; pdf.py</text>
+
+    <!-- Content Box -->
+    <rect x="12" y="70" width="246" height="235" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="22" y="90" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Document Parsing Stages</text>
+    <text x="22" y="110" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• PDF to Markdown Conversion</text>
+    <text x="22" y="126" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  PyMuPDF parses layout text</text>
+    <text x="22" y="146" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Section-by-Section Schema</text>
+    <text x="22" y="162" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Basics, Work, Skills, Projects</text>
+    <text x="22" y="182" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Pydantic Validation Models</text>
+    <text x="22" y="198" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Enforces strict JSON schema types</text>
+    <text x="22" y="218" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Single Retry on Extraction Failure</text>
+    <text x="22" y="234" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Recovers transient parse errors</text>
+    <text x="22" y="254" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Unstructured Text Sanitization</text>
+    <text x="22" y="270" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Strips decorative graphics/icons</text>
+    <text x="22" y="292" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Separates parsing from judging</text>
+
+    <!-- Takeaway -->
+    <rect x="12" y="315" width="246" height="165" rx="6" fill="#1e1e2e" stroke="#334155" />
+    <text x="22" y="335" fill="#7dd3fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Extraction Boundary Risks</text>
+    <text x="22" y="355" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Multi-Column Scrambling</text>
+    <text x="22" y="371" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Reading order errors lose context</text>
+    <text x="22" y="391" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Prompt Injection Payloads</text>
+    <text x="22" y="407" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  White-on-white text overrides</text>
+    <text x="22" y="427" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Missing OCR for Scans</text>
+    <text x="22" y="443" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Image PDFs return empty strings</text>
+    <text x="22" y="465" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700">Downstream cannot score unread text</text>
+  </g>
+
+  <!-- COLUMN 2: GITHUB ENRICHMENT -->
+  <g transform="translate(320, 75)">
+    <rect width="270" height="495" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect width="270" height="60" rx="8" fill="url(#purpleGrad)" />
+    <circle cx="25" cy="30" r="12" fill="#9333ea" />
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" text-anchor="middle">2</text>
+    <text x="46" y="26" fill="#d8b4fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">GITHUB ENRICHMENT</text>
+    <text x="46" y="42" fill="#c084fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">github.py Crawler</text>
+
+    <!-- Content Box -->
+    <rect x="12" y="70" width="246" height="235" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="22" y="90" fill="#c084fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Repository Crawling Logic</text>
+    <text x="22" y="110" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Top 100 Repos Fetched</text>
+    <text x="22" y="126" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Sorted by recent update timestamp</text>
+    <text x="22" y="146" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• 4-Commit Minimum Gate</text>
+    <text x="22" y="162" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Excludes shallow or cloned repos</text>
+    <text x="22" y="182" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• 7-Project LLM Selector</text>
+    <text x="22" y="198" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Ranks technical complexity &amp; impact</text>
+    <text x="22" y="218" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Contributor Heuristic</text>
+    <text x="22" y="234" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  &gt;1 contributor = open_source</text>
+    <text x="22" y="254" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Fork Threshold Filter</text>
+    <text x="22" y="270" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Drops personal forks if forks &lt; 5</text>
+    <text x="22" y="292" fill="#c084fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Evaluates metadata, not full code</text>
+
+    <!-- Takeaway -->
+    <rect x="12" y="315" width="246" height="165" rx="6" fill="#1e1e2e" stroke="#334155" />
+    <text x="22" y="335" fill="#d8b4fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Enrichment Blindspots</text>
+    <text x="22" y="355" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Ignores Pinned Layout</text>
+    <text x="22" y="371" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Does not inspect profile showcase</text>
+    <text x="22" y="391" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Disregards README Contents</text>
+    <text x="22" y="407" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Architecture diagrams are invisible</text>
+    <text x="22" y="427" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Blind to Enterprise Git</text>
+    <text x="22" y="443" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Zero visibility into private systems</text>
+    <text x="22" y="465" fill="#a855f7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700">Biased heavily toward student coders</text>
+  </g>
+
+  <!-- COLUMN 3: RUBRIC EVALUATION -->
+  <g transform="translate(610, 75)">
+    <rect width="270" height="495" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect width="270" height="60" rx="8" fill="url(#amberGrad)" />
+    <circle cx="25" cy="30" r="12" fill="#d97706" />
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" text-anchor="middle">3</text>
+    <text x="46" y="26" fill="#fde68a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">RUBRIC SCORING</text>
+    <text x="46" y="42" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">evaluator.py &amp; score.py</text>
+
+    <!-- Content Box -->
+    <rect x="12" y="70" width="246" height="235" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="22" y="90" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Category Weight Breakdown</text>
+    <text x="22" y="110" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Open Source (0–35 pts)</text>
+    <text x="22" y="126" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  External contribution depth &amp; PRs</text>
+    <text x="22" y="146" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Self Projects (0–30 pts)</text>
+    <text x="22" y="162" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Originality, tech stack &amp; completeness</text>
+    <text x="22" y="182" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Production Experience (0–25 pts)</text>
+    <text x="22" y="198" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Real users, scalability &amp; ownership</text>
+    <text x="22" y="218" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Technical Skills (0–10 pts)</text>
+    <text x="22" y="234" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Breadth &amp; applied technology proof</text>
+    <text x="22" y="254" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Discretionary Bonuses (+0–20 pts)</text>
+    <text x="22" y="270" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  GSoC (+5), Startup Founder (+3–5)</text>
+    <text x="22" y="292" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Base Score 100 + Bonuses - Deductions</text>
+
+    <!-- Takeaway -->
+    <rect x="12" y="315" width="246" height="165" rx="6" fill="#1e1e2e" stroke="#334155" />
+    <text x="22" y="335" fill="#fde68a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Probabilistic Variance</text>
+    <text x="22" y="355" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Documented Score Jitter</text>
+    <text x="22" y="371" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  100-run variance: 90, 74, 88, 83</text>
+    <text x="22" y="391" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Natural Language Ambiguity</text>
+    <text x="22" y="407" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Category boundary shifts per run</text>
+    <text x="22" y="427" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Blog Scoring Unwired</text>
+    <text x="22" y="443" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Code hook exists but CLI omits data</text>
+    <text x="22" y="465" fill="#d97706" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700">Structured format != deterministic judgment</text>
+  </g>
+
+  <!-- COLUMN 4: GOVERNANCE & ROLES -->
+  <g transform="translate(900, 75)">
+    <rect width="270" height="495" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect width="270" height="60" rx="8" fill="url(#emeraldGrad)" />
+    <circle cx="25" cy="30" r="12" fill="#059669" />
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" text-anchor="middle">4</text>
+    <text x="46" y="26" fill="#a7f3d0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">ROLE CALIBRATION</text>
+    <text x="46" y="42" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Intern vs. Staff / Architect</text>
+
+    <!-- Content Box -->
+    <rect x="12" y="70" width="246" height="235" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="22" y="90" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Seniority Mismatch Analysis</text>
+    <text x="22" y="110" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Intern / Graduate Fit: HIGH</text>
+    <text x="22" y="126" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Rewards hobby apps &amp; public git</text>
+    <text x="22" y="146" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Junior Engineer Fit: MODERATE</text>
+    <text x="22" y="162" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Measures feature ownership &amp; tests</text>
+    <text x="22" y="182" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Senior Engineer Fit: LOW</text>
+    <text x="22" y="198" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Enterprise scale hidden in private repos</text>
+    <text x="22" y="218" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Architect Fit: MISALIGNED</text>
+    <text x="22" y="234" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  ADRs, SLOs &amp; governance invisible</text>
+    <text x="22" y="254" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• EU AI Act High-Risk Annex III</text>
+    <text x="22" y="270" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Mandates auditability &amp; human oversight</text>
+    <text x="22" y="292" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Prioritization aid, not autonomous arbiter</text>
+
+    <!-- Takeaway -->
+    <rect x="12" y="315" width="246" height="165" rx="6" fill="#1e1e2e" stroke="#334155" />
+    <text x="22" y="335" fill="#a7f3d0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Governance Triad</text>
+    <text x="22" y="355" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Zero Evidence vs. Missing</text>
+    <text x="22" y="371" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Unobservable is not negative proof</text>
+    <text x="22" y="391" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Traceable Decision Dossiers</text>
+    <text x="22" y="407" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Human recruiters must retain final vote</text>
+    <text x="22" y="427" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Proxy Bias Auditing</text>
+    <text x="22" y="443" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Free time for OSS != on-job competence</text>
+    <text x="22" y="465" fill="#059669" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700">Strictly a Top-of-Funnel Filtering Aid</text>
+  </g>
+
+  <!-- BOTTOM COMPARATIVE BANNER -->
+  <g transform="translate(30, 585)">
+    <rect width="1140" height="125" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <text x="25" y="24" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">THE RECRUITING AGENT CONTINUUM: ARCHITECTURAL REALITIES &amp; FIDELITY GAPS</text>
+
+    <!-- Spectrum Line -->
+    <line x1="25" y1="45" x2="1115" y2="45" stroke="#475569" stroke-width="4" stroke-linecap="round" />
+
+    <circle cx="120" cy="45" r="10" fill="#0284c7" stroke="#ffffff" stroke-width="2" />
+    <text x="120" y="68" fill="#7dd3fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Extraction Fidelity</text>
+    <text x="120" y="84" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">PyMuPDF Text Streams · Layout Drift</text>
+    <text x="120" y="98" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Multi-column layouts create silent loss</text>
+
+    <circle cx="440" cy="45" r="10" fill="#9333ea" stroke="#ffffff" stroke-width="2" />
+    <text x="440" y="68" fill="#d8b4fe" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">GitHub Metadata Window</text>
+    <text x="440" y="84" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">100 Repos · 4 Commits · 7 Projects</text>
+    <text x="440" y="98" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Inspects API stars/topics, not code quality</text>
+
+    <circle cx="760" cy="45" r="10" fill="#d97706" stroke="#ffffff" stroke-width="2" />
+    <text x="760" y="68" fill="#fde68a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Rubric Scoring Engine</text>
+    <text x="760" y="84" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">35/30/25/10 Weights · Jitter Variance</text>
+    <text x="760" y="98" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Probabilistic LLM scoring varies across runs</text>
+
+    <circle cx="1000" cy="45" r="10" fill="#059669" stroke="#ffffff" stroke-width="2" />
+    <text x="1000" y="68" fill="#a7f3d0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Governance &amp; EU AI Act</text>
+    <text x="1000" y="84" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">High-Risk Annex III · Human Oversight</text>
+    <text x="1000" y="98" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Scores must inform, never replace human review</text>
+  </g>
+</svg>

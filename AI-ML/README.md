@@ -24,7 +24,7 @@ In-depth research, architectural breakdowns, and hands-on implementations across
 - [OpenClaw Enterprise Usecases And Workflows 2026](Agents/openclaw/OpenClaw-Enterprise-Usecases-And-Workflows-2026.md)
 - [OpenClaw Moltbot Clawdbot Architecture 2026](Agents/openclaw/OpenClaw-Moltbot-Clawdbot-Architecture-2026.md)
 - [OpenClaw Moltbot Security Analysis 2026](Agents/openclaw/OpenClaw-Moltbot-Security-Analysis-2026.md)
-- [Securing OpenClaw Setup](Agents/openclaw/Securing-OpenClaw-Setup.md)
+- [Securing OpenClaw Infrastructure Setup 2026](Agents/openclaw/Securing-OpenClaw-Infrastructure-Setup-2026.md)
 
 ### 🔬 NanoBot
 - [NanoBot Minimal Agent Runtime Architecture 2026](Agents/nanobot/NanoBot-Minimal-Agent-Runtime-Architecture-2026.md)
@@ -41,10 +41,10 @@ In-depth research, architectural breakdowns, and hands-on implementations across
 - [claude agents vs sub agents vs projects vs workflow vs rules vs mcp vs skills](Agents/skills/claude-agents-vs-sub-agents-vs-projects-vs-workflow-vs-rules-vs-mcp-vs-skills.md)
 
 ### 📊 Agent Analysis
-- [Autonomous AI Agents](Agents/analysis/Autonomous-AI-Agents.md)
+- [Autonomous AI Agents Cybersecurity Governance Infrastructure 2026](Agents/analysis/Autonomous-AI-Agents-Cybersecurity-Governance-Infrastructure-2026.md)
 - [Boston Childrens Hospital OpenAI o3 Rare Disease Genomics 2026](Agents/analysis/Boston-Childrens-Hospital-OpenAI-o3-Rare-Disease-Genomics-2026.md)
 - [Emergence World Normative Drift Multi Agent Simulation Nov 2026](Agents/analysis/Emergence-World-Normative-Drift-Multi-Agent-Simulation-Nov-2026.md)
-- [Hiring Agent Deep Dive](Agents/analysis/Hiring-Agent-Deep-Dive.md)
+- [HackerRank Hiring Agent Architecture And Evaluation 2026](Agents/analysis/HackerRank-Hiring-Agent-Architecture-And-Evaluation-2026.md)
 - [METR Anthropic AI RD Acceleration And Automated Research Nov 2026](Agents/analysis/METR-Anthropic-AI-RD-Acceleration-And-Automated-Research-Nov-2026.md)
 - [MaxxBench Benchmaxxing Evaluation Nov 2026](Agents/analysis/MaxxBench-Benchmaxxing-Evaluation-Nov-2026.md)
 - [OpenAI Agents Disabled Misalignment Monitoring Oct 2026](Agents/analysis/OpenAI-Agents-Disabled-Misalignment-Monitoring-Oct-2026.md)

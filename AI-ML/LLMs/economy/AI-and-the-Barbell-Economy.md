@@ -297,5 +297,5 @@ Firms that realign around this insight will compound advantages.
 Those that do not will be efficiently outcompeted.
 
 **Related:**
-- [Autonomous-AI-Agents](../../Agents/analysis/Autonomous-AI-Agents.md) — Autonomous agents directly drive the Layer-1 commoditization this file predicts, eroding value in cognitive-output markets while concentrating judgment-layer gains.
+- [Autonomous-AI-Agents](../../Agents/analysis/Autonomous-AI-Agents-Cybersecurity-Governance-Infrastructure-2026.md) — Autonomous agents directly drive the Layer-1 commoditization this file predicts, eroding value in cognitive-output markets while concentrating judgment-layer gains.
 - [AI-Periodic-Table](AI-Periodic-Table.md) — Periodic Table's element-by-element taxonomy maps onto the barbell's three layers: tokenizable cognition = Reactive/G1, judgment = Orchestration/G3, physical = real-world binding.

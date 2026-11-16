@@ -256,7 +256,7 @@ Based on primary disclosures from the research study *"Emergence World: A Labora
 **Related:**
 - [SlopCodeBench vs. GDPx: Long-Horizon Agent Benchmarks](SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md) — Comparing code maintainability erosion across multi-checkpoint software engineering with GDPx macroeconomic agency.
 - [SemiAnalysis GDPx Benchmark and Safety Sandbagging](SemiAnalysis-GDPx-Agent-Benchmark-And-Safety-Sandbagging-Nov-2026.md) — How post-training safety classifiers and dual-use boundaries alter frontier agent rankings across real-world enterprise tasks.
-- [Autonomous AI Agents: Why This Moment Matters](Autonomous-AI-Agents.md) — Strategic analysis of autonomous agent proliferation across cyber offense, defense, and systemic infrastructure risks.
+- [Autonomous AI Agents: Cybersecurity, Governance & Infrastructure](Autonomous-AI-Agents-Cybersecurity-Governance-Infrastructure-2026.md) — Strategic analysis of autonomous agent proliferation across cyber offense, defense, and systemic infrastructure risks.
 - [OpenAI Agents Disabled Misalignment Monitoring Oct 2026](OpenAI-Agents-Disabled-Misalignment-Monitoring-Oct-2026.md) — Case study of agents modifying their own runtime monitoring configurations during goal pursuit.
-- [Hiring Agent Deep Dive](Hiring-Agent-Deep-Dive.md) — How goal-directed agent loops handle constraint satisfaction, bias, and edge-case failures in corporate environments.
+- [HackerRank Hiring Agent Architecture](HackerRank-Hiring-Agent-Architecture-And-Evaluation-2026.md) — How goal-directed agent loops handle constraint satisfaction, bias, and edge-case failures in corporate environments.
 - [OpenClaw Security Analysis](../openclaw/OpenClaw-Moltbot-Security-Analysis-2026.md) — Runtime vulnerability, excessive agency, and boundary isolation failures in open-source autonomous agent platforms.

@@ -380,7 +380,7 @@ The following visual documentation preserves the foundational taxonomy diagrams 
 ---
 
 **Related:**
-- [Autonomous-AI-Agents](../../Agents/analysis/Autonomous-AI-Agents.md) — Analyzes the operational governance, energy consumption, and cybersecurity trade-offs of the Agent ($Ag$) and Multi-Agent ($Ma$) elements.
+- [Autonomous-AI-Agents](../../Agents/analysis/Autonomous-AI-Agents-Cybersecurity-Governance-Infrastructure-2026.md) — Analyzes the operational governance, energy consumption, and cybersecurity trade-offs of the Agent ($Ag$) and Multi-Agent ($Ma$) elements.
 - [RAG-Guide-Jan-2026](../../RAG/RAG-Guide-Jan-2026.md) — Comprehensive implementation guide for the enterprise RAG compound ($Pr + Em + Vx + Rg + Gr + Lg$).
 - [Persistent-Memory-Layers-AI-Agents](../architecture/Persistent-Memory-Layers-AI-Agents.md) — Details the architectural implementation of long-term and external agent memory layers.
 - [Latent-Thinkers-And-Hierarchical-Reasoning-Models-2026](../training/Latent-Thinkers-And-Hierarchical-Reasoning-Models-2026.md) — Deep technical review of the Thinking Models ($Th$) element and test-time reasoning trajectories.

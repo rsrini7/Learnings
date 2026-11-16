@@ -581,7 +581,7 @@ Architectural diagrams, sequence interactions, and council workflows are detaile
 ---
 
 **Related:**
-- [Securing-OpenClaw-Setup](Securing-OpenClaw-Setup.md) — VPS network isolation, Tailscale mesh configuration, and firewall rules required before running these workflows.
+- [Securing-OpenClaw-Infrastructure-Setup-2026](Securing-OpenClaw-Infrastructure-Setup-2026.md) — VPS network isolation, Tailscale mesh configuration, and firewall rules required before running these workflows.
 - [OpenClaw-Autonomous-System-Whitepaper-2026](OpenClaw-Autonomous-System-Whitepaper-2026.md) — Comprehensive technical whitepaper on the OpenClaw autonomous architecture, event loop, and tool execution.
 - [OpenClaw-Moltbot-Security-Analysis-2026](OpenClaw-Moltbot-Security-Analysis-2026.md) — Deep dive into CVE-2026-25253, WebSocket origin verification vulnerabilities, and remediation.
 - [Claw-Ecosystem-And-Agent-Topology-2026](Claw-Ecosystem-And-Agent-Topology-2026.md) — Architectural taxonomy comparing OpenClaw's application-level security against NanoClaw, IronClaw, and ZeroClaw.

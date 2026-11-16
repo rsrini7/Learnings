@@ -853,5 +853,5 @@ This document consolidates information from multiple sources as of January 2026.
 **Related:**
 - [Persistent-Memory-Layers-AI-Agents](../architecture/Persistent-Memory-Layers-AI-Agents.md) — Both address memory architectures for agents; context graphs add decision traces and temporal validity on top of the semantic/vector memory layers.
 - [AI-Coding-Loops](../../Agents/development/AI-Coding-Loops.md) — Provides the agent-loop and harness patterns that context graphs are designed to feed with grounded 'why' context for enterprise workflows.
-- [Autonomous-AI-Agents](../../Agents/analysis/Autonomous-AI-Agents.md) — Both argue autonomous agents need richer context than chat history; context graphs supply the traceable decision layer that makes agent actions auditable.
+- [Autonomous-AI-Agents](../../Agents/analysis/Autonomous-AI-Agents-Cybersecurity-Governance-Infrastructure-2026.md) — Both argue autonomous agents need richer context than chat history; context graphs supply the traceable decision layer that makes agent actions auditable.
 - [Unlock-the-Dark-Data](../optimization/Unlock-the-Dark-Data.md) — Both target enterprise unstructured-data lock-in; Unlock-the-Dark-Data covers agentic extraction while this covers the downstream reasoning substrate.
