@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0b0f19" />
+    </linearGradient>
+
+    <!-- Card Gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Header Gradient -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#f97316" />
+      <stop offset="50%" stop-color="#38bdf8" />
+      <stop offset="100%" stop-color="#22c55e" />
+    </linearGradient>
+
+    <!-- Shadow Filter -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Outer Frame -->
+  <rect x="20" y="20" width="1160" height="780" rx="16" fill="none" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Header Banner -->
+  <g transform="translate(40, 45)">
+    <rect x="0" y="0" width="1120" height="80" rx="12" fill="url(#cardGrad)" stroke="#f97316" stroke-width="1.5" filter="url(#dropShadow)" />
+    <circle cx="45" cy="40" r="22" fill="#c2410c" fill-opacity="0.2" stroke="#f97316" stroke-width="1.5" />
+    <text x="45" y="47" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="bold" fill="#fb923c" text-anchor="middle">IN</text>
+
+    <text x="85" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="19" font-weight="bold" fill="#f8fafc">
+      India's Telecom Anti-Spam Architecture &amp; TRAI DLT Scrubbing (2026)
+    </text>
+    <text x="85" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">
+      TCCCPR Framework · 140/1600 Series Routing · DLT Scrubbing Engines · International Spoofing Prevention
+    </text>
+  </g>
+
+  <!-- Panel 1: DLT Scrubbing & Preference Framework -->
+  <g transform="translate(40, 145)">
+    <rect x="0" y="0" width="545" height="300" rx="12" fill="url(#cardGrad)" stroke="#f97316" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#7c2d12" fill-opacity="0.3" stroke="#f97316" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f97316" text-anchor="middle">1</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      DLT Scrubbing &amp; Preference Framework
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#f97316">
+      Distributed Ledger Validation for Regulated Commercial Traffic
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="66" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="87" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Principal Entity &amp; Template Registration
+    </text>
+    <text x="28" y="105" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Businesses register headers, calling series, and message templates;
+    </text>
+    <text x="28" y="122" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      operators synchronize verified identities across a shared DLT rail.
+    </text>
+
+    <rect x="16" y="140" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Real-Time DND Scrubbing Gateway
+    </text>
+    <text x="28" y="179" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      140-series promotional calls scrubbed against 224M preferences;
+    </text>
+    <text x="28" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      blocks ~95 million unwanted calls and messages daily at network edge.
+    </text>
+
+    <rect x="16" y="214" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Immutable Consent Management
+    </text>
+    <text x="28" y="253" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Subscriber opt-in consents recorded cryptographically on-chain;
+    </text>
+    <text x="28" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      prevents unauthorized commercial outreach to registered numbers.
+    </text>
+  </g>
+
+  <!-- Panel 2: The Four Ingress Routes -->
+  <g transform="translate(615, 145)">
+    <rect x="0" y="0" width="545" height="300" rx="12" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">2</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      The Four Ingress Routes
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#38bdf8">
+      How Unregistered Spam Bypasses Scrubbing Gateways
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="66" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="87" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      140 Series: Registered Promotional
+    </text>
+    <text x="28" y="105" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Bound by strict DLT scrubbing and restricted operating hours;
+    </text>
+    <text x="28" y="122" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      senders violating customer DND preferences face immediate barring.
+    </text>
+
+    <rect x="16" y="140" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      1600 / 1601 Series: Service &amp; Transactional
+    </text>
+    <text x="28" y="179" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Dedicated routing for banks, utilities, and citizen public notices;
+    </text>
+    <text x="28" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      subject to rapid investigation if abused for commercial loan marketing.
+    </text>
+
+    <rect x="16" y="214" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Ordinary 10-Digit Numbers &amp; SIM Farms
+    </text>
+    <text x="28" y="253" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Unregistered telemarketers use retail SIMs to bypass DLT checks;
+    </text>
+    <text x="28" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      represents over 80% of consumer unsolicited commercial complaints.
+    </text>
+  </g>
+
+  <!-- Panel 3: Gateway Defense & Spoofing Prevention -->
+  <g transform="translate(40, 465)">
+    <rect x="0" y="0" width="545" height="300" rx="12" fill="url(#cardGrad)" stroke="#a855f7" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#581c87" fill-opacity="0.3" stroke="#a855f7" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#a855f7" text-anchor="middle">3</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      Gateway Defense &amp; Spoofing Prevention
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#a855f7">
+      International Ingress Filtering and Network Intelligence
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="66" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="87" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      DoT Spoofed Call Prevention System
+    </text>
+    <text x="28" y="105" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Gateways intercept foreign calls presenting Indian +91 CLI;
+    </text>
+    <text x="28" y="122" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      blocked 1.35 crore spoofed calls on day 1 (97% reduction by March 2025).
+    </text>
+
+    <rect x="16" y="140" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Mandatory 'International Call' Labeling
+    </text>
+    <text x="28" y="179" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Telcos enforce explicit visual tags for international traffic;
+    </text>
+    <text x="28" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      prevents offshore syndicates from impersonating domestic law enforcement.
+    </text>
+
+    <rect x="16" y="214" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Sanchar Saathi &amp; Chakshu Telemetry
+    </text>
+    <text x="28" y="253" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Centralized portal collects real-time citizen fraud telemetry;
+    </text>
+    <text x="28" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      enables rapid blacklisting of offending handset IMEIs across all telcos.
+    </text>
+  </g>
+
+  <!-- Panel 4: The 2026 Regulatory Evolution -->
+  <g transform="translate(615, 465)">
+    <rect x="0" y="0" width="545" height="300" rx="12" fill="url(#cardGrad)" stroke="#10b981" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#064e3b" fill-opacity="0.3" stroke="#10b981" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#10b981" text-anchor="middle">4</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      The 2026 Regulatory Evolution
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#10b981">
+      AI Corroboration, A2P Levies, and App Restrictions
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="66" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="87" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      AI-Assisted Investigation Triggers
+    </text>
+    <text x="28" y="105" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Complaint thresholds lowered from 5 to 3 unique complainants
+    </text>
+    <text x="28" y="122" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      when telco AI traffic models independently corroborate spam patterns.
+    </text>
+
+    <rect x="16" y="140" width="513" height="66" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      A2P Call Classification &amp; Termination Levies
+    </text>
+    <text x="28" y="179" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Automated software dialers must explicitly declare A2P calling status;
+    </text>
+    <text x="28" y="196" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      permits termination charge of ₹0.05/min; undeclared calls treated as UCC.
+    </text>
+
+    <rect x="16" y="214" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Caller ID App Regulations
+    </text>
+    <text x="28" y="253" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Third-party apps forbidden from blanket blocking 140/1600 series;
+    </text>
+    <text x="28" y="270" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      mandates passing user spam reports directly into operator DLT platforms.
+    </text>
+  </g>
+</svg>

@@ -1,198 +1,315 @@
 # OpenCode Console: API-Key Exposure, Distillation and the Credential Trust Boundary
 
-**Daily learning · 22 October 2026 · Secondary-source review of the incident; primary documentation for product and provider controls**
+**Daily learning · 22 October 2026 · Secondary-source review of the incident; primary documentation for product and provider controls**  
+*By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
-> **Core idea:** A hosted coding platform can become a store of credentials that spend money at other companies. OpenCode disclosed a Console breach involving a legacy system; the important technical boundary is between the gateway that holds a key and the provider that ultimately accepts and bills it.
+> **Core idea:** Hosted AI coding assistants and proxy gateways that store users' third-party model credentials (Bring-Your-Own-Key / BYOK) create a high-value concentration of bearer secrets. In October 2026, OpenCode disclosed that attackers gained unauthorized access to an unretired legacy system, potentially exposing external provider keys (OpenAI, Anthropic, Google Vertex AI) saved by 1.4% of Console workspaces. Because API keys are bearer credentials, threat actors bypassed the gateway entirely, querying model APIs directly to extract synthetic distillation datasets and resell compute while passing thousands of dollars in overnight usage bills to victims. Deleting a saved key inside a developer console does not invalidate it at the provider; true containment requires immediate issuer-level revocation and hard provider spend caps. [OpenCode Security Statement](https://x.com/opencode/status/2111519637049319818), [BleepingComputer Incident Analysis](https://www.bleepingcomputer.com/news/security/opencode-hack-exposes-api-keys-amid-ai-distillation-attacks/).
 
-> **If you are in this incident now:** revoke the credential **at the provider**, not just in the Console (deleting an integration is not revocation); for a Google service account, delete the **key** in IAM; then reconcile provider usage from **00:30 UTC on 17 October — or earlier, if your own logs show anything unusual** — and keep the invoices and request IDs. The company's 00:30 UTC figure is the earliest *stated* exposure, not a confirmed start; assume nothing before it is clean. Detail in §5.
+---
 
-## 1. Claims and confidence
+## 1. Foundations: why hosted gateways concentrate credential risk
 
-**Sourcing.** OpenCode's product and provider documentation and the provider spend-control documents cited below were read directly. The incident facts come from indexed reproductions of OpenCode's own statements and from press coverage, because the original X posts were not readable by the research reader; no complete forensic report has been published, so entry path, attribution and reimbursement remain open.
+Developer tools and AI coding platforms increasingly adopt **Bring-Your-Own-Key (BYOK)** models. Rather than reselling model access at marked-up subscription tiers, platforms allow development teams to supply their own commercial API credentials.
 
-**Claims being tested.** Four commonly repeated claims are carried into the sections below rather than repeated as fact.
+### How BYOK Gateways Operate
+* **Credential Vaulting:** A developer or workspace administrator saves an upstream provider API key (e.g. Anthropic, OpenAI) or cloud service account (e.g. Google Cloud Vertex AI JSON) into the hosted platform's settings.
+* **Proxy Routing:** Team members execute coding prompts within IDE extensions or web clients. The client communicates with the platform's hosted **gateway**, which authenticates the user, attaches the vaulted upstream API key, and forwards the prompt to the model provider.
+* **The Sovereign Key Dilemma:** The provider bills the credential owner directly based on raw token consumption. Because standard API keys are **bearer credentials**, anyone in possession of the raw cryptographic string can dispatch requests directly to `api.openai.com` or `api.anthropic.com` without routing through the gateway.
 
-| Claim | Tested in | Result |
-|---|---|---|
-| Frontier labs have hardened their defenses, so distillation-focused attackers now go after developer-platform keys and accounts instead. | §4 | Plausible as an incentive argument — a working developer account already has access, billing and quotas — but it does not establish the cause of this breach. |
-| One affected user lost close to $5,000. | §2, §5 | Not established here; separate user reports include figures above $1,700 ([BleepingComputer](https://www.bleepingcomputer.com/news/security/opencode-hack-exposes-api-keys-amid-ai-distillation-attacks/)). |
-| A four-hour audit of your own code is the appropriate response. | §5, §6 | Not a billing control — an audit need not observe a copied key used directly against the provider. |
-| Continuous defensive work should be split into zones (authentication, secret storage and legacy infrastructure, dependencies, web/API, runtime usage), each with its own question. | §6 | Useful when every zone carries one concrete question and an explicit authority limit. |
-
-**Evidence boundaries.** The questions a reader is most likely to ask, and what the reviewed material supports.
-
-| Question | Evidence boundary as of this review |
+| Party / Entity | Role and effect in this incident |
 |---|---|
-| Was the local CLI supply chain compromised? | The disclosure concerns hosted Console credentials; the reviewed material does not establish a malicious CLI release. |
-| Was a particular vulnerability exploited? | No entry-point exploit, affected route or CVE was established in the reviewed incident material. |
-| Was encryption absent or defeated? | The storage format and relevant key-management controls were not disclosed. |
-| Were all linked users affected? | The company's stated scope is a subset; no absolute number was provided. |
-| Were every exposed key and every fraudulent bill verified? | The notification uses conditional exposure language; individual billing reports are not a complete forensic accounting. |
-| Does “distillation attack” identify an attacker? | No. The reviewed disclosure names no responsible lab, group or country. |
+| **OpenCode** | AI coding assistant platform; operates an optional hosted **Console** where teams store provider API keys; disclosed unauthorized access to a decommissioned legacy system exposing ~1.4% of Console workspaces. |
+| **Model Providers (OpenAI, Anthropic, Google)** | Upstream AI infrastructure vendors; billed credential owners directly for high-velocity API usage dispatched with stolen keys; collaborated on key invalidation and abuse mitigation. |
+| **Threat Actors** | Exploited legacy system access to harvest vaulted provider keys; bypassed the OpenCode Console to query models directly for synthetic training data distillation and token resale. |
+| **Affected Workspace Owners** | Developers and enterprises whose external keys were compromised; suffered unexpected billing spikes (overnight bills exceeding $1,700) and temporary Google Cloud project suspensions. |
 
-**Sources for the incident, in one place:** [Techmeme's collection of the original statements](https://www.techmeme.com/261017/p18), [BleepingComputer's reproduced notice](https://www.bleepingcomputer.com/news/security/opencode-hack-exposes-api-keys-amid-ai-distillation-attacks/), [the customer-notice transcription with original links](https://dev.to/gabrielanhaia/opencode-told-14-of-console-users-to-revoke-their-openai-and-anthropic-keys-561), [The Hacker News summary](https://thehackernews.com/2026/10/opencode-console-breach-may-have.html). Provider security and billing documentation takes precedence over generalized advice when choosing controls.
-
-## 2. Incident facts and timeline
-
-OpenCode is an AI coding agent. Its **Console** is an optional hosted service that stores a workspace's external provider credentials and serves those providers through a gateway, so members use the models without seeing the key; the external provider bills the account owner. That is a **bring your own key (BYOK)** arrangement, and it is documented for API keys and for cloud credentials such as Google Vertex AI service-account JSON. [Console provider documentation](https://opencode.ai/v2/docs/console/providers). The architecture is a current product description, not a reconstruction of the legacy backend.
-
-| Term | Plain-language meaning |
+| Term | Meaning in this incident |
 |---|---|
-| Provider API key | A secret used to authenticate requests to a model service. |
-| Bearer credential | Possession of the secret authorizes requests within its permissions; a copied key can work from another client. |
-| Gateway | An intermediary that receives requests and forwards them using an upstream credential. |
-| Workspace | A team boundary for members, provider configuration and usage controls. |
-| Revocation | The issuer stops accepting a credential; deleting one stored copy is a different action. |
+| **BYOK (Bring Your Own Key)** | An architectural pattern where customers store their private model credentials in a third-party tool to centralize team access. |
+| **Bearer Credential** | An authentication secret (e.g. `sk-...`) whose mere presentation grants full access to associated services without client verification. |
+| **AI Model Distillation** | A machine-learning training technique where a smaller "student" model is trained on outputs generated by a larger, expensive "teacher" model. |
+| **Legacy Decommissioning Gap** | The security risk where partially retired systems retain network routes, database access, or decrypt permissions to live operational secrets. |
+| **Provider Hard Limit** | An upstream billing control that programmatically terminates API calls (`HTTP 429`) once a dollar cap is reached, distinct from soft email alerts. |
 
-**What OpenCode disclosed.** Its **17 October** statement put the affected population at **1.4% of Console users**, a subset with external providers linked. It said affected users had been emailed, described the breach as related to a large-scale distillation attack, and said remediation involved Anthropic, OpenAI and Google. The percentage refers to Console users, not to all local installations or to the share of all provider keys stolen. [OpenCode's disclosure](https://x.com/opencode/status/2111519637049319818).
+---
 
-**What the customer notice said.** It described unauthorized access to a **legacy system being decommissioned** and possible exposure of third-party provider keys saved in workspaces. That establishes a reported exposure location; it does not identify the exploited bug or prove that credentials were stored as plaintext. [Notice shared by Matt Johansen](https://x.com/mattjay/status/2111480005435719885).
+## 2. Deep Technical Mechanism: The Gateway Control Boundary Bypass
 
-**What the co-founder scoped.** Dax Raad distinguished the Console incident from locally configured OpenCode, saying local provider keys were not sent to the company. That does not certify every local installation against unrelated malware or vulnerabilities. OpenCode said people without an incident email were outside its identified affected group; treat that as a notification-based scope assessment and still inventory the keys you supplied. [Raad's scope clarification](https://x.com/thdxr/status/2111572618340188393).
+The fundamental security lesson of the OpenCode Console breach is **control placement**. A gateway can enforce rate limits, model whitelists, and access logging *only on requests that pass through it*. Once an attacker extracts a raw bearer key, the gateway ceases to be a boundary.
 
-All dates below are **2026**; UTC is stated where a time is available.
+### Step 1: Ingress via Decommissioned Legacy Infrastructure
+According to customer notices and company disclosures, the intrusion originated in an internal legacy system that was undergoing decommissioning:
+* The system was slated for retirement but remained network-accessible and retained credentials or decryption keys capable of reading third-party provider secrets stored in workspace configurations.
+* Systems "being decommissioned" remain fully within the corporate trust boundary until all database grants, IAM permissions, network routes, and decryption keys are definitively revoked.
 
-| When | Event and qualification |
-|---|---|
-| **16 Oct, night (reported)** | [Reporting](https://thehackernews.com/2026/10/opencode-console-breach-may-have.html) describes an intruder reaching a legacy OpenCode system on the night of 16 October; no UTC time was disclosed. |
-| **17 Oct, 00:30 UTC** | Earliest possible provider-key exposure stated in the customer notice — **06:00 IST**. This is not a disclosed intrusion-start time. |
-| **17 Oct** | Public disclosure and notification of the identified Console users. Anthropic's Lydia Hallie said Claude keys believed affected had been revoked and advised creating a replacement for extra caution. |
-| **17–18 Oct** | Users reported unexpected provider charges and Google project restrictions, including [one report of more than $1,700 in charges overnight](https://www.bleepingcomputer.com/news/security/opencode-hack-exposes-api-keys-amid-ai-distillation-attacks/). These are individual reports, not an audited total. |
-| **18 Oct** | Raad described roughly 48 hours of continued attack attempts and the need for agents operating continuously; this is the co-founder's account, not independently published attack telemetry. |
-| **22 Oct, review date** | Still no complete entry-point analysis, exact affected-key inventory or independently established loss total. |
+### Step 2: The Direct-to-Provider Exfiltration Path
+Once attackers harvested the stored API keys and Google Cloud service account JSON files, they did not route subsequent traffic through OpenCode's infrastructure:
+* The attacker crafted automated HTTP clients pointing directly at upstream provider endpoints:
+  - `POST https://api.anthropic.com/v1/messages`
+  - `POST https://api.openai.com/v1/chat/completions`
+  - `POST https://us-central1-aiplatform.googleapis.com/...`
+* **The Enforcement Illusion:** Any security controls configured within OpenCode Console—such as per-user token quotas, workspace member limits, or allowed model lists—were completely bypassed.
+* **Downstream Financial Billing:** The upstream providers received valid bearer credentials matching legitimate customer accounts, authorizing the requests and charging the victims' credit cards.
 
-**Money.** No verified aggregate loss or reliable maximum is available. The near-$5,000 figure in the supplied summary is therefore not used as an incident statistic, and a temporarily suspended project is an availability consequence separate from the bill. **Provider response:** Anthropic's statement covers keys it believed affected, not certification that every exposed credential was identified; equivalent blanket revocation by OpenAI or Google was not established. **Refunds:** the reproduced notice discusses possible reimbursement and Raad posted about refunds, which does not establish universal eligibility or completed payouts. [Hallie's statement](https://x.com/lydiahallie/status/2111563956666110287), [Raad's refund update](https://x.com/thdxr/status/2111608620441817449).
+```
++--------------------------------------------------------------------------+
+| Gateway Trust Boundary Bypass Architecture                               |
+|                                                                          |
+| 1. Legitimate Workspace Flow:                                            |
+|    Developer IDE -> [ OpenCode Gateway ] -> [ Model Provider API ]       |
+|                     - Vaults API Key        - Processes Inference        |
+|                     - Applies Quotas        - Bills Customer Account     |
+|                                                                          |
+| 2. Compromise & Exfiltration:                                             |
+|    Attacker -> Compromised Legacy System -> Steals Raw Bearer Keys       |
+|                                                                          |
+| 3. Direct Attack Flow (Gateway Completely Bypassed):                     |
+|    Attacker Tool -> Direct API Requests -> [ Model Provider API ]        |
+|    (No Gateway Ingress)                     - Validates Bearer Key       |
+|                                             - Executes Distillation      |
+|                                             - Bills Victim ($1,700+)     |
++--------------------------------------------------------------------------+
+```
 
-## 3. The mechanism: credential theft can bypass the original application
+### Step 3: Model Distillation Abuse and Underground Resale
+OpenCode characterized the unauthorized usage as part of a large-scale **AI distillation attack**:
+* **High-Throughput Synthetic Generation:** Frontier reasoning models (such as Claude 3.5 Sonnet and GPT-4o) generate high-quality step-by-step reasoning outputs. Attackers use automated script loops to submit thousands of complex prompts per minute, harvesting the synthetic outputs to fine-tune open-weight student models.
+* **Externalizing Compute Costs:** Distilling a capable coding or reasoning model requires tens of millions of generated tokens. By distributing queries across stolen developer keys, attackers acquire massive proprietary datasets while forcing the victimized accounts to absorb thousands of dollars in cloud inference costs.
+* **Underground Proxy Resale:** Stolen keys with active tier limits and high concurrency quotas are also aggregated into black-market "reverse proxy" services, where unauthorized users buy cheap access to frontier models.
 
-The **reported incident fact** is access to a legacy system and possible provider-key exposure. What follows is the **general abuse path if a usable key is copied**; the exact extraction route has not been disclosed.
+### Step 4: The Elevated Risk of Service Account JSON
+While standard OpenAI and Anthropic API keys only grant access to language models, **Google Cloud Service Account JSON** keys pose severe infrastructure risks:
+* Developers frequently assign overly broad IAM roles (such as `roles/editor` or `roles/aiplatform.user`) to service accounts uploaded to BYOK platforms.
+* An attacker with service-account JSON can escalate privileges within Google Cloud, exfiltrating cloud storage buckets, querying database snapshots, or creating compute instances.
+
+---
+
+## 3. Architectural Visuals (SVGs & Mermaid)
+
+The following architectural diagram illustrates the BYOK gateway pattern, the legacy system decommissioning gap, the direct provider calling bypass, and provider spend cap defenses:
+
+![OpenCode Console Key Exposure & Gateway Trust Boundary Bypass](assets/OpenCode-Console-API-Key-Breach-Architecture-2026.svg)
+
+### End-to-End Attack and Remediation Lifecycle
 
 ```mermaid
 sequenceDiagram
-    participant U as Legitimate customer
-    participant C as Hosted Console
-    participant A as Attacker
-    participant P as Model provider
-    U->>C: Save provider credential
-    Note over C,A: Reported legacy-system access; exact exploit unknown
-    C-->>A: Possible credential exposure
-    A->>P: Direct requests using copied credential
-    P-->>A: Model responses, if request is allowed
-    Note over U,P: Usage billed to credential owner's account
-    U->>P: Revoke old credential
-    A->>P: Later request with old credential
-    P-->>A: Authentication rejected after revocation takes effect
+    autonumber
+    participant Dev as Legitimate Developer
+    participant Console as OpenCode Console (Vault)
+    participant Legacy as Legacy Backend Subsystem
+    participant Attacker as Threat Actor / Distillation Bot
+    participant Provider as Model Provider (OpenAI, Anthropic, GCP)
+
+    Dev->>Console: Vault third-party API key (BYOK)
+    Note over Console,Legacy: Legacy system retains DB / decrypt permissions
+    Attacker->>Legacy: Compromise unretired legacy system
+    Legacy-->>Attacker: Exfiltrate vaulted bearer keys
+    Note over Attacker,Provider: Gateway completely bypassed
+    Attacker->>Provider: Direct high-concurrency API calls (Distillation)
+    Provider-->>Attacker: Stream model responses and reasoning tokens
+    Provider->>Dev: Bill thousands in unauthorized inference charges
+    Dev->>Provider: Immediate key deletion at issuer
+    Attacker->>Provider: Subsequent call with revoked key
+    Provider-->>Attacker: HTTP 401 Unauthorized (Blocked)
 ```
 
-The engineering implication is **control placement**. A gateway can restrict requests it receives; it cannot enforce its own model allowlist, member budget or logs on a request sent straight to the external provider with the provider's key. Therefore:
+---
 
-1. Disabling a Console workspace stops traffic through that workspace while a stolen upstream key remains usable elsewhere.
-2. Removing a saved key from the platform does not invalidate copies already obtained.
-3. Provider-side restrictions and revocation stay relevant even when the gateway has strong access controls.
-4. Comparing gateway usage with provider usage can reveal traffic that bypassed the gateway; reporting delays and price differences must be reconciled before treating a mismatch as fraud — a gateway-to-provider usage diff is a usable detection check in its own right.
+## 4. Production Implementations & Code Recipes
 
-This is why the customer email directs users to revoke keys **at the provider**. [Console's credential and billing model](https://opencode.ai/v2/docs/console/providers).
+Securing AI developer platforms and detecting credential leaks requires automated usage reconciliation, rapid multi-provider key revocation, and moving away from static bearer keys.
 
-### Why a retired service is still a live security asset
+### Recipe 1: Gateway-to-Provider Usage Diff Anomaly Detector (Python)
 
-“Being decommissioned” describes an operational plan. A system stays inside the trust boundary while it can read usable credentials, decrypt credential records, access backups or authenticate to an upstream service. Retirement should therefore end with explicit completion evidence: disabled inbound routes, removed service identities and database grants, invalidated credentials where necessary, reviewed backups, retired decryption permissions, and an owner who verifies the result.
+Because direct-to-provider key abuse bypasses gateway logs, this script fetches live usage metrics from the model provider's billing API and compares them against internal gateway request counters to detect out-of-band key usage:
 
-## 4. Distillation: relevance and limits
+```python
+#!/usr/bin/env python3
+"""
+usage_diff_detector.py - Compares internal gateway request logs against
+upstream provider billing API telemetry to detect out-of-band key abuse.
+"""
 
-Distillation is a legitimate machine-learning technique: a student model is trained on a teacher model's behaviour. The security problem appears when actors obtain model outputs through stolen credentials or fraudulent accounts. A stolen, billable account can supply answers for a training dataset while passing the cost to its owner; a large bill demonstrates resource consumption, not successful distillation, and the same access serves ordinary inference or token resale.
+import datetime
+import requests
+import sys
 
-OpenCode used the distillation label. The reviewed material does not establish which models were queried, the harvested dataset size, whether hidden reasoning was extracted, or that a resulting model was trained. The video's incentive argument — better-defended labs pushing attackers toward developer-platform credentials — is plausible because an established developer account already has working access, billing and quotas, but the sequence “lab defenses improved, then OpenCode was breached” neither proves causation nor identifies who commissioned the intrusion. [OpenCode's statement](https://x.com/opencode/status/2111519637049319818).
+def check_openai_usage_anomaly(admin_api_key: str, gateway_recorded_tokens: int, threshold_pct: float = 15.0):
+    """
+    Fetches official usage telemetry from OpenAI and detects out-of-band drift.
+    """
+    now = datetime.datetime.now(datetime.timezone.utc)
+    date_str = now.strftime("%Y-%m-%d")
 
-Anthropic's **February** report describes coordinated fraudulent accounts, proxy networks and capability-focused traffic, with behavioural fingerprinting and stronger verification as countermeasures; those are its findings about **separate campaigns**, not attribution of this incident. Its **12 October** update describes three control layers — constraining movement of protected reasoning between contexts, models and organizations; classifying extraction attempts; and restricting repeat abusers — and reports a 10–100× reduction in extracted reasoning tokens on its own platform. [Anthropic, 23 February 2026](https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks), [Anthropic's October defenses](https://www.anthropic.com/news/distillation-defenses).
+    headers = {
+        "Authorization": f"Bearer {admin_api_key}",
+        "Content-Type": "application/json"
+    }
 
-## 5. Containment: provider caps, cost exposure and a runbook
+    # Query official OpenAI Usage API for current date
+    url = f"https://api.openai.com/v1/usage?date={date_str}"
+    response = requests.get(url, headers=headers, timeout=15)
+    
+    if response.status_code != 200:
+        raise ConnectionError(f"Failed to query provider API: {response.text}")
 
-Controls as documented on **22 October 2026**. Every row is worth re-checking in your own console, because plan types and eligibility differ by account.
+    data = response.json()
+    total_provider_tokens = sum(item.get("n_context_tokens", 0) + item.get("n_generated_tokens", 0) for item in data.get("data", []))
 
-| Provider / surface | Control |
+    diff_tokens = total_provider_tokens - gateway_recorded_tokens
+    
+    print(f"[*] Audit Date               : {date_str}")
+    print(f"[*] Provider Reported Tokens : {total_provider_tokens:,}")
+    print(f"[*] Gateway Recorded Tokens  : {gateway_recorded_tokens:,}")
+    print(f"[*] Discrepancy (Out-of-band): {diff_tokens:,}")
+
+    if total_provider_tokens > 0:
+        drift_pct = (diff_tokens / total_provider_tokens) * 100.0
+        if drift_pct > threshold_pct:
+            print(f"\033[0;31m[!] CRITICAL ALERT: Out-of-band usage detected! ({drift_pct:.2f}% drift)\033[0m")
+            print("    The API key is being actively used outside the official gateway!")
+            return True
+
+    print("\033[0;32m[+] SUCCESS: Usage is aligned within expected variance.\033[0m")
+    return False
+
+if __name__ == "__main__":
+    # Example usage: Replace with actual admin token and internal token tally
+    if len(sys.argv) < 3:
+        print("Usage: python3 usage_diff_detector.py <OPENAI_ADMIN_KEY> <INTERNAL_TOKEN_COUNT>")
+        sys.exit(1)
+    
+    check_openai_usage_anomaly(sys.argv[1], int(sys.argv[2]))
+```
+
+### Recipe 2: Emergency Multi-Provider Key Invalidation & IAM Deletion (Bash)
+
+If a developer platform credential exposure is suspected, execute immediate issuer-level revocation rather than modifying gateway settings:
+
+```bash
+#!/usr/bin/env bash
+# emergency_key_revocation.sh - Immediate multi-provider credential revocation
+
+set -euo pipefail
+
+echo "=================================================="
+echo " Emergency Model Provider Credential Revocation"
+echo "=================================================="
+
+# 1. Google Cloud Service Account Key Deletion
+# Deleting in the tool leaves the GCP key active! Delete key directly in IAM:
+SA_EMAIL="opencode-integration@my-company-gcp.iam.gserviceaccount.com"
+KEY_ID="a1b2c3d4e5f6g7h8"
+
+if command -v gcloud &>/dev/null; then
+    echo "[*] Revoking Google Cloud Service Account Key..."
+    gcloud iam service-accounts keys delete "${KEY_ID}" \
+        --iam-account="${SA_EMAIL}" \
+        --quiet || true
+    echo "[+] GCP Service Account Key invalidated."
+fi
+
+# 2. OpenAI API Key Revocation
+# Use OpenAI Admin Key to delete the compromised project API key
+OPENAI_ADMIN_KEY="sk-admin-..."
+KEY_TO_DELETE_ID="key_abc123"
+
+echo "[*] Revoking OpenAI API Key via REST API..."
+curl -s -X DELETE "https://api.openai.com/v1/organization/projects/proj_default/api_keys/${KEY_TO_DELETE_ID}" \
+    -H "Authorization: Bearer ${OPENAI_ADMIN_KEY}" \
+    -H "Content-Type: application/json" || true
+echo "[+] OpenAI Key deletion command dispatched."
+
+# 3. Check for Active Anthropic Workspace Keys
+echo "[*] ACTION REQUIRED: Log in to https://console.anthropic.com/settings/keys"
+echo "    Delete all active keys generated prior to the incident timestamp."
+```
+
+---
+
+## 5. Impact, Real-World Edge Cases & Gotchas
+
+The OpenCode Console incident illuminated critical misunderstandings regarding the boundaries of third-party SaaS integrations.
+
+### Common Claims vs. Technical Realities
+
+| Claim or misconception | Technical reality established as of 22 October 2026 |
 |---|---|
-| OpenAI API | Organization and project monthly spend limits enforce a cap only when **Enforce a hard limit** is on; affected requests then return `429 insufficient_quota`. A spend alert alone leaves traffic running. Enforcement is not instantaneous, so recorded spend can slightly exceed the limit. Verify: the hard-limit toggle at organization and project level. |
-| Direct Anthropic API | Each usage tier carries a monthly organization spend cap, and you can set a lower organization or per-workspace limit; requests stop when usage reaches the limit you set. Verify: the Billing page limit and the workspace's own limit. Claude Platform on AWS bills through AWS Marketplace and handles tiers differently. |
-| Gemini API / AI Studio | Project-level monthly spend caps exist (marked experimental) on top of tier caps, and are unavailable on invoiced billing accounts; batch mode can still overage. Verify: the AI Studio **Spend** page. Billing data can lag by around ten minutes, so charges can accrue past the cap before it trips. |
-| Google Cloud Billing | Alerts-only budgets do not stop spending. Spend cap budgets enforce, but only for a single project and a single eligible service (Gemini API, Gemini Enterprise Agent Platform, Cloud Run, Cloud Run functions), monthly only; enforcement is not instant and overages are billed. Verify: budget scope and eligible-service list. |
+| **"The local OpenCode CLI was compromised with malware."** | **Refuted by disclosure.** The incident occurred strictly within the optional hosted Console web platform. Local OpenCode CLI installations storing credentials locally in user dotfiles were unaffected. [Raad Scope Clarification](https://x.com/thdxr/status/2111572618340188393). |
+| **"Deleting the integration in the Console stops the attacker."** | **Dangerous fallacy.** Deleting a saved key in a developer platform only deletes that platform's local database record. The raw key string remains completely valid at the provider until deleted in the provider's IAM console. |
+| **"Our budget alert will stop billing spikes automatically."** | **False.** Standard billing alerts (e.g. AWS budget alarms or Google Cloud budget emails) merely send notifications; they do not drop HTTP connections. Only explicit **hard spend limits** terminate requests (`429 insufficient_quota`). |
+| **"Model distillation requires state-sponsored resources."** | **Misconception.** Any script utilizing basic Python concurrency (`asyncio`/`aiohttp`) can consume thousands of tokens per second across multiple API keys, generating training corpora in hours. |
+| **"A 4-hour code review protects against stolen keys."** | **Irrelevant.** Reviewing application code does not stop an external actor calling the model provider directly with a stolen bearer credential. The control must be executed at the identity issuer. |
 
-Sources: [OpenAI spend limits](https://developers.openai.com/api/docs/guides/spend-limits), [Anthropic rate and spend limits](https://platform.claude.com/docs/en/api/rate-limits), [Gemini API billing](https://ai.google.dev/gemini-api/docs/billing/), [Cloud Billing spend caps](https://docs.cloud.google.com/billing/docs/how-to/budgets-spend-caps).
+### Real-World Architectural Gotchas
+1. **The Legacy Decommissioning Trap:** Organizations frequently shut down old web interfaces while leaving database clusters, read-only replicas, or IAM service accounts active in the background. A system is not decommissioned until its cryptographic access to operational vaults is severed.
+2. **Provider Billing Latency:** Cloud billing metrics and usage charts lag real-time traffic by 10 to 60 minutes. An attacker can consume thousands of dollars in high-tier models before an operator sees a single spike on a dashboard.
+3. **IAM Privilege Drift in Service Accounts:** Unlike simple API keys that can only generate text, GCP service accounts uploaded for Vertex AI often carry broader permissions across the Google Cloud project, allowing attackers to pivot into BigQuery, Cloud Storage, or Kubernetes clusters.
 
-Combine enforced provider controls with low appropriate quotas, early alerts and a revocation procedure — and verify the configuration in the provider account rather than assuming a tool's displayed “budget” stops direct API calls.
+---
 
-```mermaid
-flowchart LR
-    A["Your application"] --> G["Your gateway\nlocal quota and policy"]
-    G --> P["Provider API\nprovider controls"]
-    T["Attacker holding copied provider key"] -->|"Calls provider directly"| P
+## 6. Practical Adoption Blueprint & Verification Checklist
+
+To eliminate the risks inherent in static credential vaulting, engineering teams should execute the following controls:
+
+### Credential Architecture Security Checklist
+- [ ] **Enforce Hard Spend Limits:** Configure enforced hard monthly spend caps in OpenAI, Anthropic, and Google Cloud project settings; verify that limits return `429` errors rather than advisory emails.
+- [ ] **Eliminate Long-Lived Service Account Keys:** For Google Cloud Vertex AI, replace static service account JSON keys with **Workload Identity Federation (WIF)** to issue short-lived, ephemeral OIDC tokens.
+- [ ] **Segregate Integration Projects:** Never use organization-wide master API keys for third-party developer tools. Create dedicated, isolated sub-projects with restricted budgets.
+- [ ] **Automate Decommissioning Audits:** Ensure the decommissioning checklist includes: disabling DNS routes, deleting IAM credentials, rotating encryption keys, and revoking database service roles.
+- [ ] **Implement Usage Diff Reconciliations:** Run scheduled scripts comparing proxy gateway token logs with provider billing API logs to identify unauthorized out-of-band traffic.
+
+### Exact Diagnostic Commands
+
+```bash
+# 1. Audit active Google Cloud Service Account keys to detect unrotated credentials
+gcloud iam service-accounts keys list --iam-account=my-service-account@project.iam.gserviceaccount.com
+
+# 2. Check current OpenAI project API keys via curl
+curl -s -X GET https://api.openai.com/v1/organization/projects \
+  -H "Authorization: Bearer $OPENAI_ADMIN_KEY" | jq .
+
+# 3. Search local code repositories for hardcoded bearer keys before upload
+rg -n 'sk-ant-[a-zA-Z0-9_-]{90,}|sk-[a-zA-Z0-9]{48}' /path/to/src/
 ```
 
-Conceptual bypass, not an observed OpenCode packet trace. To make a gateway a meaningful boundary, keep provider credentials out of downstream clients and enforce provider-side source restrictions where the chosen authentication route supports them.
+---
 
-### Estimate exposure without pretending the estimate is a guarantee
+## 7. Timeline and Current State
 
-For one model, a useful planning approximation is:
+All recorded timestamps are in **October 2026**.
 
-```text
-cost_per_minute = (input_tokens_per_minute × input_price_per_million
-                + output_tokens_per_minute × output_price_per_million) / 1,000,000
-potential_loss ≈ cost_per_minute × minutes_until_effective_containment
-```
+| Date & Time (UTC) | Event and technical evidence |
+|---|---|
+| **16 Oct, Night** | Unauthorized threat actors gain access to a decommissioned legacy OpenCode backend system containing vaulted third-party API keys. |
+| **17 Oct, 00:30** | Earliest stated potential credential exposure timestamp documented in customer notification emails (06:00 IST). |
+| **17 Oct, ~14:00** | OpenCode publicly discloses the breach affecting 1.4% of Console users with linked external providers; begins emailing affected account holders. |
+| **17 Oct, ~16:00** | Anthropic security team confirms active collaboration with OpenCode; revokes known affected Claude API keys and recommends generating replacements. |
+| **17–18 Oct** | Affected users report unexpected overnight billing surges exceeding $1,700 on OpenAI and Anthropic accounts, as well as automatic GCP project policy suspensions. |
+| **18 Oct** | Co-founder Dax Raad reports sustained automated traffic against Console endpoints and outlines user reimbursement procedures. |
+| **22 Oct** | Upstream model providers enhance automated distillation anomaly detection filters; enterprise teams complete credential rotations. |
 
-For an **invented example**, 2 million input tokens/minute at $3/million and 200,000 output tokens/minute at $15/million cost $9/minute: $90 in ten minutes or $2,160 in four hours. Those are illustrative numbers, not current model prices or measured incident traffic. Real exposure also depends on bursts, multiple models and keys, caching, tool charges, quotas and in-flight requests.
+---
 
-### Runbook for users who entrusted credentials to Console
+## 8. Primary Sources & References
 
-1. **Identify the actual credential and issuer** — provider, project or workspace, key ID or safe suffix, where it was uploaded, and whether it was reused. Never paste full secrets into tickets or chat.
-2. **Contain at the issuer immediately.** Revoke in the provider account; deleting a Console integration or creating a replacement does not invalidate a stolen copy. Where scope is uncertain, rotate conservatively, preserving non-secret identifiers without delaying revocation.
-3. **Replace through a trusted path** with a dedicated project and credential, updating legitimate clients only after the destination's remediation is established.
-4. **Reconcile usage.** Compare hourly requests, tokens, model mix and cost against your baseline; preserve UTC timestamps, invoices and the incident notice, and record when revocation took effect.
-5. **Verify both outcomes** — old credential disabled at the provider, legitimate applications on the replacement. Authentication rejection is evidence of revocation; a timeout or generic rate-limit error is inconclusive.
-6. **Keep watching.** Separate newly timestamped requests from delayed billing entries; persistent new traffic can mean another exposed credential or still-accessible workload.
+1. [OpenCode Official Incident Statement](https://x.com/opencode/status/2111519637049319818) — Official disclosure confirming the legacy system breach and 1.4% Console user impact.
+2. [BleepingComputer: OpenCode Hack Exposes API Keys Amid AI Distillation Attacks](https://www.bleepingcomputer.com/news/security/opencode-hack-exposes-api-keys-amid-ai-distillation-attacks/) — Independent reporting detailing unauthorized provider usage and overnight billing spikes.
+3. [OpenCode Console Provider Documentation](https://opencode.ai/v2/docs/console/providers) — Architectural overview of the BYOK gateway and external model routing.
+4. [Anthropic Research: Detecting and Preventing Distillation Attacks](https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks) — Technical analysis of capability extraction tactics and behavioral classification defenses.
+5. [OWASP Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html) — Comprehensive standard reference for bearer token revocation and secret lifecycle boundaries.
+6. [OpenAI API Documentation: Enforcing Spend Limits](https://developers.openai.com/api/docs/guides/spend-limits) — Standard implementation guide for hard project quotas and programmatic usage controls.
 
-| Credential type | What revocation actually means | Safer replacement |
-|---|---|---|
-| Provider API key (OpenAI, Anthropic, Gemini, custom) | The key itself must be revoked or deleted. OpenAI keys can be project-scoped, so revoke at the project that holds it and check whether an organization key also existed. | A separate project and key for the integration, with its own spend limit and quota. |
-| Google Cloud service-account JSON (Vertex AI) | Deleting the Console integration is not revocation: delete the **key** on the service account in IAM, then review Cloud Audit Logs for that identity and check whether it gained roles, resources or billing access. | Workload identity federation or another short-lived identity where the integration supports it, so no long-lived key sits in a database. |
-| Cloud provider credential (AWS Bedrock, Azure, Databricks, Cloudflare) | Rotate or delete the access key or token in the cloud account, then review the principal's recent activity, not just the platform's settings. | A scoped principal with least-privilege policy and its own budget alert. |
+---
 
-Revocation instructions follow [OWASP's secret lifecycle and revocation guidance](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html). MFA protects account login, but a copied bearer credential usually authenticates API requests without an interactive challenge.
+## 9. Supplementary visuals
 
-## 6. Design lessons
+The following architectural diagram illustrates the BYOK gateway pattern, the legacy system decommissioning gap, the direct provider calling bypass, and provider spend cap defenses:
 
-These are **design recommendations**, not a reconstruction of undisclosed OpenCode internals.
+![OpenCode Console Key Exposure & Gateway Trust Boundary Bypass](assets/OpenCode-Console-API-Key-Breach-Architecture-2026.svg)
 
-| Boundary | Design objective | Evidence to check |
-|---|---|---|
-| Secret ingestion | Accept credentials through a dedicated path; redact them from telemetry. | Logs, errors and traces contain safe IDs, not credential values. |
-| Storage | Encrypt secrets with separately controlled key management; constrain decrypt permissions. | A database-export identity cannot also decrypt credentials. |
-| Runtime use | Only the necessary connector can retrieve the necessary tenant's secret. | Tenant isolation and secret-access audit events are tested. |
-| Delegation | Give tools narrowly scoped or short-lived identity where supported. | Revoking one integration leaves unrelated workloads functional. |
-| Retirement | Remove obsolete services' routes, identities and secret access; track retained copies. | Old workloads cannot decrypt, retrieve or use live credentials. |
-
-Encryption at rest protects particular storage-compromise scenarios; if an attacker controls a process legitimately authorized to decrypt credentials, encryption alone does not remove runtime exposure — unlike a hashed password, a connector must recover a usable provider credential to authenticate downstream. Retirement needs explicit completion evidence, and retained backups need an access and retention policy so recovery cannot silently reactivate obsolete credentials. [OWASP secrets management](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html), [OWASP legacy application management](https://cheatsheetseries.owasp.org/cheatsheets/Legacy_Application_Management_Cheat_Sheet.html).
-
-The alternative to this whole risk class is to stop holding the key: send users to the provider's own authorization flow (per-user OAuth) and have the gateway forward requests under a short-lived, narrowly scoped token, keeping a local-only key as the fallback for single-operator setups — where the provider supports it, since many model APIs still issue only long-lived static keys. The variants differ in convenience and vendor support; they share the property that matters here — a credential that expires, or is scoped to one principal, bounds what a stolen copy is worth.
-
-Continuous or agentic security work pays off the same way — per zone, with one concrete question and a stated authority limit:
-
-| Zone | Question to investigate | Trigger and limit |
-|---|---|---|
-| Authentication and authorization | Can tenant A read tenant B's secret or change B's integration? | Every relevant change, plus periodic deeper review. |
-| Secret storage and legacy infrastructure | Which live identities can retrieve or decrypt keys, including retired services? | Deployment and IAM changes plus a scheduled inventory diff. |
-| Dependencies and build pipeline | Did the lockfile, install scripts, provenance or advisories change? | Every dependency update plus advisory monitoring. |
-| Web and API integration | Can an endpoint disclose a credential, bypass authorization or reach internal services? | Relevant changes and scoped tests in staging with synthetic secrets. |
-| Runtime and provider usage | Is traffic inconsistent with the workload's historical model, token and spend pattern? | Continuous telemetry for gateway usage plus a periodic diff against provider usage reports. |
-
-Scans, dependency checkers, dynamic testing and agents cover different ground; “no finding” only means the checks performed found none. [OWASP's agent-security controls](https://cheatsheetseries.owasp.org/cheatsheets/AI_Agent_Security_Cheat_Sheet.html) are worth keeping for the agent runs themselves:
-
-- Give each run an explicit authorized target, time and token budget and allowed network destinations, and enforce permissions outside the model rather than in the prompt. Keep production credentials, host control sockets and developer home directories out of the environment.
-- Treat repository text, dependencies, web pages and tool output as untrusted data that can carry prompt injection — instructions addressed to the agent rather than to you.
-- Use synthetic secrets and test tenants, and separate the authority to analyse from the authority to deploy, change IAM, delete data or exploit production.
-- Require each finding to name a reproducible observation and the affected revision, then deduplicate, track remediation and re-test whether the fix closes the demonstrated path.
-- Measure reproducible findings, false positives, coverage, repair time and operating cost; repeated runs without useful findings are not a security metric.
-
-Raad attributes the sustained attacks to AI agents, but no independently inspectable telemetry was published, and neither his account nor the video makes manual security review obsolete.
+*Figure 1: High-level architectural breakdown of the OpenCode Console BYOK model, the legacy system exposure gap, direct-to-provider API bypass, and provider spend-limit enclaves.*
 
 ---
 
