@@ -324,6 +324,6 @@ Pre-2024                 Mid-2024               Late 2024 - 2025       2026 Post
 **Related:**
 - [Polymarket DebugBear Script Compromise](Polymarket-DebugBear-Supply-Chain-Attack-Oct-2026.md) — A separate attack that delivered malicious code through a trusted third-party delivery route.
 - [eMudhra Weak CA Keys](EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md) — Explains how certificate authority failures and weak keys undermine authenticated software delivery.
-- [Security Vulnerabilities in Wireless Devices and Apps](Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md) — Companion client-software security write-up cataloguing vendor-update and delivery trust weaknesses.
+- [Wireless Device Security: WhisperPair & Implementation Traps](Wireless-Device-Security-WhisperPair-CVE-2025-36911-2026.md) — Companion client-software security write-up cataloguing vendor-update and delivery trust weaknesses.
 - [MongoBleed-Dec2025](MongoBleed-Dec2025.md) — Sister late-2025 CVE write-up documenting an unauthenticated, large-scale exposure flaw.
 - [OpenClaw-Moltbot-Security-Analysis-2026](../../AI-ML/Agents/openclaw/OpenClaw-Moltbot-Security-Analysis-2026.md) — Both detail targeted, hands-on-keyboard attacks leveraging installer and update trust chains.

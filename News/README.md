@@ -25,7 +25,6 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 - [Grok Build Passive DNS Data Exposure Nov 2026](Security/Grok-Build-Passive-DNS-Data-Exposure-Nov-2026.md)
 - [HTTP Egress Credential Proxies Vs MCP Gateways Nov 2026](Security/HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways-Nov-2026.md)
 - [India Spam Calls DND And TRAI Enforcement Oct 2026](Security/India-Spam-Calls-DND-And-TRAI-Enforcement-Oct-2026.md)
-- [Largest WhatsApp Data Leak in History](Security/Largest-WhatsApp-Data-Leak-in-History.md)
 - [Linux Kernel ZDI Public Reports KSMBD Oct 2026](Security/Linux-Kernel-ZDI-Public-Reports-KSMBD-Oct-2026.md)
 - [LiteLLM 1.107.0 Supply Chain Compromise Oct 2026](Security/LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md)
 - [Local AI And Agent Security Threat Model Nov 2026](Security/Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md)
@@ -43,8 +42,9 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 - [Polymarket DebugBear Supply Chain Attack Oct 2026](Security/Polymarket-DebugBear-Supply-Chain-Attack-Oct-2026.md)
 - [React Server Components RCE GHSA xqc2 xf4c x3h3 Oct 2026](Security/React-Server-Components-RCE-GHSA-xqc2-xf4c-x3h3-Oct-2026.md)
 - [React2Shell CVE 2025 55182 Flight Protocol RCE 2026](Security/React2Shell-CVE-2025-55182-Flight-Protocol-RCE-2026.md)
-- [Security Vulnerabilities in Wireless Devices and Apps](Security/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
 - [Ubuntu Server CVE 2026 98432 Kernel UAF And Patch Lag Nov 2026](Security/Ubuntu-Server-CVE-2026-98432-Kernel-UAF-And-Patch-Lag-Nov-2026.md)
+- [WhatsApp Contact Enumeration And Data Leak 2026](Security/WhatsApp-Contact-Enumeration-And-Data-Leak-2026.md)
+- [Wireless Device Security WhisperPair CVE 2025 36911 2026](Security/Wireless-Device-Security-WhisperPair-CVE-2025-36911-2026.md)
 
 ## 🚨 Infrastructure & Outages
 - [AWS US East 1 Outage October 2025](Outages/AWS-US-East-1-Outage-October-2025.md)
@@ -65,7 +65,7 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 - [Feb 22 2026](Weekly-Updates/Feb-22-2026.md)
 - [Feb 8 2026](Weekly-Updates/Feb-8-2026.md)
 - [Fellowship Oppertunities Guide 2026](Weekly-Updates/Fellowship-Oppertunities-Guide-2026.md)
-- [Global AI Scam Landscape 2026](Weekly-Updates/Global_AI_Scam_Landscape_2026.md)
+- [Global AI Scam Landscape And Defense Playbook 2026](Weekly-Updates/Global-AI-Scam-Landscape-And-Defense-Playbook-2026.md)
 - [India GSoc 2026 Extended](Weekly-Updates/India-GSoc-2026-Extended.md)
 - [India GSoc 2026 Trends Challenges Solutions](Weekly-Updates/India-GSoc-2026-Trends-Challenges-Solutions.md)
 - [Jan 11 2026](Weekly-Updates/Jan-11-2026.md)

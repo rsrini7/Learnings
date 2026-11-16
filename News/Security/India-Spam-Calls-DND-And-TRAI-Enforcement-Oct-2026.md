@@ -89,6 +89,6 @@ The central design lesson is to **match the control to the route**: preferences 
 ---
 
 **Related:**
-- [Global AI-Driven Scam Landscape](../Weekly-Updates/Global_AI_Scam_Landscape_2026.md) — Places phone impersonation within broader fraud patterns and victim reporting.
+- [Global AI Scam Landscape & Defense Playbook](../Weekly-Updates/Global-AI-Scam-Landscape-And-Defense-Playbook-2026.md) — Places phone impersonation within broader fraud patterns and victim reporting.
 - [Distributed Ledger Technology](../../Blockchain/reference/DLT.md) — Explains the ledger concept used for shared commercial-communication records.
 - [Banks and Third-Party AI Agents](Banks-Third-Party-AI-Agents-Oct-2026.md) — Another case where an apparent identity or permission does not prove an action was authorised.

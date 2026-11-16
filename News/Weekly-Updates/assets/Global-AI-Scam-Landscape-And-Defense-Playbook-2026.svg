@@ -1,0 +1,206 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 740" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#020617" />
+    </linearGradient>
+    <linearGradient id="redGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ef4444" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#ef4444" stop-opacity="0.03" />
+    </linearGradient>
+    <linearGradient id="amberGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#fbbf24" stop-opacity="0.03" />
+    </linearGradient>
+    <linearGradient id="blueGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.03" />
+    </linearGradient>
+    <linearGradient id="emeraldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.2" />
+      <stop offset="100%" stop-color="#10b981" stop-opacity="0.03" />
+    </linearGradient>
+  </defs>
+
+  <!-- Deep Background -->
+  <rect width="1200" height="740" fill="url(#bgGrad)" />
+
+  <!-- HEADER -->
+  <g transform="translate(30, 24)">
+    <text x="0" y="20" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="800" letter-spacing="0.5">GLOBAL AI-DRIVEN SCAM LANDSCAPE &amp; DEFENSE ARCHITECTURE</text>
+    <text x="0" y="38" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12">Multimodal AI Fraud Pipelines · Planetary Loss Telemetry · Financial Fraud Killchains · Zero-Trust Cognitive Gates</text>
+  </g>
+
+  <!-- COLUMN 1: THREAT VECTORS -->
+  <g transform="translate(30, 75)">
+    <rect width="270" height="495" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect width="270" height="60" rx="8" fill="url(#redGrad)" />
+    <circle cx="25" cy="30" r="12" fill="#ef4444" />
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" text-anchor="middle">1</text>
+    <text x="46" y="26" fill="#fca5a5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">AI FRAUD VECTORS</text>
+    <text x="46" y="42" fill="#ef4444" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Multimodal Coercion Engines</text>
+
+    <!-- Content Box -->
+    <rect x="12" y="70" width="246" height="235" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="22" y="90" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Attack Modalities</text>
+    <text x="22" y="110" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• 3-Second Voice Cloning</text>
+    <text x="22" y="126" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Reels/Shorts audio clones family</text>
+    <text x="22" y="146" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Automated Pig Butchering</text>
+    <text x="22" y="162" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  LLMs groom targets for months</text>
+    <text x="22" y="182" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Deepfake Video Extortion</text>
+    <text x="22" y="198" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Fake explicit video creation</text>
+    <text x="22" y="218" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• "Digital Arrest" Scams</text>
+    <text x="22" y="234" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Fake law enforcement video calls</text>
+    <text x="22" y="254" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• AI Recruiter Task Scams</text>
+    <text x="22" y="270" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Fake interviews &amp; upfront fees</text>
+    <text x="22" y="292" fill="#f87171" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Cognitive overload triggers compliance</text>
+
+    <!-- Takeaway -->
+    <rect x="12" y="315" width="246" height="165" rx="6" fill="#1e1e2e" stroke="#334155" />
+    <text x="22" y="335" fill="#fca5a5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Industrialized Operations</text>
+    <text x="22" y="355" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Compound Infrastructure</text>
+    <text x="22" y="371" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Southeast Asian scam hubs</text>
+    <text x="22" y="391" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Automated Smurfing</text>
+    <text x="22" y="407" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Mule bank accounts &amp; crypto bridges</text>
+    <text x="22" y="427" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Psychological Coercion</text>
+    <text x="22" y="443" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Extreme panic disables rational doubt</text>
+    <text x="22" y="465" fill="#ef4444" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700">Scalable Automated Social Engineering</text>
+  </g>
+
+  <!-- COLUMN 2: GLOBAL LOSSES -->
+  <g transform="translate(320, 75)">
+    <rect width="270" height="495" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect width="270" height="60" rx="8" fill="url(#amberGrad)" />
+    <circle cx="25" cy="30" r="12" fill="#d97706" />
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" text-anchor="middle">2</text>
+    <text x="46" y="26" fill="#fde68a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">GLOBAL LOSS METRICS</text>
+    <text x="46" y="42" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Empirical 2024–2025 Data</text>
+
+    <!-- Content Box -->
+    <rect x="12" y="70" width="246" height="235" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="22" y="90" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Jurisdictional Totals</text>
+    <text x="22" y="110" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• United States (FBI IC3)</text>
+    <text x="22" y="126" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  $16.6B losses (+33% YoY)</text>
+    <text x="22" y="146" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• India (MHA / I4C / NCRP)</text>
+    <text x="22" y="162" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  ₹22,845 Cr in 2024; ₹19,812 Cr in 2025</text>
+    <text x="22" y="182" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• United Kingdom (UK Finance)</text>
+    <text x="22" y="198" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  £1.17B lost to payment fraud</text>
+    <text x="22" y="218" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Australia (ACCC NASC)</text>
+    <text x="22" y="234" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  AUD $2.03B reported losses</text>
+    <text x="22" y="254" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Elder Fraud Surge (60+)</text>
+    <text x="22" y="270" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  $4.9B in US (+43% YoY)</text>
+    <text x="22" y="292" fill="#fbbf24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Crypto fraud = $9.3B (+66% in US)</text>
+
+    <!-- Takeaway -->
+    <rect x="12" y="315" width="246" height="165" rx="6" fill="#1e1e2e" stroke="#334155" />
+    <text x="22" y="335" fill="#fde68a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Deloitte 2027 Projections</text>
+    <text x="22" y="355" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• $40 Billion by 2027</text>
+    <text x="22" y="371" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Gen-AI fraud in US banking (32% CAGR)</text>
+    <text x="22" y="391" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• 700% Surge in Deepfakes</text>
+    <text x="22" y="407" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Targeting fintech biometric KYC</text>
+    <text x="22" y="427" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• 77% Investment Scam Share</text>
+    <text x="22" y="443" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Dominated by fake trading platforms</text>
+    <text x="22" y="465" fill="#d97706" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700">Losses Escalating at Exponential Velocity</text>
+  </g>
+
+  <!-- COLUMN 3: TACTICAL DEFENSE -->
+  <g transform="translate(610, 75)">
+    <rect width="270" height="495" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect width="270" height="60" rx="8" fill="url(#blueGrad)" />
+    <circle cx="25" cy="30" r="12" fill="#0284c7" />
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" text-anchor="middle">3</text>
+    <text x="46" y="26" fill="#7dd3fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">TACTICAL DEFENSE</text>
+    <text x="46" y="42" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Zero-Trust Cognitive Protocols</text>
+
+    <!-- Content Box -->
+    <rect x="12" y="70" width="246" height="235" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="22" y="90" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Verification Frameworks</text>
+    <text x="22" y="110" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Family / Enterprise Safe Word</text>
+    <text x="22" y="126" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Pre-shared verbal passphrase</text>
+    <text x="22" y="146" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Strict Out-of-Band Callback</text>
+    <text x="22" y="162" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Hang up and dial known contact</text>
+    <text x="22" y="182" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Spectral Audio Anomaly Checks</text>
+    <text x="22" y="198" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Detects vocoder phase artifacts</text>
+    <text x="22" y="218" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• StopNCII Perceptual Hashing</text>
+    <text x="22" y="234" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Prevents non-consensual deepfakes</text>
+    <text x="22" y="254" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Dual-Control Wire Approvals</text>
+    <text x="22" y="270" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Mandatory out-of-band CFO sign-off</text>
+    <text x="22" y="292" fill="#38bdf8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Never trust incoming caller ID/voice</text>
+
+    <!-- Takeaway -->
+    <rect x="12" y="315" width="246" height="165" rx="6" fill="#1e1e2e" stroke="#334155" />
+    <text x="22" y="335" fill="#7dd3fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Psychological Countermeasures</text>
+    <text x="22" y="355" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Enforce 10-Minute Circuit Breaker</text>
+    <text x="22" y="371" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Pause execution during panic states</text>
+    <text x="22" y="391" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Neutral Third-Party Check</text>
+    <text x="22" y="407" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Consult family or branch manager</text>
+    <text x="22" y="427" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• Challenge Questions</text>
+    <text x="22" y="443" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Ask facts absent from social media</text>
+    <text x="22" y="465" fill="#0284c7" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700">Cryptographic &amp; Operational Friction</text>
+  </g>
+
+  <!-- COLUMN 4: FINANCIAL KILLCHAINS -->
+  <g transform="translate(900, 75)">
+    <rect width="270" height="495" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect width="270" height="60" rx="8" fill="url(#emeraldGrad)" />
+    <circle cx="25" cy="30" r="12" fill="#059669" />
+    <text x="25" y="35" fill="#ffffff" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="800" text-anchor="middle">4</text>
+    <text x="46" y="26" fill="#a7f3d0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700">KILLCHAINS &amp; LAW</text>
+    <text x="46" y="42" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="600">Intervention &amp; Enforcement</text>
+
+    <!-- Content Box -->
+    <rect x="12" y="70" width="246" height="235" rx="6" fill="#0f172a" stroke="#1e293b" />
+    <text x="22" y="90" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Rapid Freezing Infrastructures</text>
+    <text x="22" y="110" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• FBI IC3 RAT / FFKC</text>
+    <text x="22" y="126" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  $561M frozen (66% success rate)</text>
+    <text x="22" y="146" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• India CFCFRMS (Dial 1930)</text>
+    <text x="22" y="162" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  ₹8,189 Cr frozen in 2025 alone</text>
+    <text x="22" y="182" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• FBI Operation Level Up</text>
+    <text x="22" y="198" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  4,323 victims proactively warned</text>
+    <text x="22" y="218" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• US FCC Robocall Prohibition</text>
+    <text x="22" y="234" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Bans AI voices under TCPA</text>
+    <text x="22" y="254" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• FBI–CBI Joint Operations</text>
+    <text x="22" y="270" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  215 arrests in 2024 (+700% YoY)</text>
+    <text x="22" y="292" fill="#34d399" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="600">Interception within 2 hours is critical</text>
+
+    <!-- Takeaway -->
+    <rect x="12" y="315" width="246" height="165" rx="6" fill="#1e1e2e" stroke="#334155" />
+    <text x="22" y="335" fill="#a7f3d0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700">Carrier Regulatory Mandates</text>
+    <text x="22" y="355" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• TRAI Telecom Blacklisting</text>
+    <text x="22" y="371" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Severing unverified VoIP routes</text>
+    <text x="22" y="391" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• UK APP Fraud Mandatory Refunds</text>
+    <text x="22" y="407" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  PSR enforces £85,000 reimbursement</text>
+    <text x="22" y="427" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10">• EU AI Act Deepfake Watermarks</text>
+    <text x="22" y="443" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9">  Mandatory cryptographic provenance</text>
+    <text x="22" y="465" fill="#059669" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" font-weight="700">Financial Rail Accountability Shift</text>
+  </g>
+
+  <!-- BOTTOM COMPARATIVE BANNER -->
+  <g transform="translate(30, 585)">
+    <rect width="1140" height="125" rx="8" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <text x="25" y="24" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700">THE FINANCIAL FRAUD LIFECYCLE: THE 2-HOUR "GOLDEN WINDOW" FOR ASSET RECOVERY</text>
+
+    <!-- Spectrum Line -->
+    <line x1="25" y1="45" x2="1115" y2="45" stroke="#475569" stroke-width="4" stroke-linecap="round" />
+
+    <circle cx="120" cy="45" r="10" fill="#ef4444" stroke="#ffffff" stroke-width="2" />
+    <text x="120" y="68" fill="#fca5a5" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">T + 0 min: Coercion Transfer</text>
+    <text x="120" y="84" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Victim executes wire / UPI / crypto transfer</text>
+    <text x="120" y="98" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Funds hit Tier-1 mule account</text>
+
+    <circle cx="440" cy="45" r="10" fill="#fbbf24" stroke="#ffffff" stroke-width="2" />
+    <text x="440" y="68" fill="#fde68a" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">T + 15 min: Smurfing Split</text>
+    <text x="440" y="84" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Automated scripts fan out funds into 20+ mules</text>
+    <text x="440" y="98" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">CFCFRMS / RAT can still freeze nodes</text>
+
+    <circle cx="760" cy="45" r="10" fill="#38bdf8" stroke="#ffffff" stroke-width="2" />
+    <text x="760" y="68" fill="#7dd3fc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">T + 120 min: Crypto Conversion</text>
+    <text x="760" y="84" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Funds converted to USDT on P2P exchanges</text>
+    <text x="760" y="98" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Golden window closes; recovery drops below 10%</text>
+
+    <circle cx="1020" cy="45" r="10" fill="#10b981" stroke="#ffffff" stroke-width="2" />
+    <text x="1020" y="68" fill="#86efac" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" text-anchor="middle">Rapid Freeze Threshold</text>
+    <text x="1020" y="84" fill="#94a3b8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Reporting within 2 hrs yields 66% freeze success</text>
+    <text x="1020" y="98" fill="#cbd5e1" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="9" text-anchor="middle">Dial 1930 (India) or file IC3 RAT (US)</text>
+  </g>
+</svg>

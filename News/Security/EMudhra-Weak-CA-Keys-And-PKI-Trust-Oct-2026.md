@@ -212,4 +212,4 @@ Based on user-provided details, with material claims checked against primary dis
 - [PHP2Shell: History, UAF and ASLR](PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — Compare a serious primitive with the additional conditions needed for exploitation.
 - [LiteLLM 1.107.0 Supply-Chain Compromise](LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md) — LiteLLM delayed a release while removing this CA from its trust store, showing the downstream operational impact.
 - [Notepad++ Targeted Attack](Notepad++-Targeted-Attack-Nov-2026.md) — Compare software-update authenticity and failures in trusted delivery paths.
-- [Wireless Devices and Apps](Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md) — Compare certificate validation and implementation failures across client devices.
+- [Wireless Device Security: WhisperPair & Implementation Traps](Wireless-Device-Security-WhisperPair-CVE-2025-36911-2026.md) — Compare certificate validation and implementation failures across client devices.

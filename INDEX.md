@@ -498,7 +498,6 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Grok Build Passive DNS Data Exposure Nov 2026](News/Security/Grok-Build-Passive-DNS-Data-Exposure-Nov-2026.md)
 - [HTTP Egress Credential Proxies Vs MCP Gateways Nov 2026](News/Security/HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways-Nov-2026.md)
 - [India Spam Calls DND And TRAI Enforcement Oct 2026](News/Security/India-Spam-Calls-DND-And-TRAI-Enforcement-Oct-2026.md)
-- [Largest WhatsApp Data Leak in History](News/Security/Largest-WhatsApp-Data-Leak-in-History.md)
 - [Linux Kernel ZDI Public Reports KSMBD Oct 2026](News/Security/Linux-Kernel-ZDI-Public-Reports-KSMBD-Oct-2026.md)
 - [LiteLLM 1.107.0 Supply Chain Compromise Oct 2026](News/Security/LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md)
 - [Local AI And Agent Security Threat Model Nov 2026](News/Security/Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md)
@@ -516,8 +515,9 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Polymarket DebugBear Supply Chain Attack Oct 2026](News/Security/Polymarket-DebugBear-Supply-Chain-Attack-Oct-2026.md)
 - [React Server Components RCE GHSA xqc2 xf4c x3h3 Oct 2026](News/Security/React-Server-Components-RCE-GHSA-xqc2-xf4c-x3h3-Oct-2026.md)
 - [React2Shell CVE 2025 55182 Flight Protocol RCE 2026](News/Security/React2Shell-CVE-2025-55182-Flight-Protocol-RCE-2026.md)
-- [Security Vulnerabilities in Wireless Devices and Apps](News/Security/Security-Vulnerabilities-in-Wireless-Devices-and-Apps.md)
 - [Ubuntu Server CVE 2026 98432 Kernel UAF And Patch Lag Nov 2026](News/Security/Ubuntu-Server-CVE-2026-98432-Kernel-UAF-And-Patch-Lag-Nov-2026.md)
+- [WhatsApp Contact Enumeration And Data Leak 2026](News/Security/WhatsApp-Contact-Enumeration-And-Data-Leak-2026.md)
+- [Wireless Device Security WhisperPair CVE 2025 36911 2026](News/Security/Wireless-Device-Security-WhisperPair-CVE-2025-36911-2026.md)
 
 ### 🚨 Infrastructure & Outages
 - [AWS US East 1 Outage October 2025](News/Outages/AWS-US-East-1-Outage-October-2025.md)
@@ -538,7 +538,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Feb 22 2026](News/Weekly-Updates/Feb-22-2026.md)
 - [Feb 8 2026](News/Weekly-Updates/Feb-8-2026.md)
 - [Fellowship Oppertunities Guide 2026](News/Weekly-Updates/Fellowship-Oppertunities-Guide-2026.md)
-- [Global AI Scam Landscape 2026](News/Weekly-Updates/Global_AI_Scam_Landscape_2026.md)
+- [Global AI Scam Landscape And Defense Playbook 2026](News/Weekly-Updates/Global-AI-Scam-Landscape-And-Defense-Playbook-2026.md)
 - [India GSoc 2026 Extended](News/Weekly-Updates/India-GSoc-2026-Extended.md)
 - [India GSoc 2026 Trends Challenges Solutions](News/Weekly-Updates/India-GSoc-2026-Trends-Challenges-Solutions.md)
 - [Jan 11 2026](News/Weekly-Updates/Jan-11-2026.md)
