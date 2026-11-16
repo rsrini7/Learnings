@@ -327,5 +327,5 @@ ls -lh pkg/wasm_image_engine_bg.wasm
 - [TypeScript-Rust-Port-TSRS-Architecture-Nov-2026](TypeScript-Rust-Port-TSRS-Architecture-Nov-2026.md) — Case study of porting TypeScript to Rust to achieve zero-GC WebAssembly compilation for in-browser and Cloudflare Workers execution.
 - [Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026](Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md) — Connects sandboxed runtimes and portable execution to Deno's move toward self-hosted Workers and Durable Objects.
 - [Go-SIMD-vs-NumPy-vs-Java-Vector-API-2026](comparisons/Go-SIMD-vs-NumPy-vs-Java-Vector-API-2026.md) — Analyzes compiler intrinsics, vector registers, and low-level memory layouts relevant to WebAssembly SIMD acceleration.
-- [Scaling-1M-RPS-Java](../Architecture/Scaling-1M-RPS-Java.md) — Compares high-throughput managed server execution with edge-hosted WebAssembly microservices.
+- [Scaling-Java-Services-To-1-Million-RPS-2026](../Architecture/Scaling-Java-Services-To-1-Million-RPS-2026.md) — Compares high-throughput managed server execution with edge-hosted WebAssembly microservices.
 - [Java-25-vs-Go-1.25-Performance-Analysis-2026](comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md) — Evaluates memory layouts, GC pauses, and startup characteristics across compiled native runtimes.

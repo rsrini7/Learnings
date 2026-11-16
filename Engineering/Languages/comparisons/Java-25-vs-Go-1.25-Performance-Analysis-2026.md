@@ -465,4 +465,4 @@ The following legacy technical diagrams illustrate the execution lifecycle and h
 - [Go-Proposed-Collections-vs-Java-Collections-Framework-2026](Go-Proposed-Collections-vs-Java-Collections-Framework-2026.md) — Analyzes memory layouts, cache locality, and iteration models between Go generic packages and Java collections.
 - [Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026](../../JVM/Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026.md) — Explores Code Reflection and Foreign Function & Memory APIs bridging Java to native C/CUDA runtimes.
 - [Go-Test-Performance-Windows-vs-Linux-2026](../Go-Test-Performance-Windows-vs-Linux-2026.md) — Empirical process execution latency and OS scheduling differences between Windows and Linux.
-- [Scaling-1M-RPS-Java](../../Architecture/Scaling-1M-RPS-Java.md) — Production architecture blueprint for achieving 1 million requests per second on modern Java runtimes.
+- [Scaling-Java-Services-To-1-Million-RPS-2026](../../Architecture/Scaling-Java-Services-To-1-Million-RPS-2026.md) — Production architecture blueprint for achieving 1 million requests per second on modern Java runtimes.

@@ -1,6 +1,6 @@
 # Scaling Java Services to 1 Million RPS: Capacity, Consistency and Evidence
 
-**Learning note · Revised 15 November 2026 · Design study, not a validated deployment blueprint**  
+Learning note · Revised November 2026 · High-Throughput Distributed Systems &amp; JVM Architecture  
 *By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** One million requests per second is a workload target, not a property of a framework or server type. Feasibility depends on what each request does, how much data moves, what must be durable and which latency/error requirements must hold under failure.
@@ -199,8 +199,8 @@ Reworked from collected repository notes using official Java, PostgreSQL, Redis 
 ---
 
 **Related:**
-- [Scaling C++ Services to 1M RPS](Scaling-1M-RPS-C++.md) — Contrasts C++ thread-per-core, kernel bypass and zero-copy memory arenas with JVM runtime models.
-- [Scaling PostgreSQL for ChatGPT](../Databases/Scaling-PostgreSQL-ChatGPT.md) — Explains the separate limits of primary writes, replica reads, pooling and workload isolation.
+- [Scaling-Cpp-Services-To-1-Million-RPS-2026](Scaling-Cpp-Services-To-1-Million-RPS-2026.md) — Contrasts C++ thread-per-core, kernel bypass and zero-copy memory arenas with JVM runtime models.
+- [Scaling-PostgreSQL-High-Throughput-Architecture-2026](../Databases/Scaling-PostgreSQL-High-Throughput-Architecture-2026.md) — Explains the separate limits of primary writes, replica reads, pooling and workload isolation.
 - [Workflow Orchestration](../Middleware/workflow-orchestration.md) — Covers durable asynchronous work, idempotency and recovery beyond a synchronous request.
 - [Java Plugin Architecture](../JVM/Java-Plugin-Arch.md) — Explains extension contracts and execution boundaries within and outside a JVM.
 - [Java and Go Runtime Comparison](../Languages/comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md) — Provides wider language/runtime context without replacing workload-specific measurements.

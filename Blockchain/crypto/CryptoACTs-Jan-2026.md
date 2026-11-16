@@ -1223,5 +1223,5 @@ Cryptocurrency is highly risky. Regulations are uncertain. Political outcomes ar
 **Contact your senators. Make your voice heard. The future of crypto is being written this month.**
 
 **Related:**
-- [GraphDB-massive-scale-analysis](../../Engineering/Databases/GraphDB-massive-scale-analysis.md) — Stablecoin reserve ledgers, AML transaction monitoring, and 1:1 backing attestations rely on ledger-style immutable audit trails.
+- [Graph-Databases-At-Massive-Scale-Architecture-2026](../../Engineering/Databases/Graph-Databases-At-Massive-Scale-Architecture-2026.md) — Stablecoin reserve ledgers, AML transaction monitoring, and 1:1 backing attestations rely on ledger-style immutable audit trails.
 - [AI-Periodic-Table](../../AI-ML/LLMs/economy/AI-Periodic-Table.md) — The bill's stablecoin-yield and ethics battles sit inside the broader debate over AI/crypto labor and capital substitution.

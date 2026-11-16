@@ -255,8 +255,8 @@ Evaluated using official AWS EC2 on-demand and data transfer pricing schedules, 
 ---
 
 **Related:**
-- [Scaling Java Services to 1M RPS](../Architecture/Scaling-1M-RPS-Java.md) — Demonstrates how network egress and instance bandwidth budgets dictate infrastructure costs.
-- [Scaling C++ Services to 1M RPS](../Architecture/Scaling-1M-RPS-C++.md) — Evaluates hardware CPU pinning, NUMA boundaries, and kernel-bypass I/O on bare metal vs virtualized instances.
-- [Scaling PostgreSQL for ChatGPT](../Databases/Scaling-PostgreSQL-ChatGPT.md) — Analyzes single-primary bottlenecks and managed database trade-offs in cloud environments.
+- [Scaling-Java-Services-To-1-Million-RPS-2026](../Architecture/Scaling-Java-Services-To-1-Million-RPS-2026.md) — Demonstrates how network egress and instance bandwidth budgets dictate infrastructure costs.
+- [Scaling-Cpp-Services-To-1-Million-RPS-2026](../Architecture/Scaling-Cpp-Services-To-1-Million-RPS-2026.md) — Evaluates hardware CPU pinning, NUMA boundaries, and kernel-bypass I/O on bare metal vs virtualized instances.
+- [Scaling-PostgreSQL-High-Throughput-Architecture-2026](../Databases/Scaling-PostgreSQL-High-Throughput-Architecture-2026.md) — Analyzes single-primary bottlenecks and managed database trade-offs in cloud environments.
 - [Workflow Orchestration](../Middleware/workflow-orchestration.md) — Covers durable background worker processing that can be offloaded to low-cost dedicated compute tiers.
 - [MacMini Setup Guide](../../DevSetup/MacMini-Setup.md) — Explores cost-efficient local homelab infrastructure as an alternative to public cloud development environments.

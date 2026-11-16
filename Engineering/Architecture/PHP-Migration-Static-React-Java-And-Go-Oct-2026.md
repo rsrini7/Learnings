@@ -105,5 +105,5 @@ Researched after PHP2Shell to distinguish language choice from removing unnecess
 - [Deno Joins Cloudflare](../Languages/Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md) — Shows why runtime governance, ecosystem maturity and migration ownership belong in platform-selection decisions.
 - [PHP2Shell Exploit Debate](../../News/Security/PHP2Shell-Exploit-Debate-Threat-Models-And-Patch-Status-Oct-2026.md) — Threat-model distinctions and updated patch status that inform migration priorities.
 - [PHP2Shell: History, UAF and ASLR](../../News/Security/PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — The native-runtime incident motivating this migration comparison.
-- [Scaling Java Services](Scaling-1M-RPS-Java.md) — JVM deployment and performance considerations after selecting Java.
+- [Scaling-Java-Services-To-1-Million-RPS-2026](Scaling-Java-Services-To-1-Million-RPS-2026.md) — JVM deployment and performance considerations after selecting Java.
 - [Java and Go Comparison](../Languages/comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md) — Language/runtime trade-offs relevant to the backend shortlist.

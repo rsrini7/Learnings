@@ -1,6 +1,6 @@
-# Scaling PostgreSQL for ChatGPT: Reads, Writes and Operational Limits
+# Scaling PostgreSQL for High-Throughput Architectures: Primary-Replica Workloads, Connection Pooling, and Write Governance
 
-**Learning note · Revised 15 November 2026 · Historical case study with source boundaries**  
+Learning note · Revised November 2026 · Relational Database Architecture &amp; High-Scale Systems  
 *By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** The published accounts describe scaling a PostgreSQL workload by moving eligible reads to replicas, controlling writes, pooling connections and isolating important traffic. These techniques extend a primary/replica design, but each addresses a different bottleneck and has its own consistency and failure limits.
@@ -113,7 +113,7 @@ The [full OpenAI article](https://openai.com/index/scaling-postgresql/) returned
 ---
 
 **Related:**
-- [Scaling Java Services to 1M RPS](../Architecture/Scaling-1M-RPS-Java.md) — Applies database budgets, caching and overload control to a hypothetical high-throughput service.
+- [Scaling-Java-Services-To-1-Million-RPS-2026](../Architecture/Scaling-Java-Services-To-1-Million-RPS-2026.md) — Applies database budgets, caching and overload control to a hypothetical high-throughput service.
 - [Workflow Orchestration](../Middleware/workflow-orchestration.md) — Explains durable processing and retries when work is moved outside a synchronous database path.
-- [Graph Databases at Massive Scale](GraphDB-massive-scale-analysis.md) — Provides a different workload and data-model perspective on database scaling.
+- [Graph-Databases-At-Massive-Scale-Architecture-2026](Graph-Databases-At-Massive-Scale-Architecture-2026.md) — Provides a different workload and data-model perspective on database scaling and join limits.
 - [AWS versus Hetzner](../Cloud/AWS-vs-Hetzner.md) — Adds infrastructure and operational cost context to deployment choices.

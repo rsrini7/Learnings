@@ -92,4 +92,4 @@
 **Related:**
 - [JPMorgan-Blockchain-Strategy](../enterprise/JPMorgan-Blockchain-Strategy.md) — Sits alongside JPMC's strategy with parallel moves like BNY's tokenized-deposits launch and Ondo's unlock.
 - [Blockchain-by-2035](Blockchain-by-2035.md) — Tracks incremental weekly progress against the long-horizon 2035 tokenized-economy milestones.
-- [Scaling-PostgreSQL-ChatGPT](../../Engineering/Databases/Scaling-PostgreSQL-ChatGPT.md) — Notes the ledger and data-architecture parallels between tokenized-deposit platforms and traditional database systems.
+- [Scaling-PostgreSQL-High-Throughput-Architecture-2026](../../Engineering/Databases/Scaling-PostgreSQL-High-Throughput-Architecture-2026.md) — Notes the ledger and data-architecture parallels between tokenized-deposit platforms and traditional database systems.

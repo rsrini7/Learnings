@@ -334,6 +334,6 @@ The following legacy technical diagram illustrates the high-level comparison bet
 **Related:**
 - [Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026](Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026.md) — Explores Code Reflection and FFM off-heap memory models that interface with Java value objects.
 - [Project-Detroit-Java-Polyglot-Runtimes-Nov-2026](Project-Detroit-Java-Polyglot-Runtimes-Nov-2026.md) — In-depth analysis of JVM memory models, object header overhead, and native C++ runtime bridges.
-- [Scaling-1M-RPS-Java](../Architecture/Scaling-1M-RPS-Java.md) — Demonstrates how immutable records and zero-allocation patterns achieve 1 million requests per second.
+- [Scaling-Java-Services-To-1-Million-RPS-2026](../Architecture/Scaling-Java-Services-To-1-Million-RPS-2026.md) — Demonstrates how immutable records and zero-allocation patterns achieve 1 million requests per second.
 - [Java-25-vs-Go-1.25-Performance-Analysis-2026](../Languages/comparisons/Java-25-vs-Go-1.25-Performance-Analysis-2026.md) — Evaluates memory layouts, cache locality, and data structures across modern Java and Go.
 - [Java-Python-Enterprise-AI-Playbook-2026](../../AI-ML/Comparisons/Java-Python-Enterprise-AI-Playbook-2026.md) — Compares Java data modeling primitives with Python dataclasses and Pydantic models in production AI pipelines.

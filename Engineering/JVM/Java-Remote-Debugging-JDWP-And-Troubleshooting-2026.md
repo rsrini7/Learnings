@@ -377,7 +377,7 @@ The diagram below provides a reference view of the remote debugging attachment f
 ---
 
 **Related:**
-- [Scaling-1M-RPS-Java](../Architecture/Scaling-1M-RPS-Java.md) — Production-safe diagnostics and low-overhead profiling for JVM systems sustaining 1,000,000 RPS.
+- [Scaling-Java-Services-To-1-Million-RPS-2026](../Architecture/Scaling-Java-Services-To-1-Million-RPS-2026.md) — Production-safe diagnostics and low-overhead profiling for JVM systems sustaining 1,000,000 RPS.
 - [Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026](Java-Next-Gen-Programming-Models-Babylon-Panama-Nov-2026.md) — Code reflection and foreign function memory access patterns interacting with JVM TI deoptimization.
 - [Java-Plugin-Arch](Java-Plugin-Arch.md) — Inspecting dynamic classloaders, isolated boundaries, and extension hosts via live debug hooks.
 - [SpringBoot-4-Migration-Copilot-VSCode](../../AI-ML/Agents/Spring-Boot-4-Migration/SpringBoot-4-Migration-Copilot-VSCode.md) — VS Code and Copilot debugging workflows relying on JDWP attachment for Spring Boot runtimes.

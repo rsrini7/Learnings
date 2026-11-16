@@ -259,6 +259,6 @@ Together these make XRPL a full **settlement and exchange layer** rather than ju
 
 **Related:**
 - [workflow-orchestration](../../Engineering/Middleware/workflow-orchestration.md) — Bank-side adoption requires orchestrating KYC, sanctions, FX, and settlement workflows across ISO 20022 and on-chain rails.
-- [GraphDB-massive-scale-analysis](../../Engineering/Databases/GraphDB-massive-scale-analysis.md) — Subnets like XDC's ISO-aware private ledgers and Hedera's HCS mirror partitioned, query-heavy enterprise database deployments.
-- [Scaling-PostgreSQL-ChatGPT](../../Engineering/Databases/Scaling-PostgreSQL-ChatGPT.md) — XRPL's every-3-5-second closed-ledger snapshot model parallels hot-path scaling of a single-writer state database.
+- [Graph-Databases-At-Massive-Scale-Architecture-2026](../../Engineering/Databases/Graph-Databases-At-Massive-Scale-Architecture-2026.md) — Subnets like XDC's ISO-aware private ledgers and Hedera's HCS mirror partitioned, query-heavy enterprise database deployments.
+- [Scaling-PostgreSQL-High-Throughput-Architecture-2026](../../Engineering/Databases/Scaling-PostgreSQL-High-Throughput-Architecture-2026.md) — XRPL's every-3-5-second closed-ledger snapshot model parallels hot-path scaling of a single-writer state database.
 - [AI-and-the-Barbell-Economy](../../AI-ML/LLMs/economy/AI-and-the-Barbell-Economy.md) — Liquidity-bridging with XRP fits the barbell thesis where AI agents and crypto rails dominate the extremes of finance.

@@ -1,6 +1,6 @@
 # Graph Databases at Massive Scale: Native Traversal, Distributed Sharding and Engine Trade-offs
 
-**Learning note · Revised 15 November 2026 · Distributed systems and query model evaluation**  
+Learning note · Revised November 2026 · Distributed Systems &amp; Graph Database Architecture  
 *By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Graph database architectures diverge between single-node native engines with index-free adjacency and distributed shared-nothing clusters with partitioned vertex/edge indices. Scaling beyond billions of edges requires trading off low-latency multi-hop pointer traversals against distributed transaction coordination, network partition RPCs and supernode contention.
@@ -171,8 +171,8 @@ For distributed clusters (TigerGraph, NebulaGraph):
 ---
 
 **Related:**
-- [Scaling PostgreSQL for ChatGPT](Scaling-PostgreSQL-ChatGPT.md) — Explains the single-primary relational write bottleneck and when relational models hit join scalability limits.
-- [Scaling Java Services to 1M RPS](../Architecture/Scaling-1M-RPS-Java.md) — Analyzes concurrency, throughput budgets, and storage offloading at high query volumes.
-- [Scaling C++ Services to 1M RPS](../Architecture/Scaling-1M-RPS-C++.md) — Details thread-per-core architectures and kernel-bypass I/O relevant to native graph database storage engines.
+- [Scaling-PostgreSQL-High-Throughput-Architecture-2026](Scaling-PostgreSQL-High-Throughput-Architecture-2026.md) — Explains the single-primary relational write bottleneck and when relational models hit join scalability limits.
+- [Scaling-Java-Services-To-1-Million-RPS-2026](../Architecture/Scaling-Java-Services-To-1-Million-RPS-2026.md) — Analyzes concurrency, throughput budgets, and storage offloading at high query volumes.
+- [Scaling-Cpp-Services-To-1-Million-RPS-2026](../Architecture/Scaling-Cpp-Services-To-1-Million-RPS-2026.md) — Details thread-per-core architectures and kernel-bypass I/O relevant to native graph database storage engines.
 - [Workflow Orchestration](../Middleware/workflow-orchestration.md) — Covers durable asynchronous processing and retries when coordinating distributed data pipelines.
 - [AWS versus Hetzner](../Cloud/AWS-vs-Hetzner.md) — Contrasts managed cloud database services (Neptune) with bare-metal dedicated hosting economics.

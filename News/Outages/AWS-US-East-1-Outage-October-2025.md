@@ -305,4 +305,4 @@ The following diagram illustrates the original incident timeline, affected cloud
 - [Cloudflare Global Outage ClickHouse Config](Cloudflare-Global-Outage-ClickHouse-Config-Nov-2025.md) — Another global platform disruption caused by configuration generator desync and homogeneous edge crashes.
 - [Supabase Outage Feb 2026](Supabase-Outage-Feb-2026.md) — Demonstrates how a single regional AWS VPC control-plane kill-switch isolated production databases.
 - [AWS vs Hetzner](../../Engineering/Cloud/AWS-vs-Hetzner.md) — Examines cloud blast radius dynamics, managed dependency coupling, and multi-region cost trade-offs.
-- [Scaling 1M RPS in C++](../../Engineering/Architecture/Scaling-1M-RPS-C++.md) — Explores zero-copy networking and asynchronous backpressure to avoid thundering herd queue exhaustion.
+- [Scaling-Cpp-Services-To-1-Million-RPS-2026](../../Engineering/Architecture/Scaling-Cpp-Services-To-1-Million-RPS-2026.md) — Explores zero-copy networking and asynchronous backpressure to avoid thundering herd queue exhaustion.

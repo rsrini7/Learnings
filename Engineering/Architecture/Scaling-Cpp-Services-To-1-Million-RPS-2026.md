@@ -1,6 +1,6 @@
 # Scaling C++ Services to 1 Million RPS: Capacity, Zero-Copy and Concurrency Models
 
-**Learning note · Revised 15 November 2026 · Design study, not a validated deployment blueprint**  
+Learning note · Revised November 2026 · Systems Programming &amp; Zero-Copy Architecture  
 *By Srinivasan Ragothaman ([@rsrini7](https://github.com/rsrini7))*
 
 > **Core idea:** Achieving one million requests per second in C++ requires eliminating kernel crossing overhead, dynamic memory allocations and lock contention on the hot path. While C++ eliminates JVM garbage-collection pauses, real-world throughput is constrained by network packet limits, cache coherence and storage durability contracts.
@@ -223,8 +223,8 @@ Synthesized from primary C++ high-performance networking documentation, the Tech
 ---
 
 **Related:**
-- [Scaling Java Services to 1M RPS](Scaling-1M-RPS-Java.md) — Analyzes JVM virtual threads, garbage collection tuning (ZGC), and memory budgets under the same 1M RPS target.
-- [Scaling PostgreSQL for ChatGPT](../Databases/Scaling-PostgreSQL-ChatGPT.md) — Examines single-primary database bottlenecks, connection pooling, and replica lag at massive query volumes.
+- [Scaling-Java-Services-To-1-Million-RPS-2026](Scaling-Java-Services-To-1-Million-RPS-2026.md) — Analyzes JVM virtual threads, garbage collection tuning (ZGC), and memory budgets under the same 1M RPS target.
+- [Scaling-PostgreSQL-High-Throughput-Architecture-2026](../Databases/Scaling-PostgreSQL-High-Throughput-Architecture-2026.md) — Examines single-primary database bottlenecks, connection pooling, and replica lag at massive query volumes.
 - [Workflow Orchestration](../Middleware/workflow-orchestration.md) — Explains asynchronous durable execution, idempotency, and retries when decoupling requests from the synchronous write path.
 - [Rust versus C](../Languages/comparisons/rust-vs-c.md) — Compares memory safety guarantees, zero-cost abstractions, and low-level performance characteristics.
 - [HTTP QUERY Method](HTTP-QUERY-Method-RFC-10008-Nov-2026.md) — Discusses safe request caching, body hashing, and idempotent querying at scale.

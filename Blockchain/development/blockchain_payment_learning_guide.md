@@ -783,4 +783,4 @@ Start with your use case preference, but plan to gain competency across at least
 
 **Related:**
 - [Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026](../../QuantumComputing/Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026.md) — XRPL validators and HBAR aBFT are pitched as safer than Bitcoin's ECDSA against the looming quantum timeline.
-- [GraphDB-massive-scale-analysis](../../Engineering/Databases/GraphDB-massive-scale-analysis.md) — XRPL issued-currencies/AMM and Hedera HCS tokenization raise the same indexing and graph-query challenges as enterprise ledger data.
+- [Graph-Databases-At-Massive-Scale-Architecture-2026](../../Engineering/Databases/Graph-Databases-At-Massive-Scale-Architecture-2026.md) — XRPL issued-currencies/AMM and Hedera HCS tokenization raise the same indexing and graph-query challenges as enterprise ledger data.

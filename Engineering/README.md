@@ -17,8 +17,8 @@ Deep dives into high-throughput backend systems, modern runtime internals, distr
 ## 🏗️ Architecture
 - [HTTP QUERY Method RFC 10008 Nov 2026](Architecture/HTTP-QUERY-Method-RFC-10008-Nov-2026.md)
 - [PHP Migration Static React Java And Go Oct 2026](Architecture/PHP-Migration-Static-React-Java-And-Go-Oct-2026.md)
-- [Scaling 1M RPS C++](Architecture/Scaling-1M-RPS-C%2B%2B.md)
-- [Scaling 1M RPS Java](Architecture/Scaling-1M-RPS-Java.md)
+- [Scaling Cpp Services To 1 Million RPS 2026](Architecture/Scaling-Cpp-Services-To-1-Million-RPS-2026.md)
+- [Scaling Java Services To 1 Million RPS 2026](Architecture/Scaling-Java-Services-To-1-Million-RPS-2026.md)
 
 ## ☕ JVM
 - [Java Classes Records And Carrier Classes 2026](JVM/Java-Classes-Records-And-Carrier-Classes-2026.md)
@@ -28,8 +28,8 @@ Deep dives into high-throughput backend systems, modern runtime internals, distr
 - [Project Detroit Java Polyglot Runtimes Nov 2026](JVM/Project-Detroit-Java-Polyglot-Runtimes-Nov-2026.md)
 
 ## 💾 Databases
-- [GraphDB massive scale analysis](Databases/GraphDB-massive-scale-analysis.md)
-- [Scaling PostgreSQL ChatGPT](Databases/Scaling-PostgreSQL-ChatGPT.md)
+- [Graph Databases At Massive Scale Architecture 2026](Databases/Graph-Databases-At-Massive-Scale-Architecture-2026.md)
+- [Scaling PostgreSQL High Throughput Architecture 2026](Databases/Scaling-PostgreSQL-High-Throughput-Architecture-2026.md)
 
 ## 📞 Middleware
 - [Kafka 4.0 KRaft Architecture And Migration 2026](Middleware/Kafka-4.0-KRaft-Architecture-And-Migration-2026.md)

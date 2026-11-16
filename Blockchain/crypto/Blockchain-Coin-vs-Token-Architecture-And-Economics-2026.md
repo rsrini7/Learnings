@@ -356,5 +356,5 @@ The following architectural diagrams from the repository illustrate blockchain s
 - [Ethereum-Hardhat-Docker-Environment-2026](../ethereum/Ethereum-Hardhat-Docker-Environment-2026.md) — Comprehensive guide to containerized smart contract development, compilation, and automated test harnesses.
 - [Crypto-Supercycle-and-Ethereum](../ethereum/Crypto-Supercycle-and-Ethereum.md) — Analysis of Ethereum monetary policy, staking yields, and L1 vs L2 fee dynamics.
 - [Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026](../../QuantumComputing/Quantum-Threat-to-Bitcoin-And-Elliptic-Curve-Cryptography-2026.md) — Analyzes the cryptographic security of secp256k1 elliptic curve signatures used in native coin transactions.
-- [GraphDB-massive-scale-analysis](../../Engineering/Databases/GraphDB-massive-scale-analysis.md) — Compares blockchain state trees and transaction graphs with distributed graph databases.
+- [Graph-Databases-At-Massive-Scale-Architecture-2026](../../Engineering/Databases/Graph-Databases-At-Massive-Scale-Architecture-2026.md) — Compares blockchain state trees and transaction graphs with distributed graph databases.
 - [ISO20022-Aligned-Crypto-Rails-XRP-XLM-XDC-HBAR](ISO20022-Aligned-Crypto-Rails-XRP-XLM-XDC-HBAR.md) — Evaluates enterprise payment settlement across native consensus tokens and banking messaging standards.
