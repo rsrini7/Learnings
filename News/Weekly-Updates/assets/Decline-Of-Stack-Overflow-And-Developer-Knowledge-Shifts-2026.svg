@@ -1,0 +1,243 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0b0f19" />
+    </linearGradient>
+
+    <!-- Card Gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Header Gradient -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ea580c" />
+      <stop offset="50%" stop-color="#f97316" />
+      <stop offset="100%" stop-color="#fb923c" />
+    </linearGradient>
+
+    <!-- Shadow Filter -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Outer Frame -->
+  <rect x="20" y="20" width="1160" height="780" rx="16" fill="none" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Header Banner -->
+  <g transform="translate(40, 45)">
+    <rect x="0" y="0" width="1120" height="80" rx="12" fill="url(#cardGrad)" stroke="#f97316" stroke-width="1.5" filter="url(#dropShadow)" />
+    <circle cx="45" cy="40" r="22" fill="#c2410c" fill-opacity="0.2" stroke="#f97316" stroke-width="1.5" />
+    <text x="45" y="47" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="bold" fill="#f97316" text-anchor="middle">SO</text>
+
+    <text x="85" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="bold" fill="#f8fafc">
+      The Decline of Stack Overflow &amp; The Developer Knowledge Shift (2008–2026)
+    </text>
+    <text x="85" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">
+      From Peak Public Commons to Generative Ephemeral Retrieval · SEDE Metrics, AI Disruption &amp; Model Autophagy
+    </text>
+  </g>
+
+  <!-- Panel 1: Empirical Volume Trajectory -->
+  <g transform="translate(40, 145)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#f97316" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#c2410c" fill-opacity="0.3" stroke="#f97316" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f97316" text-anchor="middle">1</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      Empirical Volume Collapse (SEDE Data)
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#f97316">
+      Monthly Question Submissions: Peak 200k/mo to 3.8k in Dec 2025
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      2008–2014: The Golden Era of Growth
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Rapid adoption driven by reputation gamification and peer voting;
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      peaked at &gt;200,000 new questions per month in mid-2014.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      2022 Inflection Point: ChatGPT Acceleration
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Post-launch cliff: public question volume dropped 70% to 78%;
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      developers moved from public forums to private LLM dialogues.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      December 2025 Baseline Reset
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Only 3,862 questions logged in Dec 2025 (down 78% year-over-year),
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      resetting activity metrics back to the initial 2008 launch period.
+    </text>
+  </g>
+
+  <!-- Panel 2: Internal Friction & Cultural Gatekeeping -->
+  <g transform="translate(615, 145)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">2</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      Internal Friction: The Pre-AI Stagnation
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#38bdf8">
+      Why Question Influx Plateaued Before Generative AI Emerged
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Hyper-Strict Moderation &amp; Duplicate Closures
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Questions closed within seconds as 'duplicate' or 'not focused';
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      veteran gatekeeping erected high friction barriers for juniors.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Hostility &amp; Downvote Anxiety
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Public reprimands, reputation loss, and blunt 'RTFM' remarks
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      fostered a culture of psychological anxiety around posting.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Knowledge Base Bit-Rot
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Accepted answers from 2011 retained algorithmic priority despite
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      being completely broken or obsolete in modern runtime versions.
+    </text>
+  </g>
+
+  <!-- Panel 3: The AI Shift: Zero Friction vs Trust Paradox -->
+  <g transform="translate(40, 460)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#4ade80" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#15803d" fill-opacity="0.3" stroke="#4ade80" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#4ade80" text-anchor="middle">3</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      The Developer Survey Paradox (2025)
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#4ade80">
+      84% AI Tool Adoption Juxtaposed with 46% Distrust in Accuracy
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Zero-Judgment, Instant Response Loop
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      LLMs answer trivial or syntax questions instantaneously without
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      chastising the developer, creating superior immediate utility.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      The Trust vs. Convenience Tension
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Only 33% of developers fully trust AI accuracy; developers still
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      treat Stack Overflow as ground truth when models hallucinate.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      In-Editor Copilots &amp; IDE Synthesis
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Context-aware IDE assistants ingest local codebase state directly,
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      obviating the need to anonymize code for public browser search.
+    </text>
+  </g>
+
+  <!-- Panel 4: The Epistemic Risk: Model Autophagy Disorder (MAD) -->
+  <g transform="translate(615, 460)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#c084fc" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#7e22ce" fill-opacity="0.3" stroke="#c084fc" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#c084fc" text-anchor="middle">4</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      Epistemic Risk &amp; Model Autophagy
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#c084fc">
+      The Tragedy of the Knowledge Commons in the LLM Era
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Training Data Stagnation
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      LLMs were trained on historical human Q&amp;A archives; as human
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      posting stops, new frameworks (2025+) lack public training signals.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Transition to B2B Data Licensing
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Stack Overflow monetizes historical archives via AI licensing
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      (OpenAI, Google) and private enterprise SaaS (Teams).
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Fragmentation of Community Knowledge
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Solutions fragment into private Discord channels, GitHub issues,
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      and unindexed private chat histories, eroding the open web.
+    </text>
+  </g>
+
+  <!-- Footer Info -->
+  <g transform="translate(40, 770)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b">
+      Stack Exchange Data Explorer (SEDE) Telemetry · Stack Overflow Developer Survey 2025 · Comprehensive Analysis (2026)
+    </text>
+  </g>
+</svg>

@@ -1,0 +1,236 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0b0f19" />
+    </linearGradient>
+
+    <!-- Card Gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Shadow Filter -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="820" fill="url(#bgGrad)" />
+
+  <!-- Outer Frame -->
+  <rect x="20" y="20" width="1160" height="780" rx="16" fill="none" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Header Banner -->
+  <g transform="translate(40, 45)">
+    <rect x="0" y="0" width="1120" height="80" rx="12" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5" filter="url(#dropShadow)" />
+    <circle cx="45" cy="40" r="22" fill="#0284c7" fill-opacity="0.2" stroke="#38bdf8" stroke-width="1.5" />
+    <text x="45" y="47" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="bold" fill="#38bdf8" text-anchor="middle">IP</text>
+
+    <text x="85" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="bold" fill="#f8fafc">
+      WIPO International Fellowship &amp; IP Governance Architecture (2026)
+    </text>
+    <text x="85" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">
+      United Nations WIPO (Geneva) · Patent Analytics, Transnational Tech Policy &amp; Frontier AI Jurisprudence
+    </text>
+  </g>
+
+  <!-- Panel 1: WIPO Institutional Systems -->
+  <g transform="translate(40, 145)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#0369a1" fill-opacity="0.3" stroke="#38bdf8" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#38bdf8" text-anchor="middle">1</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      WIPO Core Operational Systems
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#38bdf8">
+      Global IP Infrastructure &amp; Transnational Treaties
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Patent Cooperation Treaty (PCT) System
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Unified international patent filing across 157 contracting states;
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      coordinates international search reports (ISR) and written opinions.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      PATENTSCOPE Big Data Engine
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Over 115 million global patent records; provides multi-lingual
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      search, chemical structure queries, and AI patent landscape tools.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Madrid, Hague &amp; UDRP Arbitration
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Centralized international trademark registration, industrial design
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      treaties, and domain name dispute resolution under uniform rules.
+    </text>
+  </g>
+
+  <!-- Panel 2: Fellowship Mechanics & Economics -->
+  <g transform="translate(615, 145)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#4ade80" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#15803d" fill-opacity="0.3" stroke="#4ade80" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#4ade80" text-anchor="middle">2</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      Program Structure &amp; Economics
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#4ade80">
+      Geneva Residency · Individual Application Channels
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Duration &amp; Compensation Terms
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      12 to 36 months in Geneva; monthly stipend of CHF 3,000–8,000
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      (tax-exempt under UN diplomatic privileges and immunities).
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Skills-Based Selection (No Age Caps)
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Welcomes mid-career professionals; evaluated purely on technical
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      competence, legal expertise, and linguistic / analytical proficiency.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Developing Country Strategic Priority
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Mandated institutional focus on capacity building for Global South
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      nations; strong historical representation of Indian engineers &amp; lawyers.
+    </text>
+  </g>
+
+  <!-- Panel 3: Frontier Tech & AI IP Jurisprudence -->
+  <g transform="translate(40, 460)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#fbbf24" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#b45309" fill-opacity="0.3" stroke="#fbbf24" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#fbbf24" text-anchor="middle">3</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      Frontier Tech &amp; AI Patent Jurisprudence
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#fbbf24">
+      AI Inventorship, IPC Schemas &amp; Digital Governance
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Autonomous AI Inventorship (DABUS Doctrine)
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Global treaty harmonization rejecting AI as a legal inventor;
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      requiring natural persons to demonstrate significant conception input.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      IPC / CPC Section G06N Schema Expansion
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Refining international patent classification taxonomies for machine
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      learning, neural networks, quantum computing, and bio-informatics.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Open Source &amp; Standard-Essential Patents
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Balancing FRAND licensing terms with open-source software
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      foundations and digital public goods across member states.
+    </text>
+  </g>
+
+  <!-- Panel 4: Corporate Sponsorship Myth & Strategy -->
+  <g transform="translate(615, 460)">
+    <rect x="0" y="0" width="545" height="295" rx="12" fill="url(#cardGrad)" stroke="#c084fc" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="16" y="16" width="36" height="36" rx="8" fill="#7e22ce" fill-opacity="0.3" stroke="#c084fc" stroke-width="1" />
+    <text x="34" y="40" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#c084fc" text-anchor="middle">4</text>
+    <text x="64" y="32" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#f8fafc">
+      The Corporate Sponsorship Myth &amp; Strategy
+    </text>
+    <text x="64" y="50" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#c084fc">
+      Zero Commercial Secondments · Public Interest Alignment
+    </text>
+
+    <!-- Sub-items -->
+    <rect x="16" y="68" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="90" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Zero Private Firm Sponsorship Reality
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      No evidence of corporate secondments from Big Tech/Finance;
+    </text>
+    <text x="28" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      WIPO operates on strict UN diplomatic neutrality and independence.
+    </text>
+
+    <rect x="16" y="140" width="513" height="64" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="162" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Public-Interest Strategic Framing
+    </text>
+    <text x="28" y="182" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Private candidates must frame skills around multilateral standards,
+    </text>
+    <text x="28" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      technology transfer to underserved markets, and IP democratization.
+    </text>
+
+    <rect x="16" y="212" width="513" height="68" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1" />
+    <text x="28" y="234" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="bold" fill="#e2e8f0">
+      Independent Career Launchpad
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      Alumni transition to leadership in national patent controllers,
+    </text>
+    <text x="28" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11.5" fill="#94a3b8">
+      international technology transfer offices, and global policy think tanks.
+    </text>
+  </g>
+
+  <!-- Footer Info -->
+  <g transform="translate(40, 770)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#64748b">
+      World Intellectual Property Organization (WIPO) · PCT Treaty · PATENTSCOPE Big Data · Geneva Headquarters
+    </text>
+  </g>
+</svg>

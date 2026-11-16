@@ -59,13 +59,13 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 - [Dec 21 2025](Weekly-Updates/Dec-21-2025.md)
 - [Dec 28 2025](Weekly-Updates/Dec-28-2025.md)
 - [Dec 7 2025](Weekly-Updates/Dec-7-2025.md)
-- [Decline of Stack Overflow](Weekly-Updates/Decline-of-Stack-Overflow.md)
+- [Decline Of Stack Overflow And Developer Knowledge Shifts 2026](Weekly-Updates/Decline-Of-Stack-Overflow-And-Developer-Knowledge-Shifts-2026.md)
 - [Feb 01 2026](Weekly-Updates/Feb-01-2026.md)
 - [Feb 15 2025](Weekly-Updates/Feb-15-2025.md)
 - [Feb 22 2026](Weekly-Updates/Feb-22-2026.md)
 - [Feb 8 2026](Weekly-Updates/Feb-8-2026.md)
-- [Fellowship Oppertunities Guide 2026](Weekly-Updates/Fellowship-Oppertunities-Guide-2026.md)
 - [Global AI Scam Landscape And Defense Playbook 2026](Weekly-Updates/Global-AI-Scam-Landscape-And-Defense-Playbook-2026.md)
+- [Global Tech Fellowships And Open Source Grants Guide 2026](Weekly-Updates/Global-Tech-Fellowships-And-Open-Source-Grants-Guide-2026.md)
 - [India GSoc 2026 Extended](Weekly-Updates/India-GSoc-2026-Extended.md)
 - [India GSoc 2026 Trends Challenges Solutions](Weekly-Updates/India-GSoc-2026-Trends-Challenges-Solutions.md)
 - [India Restaurant Billing Suppressed Turnover Probe 2026](Weekly-Updates/India-Restaurant-Billing-Suppressed-Turnover-Probe-2026.md)
@@ -79,7 +79,7 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 - [Mar 21 2026](Weekly-Updates/Mar-21-2026.md)
 - [Mar 29 2026](Weekly-Updates/Mar-29-2026.md)
 - [Singapore IMDA Agentic AI Governance Framework 2026](Weekly-Updates/Singapore-IMDA-Agentic-AI-Governance-Framework-2026.md)
-- [WIPO International Fellowship](Weekly-Updates/WIPO-International-Fellowship.md)
+- [WIPO International Fellowship Program Architecture 2026](Weekly-Updates/WIPO-International-Fellowship-Program-Architecture-2026.md)
 
 ---
 
