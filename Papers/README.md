@@ -22,7 +22,7 @@ Detailed technical breakdowns and critical evaluations of seminal machine learni
 - [mHC Simplified](deepseek/mHC-Simplified.md)
 
 ## 🧠 Reasoning & LLMs
-- [Agentic Reasoning LLMs](reasoning/Agentic-Reasoning-LLMs.md)
+- [Agentic Reasoning Architectures And Reflection Loops 2026](reasoning/Agentic-Reasoning-Architectures-And-Reflection-Loops-2026.md)
 - [Prompt Repetition RE2 Architecture 2026](reasoning/Prompt-Repetition-RE2-Architecture-2026.md)
 - [Recursive Language Models RLM Architecture 2026](reasoning/Recursive-Language-Models-RLM-Architecture-2026.md)
 
@@ -34,14 +34,14 @@ Detailed technical breakdowns and critical evaluations of seminal machine learni
 ## 📈 Scaling & Architecture
 - [Google Nested Learning And Neural Continuum Memory 2026](scaling/Google-Nested-Learning-And-Neural-Continuum-Memory-2026.md)
 - [Meta Sparse Memory Finetuning And Contextual Scaffolding 2026](scaling/Meta-Sparse-Memory-Finetuning-And-Contextual-Scaffolding-2026.md)
-- [The Science of Scaling AI Agent Systems](scaling/The-Science-of-Scaling-AI-Agent-Systems.md)
+- [Science of Scaling AI Agent Systems 2026](scaling/Science-of-Scaling-AI-Agent-Systems-2026.md)
 
 ## 📋 Meta & Academic Tools
 - [Google Titans Learning To Memorize At Test Time 2026](meta/Google-Titans-Learning-To-Memorize-At-Test-Time-2026.md)
 - [PaperBanana Automating Academic Illustration for AI Scientists](meta/PaperBanana-Automating-Academic-Illustration-for-AI-Scientists.md)
 
 ## 🎥 VL-JEPA
-- [VL JEPA Comprehensive Technical Guide](VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide.md)
+- [VL JEPA Comprehensive Technical Guide 2026](VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide-2026.md)
 
 ## ⚖️ Paper Comparisons
 - [Google Nested Learning vs Meta Sparse Memory 2026](comparisons/Google-Nested-Learning-vs-Meta-Sparse-Memory-2026.md)

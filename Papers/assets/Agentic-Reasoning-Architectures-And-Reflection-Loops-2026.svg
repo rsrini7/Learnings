@@ -1,0 +1,190 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="50%" stop-color="#111827"/>
+      <stop offset="100%" stop-color="#0b0f19"/>
+    </linearGradient>
+
+    <linearGradient id="cardGradDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="blueCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e3a8a" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="purpleCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#581c87" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <linearGradient id="greenCardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+
+    <marker id="arrowCyan" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#38bdf8"/>
+    </marker>
+    <marker id="arrowGreen" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#4ade80"/>
+    </marker>
+  </defs>
+
+  <!-- Canvas Background -->
+  <rect width="1200" height="700" fill="url(#bgGrad)"/>
+  <rect width="1200" height="700" fill="none" stroke="#1e293b" stroke-width="2"/>
+
+  <!-- Title & Header Bar -->
+  <g transform="translate(40, 24)">
+    <text x="0" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc" letter-spacing="-0.02em">
+      Agentic Reasoning Architecture: Foundational, Self-Evolving &amp; Collective Paradigms
+    </text>
+    <text x="0" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">
+      Synthesizing ~800 Research Papers on Test-Time Search, Closed-Loop Feedback, and Multi-Agent Orchestration
+    </text>
+  </g>
+
+  <!-- Panel 1: Layer 1 Foundational (Left) -->
+  <g transform="translate(40, 90)">
+    <rect width="340" height="570" rx="10" fill="url(#blueCardGrad)" stroke="#38bdf8" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="340" height="42" rx="10" fill="#38bdf8" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#38bdf8">1. FOUNDATIONAL REASONING</text>
+
+    <!-- Planning & Decomposition -->
+    <g transform="translate(16, 56)">
+      <rect width="308" height="110" rx="8" fill="#0f172a" stroke="#0284c7" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Planning &amp; Task Decomposition</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Test-time search algorithms:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#38bdf8">• Tree of Thoughts (ToT): Parallel path exploration</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#38bdf8">• Monte Carlo Tree Search (MCTS): Action rollout</text>
+    </g>
+
+    <!-- Tool Integration -->
+    <g transform="translate(16, 180)">
+      <rect width="308" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Tool Grounding &amp; Invocation</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Moving computation off neural weights:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Program-Aided Reasoning (code execution)</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Toolformer-style post-training RL for muscle memory</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Repository-level AST tools (OpenHands)</text>
+    </g>
+
+    <!-- Agentic Search -->
+    <g transform="translate(16, 316)">
+      <rect width="308" height="130" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Dynamic RAG 2.0 (Active Search)</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Multi-hop iterative exploration:</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Formulate hypotheses &amp; query search engines</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Evaluate search coverage &amp; synthesize follow-ups</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#38bdf8">• Corroborates facts across citations</text>
+    </g>
+
+    <!-- Core Loop -->
+    <g transform="translate(16, 460)">
+      <rect width="308" height="92" rx="8" fill="#1e1b4b" stroke="#6366f1" stroke-opacity="0.4" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#a5b4fc">The Soloist Primitive:</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#cbd5e1">Think → Plan → Act → Observe → Refine.</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">Converts passive text generation into an</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">active, goal-driven execution trajectory.</text>
+    </g>
+  </g>
+
+  <!-- Panel 2: Layer 2 Self-Evolving (Center) -->
+  <g transform="translate(410, 90)">
+    <rect width="380" height="570" rx="10" fill="url(#purpleCardGrad)" stroke="#a855f7" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="380" height="42" rx="10" fill="#a855f7" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#c084fc">2. SELF-EVOLVING FEEDBACK</text>
+
+    <!-- Feedback Loops -->
+    <g transform="translate(16, 56)">
+      <rect width="348" height="110" rx="8" fill="#0f172a" stroke="#7e22ce" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#c084fc">Tri-Tier Feedback Dynamics</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Three levels of feedback signals:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Reflective Feedback: Self-critique &amp; verification</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#e9d5ff">• Validator Feedback: Compiler logs &amp; unit tests</text>
+    </g>
+
+    <!-- Procedural Memory -->
+    <g transform="translate(16, 180)">
+      <rect width="348" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Procedural Competence Memory</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Shift from factual recall to reusable procedures:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Caching successful problem-solving trajectories</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Knowledge graphs &amp; experience pools</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Update-and-forget strategies to prevent context bloat</text>
+    </g>
+
+    <!-- Closed-Loop Convergence -->
+    <g transform="translate(16, 316)">
+      <rect width="348" height="130" rx="8" fill="#0f172a" stroke="#059669" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#34d399">Validator-Driven Convergence</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Environment signals enforce ground truth:</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Detects pytest/compiler failures automatically</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Generates targeted AST diffs to fix errors</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Re-executes until green test bar is achieved</text>
+    </g>
+
+    <!-- Evolution Impact -->
+    <g transform="translate(16, 460)">
+      <rect width="348" height="92" rx="8" fill="#0f172a" stroke="#a855f7" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#c084fc">The Learner Transformation:</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#94a3b8">Agents improve dynamically across episodes</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">without requiring human-in-the-loop retraining</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#4ade80">or offline parameter weight fine-tuning.</text>
+    </g>
+  </g>
+
+  <!-- Panel 3: Layer 3 Collective (Right) -->
+  <g transform="translate(820, 90)">
+    <rect width="340" height="570" rx="10" fill="url(#greenCardGrad)" stroke="#4ade80" stroke-opacity="0.5" stroke-width="1.5"/>
+    <rect width="340" height="42" rx="10" fill="#4ade80" fill-opacity="0.15"/>
+    <text x="20" y="26" font-family="sans-serif" font-size="14" font-weight="700" fill="#4ade80">3. COLLECTIVE MULTI-AGENT</text>
+
+    <!-- Role Specialization -->
+    <g transform="translate(16, 56)">
+      <rect width="308" height="110" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#4ade80">Role Specialization Taxonomy</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Decomposed collaborative roles:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Manager: Workflow coordination &amp; goal decomposition</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Planner: Sub-task dependency scheduling</text>
+    </g>
+
+    <!-- Critic & Verifier -->
+    <g transform="translate(16, 180)">
+      <rect width="308" height="120" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Adversarial Friction &amp; Verifiers</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Quality gates through debate:</text>
+      <text x="14" y="66" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Verifier / Critic: Introduces adversarial audit</text>
+      <text x="14" y="86" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Multi-agent debate exposes weak assumptions</text>
+      <text x="14" y="106" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Drastically reduces single-agent hallucination</text>
+    </g>
+
+    <!-- Swarms & Shared Memory -->
+    <g transform="translate(16, 316)">
+      <rect width="308" height="130" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="12" font-weight="700" fill="#cbd5e1">Distributed Swarm State</text>
+      <text x="14" y="46" font-family="sans-serif" font-size="11" fill="#94a3b8">Shared synchronization primitives:</text>
+      <text x="14" y="68" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Branch worktrees isolate file edits</text>
+      <text x="14" y="88" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Shared blackboard memory for cross-agent sync</text>
+      <text x="14" y="108" font-family="sans-serif" font-size="11" fill="#a7f3d0">• Decentralized self-organization (GPT-Swarm)</text>
+    </g>
+
+    <!-- Operational Takeaway -->
+    <g transform="translate(16, 460)">
+      <rect width="308" height="92" rx="8" fill="#0f172a" stroke="#22c55e" stroke-width="1"/>
+      <text x="14" y="24" font-family="sans-serif" font-size="11" font-weight="700" fill="#4ade80">The Team Horizon:</text>
+      <text x="14" y="44" font-family="sans-serif" font-size="11" fill="#cbd5e1">Complex software engineering problems</text>
+      <text x="14" y="62" font-family="sans-serif" font-size="11" fill="#cbd5e1">are solved not by larger monolithic models,</text>
+      <text x="14" y="80" font-family="sans-serif" font-size="11" fill="#38bdf8">but by coordinated, self-correcting agent teams.</text>
+    </g>
+  </g>
+
+  <!-- Connectors -->
+  <path d="M 380 375 L 410 375" fill="none" stroke="#38bdf8" stroke-width="2" marker-end="url(#arrowCyan)"/>
+  <path d="M 790 375 L 820 375" fill="none" stroke="#4ade80" stroke-width="2" marker-end="url(#arrowGreen)"/>
+
+</svg>

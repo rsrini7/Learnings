@@ -344,6 +344,6 @@ The following diagram illustrates the original conceptual workflow of Prompt Rep
 
 **Related:**
 - [Recursive-Language-Models-RLM-Architecture-2026](Recursive-Language-Models-RLM-Architecture-2026.md) — Solves context rot by externalizing data into a REPL workspace, complementing RE2's attention-level fix.
-- [Agentic-Reasoning-LLMs](Agentic-Reasoning-LLMs.md) — Examines test-time compute scaling and reflective loops where RE2 improves factual grounding.
+- [Agentic-Reasoning-Architectures-And-Reflection-Loops-2026](Agentic-Reasoning-Architectures-And-Reflection-Loops-2026.md) — Examines test-time compute scaling and reflective loops where RE2 improves factual grounding.
 - [DeepSeek-R1-Incentivizing-Reasoning-Via-RL-2026](../deepseek/DeepSeek-R1-Incentivizing-Reasoning-Via-RL-2026.md) — Reinforcement learning dynamics in multi-step reasoning models where Chain-of-Thought remains preferred.
 - [DeepSeek-Engram-Conditional-Memory-2026](../deepseek/DeepSeek-Engram-Conditional-Memory-2026.md) — Hardware-level conditional memory addressing pattern recall waste in transformer layers.

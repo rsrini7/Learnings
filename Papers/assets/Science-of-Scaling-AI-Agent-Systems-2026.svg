@@ -1,0 +1,240 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <filter id="cardShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="800" fill="url(#bgGrad)" />
+
+  <!-- Title & Meta Header -->
+  <g transform="translate(50, 40)">
+    <text x="0" y="0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">
+      The Science of Scaling AI Agent Systems: Architecture-Task Topology
+    </text>
+    <text x="0" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="400" fill="#94a3b8">
+      Empirical scaling laws, coordination overhead, and error amplification across 180 multi-agent configurations (arXiv:2512.08296)
+    </text>
+  </g>
+
+  <!-- Panel 1: Topologies & Error Amplification (y: 85..395) -->
+  <g transform="translate(50, 85)">
+    <rect width="1100" height="310" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)" />
+    
+    <text x="25" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">
+      1. Comparative System Topologies &amp; Empirical Error Amplification (A_e)
+    </text>
+
+    <!-- Card 1: Single Agent System (SAS) -->
+    <g transform="translate(25, 45)">
+      <rect width="250" height="245" rx="8" fill="#0f172a" stroke="#38bdf8" stroke-width="1.5" />
+      <rect x="0" y="0" width="250" height="32" rx="8" fill="#0284c7" fill-opacity="0.2" />
+      <text x="14" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+        Single-Agent (SAS)
+      </text>
+      
+      <!-- Visual schematic -->
+      <circle cx="125" cy="72" r="22" fill="#1e293b" stroke="#38bdf8" stroke-width="2" />
+      <text x="125" y="76" text-anchor="middle" font-family="sans-serif" font-size="10" font-weight="700" fill="#f8fafc">Agent</text>
+      <line x1="125" y1="94" x2="125" y2="114" stroke="#38bdf8" stroke-width="1.5" />
+
+      <!-- Metric badge -->
+      <rect x="14" y="122" width="222" height="24" rx="4" fill="#1e293b" stroke="#334155" />
+      <text x="22" y="138" font-family="sans-serif" font-size="11" font-weight="600" fill="#4ade80">Error Amplification: 1.0x</text>
+
+      <!-- Bullet points -->
+      <text x="14" y="166" font-family="sans-serif" font-size="11" fill="#94a3b8">• Zero communication overhead</text>
+      <text x="14" y="186" font-family="sans-serif" font-size="11" fill="#94a3b8">• Token budget: 100% on task reasoning</text>
+      <text x="14" y="206" font-family="sans-serif" font-size="11" fill="#94a3b8">• Dominates sequential tasks (57% vs 17%)</text>
+      <text x="14" y="226" font-family="sans-serif" font-size="11" fill="#38bdf8">• Lowest cost: 1.0x baseline tokens</text>
+    </g>
+
+    <!-- Card 2: Centralized MAS -->
+    <g transform="translate(295, 45)">
+      <rect width="250" height="245" rx="8" fill="#0f172a" stroke="#34d399" stroke-width="1.5" />
+      <rect x="0" y="0" width="250" height="32" rx="8" fill="#059669" fill-opacity="0.2" />
+      <text x="14" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#34d399">
+        Centralized MAS (Orchestrator)
+      </text>
+      
+      <!-- Visual schematic -->
+      <circle cx="125" cy="62" r="16" fill="#059669" fill-opacity="0.4" stroke="#34d399" stroke-width="1.5" />
+      <text x="125" y="66" text-anchor="middle" font-family="sans-serif" font-size="8" font-weight="700" fill="#f8fafc">Lead</text>
+      <circle cx="80" cy="98" r="12" fill="#1e293b" stroke="#94a3b8" stroke-width="1" />
+      <text x="80" y="101" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">A1</text>
+      <circle cx="125" cy="98" r="12" fill="#1e293b" stroke="#94a3b8" stroke-width="1" />
+      <text x="125" y="101" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">A2</text>
+      <circle cx="170" cy="98" r="12" fill="#1e293b" stroke="#94a3b8" stroke-width="1" />
+      <text x="170" y="101" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#94a3b8">A3</text>
+      <line x1="125" y1="78" x2="80" y2="86" stroke="#34d399" stroke-width="1" />
+      <line x1="125" y1="78" x2="125" y2="86" stroke="#34d399" stroke-width="1" />
+      <line x1="125" y1="78" x2="170" y2="86" stroke="#34d399" stroke-width="1" />
+
+      <!-- Metric badge -->
+      <rect x="14" y="122" width="222" height="24" rx="4" fill="#1e293b" stroke="#334155" />
+      <text x="22" y="138" font-family="sans-serif" font-size="11" font-weight="600" fill="#fbbf24">Error Amplification: 4.4x</text>
+
+      <!-- Bullet points -->
+      <text x="14" y="166" font-family="sans-serif" font-size="11" fill="#94a3b8">• Manager filters sub-agent noise</text>
+      <text x="14" y="186" font-family="sans-serif" font-size="11" fill="#94a3b8">• +80.9% gain on parallel finance tasks</text>
+      <text x="14" y="206" font-family="sans-serif" font-size="11" fill="#94a3b8">• 285% coordinator token overhead</text>
+      <text x="14" y="226" font-family="sans-serif" font-size="11" fill="#34d399">• Recommended: 3-4 parallel workers</text>
+    </g>
+
+    <!-- Card 3: Decentralized MAS -->
+    <g transform="translate(565, 45)">
+      <rect width="250" height="245" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1.5" />
+      <rect x="0" y="0" width="250" height="32" rx="8" fill="#d97706" fill-opacity="0.2" />
+      <text x="14" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+        Decentralized (Peer Debate)
+      </text>
+      
+      <!-- Visual schematic -->
+      <circle cx="85" cy="68" r="14" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5" />
+      <text x="85" y="72" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#f8fafc">A1</text>
+      <circle cx="165" cy="68" r="14" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5" />
+      <text x="165" y="72" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#f8fafc">A2</text>
+      <circle cx="125" cy="98" r="14" fill="#1e293b" stroke="#fbbf24" stroke-width="1.5" />
+      <text x="125" y="102" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#f8fafc">A3</text>
+      <line x1="99" y1="68" x2="151" y2="68" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2" />
+      <line x1="94" y1="80" x2="114" y2="90" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2" />
+      <line x1="156" y1="80" x2="136" y2="90" stroke="#fbbf24" stroke-width="1" stroke-dasharray="3,2" />
+
+      <!-- Metric badge -->
+      <rect x="14" y="122" width="222" height="24" rx="4" fill="#1e293b" stroke="#334155" />
+      <text x="22" y="138" font-family="sans-serif" font-size="11" font-weight="600" fill="#fb923c">Error Amplification: 7.8x</text>
+
+      <!-- Bullet points -->
+      <text x="14" y="166" font-family="sans-serif" font-size="11" fill="#94a3b8">• Effective for dynamic web search</text>
+      <text x="14" y="186" font-family="sans-serif" font-size="11" fill="#94a3b8">• Vulnerable to groupthink lock-in</text>
+      <text x="14" y="206" font-family="sans-serif" font-size="11" fill="#94a3b8">• Token cost: 2.8x single agent</text>
+      <text x="14" y="226" font-family="sans-serif" font-size="11" fill="#fbbf24">• Optimal team size: 2-3 agents</text>
+    </g>
+
+    <!-- Card 4: Independent MAS -->
+    <g transform="translate(835, 45)">
+      <rect width="240" height="245" rx="8" fill="#0f172a" stroke="#f43f5e" stroke-width="1.5" />
+      <rect x="0" y="0" width="240" height="32" rx="8" fill="#e11d48" fill-opacity="0.2" />
+      <text x="14" y="21" font-family="sans-serif" font-size="12" font-weight="700" fill="#f43f5e">
+        Independent (Ensemble Vote)
+      </text>
+      
+      <!-- Visual schematic -->
+      <circle cx="70" cy="68" r="12" fill="#1e293b" stroke="#f43f5e" stroke-width="1" />
+      <circle cx="120" cy="68" r="12" fill="#1e293b" stroke="#f43f5e" stroke-width="1" />
+      <circle cx="170" cy="68" r="12" fill="#1e293b" stroke="#f43f5e" stroke-width="1" />
+      <rect x="55" y="90" width="130" height="18" rx="3" fill="#1e293b" stroke="#f43f5e" />
+      <text x="120" y="103" text-anchor="middle" font-family="sans-serif" font-size="8" fill="#f43f5e">Majority Vote</text>
+
+      <!-- Metric badge -->
+      <rect x="14" y="122" width="212" height="24" rx="4" fill="#1e293b" stroke="#334155" />
+      <text x="22" y="138" font-family="sans-serif" font-size="11" font-weight="600" fill="#f43f5e">Error Amplification: 17.2x</text>
+
+      <!-- Bullet points -->
+      <text x="14" y="166" font-family="sans-serif" font-size="11" fill="#94a3b8">• Zero communication between peers</text>
+      <text x="14" y="186" font-family="sans-serif" font-size="11" fill="#94a3b8">• Errors compound without correction</text>
+      <text x="14" y="206" font-family="sans-serif" font-size="11" fill="#94a3b8">• Catastrophic drop on planning (-70%)</text>
+      <text x="14" y="226" font-family="sans-serif" font-size="11" fill="#f43f5e">• Strongly anti-recommended</text>
+    </g>
+  </g>
+
+  <!-- Panel 2: The Three Empirical Scaling Laws (y: 415..765) -->
+  <g transform="translate(50, 415)">
+    <rect width="1100" height="330" rx="10" fill="#1e293b" fill-opacity="0.6" stroke="#334155" stroke-width="1.5" filter="url(#cardShadow)" />
+    
+    <text x="25" y="28" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="700" fill="#38bdf8">
+      2. The Three Fundamental Laws of Multi-Agent Scaling
+    </text>
+
+    <!-- Law 1: Tool-Coordination Trade-off -->
+    <g transform="translate(25, 45)">
+      <rect width="335" height="260" rx="8" fill="#0f172a" stroke="#334155" />
+      <rect x="0" y="0" width="335" height="30" rx="8" fill="#334155" fill-opacity="0.5" />
+      <text x="14" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+        Law 1: Tool-Coordination Trade-Off
+      </text>
+
+      <!-- Mini Chart -->
+      <line x1="30" y1="105" x2="305" y2="105" stroke="#475569" stroke-width="1" />
+      <line x1="30" y1="45" x2="30" y2="105" stroke="#475569" stroke-width="1" />
+      <path d="M 40 55 Q 120 65 200 85 T 290 100" fill="none" stroke="#f43f5e" stroke-width="2.5" />
+      <text x="225" y="68" font-family="sans-serif" font-size="9" fill="#f43f5e" font-weight="600">-3.3% / tool</text>
+      <text x="35" y="117" font-family="sans-serif" font-size="9" fill="#94a3b8">1-4 tools</text>
+      <text x="145" y="117" font-family="sans-serif" font-size="9" fill="#94a3b8">8 tools</text>
+      <text x="250" y="117" font-family="sans-serif" font-size="9" fill="#94a3b8">16+ tools</text>
+
+      <!-- Text lines -->
+      <text x="14" y="142" font-family="sans-serif" font-size="11" font-weight="600" fill="#f8fafc">Tool Context Bloat (beta = -0.330):</text>
+      <text x="14" y="162" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Each agent carries full tool definitions</text>
+      <text x="14" y="182" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Tool overhead scales linearly with agent count</text>
+      <text x="14" y="202" font-family="sans-serif" font-size="11" fill="#cbd5e1">• At &gt;= 8 tools, single agent reasoning wins</text>
+      <text x="14" y="222" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Message coordination crowds out working context</text>
+      <text x="14" y="242" font-family="sans-serif" font-size="11" fill="#38bdf8">• Rule: Use single agent if tools &gt;= 8</text>
+    </g>
+
+    <!-- Law 2: The Capability Ceiling -->
+    <g transform="translate(385, 45)">
+      <rect width="335" height="260" rx="8" fill="#0f172a" stroke="#334155" />
+      <rect x="0" y="0" width="335" height="30" rx="8" fill="#334155" fill-opacity="0.5" />
+      <text x="14" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+        Law 2: The Capability Ceiling
+      </text>
+
+      <!-- Mini Chart -->
+      <line x1="30" y1="105" x2="305" y2="105" stroke="#475569" stroke-width="1" />
+      <line x1="30" y1="45" x2="30" y2="105" stroke="#475569" stroke-width="1" />
+      <path d="M 40 65 L 160 82 L 290 102" fill="none" stroke="#fbbf24" stroke-width="2.5" />
+      <line x1="160" y1="45" x2="160" y2="105" stroke="#94a3b8" stroke-dasharray="2,2" />
+      <text x="165" y="58" font-family="sans-serif" font-size="9" fill="#38bdf8">Ceiling: 45%</text>
+      <text x="35" y="117" font-family="sans-serif" font-size="9" fill="#94a3b8">Baseline 20%</text>
+      <text x="140" y="117" font-family="sans-serif" font-size="9" fill="#94a3b8">45%</text>
+      <text x="250" y="117" font-family="sans-serif" font-size="9" fill="#94a3b8">70%</text>
+
+      <!-- Text lines -->
+      <text x="14" y="142" font-family="sans-serif" font-size="11" font-weight="600" fill="#f8fafc">Diminishing Returns (beta = -0.408):</text>
+      <text x="14" y="162" font-family="sans-serif" font-size="11" fill="#cbd5e1">• If single agent &gt; 45% accuracy, MAS degrades</text>
+      <text x="14" y="182" font-family="sans-serif" font-size="11" fill="#cbd5e1">• High baseline (Claude: 50.2%): -4.6% MAS drop</text>
+      <text x="14" y="202" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Low baseline (35% finance): +80.9% MAS surge</text>
+      <text x="14" y="222" font-family="sans-serif" font-size="11" fill="#cbd5e1">• Marginal gains fail to amortize token overhead</text>
+      <text x="14" y="242" font-family="sans-serif" font-size="11" fill="#fbbf24">• Rule: Don't add agents if baseline &gt; 45%</text>
+    </g>
+
+    <!-- Law 3: Task Topology Matching -->
+    <g transform="translate(745, 45)">
+      <rect width="330" height="260" rx="8" fill="#0f172a" stroke="#334155" />
+      <rect x="0" y="0" width="330" height="30" rx="8" fill="#334155" fill-opacity="0.5" />
+      <text x="14" y="20" font-family="sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+        Law 3: Task Topology Matching
+      </text>
+
+      <!-- Decision rules summary -->
+      <g transform="translate(14, 40)">
+        <rect width="302" height="38" rx="4" fill="#1e293b" stroke="#059669" stroke-width="1" />
+        <text x="10" y="16" font-family="sans-serif" font-size="10" font-weight="700" fill="#34d399">PARALLEL INDEPENDENT TASKS</text>
+        <text x="10" y="30" font-family="sans-serif" font-size="10" fill="#94a3b8">Financial Analysis: Centralized MAS (3-4 ag.)</text>
+      </g>
+
+      <g transform="translate(14, 86)">
+        <rect width="302" height="38" rx="4" fill="#1e293b" stroke="#d97706" stroke-width="1" />
+        <text x="10" y="16" font-family="sans-serif" font-size="10" font-weight="700" fill="#fbbf24">DYNAMIC EXPLORATORY SEARCH</text>
+        <text x="10" y="30" font-family="sans-serif" font-size="10" fill="#94a3b8">Web Discovery: Decentralized (2-3 ag.)</text>
+      </g>
+
+      <g transform="translate(14, 132)">
+        <rect width="302" height="38" rx="4" fill="#1e293b" stroke="#e11d48" stroke-width="1" />
+        <text x="10" y="16" font-family="sans-serif" font-size="10" font-weight="700" fill="#fb7185">SEQUENTIAL STATE DEPENDENT</text>
+        <text x="10" y="30" font-family="sans-serif" font-size="10" fill="#94a3b8">Step Planning: SINGLE AGENT ONLY (57% vs 17%)</text>
+      </g>
+
+      <text x="14" y="196" font-family="sans-serif" font-size="11" font-weight="600" fill="#f8fafc">Mixed-Effects Regression Fit:</text>
+      <text x="14" y="214" font-family="sans-serif" font-size="11" fill="#94a3b8">• R^2 = 0.513 across 180 controlled runs</text>
+      <text x="14" y="232" font-family="sans-serif" font-size="11" fill="#94a3b8">• Leave-one-domain-out: R^2 = 0.890</text>
+      <text x="14" y="250" font-family="sans-serif" font-size="11" fill="#4ade80">• 87% architecture prediction accuracy</text>
+    </g>
+  </g>
+</svg>

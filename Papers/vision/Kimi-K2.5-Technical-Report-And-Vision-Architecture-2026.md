@@ -341,6 +341,6 @@ The following diagram from the repository archive illustrates the original conce
 
 **Related:**
 - [DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026](../deepseek/DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026.md) — Analyzes Multi-Head Latent Attention (MLA) and fine-grained MoE architectures foundational to modern sparse scaling.
-- [VL-JEPA-Comprehensive-Technical-Guide](../VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide.md) — Joint embedding predictive architectures for vision-language understanding.
+- [VL-JEPA-Comprehensive-Technical-Guide-2026](../VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide-2026.md) — Joint embedding predictive architectures for vision-language understanding.
 - [AI-Coding-Loops](../../AI-ML/Agents/development/AI-Coding-Loops.md) — Autonomous agentic coding workflows and visual feedback loops in software development.
 - [Recursive-Language-Models-RLM-Architecture-2026](../reasoning/Recursive-Language-Models-RLM-Architecture-2026.md) — Externalized context and neural-symbolic recursion for multi-agent execution.

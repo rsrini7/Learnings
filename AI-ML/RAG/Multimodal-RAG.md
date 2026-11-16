@@ -368,4 +368,4 @@ Phase 4: Evidence Attribution & VLM Generation
 - [RAG-Guide-Jan-2026](RAG-Guide-Jan-2026.md) — Comprehensive guide covering core text retrieval, vector indexing, and generation chunking.
 - [RAG-Architectures](RAG-Architectures.md) — Architectural taxonomy comparing routing, re-ranking, and query decomposition patterns.
 - [Qwen3-VL-Embedding-and-Reranker](../LLMs/models/other/Qwen3-VL-Embedding-and-Reranker.md) — Technical review of a production vision-language embedding and reranker model family.
-- [VL-JEPA-Comprehensive-Technical-Guide](../../Papers/VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide.md) — Details continuous vision-language joint embedding architectures without generative token bottlenecks.
+- [VL-JEPA-Comprehensive-Technical-Guide-2026](../../Papers/VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide-2026.md) — Details continuous vision-language joint embedding architectures without generative token bottlenecks.

@@ -333,5 +333,5 @@ The following visual diagram illustrates the updated technical architecture and 
 - [DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026](DeepSeek-V3-Architecture-And-Hardware-Software-CoDesign-2026.md) — Architectural evaluation of DeepSeek-V3's Multi-Head Latent Attention (MLA), DeepSeekMoE, and FP8 mixed-precision training.
 - [DeepSeek-mHC-Manifold-Constrained-Hyperconnections-2026](DeepSeek-mHC-Manifold-Constrained-Hyperconnections-2026.md) — DeepSeek's multi-head conditional communication architecture optimizing stability during large-scale RL exploration.
 - [DeepSeek-Engram-Conditional-Memory-2026](DeepSeek-Engram-Conditional-Memory-2026.md) — Conditional memory architectures addressing compute redundancy alongside reasoning models.
-- [Agentic-Reasoning-LLMs](../reasoning/Agentic-Reasoning-LLMs.md) — Comparative analysis of test-time compute allocation and multi-layer agentic reflection loops.
+- [Agentic-Reasoning-Architectures-And-Reflection-Loops-2026](../reasoning/Agentic-Reasoning-Architectures-And-Reflection-Loops-2026.md) — Comparative analysis of test-time compute allocation and multi-layer agentic reflection loops.
 - [Recursive-Language-Models-RLM-Architecture-2026](../reasoning/Recursive-Language-Models-RLM-Architecture-2026.md) — Evaluates recursive token generation and context management in long-form reasoning models.

@@ -510,6 +510,6 @@ Agent Lightning lowers the barrier to applying reinforcement learning and system
 
 **Related:**
 - [Autonomous-AI-Agents](../../Agents/analysis/Autonomous-AI-Agents.md) — Both center on the operational challenges of autonomous agents; this file supplies the training/reward infrastructure the analysis piece assumes agents can be improved with.
-- [The-Science-of-Scaling-AI-Agent-Systems](../../../Papers/scaling/The-Science-of-Scaling-AI-Agent-Systems.md) — Empirical study showing multi-agent setups often hurt performance; Agent Lightning's per-agent trainer directly addresses which agents in a system are worth optimizing.
+- [Science-of-Scaling-AI-Agent-Systems-2026](../../../Papers/scaling/Science-of-Scaling-AI-Agent-Systems-2026.md) — Empirical study showing multi-agent setups often hurt performance; Agent Lightning's per-agent trainer directly addresses which agents in a system are worth optimizing.
 - [ContinualLearning](../training/ContinualLearning.md) — Both tackle knowledge retention without full retraining; Agent Lightning uses RL rollouts while Continual Learning covers the architectural memory hierarchy underneath.
 - [OpenResponses-Open-Inference-Standard](OpenResponses-Open-Inference-Standard.md) — Open Responses standardizes the agentic loop that Agent Lightning then optimizes via trace collection and reward signals.

@@ -389,4 +389,4 @@ Phase 4: Latent Search & Test-Time Compute Scaling
 - [AI-in-Next-18-Months](../economy/AI-in-Next-18-Months.md) — Explores latent-space thinking and private chains of thought as core industry breakthroughs.
 - [AI-Periodic-Table](../economy/AI-Periodic-Table.md) — Analyzes the Thinking Models ($Th$) element and its position within the broader generative taxonomy.
 - [Beyond-SoftMax-Attention](../attention/Beyond-SoftMax-Attention.md) — Examines subquadratic linear attention and neural memory architectures supporting recurrent latent processing.
-- [The-Science-of-Scaling-AI-Agent-Systems](../../../Papers/scaling/The-Science-of-Scaling-AI-Agent-Systems.md) — Provides empirical backing for modular hierarchical scaling over monolithic agent systems.
+- [Science-of-Scaling-AI-Agent-Systems-2026](../../../Papers/scaling/Science-of-Scaling-AI-Agent-Systems-2026.md) — Provides empirical backing for modular hierarchical scaling over monolithic agent systems.

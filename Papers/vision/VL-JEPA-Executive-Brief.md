@@ -328,7 +328,7 @@ To deploy joint embedding predictive models for edge robotics and video monitori
 
 ### Companion Guides & Architectural Documents
 5. [JEPA Models Technical Overview](../VL-JEPA/JEPA-Models-VL-JEPA-I-JEPA-V-JEPA-Nvidia-Cosmos.pdf) — Architectural slides comparing VL-JEPA, I-JEPA, V-JEPA, and NVIDIA Cosmos world models.
-6. [VL-JEPA Comprehensive Technical Guide](../VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide.md) — Detailed technical reference covering hyperparameter schedules, VICReg regularization, and multi-task routing.
+6. [VL-JEPA Comprehensive Technical Guide](../VL-JEPA/VL-JEPA-Comprehensive-Technical-Guide-2026.md) — Detailed technical reference covering hyperparameter schedules, VICReg regularization, and multi-task routing.
 
 ---
 
