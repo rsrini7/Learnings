@@ -421,6 +421,7 @@ Based on user-provided technical analysis of Infisical's architectural critique 
 ---
 
 **Related:**
+- [Autonomous Agentic Cyberattacks: GTIG AI Threat Tracker, exploit_agent, and ARTEX](Autonomous-Agentic-Cyberattacks-GTIG-Exploit-Agent-Nov-2026.md) — Autonomous exploitation pipelines, LLMJacking, and the necessity of egress credential gating against agentic swarms.
 - [Grok Build Passive DNS Exposure](Grok-Build-Passive-DNS-Data-Exposure-Nov-2026.md) — How AI-generated applications bypass enterprise egress controls and expose internal secrets on public subdomains.
 - [Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md](Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md) — Comprehensive threat model for local runners, template injections, and agent execution sandboxes.
 - [LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md](LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md) — Analysis of credential harvesting and pipeline tampering in AI proxy infrastructure.

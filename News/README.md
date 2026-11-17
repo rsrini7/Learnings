@@ -17,6 +17,7 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 ## 🛡️ Security & Vulnerabilities
 - [AI Key Theft Railway Zeabur Oct 2026](Security/AI-Key-Theft-Railway-Zeabur-Oct-2026.md)
 - [AWS Firecracker MicroVM Escape Vulnerabilities Nov 2026](Security/AWS-Firecracker-MicroVM-Escape-Vulnerabilities-Nov-2026.md)
+- [Autonomous Agentic Cyberattacks GTIG Exploit Agent Nov 2026](Security/Autonomous-Agentic-Cyberattacks-GTIG-Exploit-Agent-Nov-2026.md)
 - [Banks Third Party AI Agents Oct 2026](Security/Banks-Third-Party-AI-Agents-Oct-2026.md)
 - [Binance Hot Wallet Theft TRM Labs Investigation Oct 2026](Security/Binance-Hot-Wallet-Theft-TRM-Labs-Investigation-Oct-2026.md)
 - [EMudhra Weak CA Keys And PKI Trust Oct 2026](Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)

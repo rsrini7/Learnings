@@ -353,6 +353,7 @@ Assume that an agent will eventually hallucinate or succumb to indirect prompt i
 ---
 
 **Related:**
+- [Autonomous Agentic Cyberattacks: GTIG AI Threat Tracker, exploit_agent, and ARTEX](Autonomous-Agentic-Cyberattacks-GTIG-Exploit-Agent-Nov-2026.md) — Ground-truth analysis of fully autonomous, zero-human-in-the-loop multi-agent attack swarms operating in the wild.
 - [Grok Build Passive DNS Exposure](Grok-Build-Passive-DNS-Data-Exposure-Nov-2026.md) — How shadow AI application generation and public subdomain enumeration bypass corporate perimeter controls.
 - [OpenAI 948 Linux Kernel LPEs](OpenAI-948-Linux-Kernel-LPEs-Autonomous-Exploits-Nov-2026.md) — Autonomous multi-agent exploitation pipelines, kernel LPE breakouts, and the limits of shared-kernel container isolation.
 - [OpenSSH and musl libc: The *sshole Authentication Bypass](OpenSSH-Musl-Asterisk-Bypass-Sshhole-Nov-2026.md) — How AI agent swarms testing combinatorial build permutations uncovered a 40-year multi-library authentication bypass.

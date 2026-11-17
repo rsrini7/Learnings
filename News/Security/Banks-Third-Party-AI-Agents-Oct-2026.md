@@ -433,6 +433,7 @@ To deploy AI agents safely within financial ecosystems, engineering teams and ba
 ---
 
 **Related:**
+- [Autonomous Agentic Cyberattacks: GTIG AI Threat Tracker, exploit_agent, and ARTEX](Autonomous-Agentic-Cyberattacks-GTIG-Exploit-Agent-Nov-2026.md) — Autonomous multi-agent pipelines, LLMJacking, and machine-speed intrusion dynamics threatening financial services perimeters.
 - [AI-Key-Theft-Railway-Zeabur-Oct-2026.md](AI-Key-Theft-Railway-Zeabur-Oct-2026.md) — How developer platform credential stores expose API keys, database URLs, and third-party secrets.
 - [Singapore-IMDA-Agentic-AI-Governance-Framework-2026.md](../Weekly-Updates/Singapore-IMDA-Agentic-AI-Governance-Framework-2026.md) — Operationalizing human-in-the-loop oversight and tool boundaries in enterprise autonomous agent deployments.
 - [Global-AI-Scam-Landscape-And-Defense-Playbook-2026.md](../Weekly-Updates/Global-AI-Scam-Landscape-And-Defense-Playbook-2026.md) — Telephony fraud, deepfake voice synthesis, and automated financial extortion vectors.

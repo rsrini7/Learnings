@@ -19,7 +19,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [📄 Research Papers](#papers) (19 articles)
 - [🛠️ Development Setup](#devsetup) (8 articles)
 - [✍️ Content Creation](#content) (43 articles)
-- [📰 News & Updates](#news) (61 articles)
+- [📰 News & Updates](#news) (62 articles)
 - [📚 References & Guides](#references) (3 articles)
 
 ---
@@ -491,6 +491,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 ### 🛡️ Security & Vulnerabilities
 - [AI Key Theft Railway Zeabur Oct 2026](News/Security/AI-Key-Theft-Railway-Zeabur-Oct-2026.md)
 - [AWS Firecracker MicroVM Escape Vulnerabilities Nov 2026](News/Security/AWS-Firecracker-MicroVM-Escape-Vulnerabilities-Nov-2026.md)
+- [Autonomous Agentic Cyberattacks GTIG Exploit Agent Nov 2026](News/Security/Autonomous-Agentic-Cyberattacks-GTIG-Exploit-Agent-Nov-2026.md)
 - [Banks Third Party AI Agents Oct 2026](News/Security/Banks-Third-Party-AI-Agents-Oct-2026.md)
 - [Binance Hot Wallet Theft TRM Labs Investigation Oct 2026](News/Security/Binance-Hot-Wallet-Theft-TRM-Labs-Investigation-Oct-2026.md)
 - [EMudhra Weak CA Keys And PKI Trust Oct 2026](News/Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)

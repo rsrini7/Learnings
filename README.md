@@ -19,11 +19,11 @@ Explore focused technical hubs with dedicated roadmaps, architecture diagrams, a
 | 📄 **Research Papers** | [Papers/README.md](Papers/README.md) | DeepSeek-V3/R1 co-design (MLA, DualPipe), recursive reasoning models, and VL-JEPA vision. | 19 |
 | 🛠️ **Development Setup** | [DevSetup/README.md](DevSetup/README.md) | Workstation environments, local model runners (llama.cpp), and Headroom / RTK multi-agent caching. | 8 |
 | ✍️ **Content Creation** | [Content/README.md](Content/README.md) | Systematic LLM prompts for software development, technical diagramming, and concise writing. | 43 |
-| 📰 **News & Updates** | [News/README.md](News/README.md) | In-depth security advisories (CVEs/RCEs), major cloud outage postmortems, and weekly industry briefings. | 61 |
+| 📰 **News & Updates** | [News/README.md](News/README.md) | In-depth security advisories (CVEs/RCEs), major cloud outage postmortems, and weekly industry briefings. | 62 |
 | 📚 **References & Guides** | [References/README.md](References/README.md) | Gang of Four (GoF) design patterns, Passkeys / WebAuthn authentication, and paper discovery guides. | 3 |
 
 > 📖 **Prefer a single-page list for searching?**  
-> Open the **[Complete Repository Index (INDEX.md)](INDEX.md)** to browse or search (`Ctrl+F` / `Cmd+F`) all 308 articles across all domains.
+> Open the **[Complete Repository Index (INDEX.md)](INDEX.md)** to browse or search (`Ctrl+F` / `Cmd+F`) all 309 articles across all domains.
 
 ---
 
@@ -86,7 +86,7 @@ Learnings/
 ├── DevSetup/                    # Workstation & AI developer tooling (8 articles)
 ├── Papers/                      # Research papers & critical reviews (19 articles)
 ├── Content/                     # Structured prompts & technical writing (43 articles)
-├── News/                        # Security advisories, outages & weekly updates (61 articles)
+├── News/                        # Security advisories, outages & weekly updates (62 articles)
 ├── References/                  # Quick references, GoF, Passkeys (3 articles)
 ├── Scripts/                     # Utility scripts & verification tools
 └── assets/                      # Shared styling & chart libraries

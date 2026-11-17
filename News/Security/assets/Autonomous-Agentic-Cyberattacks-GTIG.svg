@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 680" width="100%" height="100%">
+  <defs>
+    <style>
+      .bg { fill: #0b0f19; }
+      .panel { fill: #111827; stroke: #1e293b; stroke-width: 1.5; rx: 8px; }
+      .header-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 20px; font-weight: 700; fill: #f8fafc; }
+      .header-subtitle { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 13px; fill: #94a3b8; }
+      .box-title { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 600; fill: #38bdf8; }
+      .box-desc { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; font-size: 12px; fill: #cbd5e1; }
+      .tag { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; font-weight: 600; }
+      .tag-red { fill: #f87171; }
+      .tag-green { fill: #4ade80; }
+      .tag-amber { fill: #fbbf24; }
+      .tag-cyan { fill: #38bdf8; }
+      .tag-purple { fill: #c084fc; }
+      .code-text { font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace; font-size: 11px; fill: #a5b4fc; }
+    </style>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="680" class="bg" />
+
+  <!-- Header -->
+  <text x="40" y="42" class="header-title">Autonomous Agentic Cyberattacks: GTIG AI Threat Tracker &amp; exploit_agent</text>
+  <text x="40" y="65" class="header-subtitle">Zero-Human-in-the-Loop Weaponization: Machine-Speed N-Day Diffing vs. Enterprise Patch Lag</text>
+
+  <!-- Left Column: The Autonomous Offensive Architecture (exploit_agent & ARTEX) -->
+  <rect x="40" y="85" width="500" height="565" class="panel" />
+  <text x="60" y="115" class="box-title">1. Offensive Autonomous Pipeline (Zero Human in Loop)</text>
+  <text x="60" y="133" class="box-desc">Observed in the wild by GTIG / Mandiant on exposed C2 staging servers</text>
+
+  <!-- Stage 1: Patch Diff Ingestion -->
+  <rect x="60" y="150" width="460" height="66" rx="6" fill="#1e293b" stroke="#334155" />
+  <text x="75" y="170" class="tag tag-cyan">Stage 1: N-Day Patch-Diff Ingestion Engine</text>
+  <text x="75" y="188" class="box-desc">• Ingests vendor Git commits and CVE advisory diffs in real time.</text>
+  <text x="75" y="204" class="box-desc">• Isolates vulnerable code deltas (&lt;50 lines) vs. blind 0-day hunting.</text>
+
+  <!-- Stage 2: Semantic Analysis & Payload Crafting -->
+  <rect x="60" y="226" width="460" height="66" rx="6" fill="#1e293b" stroke="#334155" />
+  <text x="75" y="246" class="tag tag-purple">Stage 2: LLM Vulnerability Extraction &amp; PoC Drafting</text>
+  <text x="75" y="264" class="box-desc">• Models AST data flow to find injection, auth bypass, or RCE vectors.</text>
+  <text x="75" y="280" class="box-desc">• Frontier &amp; local LLMs craft polymorphic exploit payloads dynamically.</text>
+
+  <!-- Stage 3: Closed-Loop Sandbox Validation -->
+  <rect x="60" y="302" width="460" height="66" rx="6" fill="#1e293b" stroke="#fbbf24" stroke-width="1.2" />
+  <text x="75" y="322" class="tag tag-amber">Stage 3: Automated Target Execution &amp; Feedback Loop</text>
+  <text x="75" y="340" class="box-desc">• Sends payloads; reads HTTP response codes and stack traces.</text>
+  <text x="75" y="356" class="box-desc">• Self-refines payload iteratively until remote execution succeeds.</text>
+
+  <!-- Stage 4: Post-Exploitation & Sanitation -->
+  <rect x="60" y="378" width="460" height="76" rx="6" fill="#1e293b" stroke="#ef4444" stroke-width="1.2" />
+  <text x="75" y="398" class="tag tag-red">Stage 4: Automated Persistence &amp; Rival Eviction</text>
+  <text x="75" y="416" class="box-desc">• Plants obfuscated webshells; deploys internal recon tools.</text>
+  <text x="75" y="432" class="box-desc">• Scans filesystem for rival threat webshells and removes them.</text>
+  <text x="75" y="446" class="box-desc">• Exfiltrates database dumps and harvested environment credentials.</text>
+
+  <!-- Multi-Agent Orchestration Footnote -->
+  <rect x="60" y="464" width="460" height="72" rx="6" fill="#1e293b" stroke="#38bdf8" stroke-width="1.2" />
+  <text x="75" y="484" class="tag tag-cyan">Multi-Agent Swarm (ARTEX / CAIRN / PentAGI)</text>
+  <text x="75" y="502" class="box-desc">• Planner Agent distributes sub-tasks: port recon, auth spray, RCE.</text>
+  <text x="75" y="518" class="box-desc">• FBI Alert: initial reconnaissance to domain root in &lt; 3 hours.</text>
+
+  <!-- LLMJacking callout -->
+  <rect x="60" y="546" width="460" height="88" rx="6" fill="#0f172a" stroke="#475569" />
+  <text x="75" y="566" class="tag tag-amber">Infrastructure: LLMJacking &amp; Underground Proxy Mixers</text>
+  <text x="75" y="584" class="box-desc">• Threat actors harvest exposed enterprise cloud &amp; AI API credentials.</text>
+  <text x="75" y="600" class="box-desc">• Route automated queries through darknet API mixers to bypass KYC.</text>
+  <text x="75" y="616" class="box-desc">• Monetized via bulletproof proxy pools and phishing-as-a-service.</text>
+
+  <!-- Right Column: The Asymmetry & Agentic Defense -->
+  <rect x="560" y="85" width="500" height="565" class="panel" />
+  <text x="580" y="115" class="box-title">2. Velocity Asymmetry: Offensive AI vs. Enterprise Lag</text>
+  <text x="580" y="133" class="box-desc">Why traditional human-paced change-control boards fail against machines</text>
+
+  <!-- Time comparison box -->
+  <rect x="580" y="150" width="460" height="135" rx="6" fill="#1e293b" stroke="#334155" />
+  <text x="595" y="172" class="tag tag-red">The Temporal Gap: Machine Speed vs. Human Governance</text>
+  <text x="595" y="194" class="box-desc"><tspan fill="#f87171" font-weight="700">Adversary Agent Loop:</tspan> 15 min (Diff) → 45 min (PoC) → &lt;3h (Root)</text>
+  <text x="595" y="214" class="box-desc"><tspan fill="#94a3b8" font-weight="700">Enterprise Patch Cycle:</tspan> 7–14 days (CAB Approval, Staging Pockets)</text>
+  <text x="595" y="234" class="box-desc"><tspan fill="#fbbf24" font-weight="700">Exploitation Window:</tspan> Attackers weaponize publicly disclosed diffs</text>
+  <text x="595" y="254" class="box-desc">weeks before enterprise sysadmins complete change-board reviews.</text>
+  <text x="595" y="272" class="code-text">Cost Advantage: N-Days synthesized at $0.05–$2.00 per target</text>
+
+  <!-- Agentic Defense Core -->
+  <rect x="580" y="295" width="460" height="155" rx="6" fill="#1e293b" stroke="#22c55e" stroke-width="1.2" />
+  <text x="595" y="317" class="tag tag-green">Architectural Defense: Real-Time Agentic Countermeasures</text>
+  <text x="595" y="338" class="box-desc"><tspan fill="#4ade80" font-weight="600">1. Automated Patch CI/CD:</tspan> Ingest upstream diffs with autonomous</text>
+  <text x="595" y="356" class="box-desc">   canary regression testing rather than manual 30-day change boards.</text>
+  <text x="595" y="376" class="box-desc"><tspan fill="#4ade80" font-weight="600">2. Behavioral Runtime Probes:</tspan> eBPF detectors flagging rapid bursts</text>
+  <text x="595" y="394" class="box-desc">   of shell spawning, polymorphic HTTP probes, and credential sweeps.</text>
+  <text x="595" y="414" class="box-desc"><tspan fill="#4ade80" font-weight="600">3. Egress API Token Gating:</tspan> Strict mTLS egress proxies to prevent</text>
+  <text x="595" y="432" class="box-desc">   LLMJacking and unauthorized frontier model token drain.</text>
+
+  <!-- Real-World Impact Stats -->
+  <rect x="580" y="460" width="460" height="174" rx="6" fill="#1e293b" stroke="#334155" />
+  <text x="595" y="482" class="tag tag-cyan">Observed Telemetry &amp; Industry Impact (GTIG 2026)</text>
+  <text x="595" y="504" class="box-desc">• Active Targets: Media, entertainment, education, aerospace.</text>
+  <text x="595" y="522" class="box-desc">• Primary Tooling: ARTEX, exploit_agent, CAIRN, PentAGI.</text>
+  <text x="595" y="540" class="box-desc">• Threat Profiles: Financially motivated actors &amp; state-aligned APTs.</text>
+  <text x="595" y="558" class="box-desc">• IOC Dynamism: Non-static user-agents &amp; ephemeral script payloads.</text>
+  <text x="595" y="576" class="box-desc">• Defense Imperative: Static IP/hash blacklists fail against LLM loops.</text>
+  <text x="595" y="596" class="code-text">Mandiant takeaway: "Machines must defend against machines."</text>
+  <text x="595" y="618" class="tag tag-amber">Strategic Shift: Behavioral telemetry replaces static IOCs.</text>
+</svg>
