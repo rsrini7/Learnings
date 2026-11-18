@@ -19,7 +19,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [📄 Research Papers](#papers) (19 articles)
 - [🛠️ Development Setup](#devsetup) (8 articles)
 - [✍️ Content Creation](#content) (43 articles)
-- [📰 News & Updates](#news) (65 articles)
+- [📰 News & Updates](#news) (66 articles)
 - [📚 References & Guides](#references) (3 articles)
 
 ---
@@ -527,6 +527,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 ### 🚨 Infrastructure & Outages
 - [AWS US East 1 Outage October 2025](News/Outages/AWS-US-East-1-Outage-October-2025.md)
 - [Cloudflare Global Outage ClickHouse Config Nov 2025](News/Outages/Cloudflare-Global-Outage-ClickHouse-Config-Nov-2025.md)
+- [Microsoft 365 Outlook Cascading Outage Nov 2026](News/Outages/Microsoft-365-Outlook-Cascading-Outage-Nov-2026.md)
 - [Supabase Outage Feb 2026](News/Outages/Supabase-Outage-Feb-2026.md)
 - [Tailwind Financial Crisis 2026](News/Outages/Tailwind-Financial-Crisis-2026.md)
 

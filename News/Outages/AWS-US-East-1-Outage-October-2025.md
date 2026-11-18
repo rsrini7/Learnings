@@ -302,6 +302,7 @@ The following diagram illustrates the original incident timeline, affected cloud
 ---
 
 **Related:**
+- [Microsoft 365 & Outlook Cascading Outage Nov 2026](Microsoft-365-Outlook-Cascading-Outage-Nov-2026.md) — Case study of high-core multi-processor lock contention and health-probe cascades collapsing hyper-scale edge gateways.
 - [Cloudflare Global Outage ClickHouse Config](Cloudflare-Global-Outage-ClickHouse-Config-Nov-2025.md) — Another global platform disruption caused by configuration generator desync and homogeneous edge crashes.
 - [Supabase Outage Feb 2026](Supabase-Outage-Feb-2026.md) — Demonstrates how a single regional AWS VPC control-plane kill-switch isolated production databases.
 - [AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026](../../Engineering/Cloud/AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026.md) — Examines cloud blast radius dynamics, managed dependency coupling, and multi-region cost trade-offs.

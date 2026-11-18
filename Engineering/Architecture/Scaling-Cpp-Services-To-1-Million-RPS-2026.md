@@ -223,6 +223,7 @@ Synthesized from primary C++ high-performance networking documentation, the Tech
 ---
 
 **Related:**
+- [Microsoft 365 Cascading Outage Nov 2026](../../News/Outages/Microsoft-365-Outlook-Cascading-Outage-Nov-2026.md) — Real-world case study of multi-core lock contention and cache-line invalidation storms collapsing hyper-scale gateway servers.
 - [Scaling-Java-Services-To-1-Million-RPS-2026](Scaling-Java-Services-To-1-Million-RPS-2026.md) — Analyzes JVM virtual threads, garbage collection tuning (ZGC), and memory budgets under the same 1M RPS target.
 - [Scaling-PostgreSQL-High-Throughput-Architecture-2026](../Databases/Scaling-PostgreSQL-High-Throughput-Architecture-2026.md) — Examines single-primary database bottlenecks, connection pooling, and replica lag at massive query volumes.
 - [Workflow-Orchestration-And-Durable-Execution-Engines-2026](../Middleware/Workflow-Orchestration-And-Durable-Execution-Engines-2026.md) — Explains asynchronous durable execution, idempotency, and retries when decoupling requests from the synchronous write path.

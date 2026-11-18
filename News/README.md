@@ -53,6 +53,7 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 ## 🚨 Infrastructure & Outages
 - [AWS US East 1 Outage October 2025](Outages/AWS-US-East-1-Outage-October-2025.md)
 - [Cloudflare Global Outage ClickHouse Config Nov 2025](Outages/Cloudflare-Global-Outage-ClickHouse-Config-Nov-2025.md)
+- [Microsoft 365 Outlook Cascading Outage Nov 2026](Outages/Microsoft-365-Outlook-Cascading-Outage-Nov-2026.md)
 - [Supabase Outage Feb 2026](Outages/Supabase-Outage-Feb-2026.md)
 - [Tailwind Financial Crisis 2026](Outages/Tailwind-Financial-Crisis-2026.md)
 

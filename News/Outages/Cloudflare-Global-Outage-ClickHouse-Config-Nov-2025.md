@@ -368,6 +368,7 @@ The following diagram illustrates the original incident timeline and failure pro
 ---
 
 **Related:**
+- [Microsoft 365 & Outlook Cascading Outage Nov 2026](Microsoft-365-Outlook-Cascading-Outage-Nov-2026.md) — Analyzes multi-core lock contention, health-probe cascades, and thundering-herd recovery in hyper-scale gateway fleets.
 - [AWS US-East-1 Outage October 2025](AWS-US-East-1-Outage-October-2025.md) — Comparative study of an automated workflow manager race condition causing a 15-hour cloud collapse.
 - [Supabase Outage Feb 2026](Supabase-Outage-Feb-2026.md) — Demonstrates how an automated control-plane misconfiguration partitioned an entire regional cloud fleet.
 - [Deno Joins Cloudflare](../../Engineering/Languages/Deno-Joins-Cloudflare-Adoption-And-Runtime-Lessons-Oct-2026.md) — Operational context for depending on Cloudflare's edge runtime and deployment models.

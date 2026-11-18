@@ -1,0 +1,175 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 840" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="redCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d151e"/>
+      <stop offset="100%" stop-color="#1f1118"/>
+    </linearGradient>
+    <linearGradient id="amberCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d2212"/>
+      <stop offset="100%" stop-color="#1c160c"/>
+    </linearGradient>
+    <linearGradient id="greenCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#064e3b"/>
+      <stop offset="100%" stop-color="#022c22"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="840" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="600" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">Microsoft 365 &amp; Outlook Cascading Collapse (EX1550543 / MO1550821)</text>
+  <text x="600" y="62" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">Preliminary tenant-admin account; root cause and fleet figures are not publicly audited.</text>
+
+  <!-- Panel 1: Latent Defect & Hardware Divergence -->
+  <g transform="translate(40, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#amberCard)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#b45309" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#fde68a">1. Reported Cause &amp; SKU Divergence</text>
+    <rect x="250" y="10" width="85" height="20" rx="4" fill="#d97706"/>
+    <text x="292" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Preliminary</text>
+
+    <!-- Sub-card 1A: The July Code Change -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">July 2026 Gateway Update</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Connection-handling logic updated in internal</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Windows gateway services fronting Exchange.</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Under critical load, coarse synchronization locks</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">created severe thread convoying and backoff stalls.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24">Reportedly latent across fleet for over three months.</text>
+
+    <!-- Sub-card 1B: Hardware Divergence -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">Staging vs. Production Divergence</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Lab testing ran on smaller VM SKUs (8-16 cores).</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Lower test-SKU contention reportedly hid the issue.</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">Reported production SKUs: 64-128 core NUMA nodes.</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Cache coherency invalidations (MESI storms)</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Lock wait and cache traffic can grow sharply.</text>
+
+    <!-- Sub-card 1C: Contention Physics -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">Cache-Line Bouncing &amp; Starvation</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Dozens of threads spinning on shared lock words</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">saturate inter-socket interconnect fabrics (UPI).</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Reported symptom: CPU saturation as throughput fell.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Some queues may grow until requests time out.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Exact internal server counters are not public.</text>
+  </g>
+
+  <!-- Panel 2: The Confluence of Triggers -->
+  <g transform="translate(425, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#fca5a5">2. Confluence of Triggers (Nov 12)</text>
+    <rect x="250" y="10" width="85" height="20" rx="4" fill="#ef4444"/>
+    <text x="292" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Cascade Start</text>
+
+    <!-- Sub-card 2A: Teams Failover -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">01:20 UTC: Teams Failover (15h Prior)</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Microsoft Teams traffic shifted away from its</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">secondary gateway onto the primary gateway pool.</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">Cross-tenant blast radius: Exchange and Teams</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">now competed for the exact same gateway pool.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Baseline connection density rose sharply.</text>
+
+    <!-- Sub-card 2B: 14% Capacity Loss -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">03:00 UTC: 14% Capacity Offline</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Routine maintenance and prior-day upgrade tasks</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">took ~14% of gateway nodes out of active rotation.</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Surviving 86% fleet absorbed full baseline load.</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Utilization operating near the non-linear knee</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">of the M/M/c queuing latency curve (rho &gt; 0.85).</text>
+
+    <!-- Sub-card 2C: Peak Traffic Spike -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#ef4444">16:20 UTC: NA Peak Ingress Surge</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Morning business hours in Americas triggered</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">massive burst of MAPI, REST, and sync calls.</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Lock contention triggered on first saturated nodes.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">Node response latencies jumped from ms to 30s+.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ef4444">Health check timeouts initiated global eviction.</text>
+  </g>
+
+  <!-- Panel 3: Cascading Failure & Thundering Herd -->
+  <g transform="translate(810, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#0369a1" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#bae6fd">3. Reported Fleet Eviction Cascade</text>
+    <rect x="250" y="10" width="85" height="20" rx="4" fill="#0284c7"/>
+    <text x="292" y="24" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Cascade</text>
+
+    <!-- Sub-card 3A: LB Eviction Cascade -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">Health-Check Eviction Loop</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Azure Front Door / L7 probes fail on slow nodes.</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Load balancers remove them from active rotation.</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">Evicted capacity shifts arriving load onto survivors.</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Survivors may then exceed their capacity.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ef4444">Reportedly, more than 80% of gateway nodes were evicted.</text>
+
+    <!-- Sub-card 3B: Thundering Herd -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">Thundering-Herd Cold Restart Trap</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Engineers rebooted frozen gateway instances.</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Freshly booted nodes faced millions of clients</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">re-attempting TLS handshakes simultaneously.</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Without warmed connection pools or caches,</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Some nodes reportedly overloaded again after restart.</text>
+
+    <!-- Sub-card 3C: Client Retry Storms -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Aggressive Client Retry Amplification</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Outlook desktop, web, iOS, Android, and third-party</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">clients retried while gateways were already saturated.</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Retries added load to already saturated gateways.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Service disruption lasted about 23h 50m.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Bypass and staged ingress were part of reported recovery.</text>
+  </g>
+
+  <!-- Bottom Panel: Engineering Recovery & Mitigations -->
+  <g transform="translate(40, 530)" filter="url(#shadow)">
+    <rect width="1120" height="280" rx="10" fill="url(#cardGrad)" stroke="#475569" stroke-width="1"/>
+    <rect x="0" y="0" width="1120" height="38" rx="10" fill="#334155" fill-opacity="0.4"/>
+    <text x="20" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">4. Engineering Recovery Architecture &amp; Architectural Mitigations</text>
+
+    <!-- Sub-card 4A: Resolution Strategy -->
+    <rect x="18" y="50" width="536" height="215" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="32" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">Recovery &amp; Traffic-Shedding Blueprint</text>
+    <text x="32" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">1. Logic Bypass: Deployed emergency hotfix disabling July lock-contended code.</text>
+    <text x="32" y="111" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">2. Decouple Gateways: Diverted Microsoft Teams traffic back to separate tier.</text>
+    <text x="32" y="129" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">3. Edge Ingress Shedding: Azure Front Door rate-limited incoming connections</text>
+    <text x="48" y="145" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">at edge PoPs to allow gateway nodes to initialize connection tables safely.</text>
+    <text x="32" y="163" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">4. Phased Canary Ingress: Reintroduced traffic in controlled cohorts,</text>
+    <text x="48" y="179" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">validating lock contention and queue depth telemetry at each increment.</text>
+    <text x="32" y="197" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">5. Safe Cluster Reintegration: Nodes rejoined Anycast routing only after</text>
+    <text x="48" y="213" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">sustaining stable TLS handshakes during the staged ingress ramp.</text>
+    <text x="32" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Global availability fully restored after 23 hours 50 minutes.</text>
+
+    <!-- Sub-card 4B: Mitigations & Verification -->
+    <rect x="566" y="50" width="536" height="215" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+    <text x="580" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Architectural Mitigations &amp; Concurrency Defenses</text>
+    <text x="580" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">1. Hardware-Parity Staging: Mandate soak-testing on 64+ core SMP servers</text>
+    <text x="596" y="109" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">to expose cache-line bouncing and Universal Scalability Law coherency stalls.</text>
+    <text x="580" y="127" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">2. Partitioned Synchronization: Replace coarse mutexes with cache-padded</text>
+    <text x="596" y="143" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">128 shards can reduce contention on the target hardware.</text>
+    <text x="580" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">3. Decoupled Health Sampling: Cache status in atomic state.</text>
+    <text x="596" y="177" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">BackgroundService updates it off the request path.</text>
+    <text x="580" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">4. Non-Evicting Degradation: Signal edge proxies via x-envoy-degraded</text>
+    <text x="596" y="211" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">or HTTP headers to shed traffic without removing nodes from Anycast pools.</text>
+    <text x="580" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Can reduce domino evictions during transient overload.</text>
+  </g>
+</svg>

@@ -283,6 +283,7 @@ The following diagram illustrates the original incident timeline, affected cloud
 ---
 
 **Related:**
+- [Microsoft 365 & Outlook Cascading Outage Nov 2026](Microsoft-365-Outlook-Cascading-Outage-Nov-2026.md) — Explores multi-core lock contention, health-probe cascading failures, and thundering-herd recovery dynamics.
 - [AWS US-East-1 Outage October 2025](AWS-US-East-1-Outage-October-2025.md) — Demonstrates how internal control-plane dependencies cascade into cross-service outages.
 - [Cloudflare Global Outage ClickHouse Config](Cloudflare-Global-Outage-ClickHouse-Config-Nov-2025.md) — Another homogeneous automated configuration failure that caused worldwide service disruption.
 - [AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026](../../Engineering/Cloud/AWS-vs-Hetzner-Compute-Economics-And-Architecture-2026.md) — Compares managed cloud blast radiuses and network dependency risks against dedicated infrastructure.
