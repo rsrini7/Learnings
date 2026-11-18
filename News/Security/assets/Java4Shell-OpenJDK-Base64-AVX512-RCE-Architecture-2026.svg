@@ -1,0 +1,221 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="780" fill="url(#bgGrad)" />
+
+  <!-- Grid lines -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.4">
+    <line x1="0" y1="84" x2="1200" y2="84" />
+    <line x1="0" y1="420" x2="1200" y2="420" />
+    <line x1="595" y1="84" x2="595" y2="760" />
+  </g>
+
+  <!-- Header -->
+  <g transform="translate(40, 20)">
+    <rect x="0" y="0" width="1120" height="52" rx="8" fill="#1e293b" opacity="0.6" stroke="#334155" />
+    <text x="20" y="33" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#f8fafc">
+      Java4Shell: OpenJDK Base64 SIMD Mask Underflow &amp; Remote Heap RCE
+    </text>
+    <rect x="900" y="13" width="200" height="26" rx="13" fill="#e11d48" opacity="0.2" stroke="#f43f5e" stroke-width="1" />
+    <text x="1000" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#f43f5e" text-anchor="middle">
+      CVE-2026-114938 · CVSS 9.2
+    </text>
+  </g>
+
+  <!-- Panel 1: C2 SIMD Intrinsic & Bitmask Underflow -->
+  <g transform="translate(40, 92)" filter="url(#shadow)">
+    <rect width="535" height="314" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="535" height="40" rx="10" fill="#1e293b" />
+    <rect x="0" y="30" width="535" height="10" fill="#1e293b" />
+    <circle cx="22" cy="20" r="7" fill="#f43f5e" />
+    <text x="38" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">
+      1. C2 SIMD Intrinsic &amp; Bitmask Underflow
+    </text>
+
+    <!-- Subcard 1A -->
+    <rect x="16" y="52" width="503" height="98" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      AVX-512 VBMI Fast Path (_base64_decodeBlock)
+    </text>
+    <text x="28" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • HotSpot C2 compiles Base64 decoding into AVX-512 vector stubs
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Processes 256B and 64B chunks; tails &lt; 64B use masked stores
+    </text>
+    <text x="28" y="128" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Uses bzhiq instruction to generate bitmask k1 for evmovdqub
+    </text>
+
+    <!-- Subcard 1B -->
+    <rect x="16" y="160" width="503" height="138" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f43f5e">
+      Arithmetic Underflow to All-Ones Vector Mask
+    </text>
+    <text x="28" y="200" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Tail formula: output_len = (input_len / 4) * 3
+    </text>
+    <text x="28" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Stray '=' padding decrements output_len from 0 to -1
+    </text>
+    <text x="28" y="236" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • bzhiq(-1, -1) clamps indices &gt;= 64: output_mask becomes 0xFF..FF
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • evmovdqub writes all 64 bytes unconditionally into destination
+    </text>
+    <text x="28" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Trigger: 'A'*64 + '=' (JDK 21/25/27) or 'A'*128 + '=' (JDK 17)
+    </text>
+  </g>
+
+  <!-- Panel 2: Heap Out-of-Bounds Memory Corruption -->
+  <g transform="translate(615, 92)" filter="url(#shadow)">
+    <rect width="545" height="314" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="545" height="40" rx="10" fill="#1e293b" />
+    <rect x="0" y="30" width="545" height="10" fill="#1e293b" />
+    <circle cx="22" cy="20" r="7" fill="#fbbf24" />
+    <text x="38" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">
+      2. Heap Out-of-Bounds Memory Corruption
+    </text>
+
+    <!-- Subcard 2A -->
+    <rect x="16" y="52" width="513" height="98" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fbbf24">
+      Buffer Bounds Mismatch: 50B Allocated vs 112B Written
+    </text>
+    <text x="28" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Java layer allocates: (ceil(65 / 4) * 3) - 1 = 50 bytes buffer
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • 48 bytes written in-bounds from first 64 valid ASCII characters
+    </text>
+    <text x="28" y="128" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • evmovdqub writes 64 bytes starting at dp=48, extending to offset 111
+    </text>
+
+    <!-- Subcard 2B -->
+    <rect x="16" y="160" width="513" height="138" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#f43f5e">
+      Memory Layout &amp; 62-Byte Heap Overflow
+    </text>
+    <text x="28" y="200" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Offsets 48..49: In-bounds writes (byte 0 controlled, byte 1 4-bits)
+    </text>
+    <text x="28" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Offsets 50..111: 62 bytes written past buffer into adjacent heap
+    </text>
+    <text x="28" y="236" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Offsets 96..111: Fixed vector spill (vector lanes 48..63 hold 0x9a)
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • JVM throws IllegalArgumentException, but heap is already corrupted
+    </text>
+    <text x="28" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Landing position is controllable via Base64 input chunk sizing
+    </text>
+  </g>
+
+  <!-- Panel 3: Remote Heap Feng Shui & Object Alignment -->
+  <g transform="translate(40, 426)" filter="url(#shadow)">
+    <rect width="535" height="314" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="535" height="40" rx="10" fill="#1e293b" />
+    <rect x="0" y="30" width="535" height="10" fill="#1e293b" />
+    <circle cx="22" cy="20" r="7" fill="#38bdf8" />
+    <text x="38" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">
+      3. Remote Heap Feng Shui &amp; Object Alignment
+    </text>
+
+    <!-- Subcard 3A -->
+    <rect x="16" y="52" width="503" height="98" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      TLAB Bypass &amp; G1 Region Placement
+    </text>
+    <text x="28" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Threads allocate in private Thread-Local Allocation Buffers (TLABs)
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Exploit sizes arrays to exceed remaining TLAB slice, forcing refill
+    </text>
+    <text x="28" y="128" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Critical decoder &amp; target buffers escape TLAB into shared G1 Eden
+    </text>
+
+    <!-- Subcard 3B -->
+    <rect x="16" y="160" width="503" height="138" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      HTTP Request Parking via TCP Flow Control
+    </text>
+    <text x="28" y="200" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Streams HTTP body up to allocation point; pauses for TCP ACK
+    </text>
+    <text x="28" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Parks concurrent connections holding Parser, Pad, Writer, Reader
+    </text>
+    <text x="28" y="236" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Delivers short endings simultaneously to align adjacent allocations
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Sprays writer/reader pairs: decoder region lands directly below
+    </text>
+    <text x="28" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Same-region cloud VM deployment eliminates network jitter &amp; RTT
+    </text>
+  </g>
+
+  <!-- Panel 4: Exploit Chain: JavaBleed to Code Execution -->
+  <g transform="translate(615, 426)" filter="url(#shadow)">
+    <rect width="545" height="314" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="545" height="40" rx="10" fill="#1e293b" />
+    <rect x="0" y="30" width="545" height="10" fill="#1e293b" />
+    <circle cx="22" cy="20" r="7" fill="#4ade80" />
+    <text x="38" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">
+      4. Exploit Chain: JavaBleed to Code Execution
+    </text>
+
+    <!-- Subcard 4A -->
+    <rect x="16" y="52" width="513" height="98" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">
+      Writer &amp; Reader Primitive Construction
+    </text>
+    <text x="28" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • 0x9a spill sets neighbor array length to 0x9a9a9a9a
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Evaluated as unsigned 2.59GB in HotSpot x86 bounds checks
+    </text>
+    <text x="28" y="128" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Reader buffer dumps JVM heap in HTTP response: JavaBleed disclosure
+    </text>
+
+    <!-- Subcard 4B -->
+    <rect x="16" y="160" width="513" height="138" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      Header Repair &amp; JIT Code Cache RCE
+    </text>
+    <text x="28" y="200" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • JavaBleed discloses heap addresses, breaking JVM ASLR
+    </text>
+    <text x="28" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Writer restores damaged object headers to prevent G1 GC crashes
+    </text>
+    <text x="28" y="236" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Escalates linear write into arbitrary write primitive
+    </text>
+    <text x="28" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Overwrites HotSpot Method pointers / JIT Code Cache hooks
+    </text>
+    <text x="28" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Triggers unauthenticated pre-auth RCE (Keycloak, Jira, Jenkins)
+    </text>
+  </g>
+</svg>

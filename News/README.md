@@ -26,6 +26,7 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 - [Grok Build Passive DNS Data Exposure Nov 2026](Security/Grok-Build-Passive-DNS-Data-Exposure-Nov-2026.md)
 - [HTTP Egress Credential Proxies Vs MCP Gateways Nov 2026](Security/HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways-Nov-2026.md)
 - [India Spam Calls DND And TRAI Enforcement Oct 2026](Security/India-Spam-Calls-DND-And-TRAI-Enforcement-Oct-2026.md)
+- [Java4Shell OpenJDK Base64 AVX512 RCE CVE 2026 114938 Nov 2026](Security/Java4Shell-OpenJDK-Base64-AVX512-RCE-CVE-2026-114938-Nov-2026.md)
 - [Linux Kernel ZDI Public Reports KSMBD Oct 2026](Security/Linux-Kernel-ZDI-Public-Reports-KSMBD-Oct-2026.md)
 - [LiteLLM 1.107.0 Supply Chain Compromise Oct 2026](Security/LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md)
 - [Local AI And Agent Security Threat Model Nov 2026](Security/Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md)

@@ -19,7 +19,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [📄 Research Papers](#papers) (19 articles)
 - [🛠️ Development Setup](#devsetup) (8 articles)
 - [✍️ Content Creation](#content) (43 articles)
-- [📰 News & Updates](#news) (62 articles)
+- [📰 News & Updates](#news) (63 articles)
 - [📚 References & Guides](#references) (3 articles)
 
 ---
@@ -500,6 +500,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Grok Build Passive DNS Data Exposure Nov 2026](News/Security/Grok-Build-Passive-DNS-Data-Exposure-Nov-2026.md)
 - [HTTP Egress Credential Proxies Vs MCP Gateways Nov 2026](News/Security/HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways-Nov-2026.md)
 - [India Spam Calls DND And TRAI Enforcement Oct 2026](News/Security/India-Spam-Calls-DND-And-TRAI-Enforcement-Oct-2026.md)
+- [Java4Shell OpenJDK Base64 AVX512 RCE CVE 2026 114938 Nov 2026](News/Security/Java4Shell-OpenJDK-Base64-AVX512-RCE-CVE-2026-114938-Nov-2026.md)
 - [Linux Kernel ZDI Public Reports KSMBD Oct 2026](News/Security/Linux-Kernel-ZDI-Public-Reports-KSMBD-Oct-2026.md)
 - [LiteLLM 1.107.0 Supply Chain Compromise Oct 2026](News/Security/LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md)
 - [Local AI And Agent Security Threat Model Nov 2026](News/Security/Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md)

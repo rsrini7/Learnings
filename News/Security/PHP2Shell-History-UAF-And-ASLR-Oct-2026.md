@@ -288,6 +288,7 @@ Follow-up sources: [LiveOverflow: php2shell 24 hours later](https://www.youtube.
 ---
 
 **Related:**
+- [Java4Shell: OpenJDK Base64 Intrinsic RCE](Java4Shell-OpenJDK-Base64-AVX512-RCE-CVE-2026-114938-Nov-2026.md) — Follow-up research by Calif disclosing an AVX-512 SIMD memory corruption and Remote Heap Feng Shui RCE in OpenJDK.
 - [Ubuntu Server and CVE-2026-98432](Ubuntu-Server-CVE-2026-98432-Kernel-UAF-And-Patch-Lag-Nov-2026.md) — Compare application-layer Use-After-Free and ASLR bypasses with an unauthenticated kernel TCP option race condition.
 - [Linux Kernel ZDI Public Reports](Linux-Kernel-ZDI-Public-Reports-KSMBD-Oct-2026.md) — Separate same-week kernel disclosures; distinguish reported RCE impact from demonstrated memory corruption.
 - [eMudhra Weak CA Keys](EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md) — Compare a broken security primitive with the extra conditions required for real-world exploitation.

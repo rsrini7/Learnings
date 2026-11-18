@@ -685,6 +685,7 @@ Based on user-provided research details and presentation disclosures from Ana-Ma
 ---
 
 **Related:**
+- [Java4Shell: OpenJDK Base64 Intrinsic Memory Corruption](../../News/Security/Java4Shell-OpenJDK-Base64-AVX512-RCE-CVE-2026-114938-Nov-2026.md) — Security analysis of OpenJDK HotSpot C2 SIMD intrinsics, vector opmask underflows, and native heap corruption.
 - [Project-Detroit-Java-Polyglot-Runtimes-Nov-2026](Project-Detroit-Java-Polyglot-Runtimes-Nov-2026.md) — Architectural analysis of embedding native CPython and V8 runtimes via FFM versus GraalVM Truffle.
 - [Java-Standard_Classes-vs-Records-vs-Carrier_Classes](Java-Classes-Records-And-Carrier-Classes-2026.md) — Memory layout mechanics in Java, detailing object headers, alignment, and data compactness.
 - [Java-Python-Enterprise-AI](../../AI-ML/Comparisons/Java-Python-Enterprise-AI-Playbook-2026.md) — Comprehensive playbook on enterprise AI architecture, covering Spring AI, LangChain4j, and production inference tiers.
