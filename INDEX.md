@@ -19,7 +19,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [📄 Research Papers](#papers) (19 articles)
 - [🛠️ Development Setup](#devsetup) (8 articles)
 - [✍️ Content Creation](#content) (43 articles)
-- [📰 News & Updates](#news) (64 articles)
+- [📰 News & Updates](#news) (65 articles)
 - [📚 References & Guides](#references) (3 articles)
 
 ---
@@ -513,6 +513,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [OpenAI 948 Linux Kernel LPEs Autonomous Exploits Nov 2026](News/Security/OpenAI-948-Linux-Kernel-LPEs-Autonomous-Exploits-Nov-2026.md)
 - [OpenCode Console API Key Breach And Distillation Oct 2026](News/Security/OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md)
 - [OpenSSH Musl Asterisk Bypass Sshhole Nov 2026](News/Security/OpenSSH-Musl-Asterisk-Bypass-Sshhole-Nov-2026.md)
+- [Optimizely Optimjack Supply Chain Attack Nov 2026](News/Security/Optimizely-Optimjack-Supply-Chain-Attack-Nov-2026.md)
 - [PHP2Shell Exploit Debate Threat Models And Patch Status Oct 2026](News/Security/PHP2Shell-Exploit-Debate-Threat-Models-And-Patch-Status-Oct-2026.md)
 - [PHP2Shell History UAF And ASLR Oct 2026](News/Security/PHP2Shell-History-UAF-And-ASLR-Oct-2026.md)
 - [PHP2Shell Steal My Bitcoin Challenge Oct 2026](News/Security/PHP2Shell-Steal-My-Bitcoin-Challenge-Oct-2026.md)

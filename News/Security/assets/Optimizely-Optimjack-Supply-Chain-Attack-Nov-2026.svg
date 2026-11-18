@@ -1,0 +1,278 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="100%" height="100%">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="50%" stop-color="#111827" />
+      <stop offset="100%" stop-color="#0b0f19" />
+    </linearGradient>
+
+    <!-- Card Gradient -->
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b" />
+      <stop offset="100%" stop-color="#0f172a" />
+    </linearGradient>
+
+    <!-- Drop Shadow Filter -->
+    <filter id="dropShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+
+    <!-- Marker definition -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#38bdf8" />
+    </marker>
+    <marker id="arrowRed" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1 L 8 5 L 0 9 z" fill="#f43f5e" />
+    </marker>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="860" fill="url(#bgGrad)" />
+
+  <!-- Outer Frame -->
+  <rect x="20" y="20" width="1160" height="820" rx="16" fill="none" stroke="#334155" stroke-width="1.5" />
+
+  <!-- Header Banner -->
+  <g transform="translate(40, 40)">
+    <rect x="0" y="0" width="1120" height="80" rx="12" fill="url(#cardGrad)" stroke="#6366f1" stroke-width="1.5" filter="url(#dropShadow)" />
+    <circle cx="45" cy="40" r="22" fill="#4f46e5" fill-opacity="0.2" stroke="#818cf8" stroke-width="1.5" />
+    <text x="45" y="46" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="bold" fill="#a5b4fc" text-anchor="middle">OPT</text>
+
+    <text x="85" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="bold" fill="#f8fafc">
+      Optimizely Supply-Chain Poisoning &amp; OPTIMJACK Payload Anatomy (2026)
+    </text>
+    <text x="85" y="58" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" fill="#94a3b8">
+      Cross-Tenant Onboarding Exploit · cdn.optimizely.com Delivery · DOM Clipper, Skimmer &amp; iOS Exploits
+    </text>
+  </g>
+
+  <!-- Panel 1: Upstream Ingestion & CDN Compromise -->
+  <g transform="translate(40, 140)">
+    <rect x="0" y="0" width="540" height="330" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="15" y="15" width="28" height="28" rx="6" fill="#f43f5e" fill-opacity="0.15" stroke="#f43f5e" stroke-width="1" />
+    <text x="29" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="bold" fill="#f43f5e" text-anchor="middle">1</text>
+    <text x="55" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" fill="#f8fafc">
+      Upstream Onboarding Exploit &amp; CDN Poisoning
+    </text>
+
+    <!-- Sub-box: Platform API flaw -->
+    <rect x="20" y="60" width="500" height="75" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1" />
+    <text x="35" y="82" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" fill="#38bdf8">
+      Optimizely Web Experimentation Onboarding API
+    </text>
+    <text x="35" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      Flaw in signup flow permitted cross-tenant privilege escalation.
+    </text>
+    <text x="35" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      Attacker injected custom code into tenant "Project JavaScript".
+    </text>
+
+    <!-- Sub-box: Three Loader Formats -->
+    <rect x="20" y="148" width="500" height="90" rx="8" fill="#0f172a" stroke="#f43f5e" stroke-width="1" />
+    <text x="35" y="170" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" fill="#f43f5e">
+      Three Loader Variants Injected into projectJS
+    </text>
+    <text x="35" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      Variant A: Direct script tag loading https://1688360.cc/track.js.
+    </text>
+    <text x="35" y="206" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      Variant B: Base64 obfuscation via atob() to evade string scanners.
+    </text>
+    <text x="35" y="224" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      Variant C: Full inline payload evaluated via eval() on script block.
+    </text>
+
+    <!-- Sub-box: Distribution -->
+    <rect x="20" y="250" width="500" height="65" rx="8" fill="#0f172a" stroke="#334155" stroke-width="1" />
+    <text x="35" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" fill="#fbbf24">
+      Legitimate CDN Distribution (cdn.optimizely.com)
+    </text>
+    <text x="35" y="292" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      188 snippets across 178 enterprise orgs (BBC, Zoom, HSBC, CNN).
+    </text>
+    <text x="35" y="307" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      Delivered under valid TLS cert; bypassed perimeter WAF filters.
+    </text>
+  </g>
+
+  <!-- Panel 2: Synchronous Head Trap & Browser Context -->
+  <g transform="translate(620, 140)">
+    <rect x="0" y="0" width="540" height="330" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="15" y="15" width="28" height="28" rx="6" fill="#38bdf8" fill-opacity="0.15" stroke="#38bdf8" stroke-width="1" />
+    <text x="29" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="bold" fill="#38bdf8" text-anchor="middle">2</text>
+    <text x="55" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" fill="#f8fafc">
+      Synchronous &lt;head&gt; Execution Trap
+    </text>
+
+    <!-- Sub-box: A/B Anti-Flicker Mandate -->
+    <rect x="20" y="60" width="500" height="75" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1" />
+    <text x="35" y="82" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" fill="#38bdf8">
+      Anti-Flicker Mandate vs. Security Sandboxing
+    </text>
+    <text x="35" y="100" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      Vendors mandate synchronous placement in &lt;head&gt; to avoid FOUC.
+    </text>
+    <text x="35" y="118" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      Script executes before DOM parser; gains root origin execution.
+    </text>
+
+    <!-- Sub-box: SOP Collapse -->
+    <rect x="20" y="148" width="500" height="75" rx="8" fill="#0f172a" stroke="#fbbf24" stroke-width="1" />
+    <text x="35" y="170" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" fill="#fbbf24">
+      Same-Origin Policy (SOP) Inherent Blindspot
+    </text>
+    <text x="35" y="188" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      External &lt;script src="..."&gt; adopts origin context unconditionally.
+    </text>
+    <text x="35" y="206" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      Direct access to DOM, document.cookie, storage, and network APIs.
+    </text>
+
+    <!-- Sub-box: CSP Breakdown -->
+    <rect x="20" y="235" width="500" height="80" rx="8" fill="#0f172a" stroke="#f43f5e" stroke-width="1" />
+    <text x="35" y="255" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" fill="#f43f5e">
+      CSP Evasion Analysis (159 Classified of 256 Crawled)
+    </text>
+    <text x="35" y="273" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      • 68 had No CSP; 50 permitted payload &amp; exfil; 17 partial.
+    </text>
+    <text x="35" y="291" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      • 24 blocked payload (15.1% of classified, 9.4% of total).
+    </text>
+    <text x="35" y="307" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • 'unsafe-eval' &amp; 'strict-dynamic' enabled inline fallbacks.
+    </text>
+  </g>
+
+  <!-- Panel 3: Modular OPTIMJACK Payload Anatomy -->
+  <g transform="translate(40, 490)">
+    <rect x="0" y="0" width="540" height="330" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="15" y="15" width="28" height="28" rx="6" fill="#a855f7" fill-opacity="0.15" stroke="#a855f7" stroke-width="1" />
+    <text x="29" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="bold" fill="#c084fc" text-anchor="middle">3</text>
+    <text x="55" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" fill="#f8fafc">
+      Modular OPTIMJACK Payload (track.js)
+    </text>
+
+    <!-- Sub-box: Clipper -->
+    <rect x="20" y="60" width="240" height="120" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1" />
+    <text x="32" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" fill="#38bdf8">
+      A. Crypto Clipper
+    </text>
+    <text x="32" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      • Hooks navigator.clipboard
+    </text>
+    <text x="32" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      • Checksum validation:
+    </text>
+    <text x="32" y="134" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">
+      BTC, ETH (EIP-55), SOL, TRX
+    </text>
+    <text x="32" y="152" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">
+      Swaps text, links, and forms
+    </text>
+
+    <!-- Sub-box: Skimmer -->
+    <rect x="280" y="60" width="240" height="120" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1" />
+    <text x="292" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" fill="#f43f5e">
+      B. Card Skimmer (Magecart)
+    </text>
+    <text x="292" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      • Intercepts submit &amp; fetch
+    </text>
+    <text x="292" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      • Luhn mod-10 PAN verification
+    </text>
+    <text x="292" y="134" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">
+      Harvests PAN, expiry, CVV
+    </text>
+    <text x="292" y="152" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">
+      Beacon exfil: 1688360.cc/card.php
+    </text>
+
+    <!-- Sub-box: Session / Recon -->
+    <rect x="20" y="195" width="240" height="120" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1" />
+    <text x="32" y="215" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" fill="#fbbf24">
+      C. Session &amp; Screenshot
+    </text>
+    <text x="32" y="233" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      • Reads document.cookie
+    </text>
+    <text x="32" y="251" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      • Injects html2canvas.min.js
+    </text>
+    <text x="32" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">
+      Captures viewport bitmap
+    </text>
+    <text x="32" y="287" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">
+      Exfiltrates to 1688360.cc/hit.php
+    </text>
+
+    <!-- Sub-box: Mobile Exploit Router -->
+    <rect x="280" y="195" width="240" height="120" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1" />
+    <text x="292" y="215" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" fill="#a855f7">
+      D. iOS Exploit Delivery
+    </text>
+    <text x="292" y="233" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      • Evaluates navigator.userAgent
+    </text>
+    <text x="292" y="251" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      • Loads boot.js from .icu C2
+    </text>
+    <text x="292" y="269" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">
+      iOS 13-17: Coruna exploit kit
+    </text>
+    <text x="292" y="287" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">
+      iOS 18.x: DarkSword WebKit chain
+    </text>
+  </g>
+
+  <!-- Panel 4: Exfiltration, Takedown & Hardened Architecture -->
+  <g transform="translate(620, 490)">
+    <rect x="0" y="0" width="540" height="330" rx="12" fill="url(#cardGrad)" stroke="#334155" stroke-width="1.2" filter="url(#dropShadow)" />
+    <rect x="15" y="15" width="28" height="28" rx="6" fill="#10b981" fill-opacity="0.15" stroke="#10b981" stroke-width="1" />
+    <text x="29" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="bold" fill="#34d399" text-anchor="middle">4</text>
+    <text x="55" y="34" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="15" font-weight="bold" fill="#f8fafc">
+      C2 Infrastructure &amp; Defense Seams
+    </text>
+
+    <!-- Sub-box: C2 Takedown & Tracking -->
+    <rect x="20" y="60" width="500" height="85" rx="8" fill="#0f172a" stroke="#475569" stroke-width="1" />
+    <text x="35" y="80" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" fill="#38bdf8">
+      C2 Endpoints &amp; On-Chain Asset Sweeps
+    </text>
+    <text x="35" y="98" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      • Primary C2: 1688360.cc (clientHold 17 Nov 00:37 UTC).
+    </text>
+    <text x="35" y="116" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      • Exploit routers: 5vobauua3ojpklx.icu &amp; eil786npto9u5bq.icu.
+    </text>
+    <text x="35" y="132" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Swept $7.1k+ crypto to known consolidation addresses (TRON, BTC).
+    </text>
+
+    <!-- Sub-box: Remediation & Defensive Controls -->
+    <rect x="20" y="158" width="500" height="157" rx="8" fill="#0f172a" stroke="#10b981" stroke-width="1" />
+    <text x="35" y="180" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="bold" fill="#34d399">
+      Production Remediation &amp; Modern Hardening Controls
+    </text>
+    <text x="35" y="200" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      1. Nonce CSP: Avoid 'unsafe-eval'; scope trusted roots.
+    </text>
+    <text x="35" y="218" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      2. Granular connect-src: Lock down outbound exfiltration destinations.
+    </text>
+    <text x="35" y="236" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      3. Hosted fields &amp; payment-page script monitoring.
+    </text>
+    <text x="35" y="254" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      4. JS wrappers &amp; DOM markers: Heuristics only.
+    </text>
+    <text x="35" y="272" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#cbd5e1">
+      5. CSP events &amp; MutationObserver: Telemetry, not prevention.
+    </text>
+    <text x="35" y="295" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">
+      Verified clean across all 188 snippets by 16 Nov 23:11 UTC.
+    </text>
+  </g>
+</svg>

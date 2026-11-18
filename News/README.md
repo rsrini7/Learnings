@@ -39,6 +39,7 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 - [OpenAI 948 Linux Kernel LPEs Autonomous Exploits Nov 2026](Security/OpenAI-948-Linux-Kernel-LPEs-Autonomous-Exploits-Nov-2026.md)
 - [OpenCode Console API Key Breach And Distillation Oct 2026](Security/OpenCode-Console-API-Key-Breach-And-Distillation-Oct-2026.md)
 - [OpenSSH Musl Asterisk Bypass Sshhole Nov 2026](Security/OpenSSH-Musl-Asterisk-Bypass-Sshhole-Nov-2026.md)
+- [Optimizely Optimjack Supply Chain Attack Nov 2026](Security/Optimizely-Optimjack-Supply-Chain-Attack-Nov-2026.md)
 - [PHP2Shell Exploit Debate Threat Models And Patch Status Oct 2026](Security/PHP2Shell-Exploit-Debate-Threat-Models-And-Patch-Status-Oct-2026.md)
 - [PHP2Shell History UAF And ASLR Oct 2026](Security/PHP2Shell-History-UAF-And-ASLR-Oct-2026.md)
 - [PHP2Shell Steal My Bitcoin Challenge Oct 2026](Security/PHP2Shell-Steal-My-Bitcoin-Challenge-Oct-2026.md)

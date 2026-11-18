@@ -486,6 +486,7 @@ Any organization that executed builds or deployed LiteLLM containers between **1
 ---
 
 **Related:**
+- [Optimizely-Optimjack-Supply-Chain-Attack-Nov-2026.md](Optimizely-Optimjack-Supply-Chain-Attack-Nov-2026.md) — Cross-tenant A/B testing CDN injection vs. package build runner subversion in modern software supply chains.
 - [AI-Key-Theft-Railway-Zeabur-Oct-2026.md](AI-Key-Theft-Railway-Zeabur-Oct-2026.md) — Analysis of environment variable harvesting and API key exfiltration across PaaS cloud platforms.
 - [HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways-Nov-2026.md](HTTP-Egress-Credential-Proxies-Vs-MCP-Gateways-Nov-2026.md) — Architectural evaluation of credential proxies, least-privilege token issuance, and MCP security boundaries.
 - [Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md](Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md) — Threat modeling for local model runtimes, prompt injection vectors, and tool-calling backdoors.
