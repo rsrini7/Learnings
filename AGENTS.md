@@ -145,20 +145,10 @@ Keep the document deeply educational, engaging, and directly useful to practicin
   - **Strictly anonymize employers and organizations:** If the user mentions their current employer, company name, workplace affiliations, or internal team identities, NEVER include or disclose those names. Abstract them into generic industry archetypes (e.g., "enterprise environments", "teams migrating legacy services", "large-scale transactional systems").
   - **Translate workplace debates into objective technical trade-offs:** Reframe subjective claims or interpersonal disputes into detached, professional engineering evaluations (e.g., "Architectural Evaluation: Shared-Nothing vs. Persistent Runtimes", "Structural Risks in Server-Side JavaScript", "Inherent Failure Modes in Legacy Frameworks"). Address the underlying technical mechanisms and trade-offs rigorously without attributing them to personal personalities.
   - **Universal application across all artifacts:** Enforce this abstraction across every output: Markdown documents, Mermaid diagrams, SVG text and containers, code comments, commit messages, and final user-facing responses.
-- Verify material claims against current primary sources and cite them inline
-  near the relevant explanation. Trace claims in user-provided details back to
-  disclosures, official documentation, standards or first-person research.
-- Attribute preliminary root causes and company statements. State uncertainties,
-  scope evidence of non-exploitation to the observer, and distinguish a local
-  demonstration from compromise of a real service. Describe provenance simply:
-  for example, "Based on user-provided details, with material claims checked
-  against primary disclosures." Name a video, transcript or other input format
-  only when that provenance affects a claim or the user asks. Reserve verification
-  claims for material actually checked; mention access limitations only when they
-  affect a material conclusion or the user asks about verification.
-- Keep unrelated concurrent incidents separate. Include business context only
-  when it helps interpret the technical impact. Explain meaningful limitations
-  without sensationalism or unsupported assurances.
+- Verify material claims against primary sources and cite traceable documents near the explanation. Attribute preliminary causes and company statements; distinguish direct evidence, third-party observations, and analysis. State uncertainty, provenance, and access limits when material, and claim verification only for evidence actually checked. Scope non-exploitation to the observer and distinguish local demonstrations from production incidents.
+- Check runnable code and configuration examples for syntax and behavior; verify equations, units, measurements, cross-layer contracts, and timestamps. State assumptions and distinguish illustrative examples from verified production details.
+- Keep unrelated incidents separate. Include third-party impact or causal claims only when relevant and supported by authoritative sources. Include business context only when it clarifies impact, and name an input format only when provenance affects a claim or the user asks.
+- During reviews, report actionable issues that materially affect accuracy, technical correctness, evidence, safety, or required structure. Group related findings and omit speculative or cosmetic comments unless they block delivery.
 - Before delivery, check factual consistency, source URLs, dates, diagram labels
   and internal links; complete the repository validation and commit rules below.
 
@@ -259,6 +249,8 @@ a commit.
 - [ ] New `.md` file ends with a `**Related:**` section (3–5 links + reasons)
 - [ ] Back-links added in the closest existing sibling doc(s)
 - [ ] Moved/renamed file: own Related links fixed + old references updated
+- [ ] Technical examples, equations, system contracts, dates, and citations are consistent with stated assumptions and evidence
+- [ ] `git diff --check` passes cleanly
 - [ ] `python3 Scripts/check-markdown.py path/to/file.md` (or `--recent`) clean
 - [ ] `python3 Scripts/generate-readme.py` run (never hand-edit `README.md`)
 - [ ] `python3 Scripts/github-repos.py links` clean
