@@ -333,8 +333,9 @@ The following architectural diagram illustrates the bundled runtime blindspot, t
 ---
 
 **Related:**
-- [Linux Kernel ZDI Public Reports](Linux-Kernel-ZDI-Public-Reports-KSMBD-Oct-2026.md) — Distinguish an optional kernel file server from a bundled runtime decoder.
+- [Brotli Decompressor RCE (HTTP2Shell)](Brotli-HTTP2Shell-Node2Shell-CVE-2026-111497-Nov-2026.md) — Protocol deep dive into RFC 7932 meta-blocks, decode.c boolean conflation, and cross-ecosystem impact across Python, Bun, and Envoy.
 - [PHP2Shell: History, UAF and ASLR](PHP2Shell-History-UAF-And-ASLR-Oct-2026.md) — Compare another runtime-level memory-corruption path from the same week.
+- [Java4Shell: OpenJDK Base64 AVX-512 RCE](Java4Shell-OpenJDK-Base64-AVX512-RCE-CVE-2026-114938-Nov-2026.md) — Memory corruption in core platform runtimes leading to pre-auth RCE.
 - [GitLab CVE-2026-110264](GitLab-Regex-Compiler-RCE-Oct-2026.md) — Same-week unauthenticated RCE in developer infrastructure rather than the application runtime.
 - [LiteLLM 1.107.0 Supply-Chain Compromise](LiteLLM-1.107.0-Supply-Chain-Compromise-Oct-2026.md) — Shows the other direction: a package release, not a runtime binary, as the compromised artifact.
 - [Node.js Async Hooks DoS (CVE-2025-59466)](NodeJS-Async-Hooks-Stack-Exhaustion-DoS-CVE-2025-59466-2026.md) — Earlier Node.js failure mode where request handling becomes a process-level problem.
