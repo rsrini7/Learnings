@@ -148,9 +148,31 @@ Keep the document deeply educational, engaging, and directly useful to practicin
 - Verify material claims against primary sources and cite traceable documents near the explanation. Attribute preliminary causes and company statements; distinguish direct evidence, third-party observations, and analysis. State uncertainty, provenance, and access limits when material, and claim verification only for evidence actually checked. Scope non-exploitation to the observer and distinguish local demonstrations from production incidents.
 - Check runnable code and configuration examples for syntax and behavior; verify equations, units, measurements, cross-layer contracts, and timestamps. State assumptions and distinguish illustrative examples from verified production details.
 - Keep unrelated incidents separate. Include third-party impact or causal claims only when relevant and supported by authoritative sources. Include business context only when it clarifies impact, and name an input format only when provenance affects a claim or the user asks.
-- During reviews, report actionable issues that materially affect accuracy, technical correctness, evidence, safety, or required structure. Group related findings and omit speculative or cosmetic comments unless they block delivery.
 - Before delivery, check factual consistency, source URLs, dates, diagram labels
   and internal links; complete the repository validation and commit rules below.
+
+### Reviewing staged changes
+
+1. Use `git diff --cached` as the review baseline. Check for unstaged edits in the
+   same files before applying a fix. Report actionable findings that affect
+   accuracy, technical correctness, evidence, safety, or required structure.
+2. For each disputed claim, read the relevant passage in the cited primary
+   source, including its tables, timelines, and captions. Compare the exact
+   date, event, and actor. Keep supported details with attribution and correct
+   only the part the source does not support. If access fails, report the
+   access limit and mark the claim as unverified. Call a claim incorrect only
+   when evidence contradicts it.
+3. When asked to fix findings, make the smallest edits that resolve them.
+   Preserve the author’s structure, technical depth, examples, citations, and
+   related links. Keep existing image references at their original points in
+   the article and in Supplementary Visuals when both placements serve a
+   purpose. A repeated asset path alone is insufficient reason to remove an
+   embed. Get the user’s agreement before expanding a review into a rewrite.
+4. Compare the fixes with the staged baseline before delivery. Account for each
+   removed paragraph, timeline row, or image reference with a specific finding.
+   Restore unrelated edits, run the applicable checks, and summarize the fixes
+   and evidence limits. Leave the staging area unchanged unless the user asks
+   to stage the fixes.
 
 ---
 
