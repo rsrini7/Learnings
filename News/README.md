@@ -33,6 +33,7 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 - [Local AI And Agent Security Threat Model Nov 2026](Security/Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md)
 - [MongoBleed Dec2025](Security/MongoBleed-Dec2025.md)
 - [N8n Workflow Automation RCE Suite CVE 2025 68613 2026](Security/N8n-Workflow-Automation-RCE-Suite-CVE-2025-68613-2026.md)
+- [NGINX2Root HTTP2 RCE And Kernel SCTP LPE CVE 2026 123007 Nov 2026](Security/NGINX2Root-HTTP2-RCE-And-Kernel-SCTP-LPE-CVE-2026-123007-Nov-2026.md)
 - [NodeJS Async Hooks Stack Exhaustion DoS CVE 2025 59466 2026](Security/NodeJS-Async-Hooks-Stack-Exhaustion-DoS-CVE-2025-59466-2026.md)
 - [NodeJS Brotli Node2Shell RCE Oct 2026](Security/NodeJS-Brotli-Node2Shell-RCE-Oct-2026.md)
 - [Notepad++ Targeted Attack Nov 2026](Security/Notepad%2B%2B-Targeted-Attack-Nov-2026.md)

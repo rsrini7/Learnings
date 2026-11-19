@@ -19,7 +19,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [📄 Research Papers](#papers) (19 articles)
 - [🛠️ Development Setup](#devsetup) (8 articles)
 - [✍️ Content Creation](#content) (43 articles)
-- [📰 News & Updates](#news) (66 articles)
+- [📰 News & Updates](#news) (67 articles)
 - [📚 References & Guides](#references) (3 articles)
 
 ---
@@ -507,6 +507,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Local AI And Agent Security Threat Model Nov 2026](News/Security/Local-AI-And-Agent-Security-Threat-Model-Nov-2026.md)
 - [MongoBleed Dec2025](News/Security/MongoBleed-Dec2025.md)
 - [N8n Workflow Automation RCE Suite CVE 2025 68613 2026](News/Security/N8n-Workflow-Automation-RCE-Suite-CVE-2025-68613-2026.md)
+- [NGINX2Root HTTP2 RCE And Kernel SCTP LPE CVE 2026 123007 Nov 2026](News/Security/NGINX2Root-HTTP2-RCE-And-Kernel-SCTP-LPE-CVE-2026-123007-Nov-2026.md)
 - [NodeJS Async Hooks Stack Exhaustion DoS CVE 2025 59466 2026](News/Security/NodeJS-Async-Hooks-Stack-Exhaustion-DoS-CVE-2025-59466-2026.md)
 - [NodeJS Brotli Node2Shell RCE Oct 2026](News/Security/NodeJS-Brotli-Node2Shell-RCE-Oct-2026.md)
 - [Notepad++ Targeted Attack Nov 2026](News/Security/Notepad%2B%2B-Targeted-Attack-Nov-2026.md)

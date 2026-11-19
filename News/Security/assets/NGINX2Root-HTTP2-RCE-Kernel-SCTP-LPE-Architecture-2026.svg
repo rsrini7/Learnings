@@ -1,0 +1,233 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 860" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19" />
+      <stop offset="100%" stop-color="#111827" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.4" />
+    </filter>
+  </defs>
+
+  <!-- Background Canvas -->
+  <rect width="1200" height="860" fill="url(#bgGrad)" />
+
+  <!-- Grid lines -->
+  <g stroke="#1e293b" stroke-width="1" opacity="0.4">
+    <line x1="0" y1="84" x2="1200" y2="84" />
+    <line x1="0" y1="460" x2="1200" y2="460" />
+    <line x1="595" y1="84" x2="595" y2="840" />
+  </g>
+
+  <!-- Header -->
+  <g transform="translate(40, 20)">
+    <rect x="0" y="0" width="1120" height="52" rx="8" fill="#1e293b" opacity="0.6" stroke="#334155" />
+    <text x="20" y="33" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700" fill="#f8fafc">
+      NGINX2Root: HTTP/2 Send Window Overflow, glibc Wrap &amp; Kernel SCTP LPE
+    </text>
+    <rect x="830" y="13" width="270" height="26" rx="13" fill="#e11d48" opacity="0.2" stroke="#f43f5e" stroke-width="1" />
+    <text x="965" y="30" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="600" fill="#f43f5e" text-anchor="middle">
+      CVE-2026-123007 + Kernel SCTP · CVSS 9.2
+    </text>
+  </g>
+
+  <!-- Panel 1: HTTP/2 Flow Control Window Arithmetic Underflow -->
+  <g transform="translate(40, 96)" filter="url(#shadow)">
+    <rect width="535" height="344" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="535" height="40" rx="10" fill="#1e293b" />
+    <rect x="0" y="30" width="535" height="10" fill="#1e293b" />
+    <circle cx="22" cy="20" r="7" fill="#f43f5e" />
+    <text x="38" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">
+      1. HTTP/2 Send Window Arithmetic Underflow
+    </text>
+
+    <!-- Subcard 1A: Window Inflation -->
+    <rect x="16" y="52" width="503" height="128" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      Unbounded Credit Restoration in Filter Cleanup
+    </text>
+    <text x="28" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Attacker queues response DATA Q; deducts from h2c-&gt;send_window
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Stream 0 WINDOW_UPDATE grants Q back; send_window hits Wmax
+    </text>
+    <text x="28" y="128" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • RST_STREAM triggers cleanup: h2c-&gt;send_window += Q (No bound check!)
+    </text>
+    <text x="28" y="146" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fbbf24">
+      → send_window reaches Wmax + Q, breaching 31-bit limit (0x7FFFFFFF)
+    </text>
+
+    <!-- Subcard 1B: Capacity Check Underflow & Signed Cast -->
+    <rect x="16" y="192" width="503" height="136" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a78bfa">
+      Unsigned Wrap to 64-bit Negative Cast
+    </text>
+    <text x="28" y="232" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Remaining check: (MAX_WINDOW - h2c-&gt;send_window) underflows
+    </text>
+    <text x="28" y="250" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Unsigned size_t arithmetic wraps to massive positive capacity
+    </text>
+    <text x="28" y="268" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Iterated updates drive send_window to 2^64 - d (huge unsigned value)
+    </text>
+    <text x="28" y="286" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#f43f5e">
+      • Cast to signed (off_t) produces -d; sets chunk-&gt;last = chunk-&gt;pos - d
+    </text>
+    <text x="28" y="304" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#f43f5e">
+      • OpenSSL: size = last - pos = -d → memcpy length becomes 2^64 - d
+    </text>
+  </g>
+
+  <!-- Panel 2: The glibc 2.24+ Backward-Copy Wrap-Around -->
+  <g transform="translate(625, 96)" filter="url(#shadow)">
+    <rect width="535" height="344" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="535" height="40" rx="10" fill="#1e293b" />
+    <rect x="0" y="30" width="535" height="10" fill="#1e293b" />
+    <circle cx="22" cy="20" r="7" fill="#fbbf24" />
+    <text x="38" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">
+      2. glibc Backward-Copy Loop Termination Bypass
+    </text>
+
+    <!-- Subcard 2A: Vector Memmove Mechanics -->
+    <rect x="16" y="52" width="503" height="138" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      memmove-vec-unaligned-erms.S Execution Path
+    </text>
+    <text x="28" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • glibc AVX2 path loads 128B head from src, 32B tail from src + size - 32
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Calculates end = (dest + size) mod 2^64 = (dest + 2^64 - d) = dest - d
+    </text>
+    <text x="28" y="128" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">
+      • Backward loop: cursor = align_down(end - 129, 32)
+    </text>
+    <text x="28" y="146" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">
+      • Loop condition (cursor &gt; dest) fails immediately since cursor &lt; dest!
+    </text>
+    <text x="28" y="164" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fbbf24">
+      → Multi-petabyte copy avoided! Only head (128B) and tail (160B) copied.
+    </text>
+
+    <!-- Subcard 2B: Destination Window Geometry -->
+    <rect x="16" y="202" width="503" height="126" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a78bfa">
+      Controlled Offset Targeting via Control Frames
+    </text>
+    <text x="28" y="242" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Client sends p PING frames (17B ACK) + s SETTINGS frames (9B ACK)
+    </text>
+    <text x="28" y="260" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Start offset P = 17p + 9s + 9; sets dest = TLS_buffer + P
+    </text>
+    <text x="28" y="278" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • By configuring d = P - 64, dest - d becomes exactly TLS_buffer + 64
+    </text>
+    <text x="28" y="296" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#f43f5e">
+      → 160-byte copy precisely overlaps 96B heap metadata + 64B TLS buffer
+    </text>
+  </g>
+
+  <!-- Panel 3: Heap Alignment, ASLR Defeat & RCE -->
+  <g transform="translate(40, 472)" filter="url(#shadow)">
+    <rect width="535" height="344" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="535" height="40" rx="10" fill="#1e293b" />
+    <rect x="0" y="30" width="535" height="10" fill="#1e293b" />
+    <circle cx="22" cy="20" r="7" fill="#38bdf8" />
+    <text x="38" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">
+      3. Heap Feng Shui, Address Leak &amp; Worker RCE
+    </text>
+
+    <!-- Subcard 3A: Request Pool Layout -->
+    <rect x="16" y="52" width="503" height="138" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      Cookie Shaping &amp; Multipart Range Alignment
+    </text>
+    <text x="28" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Attacker crafts HTTP Range header; boundary string becomes src pointer
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Multiple Cookie headers placed immediately before boundary header
+    </text>
+    <text x="28" y="128" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Bytes 0..95: Controlled fake chunk metadata to corrupt TLS heap
+    </text>
+    <text x="28" y="146" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Bytes 96..159: Text headers containing code &amp; heap pointer addresses
+    </text>
+    <text x="28" y="164" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">
+      → Dual Primitive: Memory corruption + TLS response address disclosure
+    </text>
+
+    <!-- Subcard 3B: Cleanup Hijack -->
+    <rect x="16" y="202" width="503" height="126" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a78bfa">
+      Overwriting ngx_pool_cleanup_t Function Pointer
+    </text>
+    <text x="28" y="242" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Leaked addresses defeat ASLR; locates system() and worker heap
+    </text>
+    <text x="28" y="260" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Corrupted TLS metadata allows overwriting pool cleanup handlers
+    </text>
+    <text x="28" y="278" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#f43f5e">
+      • Next request termination executes cleanup-&gt;handler(cleanup-&gt;data)
+    </text>
+    <text x="28" y="296" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">
+      → Arbitrary command execution with nginx worker privileges
+    </text>
+  </g>
+
+  <!-- Panel 4: Linux Kernel SCTP LPE & Container Escape -->
+  <g transform="translate(625, 472)" filter="url(#shadow)">
+    <rect width="535" height="344" rx="10" fill="#111827" stroke="#334155" stroke-width="1.5" />
+    <rect x="0" y="0" width="535" height="40" rx="10" fill="#1e293b" />
+    <rect x="0" y="30" width="535" height="10" fill="#1e293b" />
+    <circle cx="22" cy="20" r="7" fill="#4ade80" />
+    <text x="38" y="25" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">
+      4. Linux Kernel SCTP LPE &amp; Container Escape to Root
+    </text>
+
+    <!-- Subcard 4A: Kernel SCTP Double-Free -->
+    <rect x="16" y="52" width="503" height="138" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">
+      SCTP Association Socket Migration Flaw (Linux 4.15+)
+    </text>
+    <text x="28" y="92" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Worker opens SCTP socket; kernel auto-loads sctp.ko module
+    </text>
+    <text x="28" y="110" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • During blocked send, association is transferred to another socket
+    </text>
+    <text x="28" y="128" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Waiting operation frees transferred struct; second socket frees again
+    </text>
+    <text x="28" y="146" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#fbbf24">
+      • Triggers kmalloc-512 / association use-after-free &amp; double-free
+    </text>
+    <text x="28" y="164" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#f43f5e">
+      → Kernel disclosure defeats KASLR; yields arbitrary kernel function call
+    </text>
+
+    <!-- Subcard 4B: Host Elevation -->
+    <rect x="16" y="202" width="503" height="126" rx="6" fill="#1e293b" opacity="0.7" stroke="#334155" />
+    <text x="28" y="222" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#a78bfa">
+      Docker Escape to Host Root (UID 0)
+    </text>
+    <text x="28" y="242" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Unprivileged nginx worker invokes commit_creds(prepare_kernel_cred(0))
+    </text>
+    <text x="28" y="260" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#94a3b8">
+      • Docker containers share host kernel; namespaces do not isolate bug
+    </text>
+    <text x="28" y="278" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">
+      • Overwrites task credentials; escapes container mount and pid namespaces
+    </text>
+    <text x="28" y="296" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" fill="#4ade80">
+      → Full root shell on underlying host (AWS, GCP, Azure, Bare-Metal)
+    </text>
+  </g>
+</svg>
