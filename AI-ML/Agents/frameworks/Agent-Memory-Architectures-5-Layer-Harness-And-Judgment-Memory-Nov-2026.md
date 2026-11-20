@@ -644,6 +644,7 @@ To evaluate where various modern agent frameworks sit along this memory continuu
 ---
 
 **Related:**
+- [Enterprise-Ontology-For-AI-Agents-And-NVIDIA-Auto-Ontology-Nov-2026.md](Enterprise-Ontology-For-AI-Agents-And-NVIDIA-Auto-Ontology-Nov-2026.md) — Enterprise ontologies, entity resolution, SHACL validation gates, and NVIDIA Auto Ontology FastMCP runtime for deterministic data agents.
 - [AI Agent Evaluation Architectures: Multi-Tier Grading and Harnesses](AI-Agent-Evaluation-Architectures-Multi-Tier-Graders-And-Harnesses-Nov-2026.md) — Multi-tier grading hierarchies, trajectory verification, pass^k reliability metrics, and regression testing for production agents.
 - [Agentic Memory Governance: Policy Engines, Temporal Knowledge Graphs, and Multi-Tier State Lifecycles](Agentic-Memory-Governance-Policy-Engines-And-Lifecycles-Nov-2026.md) — Production architecture decoupling storage backends from governance policies (Write, Retrieve, Age, Protect), temporal graph lifecycles, and context poisoning prevention.
 - [AWS Infinity (Hydro) Architecture: Rust Serverless Agent Runtime](AWS-Infinity-Hydro-Rust-Agent-Runtime-Nov-2026.md) — High-density serverless agent runtime using execution slices, ~103 KB state bookmarks, Reactive Agent Protocol (RAP), and synthetic tool injection.

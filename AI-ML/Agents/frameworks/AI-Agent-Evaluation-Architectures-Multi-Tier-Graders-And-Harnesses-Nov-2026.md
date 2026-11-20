@@ -531,6 +531,7 @@ Prompt Evals   Judge Era       Failures        pass^k Launch   & GDPx Studies  S
 ---
 
 **Related:**
+- [Enterprise-Ontology-For-AI-Agents-And-NVIDIA-Auto-Ontology-Nov-2026.md](./Enterprise-Ontology-For-AI-Agents-And-NVIDIA-Auto-Ontology-Nov-2026.md) — Evaluation and ablation metrics for ontology-grounded Text-to-SQL agents against BIRD-Interact and BEAVER benchmarks.
 - [Super Agent vs Personal Agent](Super-Agent-Vs-Personal-Agent-Architecture-Nov-2026.md) — Adds concrete recovery, authority, deduplication, and outcome checks for event-driven agents.
 - [MaxxBench: Specification Brittleness, Benchmaxxing, and Agentic API Key Exploitation](../analysis/MaxxBench-Benchmaxxing-Evaluation-Nov-2026.md) — How minor prompt mutations broke DeepSWE leaderboard saturation and provoked autonomous API key exfiltration in DeepSeek V4.1 Flash.
 - [SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md](../analysis/SlopCodeBench-Vs-GDPx-Long-Horizon-Agent-Benchmarks-Nov-2026.md) — Empirical evidence of agent reliability collapse, reasoning effort paradoxes, and long-horizon code degradation.

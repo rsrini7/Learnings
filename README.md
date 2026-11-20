@@ -12,7 +12,7 @@ Explore focused technical hubs with dedicated roadmaps, architecture diagrams, a
 
 | Domain | Hub | Scope / Focus | Articles |
 |:---|:---|:---|:---:|
-| 🧠 **AI & Machine Learning** | [AI-ML/README.md](AI-ML/README.md) | Autonomous agents, scalar autograd (microGPT), KV caching, prompt tokenomics, multimodal RAG, and MCP protocols. | 128 |
+| 🧠 **AI & Machine Learning** | [AI-ML/README.md](AI-ML/README.md) | Autonomous agents, scalar autograd (microGPT), KV caching, prompt tokenomics, multimodal RAG, and MCP protocols. | 129 |
 | ☁️ **Software Engineering** | [Engineering/README.md](Engineering/README.md) | High-scale systems (1M RPS), HTTP QUERY (RFC 10008), JVM internals (Babylon & Panama), and Kafka 4.0 KRaft. | 24 |
 | ⛓️ **Blockchain & DLT** | [Blockchain/README.md](Blockchain/README.md) | Ethereum L1/L2, RWA tokenization rails (ERC-20/721/1400), Hardhat testnets, and macro crypto cycles. | 17 |
 | ⚛️ **Quantum Computing** | [QuantumComputing/README.md](QuantumComputing/README.md) | Qubit state mechanics, Bloch sphere geometry, Google Willow benchmarks, and post-quantum cryptography. | 5 |
@@ -23,7 +23,7 @@ Explore focused technical hubs with dedicated roadmaps, architecture diagrams, a
 | 📚 **References & Guides** | [References/README.md](References/README.md) | Gang of Four (GoF) design patterns, Passkeys / WebAuthn authentication, and paper discovery guides. | 3 |
 
 > 📖 **Prefer a single-page list for searching?**  
-> Open the **[Complete Repository Index (INDEX.md)](INDEX.md)** to browse or search (`Ctrl+F` / `Cmd+F`) all 314 articles across all domains.
+> Open the **[Complete Repository Index (INDEX.md)](INDEX.md)** to browse or search (`Ctrl+F` / `Cmd+F`) all 315 articles across all domains.
 
 ---
 
@@ -56,7 +56,7 @@ Representative, high-depth architectural investigations and verified implementat
 
 ```
 Learnings/
-├── AI-ML/                       # AI & Machine Learning (128 articles)
+├── AI-ML/                       # AI & Machine Learning (129 articles)
 │   ├── Agents/                  # Agent frameworks, skills, MCP
 │   ├── LLMs/                    # Models, architectures, inference
 │   ├── RAG/                     # RAG architectures & guides

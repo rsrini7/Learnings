@@ -518,6 +518,7 @@ This architecture synthesizes principles of enterprise agentic state management,
 ---
 
 **Related:**
+- [Enterprise-Ontology-For-AI-Agents-And-NVIDIA-Auto-Ontology-Nov-2026.md](Enterprise-Ontology-For-AI-Agents-And-NVIDIA-Auto-Ontology-Nov-2026.md) — Grounding agent memory and analytics in canonical enterprise ontologies, OWL disjointness, and FastMCP semantic layers.
 - [Super Agent vs Personal Agent](Super-Agent-Vs-Personal-Agent-Architecture-Nov-2026.md) — Applies governed memory boundaries to personal assistants and durable team task services.
 - [Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md](Agent-Memory-Architectures-5-Layer-Harness-And-Judgment-Memory-Nov-2026.md) — 5-tier concentric harness mechanics, KV prefix caching, and parametric centroid judgment memory.
 - [AmshaAgent-Architecture-Memory-Layering-And-Governance-Nov-2026.md](AmshaAgent-Architecture-Memory-Layering-And-Governance-Nov-2026.md) — Enterprise Java 25/Quarkus agent with CAS core memory, hybrid RRF RAG, and typed decision seams.

@@ -62,6 +62,7 @@ In-depth research, architectural breakdowns, and hands-on implementations across
 - [ClaudeRalphLoop and AgentRalphMode](Agents/frameworks/ClaudeRalphLoop-and-AgentRalphMode.md)
 - [Confucius Code Agent](Agents/frameworks/Confucius-Code-Agent.md)
 - [DeepSeek SuperAgent And Harness Architecture Nov 2026](Agents/frameworks/DeepSeek-SuperAgent-And-Harness-Architecture-Nov-2026.md)
+- [Enterprise Ontology For AI Agents And NVIDIA Auto Ontology Nov 2026](Agents/frameworks/Enterprise-Ontology-For-AI-Agents-And-NVIDIA-Auto-Ontology-Nov-2026.md)
 - [How Ralph Works with Amp](Agents/frameworks/How-Ralph-Works-with-Amp.md)
 - [InternetOfAgents](Agents/frameworks/InternetOfAgents.md)
 - [Ralph Wiggum Loops And Ralph Mode 2026](Agents/frameworks/Ralph-Wiggum-Loops-And-Ralph-Mode-2026.md)
