@@ -43,6 +43,8 @@ For example, a model with $L_{\text{pre}} = 8$, $M = 20$, and $L_{\text{coda}} =
 
 ![Looped Transformer Prelude-Core-Coda Loop Lifecycle](../assets/Looped-Transformer-Prelude-Core-Coda-Cycle-2026.svg)
 
+*Figure 2: The canonical Prelude → Shared Recurrent Core ($\times R$) → Coda execution pipeline with state injection ($e + h^{(t)}$), weight-tied core execution ($\theta$), and exit gating ($t = R$).*
+
 ### Foundational Terminology
 
 | Term / Component | Architectural Definition | Operational Role |
@@ -773,31 +775,25 @@ Figures without a directly linked source below are retained as leads for further
 +---------------------------------------------------------------------------------------------------+
 | 1. Structural Topology                                                                            |
 |    Standard Linear Stack:  [Pre] -> [L1] -> [L2] -> ... -> [Ln] -> [Head] (Param O(L))            |
-|    Sandwich Looped Stack:  [Pre] -> [[Core Layer 1..M] looped Kx] -> [Coda] (Param << D_eff)     |
+|    Sandwich Looped Stack:  [Pre] -> [[Core Layer 1..M] looped Kx] -> [Coda] (Param << D_eff)      |
 +---------------------------------------------------------------------------------------------------+
 | 2. Reasoning Modalities                                                                           |
-|    Explicit CoT (o1/R1):   Input -> "<think> token 1... token 3000 </think>" -> Answer           |
+|    Explicit CoT (o1/R1):   Input -> "<think> token 1... token 3000 </think>" -> Answer            |
 |    Continuous Latent CoT:  Input -> [h^(0) -> h^(1) -> ... -> h^(K) in R^d] -> Direct Answer      |
 +---------------------------------------------------------------------------------------------------+
 | 3. KV-Cache Lifecycle (Final-Pass Scratchpad)                                                     |
-|    Pass k < K:             Query q^(k) scores against past cache. Intermediate KV is not retained|
-|    Pass k = K:             Final KV retained; peak memory depends on runtime  |
+|    Pass k < K:             Query q^(k) scores against past cache. Intermediate KV is not retained |
+|    Pass k = K:             Final KV retained; peak memory depends on runtime                      |
 +---------------------------------------------------------------------------------------------------+
 | 4. Hardware Arithmetic Intensity                                                                  |
 |    Standard Autoregressive: Weights streamed every token -> ~1 FLOP / Byte (Memory-Bound Wall)    |
-|    Looped Autoregressive:   Weight traffic depends on hardware, caching and scheduling|
+|    Looped Autoregressive:   Weight traffic depends on hardware, caching and scheduling            |
 +---------------------------------------------------------------------------------------------------+
 ```
 
-The accompanying system architecture diagram (`Looped-Transformers-Recurrent-Depth-Architecture-2026.svg`) visualizes the four critical mechanics:
-1. **Structural Topology:** Contrasting the memory-prohibitive linear stacking of physical layers against the compact Sandwich topology.
-2. **Reasoning Regimes:** Highlighting the contrast between context-exhausting token generation and internal vector-space latent deduction.
-3. **KV-Cache Lifecycle:** Illustrating one possible final-pass policy; per-loop and bounded caches have different behavior.
-4. **Hardware Arithmetic Intensity:** Contrasting a weight-only estimate with workload-dependent reuse. Measure actual memory traffic and utilization.
-
-![Prelude-Core-Coda Loop Lifecycle](../assets/Looped-Transformer-Prelude-Core-Coda-Cycle-2026.svg)
-
-*Figure 2: The canonical Prelude → Shared Recurrent Core ($\times R$) → Coda execution pipeline. Highlights initial projection $e$, state injection and normalization ($e + h^{(t)}$), shared weight-tied transformer execution ($\theta$), and the $t=R$ terminal exit transition into the Coda and language modeling head.*
+The accompanying system architecture diagrams synthesize these execution mechanics:
+1. **System Overview (Figure 1 in Section 1):** Contrasts the memory-prohibitive linear stacking of physical layers against the compact Sandwich topology, compares explicit token CoT with continuous latent reasoning, illustrates the final-pass KV scratchpad lifecycle, and examines hardware arithmetic intensity trade-offs.
+2. **Prelude-Core-Coda Pipeline (Figure 2 in Section 2):** Illustrates the canonical Prelude ($L_1$) $\to$ Shared Recurrent Core ($\times R$) $\to$ Coda ($L_2$) execution pipeline, highlighting initial projection $e$, state injection and normalization ($e + h^{(t)}$), shared weight-tied transformer execution ($\theta$), and the $t=R$ terminal exit transition into the Coda and language modeling head.
 
 ---
 
