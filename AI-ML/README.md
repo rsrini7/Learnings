@@ -101,6 +101,7 @@ In-depth research, architectural breakdowns, and hands-on implementations across
 - [LLM Council](LLMs/architecture/LLM-Council.md)
 - [LLM Inference Engines](LLMs/architecture/LLM-Inference-Engines.md)
 - [LLM Inference](LLMs/architecture/LLM-Inference.md)
+- [Looped Transformers Recurrent Depth Architecture Nov 2026](LLMs/architecture/Looped-Transformers-Recurrent-Depth-Architecture-Nov-2026.md)
 - [Persistent Memory Layers AI Agents](LLMs/architecture/Persistent-Memory-Layers-AI-Agents.md)
 - [microGPT Architecture Complete](LLMs/architecture/microGPT-Architecture-Complete.md)
 - [microGPT Architecture Diagram Explanation](LLMs/architecture/microGPT-Architecture-Diagram-Explanation.md)

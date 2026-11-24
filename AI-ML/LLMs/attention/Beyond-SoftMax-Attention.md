@@ -422,6 +422,7 @@ The following visual documentation preserves the conceptual overview of the line
 ---
 
 **Related:**
+- [Looped-Transformers-Recurrent-Depth-Architecture-Nov-2026](../architecture/Looped-Transformers-Recurrent-Depth-Architecture-Nov-2026.md) — Examines depth recurrence and weight-shared looped transformers as an orthogonal axis to sequence recurrence for scaling latent reasoning.
 - [LLM-Inference](../architecture/LLM-Inference.md) — Explains the memory bandwidth wall and KV-cache bottleneck that linear attention is designed to eliminate.
 - [microGPT-Architecture-Complete](../architecture/microGPT-Architecture-Complete.md) — Walks through standard causal self-attention mechanics and tensor projections replaced by linear state matrices.
 - [Auto-Regression](../training/Auto-Regression.md) — Details the sequential token-by-token generation pattern whose arithmetic intensity crisis motivates recurrent architectures.

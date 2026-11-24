@@ -12,7 +12,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 
 ## 📑 Quick Jump by Domain
 
-- [🧠 AI & Machine Learning](#ai-ml) (129 articles)
+- [🧠 AI & Machine Learning](#ai-ml) (130 articles)
 - [☁️ Software Engineering](#engineering) (24 articles)
 - [⛓️ Blockchain & DLT](#blockchain) (17 articles)
 - [⚛️ Quantum Computing](#quantumcomputing) (5 articles)
@@ -119,6 +119,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [LLM Council](AI-ML/LLMs/architecture/LLM-Council.md)
 - [LLM Inference Engines](AI-ML/LLMs/architecture/LLM-Inference-Engines.md)
 - [LLM Inference](AI-ML/LLMs/architecture/LLM-Inference.md)
+- [Looped Transformers Recurrent Depth Architecture Nov 2026](AI-ML/LLMs/architecture/Looped-Transformers-Recurrent-Depth-Architecture-Nov-2026.md)
 - [Persistent Memory Layers AI Agents](AI-ML/LLMs/architecture/Persistent-Memory-Layers-AI-Agents.md)
 - [microGPT Architecture Complete](AI-ML/LLMs/architecture/microGPT-Architecture-Complete.md)
 - [microGPT Architecture Diagram Explanation](AI-ML/LLMs/architecture/microGPT-Architecture-Diagram-Explanation.md)
