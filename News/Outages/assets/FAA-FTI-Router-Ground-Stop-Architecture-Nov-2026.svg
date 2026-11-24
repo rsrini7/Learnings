@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 840" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="redCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d151e"/>
+      <stop offset="100%" stop-color="#1f1118"/>
+    </linearGradient>
+    <linearGradient id="amberCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d2212"/>
+      <stop offset="100%" stop-color="#1c160c"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="840" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="600" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">FAA Telecommunications Infrastructure (FTI) Ground Stop Architecture</text>
+  <text x="600" y="62" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">Network flooding, potential source disconnection, and fail-safe airspace ground stop (Nov 13, 2026)</text>
+
+  <!-- Panel 1: Router Migration Storm -->
+  <g transform="translate(40, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#amberCard)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#b45309" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fde68a">1. Network Flooding</text>
+    <rect x="255" y="11" width="80" height="20" rx="4" fill="#d97706"/>
+    <text x="295" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Hypothesis</text>
+
+    <!-- Sub-card 1A: The Legacy Transition -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">FTI Modernization &amp; Potential Sources</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">FAA modernizing telecommunications infrastructure.</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">High-rate connection flood (~1,000 req / 4-5s) hit backbone.</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">El Dorado and Amarillo identified as potential sources.</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Contractor L3Harris disconnected both sites to halt flood.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24">Root cause remains under active formal FAA investigation.</text>
+
+    <!-- Sub-card 1B: Unthrottled Packet Floods -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">Hypothetical Reconnect Flood</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Model: Systems analysis of high-rate connection storm.</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Unthrottled discovery or reconnect retries flood backbone.</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">High packet volume fills switch buffers to capacity.</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Buffer saturation causes tail drops of real-time packets.</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">17 regional air traffic centers lose radar feeds.</text>
+
+    <!-- Sub-card 1C: Routing Convergence Loop -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Hypothetical Route Instability Model</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Model: Protocol misconfiguration evaluates route flapping.</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Rapid routing updates consume switch management CPU.</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">Linecard queues drop time-critical radar packets.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Network latency surges, dropping inter-center heartbeats.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24">Demonstrates buffer starvation dynamics in private IP meshes.</text>
+  </g>
+
+  <!-- Panel 2: Telemetry Saturation & ERAM Drops -->
+  <g transform="translate(425, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fca5a5">2. Buffer Exhaustion</text>
+    <rect x="255" y="11" width="80" height="20" rx="4" fill="#ef4444"/>
+    <text x="295" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Cascade</text>
+
+    <!-- Sub-card 2A: Buffer Overflow -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">Linecard Buffer Tail-Drop</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Intermediary FTI backbone switches filled buffers.</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">FIFO queues dropped arriving real-time packets.</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">Radar plots and ADS-B feeds suffered 60%+ loss.</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Inter-facility voice loops experienced static jitter.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ef4444">17 of 22 regional ARTCC centers lost radar feeds.</text>
+
+    <!-- Sub-card 2B: ERAM Safety Trip -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">ERAM Fail-Safe Watchdogs</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">En Route Automation Modernization requires sub-50ms</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">telemetry heartbeats to guarantee separation.</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">When telemetry dropped, safety watchdogs tripped.</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Air traffic controllers lost automated track radar.</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ef4444">Safety protocol mandated departure suspension.</text>
+
+    <!-- Sub-card 2C: Ground Stop Declaration -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">15:50 ET Ground Stop Order</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">FAA command center ordered national ground stop.</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">All commercial domestic flights held at gates.</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Airborne planes (~3,500) maintained TCAS &amp; landed.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Ground halt lasted approximately 4.5 hours.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Over 5,000 nationwide flights delayed or canceled.</text>
+  </g>
+
+  <!-- Panel 3: Manual Isolation & Recovery -->
+  <g transform="translate(810, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#0284c7" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#bae6fd">3. Node Disconnection</text>
+    <rect x="255" y="11" width="80" height="20" rx="4" fill="#0284c7"/>
+    <text x="295" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Resolution</text>
+
+    <!-- Sub-card 3A: Offender Isolation -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">Potential Source Disconnection</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">L3Harris isolated El Dorado and Amarillo nodes.</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Sites disconnected to halt flooding traffic.</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">Backbone latency stabilized upon disconnection.</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Packet drop rate collapsed across regional paths.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Telemetry links restored normal responsiveness.</text>
+
+    <!-- Sub-card 3B: Radar Synchronization -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Radar Stream Re-synchronization</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">ERAM platforms verified track plot consistency.</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">TRACON and tower audio channels tested clear.</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Telemetry packet drops returned to zero.</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Redundant TDM circuits confirmed intact as backup.</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">All 17 ARTCC facilities cleared for departures.</text>
+
+    <!-- Sub-card 3C: Ground Stop Lifted -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">20:15 ET Resumption of Air Traffic</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">FAA officially lifted nationwide ground stop.</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Airports staggered departures to manage runway queues.</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">FAA investigated potential source configurations.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Incident triggered congressional modernizing reviews.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Residual flight delays normalized over next 48 hours.</text>
+  </g>
+
+  <!-- Bottom Panel: Engineering Recovery & Mitigations -->
+  <g transform="translate(40, 530)" filter="url(#shadow)">
+    <rect width="1120" height="280" rx="10" fill="url(#cardGrad)" stroke="#475569" stroke-width="1"/>
+    <rect x="0" y="0" width="1120" height="38" rx="10" fill="#334155" fill-opacity="0.4"/>
+    <text x="20" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">4. Engineering Safeguards &amp; Telecom Modernization Mitigations</text>
+
+    <!-- Sub-card 4A: Architectural Safeguards -->
+    <rect x="18" y="50" width="536" height="215" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="32" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">Control Plane Rate Limiting &amp; VRF Isolation</text>
+    <text x="32" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">1. Control Plane Policing (CoPP): Enforce strict rate limits on broadcast,</text>
+    <text x="48" y="109" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">BGP, and OSPF discovery frames to prevent CPU starvation.</text>
+    <text x="32" y="127" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">2. VRF Segmentation: Isolate newly migrated IP edge segments from the core</text>
+    <text x="48" y="143" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">air traffic telemetry mesh until routing tables reach verified convergence.</text>
+    <text x="32" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">3. Automated Port Dampening: Automatically shut down flapping interfaces</text>
+    <text x="48" y="177" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">exceeding threshold reconnection attempts within a rolling 10-second window.</text>
+    <text x="32" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">4. Fail-Safe Airspace Procedures: Redundant independent sensors ensure that</text>
+    <text x="48" y="211" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">airborne flights land safely even if ground departure automation halts.</text>
+    <text x="32" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Zero airborne safety incidents occurred during the 4.5-hour ground stop.</text>
+
+    <!-- Sub-card 4B: Verification Checklist -->
+    <rect x="566" y="50" width="536" height="215" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+    <text x="580" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Canary Verification Checklist for Critical Networks</text>
+    <text x="580" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">1. Canary Interface Verification: New routers must run in passive listen mode</text>
+    <text x="596" y="109" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">for a minimum of 24 hours prior to carrying active radar or audio data.</text>
+    <text x="580" y="127" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">2. Linecard Buffer Telemetry: Alert on buffer queue utilization exceeding 40%</text>
+    <text x="596" y="143" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">to identify head-of-line blocking before real-time tail drops manifest.</text>
+    <text x="580" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">3. Automated Circuit Rollback: If inter-facility telemetry drops exceed 0.01%,</text>
+    <text x="596" y="177" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">failover orchestrator automatically falls back to verified parallel circuits.</text>
+    <text x="580" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">4. Staggered Migration Windows: Pausing deployments across regional ARTCCs</text>
+    <text x="596" y="211" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">confines faults to single sectors without impacting national airspace.</text>
+    <text x="580" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Guarantees high-assurance continuity for critical civilian infrastructure.</text>
+  </g>
+</svg>

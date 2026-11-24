@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 840" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="redCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d151e"/>
+      <stop offset="100%" stop-color="#1f1118"/>
+    </linearGradient>
+    <linearGradient id="amberCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d2212"/>
+      <stop offset="100%" stop-color="#1c160c"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="840" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="600" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">JPMorgan Chase &amp; Zelle Transaction Processing Architecture</text>
+  <text x="600" y="62" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">On-premise software defect, bilateral clearing delays, and pending transaction states (Nov 16, 2026)</text>
+
+  <!-- Panel 1: On-Premise Defect -->
+  <g transform="translate(40, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#amberCard)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#b45309" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fde68a">1. Concurrency Defect</text>
+    <rect x="255" y="11" width="80" height="20" rx="4" fill="#d97706"/>
+    <text x="295" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Hypothesis</text>
+
+    <!-- Sub-card 1A: Weekend Update -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">On-Premise Middleware Defect</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Chase confirmed software bug on physical servers</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">slowed incoming and outgoing transaction processing.</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Systems model indicates concurrency serialization</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">stalls in batch record-locking under morning volume.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24">Chase affirmed incident was strictly non-systemic.</text>
+
+    <!-- Sub-card 1B: Deadlock Storm -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">Hypothetical Queue Contention</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Model: Surging transactions contend for write locks.</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Worker threads queue up awaiting database ACKs.</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">Transaction processing throughput drops sharply.</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Queues accumulate in-flight payment messages.</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">Frontend API gateways time out on ledger queries.</text>
+
+    <!-- Sub-card 1C: Bank Isolation -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Internal Server Processing Freeze</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Customer mobile banking logins failed or spun.</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Account balance lookups threw server errors.</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">Chase confirmed issue was strictly an internal bug.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Chase reported no evidence of a cyber-related issue.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24">Chase resolved the software bug on Monday evening.</text>
+  </g>
+
+  <!-- Panel 2: Inter-Bank Clearing Cascade -->
+  <g transform="translate(425, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fca5a5">2. Clearing Delays</text>
+    <rect x="255" y="11" width="80" height="20" rx="4" fill="#ef4444"/>
+    <text x="295" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Cascade</text>
+
+    <!-- Sub-card 2A: The Central Hub Role -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">Chase as Core Liquidity Hub</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Chase is largest U.S. bank and co-owner of EWS.</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Processes massive share of nationwide Zelle rails.</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">EWS switch sends bilateral authorization queries.</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">When Chase stalled, bilateral handshakes failed.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ef4444">Chase said the issue was not systemic.</text>
+
+    <!-- Sub-card 2B: Pending State Trap -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">Bilateral Clearing &amp; Pending State (Model)</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Model: Bilateral settlement requires mutual ACK.</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Chase gateway delays slowed credit confirmations.</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">To prevent loss, EWS held transfers as "Pending".</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Money remained securely in-flight between banks.</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ef4444">Users across peer banks saw Chase transfers wait.</text>
+
+    <!-- Sub-card 2C: Zero Capital Loss -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">ACID Integrity Preserved</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Relational ledger state maintained full atomicity.</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Zero consumer deposits were lost, stolen, or doubled.</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Wells Fargo separately reported online banking issues.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Public perception mistook single hub for network crash.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Illustrated hub-and-spoke risks in payment rails.</text>
+  </g>
+
+  <!-- Panel 3: Resolution & Recovery -->
+  <g transform="translate(810, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#0284c7" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#bae6fd">3. Bug Resolution</text>
+    <rect x="255" y="11" width="80" height="20" rx="4" fill="#0284c7"/>
+    <text x="295" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Resolution</text>
+
+    <!-- Sub-card 3A: Rollback Execution -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">Evening Bug Resolution</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Chase identified an on-premises software bug.</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Some transactions were taking longer than usual.</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">Chase later said transactions were posting normally.</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">The status of every delayed payment was not confirmed.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Chase said customers retained access to their funds.</text>
+
+    <!-- Sub-card 3B: Queue Drain -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Ledger Backlog Clearing Model</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Inbound transfer queues drained in FIFO order.</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Core accounting ledgers process pending updates.</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Bilateral clearing acknowledgments sent to EWS.</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">EWS network confirms routing channels normalized.</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Interbank settlement returns to nominal depth.</text>
+
+    <!-- Sub-card 3C: Evening Normalization -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">18:30 ET Posting Normalization</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Chase confirmed transactions posting normally.</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Mobile app account views refreshed with balances.</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">Plaid resolved its Chase connection issue at 19:34.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Zero double-spending or permanent account drift.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Highlights hub-and-spoke risks in payment rails.</text>
+  </g>
+
+  <!-- Bottom Panel: Engineering Recovery & Mitigations -->
+  <g transform="translate(40, 530)" filter="url(#shadow)">
+    <rect width="1120" height="280" rx="10" fill="url(#cardGrad)" stroke="#475569" stroke-width="1"/>
+    <rect x="0" y="0" width="1120" height="38" rx="10" fill="#334155" fill-opacity="0.4"/>
+    <text x="20" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">4. Engineering Safeguards &amp; Financial Ledger Architecture</text>
+
+    <!-- Sub-card 4A: Read Path Decoupling -->
+    <rect x="18" y="50" width="536" height="215" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="32" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">Read Path Decoupling &amp; CQRS Architecture</text>
+    <text x="32" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">1. Separate Read and Write Paths: Serve user balance queries and history</text>
+    <text x="48" y="109" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">from asynchronously replicated read caches, never from locking core ledgers.</text>
+    <text x="32" y="127" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">2. Transactional Outbox Pattern: Commit balance state and queue event in</text>
+    <text x="48" y="143" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">one local database transaction; decouple downstream inter-bank dispatch.</text>
+    <text x="32" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">3. Automated Deadlock Detection: Instrument transaction brokers to detect</text>
+    <text x="48" y="177" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">lock wait times >500ms and isolate conflicting batch updates dynamically.</text>
+    <text x="32" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">4. Graceful User Messaging: Inform users of delayed batch processing while</text>
+    <text x="48" y="211" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">keeping login and navigation responsive rather than throwing generic errors.</text>
+    <text x="32" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Prevents complete mobile app collapse during backend settlement stalls.</text>
+
+    <!-- Sub-card 4B: Inter-Bank Resilience -->
+    <rect x="566" y="50" width="536" height="215" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+    <text x="580" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Inter-Bank Clearing Network Defenses</text>
+    <text x="580" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">1. Transparent Node Status: EWS switch should broadcast real-time bank</text>
+    <text x="596" y="109" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">health indicators to peer banks (e.g. "Chase endpoints degraded").</text>
+    <text x="580" y="127" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">2. Client-Side Payment Pre-Checks: Warn senders before initiating transfers</text>
+    <text x="596" y="143" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">to affected institutions to avoid trapping transactions in pending queues.</text>
+    <text x="580" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">3. Idempotent Retry Buffering: Senders should not re-submit pending transfers;</text>
+    <text x="596" y="177" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">settlement networks must enforce strict deduplication idempotency keys.</text>
+    <text x="580" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">4. Staged Physical Deployments: On-premise server updates must follow strict</text>
+    <text x="596" y="211" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">canary cluster rollouts with soak periods across real-time transaction bursts.</text>
+    <text x="580" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Eliminates nationwide multi-bank perception traps during single-entity bugs.</text>
+  </g>
+</svg>

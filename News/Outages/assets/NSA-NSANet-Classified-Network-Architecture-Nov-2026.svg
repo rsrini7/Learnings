@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 840" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="redCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d151e"/>
+      <stop offset="100%" stop-color="#1f1118"/>
+    </linearGradient>
+    <linearGradient id="amberCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d2212"/>
+      <stop offset="100%" stop-color="#1c160c"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="840" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="600" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">NSA NSANet Classified Network Outage Architecture</text>
+  <text x="600" y="62" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">Routine maintenance, internal network disruption, and staggered arrivals (Nov 17, 2026)</text>
+
+  <!-- Panel 1: Security Patch Deadlock -->
+  <g transform="translate(40, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#amberCard)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#b45309" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fde68a">1. Maintenance Stall</text>
+    <rect x="255" y="11" width="80" height="20" rx="4" fill="#d97706"/>
+    <text x="295" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Hypothesis</text>
+
+    <!-- Sub-card 1A: The Scheduled Maintenance -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Scheduled Maintenance &amp; Updates</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">NSA reported degradation during routine maintenance.</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Officials linked the outage to PHP patching.</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Some systems did not return after patching.</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Hypothetical model: Library and socket policy conflict.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24">Zero external cyberattack or hostile infiltration.</text>
+
+    <!-- Sub-card 1B: Reboot Bootstrap Failure -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">Hypothetical Daemon Boot Stall</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Model: A server might fail to restart after an update.</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Model: Policy engine blocks internal socket creation.</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">Core directory and Kerberos KDC daemons failed.</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Affected gateway nodes entered maintenance shells.</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">Secure enclave interfaces dropped off internal network.</text>
+
+    <!-- Sub-card 1C: Classified Email Drop -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Internal Intranet &amp; Mail Down</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Model: Directory bootstrap could fail.</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">The actual directory mechanism was not disclosed.</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">Personnel arrival times were staggered.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Leadership issued internal "Code Yellow / Gray" alerts.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24">NSA said mission-critical capabilities remained active.</text>
+  </g>
+
+  <!-- Panel 2: Enclave Isolation & Thundering Herd -->
+  <g transform="translate(425, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fca5a5">2. Thundering Herd</text>
+    <rect x="255" y="11" width="80" height="20" rx="4" fill="#ef4444"/>
+    <text x="295" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Cascade</text>
+
+    <!-- Sub-card 2A: Authentication Hazard -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">Illustrative Reconnect Risk</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Concurrent logins can increase load on a directory.</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Thousands of analysts logging in simultaneously</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">could increase authentication traffic.</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Whether overload occurs depends on available capacity.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ef4444">Staggered arrivals reduce simultaneous logins.</text>
+
+    <!-- Sub-card 2B: Campus Access Restrictions -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">Fort Meade Personnel Arrivals</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Non-emergency personnel had staggered arrivals.</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Fort Meade gates remained under normal operations.</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">NSA later restricted its campus to essential staff.</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">A floor-by-floor schedule was not established.</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ef4444">The stated aim was fewer simultaneous logins.</text>
+
+    <!-- Sub-card 2C: Mission Continuity -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">Critical Defense Systems Active</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">NSA said mission-critical capabilities stayed active.</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">The status of individual feeds was not disclosed.</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">The agency cited multiple layers of redundancy.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Internal classified communications were disrupted.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Officials reported no evidence of a cyberattack then.</text>
+  </g>
+
+  <!-- Panel 3: Phased Recovery & Restoration -->
+  <g transform="translate(810, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#0284c7" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#bae6fd">3. Phased Recovery</text>
+    <rect x="255" y="11" width="80" height="20" rx="4" fill="#0284c7"/>
+    <text x="295" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Resolution</text>
+
+    <!-- Sub-card 3A: Policy Remediation -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">Remediation &amp; Bootstrap Validation</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">NSA systems administrators cleared package states.</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Core directory and Kerberos KDC re-initialized.</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">Classified email and database replication restored.</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Enclave network interfaces brought back online.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Zero cyberattack or unauthorized penetration.</text>
+
+    <!-- Sub-card 3B: Phased Rollout -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Staggered Personnel Re-Entry</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Non-emergency staff arrivals staggered in waves.</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Dampened peak simultaneous morning logins.</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Edge Kerberos ticket queues absorbed loads smoothly.</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Cold directory caches protected from crash surges.</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Human logistics complemented infrastructure recovery.</text>
+
+    <!-- Sub-card 3C: Normalization -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">Nov 20 Campus Normalization</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Full network access restored at Fort Meade and hubs.</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Employee hotlines confirmed normal operations.</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">NSA confirmed maintenance origin to media.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Tactical mission-critical feeds remained protected.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Takeaway: rigorous staging in air-gapped test enclaves.</text>
+  </g>
+
+  <!-- Bottom Panel: Engineering Recovery & Mitigations -->
+  <g transform="translate(40, 530)" filter="url(#shadow)">
+    <rect width="1120" height="280" rx="10" fill="url(#cardGrad)" stroke="#475569" stroke-width="1"/>
+    <rect x="0" y="0" width="1120" height="38" rx="10" fill="#334155" fill-opacity="0.4"/>
+    <text x="20" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">4. Engineering Safeguards &amp; High-Assurance Enclave Architecture</text>
+
+    <!-- Sub-card 4A: Air-Gapped Staging -->
+    <rect x="18" y="50" width="536" height="215" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="32" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">Air-Gapped Canary Enclaves &amp; Patch Verification</text>
+    <text x="32" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">1. Full-Stack Physical Mock Enclaves: Require emergency CVE security</text>
+    <text x="48" y="109" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">patches to execute cold-reboot tests in air-gapped staging hardware.</text>
+    <text x="32" y="127" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">2. Decouple MLS Profiles from Web Runtimes: Internal web reporting tools</text>
+    <text x="48" y="143" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">must run in unprivileged containers isolated from core KDC directory nodes.</text>
+    <text x="32" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">3. Automated Socket Policy Audits: Pre-boot linters verify systemd socket</text>
+    <text x="48" y="177" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">definitions against active SELinux policy rules before finalizing packages.</text>
+    <text x="32" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">4. Redundant Out-of-Band Consoles: Ensure secure serial IPMI / BMC paths</text>
+    <text x="48" y="211" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">remain available for remote kernel recovery without physical SCIF access.</text>
+    <text x="32" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Eliminates multi-day bootstrap deadlocks during emergency security patching.</text>
+
+    <!-- Sub-card 4B: Automated Throttling -->
+    <rect x="566" y="50" width="536" height="215" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+    <text x="580" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Automated Ingress Login Throttling</text>
+    <text x="580" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">1. Edge Kerberos Ticket Queuing: Implement token-bucket connection</text>
+    <text x="596" y="109" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">throttling at workstation switches to absorb post-outage login bursts.</text>
+    <text x="580" y="127" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">2. Pre-Authentication Caching: Allow workstations to authenticate via</text>
+    <text x="596" y="143" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">cached smart-card credentials during directory recovery phases.</text>
+    <text x="580" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">3. Automated Campus Shift Coordination: Digitize re-entry schedules</text>
+    <text x="596" y="177" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">via mobile employee alert apps rather than manual security gate checks.</text>
+    <text x="580" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">4. Decoupled Tactical SIGINT: Strict architectural isolation ensures that</text>
+    <text x="596" y="211" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">vital military and cyber intelligence flows continue unabated.</text>
+    <text x="580" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Combines human operational protocols with automated systems resilience.</text>
+  </g>
+</svg>

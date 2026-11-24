@@ -19,7 +19,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [📄 Research Papers](#papers) (19 articles)
 - [🛠️ Development Setup](#devsetup) (8 articles)
 - [✍️ Content Creation](#content) (43 articles)
-- [📰 News & Updates](#news) (67 articles)
+- [📰 News & Updates](#news) (73 articles)
 - [📚 References & Guides](#references) (3 articles)
 
 ---
@@ -527,11 +527,17 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Wireless Device Security WhisperPair CVE 2025 36911 2026](News/Security/Wireless-Device-Security-WhisperPair-CVE-2025-36911-2026.md)
 
 ### 🚨 Infrastructure & Outages
+- [AWS IAM Identity Center Console Outage Nov 2026](News/Outages/AWS-IAM-Identity-Center-Console-Outage-Nov-2026.md)
 - [AWS US East 1 Outage October 2025](News/Outages/AWS-US-East-1-Outage-October-2025.md)
+- [Apple iCloud Services Authentication Outage Nov 2026](News/Outages/Apple-iCloud-Services-Authentication-Outage-Nov-2026.md)
+- [Chase Zelle Transaction Processing Outage Nov 2026](News/Outages/Chase-Zelle-Transaction-Processing-Outage-Nov-2026.md)
 - [Cloudflare Global Outage ClickHouse Config Nov 2025](News/Outages/Cloudflare-Global-Outage-ClickHouse-Config-Nov-2025.md)
+- [FAA FTI Router Telecommunications Ground Stop Nov 2026](News/Outages/FAA-FTI-Router-Telecommunications-Ground-Stop-Nov-2026.md)
 - [Microsoft 365 Outlook Cascading Outage Nov 2026](News/Outages/Microsoft-365-Outlook-Cascading-Outage-Nov-2026.md)
+- [NSA NSANet Classified Network Outage Nov 2026](News/Outages/NSA-NSANet-Classified-Network-Outage-Nov-2026.md)
 - [Supabase Outage Feb 2026](News/Outages/Supabase-Outage-Feb-2026.md)
 - [Tailwind Financial Crisis 2026](News/Outages/Tailwind-Financial-Crisis-2026.md)
+- [United Airlines Dispatch System Outage Nov 2026](News/Outages/United-Airlines-Dispatch-System-Outage-Nov-2026.md)
 
 ### 📅 Weekly Updates
 - [Anthropic Fourth Economic Index Report Jan 2026](News/Weekly-Updates/Anthropic-Fourth-Economic-Index-Report-Jan-2026.md)

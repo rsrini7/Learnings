@@ -1,0 +1,171 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 840" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0b0f19"/>
+      <stop offset="100%" stop-color="#111827"/>
+    </linearGradient>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </linearGradient>
+    <linearGradient id="redCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d151e"/>
+      <stop offset="100%" stop-color="#1f1118"/>
+    </linearGradient>
+    <linearGradient id="amberCard" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#2d2212"/>
+      <stop offset="100%" stop-color="#1c160c"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.5"/>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1200" height="840" fill="url(#bgGrad)"/>
+
+  <!-- Title & Subtitle -->
+  <text x="600" y="38" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="22" font-weight="700" fill="#f8fafc">United Airlines Dispatch &amp; Weight-and-Balance Outage Architecture</text>
+  <text x="600" y="62" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" fill="#94a3b8">Pilot application disruption and pre-takeoff manifest requirements (Nov 16, 2026)</text>
+
+  <!-- Panel 1: Dispatch Gateway Freeze -->
+  <g transform="translate(40, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#amberCard)" stroke="#f59e0b" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#b45309" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fde68a">1. Dispatch Outage</text>
+    <rect x="255" y="11" width="80" height="20" rx="4" fill="#d97706"/>
+    <text x="295" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Hypothesis</text>
+
+    <!-- Sub-card 1A: Centralized Web Gateway -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Web-Based Operations Ingress</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">United central flight operations relies on web APIs</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">to bridge gate passenger manifests and flight planning.</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Internal IT outage stalled pilot application access</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">to takeoff calculation and manifest data.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24">Worker-level behavior was not publicly disclosed.</text>
+
+    <!-- Sub-card 1B: Calculation Pipeline Stall -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">Hypothetical Calculation Stall</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Model: Communication hang between gateway proxies</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">and weight-and-balance engine leaves queues empty.</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">EFB request sessions timed out without response.</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Automated dispatch releases could not be generated.</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">System stalled across all domestic mainline hubs.</text>
+
+    <!-- Sub-card 1C: Cockpit EFB Lockout -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Pilot Electronic Flight Bag Hang</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">The precise application message was not disclosed.</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Captains could not review passenger load numbers.</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">Takeoff flap and stabilizer trim settings missing.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Crews held aircraft at boarding gates nationwide.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fbbf24">Internal IT problem confirmed; zero FAA or ATC fault.</text>
+  </g>
+
+  <!-- Panel 2: Regulatory Barrier & Impact -->
+  <g transform="translate(425, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#redCard)" stroke="#f87171" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#991b1b" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#fca5a5">2. Gate Ground Holds</text>
+    <rect x="255" y="11" width="80" height="20" rx="4" fill="#ef4444"/>
+    <text x="295" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Safety</text>
+
+    <!-- Sub-card 2A: FAA Part 121 Enforcement -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#f87171">14 CFR § 121.665 Compliance</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Manifest must be prepared and signed by</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">authorized personnel before each takeoff.</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">Incorrect center of gravity risks aerodynamic stall.</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Some crews waited at gates for flight information.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ef4444">Mainline aircraft held at gates until release.</text>
+
+    <!-- Sub-card 2B: Gate Delays Propagate -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#fbbf24">90+ Minute Departure Cascades</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Delays exceeded 90 to 100 minutes at major hubs.</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">O'Hare, Newark, Houston, Denver gates gridlocked.</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#fca5a5">About 600 United flights were delayed that evening.</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">The share caused by this outage was unclear.</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#ef4444">Operational delays can affect crew schedules.</text>
+
+    <!-- Sub-card 2C: Isolated Scope -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">Airborne &amp; Express Safe</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Airborne flights held certified manifests and landed.</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">United Express regional flights operated normally.</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Zero airborne safety or flight control risks occurred.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">United reported an internal technology problem.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Flights already airborne and Express were unaffected.</text>
+  </g>
+
+  <!-- Panel 3: Resolution & Recovery -->
+  <g transform="translate(810, 85)" filter="url(#shadow)">
+    <rect width="350" height="430" rx="10" fill="url(#cardGrad)" stroke="#38bdf8" stroke-width="1.5"/>
+    <rect x="0" y="0" width="350" height="42" rx="10" fill="#0284c7" fill-opacity="0.3"/>
+    <text x="18" y="26" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#bae6fd">3. System Recovery</text>
+    <rect x="255" y="11" width="80" height="20" rx="4" fill="#0284c7"/>
+    <text x="295" y="25" text-anchor="middle" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" font-weight="700" fill="#ffffff">Resolution</text>
+
+    <!-- Sub-card 3A: Gateway Cluster Reboot -->
+    <rect x="15" y="54" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="74" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">Dispatch Application Recovery</text>
+    <text x="25" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">United initiated recovery across dispatch tiers.</text>
+    <text x="25" y="108" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Pre-flight calculation services re-initialized.</text>
+    <text x="25" y="125" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">Gateway communication channels cleared and reset.</text>
+    <text x="25" y="140" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Aerodynamic calculation queues resume processing.</text>
+    <text x="25" y="155" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Flight data connections resynced across airport hubs.</text>
+
+    <!-- Sub-card 3B: Manifest Delivery Resumes -->
+    <rect x="15" y="174" width="320" height="120" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="194" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#38bdf8">Cockpit Manifest Downloads</text>
+    <text x="25" y="212" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Flight crews retrieve certified load manifests.</text>
+    <text x="25" y="227" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Manifest signing completed per 14 CFR § 121.665.</text>
+    <text x="25" y="244" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Takeoff trim and V-speeds loaded into flight computers.</text>
+    <text x="25" y="259" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">ATC begins departure release sequencing.</text>
+    <text x="25" y="274" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Ground holds gradually lifted at major hubs.</text>
+
+    <!-- Sub-card 3C: Normalization -->
+    <rect x="15" y="304" width="320" height="110" rx="6" fill="#1e293b" stroke="#334155" stroke-width="1"/>
+    <text x="25" y="324" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="11" font-weight="700" fill="#4ade80">Operational Normalization</text>
+    <text x="25" y="342" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">United confirmed complete system resolution.</text>
+    <text x="25" y="357" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Zero cyberattack or external breach detected.</text>
+    <text x="25" y="374" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">Safety doctrine prevented any uncertified takeoffs.</text>
+    <text x="25" y="389" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">Mainline operations normalized through the night.</text>
+    <text x="25" y="404" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">Highlighted need for client-side offline EFB engines.</text>
+  </g>
+
+  <!-- Bottom Panel: Engineering Recovery & Mitigations -->
+  <g transform="translate(40, 530)" filter="url(#shadow)">
+    <rect width="1120" height="280" rx="10" fill="url(#cardGrad)" stroke="#475569" stroke-width="1"/>
+    <rect x="0" y="0" width="1120" height="38" rx="10" fill="#334155" fill-opacity="0.4"/>
+    <text x="20" y="24" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="13" font-weight="700" fill="#f8fafc">4. Engineering Safeguards &amp; Aviation Dispatch Architecture</text>
+
+    <!-- Sub-card 4A: Offline EFB Engines -->
+    <rect x="18" y="50" width="536" height="215" rx="6" fill="#0f172a" stroke="#334155" stroke-width="1"/>
+    <text x="32" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#4ade80">Client-Side Offline Calculation Engines</text>
+    <text x="32" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">1. Local EFB Aerodynamic Engines: Embed verified weight-and-balance logic</text>
+    <text x="48" y="109" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">directly in iOS/iPadOS EFB apps to calculate trim without backend APIs.</text>
+    <text x="32" y="127" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">2. Gate-to-Cockpit Direct Sync: Support direct peer-to-peer Bluetooth/LAN</text>
+    <text x="48" y="143" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">manifest transfer between gate agent scanners and cockpit tablets.</text>
+    <text x="32" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">3. Automated Socket Health Watchdogs: Kill deadlocked gateway child</text>
+    <text x="48" y="177" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">processes automatically when socket write timeouts exceed 5 seconds.</text>
+    <text x="32" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">4. Hot-Standby Dispatch Enclaves: Maintain parallel, independent dispatch</text>
+    <text x="48" y="211" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">clusters with active-active traffic routing to eliminate single-point hangs.</text>
+    <text x="32" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Guarantees aircraft departure clearance even during cloud gateway stalls.</text>
+
+    <!-- Sub-card 4B: EDCT Queue Scheduling -->
+    <rect x="566" y="50" width="536" height="215" rx="6" fill="#0f172a" stroke="#38bdf8" stroke-width="1"/>
+    <text x="580" y="72" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="12" font-weight="700" fill="#38bdf8">Departure Recovery &amp; Queue Management</text>
+    <text x="580" y="93" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">1. Priority EDCT Scheduling: During post-outage recovery, prioritize flights</text>
+    <text x="596" y="109" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">with narrow departure slot windows or crew duty expiration thresholds.</text>
+    <text x="580" y="127" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">2. Staggered Pushback Waves: Coordinate hub pushbacks in 10-minute waves</text>
+    <text x="596" y="143" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">to prevent taxiway gridlock and aircraft engine fuel-burn waste.</text>
+    <text x="580" y="161" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">3. Automated Crew Leg Legality Checks: Run async crew-timeout simulations</text>
+    <text x="596" y="177" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#38bdf8">to proactively reassign reserve pilots before duty limits expire at gates.</text>
+    <text x="580" y="195" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#cbd5e1">4. Robust Audit Logging: Secure digital signatures in distributed ledgers</text>
+    <text x="596" y="211" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#94a3b8">to satisfy FAA Part 121 compliance verification post-recovery.</text>
+    <text x="580" y="235" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="10" fill="#4ade80">Accelerates operational recovery while preserving absolute aviation safety.</text>
+  </g>
+</svg>

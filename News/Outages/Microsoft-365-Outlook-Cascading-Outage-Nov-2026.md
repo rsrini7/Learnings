@@ -649,8 +649,9 @@ Nov 12, 01:20 UTC     Nov 12, 16:20 UTC     Nov 12, 17:15 UTC     Nov 13, 04:00 
 ---
 
 **Related:**
+- [FAA-FTI-Router-Telecommunications-Ground-Stop-Nov-2026.md](FAA-FTI-Router-Telecommunications-Ground-Stop-Nov-2026.md) — Nationwide FAA ground stop following network flooding the day after the M365 cascade.
+- [AWS-IAM-Identity-Center-Console-Outage-Nov-2026.md](AWS-IAM-Identity-Center-Console-Outage-Nov-2026.md) — Single availability zone network fault locking out cloud administrators on Nov 15, 2026.
 - [Cloudflare Global Outage ClickHouse Config Nov 2025](Cloudflare-Global-Outage-ClickHouse-Config-Nov-2025.md) — Case study of homogeneous fleet crash loops caused by un-canaried configuration propagation.
 - [AWS US-East-1 Outage October 2025](AWS-US-East-1-Outage-October-2025.md) — Analysis of an automated control-plane workflow race condition causing a multi-hour cloud blackout.
 - [Supabase Outage Feb 2026](Supabase-Outage-Feb-2026.md) — Demonstrates how automated network policy updates partitioned an entire database fleet.
 - [Scaling C++ Services To 1 Million RPS](../../Engineering/Architecture/Scaling-Cpp-Services-To-1-Million-RPS-2026.md) — Low-level guide to cache-line padding, lock-free queues, and NUMA-aware multi-core scaling.
-- [HTTP QUERY Method RFC 10008](../../Engineering/Architecture/HTTP-QUERY-Method-RFC-10008-Nov-2026.md) — Protocol specifications governing modern edge proxy routing, ingress pipelines, and large payload handling.

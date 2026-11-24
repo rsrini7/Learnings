@@ -52,11 +52,17 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 - [Wireless Device Security WhisperPair CVE 2025 36911 2026](Security/Wireless-Device-Security-WhisperPair-CVE-2025-36911-2026.md)
 
 ## 🚨 Infrastructure & Outages
+- [AWS IAM Identity Center Console Outage Nov 2026](Outages/AWS-IAM-Identity-Center-Console-Outage-Nov-2026.md)
 - [AWS US East 1 Outage October 2025](Outages/AWS-US-East-1-Outage-October-2025.md)
+- [Apple iCloud Services Authentication Outage Nov 2026](Outages/Apple-iCloud-Services-Authentication-Outage-Nov-2026.md)
+- [Chase Zelle Transaction Processing Outage Nov 2026](Outages/Chase-Zelle-Transaction-Processing-Outage-Nov-2026.md)
 - [Cloudflare Global Outage ClickHouse Config Nov 2025](Outages/Cloudflare-Global-Outage-ClickHouse-Config-Nov-2025.md)
+- [FAA FTI Router Telecommunications Ground Stop Nov 2026](Outages/FAA-FTI-Router-Telecommunications-Ground-Stop-Nov-2026.md)
 - [Microsoft 365 Outlook Cascading Outage Nov 2026](Outages/Microsoft-365-Outlook-Cascading-Outage-Nov-2026.md)
+- [NSA NSANet Classified Network Outage Nov 2026](Outages/NSA-NSANet-Classified-Network-Outage-Nov-2026.md)
 - [Supabase Outage Feb 2026](Outages/Supabase-Outage-Feb-2026.md)
 - [Tailwind Financial Crisis 2026](Outages/Tailwind-Financial-Crisis-2026.md)
+- [United Airlines Dispatch System Outage Nov 2026](Outages/United-Airlines-Dispatch-System-Outage-Nov-2026.md)
 
 ## 📅 Weekly Updates
 - [Anthropic Fourth Economic Index Report Jan 2026](Weekly-Updates/Anthropic-Fourth-Economic-Index-Report-Jan-2026.md)
