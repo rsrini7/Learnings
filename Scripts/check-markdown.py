@@ -20,6 +20,8 @@ Validates Markdown and referenced SVG assets for GitHub rendering edge cases:
    Dagre stacks at identical (x, y) coordinates.
 9. SVG Text Boundary Overflow: Scans all referenced SVG architecture diagrams for text
    overflowing card containers, unescaped XML, or missing viewBox attributes.
+10. Duplicate Image/SVG Embed Warning: Flags repeated embeds of the exact same local image
+    or SVG path in the same file (non-blocking warning; see AGENTS.md).
 
 Usage:
     python3 Scripts/check-markdown.py                  # Check all tracked markdown files & diagrams
@@ -287,6 +289,35 @@ def scan_file(filepath):
                             'fix_advice': s_iss['fix_advice']
                         })
 
+    # Check 5: Warn on duplicate local image/SVG embeds in the same markdown file
+    md_dir = os.path.dirname(filepath)
+    seen_images = {}
+    in_fence = False
+    for idx, line in enumerate(lines):
+        stripped = line.strip()
+        if stripped.startswith('```'):
+            in_fence = not in_fence
+            continue
+        if in_fence:
+            continue
+        for m in re.finditer(r'!\[[^\]]*\]\(([^)\s]+)(?:\s+["\'][^"\']*["\'])?\)|<img [^>]*src=[\'"]([^"\']+)[\'"]', line):
+            raw_path = (m.group(1) or m.group(2)).split('?')[0].split('#')[0]
+            if raw_path.startswith(('http://', 'https://', 'data:')):
+                continue
+            norm_path = os.path.normpath(os.path.join(md_dir, raw_path))
+            if norm_path in seen_images:
+                first_line = seen_images[norm_path]
+                issues.append({
+                    'file': filepath,
+                    'line': idx + 1,
+                    'severity': 'WARNING',
+                    'type': 'Markdown: Duplicate image/SVG embed',
+                    'snippet': raw_path,
+                    'fix_advice': f'Already embedded at line {first_line}. Embed each newly created SVG/image only once per note unless preserving a distinct legacy visual.'
+                })
+            else:
+                seen_images[norm_path] = idx + 1
+
     return issues
 
 
@@ -440,12 +471,24 @@ def main():
             files_with_issues.add(f)
             all_issues.extend(file_issues)
 
-    if not all_issues:
+    critical_issues = [i for i in all_issues if i.get('severity', 'CRITICAL') != 'WARNING']
+    warnings = [i for i in all_issues if i.get('severity') == 'WARNING']
+
+    if warnings:
+        warn_files = {w['file'] for w in warnings}
+        print(f"\n{YELLOW}⚠️  Found {len(warnings)} warning(s) across {len(warn_files)} file(s):{RESET}\n")
+        for w in warnings:
+            print(f"{BOLD}{CYAN}{w['file']}:{w['line']}{RESET} {YELLOW}[{w['type']}]{RESET}")
+            print(f"   Snippet: {YELLOW}{w['snippet']}{RESET}")
+            print(f"   Advice:  {w['fix_advice']}\n")
+
+    if not critical_issues:
         print(f"\n{GREEN}✅ All {len(target_files)} Markdown file(s) passed Mermaid & LaTeX rendering checks!{RESET}")
         return 0
 
-    print(f"\n{RED}❌ Found {len(all_issues)} issue(s) across {len(files_with_issues)} file(s):{RESET}\n")
-    for iss in all_issues:
+    crit_files = {c['file'] for c in critical_issues}
+    print(f"\n{RED}❌ Found {len(critical_issues)} issue(s) across {len(crit_files)} file(s):{RESET}\n")
+    for iss in critical_issues:
         print(f"{BOLD}{CYAN}{iss['file']}:{iss['line']}{RESET} {RED}[{iss['type']}]{RESET}")
         print(f"   Snippet: {YELLOW}{iss['snippet']}{RESET}")
         print(f"   Advice:  {iss['fix_advice']}\n")
@@ -453,7 +496,7 @@ def main():
     if not args.fix:
         print(f"{YELLOW}Tip: Run 'python3 Scripts/check-markdown.py --fix' to automatically resolve fixable LaTeX issues.{RESET}")
 
-    return 1 if all_issues else 0
+    return 1 if critical_issues else 0
 
 
 if __name__ == '__main__':

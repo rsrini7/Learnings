@@ -3,3 +3,4 @@ memory*.db
 .serena/
 .workbuddy-ai/
 .DS_Store
+__pycache__/
