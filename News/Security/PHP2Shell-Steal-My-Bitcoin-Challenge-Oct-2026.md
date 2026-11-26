@@ -104,6 +104,8 @@ The following architectural diagram illustrates the target container topology, t
 
 ![PHP2Shell Steal My Bitcoin Challenge & Worker Heap Exploitation](assets/PHP2Shell-Steal-My-Bitcoin-Challenge-Architecture-2026.svg)
 
+*Figure 1: High-level architectural overview of the Steal My Bitcoin challenge environment, the CVE-2026-109618/19 memory exhaustion primitives, the 3-stage exploit sequence, and production PHP-FPM mitigation.*
+
 ### End-to-End Exploitation Sequence
 
 ```mermaid
@@ -290,16 +292,6 @@ All recorded timestamps are in **UTC on 24–27 October 2026**.
 4. [LiveOverflow Technical Analysis: Steal My Bitcoin Challenge Breakdown](https://www.youtube.com/watch?v=VhNiMWtOutw) — Independent video analysis exploring worker persistence, timing synchronization, and alternative 4-request exploit designs.
 5. [PHP Manual: Built-in Web Server Limitations](https://www.php.net/manual/en/features.commandline.webserver.php) — Documentation detailing that `php -S` is strictly intended for local development and lacks production process isolation.
 6. [Hacker News Launch & Resolution Thread](https://news.ycombinator.com/item?id=50224916) — Primary discussion thread documenting the challenge launch, endpoint addition, and operator verification.
-
----
-
-## 9. Supplementary visuals
-
-The following architectural diagram illustrates the target container topology, the vulnerability primitives, the 3-stage worker reuse exploit chain, and production defense boundaries:
-
-![PHP2Shell Steal My Bitcoin Challenge & Worker Heap Exploitation](assets/PHP2Shell-Steal-My-Bitcoin-Challenge-Architecture-2026.svg)
-
-*Figure 1: High-level architectural overview of the Steal My Bitcoin challenge environment, the CVE-2026-109618/19 memory exhaustion primitives, the 3-stage exploit sequence, and production PHP-FPM mitigation.*
 
 ---
 

@@ -97,6 +97,8 @@ The following architectural diagram illustrates the DLT preference scrubbing rai
 
 ![India's Telecom Anti-Spam Architecture & TRAI DLT Scrubbing](assets/India-Spam-Calls-DND-And-TRAI-Enforcement-Architecture-2026.svg)
 
+*Figure 1: High-level architectural overview of India's telecom anti-spam defense ecosystem, DLT scrubbing engines, 140/1600 series routing, and DoT international gateway spoofing filters.*
+
 ### Call Routing and Scrubbing Decision Flow
 
 ```mermaid
@@ -313,16 +315,6 @@ The evolution of India's telecom anti-spam regulatory framework spans nearly two
 4. [PIB: DoT International Incoming Spoofed Calls Prevention System Launch](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2067113&lang=2&reg=3) — Official announcement of gateway-level filtering blocking +91 spoofed calls.
 5. [PIB: Rajya Sabha Parliamentary Reply on Unregistered Telemarketing (February 2026)](https://www.pib.gov.in/PressReleasePage.aspx?PRID=2223950&lang=1&reg=3) — Ministerial disclosures detailing ₹153.8 crore in operator disincentives and 10-digit SIM-farm complaints.
 6. [Tech Mahindra & Microsoft: Preventing UCC with Distributed Ledger Technology](https://cache.techmahindra.com/static/img/pdf/fe-prevent-ucc-with-dlt.pdf) — Architectural case study detailing enterprise DLT node synchronization, template scrubbing, and consent registries.
-
----
-
-## 9. Supplementary visuals
-
-The following architectural diagram illustrates the DLT preference scrubbing rail, the four telephony ingress routes, the DoT international spoofing gateway, and the 2026 TRAI regulatory framework:
-
-![India's Telecom Anti-Spam Architecture & TRAI DLT Scrubbing](assets/India-Spam-Calls-DND-And-TRAI-Enforcement-Architecture-2026.svg)
-
-*Figure 1: High-level architectural overview of India's telecom anti-spam defense ecosystem, DLT scrubbing engines, 140/1600 series routing, and DoT international gateway spoofing filters.*
 
 ---
 

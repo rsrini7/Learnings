@@ -90,6 +90,8 @@ The following architectural diagram illustrates the BYOK gateway pattern, the le
 
 ![OpenCode Console Key Exposure & Gateway Trust Boundary Bypass](assets/OpenCode-Console-API-Key-Breach-Architecture-2026.svg)
 
+*Figure 1: High-level architectural breakdown of the OpenCode Console BYOK model, the legacy system exposure gap, direct-to-provider API bypass, and provider spend-limit enclaves.*
+
 ### End-to-End Attack and Remediation Lifecycle
 
 ```mermaid
@@ -300,16 +302,6 @@ All recorded timestamps are in **October 2026**.
 4. [Anthropic Research: Detecting and Preventing Distillation Attacks](https://www.anthropic.com/news/detecting-and-preventing-distillation-attacks) — Technical analysis of capability extraction tactics and behavioral classification defenses.
 5. [OWASP Secrets Management Cheat Sheet](https://cheatsheetseries.owasp.org/cheatsheets/Secrets_Management_Cheat_Sheet.html) — Comprehensive standard reference for bearer token revocation and secret lifecycle boundaries.
 6. [OpenAI API Documentation: Enforcing Spend Limits](https://developers.openai.com/api/docs/guides/spend-limits) — Standard implementation guide for hard project quotas and programmatic usage controls.
-
----
-
-## 9. Supplementary visuals
-
-The following architectural diagram illustrates the BYOK gateway pattern, the legacy system decommissioning gap, the direct provider calling bypass, and provider spend cap defenses:
-
-![OpenCode Console Key Exposure & Gateway Trust Boundary Bypass](assets/OpenCode-Console-API-Key-Breach-Architecture-2026.svg)
-
-*Figure 1: High-level architectural breakdown of the OpenCode Console BYOK model, the legacy system exposure gap, direct-to-provider API bypass, and provider spend-limit enclaves.*
 
 ---
 

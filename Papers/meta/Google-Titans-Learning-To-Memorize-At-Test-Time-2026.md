@@ -9,6 +9,8 @@ This research guide analyzes the theoretical foundations, surprise-driven gradie
 
 ![Google Titans Architecture](../assets/Google-Titans-Test-Time-Memorization-Architecture-2026.svg)
 
+*Figure 1: High-level architectural pipeline of Google Titans, illustrating the memory scaling dilemma, the surprise-driven test-time gradient update engine, the three architectural variants (MAC, MAG, MAL), and empirical 2M+ token context scaling.*
+
 ---
 
 ## 1. Foundations: The Memory Bottleneck and the Human Cognitive Model
@@ -386,15 +388,6 @@ print('Output verified successfully. Shape:', y.shape)
 |---|---|---|---|
 | *Titans: Learning to Memorize at Test Time* | Google Research (Behrouz et al.) | Jan 2025 | Foundational paper; mathematical update rules, MAC/MAG/MAL designs, and 2M+ token benchmarks. |
 | *BABILong Benchmark Leaderboard* | Academic Consortium | 2024–2025 | Independent empirical validation of associative recall over long sequences. |
-
----
-
-## 10. Supplementary visuals
-
-The following diagram illustrates the complete Google Titans memory-compute pipeline:
-
-![Google Titans Architecture](../assets/Google-Titans-Test-Time-Memorization-Architecture-2026.svg)
-*Figure 1: High-level architectural pipeline of Google Titans, illustrating the memory scaling dilemma, the surprise-driven test-time gradient update engine, the three architectural variants (MAC, MAG, MAL), and empirical 2M+ token context scaling.*
 
 ---
 

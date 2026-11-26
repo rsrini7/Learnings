@@ -98,6 +98,8 @@ The following architectural diagram illustrates the bundled runtime blindspot, t
 
 ![Node.js Brotli Decoder Heap Overflow & Node2Shell RCE](assets/NodeJS-Brotli-Node2Shell-RCE-Architecture-2026.svg)
 
+*Figure 1: High-level architectural breakdown of the Node.js native Brotli decoder flaw, streaming error misclassification, glibc tcache heap corruption, and runtime remediation.*
+
 ### Vulnerability and Attack Flow Sequence
 
 ```mermaid
@@ -319,16 +321,6 @@ All recorded timestamps are in **October 2026**.
 4. [Imperva Red Team: Node2Shell Exploitation Research](https://www.imperva.com/blog/node2shell-from-brotli-data-to-remote-code-execution/) — Technical deep dive demonstrating glibc heap corruption and control flow hijacking in Node.js 24.22.0.
 5. [Qualys Threat Research: Finding Vulnerable Node.js Runtimes](https://blog.qualys.com/product-tech/2026/10/23/node-js-patches-brotli-remote-code-execution-flaw-find-vulnerable-runtimes-before-attackers-do) — Analysis of runtime discovery and vulnerability management beyond package manifests.
 6. [GitHub Advisory GHSA-9v8h-qqgm-4m35](https://github.com/advisories/GHSA-9v8h-qqgm-4m35) — Ecosystem advisory tracking downstream Python and bundled Brotli package impacts.
-
----
-
-## 9. Supplementary visuals
-
-The following architectural diagram illustrates the bundled runtime blindspot, the 8-byte buffer overflow state machine flaw, and the heap corruption execution chain:
-
-![Node.js Brotli Decoder Heap Overflow & Node2Shell RCE](assets/NodeJS-Brotli-Node2Shell-RCE-Architecture-2026.svg)
-
-*Figure 1: High-level architectural breakdown of the Node.js native Brotli decoder flaw, streaming error misclassification, glibc tcache heap corruption, and runtime remediation.*
 
 ---
 

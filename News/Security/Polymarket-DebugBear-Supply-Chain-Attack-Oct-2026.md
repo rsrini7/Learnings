@@ -111,6 +111,8 @@ The following architecture diagram illustrates the supply chain compromise, clie
 
 ![Polymarket Supply-Chain Poisoning & Session Authority Drain](assets/Polymarket-DebugBear-Supply-Chain-Attack-Oct-2026.svg)
 
+*Figure 1: High-level architectural overview of the Polymarket client-side supply-chain compromise, DebugBear RUM CDN tampering, React DOM traversal, and the $3.9M restitution process.*
+
 ### End-to-End Attack and Containment Flow
 
 ```mermaid
@@ -328,16 +330,6 @@ All recorded timestamps are in **UTC**.
 4. [MDN Web Docs: Subresource Integrity (SRI)](https://developer.mozilla.org/en-US/docs/Web/Security/Defenses/Subresource_Integrity) — Architectural guide to cryptographic integrity pinning for external web scripts.
 5. [MDN Web Docs: Content Security Policy (CSP)](https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy/script-src) — Comprehensive standard reference for browser origin and script execution restrictions.
 6. [DebugBear Real User Monitoring Documentation](https://www.debugbear.com/docs/what-is-real-user-monitoring) — Architectural overview of vendor RUM data collection and script delivery mechanics.
-
----
-
-## 9. Supplementary visuals
-
-The following architecture diagram details the four-stage supply-chain poisoning, client-side session authority reuse, and rapid containment lifecycle:
-
-![Polymarket Supply-Chain Poisoning & Session Authority Drain](assets/Polymarket-DebugBear-Supply-Chain-Attack-Oct-2026.svg)
-
-*Figure 1: High-level architectural overview of the Polymarket client-side supply-chain compromise, DebugBear RUM CDN tampering, React DOM traversal, and the $3.9M restitution process.*
 
 ---
 

@@ -113,6 +113,8 @@ The following architectural diagram illustrates the end-to-end incident lifecycl
 
 ![Binance Hot-Wallet Subversion and EIP-7702 Exploitation Architecture](assets/Binance-Hot-Wallet-Theft-TRM-Labs-Investigation-Oct-2026.svg)
 
+*Figure 1: High-level architectural breakdown of the Binance hot-wallet signing subversion, EIP-7702 50-nonce racing delegation on Ethereum, multi-chain asset siphoning, and TRM Beacon Network stablecoin freeze coordination.*
+
 ### End-to-End Attack Sequence
 
 ```mermaid
@@ -355,16 +357,6 @@ All recorded timestamps are in **UTC**.
 4. [Ethereum Improvement Proposal: EIP-7702 (Set EOA Account Code)](https://eips.ethereum.org/EIPS/eip-7702) — Official protocol specification defining Type 4 transactions and authorization list delegation mechanics.
 5. [CISA & FBI: TraderTraitor Cybercrime Group Advisory (AA22-108A)](https://www.cisa.gov/news-events/cybersecurity-advisories/aa22-108a) — Joint US government cybersecurity advisory analyzing DPRK state-sponsored tactics against cryptocurrency infrastructure.
 6. [Chainalysis Incident Analysis: Multi-Chain Exchange Theft](https://www.chainalysis.com/blog/binance-october-2026-incident/) — Blockchain intelligence report detailing cross-chain fund tracing, DEX swapping, and lending pool deposits.
-
----
-
-## 9. Supplementary visuals
-
-The following architecture infographic illustrates the four-stage attack execution and recovery lifecycle:
-
-![Binance Hot-Wallet Subversion Architecture](assets/Binance-Hot-Wallet-Theft-TRM-Labs-Investigation-Oct-2026.svg)
-
-*Figure 1: High-level architectural breakdown of the Binance hot-wallet signing subversion, EIP-7702 50-nonce racing delegation on Ethereum, multi-chain asset siphoning, and TRM Beacon Network stablecoin freeze coordination.*
 
 ---
 

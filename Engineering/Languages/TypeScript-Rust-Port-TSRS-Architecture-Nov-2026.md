@@ -9,6 +9,8 @@ This research note breaks down the architectural evolution, memory layout innova
 
 ![TSRS Architecture and Compiler Pipeline](assets/tsrs-compiler-architecture.svg)
 
+*Figure 1: High-level architectural pipeline of `tsrs`, showing the front-end Oxc parser, the 32 GiB virtual memory arena with 4-byte pointer compression, lazy generic member table resolution, and module-affinity work stealing.*
+
 ---
 
 ## 1. Foundations: The Three Compiler Generations and Key Players
@@ -557,15 +559,6 @@ perf stat -e instructions,cycles,cache-references,cache-misses npx tsrs --noEmit
 | *Introducing tsrs* | Cloudflare & VoidZero | Oct 2026 | Sponsorship disclosure; WebAssembly and edge compilation roadmap. |
 | *TypeScript 7.0 Release Notes* | Microsoft TypeScript Team | July 2026 | Baseline Go implementation details; 15,197 conformance test corpus. |
 | *Better Stack Technical Review* | Better Stack Community | Nov 2026 | Independent third-party empirical overview and video analysis. |
-
----
-
-## 12. Supplementary visuals
-
-The following architecture diagram details the complete `tsrs` compilation pipeline, comparing the single-threaded Node.js V8 heap, Go runtime garbage collection, and Rust virtual arena memory management:
-
-![TSRS Architecture and Compiler Pipeline](assets/tsrs-compiler-architecture.svg)
-*Figure 1: High-level architectural pipeline of `tsrs`, showing the front-end Oxc parser, the 32 GiB virtual memory arena with 4-byte pointer compression, lazy generic member table resolution, and module-affinity work stealing.*
 
 ---
 

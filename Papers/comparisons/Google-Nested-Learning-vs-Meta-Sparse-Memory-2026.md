@@ -462,15 +462,6 @@ timeline
 
 ---
 
-## 8. Supplementary Visuals
-
-The following visual documentation preserves the comprehensive architectural comparison infographic illustrating the tripartite division across Google's continuous optimization stacks, Meta's discrete top-$k$ memory surgery, and developer contextual scaffolding:
-
-![Google Nested Learning vs Meta Sparse Memory Architecture](assets/Google-Nested-Learning-vs-Meta-Sparse-Memory-Architecture-2026.svg)
-*Figure 2: Complete architectural taxonomy detailing the progression from foundational model re-engineering (Google HOPE) to modular layer surgery (Meta SMF) and zero-parameter workflow governance (SCMS).*
-
----
-
 **Related:**
 - [Google-Nested-Learning-And-Neural-Continuum-Memory-2026](../scaling/Google-Nested-Learning-And-Neural-Continuum-Memory-2026.md) — Comprehensive technical review of Google's Nested Learning, Continuum Memory, and HOPE architecture.
 - [Meta-Sparse-Memory-Finetuning-And-Contextual-Scaffolding-2026](../scaling/Meta-Sparse-Memory-Finetuning-And-Contextual-Scaffolding-2026.md) — Deep dive into Meta AI's targeted memory surgery, Top-$k$ slot routing, and SCMS validation.

@@ -9,6 +9,8 @@ This comparative study demystifies SIMD vectorization across the modern software
 
 ![SIMD Architecture Stack: NumPy vs Go 1.27 vs Java 27](assets/SIMD-Architecture-Stack-NumPy-Go-Java.svg)
 
+*Figure 1: Software pyramid showing the distinction between Layer 4 high-level data science interfaces (NumPy), Layer 3 math engines (BLAS/LAPACK), Layer 2 compiler vector intrinsics (Go `simd`, Java Vector API), and Layer 1 CPU vector silicon.*
+
 ---
 
 ## 1. Foundations: The Plain-Language Mental Model
@@ -227,6 +229,8 @@ func DotProductSIMD(a, b []float32) float32 {
 ```
 
 ![CPU Execution Mechanics: Scalar Loops vs SIMD Vector Lanes](assets/SIMD-Hardware-Execution-Scalar-vs-Vector.svg)
+
+*Figure 2: Silicon-level execution comparison showing 8 sequential clock cycles in scalar SISD vs 1 single clock cycle across 8 parallel float lanes in SIMD execution.*
 
 ### Breaking Down the 5 Steps That Confuse Learners
 
@@ -462,18 +466,6 @@ java --add-modules jdk.incubator.vector \
 | *JEP 537: Vector API* | Paul Sandoz et al. (OpenJDK) | Sept 2026 | Technical specification for Java 27 Vector API and Valhalla dependency. |
 | *Go 1.27 Release Notes & SIMD Proposal* | Go Compiler Team | Late 2026 | Definition of `simd.Float32sLen`, `MulAdd`, and compatibility constraints. |
 | *Lucene HNSW Vector Benchmarks* | Apache Software Foundation | 2024–2026 | Real-world empirical validation of 3x–5x SIMD performance gains in production. |
-
----
-
-## 12. Supplementary visuals
-
-The following architectural diagrams illustrate the multi-tier software hierarchy and the low-level silicon register execution models:
-
-![SIMD Architecture Stack: NumPy vs Go 1.27 vs Java 27](assets/SIMD-Architecture-Stack-NumPy-Go-Java.svg)
-*Figure 1: Software pyramid showing the distinction between Layer 4 high-level data science interfaces (NumPy), Layer 3 math engines (BLAS/LAPACK), Layer 2 compiler vector intrinsics (Go `simd`, Java Vector API), and Layer 1 CPU vector silicon.*
-
-![CPU Execution Mechanics: Scalar Loops vs SIMD Vector Lanes](assets/SIMD-Hardware-Execution-Scalar-vs-Vector.svg)
-*Figure 2: Silicon-level execution comparison showing 8 sequential clock cycles in scalar SISD vs 1 single clock cycle across 8 parallel float lanes in SIMD execution.*
 
 ---
 

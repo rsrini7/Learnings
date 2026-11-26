@@ -95,6 +95,8 @@ The following architectural diagram illustrates the structural isolation between
 
 ![Linux Kernel ksmbd Vulnerabilities & Public ZDI Reports](assets/Linux-Kernel-ZDI-Public-Reports-KSMBD-Architecture-2026.svg)
 
+*Figure 1: High-level architectural overview of in-kernel ksmbd processing, the ZDI-CAN-33774 dispatch race, the ZDI-CAN-33549 SMB Direct RDMA underflow, and distribution exposure trees.*
+
 ### Host Exposure and Attack Prerequisite Tree
 
 ```mermaid
@@ -302,16 +304,6 @@ All recorded timestamps are in **October 2026**.
 4. [Linux Kernel Git: ksmbd Connection Locking Commit (68f410faedaf)](https://git.kernel.org/pub/scm/linux/kernel/git/ksmbd/linux.git/commit/?id=68f410faedaf) — Maintainer commit serializing negotiation requests to prevent the dispatch race.
 5. [Phoronix: New Trend Micro Vulnerabilities Disclosed on LKML](https://www.phoronix.com/news/LKML-New-Trend-Vulnerabilities) — Industry reporting detailing the public disclosure event and maintainer interactions.
 6. [Linux Kernel Process: Reporting Security Bugs](https://docs.kernel.org/process/security-bugs.html) — Official kernel community guidelines on disclosure timelines, public reports, and reproducer policies.
-
----
-
-## 9. Supplementary visuals
-
-The following architectural diagram illustrates the boundary between userspace Samba and in-kernel `ksmbd`, alongside the dispatch-race and RDMA underflow mechanisms:
-
-![Linux Kernel ksmbd Vulnerabilities & Public ZDI Reports](assets/Linux-Kernel-ZDI-Public-Reports-KSMBD-Architecture-2026.svg)
-
-*Figure 1: High-level architectural overview of in-kernel ksmbd processing, the ZDI-CAN-33774 dispatch race, the ZDI-CAN-33549 SMB Direct RDMA underflow, and distribution exposure trees.*
 
 ---
 

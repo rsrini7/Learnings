@@ -423,13 +423,6 @@ timeline
 
 ---
 
-## 8. Supplementary Visuals
-
-The following visual documentation preserves the high-level research literature pipeline illustrating the progression from discovery to automated local vectorization:
-
-![Academic Research Paper Discovery and Retrieval Pipeline](assets/Academic-Paper-Discovery-And-Retrieval-Pipeline-2026.svg)
-*Figure 2: Complete four-stage workflow mapping semantic graph discovery, preprint repositories, legal open-access resolvers, and automated RAG document ingestion.*
-
 ---
 
 **Related:**

@@ -290,6 +290,8 @@ The following comprehensive architecture diagram illustrates the end-to-end topo
 
 ![Enterprise Ontology & Agent Semantic Layer Architecture](assets/Enterprise-Ontology-For-AI-Agents-And-NVIDIA-Auto-Ontology-Nov-2026.svg)
 
+*Figure 1: Complete Enterprise Ontology and Agent Execution Topology. Panel 1 depicts the Tamil Nadu naming disambiguation challenge resolving into a canonical IRI. Panel 2 illustrates the RDFS, OWL, and SHACL validation tiers. Panel 3 details the NVIDIA Auto Ontology compilation pipeline. Panel 4 outlines FastMCP tool exposure (`ask_question`, `search_terms`, `describe_table`) and deterministic SQL AST guardrails. Panel 5 provides a comparative architectural breakdown of the Three Enterprise Ontology Paradigms: W3C Semantic Web (RDF/OWL), NVIDIA Auto Ontology (FastMCP Text-to-SQL), and Palantir AIP (Kinetic Objects, Links, Actions).*
+
 ---
 
 ## 4. NVIDIA Auto Ontology Architecture & Engine Internals
@@ -877,15 +879,6 @@ The transition from early semantic research to modern agentic semantic layers re
 | **Palantir AIP Architecture** | Palantir Technologies Whitepaper | Demonstrates that operational data agents require kinetic Action types with ERP write-back and granular ACLs, rather than unconstrained raw SQL generation. |
 | **W3C SHACL Working Group** | W3C Recommendation | Demonstrates that closed-world data quality validation is essential to stop malformed dates and strings before agent consumption. |
 | **BEAVER & BIRD Benchmarks** | Academic Leaderboards | Leaderboard results measure complete systems; they do not establish the isolated gain from an ontology without a controlled ablation. |
-
----
-
-## 12. Supplementary visuals
-
-The custom architectural visual below highlights the multi-tier progression from relational ambiguity to formal semantic grounding and FastMCP execution:
-
-![Enterprise Ontology Architecture Overview](assets/Enterprise-Ontology-For-AI-Agents-And-NVIDIA-Auto-Ontology-Nov-2026.svg)
-*Figure 1: Complete Enterprise Ontology and Agent Execution Topology. Panel 1 depicts the Tamil Nadu naming disambiguation challenge resolving into a canonical IRI. Panel 2 illustrates the RDFS, OWL, and SHACL validation tiers. Panel 3 details the NVIDIA Auto Ontology compilation pipeline. Panel 4 outlines FastMCP tool exposure (ask_question, search_terms, describe_table) and deterministic SQL AST guardrails. Panel 5 provides a comparative architectural breakdown of the Three Enterprise Ontology Paradigms: W3C Semantic Web (RDF/OWL), NVIDIA Auto Ontology (FastMCP Text-to-SQL), and Palantir AIP (Kinetic Objects, Links, Actions).*
 
 ---
 
