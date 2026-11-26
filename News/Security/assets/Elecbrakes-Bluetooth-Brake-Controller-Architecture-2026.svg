@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 620" role="img" aria-labelledby="title desc">
+  <title id="title">Elecbrakes controller access paths</title>
+  <desc id="desc">Comparison of unauthenticated brake control before the firmware update and authenticated control after the EB2 and VM1 updates.</desc>
+  <defs>
+    <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#f87171" />
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4ade80" />
+    </marker>
+    <style>
+      .bg { fill: #0b0f19; }
+      .panel { fill: #111827; stroke-width: 2; }
+      .old { stroke: #f87171; }
+      .fixed { stroke: #4ade80; }
+      .card { fill: #1e293b; stroke: #475569; stroke-width: 1.5; }
+      .inner-old { fill: #321f2a; stroke: #f87171; stroke-width: 1.5; }
+      .inner-fixed { fill: #17372f; stroke: #4ade80; stroke-width: 1.5; }
+      .text { fill: #e2e8f0; font-family: Arial, sans-serif; }
+      .muted { fill: #94a3b8; font-family: Arial, sans-serif; }
+      .red { fill: #fca5a5; font-family: Arial, sans-serif; }
+      .green { fill: #86efac; font-family: Arial, sans-serif; }
+      .line-red { stroke: #f87171; stroke-width: 3; fill: none; }
+      .line-green { stroke: #4ade80; stroke-width: 3; fill: none; }
+    </style>
+  </defs>
+  <rect class="bg" x="0" y="0" width="1160" height="620" rx="18" />
+  <text class="text" x="40" y="44" font-size="24" font-weight="700">Trailer brake control: pre-fix and fixed access paths</text>
+  <text class="muted" x="40" y="70" font-size="15">The controller, rather than the app interface, must enforce each command boundary.</text>
+
+  <rect class="panel old" x="35" y="95" width="530" height="485" rx="16" />
+  <text class="red" x="60" y="130" font-size="17" font-weight="700">Vulnerable firmware</text>
+  <text class="text" x="60" y="154" font-size="15">Brake control did not require a bonded session</text>
+
+  <rect class="card" x="65" y="195" width="155" height="92" rx="12" />
+  <text class="text" x="83" y="228" font-size="15" font-weight="700">Nearby device</text>
+  <text class="muted" x="83" y="252" font-size="14">Phone or laptop</text>
+  <text class="muted" x="83" y="272" font-size="14">No prior trust</text>
+
+  <path class="line-red" d="M220 240 L285 240" marker-end="url(#arrow-red)" />
+  <text class="red" x="228" y="220" font-size="13">BLE</text>
+
+  <rect class="card" x="295" y="180" width="235" height="224" rx="12" />
+  <text class="text" x="315" y="209" font-size="16" font-weight="700">Trailer brake controller</text>
+  <rect class="inner-old" x="315" y="227" width="195" height="82" rx="9" />
+  <text class="muted" x="330" y="252" font-size="13">BLE / GATT</text>
+  <text class="text" x="330" y="276" font-size="14" font-weight="700">Brake-control attribute</text>
+  <text class="red" x="330" y="297" font-size="13">Write without a bond</text>
+  <rect class="card" x="315" y="322" width="195" height="62" rx="9" />
+  <text class="muted" x="330" y="348" font-size="13">State notification</text>
+  <text class="text" x="330" y="371" font-size="13">Reports the changed state</text>
+
+  <path class="line-red" d="M412 404 L412 438" marker-end="url(#arrow-red)" />
+  <rect class="card" x="315" y="448" width="195" height="66" rx="11" />
+  <text class="text" x="337" y="477" font-size="15" font-weight="700">Trailer brake actuator</text>
+  <text class="muted" x="337" y="499" font-size="13">Receives control output</text>
+  <text class="muted" x="65" y="548" font-size="14">An in-range client could attempt control writes.</text>
+
+  <rect class="panel fixed" x="595" y="95" width="530" height="485" rx="16" />
+  <text class="green" x="620" y="130" font-size="17" font-weight="700">Updated EB2 and VM1</text>
+  <text class="text" x="620" y="154" font-size="15">Control requires an authenticated, bonded connection</text>
+
+  <rect class="card" x="625" y="195" width="155" height="92" rx="12" />
+  <text class="text" x="643" y="228" font-size="15" font-weight="700">Owner device</text>
+  <text class="muted" x="643" y="252" font-size="14">App or remote</text>
+  <text class="muted" x="643" y="272" font-size="14">Known controller</text>
+
+  <path class="line-green" d="M780 240 L845 240" marker-end="url(#arrow-green)" />
+  <text class="green" x="784" y="220" font-size="13">Bonded BLE</text>
+
+  <rect class="card" x="855" y="180" width="235" height="224" rx="12" />
+  <text class="text" x="875" y="209" font-size="16" font-weight="700">Trailer brake controller</text>
+  <rect class="inner-fixed" x="875" y="227" width="195" height="82" rx="9" />
+  <text class="muted" x="890" y="252" font-size="13">BLE / GATT</text>
+  <text class="text" x="890" y="276" font-size="14" font-weight="700">Protected control write</text>
+  <text class="green" x="890" y="297" font-size="13">Authenticated bond required</text>
+  <rect class="card" x="875" y="322" width="195" height="62" rx="9" />
+  <text class="muted" x="890" y="348" font-size="13">First pairing</text>
+  <text class="text" x="890" y="371" font-size="13">Physical pedal action</text>
+
+  <path class="line-green" d="M972 404 L972 438" marker-end="url(#arrow-green)" />
+  <rect class="card" x="875" y="448" width="195" height="66" rx="11" />
+  <text class="text" x="897" y="477" font-size="15" font-weight="700">Trailer brake actuator</text>
+  <text class="muted" x="897" y="499" font-size="13">Receives validated output</text>
+  <text class="muted" x="625" y="548" font-size="14">The controller enforces the boundary before actuation.</text>
+</svg>

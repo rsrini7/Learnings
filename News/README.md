@@ -23,6 +23,7 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 - [Brotli HTTP2Shell Node2Shell CVE 2026 111497 Nov 2026](Security/Brotli-HTTP2Shell-Node2Shell-CVE-2026-111497-Nov-2026.md)
 - [Cursor Claude Code Extension Supply Chain Attack Nov 2026](Security/Cursor-Claude-Code-Extension-Supply-Chain-Attack-Nov-2026.md)
 - [EMudhra Weak CA Keys And PKI Trust Oct 2026](Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)
+- [Elecbrakes Bluetooth Brake Controller Vulnerabilities Nov 2026](Security/Elecbrakes-Bluetooth-Brake-Controller-Vulnerabilities-Nov-2026.md)
 - [French Supermarket Refrigeration Cyber Sabotage Nov 2026](Security/French-Supermarket-Refrigeration-Cyber-Sabotage-Nov-2026.md)
 - [GitLab Regex Compiler RCE Oct 2026](Security/GitLab-Regex-Compiler-RCE-Oct-2026.md)
 - [Grok Build Passive DNS Data Exposure Nov 2026](Security/Grok-Build-Passive-DNS-Data-Exposure-Nov-2026.md)

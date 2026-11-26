@@ -327,3 +327,4 @@ Pre-2024                 Mid-2024               Late 2024 - 2025       2026 Post
 - [Wireless Device Security: WhisperPair & Implementation Traps](Wireless-Device-Security-WhisperPair-CVE-2025-36911-2026.md) — Companion client-software security write-up cataloguing vendor-update and delivery trust weaknesses.
 - [MongoBleed-Dec2025](MongoBleed-Dec2025.md) — Sister late-2025 CVE write-up documenting an unauthenticated, large-scale exposure flaw.
 - [OpenClaw-Moltbot-Security-Analysis-2026](../../AI-ML/Agents/openclaw/OpenClaw-Moltbot-Security-Analysis-2026.md) — Both detail targeted, hands-on-keyboard attacks leveraging installer and update trust chains.
+- [Elecbrakes Trailer Brake Controllers: Bluetooth Access and Firmware Risks](Elecbrakes-Bluetooth-Brake-Controller-Vulnerabilities-Nov-2026.md) — Compares software updater trust with firmware authenticity and controller-side update authorization.
