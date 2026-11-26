@@ -21,6 +21,7 @@ Exhaustive root-cause security advisories, major cloud outage postmortems, and t
 - [Banks Third Party AI Agents Oct 2026](Security/Banks-Third-Party-AI-Agents-Oct-2026.md)
 - [Binance Hot Wallet Theft TRM Labs Investigation Oct 2026](Security/Binance-Hot-Wallet-Theft-TRM-Labs-Investigation-Oct-2026.md)
 - [Brotli HTTP2Shell Node2Shell CVE 2026 111497 Nov 2026](Security/Brotli-HTTP2Shell-Node2Shell-CVE-2026-111497-Nov-2026.md)
+- [Cursor Claude Code Extension Supply Chain Attack Nov 2026](Security/Cursor-Claude-Code-Extension-Supply-Chain-Attack-Nov-2026.md)
 - [EMudhra Weak CA Keys And PKI Trust Oct 2026](Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)
 - [French Supermarket Refrigeration Cyber Sabotage Nov 2026](Security/French-Supermarket-Refrigeration-Cyber-Sabotage-Nov-2026.md)
 - [GitLab Regex Compiler RCE Oct 2026](Security/GitLab-Regex-Compiler-RCE-Oct-2026.md)

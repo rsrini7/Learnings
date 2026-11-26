@@ -19,7 +19,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [📄 Research Papers](#papers) (19 articles)
 - [🛠️ Development Setup](#devsetup) (8 articles)
 - [✍️ Content Creation](#content) (43 articles)
-- [📰 News & Updates](#news) (73 articles)
+- [📰 News & Updates](#news) (74 articles)
 - [📚 References & Guides](#references) (3 articles)
 
 ---
@@ -497,6 +497,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 - [Banks Third Party AI Agents Oct 2026](News/Security/Banks-Third-Party-AI-Agents-Oct-2026.md)
 - [Binance Hot Wallet Theft TRM Labs Investigation Oct 2026](News/Security/Binance-Hot-Wallet-Theft-TRM-Labs-Investigation-Oct-2026.md)
 - [Brotli HTTP2Shell Node2Shell CVE 2026 111497 Nov 2026](News/Security/Brotli-HTTP2Shell-Node2Shell-CVE-2026-111497-Nov-2026.md)
+- [Cursor Claude Code Extension Supply Chain Attack Nov 2026](News/Security/Cursor-Claude-Code-Extension-Supply-Chain-Attack-Nov-2026.md)
 - [EMudhra Weak CA Keys And PKI Trust Oct 2026](News/Security/EMudhra-Weak-CA-Keys-And-PKI-Trust-Oct-2026.md)
 - [French Supermarket Refrigeration Cyber Sabotage Nov 2026](News/Security/French-Supermarket-Refrigeration-Cyber-Sabotage-Nov-2026.md)
 - [GitLab Regex Compiler RCE Oct 2026](News/Security/GitLab-Regex-Compiler-RCE-Oct-2026.md)
