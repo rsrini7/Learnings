@@ -181,6 +181,7 @@ In-depth research, architectural breakdowns, and hands-on implementations across
 
 ## 🔗 Protocols
 - [MCP Scalability Architecture And Federation 2026](Protocols/MCP-Scalability-Architecture-And-Federation-2026.md)
+- [MCP Skills Tasks Elicitation File Uploads Nov 2026](Protocols/MCP-Skills-Tasks-Elicitation-File-Uploads-Nov-2026.md)
 - [MoSPI India MCP](Protocols/MoSPI-India-MCP.md)
 - [Universal Commerce Protocol Architecture 2026](Protocols/Universal-Commerce-Protocol-Architecture-2026.md)
 

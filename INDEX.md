@@ -12,7 +12,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 
 ## 📑 Quick Jump by Domain
 
-- [🧠 AI & Machine Learning](#ai-ml) (130 articles)
+- [🧠 AI & Machine Learning](#ai-ml) (131 articles)
 - [☁️ Software Engineering](#engineering) (24 articles)
 - [⛓️ Blockchain & DLT](#blockchain) (17 articles)
 - [⚛️ Quantum Computing](#quantumcomputing) (5 articles)
@@ -199,6 +199,7 @@ A complete, fully expanded single-page index of all technical articles and resea
 
 ### 🔗 Protocols
 - [MCP Scalability Architecture And Federation 2026](AI-ML/Protocols/MCP-Scalability-Architecture-And-Federation-2026.md)
+- [MCP Skills Tasks Elicitation File Uploads Nov 2026](AI-ML/Protocols/MCP-Skills-Tasks-Elicitation-File-Uploads-Nov-2026.md)
 - [MoSPI India MCP](AI-ML/Protocols/MoSPI-India-MCP.md)
 - [Universal Commerce Protocol Architecture 2026](AI-ML/Protocols/Universal-Commerce-Protocol-Architecture-2026.md)
 

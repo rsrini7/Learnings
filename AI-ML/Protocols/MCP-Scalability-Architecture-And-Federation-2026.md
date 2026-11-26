@@ -1475,3 +1475,4 @@ The original conceptual diagrams below illustrate the evolutionary baseline of M
 - [AI-Coding-Loops](../Agents/development/AI-Coding-Loops.md) — AI-coding loop patterns that benefit most from v3's Code Mode default for multi-tool, multi-step agent workflows.
 - [RAG-Architectures](../RAG/RAG-Architectures.md) — RAG pipelines consume MCP resources, so the token-reduction strategies here apply directly to retrieval-augmented systems.
 - [ClawWork-Agent-Architecture-And-Economic-Survival-2026](../Agents/openclaw/ClawWork-Agent-Architecture-And-Economic-Survival-2026.md) — Production MCP integration showing how OpenClaw mitigates the same context-window and tool-binding problems examined here.
+- [MCP-Skills-Tasks-Elicitation-File-Uploads-Nov-2026](MCP-Skills-Tasks-Elicitation-File-Uploads-Nov-2026.md) — Covers the 2026 stateless core, MCP Apps, Tasks, Skills, Events, enterprise authorization, and the experimental file-transfer design.
